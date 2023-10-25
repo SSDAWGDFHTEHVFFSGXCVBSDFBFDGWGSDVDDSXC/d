@@ -6344,6 +6344,7 @@ task.spawn(function()
     end
 end)
 
+_G.Settings.Configs["Double Quest"] = true
 
 
 page1:Line()
