@@ -1061,45 +1061,48 @@ function getAllBladeHits(Sizes)
 end
 
 function AttackFunction()
-  local ac = CombatFrameworkR.activeController
+    local ac = CombatFrameworkR.activeController
     if ac and ac.equipped then
-        local bladehit = getAllBladeHits(60)
-          if #bladehit > 0 then
-            local AcAttack8 = debug.getinfo(ac.attack).upvalues[5]
-            local AcAttack7 = debug.getinfo(ac.attack).upvalues[4]
-            local AcAttack9 = debug.getinfo(ac.attack).upvalues[6]
+        for indexincrement = 1, 1 do
+            local bladehit = getAllBladeHits(60)
+            if #bladehit > 0 then
+                local AcAttack8 = debug.getupvalue(ac.attack, 5)
+                local AcAttack9 = debug.getupvalue(ac.attack, 6)
+                local AcAttack7 = debug.getupvalue(ac.attack, 4)
+                local AcAttack10 = debug.getupvalue(ac.attack, 7)
+                local NumberAc12 = (AcAttack8 * 798405 + AcAttack7 * 727595) % AcAttack9
+                local NumberAc13 = AcAttack7 * 798405
+                (function()
+                    NumberAc12 = (NumberAc12 * AcAttack9 + NumberAc13) % 1099511627776
+                    AcAttack8 = math.floor(NumberAc12 / AcAttack9)
+                    AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
+                end)()
+                AcAttack10 = AcAttack10 + 1
+                debug.setupvalue(ac.attack, 5, AcAttack8)
+                debug.setupvalue(ac.attack, 6, AcAttack9)
+                debug.setupvalue(ac.attack, 4, AcAttack7)
+                debug.setupvalue(ac.attack, 7, AcAttack10)
+                for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    local Highlight = Instance.new("Highlight")
+                    Highlight.FillColor = Color3.new(255, 0, 0)
+                    Highlight.OutlineColor = Color3.new(255, 0, 0)
+                    Highlight.Parent = v
+                end
+                for k, v in pairs(ac.animator.anims.basic) do
+                    v:Play(0.01, 0.01, 0.01)
+                end
+                if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
+                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",
+                        tostring(CurrentWeapon()))
+                    game.ReplicatedStorage.Remotes.Validator:FireServer(
+                        math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
+                    game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "")
+                end
+            end
+        end
+    end
+end
 
-            local NumberAc12 = (AcAttack8 * 798405 + AcAttack7 * 727595) % AcAttack9
-            local NumberAc13 = AcAttack7 * 798405
-            (function()
-              NumberAc12 = (NumberAc12 * AcAttack9 + NumberAc13) % 1099511627776
-              AcAttack8 = math.floor(NumberAc12 / AcAttack9)
-              AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
-            end)()
-
-              AcAttack10 = AcAttack10 + 1
-              debug.setupvalue(ac.attack, 5, AcAttack8)
-              debug.setupvalue(ac.attack, 4, AcAttack7)
-              debug.setupvalue(ac.attack, 6, AcAttack9)
-              for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-                  local Highlight = Instance.new("Highlight")
-                  Highlight.FillColor = Color3.new(255, 0, 0)
-                  Highlight.OutlineColor = Color3.new(255, 0, 0)
-                  Highlight.Parent = v
-              end
-              for k, v in pairs(ac.animator.anims.basic) do
-                  v:Play(0.01, 0.01, 0.01)
-              end
-              if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
-                  game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",
-                      tostring(CurrentWeapon()))
-                  game.ReplicatedStorage.Remotes.Validator:FireServer(
-                      math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
-                  game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "")
-              end
-          end
-      end
-  end
 
 
 -- [Function (Abandoned Quest , Others)]
@@ -7121,7 +7124,7 @@ coroutine.wrap(function()
 		local ac = CombatFrameworkR.activeController
 		if ac and ac.equipped then
 			wait(0.02)
-			if FastAttack and _G.FastType then
+			if FastAttack and _G.FastAttack then
 				AttackFunction()
 				if _G.FastType == "Normal" then
 					if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
@@ -7135,7 +7138,7 @@ coroutine.wrap(function()
 		end
 	end
 end)()
-
+_G.FastType = "Fast"
 Weapon = {
     "Melee",
     "Sword",
@@ -7426,3 +7429,4 @@ else
             CameraShaker()
         end)
     end
+print(1)
