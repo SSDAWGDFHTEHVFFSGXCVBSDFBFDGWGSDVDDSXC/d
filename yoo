@@ -1059,7 +1059,7 @@ function getAllBladeHits(Sizes)
   end
   return Hits
 end
-
+--[[
 function AttackFunction()
     local ac = CombatFrameworkR.activeController
     if ac and ac.equipped then
@@ -1102,8 +1102,55 @@ function AttackFunction()
         end
     end
 end
+]]
 
+local function hasEnemiesInRange()
+    for _, v in pairs(game.Workspace.Enemies:GetChildren()) do
+        if v.Position.DistanceTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position) <= 10 then
+            return true
+        end
+    end
 
+    return false
+end
+
+local function isInAttackRange(v)
+    return v.Position.DistanceTo(game.Players.LocalPlayer.Character.HumanoidRootPart.Position) <= 10
+end
+
+function AttackFunction()
+    local ac = CombatFrameworkR.activeController
+    if ac and ac.equipped then
+        local bladehit = nil
+        if hasEnemiesInRange() then
+            bladehit = getAllBladeHits(60)
+        end
+
+        for i, v in pairs(bladehit) do
+            if isInAttackRange(v) then
+                local Highlight = Instance.new("Highlight")
+                Highlight.FillColor = Color3.new(255, 0, 0)
+                Highlight.OutlineColor = Color3.new(255, 0, 0)
+                Highlight.Parent = v
+
+                for k, v in pairs(ac.animator.anims.basic) do
+                    if not ac.animator:IsPlaying("basic"..k) then
+                        v:Play(0.01, 0.01, 0.01)
+                    end
+                end
+            end
+        end
+    end
+end
+
+coroutine.wrap(function()
+    while true do
+        task.wait(0)
+        if FastAttack and _G.FastAttack then
+            AttackFunction()
+        end
+    end
+end)()
 
 -- [Function (Abandoned Quest , Others)]
 
@@ -7123,7 +7170,6 @@ coroutine.wrap(function()
 	while task.wait(0) do
 		local ac = CombatFrameworkR.activeController
 		if ac and ac.equipped then
-			wait(0.02)
 			if FastAttack and _G.FastAttack then
 				AttackFunction()
 				if _G.FastType == "Normal" then
@@ -7429,4 +7475,4 @@ else
             CameraShaker()
         end)
     end
-print(1)
+print(2)
