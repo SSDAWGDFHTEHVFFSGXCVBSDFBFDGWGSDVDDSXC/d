@@ -10932,7 +10932,7 @@ mouse.Button1Down:Connect(function()
 end)
 if _G.Mode == "English" then
     page8:Label("ESP")
-    page8:Toggle("ESPPlayer", _G.Settings.ESPPlayer, function(value)
+    page8:Toggle("ESPPlayer", _G.ESPPlayer, function(value)
         ESPPlayer = value
         while ESPPlayer do
             task.wait()
@@ -10976,7 +10976,7 @@ if _G.Mode == "English" then
     end)
 else
     page8:Label("มองทะลุ")
-    page8:Toggle("มองทะลุหาเพลย์เยอร์", _G.Settings.ESPPlayer, function(value)
+    page8:Toggle("มองทะลุหาเพลย์เยอร์", _G.ESPPlayer, function(value)
         ESPPlayer = value
         while ESPPlayer do
             task.wait()
@@ -11856,7 +11856,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         _G.Mode = "Thai"
         page11:Seperator("ร้านค้า")
     end
-    if _G.Settings.Main["Auto Buy Enchanment Haki"] then
+    if _G.AutoBuyEnchanmentHaki then
         local args = {
             [1] = "ColorsDealer",
             [2] = "2"
@@ -12304,7 +12304,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
             end)
     end
     function InfAbility()
-        if _G.Settings.Misc["InfAbility"] then
+        if _G.InfAbility then
             if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility") then
                 local inf = Instance.new("ParticleEmitter")
                 inf.Acceleration = Vector3.new(0, 0, 0)
@@ -12394,7 +12394,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
             end)
         end
     function SkyJumpNoCoolDown()
-        if _G.Settings.Misc["Infinities SkyJump"] then
+        if _G.InfinitiesSkyJump then
             for i, v in next, getgc() do
                 if game.Players.LocalPlayer.Character.Geppo then
                     if typeof(v) == "function" and getfenv(v).script == game.Players.LocalPlayer.Character.Geppo then
@@ -12403,7 +12403,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
                                 repeat
                                     wait(.1)
                                     setupvalue(v, i2, 0)
-                                until not _G.Settings.Misc["Infinities SkyJump"]
+                                until not _G.InfinitiesSkyJump
                             end
                         end
                     end
@@ -12460,4 +12460,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
             end
         end
     end)
-print(3333)
+print(99999)
