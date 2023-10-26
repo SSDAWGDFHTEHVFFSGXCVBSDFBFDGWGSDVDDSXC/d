@@ -4469,7 +4469,7 @@ spawn(function()
     end
 end)
 
-if World1 then
+
     if _G.Mode == "English" then
         page1:Label("Status : World 1")
     else
@@ -4905,7 +4905,7 @@ if World1 then
                                     end)
                                 end
                             end)
-                        elseif World2 then
+                        
                             if _G.Mode == "English" then
                                 page1:Label("Status : World 2")
                             else
@@ -6211,7 +6211,7 @@ if World1 then
                                                                                                                                                         end)
                                                                                                                                                     end)
                                                                                                                                                 end   
-                                                                elseif World3 then
+                                                               
                                                                     if _G.Mode == "English" then
                                                                         page1:Label("Status : World 3")
                                                                     else
@@ -6414,7 +6414,6 @@ if World1 then
                                                                              keyrelease(0x57)
                                                                         end
                                                                    end 
-                                                                end
                                                                     page1:Line()
                                                                     if _G.Mode == "English" then
                                                                         page1:Toggle("Auto Holy Torch",  _G.AutoHolyTorch, function(value)
@@ -11305,4 +11304,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print(121)
+print(321)
