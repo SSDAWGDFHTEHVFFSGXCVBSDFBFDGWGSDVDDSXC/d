@@ -3824,19 +3824,18 @@ if _G.Mode == "English" then
         end)
         page1:Toggle("Safe Mode", false, function(value)
             _G.SafeMode = value
-            task.spawn(function()
-                while _G.SafeMode do task.wait(0)
-                    if _G.Character and _G.Character:FindFirstChild("Humanoid") then
-                        local HealthPercent = _G.Character.Humanoid.Health / _G.Character.Humanoid.MaxHealth * 100
-                        if HealthPercent < 20 then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
-                        end
+             task.spawn(function()
+            while _G.SafeMode do task.wait()
+                if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+                    local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
+                    if HealthPercent < 20 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
                     end
-                    task.wait()
                 end
-            end)
+                task.wait()
+            end
         end)
-       
+    end)    
     else
         page1:Toggle("ออโต้ฟาร์มเลเวล", false, function(value)
             _G.AutoFarm = value
@@ -3846,12 +3845,12 @@ if _G.Mode == "English" then
             end
         end)
     end
-    page1:Toggle("Safe Mode", false, function(value)
+    page1:Toggle("Safe Mode", SafeMode, function(value)
         _G.SafeMode = value
         task.spawn(function()
-            while _G.SafeMode do task.wait(0)
-                if _G.Character and _G.Character:FindFirstChild("Humanoid") then
-                    local HealthPercent = _G.Character.Humanoid.Health / _G.Character.Humanoid.MaxHealth * 100
+            while _G.SafeMode do task.wait()
+                if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+                    local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
                     if HealthPercent < 20 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
                     end
@@ -6301,8 +6300,8 @@ if World1 then
                                                                                                                     while task.wait() do
                                                                                                                         if v.Humanoid.Health <= 0  then
                                                                                                                             for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                                                                                                if v:IsA("VehicleSeat") then
-                                                                                                                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1200 then
+                                                                                                                                if v:IsA("VehicleSeat") then 
+                                                                                                                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 1 and v.Owner.Value == game.Players.LocalPlayer.Name then
                                                                                                                                         repeat
                                                                                                                                             task.wait()
                                                                                                                                             local CFrame = v.CFrame
@@ -6391,7 +6390,7 @@ if World1 then
                                                                                         end
                                                                                     end
                                                                                     end)
-                                                                                    page1:Toggle("Delet All Rock",_G.deleterock, function(value)
+                                                                                    page1:Toggle("Delete All Rock[Lag]",_G.deleterock, function(value)
                                                                                     _G.deleterock = value
                                                                                     end)
                                                                                     
@@ -6414,16 +6413,16 @@ if World1 then
                                                                                       end
                                                                                     end)
                                                                                     
-                                                                                    page1:Toggle("AutoSail",_G.autoSail, function(value)
+                                                                                    page1:Toggle("AutoSail",false, function(value)
                                                                                         _G.autoSail = value
                                                                                         while wait() do
-                                                                                          if _G.autoSail then
-                                                                                              keypress(0x57)
-                                                                                          elseif not _G.autoSail then
-                                                                                               keyrelease(0x57)
-                                                                                               end
-                                                                                          end 
-                                                                                      end)
+                                                                                              if _G.autoSail then
+                                                                                                  keypress(0x57)
+                                                                                        elseif not _G.autoSail then
+                                                                                                   keyrelease(0x57)
+                                                                                                end
+                                                                                         end
+                                                                                    end)
                                                                                     else
                                                                                         _G.Mode = "Thai"
                                                                                         page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
@@ -6461,13 +6460,13 @@ if World1 then
                                                                                                                             v.Humanoid.JumpPower = 0
                                                                                                                             v.Humanoid.WalkSpeed = 0
                                                                                                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                                                                                                        until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent 
+                                                                                                                        until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                                                                                         FastAttack = false
                                                                                                                         while task.wait() do
                                                                                                                             if v.Humanoid.Health <= 0  then
                                                                                                                                 for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                                                                                                    if v:IsA("VehicleSeat") then
-                                                                                                                                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1200 then
+                                                                                                                                    if v:IsA("VehicleSeat") then 
+                                                                                                                                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 1 and v.Owner.Value == game.Players.LocalPlayer.Name then
                                                                                                                                             repeat
                                                                                                                                                 task.wait()
                                                                                                                                                 local CFrame = v.CFrame
@@ -6477,7 +6476,7 @@ if World1 then
                                                                                                                                     end
                                                                                                                                 end
                                                                                                                             end
-                                                                                                                          end
+                                                                                                                        end
                                                                                                                         end
                                                                                                                     end
                                                                                                                 end
@@ -6556,16 +6555,16 @@ if World1 then
                                                                                             end
                                                                                         end
                                                                                         end)
-                                                                                        page1:Toggle("ลบหินทั้งหมด",_G.deleterock, function(value)
+                                                                                        page1:Toggle("ลบหินทั้งหมด[แลค]",_G.deleterock, function(value)
                                                                                         _G.deleterock = value
                                                                                     end)
                                                                                     local delete = _G.deleterock
-                                                                                    while _G.deleterock do task.wait()
-                                                                                    for i, v in pairs(game.Workspace:GetDescendants()) do
-                                                                                        if string.find(v.Name, "Rock") then
-                                                                                            v.CanCollide = false
+                                                                                    for i, v in pairs(game.Workspace:GetChildren()) do
+                                                                                      if v.Name == "MediumFlat" or v.Name == "Large" or v.Name == "Largest" or v.Name == "MediumGroup" or v.Name == "SmallCluster" or v.Name == "SmallGroup" or v.Name == "Largest" or v.Name == "" then 
+                                                                                        if delete then
+                                                                                          v:destroy()
                                                                                         end
-                                                                                    end
+                                                                                      end
                                                                                     end
                                                                                     
                                                                                 
@@ -6589,15 +6588,15 @@ if World1 then
                                                                                           end
                                                                                         end)
                                                                                         
-                                                                                        page1:Toggle("ออโต้ขับเรือ",_G.autoSail, function(value)
-                                                                                          _G.autoSail = value
-                                                                                          while wait() do
-                                                                                            if _G.autoSail then
-                                                                                                keypress(0x57)
+                                                                                        page1:Toggle("ออโต้ขับเรือ",false, function(value)
+                                                                                            _G.autoSail = value
+                                                                                            while wait() do
+                                                                                                  if _G.autoSail then
+                                                                                                      keypress(0x57)
                                                                                             elseif not _G.autoSail then
-                                                                                                 keyrelease(0x57)
-                                                                                                 end
-                                                                                            end 
+                                                                                                       keyrelease(0x57)
+                                                                                                    end
+                                                                                             end
                                                                                         end)
                                                                                     end
                                                                             page1:Line()
@@ -11490,4 +11489,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print(22)
+print(654655)
