@@ -955,6 +955,7 @@ task.spawn(function()
                           v.HumanoidRootPart.CFrame = PosMon
                           v.Humanoid.JumpPower = 0
                           v.Humanoid.WalkSpeed = 0
+                          v.HumanoidRootPart.CanCollide = false
                           v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                           if v.Humanoid:FindFirstChild("Animator") then
                              v.Humanoid.Animator:Destroy()
@@ -3965,6 +3966,7 @@ if _G.Mode == "English" then
                                         repeat task.wait()
                                                 v.Humanoid.JumpPower = 0
                                                 v.Humanoid.WalkSpeed = 0
+                                                v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid:ChangeState(11)
                                                 v.Humanoid:ChangeState(14)
                                                 v.Humanoid:ChangeState(16)
@@ -4011,6 +4013,7 @@ if _G.Mode == "English" then
                                                 v.Humanoid.JumpPower = 0
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.Humanoid:ChangeState(11)
+                                                v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid:ChangeState(14)
                                                 v.Humanoid:ChangeState(16)
                                                 PosMon = v.HumanoidRootPart.CFrame
@@ -4243,6 +4246,7 @@ if _G.Mode == "English" then
                                             v.HumanoidRootPart.Size = Vector3.new(60,60,60)
                                             v.Humanoid.JumpPower = 0
                                             v.Humanoid.WalkSpeed = 0
+                                            v.HumanoidRootPart.CanCollide = false
                                             v.Humanoid:ChangeState(11)
                                             v.Humanoid:ChangeState(14)
                                             v.Humanoid:ChangeState(16)
@@ -4344,6 +4348,7 @@ if _G.Mode == "English" then
                                         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
                                         v.Humanoid.JumpPower = 0
                                         v.Humanoid.WalkSpeed = 0
+                                        v.HumanoidRootPart.CanCollide = false
                                         v.Humanoid:ChangeState(11)
                                         v.Humanoid:ChangeState(14)
                                         v.Humanoid:ChangeState(16)
@@ -4570,6 +4575,7 @@ if World1 then
                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                     v.Humanoid.JumpPower = 0
                                                     v.Humanoid.WalkSpeed = 0
+                                                    v.HumanoidRootPart.CanCollide = false
                                                     v.Humanoid:ChangeState(11)
                                                     v.Humanoid:ChangeState(14)
                                                     v.Humanoid:ChangeState(16)
@@ -4686,6 +4692,7 @@ if World1 then
                                                                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                 v.Humanoid.JumpPower = 0
                                                                 v.Humanoid.WalkSpeed = 0
+                                                                v.HumanoidRootPart.CanCollide = false
                                                                 v.Humanoid:ChangeState(11)
                                                                 v.Humanoid:ChangeState(14)
                                                                 v.Humanoid:ChangeState(16)
@@ -4730,6 +4737,7 @@ if World1 then
                                                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                 v.Humanoid.JumpPower = 0
                                                 v.Humanoid.WalkSpeed = 0
+                                                v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid:ChangeState(11)
                                                 v.Humanoid:ChangeState(14)
                                                 v.Humanoid:ChangeState(16)
@@ -4800,6 +4808,7 @@ if World1 then
                                                     end
                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                     v.Humanoid.JumpPower = 0
+                                                    v.HumanoidRootPart.CanCollide = false
                                                     v.Humanoid.WalkSpeed = 0
                                                     v.Humanoid:ChangeState(11)
                                                     v.Humanoid:ChangeState(14)
@@ -5006,6 +5015,7 @@ if World1 then
                                                                                         end
                                                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                         v.Humanoid.JumpPower = 0
+                                                                                        v.HumanoidRootPart.CanCollide = false
                                                                                         v.Humanoid.WalkSpeed = 0
                                                                                         v.Humanoid:ChangeState(11)
                                                                                         v.Humanoid:ChangeState(14)
@@ -5057,6 +5067,7 @@ if World1 then
                                                                                         end
                                                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                         v.Humanoid.JumpPower = 0
+                                                                                        v.HumanoidRootPart.CanCollide = false
                                                                                         v.Humanoid.WalkSpeed = 0
                                                                                         v.Humanoid:ChangeState(14)
                                                                                         v.Humanoid:ChangeState(16)
@@ -5147,6 +5158,7 @@ if World1 then
                                                                                             end
                                                                                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                             v.Humanoid.JumpPower = 0
+                                                                                            v.HumanoidRootPart.CanCollide = false
                                                                                             v.Humanoid.WalkSpeed = 0
                                                                                             v.Humanoid:ChangeState(11)
                                                                                             v.Humanoid:ChangeState(14)
@@ -5206,6 +5218,7 @@ if World1 then
                                                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                     v.Humanoid.JumpPower = 0
                                                                                     v.Humanoid.WalkSpeed = 0
+                                                                                    v.HumanoidRootPart.CanCollide = false
                                                                                     v.Humanoid:ChangeState(11)
                                                                                     v.Humanoid:ChangeState(14)
                                                                                     v.Humanoid:ChangeState(16)
@@ -5310,6 +5323,7 @@ if World1 then
                                                                                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                             v.Humanoid.JumpPower = 0
                                                                                             v.Humanoid.WalkSpeed = 0
+                                                                                            v.HumanoidRootPart.CanCollide = false
                                                                                             v.Humanoid:ChangeState(11)
                                                                                             v.Humanoid:ChangeState(14)
                                                                                             v.Humanoid:ChangeState(16)
@@ -5376,6 +5390,7 @@ if World1 then
                                                                                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                 v.Humanoid.JumpPower = 0
                                                                                 v.Humanoid.WalkSpeed = 0
+                                                                                v.HumanoidRootPart.CanCollide = false
                                                                                 v.Humanoid:ChangeState(11)
                                                                                 v.Humanoid:ChangeState(14)
                                                                                 v.Humanoid:ChangeState(16)
@@ -5472,6 +5487,7 @@ if World1 then
                                                                                     end
                                                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                     v.Humanoid.JumpPower = 0
+                                                                                    v.HumanoidRootPart.CanCollide = false
                                                                                     v.Humanoid.WalkSpeed = 0
                                                                                     v.Humanoid:ChangeState(11)
                                                                                     v.Humanoid:ChangeState(14)
@@ -5537,6 +5553,7 @@ if World1 then
                                                                                                     end
                                                                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                     v.Humanoid.JumpPower = 0
+                                                                                                    v.HumanoidRootPart.CanCollide = false
                                                                                                     v.Humanoid.WalkSpeed = 0
                                                                                                     v.Humanoid:ChangeState(11)
                                                                                                     v.Humanoid:ChangeState(14)
@@ -5684,6 +5701,7 @@ if World1 then
                                                                                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                         v.Humanoid.JumpPower = 0
                                                                                                                         v.Humanoid.WalkSpeed = 0
+                                                                                                                        v.HumanoidRootPart.CanCollide = false
                                                                                                                         v.Humanoid:ChangeState(11)
                                                                                                                         v.Humanoid:ChangeState(14)
                                                                                                                         v.Humanoid:ChangeState(16)
@@ -5747,6 +5765,7 @@ if World1 then
                                                                                                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                                     v.Humanoid.JumpPower = 0
                                                                                                                                     v.Humanoid.WalkSpeed = 0
+                                                                                                                                    v.HumanoidRootPart.CanCollide = false
                                                                                                                                     v.Humanoid:ChangeState(11)
                                                                                                                                     v.Humanoid:ChangeState(14)
                                                                                                                                     v.Humanoid:ChangeState(16)
@@ -5823,6 +5842,7 @@ if World1 then
                                                                                                                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                                                     v.Humanoid.JumpPower = 0
                                                                                                                                                     v.Humanoid.WalkSpeed = 0
+                                                                                                                                                    v.HumanoidRootPart.CanCollide = false
                                                                                                                                                     v.Humanoid:ChangeState(11)
                                                                                                                                                     v.Humanoid:ChangeState(14)
                                                                                                                                                     v.Humanoid:ChangeState(16)
@@ -5860,6 +5880,7 @@ if World1 then
                                                                                                                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                                                     v.Humanoid.JumpPower = 0
                                                                                                                                                     v.Humanoid.WalkSpeed = 0
+                                                                                                                                                    v.HumanoidRootPart.CanCollide = false
                                                                                                                                                     v.Humanoid:ChangeState(11)
                                                                                                                                                     v.Humanoid:ChangeState(14)
                                                                                                                                                     v.Humanoid:ChangeState(16)
@@ -5897,6 +5918,7 @@ if World1 then
                                                                                                                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                                                     v.Humanoid.JumpPower = 0
                                                                                                                                                     v.Humanoid.WalkSpeed = 0
+                                                                                                                                                    v.HumanoidRootPart.CanCollide = false
                                                                                                                                                     v.Humanoid:ChangeState(11)
                                                                                                                                                     v.Humanoid:ChangeState(14)
                                                                                                                                                     v.Humanoid:ChangeState(16)
@@ -5934,6 +5956,7 @@ if World1 then
                                                                                                                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                                                     v.Humanoid.JumpPower = 0
                                                                                                                                                     v.Humanoid.WalkSpeed = 0
+                                                                                                                                                    v.HumanoidRootPart.CanCollide = false
                                                                                                                                                     v.Humanoid:ChangeState(11)
                                                                                                                                                     v.Humanoid:ChangeState(14)
                                                                                                                                                     v.Humanoid:ChangeState(16)
@@ -5971,6 +5994,7 @@ if World1 then
                                                                                                                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                                                     v.Humanoid.JumpPower = 0
                                                                                                                                                     v.Humanoid.WalkSpeed = 0
+                                                                                                                                                    v.HumanoidRootPart.CanCollide = false
                                                                                                                                                     v.Humanoid:ChangeState(11)
                                                                                                                                                     v.Humanoid:ChangeState(14)
                                                                                                                                                     v.Humanoid:ChangeState(16)
@@ -6188,6 +6212,7 @@ if World1 then
                                                                                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                         v.Humanoid.JumpPower = 0
                                                                                                                         v.Humanoid.WalkSpeed = 0
+                                                                                                                        v.HumanoidRootPart.CanCollide = false
                                                                                                                         v.Humanoid:ChangeState(11)
                                                                                                                         v.Humanoid:ChangeState(14)
                                                                                                                         v.Humanoid:ChangeState(16)
@@ -6228,6 +6253,7 @@ if World1 then
                                                                                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                         v.Humanoid.JumpPower = 0
                                                                                                                         v.Humanoid.WalkSpeed = 0
+                                                                                                                        v.HumanoidRootPart.CanCollide = false
                                                                                                                         v.Humanoid:ChangeState(11)
                                                                                                                         v.Humanoid:ChangeState(14)
                                                                                                                         v.Humanoid:ChangeState(16)
@@ -6413,15 +6439,8 @@ if World1 then
                                                                                       end
                                                                                     end)
                                                                                     
-                                                                                    page1:Toggle("AutoSail",false, function(value)
+                                                                                    page1:Toggle("AutoSail",_G.autoSail, function(value)
                                                                                         _G.autoSail = value
-                                                                                        while wait() do
-                                                                                              if _G.autoSail then
-                                                                                                  keypress(0x57)
-                                                                                        elseif not _G.autoSail then
-                                                                                                   keyrelease(0x57)
-                                                                                                end
-                                                                                         end
                                                                                     end)
                                                                                     else
                                                                                         _G.Mode = "Thai"
@@ -6588,18 +6607,23 @@ if World1 then
                                                                                           end
                                                                                         end)
                                                                                         
-                                                                                        page1:Toggle("ออโต้ขับเรือ",false, function(value)
+                                                                                        page1:Toggle("ออโต้ขับเรือ",_G.autoSail, function(value)
                                                                                             _G.autoSail = value
-                                                                                            while wait() do
-                                                                                                  if _G.autoSail then
-                                                                                                      keypress(0x57)
-                                                                                            elseif not _G.autoSail then
-                                                                                                       keyrelease(0x57)
-                                                                                                    end
-                                                                                             end
                                                                                         end)
                                                                                     end
-                                                                            page1:Line()
+                                                                                task.spawn(function()
+                                                                                    while wait() do
+                                                                                        pcall(function()
+                                                                                        if _G.autoSail then
+                                                                                            keypress(0x57)
+                                                                                  elseif not _G.autoSail then
+                                                                                             keyrelease(0x57)
+                                                                                          end
+                                                                                    end)
+                                                                                end
+                                                                            end)
+
+                                                                        page1:Line()
                                                                     if _G.Mode == "English" then
                                                                         page1:Toggle("Auto Holy Torch",  _G.AutoHolyTorch, function(value)
                                                                             _G.AutoHolyTorch = value
@@ -6922,9 +6946,11 @@ if World1 then
                                                                                                                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                 v.Humanoid.JumpPower = 0
                                                                                                                 v.Humanoid.WalkSpeed = 0
+                                                                                                                v.HumanoidRootPart.CanCollide = false
                                                                                                                 v.Humanoid:ChangeState(11)
                                                                                                                 v.Humanoid:ChangeState(14)
                                                                                                                 v.Humanoid:ChangeState(16)
+                                                                                                                v.HumanoidRootPart.CanCollide = false
                                                                                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                                                             until not _G.AutoFarmBone or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
                                                                                                             StartMagnet = false
@@ -6998,6 +7024,7 @@ if World1 then
                                                                                                                 v.HumanoidRootPart.Size = Vector3.new(60,60,60)
                                                                                                                 v.Humanoid.JumpPower = 0
                                                                                                                 v.Humanoid.WalkSpeed = 0
+                                                                                                                v.HumanoidRootPart.CanCollide = false
                                                                                                                 v.Humanoid:ChangeState(11)
                                                                                                                 v.Humanoid:ChangeState(14)
                                                                                                                 v.Humanoid:ChangeState(16)
@@ -7107,6 +7134,7 @@ if World1 then
                                                                                                                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                             v.Humanoid.JumpPower = 0
                                                                                                                             v.Humanoid.WalkSpeed = 0
+                                                                                                                            v.HumanoidRootPart.CanCollide = false
                                                                                                                             v.Humanoid:ChangeState(11)
                                                                                                                             v.Humanoid:ChangeState(14)
                                                                                                                             v.Humanoid:ChangeState(16)
@@ -7160,6 +7188,7 @@ if World1 then
                                                                                                                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                                                             v.Humanoid.JumpPower = 0
                                                                                                                             v.Humanoid.WalkSpeed = 0
+                                                                                                                            v.HumanoidRootPart.CanCollide = false
                                                                                                                             v.Humanoid:ChangeState(11)
                                                                                                                             v.Humanoid:ChangeState(14)
                                                                                                                             v.Humanoid:ChangeState(16)
@@ -8367,6 +8396,7 @@ page5:Toggle("Auto Buddy Swords", _G.AutoBuddySwords, function(value)
                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                     v.Humanoid.JumpPower = 0
                                     v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid:ChangeState(11)
                                     v.Humanoid:ChangeState(14)
                                     v.Humanoid:ChangeState(16)
@@ -8533,6 +8563,7 @@ page5:Toggle("Auto Cavander", _G.AutoCavander, function(value)
                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                     v.Humanoid.JumpPower = 0
                                     v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid:ChangeState(11)
                                     v.Humanoid:ChangeState(14)
                                     v.Humanoid:ChangeState(16)
@@ -8602,6 +8633,7 @@ page5:Toggle("Auto Tushita Sword", _G.AutoTushitaSword, function(value)
                                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                 v.Humanoid.JumpPower = 0
                                 v.Humanoid.WalkSpeed = 0
+                                v.HumanoidRootPart.CanCollide = false
                                 v.Humanoid:ChangeState(11)
                                 v.Humanoid:ChangeState(14)
                                 v.Humanoid:ChangeState(16)
@@ -8653,6 +8685,7 @@ page5:Toggle("Auto Serpent Bow", _G.AutoSerpentBow, function(value)
                                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                 v.Humanoid.JumpPower = 0
                                 v.Humanoid.WalkSpeed = 0
+                                v.HumanoidRootPart.CanCollide = false
                                 v.Humanoid:ChangeState(11)
                                 v.Humanoid:ChangeState(14)
                                 v.Humanoid:ChangeState(16)
@@ -8704,6 +8737,7 @@ page5:Toggle("Auto Dark Dagger", _G.AutoDarkDagger, function(value)
                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                     v.Humanoid.JumpPower = 0
                                     v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid:ChangeState(11)
                                     v.Humanoid:ChangeState(14)
                                     v.Humanoid:ChangeState(16)
@@ -11489,4 +11523,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print(654655)
+print(525)
