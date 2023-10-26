@@ -6221,7 +6221,7 @@ end)
 
                                                                 if _G.Mode == "English" then
 
-                                                                   
+                                                                    if not World1 then
                                                                         page1:Toggle("Auto Leviathan", _G.TeleporttoSeaBeast, function(value)
                                                                             _G.TeleporttoSeaBeast = value
                                                                           if value == false then
@@ -6241,7 +6241,7 @@ end)
                                                                             end
                                                                         end)
                                                                         
-                                                                       
+                                                                        if not World1 then
                                                                             page1:Toggle("Teleport to Sea Beast",_G.TeleporttoSeaBeast, function(value)
                                                                                 _G.TeleporttoSeaBeast = value
                                                                                     if value == false then
@@ -6250,7 +6250,7 @@ end)
                                                                                         task.wait()
                                                                                     end
                                                                                 end)
-                                                                                         
+                                                                            end               
                                                                     page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
                                                                     _G.increaseboatspeed  = value
                                                                     end)
@@ -6266,7 +6266,7 @@ end)
                                                                         _G.autoSail = value
                                                                     end)
                                                                     else
-                                                                        
+                                                                        if not World1 then
                                                                             page1:Toggle("ออโต้เลวิธาน", _G.TeleporttoSeaBeast, function(value)
                                                                                 _G.TeleporttoSeaBeast = value
                                                                               if value == false then
@@ -6289,6 +6289,9 @@ end)
                                                                                       end)
                                                                                   end
                                                                               end)
+                                                                           
+                                                                            end
+                                                                            
                                                                         
                                                                            task.spawn(function()
                                                                                 while task.wait() do
@@ -6324,7 +6327,10 @@ end)
                                                                                     end
                                                                                 end
                                                                             end)
+                                                                              
+                                                                              
                                                                             
+                                                                            if not World1 then
                                                                                 page1:Toggle("เทเลพอร์ตไปหาเจ้าทะเล",_G.TeleporttoSeaBeast, function(value)
                                                                                     _G.TeleporttoSeaBeast = value
                                                                                         if value == false then
@@ -6347,6 +6353,7 @@ end)
                                                                                                 end)
                                                                                             end
                                                                                         end)
+                                                                                 end
                                                             
                                                                         page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
                                                                         _G.increaseboatspeed  = value
@@ -6378,7 +6385,7 @@ end)
                                                                             local delete = _G.deleterock
                                                                             while _G.deleterock do task.wait()
                                                                                 for i, v in pairs(game.Workspace:GetChildren()) do
-                                                                                    if v.Name == "Rock" or v.Name == "Rock1" or v.Name == "Rock2" or v.Name == "Rock3" or v.Name == "Rock4" or v.Name == "Rock5" or v.Name == "Rock6"  then
+                                                                                    if v.Name == "MediumFlat" or v.Name == "Large" or v.Name == "Largest" or v.Name == "MediumGroup" or v.Name == "SmallCluster" or v.Name == "SmallGroup" or v.Name == "Largest"  then
                                                                                         if delete then
                                                                                             v.CanCollide = false
                                                                                         end
@@ -6421,7 +6428,6 @@ end)
                                                                         end
                                                                    end 
                                                                 end
-                                                            
                                                                     page1:Line()
                                                                     if _G.Mode == "English" then
                                                                         page1:Toggle("Auto Holy Torch",  _G.AutoHolyTorch, function(value)
@@ -12529,4 +12535,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
             end
         end
     end)
-print(213)
+print(222222)
