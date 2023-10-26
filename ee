@@ -13597,7 +13597,7 @@ end
 
 
 
-task.spawn(function() --coroutine.wrap(function()
+coroutine.wrap(function() --task.spawn(function() 
 	while task.wait(0) do
 		local ac = CombatFrameworkR.activeController
 		if ac and ac.equipped then
@@ -13615,7 +13615,7 @@ task.spawn(function() --coroutine.wrap(function()
 			end
 		end
 	end
-end) --end)()
+end)() --end)
 
 --[[
 local Module = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
