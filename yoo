@@ -3822,7 +3822,21 @@ if _G.Mode == "English" then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
         end)
-    
+        page1:Toggle("Safe Mode", false, function(value)
+            _G.SafeMode = value
+            task.spawn(function()
+                while _G.SafeMode do task.wait(0)
+                    if _G.Character and _G.Character:FindFirstChild("Humanoid") then
+                        local HealthPercent = _G.Character.Humanoid.Health / _G.Character.Humanoid.MaxHealth * 100
+                        if HealthPercent < 20 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
+                        end
+                    end
+                    task.wait()
+                end
+            end)
+        end)
+       
     else
         page1:Toggle("ออโต้ฟาร์มเลเวล", false, function(value)
             _G.AutoFarm = value
@@ -3832,6 +3846,20 @@ if _G.Mode == "English" then
             end
         end)
     end
+    page1:Toggle("Safe Mode", false, function(value)
+        _G.SafeMode = value
+        task.spawn(function()
+            while _G.SafeMode do task.wait(0)
+                if _G.Character and _G.Character:FindFirstChild("Humanoid") then
+                    local HealthPercent = _G.Character.Humanoid.Health / _G.Character.Humanoid.MaxHealth * 100
+                    if HealthPercent < 20 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
+                    end
+                end
+                task.wait()
+            end
+        end)
+    end)
     if _G.Mode == "English" then
         page1:Toggle("Auto Farm Nearest", _G.NeareastFarm, function(value)
             _G.NeareastFarm = value
@@ -11462,4 +11490,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print(65598)
+print(22)
