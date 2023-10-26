@@ -6246,7 +6246,7 @@ if World1 then
                                                                                                     if _G.AutoEvent  then
                                                                                                         if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
                                                                                                             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                                                                                                if string.find(v.Name , "Fish Crew Member") or string.find(v.Name , "Piranha") or string.find(v.Name , "Shark") or string.find(v.Name , "Terrorshark") then
+                                                                                                                if v.Name == "Fish Crew Member" or v.Name == "Piranha" or v.Name == "Shark" or string.find(v.Name , "Terrorshark") then
                                                                                                                     if v.Humanoid.Health > 0 then
                                                                                                                     repeat task.wait()
                                                                                                                         FastAttack = true
@@ -6274,7 +6274,7 @@ if World1 then
                                                                                                                         if v.Humanoid.Health <= 0  then
                                                                                                                             for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                                                                                                                                 if v:IsA("VehicleSeat") then
-                                                                                                                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 800 then
+                                                                                                                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1200 then
                                                                                                                                         repeat
                                                                                                                                             task.wait()
                                                                                                                                             local CFrame = v.CFrame
@@ -6365,15 +6365,8 @@ if World1 then
                                                                                     end)
                                                                                     page1:Toggle("Delet All Rock",_G.deleterock, function(value)
                                                                                     _G.deleterock = value
-                                                                                    local delete = _G.deleterock
-                                                                                    for i, v in pairs(game.Workspace:GetChildren()) do
-                                                                                      if v.Name == "MediumFlat" or v.Name == "Large" or v.Name == "Largest" or v.Name == "MediumGroup" or v.Name == "SmallCluster" or v.Name == "SmallGroup" or v.Name == "Largest" or v.Name == "" then 
-                                                                                        if delete then
-                                                                                          v:destroy()
-                                                                                        end
-                                                                                      end
-                                                                                    end
                                                                                     end)
+                                                                                    
                                                                                       page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
                                                                                       _G.TPTOBOAT = value
                                                                                       while task.wait() do
@@ -6393,16 +6386,16 @@ if World1 then
                                                                                       end
                                                                                     end)
                                                                                     
-                                                                                    page1:Toggle("Auto Sail",_G.autoSail, function(value)
+                                                                                    page1:Toggle("AutoSail",_G.autoSail, function(value)
                                                                                         _G.autoSail = value
                                                                                         while wait() do
-                                                                                            if _G.autoSail then
-                                                                                                keypress(0x57)
-                                                                                      elseif not _G.autoSail then
-                                                                                                 keyrelease(0x57)
-                                                                                            end
-                                                                                       end 
-                                                                                    end)
+                                                                                          if _G.autoSail then
+                                                                                              keypress(0x57)
+                                                                                          elseif not _G.autoSail then
+                                                                                               keyrelease(0x57)
+                                                                                               end
+                                                                                          end 
+                                                                                      end)
                                                                                     else
                                                                                         _G.Mode = "Thai"
                                                                                         page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
@@ -6418,7 +6411,7 @@ if World1 then
                                                                                                         if _G.AutoEvent  then
                                                                                                             if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
                                                                                                                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                                                                                                    if string.find(v.Name , "Fish Crew Member") or string.find(v.Name , "Piranha") or string.find(v.Name , "Shark") or string.find(v.Name , "Terrorshark") then
+                                                                                                                    if v.Name == "Fish Crew Member" or v.Name == "Piranha" or v.Name == "Shark" or string.find(v.Name , "Terrorshark") then
                                                                                                                         if v.Humanoid.Health > 0 then
                                                                                                                         repeat task.wait()
                                                                                                                             FastAttack = true
@@ -6446,7 +6439,7 @@ if World1 then
                                                                                                                             if v.Humanoid.Health <= 0  then
                                                                                                                                 for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                                                                                                                                     if v:IsA("VehicleSeat") then
-                                                                                                                                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 800 then
+                                                                                                                                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1200 then
                                                                                                                                             repeat
                                                                                                                                                 task.wait()
                                                                                                                                                 local CFrame = v.CFrame
@@ -6456,7 +6449,7 @@ if World1 then
                                                                                                                                     end
                                                                                                                                 end
                                                                                                                             end
-                                                                                                                        end
+                                                                                                                          end
                                                                                                                         end
                                                                                                                     end
                                                                                                                 end
@@ -6537,17 +6530,17 @@ if World1 then
                                                                                         end)
                                                                                         page1:Toggle("ลบหินทั้งหมด",_G.deleterock, function(value)
                                                                                         _G.deleterock = value
-                                                                                        local delete = _G.deleterock
-                                                                                        while _G.deleterock do task.wait()
-                                                                                        for i, v in pairs(game.Workspace:GetChildren()) do
-                                                                                          if v.Name == "MediumFlat" or v.Name == "Large" or v.Name == "Largest" or v.Name == "MediumGroup" or v.Name == "SmallCluster" or v.Name == "SmallGroup" or v.Name == "Largest" or v.Name == "" then 
-                                                                                            if delete then
-                                                                                              v:destroy()
-                                                                                            end
-                                                                                          end
+                                                                                    end)
+                                                                                    local delete = _G.deleterock
+                                                                                    while _G.deleterock do task.wait()
+                                                                                    for i, v in pairs(game.Workspace:GetDescendants()) do
+                                                                                        if string.find(v.Name, "Rock") then
+                                                                                            v.CanCollide = false
                                                                                         end
                                                                                     end
-                                                                                 end)
+                                                                                    end
+                                                                                    
+                                                                                
                                                                                    
                                                                                           page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
                                                                                           _G.TPTOBOAT = value
@@ -6573,10 +6566,10 @@ if World1 then
                                                                                           while wait() do
                                                                                             if _G.autoSail then
                                                                                                 keypress(0x57)
-                                                                                      elseif not _G.autoSail then
+                                                                                            elseif not _G.autoSail then
                                                                                                  keyrelease(0x57)
                                                                                                  end
-                                                                                       end 
+                                                                                            end 
                                                                                         end)
                                                                                     end
                                                                             page1:Line()
@@ -7305,7 +7298,7 @@ coroutine.wrap(function()
 	while task.wait(0) do
 		local ac = CombatFrameworkR.activeController
 		if ac and ac.equipped then
-            task.wait(0.002)
+            task.wait(0.03)
 			if FastAttack or _G.FastAttack then
 				AttackFunction()
 				if _G.FastType == "Normal" then
@@ -7460,7 +7453,7 @@ task.spawn(function()
             elseif _G.Method == "Below" then
                 MethodFarm = CFrame.new(0, - _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(90), 0, 0)
             elseif _G.Method == "Upper" then
-                MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(-90), 0, 0)
+                MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
             else
                 MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0)
             end
@@ -7472,7 +7465,7 @@ local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 if _G.Mode == "English" then
 
-    page2:Slider("Distance Auto Farm",1,100,15,function(value)
+    page2:Slider("Distance Auto Farm",1,100,25,function(value)
         _G.DistanceAutoFarm = value
     end)
 
@@ -11469,4 +11462,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print("Ezzz")
+print(655655)
