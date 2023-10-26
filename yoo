@@ -7603,7 +7603,7 @@ if World1 then
                                                                                                 end)
                                                                                             end)
                                                                                         end
-                                                                                                
+                                                                                    end       
                                                                                            
 if _G.Mode == "English" then
     page2:Seperator("Settings")
@@ -11805,4 +11805,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print(1111)
+print(222222)
