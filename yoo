@@ -3840,38 +3840,44 @@ if _G.Mode == "English" then
             end
         end)
     else
-        page1:Toggle("ฟาร์มมอนรอบๆทดสอบไม่ใช้changestate", _G.NeareastFarm, function(value)
+        page1:Toggle("ฟาร์มมอนรอบๆทดสอบไม่ใช้", _G.NeareastFarm, function(value)
             _G.NeareastFarm = value
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
         end)
     end
-    task.spawn(function()
-        while task.wait() do
-            if _G.NeareastFarm then
+    spawn(function()
+        while wait(.1) do
+            if _G.Settings.Main["Neareast Farm"] then
                 pcall(function()
                     for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                         if v.Name and v:FindFirstChild("Humanoid") then
                             if v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
                                 repeat
-                                   task.wait()
+                                    game:GetService("RunService").Heartbeat:wait()
+                                    EquipWeapon(_G.Settings.Configs["Select Weapon"])
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                        local args = {
+                                            [1] = "Buso"
+                                        }
+                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                                    end
+                                    PosMon = v.HumanoidRootPart.CFrame
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Head.CanCollide = false
+                                    v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
                                     StartMagnet = true
                                     FastAttack = true
-                                    EquipWeapon(_G.SelectWeapon)
-                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso") end                           
-                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    v.Humanoid.JumpPower = 0
-                                    v.Humanoid.WalkSpeed = 0
-                                    v.Humanoid.AutoRotate = false
-                                    v.Humanoid.Jump = false
-                                    v.Humanoid.Walk = false
-                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                    totarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                     if not FastAttack then
                                     game:GetService 'VirtualUser':CaptureController()
                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                     end
-                                until not _G.NeareastFarm or not v.Parent or v.Humanoid.Health == 0 or not game.Workspace.Enemies:FindFirstChild(v.Name)
+                                  
+                                    PosMon = v.HumanoidRootPart.CFrame
+                                until not _G.Settings.Main["Neareast Farm"] or not v.Parent or v.Humanoid.Health == 0 or not game.Workspace.Enemies:FindFirstChild(v.Name)
                             end
                         end
                     end
@@ -4469,7 +4475,9 @@ spawn(function()
     end
 end)
 
+-- [World 1 Main Page]
 
+if World1 then
     if _G.Mode == "English" then
         page1:Label("Status : World 1")
     else
@@ -4905,10 +4913,12 @@ end)
                                     end)
                                 end
                             end)
-                        
+                            -- [World 2 Main Page]
+                        elseif World2 then
                             if _G.Mode == "English" then
                                 page1:Label("Status : World 2")
                             else
+                                _G.Mode = "Thai"
                                 page1:Label("สถานะ : โลก 2")
                             end
                             if _G.Mode == "English" then
@@ -5957,150 +5967,6 @@ end)
                                                                                                                         end)
                                                                                                                     end
                                                                                                                 end)
-                                                                                                                if _G.Mode == "English" then
-                                                                                                                    page1:Toggle("Auto Ken-Haki V2", _G.AutoKenHakiV2, function(value)
-                                                                                                                        _G.AutoKenHakiV2 = value
-                                                                                                                        if value == false then
-                                                                                                                            task.wait()
-                                                                                                                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                                                                                                                            task.wait()
-                                                                                                                        end
-                                                                                                                    end)
-                                                                                                                else
-                                                                                                                    page1:Toggle("ออโต้ฮาคิสังเกตขั้นสอง",_G.AutoKenHakiV2, function(value)
-                                                                                                                        _G.AutoKenHakiV2 = value
-                                                                                                                            if value == false then
-                                                                                                                                task.wait()
-                                                                                                                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                                                                                                                                task.wait()
-                                                                                                                            end
-                                                                                                                        end)
-                                                                                                                    end
-                                                                                                                            task.spawn(function()
-                                                                                                                                while task.wait() do
-                                                                                                                                    pcall(function()
-                                                                                                                                        if _G.AutoKenHakiV2 then
-                                                                                                                                            if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-                                                                                                                                                repeat
-                                                                                                                                                    toTarget(CFrame.new(-12444.78515625, 332.40396118164, -7673.1806640625))
-                                                                                                                                                    task.wait()
-                                                                                                                                                until not _G.AutoKenHakiV2 or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-12444.78515625, 332.40396118164, -7673.1806640625)).Magnitude <= 10
-                                                                                                                                                wait(.5)
-                                                                                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CitizenQuestProgress","Citizen")
-                                                                                                                                                wait(1)
-                                                                                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest","CitizenQuest", 1)
-                                                                                                                                            else
-                                                                                                                                                if game.Players.LocalPlayer.Backpack:FindFirstChild("Banana") and game.Players.LocalPlayer.Backpack:FindFirstChild("Apple") and game.Players.LocalPlayer.Backpack:FindFirstChild("Pineapple") then
-                                                                                                                                                    repeat
-                                                                                                                                                        toTarget(CFrame.new(-12444.78515625, 332.40396118164, -7673.1806640625))
-                                                                                                                                                        task.wait()
-                                                                                                                                                    until not _G.AutoKenHakiV2 or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-12444.78515625, 332.40396118164, -7673.1806640625)).Magnitude <= 10
-                                                                                                                                                    wait(.5)
-                                                                                                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CitizenQuestProgress", "Citizen")
-                                                                                                                                                elseif game.Players.LocalPlayer.Backpack:FindFirstChild("Fruit Bowl") or game.Players.LocalPlayer.Character:FindFirstChild("Fruit Bowl") then
-                                                                                                                                                    repeat
-                                                                                                                                                        toTarget(CFrame.new(-10920.125, 624.20275878906, -10266.995117188))
-                                                                                                                                                        task.wait()
-                                                                                                                                                    until not _G.AutoKenHakiV2 or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-10920.125, 624.20275878906, -10266.995117188)).Magnitude <= 10
-                                                                                                                                                    wait(.5)
-                                                                                                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk2","Start")
-                                                                                                                                                    wait(1)
-                                                                                                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk2","Buy")
-                                                                                                                                                elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Defeat 50 Forest Pirates") then
-                                                                                                                                                    if game:GetService("Workspace").Enemies:FindFirstChild("Forest Pirate") then
-                                                                                                                                                        for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                                                                                                                                            if v.Name == "Forest Pirate" then
-                                                                                                                                                                repeat
-                                                                                                                                                                    task.wait()
-                                                                                                                                                                    StartMagnet = true
-                                                                                                                                                                    FastAttack = true
-                                                                                                                                                                    if _G.AutoHaki then
-                                                                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                                                                                                                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                                                                                                                                        end
-                                                                                                                                                                    end
-                                                                                                                                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                                                                                                                                        task.wait()
-                                                                                                                                                                        EquipWeapon(_G.SelectWeapon)
-                                                                                                                                                                    end
-                                                                                                                                                                    PosMon = v.HumanoidRootPart.CFrame
-                                                                                                                                                                    if not _G.FastAttack then
-                                                                                                                                                                        game:GetService 'VirtualUser':CaptureController()
-                                                                                                                                                                        game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                                                                                                                                    end
-                                                                                                                                                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                                                                                                                                    v.Humanoid.JumpPower = 0
-                                                                                                                                                                    v.Humanoid.WalkSpeed = 0
-                                                                                                                                                                    v.Humanoid:ChangeState(11)
-                                                                                                                                                                    v.Humanoid:ChangeState(14)
-                                                                                                                                                                    v.Humanoid:ChangeState(16)
-                                                                                                                                                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                                                                                                                                                until not _G.AutoKenHakiV2 or v.Humanoid.Health <= 0
-                                                                                                                                                                StartMagnet = false
-                                                                                                                                                                FastAttack = false
-                                                                                                                                                            end
-                                                                                                                                                        end
-                                                                                                                                                    else
-                                                                                                                                                        repeat
-                                                                                                                                                            toTarget(CFrame.new(-13277.568359375, 370.34185791016, -7821.1572265625))
-                                                                                                                                                            task.wait()
-                                                                                                                                                        until not _G.AutoKenHakiV2 or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-13277.568359375, 370.34185791016, -7821.1572265625)).Magnitude <= 10
-                                                                                                                                                    end
-                                                                                                                                                elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text == "Defeat  Captain Elephant (0/1)" then
-                                                                                                                                                    if game:GetService("Workspace").Enemies:FindFirstChild("Captain Elephant") then
-                                                                                                                                                        for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                                                                                                                                            if v.Name == "Captain Elephant" then
-                                                                                                                                                                repeat
-                                                                                                                                                                    task.wait()
-                                                                                                                                                                    StartMagnet = true
-                                                                                                                                                                    FastAttack = true
-                                                                                                                                                                    if _G.AutoHaki then
-                                                                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                                                                                                                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                                                                                                                                        end
-                                                                                                                                                                    end
-                                                                                                                                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                                                                                                                                        task.wait()
-                                                                                                                                                                        EquipWeapon(_G.SelectWeapon)
-                                                                                                                                                                    end
-                                                                                                                                                                    PosMon = v.HumanoidRootPart.CFrame
-                                                                                                                                                                    if not _G.FastAttack then
-                                                                                                                                                                        game:GetService 'VirtualUser':CaptureController()
-                                                                                                                                                                        game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                                                                                                                                    end
-                                                                                                                                                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                                                                                                                                    v.Humanoid.JumpPower = 0
-                                                                                                                                                                    v.Humanoid.WalkSpeed = 0
-                                                                                                                                                                    v.Humanoid:ChangeState(11)
-                                                                                                                                                                    v.Humanoid:ChangeState(14)
-                                                                                                                                                                    v.Humanoid:ChangeState(16)
-                                                                                                                                                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                                                                                                                                                until not _G.AutoKenHakiV2 or v.Humanoid.Health <= 0
-                                                                                                                                                                StartMagnet = false
-                                                                                                                                                                FastAttack = false
-                                                                                                                                                            end
-                                                                                                                                                        end
-                                                                                                                                                    else
-                                                                                                                                                        repeat
-                                                                                                                                                            toTarget(CFrame.new(-13493.12890625, 318.89553833008, -8373.7919921875))
-                                                                                                                                                            task.wait()
-                                                                                                                                                        until not _G.AutoKenHakiV2 or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-13493.12890625, 318.89553833008, -8373.7919921875)).Magnitude <= 10
-                                                                                                                                                    end
-                                                                                                                                                else
-                                                                                                                                                    for i, v in pairs(game.Workspace:GetDescendants()) do
-                                                                                                                                                        if v.Name == "Apple" or v.Name == "Banana" or v.Name == "Pineapple" then
-                                                                                                                                                            v.Handle.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 1, 10)
-                                                                                                                                                                task.wait()
-                                                                                                                                                            firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart,v.Handle, 0)
-                                                                                                                                                                task.wait()
-                                                                                                                                                        end
-                                                                                                                                                    end
-                                                                                                                                                end
-                                                                                                                                            end
-                                                                                                                                        end
-                                                                                                                                    end)
-                                                                                                                                end
-                                                                                                                            end)
                                                                                                                             if _G.Mode == "English" then
                                                                                                                                 page1:Label("Auto Buy")
                                                                                                                             else
@@ -6211,210 +6077,891 @@ end)
                                                                                                                                                         end)
                                                                                                                                                     end)
                                                                                                                                                 end   
-                                                               
+                                                                      elseif World3 then
+                                                                           if _G.Mode == "English" then
+                                                                              page1:Label(
+                                                                              "Status : World 3"
+                                                                                )
+                                                                            else
+                                                                              page1:Label(
+                                                                                 "สถานะ : โลก 3"
+                                                                                  )
+                                                                            end
                                                                     if _G.Mode == "English" then
-                                                                        page1:Label("Status : World 3")
-                                                                    else
-                                                                        page1:Label("สถานะ : โลก 3")
-                                                                    end
-                                                                
-
-                                                                if _G.Mode == "English" then
-
-                                                                    if not World1 then
-                                                                        page1:Toggle("Auto Leviathan", _G.TeleporttoSeaBeast, function(value)
-                                                                            _G.TeleporttoSeaBeast = value
-                                                                          if value == false then
-                                                                              task.wait()
-                                                                              toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                                                                              task.wait()
-                                                                          end
-                                                                        end)
-                                                                        
-                                                                        page1:Toggle("Auto Event", _G.AutoEvent, function(value)
-                                                                            _G.AutoEvent = value
+                                                                        page1:Toggle("Auto Ken-Haki V2", _G.AutoKenHakiV2, function(value)
+                                                                            _G.AutoKenHakiV2 = value
                                                                             if value == false then
                                                                                 task.wait()
                                                                                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
                                                                                 task.wait()
                                                                             end
                                                                         end)
-                                                                        
-                                                                            page1:Toggle("Teleport to Sea Beast",_G.TeleporttoSeaBeast, function(value)
-                                                                                _G.TeleporttoSeaBeast = value
-                                                                                    if value == false then
-                                                                                        task.wait()
-                                                                                        toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                                                                                        task.wait()
-                                                                                    end
-                                                                                end)
-                                                                                         
-                                                                    page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
-                                                                    _G.increaseboatspeed  = value
-                                                                    end)
-                                                                    page1:Toggle("Delet All Rock",_G.deleterock, function(value)
-                                                                    _G.deleterock = value
-                                                                    end)
-                                                                      page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
-                                                                      _G.TPTOBOAT = value
-                                                                    end)
-                                                                    page1:Toggle("Auto Sail",_G.autoSail, function(value)
-                                                                        _G.autoSail = value
-                                                                    end)
                                                                     else
-                                                                            page1:Toggle("ออโต้เลวิธาน", _G.TeleporttoSeaBeast, function(value)
-                                                                                _G.TeleporttoSeaBeast = value
-                                                                              if value == false then
-                                                                                  task.wait()
-                                                                                  toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                                                                                  task.wait()
-                                                                              end
+                                                                        page1:Toggle("ออโต้ฮาคิสังเกตขั้นสอง",_G.AutoKenHakiV2, function(value)
+                                                                            _G.AutoKenHakiV2 = value
+                                                                                if value == false then
+                                                                                    task.wait()
+                                                                                    toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                    task.wait()
+                                                                                end
                                                                             end)
-                                                                              
-                                                                              task.spawn(function()
-                                                                                  while task.wait() do
-                                                                                      pcall(function()
-                                                                                          if _G.TeleporttoSeaBeast then
-                                                                                              for i, v in pairs(game.Workspace.SeaBeasts:GetChildren()) do
-                                                                                                  if v:FindFirstChild("HumanoidRootPart") or v.Name == "SeaBeast1" or v.Name == "Leviathan" then
-                                                                                                      toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 500, 0))
-                                                                                                  end
-                                                                                              end
-                                                                                          end
-                                                                                      end)
-                                                                                  end
-                                                                              end)
-                                                                        
-                                                                           task.spawn(function()
-                                                                                while task.wait() do
-                                                                                    if _G.AutoEvent then
+                                                                        end
+                                                                                task.spawn(function()
+                                                                                    while task.wait() do
                                                                                         pcall(function()
-                                                                                            for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                                                                                if v.Name and v:FindFirstChild("Humanoid") then
-                                                                                                    if string.find(v.Name, "Terrorshark|Fish Crew Member|Piranha|Shark") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
+                                                                                            if _G.AutoKenHakiV2 then
+                                                                                                if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+                                                                                                    repeat
+                                                                                                        toTarget(CFrame.new(-12444.78515625, 332.40396118164, -7673.1806640625))
+                                                                                                        task.wait()
+                                                                                                    until not _G.AutoKenHakiV2 or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-12444.78515625, 332.40396118164, -7673.1806640625)).Magnitude <= 10
+                                                                                                    wait(.5)
+                                                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CitizenQuestProgress","Citizen")
+                                                                                                    wait(1)
+                                                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest","CitizenQuest", 1)
+                                                                                                else
+                                                                                                    if game.Players.LocalPlayer.Backpack:FindFirstChild("Banana") and game.Players.LocalPlayer.Backpack:FindFirstChild("Apple") and game.Players.LocalPlayer.Backpack:FindFirstChild("Pineapple") then
                                                                                                         repeat
-                                                                                                           task.wait()
-                                                                                                            EquipWeapon(_G.SelectWeapon)
-                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                                                                                local args = {
-                                                                                                                    [1] = "Buso"
-                                                                                                                }
-                                                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                                                                                                            toTarget(CFrame.new(-12444.78515625, 332.40396118164, -7673.1806640625))
+                                                                                                            task.wait()
+                                                                                                        until not _G.AutoKenHakiV2 or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-12444.78515625, 332.40396118164, -7673.1806640625)).Magnitude <= 10
+                                                                                                        wait(.5)
+                                                                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CitizenQuestProgress", "Citizen")
+                                                                                                    elseif game.Players.LocalPlayer.Backpack:FindFirstChild("Fruit Bowl") or game.Players.LocalPlayer.Character:FindFirstChild("Fruit Bowl") then
+                                                                                                        repeat
+                                                                                                            toTarget(CFrame.new(-10920.125, 624.20275878906, -10266.995117188))
+                                                                                                            task.wait()
+                                                                                                        until not _G.AutoKenHakiV2 or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-10920.125, 624.20275878906, -10266.995117188)).Magnitude <= 10
+                                                                                                        wait(.5)
+                                                                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk2","Start")
+                                                                                                        wait(1)
+                                                                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk2","Buy")
+                                                                                                    elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Defeat 50 Forest Pirates") then
+                                                                                                        if game:GetService("Workspace").Enemies:FindFirstChild("Forest Pirate") then
+                                                                                                            for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                if v.Name == "Forest Pirate" then
+                                                                                                                    repeat
+                                                                                                                        task.wait()
+                                                                                                                        StartMagnet = true
+                                                                                                                        FastAttack = true
+                                                                                                                        if _G.AutoHaki then
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                            end
+                                                                                                                        end
+                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                                                                            task.wait()
+                                                                                                                            EquipWeapon(_G.SelectWeapon)
+                                                                                                                        end
+                                                                                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                        if not _G.FastAttack then
+                                                                                                                            game:GetService 'VirtualUser':CaptureController()
+                                                                                                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                        end
+                                                                                                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                                                                                        v.Humanoid.JumpPower = 0
+                                                                                                                        v.Humanoid.WalkSpeed = 0
+                                                                                                                        v.Humanoid:ChangeState(11)
+                                                                                                                        v.Humanoid:ChangeState(14)
+                                                                                                                        v.Humanoid:ChangeState(16)
+                                                                                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                    until not _G.AutoKenHakiV2 or v.Humanoid.Health <= 0
+                                                                                                                    StartMagnet = false
+                                                                                                                    FastAttack = false
+                                                                                                                end
                                                                                                             end
-                                                                                                            PosMon = v.HumanoidRootPart.CFrame
-                                                                                                            v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                                                                            StartMagnet = true
-                                                                                                            FastAttack = true
-                                                                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                                                                                            if not FastAttack then
-                                                                                                            game:GetService 'VirtualUser':CaptureController()
-                                                                                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                        else
+                                                                                                            repeat
+                                                                                                                toTarget(CFrame.new(-13277.568359375, 370.34185791016, -7821.1572265625))
+                                                                                                                task.wait()
+                                                                                                            until not _G.AutoKenHakiV2 or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-13277.568359375, 370.34185791016, -7821.1572265625)).Magnitude <= 10
+                                                                                                        end
+                                                                                                    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text == "Defeat  Captain Elephant (0/1)" then
+                                                                                                        if game:GetService("Workspace").Enemies:FindFirstChild("Captain Elephant") then
+                                                                                                            for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                if v.Name == "Captain Elephant" then
+                                                                                                                    repeat
+                                                                                                                        task.wait()
+                                                                                                                        StartMagnet = true
+                                                                                                                        FastAttack = true
+                                                                                                                        if _G.AutoHaki then
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                            end
+                                                                                                                        end
+                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                                                                            task.wait()
+                                                                                                                            EquipWeapon(_G.SelectWeapon)
+                                                                                                                        end
+                                                                                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                        if not _G.FastAttack then
+                                                                                                                            game:GetService 'VirtualUser':CaptureController()
+                                                                                                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                        end
+                                                                                                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                                                                                        v.Humanoid.JumpPower = 0
+                                                                                                                        v.Humanoid.WalkSpeed = 0
+                                                                                                                        v.Humanoid:ChangeState(11)
+                                                                                                                        v.Humanoid:ChangeState(14)
+                                                                                                                        v.Humanoid:ChangeState(16)
+                                                                                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                    until not _G.AutoKenHakiV2 or v.Humanoid.Health <= 0
+                                                                                                                    StartMagnet = false
+                                                                                                                    FastAttack = false
+                                                                                                                end
                                                                                                             end
-                                                                                                            PosMon = v.HumanoidRootPart.CFrame
-                                                                                                        until not _G.AutoEvent or not v.Parent or v.Humanoid.Health == 0 or not game.Workspace.Enemies:FindFirstChild(v.Name)
+                                                                                                        else
+                                                                                                            repeat
+                                                                                                                toTarget(CFrame.new(-13493.12890625, 318.89553833008, -8373.7919921875))
+                                                                                                                task.wait()
+                                                                                                            until not _G.AutoKenHakiV2 or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-13493.12890625, 318.89553833008, -8373.7919921875)).Magnitude <= 10
+                                                                                                        end
+                                                                                                    else
+                                                                                                        for i, v in pairs(game.Workspace:GetDescendants()) do
+                                                                                                            if v.Name == "Apple" or v.Name == "Banana" or v.Name == "Pineapple" then
+                                                                                                                v.Handle.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 1, 10)
+                                                                                                                    task.wait()
+                                                                                                                firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart,v.Handle, 0)
+                                                                                                                    task.wait()
+                                                                                                            end
+                                                                                                        end
                                                                                                     end
                                                                                                 end
                                                                                             end
                                                                                         end)
                                                                                     end
-                                                                                end
-                                                                            end)
-                                                                              
-                                                                                page1:Toggle("เทเลพอร์ตไปหาเจ้าทะเล",_G.TeleporttoSeaBeast, function(value)
-                                                                                    _G.TeleporttoSeaBeast = value
+                                                                                end)
+
+                                                                                if _G.Mode == "English" then
+
+                                                                                    if not World1 then
+                                                                                        page1:Toggle("Auto Leviathan", _G.Settings.Main["Teleport to Sea Beast"], function(value)
+                                                                                          _G.Settings.Main["Teleport to Sea Beast"] = value
+                                                                                          if value == false then
+                                                                                              task.wait()
+                                                                                              toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                              task.wait()
+                                                                                          end
+                                                                                          SaveSettings()
+                                                                                          task.spawn(function()
+                                                                                              while task.wait() do
+                                                                                                  pcall(function()
+                                                                                                      if  _G.Settings.Main["Teleport to Sea Beast"] then
+                                                                                                          for i, v in pairs(game.Workspace.SeaBeasts:GetChildren()) do
+                                                                                                              if v:FindFirstChild("HumanoidRootPart") or v.Name == "SeaBeast1" or v.Name == "Leviathan" then
+                                                                                                                  toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 500, 0))
+                                                                                                              end
+                                                                                                          end
+                                                                                                      end
+                                                                                                  end)
+                                                                                              end
+                                                                                          end)
+                                                                                        end)
+                                                                                        end
+                                                                                        
+                                                                                        page1:Toggle("Auto Terrorshark", _G.Settings.Main["AutoTerrorshark"], function(value)
+                                                                                            _G.Settings.Main["AutoTerrorshark"] = value
+                                                                                            if value == false then
+                                                                                                task.wait()
+                                                                                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                                task.wait()
+                                                                                            end
+                                                                                            SaveSettings()
+                                                                                            task.spawn(function()
+                                                                                                while task.wait() do
+                                                                                                    pcall(function()
+                                                                                                        if _G.Settings.Main["AutoTerrorshark"] then
+                                                                                                            if game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") then
+                                                                                                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                    if string.find(v.Name , "Terrorshark") then
+                                                                                                                        repeat task.wait()
+                                                                                                                            StartMagnet = true
+                                                                                                                            FastAttack = true
+                                                                                                                            if _G.Settings.Configs["Auto Haki"] then
+                                                                                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                                end
+                                                                                                                            end
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Settings.Configs["Select Weapon"]) then
+                                                                                                                                task.wait()
+                                                                                                                                EquipWeapon(_G.Settings.Configs["Select Weapon"])
+                                                                                                                            end
+                                                                                                                            PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                            if not _G.Settings.Configs["Fast Attack"] then
+                                                                                                                                game:GetService'VirtualUser':CaptureController()
+                                                                                                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                            end
+                                                                                                                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                                                                                                            if _G.Settings.Configs["Show Hitbox"] then
+                                                                                                                                v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+                                                                                                                            else
+                                                                                                                                v.HumanoidRootPart.Transparency = 1
+                                                                                                                            end
+                                                                                                                           -- v.Humanoid.JumpPower = 0
+                                                                                                                            --v.Humanoid.WalkSpeed = 0
+                                                                                                                            --v.HumanoidRootPart.CanCollide = false
+                                                                                                                            --v.Humanoid:ChangeState(11)
+                                                                                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                        until v.Humanoid.Health <= 0 or not _G.Settings.Main["AutoTerrorshark"]
+                                                                                                                        StartMagnet = false
+                                                                                                                    -- FastAttack = false
+                                                                                                                    end
+                                                                                                                end
+                                                                                                            end
+                                                                                                        end
+                                                                                                    end)
+                                                                                                end
+                                                                                            end)
+                                                                                        end)
+                                                                                        
+                                                                                        if not World1 then
+                                                                                            page1:Toggle("Teleport to Sea Beast",_G.Settings.Main["Teleport to Sea Beast"], function(value)
+                                                                                                _G.Settings.Main["Teleport to Sea Beast"] = value
+                                                                                                    if value == false then
+                                                                                                        task.wait()
+                                                                                                        toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                                        task.wait()
+                                                                                                    end
+                                                                                                    SaveSettings()
+                                                                                                    task.spawn(function()
+                                                                                                        while task.wait() do
+                                                                                                            pcall(function()
+                                                                                                                if _G.Settings.Main["Teleport to Sea Beast"] then
+                                                                                                                    for i, v in pairs(game.Workspace.SeaBeasts:GetChildren()) do
+                                                                                                                        if v:FindFirstChild("HumanoidRootPart") or v.Name == "SeaBeast1" then
+                                                                                                                            toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 500, 0))
+                                                                                                                        end
+                                                                                                                    end
+                                                                                                                end
+                                                                                                            end)
+                                                                                                        end
+                                                                                                    end)
+                                                                                                end)
+                                                                                            end
+                                                                                        
+                                                                                    page1:Toggle("Auto Fish Crew Member", _G.Settings.Main["AutoFishCrewMember"], function(value)
+                                                                                        _G.Settings.Main["AutoFishCrewMember"] = value
                                                                                         if value == false then
                                                                                             task.wait()
                                                                                             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
                                                                                             task.wait()
                                                                                         end
-                                                                                    end)
-                                                                                        
+                                                                                        SaveSettings()
                                                                                         task.spawn(function()
                                                                                             while task.wait() do
                                                                                                 pcall(function()
-                                                                                                    if _G.TeleporttoSeaBeast then
-                                                                                                        for i, v in pairs(game.Workspace.SeaBeasts:GetChildren()) do
-                                                                                                            if v:FindFirstChild("HumanoidRootPart") or v.Name == "SeaBeast1" then
-                                                                                                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 500, 0))
+                                                                                                    if _G.Settings.Main["AutoFishCrewMember"] then
+                                                                                                        if game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") then
+                                                                                                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                if string.find(v.Name , "Fish Crew Member") then
+                                                                                                                    repeat task.wait()
+                                                                                                                        StartMagnet = true
+                                                                                                                        FastAttack = true
+                                                                                                                        if _G.Settings.Configs["Auto Haki"] then
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                            end
+                                                                                                                        end
+                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Settings.Configs["Select Weapon"]) then
+                                                                                                                            task.wait()
+                                                                                                                            EquipWeapon(_G.Settings.Configs["Select Weapon"])
+                                                                                                                        end
+                                                                                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                        if not _G.Settings.Configs["Fast Attack"] then
+                                                                                                                            game:GetService'VirtualUser':CaptureController()
+                                                                                                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                        end
+                                                                                                                        v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                                                                                                        if _G.Settings.Configs["Show Hitbox"] then
+                                                                                                                            v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+                                                                                                                        else
+                                                                                                                            v.HumanoidRootPart.Transparency = 1
+                                                                                                                        end
+                                                                                                                        v.Humanoid.JumpPower = 0
+                                                                                                                        v.Humanoid.WalkSpeed = 0
+                                                                                                                        v.HumanoidRootPart.CanCollide = false
+                                                                                                                        v.Humanoid:ChangeState(11)
+                                                                                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                    until v.Humanoid.Health <= 0 or not _G.Settings.Main["AutoFishCrewMember"]
+                                                                                                                    StartMagnet = false
+                                                                                                                -- FastAttack = false
+                                                                                                                end
                                                                                                             end
                                                                                                         end
                                                                                                     end
                                                                                                 end)
                                                                                             end
                                                                                         end)
-                                                            
-                                                                        page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
-                                                                        _G.increaseboatspeed  = value
-                                                                        end)
-
-                                                             task.spawn(function()
-                                                                while task.wait() do
-                                                                    if _G.increaseboatspeed then
-                                                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                                            if v:IsA("VehicleSeat")  then
-                                                                              v.MaxSpeed = 350
-                                                                            end
-                                                                          end
-                                                                        elseif not _G.increaseboatspeed then
-                                                                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                                                if v:IsA("VehicleSeat")  then
-                                                                                  v.MaxSpeed = 150
-                                                                                end
-                                                                              end
-                                                                            end
-                                                                        end
-                                                                    end)
-
-                                                                        page1:Toggle("ลบหินทั้งหมด",_G.deleterock, function(value)
-                                                                        _G.deleterock = value
-                                                                        end)
-
-                                                                        task.spawn(function()
-                                                                            local delete = _G.deleterock
-                                                                            while _G.deleterock do task.wait()
-                                                                                for i, v in pairs(game.Workspace:GetChildren()) do
-                                                                                    if v.Name == "MediumFlat" or v.Name == "Large" or v.Name == "Largest" or v.Name == "MediumGroup" or v.Name == "SmallCluster" or v.Name == "SmallGroup" or v.Name == "Largest"  then
+                                                                                    end)
+                                                                                    
+                                                                                    
+                                                                                    page1:Toggle("Auto Piranha", _G.Settings.Main["AutoPiranha"] , function(value)
+                                                                                        _G.Settings.Main["AutoPiranha"] = value
+                                                                                        if value == false then
+                                                                                            task.wait()
+                                                                                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                            task.wait()
+                                                                                        end
+                                                                                        SaveSettings()
+                                                                                        task.spawn(function()
+                                                                                            while task.wait() do
+                                                                                                pcall(function()
+                                                                                                    if _G.Settings.Main["AutoPiranha"] then
+                                                                                                        if game:GetService("Workspace").Enemies:FindFirstChild("Piranha") then
+                                                                                                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                if string.find(v.Name , "Piranha") then
+                                                                                                                    repeat task.wait()
+                                                                                                                        StartMagnet = true
+                                                                                                                        FastAttack = true
+                                                                                                                        if _G.Settings.Configs["Auto Haki"] then
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                            end
+                                                                                                                        end
+                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Settings.Configs["Select Weapon"]) then
+                                                                                                                            task.wait()
+                                                                                                                            EquipWeapon(_G.Settings.Configs["Select Weapon"])
+                                                                                                                        end
+                                                                                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                        if not _G.Settings.Configs["Fast Attack"] then
+                                                                                                                            game:GetService'VirtualUser':CaptureController()
+                                                                                                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                        end
+                                                                                                                        v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                                                                                                        if _G.Settings.Configs["Show Hitbox"] then
+                                                                                                                            v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+                                                                                                                        else
+                                                                                                                            v.HumanoidRootPart.Transparency = 1
+                                                                                                                        end
+                                                                                                                        v.Humanoid.JumpPower = 0
+                                                                                                                        v.Humanoid.WalkSpeed = 0
+                                                                                                                        v.HumanoidRootPart.CanCollide = false
+                                                                                                                        v.Humanoid:ChangeState(11)
+                                                                                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                    until v.Humanoid.Health <= 0 or not _G.Settings.Main["AutoPiranha"]
+                                                                                                                    StartMagnet = false
+                                                                                                                -- FastAttack = false
+                                                                                                                end
+                                                                                                            end
+                                                                                                        end
+                                                                                                    end
+                                                                                                end)
+                                                                                            end
+                                                                                        end)
+                                                                                    end)
+                                                                                    
+                                                                                    page1:Toggle("Auto Shark",  _G.Settings.Main["AutoShark"] , function(value)
+                                                                                        _G.Settings.Main["AutoShark"] = value
+                                                                                        if value == false then
+                                                                                            task.wait()
+                                                                                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                            task.wait()
+                                                                                        end
+                                                                                        SaveSettings()
+                                                                                        task.spawn(function()
+                                                                                            while task.wait() do
+                                                                                                pcall(function()
+                                                                                                    if _G.Settings.Main["AutoShark"]  then
+                                                                                                        if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
+                                                                                                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                if string.find(v.Name , "Shark") then
+                                                                                                                    repeat task.wait()
+                                                                                                                        StartMagnet = true
+                                                                                                                        FastAttack = true
+                                                                                                                        if _G.Settings.Configs["Auto Haki"] then
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                            end
+                                                                                                                        end
+                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Settings.Configs["Select Weapon"]) then
+                                                                                                                            task.wait()
+                                                                                                                            EquipWeapon(_G.Settings.Configs["Select Weapon"])
+                                                                                                                        end
+                                                                                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                        if not _G.Settings.Configs["Fast Attack"] then
+                                                                                                                            game:GetService'VirtualUser':CaptureController()
+                                                                                                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                        end
+                                                                                                                        v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                                                                                                        if _G.Settings.Configs["Show Hitbox"] then
+                                                                                                                            v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+                                                                                                                        else
+                                                                                                                            v.HumanoidRootPart.Transparency = 1
+                                                                                                                        end
+                                                                                                                        v.Humanoid.JumpPower = 0
+                                                                                                                        v.Humanoid.WalkSpeed = 0
+                                                                                                                        v.HumanoidRootPart.CanCollide = false
+                                                                                                                        v.Humanoid:ChangeState(11)
+                                                                                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                    until v.Humanoid.Health <= 0 or not  _G.Settings.Main["AutoShark"]
+                                                                                                                    StartMagnet = false
+                                                                                                                -- FastAttack = false
+                                                                                                                end
+                                                                                                            end
+                                                                                                        end
+                                                                                                    end
+                                                                                                end)
+                                                                                            end
+                                                                                        end)
+                                                                                    end)
+                                                                                    
+                                                                                    
+                                                                               
+                                                                                    
+                                                                                    page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
+                                                                                    _G.increaseboatspeed  = value
+                                                                                    while task.wait() do
+                                                                                    if _G.increaseboatspeed then
+                                                                                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                                                                        if v:IsA("VehicleSeat")  then
+                                                                                          v.MaxSpeed = 380
+                                                                                           sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                                                                                        end
+                                                                                      end
+                                                                                    elseif not _G.increaseboatspeed then
+                                                                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                                                                            if v:IsA("VehicleSeat")  then
+                                                                                              v.MaxSpeed = 150
+                                                                                               sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                                                                                            end
+                                                                                          end
+                                                                                        end
+                                                                                    end
+                                                                                    end)
+                                                                                    page1:Toggle("Delet All Rock",_G.deleterock, function(value)
+                                                                                    _G.deleterock = value
+                                                                                    local delete = _G.deleterock
+                                                                                    for i, v in pairs(game.Workspace:GetChildren()) do
+                                                                                      if v.Name == "MediumFlat" or v.Name == "Large" or v.Name == "Largest" or v.Name == "MediumGroup" or v.Name == "SmallCluster" or v.Name == "SmallGroup" or v.Name == "Largest" or v.Name == "" then 
                                                                                         if delete then
-                                                                                            v.CanCollide = false
+                                                                                          v:destroy()
                                                                                         end
+                                                                                      end
                                                                                     end
-                                                                                end
-                                                                            end
-                                                                        end)
-                                                                        
-                                                                          page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
-                                                                          _G.TPTOBOAT = value
-                                                                        end)
-
-                                                                        task.spawn(function()
-                                                                        while task.wait() do
-                                                                            if _G.TPTOBOAT then
-                                                                                for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                                                    if v:IsA("VehicleSeat") then
-                                                                                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
-                                                                                            repeat
+                                                                                    end)
+                                                                                    function twoboat(gotoCFrame) --- Tween
+                                                                                        pcall(function()
+                                                                                            game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                                                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                                                                                        end)
+                                                                                        if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 10 then
+                                                                                            pcall(function()
+                                                                                                tweenz:Cancel()
+                                                                                            end)
+                                                                                            
+                                                                                        else
+                                                                                            local tween_s = game:service "TweenService"
+                                                                                            local info = TweenInfo.new(
+                                                                                                (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position)
+                                                                                                .Magnitude /
+                                                                                                325, Enum.EasingStyle.Linear)
+                                                                                            tween, err = pcall(function()
+                                                                                                tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
+                                                                                                tweenz:Play()
+                                                                                            end)
+                                                                                            if not tween then return err end
+                                                                                        end
+                                                                                        function _TweenCanCle()
+                                                                                            tweenz:Cancel()
+                                                                                        end
+                                                                                      end
+                                                                                      page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
+                                                                                      _G.TPTOBOAT = value
+                                                                                      while task.wait() do
+                                                                                          if _G.TPTOBOAT then
+                                                                                              for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                                                                                  if v:IsA("VehicleSeat") then
+                                                                                                      if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
+                                                                                                          repeat
+                                                                                                              task.wait()
+                                                                                                              local CFrame = v.CFrame
+                                                                                                              twoboat(CFrame)
+                                                                                                          until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.TPTOBOAT
+                                                                                                      end
+                                                                                                  end
+                                                                                              end
+                                                                                          end
+                                                                                      end
+                                                                                    end)
+                                                                                    
+                                                                                    page1:Toggle("Auto Sail",_G.autoSail, function(value)
+                                                                                        _G.autoSail = value
+                                                                                        while  _G.autoSai do task.wait()
+                                                                                            if _G.autoSail then
+                                                                                                keypress(0x57)
+                                                                                            end
+                                                                                        end
+                                                                                        if not _G.autoSail then
+                                                                                            keyrelease(0x57)
+                                                                                        end
+                                                                                    end)
+                                                                                    else
+                                                                                        _G.Mode = "Thai"
+                                                                                        if not World1 then
+                                                                                            page1:Toggle("ออโต้เลวิธาน",_G.Settings.Main["Teleport to Sea Beast"], function(value)
+                                                                                              _G.Settings.Main["Teleport to Sea Beast"] = value
+                                                                                              if value == false then
+                                                                                                  task.wait()
+                                                                                                  toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                                  task.wait()
+                                                                                              end
+                                                                                              SaveSettings()
+                                                                                              task.spawn(function()
+                                                                                                  while task.wait() do
+                                                                                                      pcall(function()
+                                                                                                          if _G.Settings.Main["Teleport to Sea Beast"] then
+                                                                                                              for i, v in pairs(game.Workspace.SeaBeasts:GetChildren()) do
+                                                                                                                  if v:FindFirstChild("HumanoidRootPart") or v.Name == "SeaBeast1" or v.Name == "Leviathan" then
+                                                                                                                      toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 500, 0))
+                                                                                                                  end
+                                                                                                              end
+                                                                                                          end
+                                                                                                      end)
+                                                                                                  end
+                                                                                              end)
+                                                                                            end)
+                                                                                            end
+                                                                                            
+                                                                                        
+                                                                                            page1:Toggle("ออโต้ฆ่าบอสฉลาม", _G.Settings.Main["AutoTerrorshark"], function(value)
+                                                                                                _G.Settings.Main["AutoTerrorshark"] = value
+                                                                                                if value == false then
+                                                                                                    task.wait()
+                                                                                                    toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                                    task.wait()
+                                                                                                end
+                                                                                                SaveSettings()
+                                                                                                task.spawn(function()
+                                                                                                    while task.wait() do
+                                                                                                        pcall(function()
+                                                                                                            if _G.Settings.Main["AutoTerrorshark"] then
+                                                                                                                if game:GetService("Workspace").Enemies:FindFirstChild("Terrorshark") then
+                                                                                                                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                        if string.find(v.Name , "Terrorshark") then
+                                                                                                                            repeat task.wait()
+                                                                                                                                StartMagnet = true
+                                                                                                                                FastAttack = true
+                                                                                                                                if _G.Settings.Configs["Auto Haki"] then
+                                                                                                                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                                    end
+                                                                                                                                end
+                                                                                                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Settings.Configs["Select Weapon"]) then
+                                                                                                                                    task.wait()
+                                                                                                                                    EquipWeapon(_G.Settings.Configs["Select Weapon"])
+                                                                                                                                end
+                                                                                                                                PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                                if not _G.Settings.Configs["Fast Attack"] then
+                                                                                                                                    game:GetService'VirtualUser':CaptureController()
+                                                                                                                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                                end
+                                                                                                                                v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                                                                                                                if _G.Settings.Configs["Show Hitbox"] then
+                                                                                                                                    v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+                                                                                                                                else
+                                                                                                                                    v.HumanoidRootPart.Transparency = 1
+                                                                                                                                end
+                                                                                                                               -- v.Humanoid.JumpPower = 0
+                                                                                                                                --v.Humanoid.WalkSpeed = 0
+                                                                                                                                --v.HumanoidRootPart.CanCollide = false
+                                                                                                                                --v.Humanoid:ChangeState(11)
+                                                                                                                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                            until v.Humanoid.Health <= 0 or not _G.Settings.Main["AutoTerrorshark"]
+                                                                                                                            StartMagnet = false
+                                                                                                                        -- FastAttack = false
+                                                                                                                        end
+                                                                                                                    end
+                                                                                                                end
+                                                                                                            end
+                                                                                                        end)
+                                                                                                    end
+                                                                                                end)
+                                                                                            end)
+                                                                                            
+                                                                                            if not World1 then
+                                                                                                page1:Toggle("เทเลพอร์ตไปหาเจ้าทะเล",_G.Settings.Main["Teleport to Sea Beast"], function(value)
+                                                                                                    _G.Settings.Main["Teleport to Sea Beast"] = value
+                                                                                                        if value == false then
+                                                                                                            task.wait()
+                                                                                                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                                            task.wait()
+                                                                                                        end
+                                                                                                        SaveSettings()
+                                                                                                        task.spawn(function()
+                                                                                                            while task.wait() do
+                                                                                                                pcall(function()
+                                                                                                                    if _G.Settings.Main["Teleport to Sea Beast"] then
+                                                                                                                        for i, v in pairs(game.Workspace.SeaBeasts:GetChildren()) do
+                                                                                                                            if v:FindFirstChild("HumanoidRootPart") or v.Name == "SeaBeast1" then
+                                                                                                                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 500, 0))
+                                                                                                                            end
+                                                                                                                        end
+                                                                                                                    end
+                                                                                                                end)
+                                                                                                            end
+                                                                                                        end)
+                                                                                                    end)
+                                                                                                end
+                                                                            
+                                                                                            
+                                                                                        page1:Toggle("ออโต้ฆ่าสมาชิกลูกเรือออโต้ฟิช", _G.Settings.Main["AutoFishCrewMember"], function(value)
+                                                                                            _G.Settings.Main["AutoFishCrewMember"] = value
+                                                                                            if value == false then
                                                                                                 task.wait()
-                                                                                                local CFrame = v.CFrame
-                                                                                                twoboat(CFrame)
-                                                                                            until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.TPTOBOAT
+                                                                                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                                task.wait()
+                                                                                            end
+                                                                                            SaveSettings()
+                                                                                            task.spawn(function()
+                                                                                                while task.wait() do
+                                                                                                    pcall(function()
+                                                                                                        if _G.Settings.Main["AutoFishCrewMember"] then
+                                                                                                            if game:GetService("Workspace").Enemies:FindFirstChild("Fish Crew Member") then
+                                                                                                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                    if string.find(v.Name , "Fish Crew Member") then
+                                                                                                                        repeat task.wait()
+                                                                                                                            StartMagnet = true
+                                                                                                                            FastAttack = true
+                                                                                                                            if _G.Settings.Configs["Auto Haki"] then
+                                                                                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                                end
+                                                                                                                            end
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Settings.Configs["Select Weapon"]) then
+                                                                                                                                task.wait()
+                                                                                                                                EquipWeapon(_G.Settings.Configs["Select Weapon"])
+                                                                                                                            end
+                                                                                                                            PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                            if not _G.Settings.Configs["Fast Attack"] then
+                                                                                                                                game:GetService'VirtualUser':CaptureController()
+                                                                                                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                            end
+                                                                                                                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                                                                                                            if _G.Settings.Configs["Show Hitbox"] then
+                                                                                                                                v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+                                                                                                                            else
+                                                                                                                                v.HumanoidRootPart.Transparency = 1
+                                                                                                                            end
+                                                                                                                            v.Humanoid.JumpPower = 0
+                                                                                                                            v.Humanoid.WalkSpeed = 0
+                                                                                                                            v.HumanoidRootPart.CanCollide = false
+                                                                                                                            v.Humanoid:ChangeState(11)
+                                                                                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                        until v.Humanoid.Health <= 0 or not _G.Settings.Main["AutoFishCrewMember"]
+                                                                                                                        StartMagnet = false
+                                                                                                                    -- FastAttack = false
+                                                                                                                    end
+                                                                                                                end
+                                                                                                            end
+                                                                                                        end
+                                                                                                    end)
+                                                                                                end
+                                                                                            end)
+                                                                                        end)
+                                                                                        
+                                                                                        
+                                                                                        page1:Toggle("ออโต้ฆ่าปิรันย่า", _G.Settings.Main["AutoPiranha"], function(value)
+                                                                                            _G.Settings.Main["AutoPiranha"] = value
+                                                                                            if value == false then
+                                                                                                task.wait()
+                                                                                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                                task.wait()
+                                                                                            end
+                                                                                            SaveSettings()
+                                                                                            task.spawn(function()
+                                                                                                while task.wait() do
+                                                                                                    pcall(function()
+                                                                                                        if _G.Settings.Main["AutoPiranha"] then
+                                                                                                            if game:GetService("Workspace").Enemies:FindFirstChild("Piranha") then
+                                                                                                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                    if string.find(v.Name , "Piranha") then
+                                                                                                                        repeat task.wait()
+                                                                                                                            StartMagnet = true
+                                                                                                                            FastAttack = true
+                                                                                                                            if _G.Settings.Configs["Auto Haki"] then
+                                                                                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                                end
+                                                                                                                            end
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Settings.Configs["Select Weapon"]) then
+                                                                                                                                task.wait()
+                                                                                                                                EquipWeapon(_G.Settings.Configs["Select Weapon"])
+                                                                                                                            end
+                                                                                                                            PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                            if not _G.Settings.Configs["Fast Attack"] then
+                                                                                                                                game:GetService'VirtualUser':CaptureController()
+                                                                                                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                            end
+                                                                                                                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                                                                                                            if _G.Settings.Configs["Show Hitbox"] then
+                                                                                                                                v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+                                                                                                                            else
+                                                                                                                                v.HumanoidRootPart.Transparency = 1
+                                                                                                                            end
+                                                                                                                            v.Humanoid.JumpPower = 0
+                                                                                                                            v.Humanoid.WalkSpeed = 0
+                                                                                                                            v.HumanoidRootPart.CanCollide = false
+                                                                                                                            v.Humanoid:ChangeState(11)
+                                                                                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                        until v.Humanoid.Health <= 0 or not _G.Settings.Main["AutoPiranha"]
+                                                                                                                        StartMagnet = false
+                                                                                                                    -- FastAttack = false
+                                                                                                                    end
+                                                                                                                end
+                                                                                                            end
+                                                                                                        end
+                                                                                                    end)
+                                                                                                end
+                                                                                            end)
+                                                                                        end)
+                                                                                        
+                                                                                        page1:Toggle("ออโต้ฆ่าฉลามตัวเล็ก",  _G.Settings.Main["AutoShark"] , function(value)
+                                                                                            _G.Settings.Main["AutoShark"]  = value
+                                                                                            if value == false then
+                                                                                                task.wait()
+                                                                                                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                                task.wait()
+                                                                                            end
+                                                                                            SaveSettings()
+                                                                                            task.spawn(function()
+                                                                                                while task.wait() do
+                                                                                                    pcall(function()
+                                                                                                        if  _G.Settings.Main["AutoShark"] then
+                                                                                                            if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
+                                                                                                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                    if string.find(v.Name , "Shark") then
+                                                                                                                        repeat task.wait()
+                                                                                                                            StartMagnet = true
+                                                                                                                            FastAttack = true
+                                                                                                                            if _G.Settings.Configs["Auto Haki"] then
+                                                                                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                                end
+                                                                                                                            end
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.Settings.Configs["Select Weapon"]) then
+                                                                                                                                task.wait()
+                                                                                                                                EquipWeapon(_G.Settings.Configs["Select Weapon"])
+                                                                                                                            end
+                                                                                                                            PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                            if not _G.Settings.Configs["Fast Attack"] then
+                                                                                                                                game:GetService'VirtualUser':CaptureController()
+                                                                                                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                            end
+                                                                                                                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                                                                                                            if _G.Settings.Configs["Show Hitbox"] then
+                                                                                                                                v.HumanoidRootPart.Transparency = _G.Hitbox_LocalTransparency
+                                                                                                                            else
+                                                                                                                                v.HumanoidRootPart.Transparency = 1
+                                                                                                                            end
+                                                                                                                            v.Humanoid.JumpPower = 0
+                                                                                                                            v.Humanoid.WalkSpeed = 0
+                                                                                                                            v.HumanoidRootPart.CanCollide = false
+                                                                                                                            v.Humanoid:ChangeState(11)
+                                                                                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                        until v.Humanoid.Health <= 0 or not  _G.Settings.Main["AutoShark"]
+                                                                                                                        StartMagnet = false
+                                                                                                                    -- FastAttack = false
+                                                                                                                    end
+                                                                                                                end
+                                                                                                            end
+                                                                                                        end
+                                                                                                    end)
+                                                                                                end
+                                                                                            end)
+                                                                                        end)
+                                                                                        
+                                                                                        
+                                                                                       
+                                                                                        
+                                                                                        page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
+                                                                                        _G.increaseboatspeed  = value
+                                                                                        while task.wait() do
+                                                                                        if _G.increaseboatspeed then
+                                                                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                                                                            if v:IsA("VehicleSeat")  then
+                                                                                              v.MaxSpeed = 350
+                                                                                            end
+                                                                                          end
+                                                                                        elseif not _G.increaseboatspeed then
+                                                                                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                                                                                if v:IsA("VehicleSeat")  then
+                                                                                                  v.MaxSpeed = 150
+                                                                                                end
+                                                                                              end
+                                                                                            end
+                                                                                        end
+                                                                                        end)
+                                                                                        page1:Toggle("ลบหินทั้งหมด",_G.deleterock, function(value)
+                                                                                        _G.deleterock = value
+                                                                                        local delete = _G.deleterock
+                                                                                        while _G.deleterock do task.wait()
+                                                                                        for i, v in pairs(game.Workspace:GetChildren()) do
+                                                                                          if v.Name == "MediumFlat" or v.Name == "Large" or v.Name == "Largest" or v.Name == "MediumGroup" or v.Name == "SmallCluster" or v.Name == "SmallGroup" or v.Name == "Largest" or v.Name == "" then 
+                                                                                            if delete then
+                                                                                              v:destroy()
+                                                                                            end
+                                                                                          end
                                                                                         end
                                                                                     end
-                                                                                end
-                                                                            end
-                                                                        end
-                                                                    end)
-                                                                        page1:Toggle("ออโต้ขับเรือ",_G.autoSail, function(value)
-                                                                          _G.autoSail = value
-                                                                        end)
-                                                                
-                                                                    while task.IsLoadedwait() do
-                                                                        if _G.autoSail then
-                                                                            keypress(0x57)
-                                                                  elseif not _G.autoSail then
-                                                                             keyrelease(0x57)
-                                                                        end
-                                                                   end 
-                                                                    page1:Line()
+                                                                                 end)
+                                                                                        function twoboat(gotoCFrame) --- Tween
+                                                                                            pcall(function()
+                                                                                                game.Players.LocalPlayer.Character.Humanoid.Sit = false
+                                                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+                                                                                            end)
+                                                                                            if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 10 then
+                                                                                                pcall(function()
+                                                                                                    tweenz:Cancel()
+                                                                                                end)
+                                                                                                
+                                                                                            else
+                                                                                                local tween_s = game:service "TweenService"
+                                                                                                local info = TweenInfo.new(
+                                                                                                    (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position)
+                                                                                                    .Magnitude /
+                                                                                                    325, Enum.EasingStyle.Linear)
+                                                                                                tween, err = pcall(function()
+                                                                                                    tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
+                                                                                                    tweenz:Play()
+                                                                                                end)
+                                                                                                if not tween then return err end
+                                                                                            end
+                                                                                            function _TweenCanCle()
+                                                                                                tweenz:Cancel()
+                                                                                            end
+                                                                                          end
+                                                                                          page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
+                                                                                          _G.TPTOBOAT = value
+                                                                                          while task.wait() do
+                                                                                              if _G.TPTOBOAT then
+                                                                                                  for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                                                                                      if v:IsA("VehicleSeat") then
+                                                                                                          if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
+                                                                                                              repeat
+                                                                                                                  task.wait()
+                                                                                                                  local CFrame = v.CFrame
+                                                                                                                  twoboat(CFrame)
+                                                                                                              until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.TPTOBOAT
+                                                                                                          end
+                                                                                                      end
+                                                                                                  end
+                                                                                              end
+                                                                                          end
+                                                                                        end)
+                                                                                        
+                                                                                        page1:Toggle("ออโต้ขับเรือ",_G.autoSail, function(value)
+                                                                                          _G.autoSail = value
+                                                                                          while  _G.autoSai do task.wait()
+                                                                                              if _G.autoSail then
+                                                                                                  keypress(0x57)
+                                                                                              end
+                                                                                          end
+                                                                                          if not _G.autoSail then
+                                                                                              keyrelease(0x57)
+                                                                                          end
+                                                                                        end)
+                                                                                    end
+                                                                            page1:Line()
                                                                     if _G.Mode == "English" then
                                                                         page1:Toggle("Auto Holy Torch",  _G.AutoHolyTorch, function(value)
                                                                             _G.AutoHolyTorch = value
@@ -11304,4 +11851,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print(321)
+print("Why:(")
