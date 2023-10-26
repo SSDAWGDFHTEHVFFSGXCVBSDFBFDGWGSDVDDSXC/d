@@ -11462,4 +11462,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print(655655)
+print(65598)
