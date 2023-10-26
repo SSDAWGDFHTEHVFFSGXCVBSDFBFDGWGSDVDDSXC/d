@@ -6221,7 +6221,7 @@ end)
 
                                                                 if _G.Mode == "English" then
 
-                                                                    if not World1 then
+                                                                   
                                                                         page1:Toggle("Auto Leviathan", _G.TeleporttoSeaBeast, function(value)
                                                                             _G.TeleporttoSeaBeast = value
                                                                           if value == false then
@@ -6241,7 +6241,7 @@ end)
                                                                             end
                                                                         end)
                                                                         
-                                                                        if not World1 then
+                                                                       
                                                                             page1:Toggle("Teleport to Sea Beast",_G.TeleporttoSeaBeast, function(value)
                                                                                 _G.TeleporttoSeaBeast = value
                                                                                     if value == false then
@@ -6250,7 +6250,7 @@ end)
                                                                                         task.wait()
                                                                                     end
                                                                                 end)
-                                                                            end               
+                                                                                         
                                                                     page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
                                                                     _G.increaseboatspeed  = value
                                                                     end)
@@ -6266,7 +6266,7 @@ end)
                                                                         _G.autoSail = value
                                                                     end)
                                                                     else
-                                                                        if not World1 then
+                                                                        
                                                                             page1:Toggle("ออโต้เลวิธาน", _G.TeleporttoSeaBeast, function(value)
                                                                                 _G.TeleporttoSeaBeast = value
                                                                               if value == false then
@@ -6289,9 +6289,6 @@ end)
                                                                                       end)
                                                                                   end
                                                                               end)
-                                                                           
-                                                                            end
-                                                                            
                                                                         
                                                                            task.spawn(function()
                                                                                 while task.wait() do
@@ -6327,10 +6324,7 @@ end)
                                                                                     end
                                                                                 end
                                                                             end)
-                                                                              
-                                                                              
                                                                             
-                                                                            if not World1 then
                                                                                 page1:Toggle("เทเลพอร์ตไปหาเจ้าทะเล",_G.TeleporttoSeaBeast, function(value)
                                                                                     _G.TeleporttoSeaBeast = value
                                                                                         if value == false then
@@ -6353,7 +6347,6 @@ end)
                                                                                                 end)
                                                                                             end
                                                                                         end)
-                                                                                 end
                                                             
                                                                         page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
                                                                         _G.increaseboatspeed  = value
@@ -6385,7 +6378,7 @@ end)
                                                                             local delete = _G.deleterock
                                                                             while _G.deleterock do task.wait()
                                                                                 for i, v in pairs(game.Workspace:GetChildren()) do
-                                                                                    if v.Name == "MediumFlat" or v.Name == "Large" or v.Name == "Largest" or v.Name == "MediumGroup" or v.Name == "SmallCluster" or v.Name == "SmallGroup" or v.Name == "Largest"  then
+                                                                                    if v.Name == "Rock" or v.Name == "Rock1" or v.Name == "Rock2" or v.Name == "Rock3" or v.Name == "Rock4" or v.Name == "Rock5" or v.Name == "Rock6"  then
                                                                                         if delete then
                                                                                             v.CanCollide = false
                                                                                         end
@@ -6428,6 +6421,7 @@ end)
                                                                         end
                                                                    end 
                                                                 end
+                                                            
                                                                     page1:Line()
                                                                     if _G.Mode == "English" then
                                                                         page1:Toggle("Auto Holy Torch",  _G.AutoHolyTorch, function(value)
@@ -7230,7 +7224,7 @@ if _G.Mode == "English" then
     end)
 
 
-    page2:Toggle("Auto Haki", _true, function(value)
+    page2:Toggle("Auto Haki", true, function(value)
         _G.AutoHaki = value
     end)
 else
@@ -8327,11 +8321,11 @@ else
             end
         end)
         if _G.Mode == "English" then
-            page3:Toggle("Auto Superhuman", _G.AutoSuperhuman, function(value)
+            page3:Toggle("Auto Superhuman", false, function(value)
                 _G.AutoSuperhuman = value
             end)
         else
-            page3:Toggle("ออโต้หมัดชุปเปอร์ฮิวแมน",_G.AutoSuperhuman, function(value)
+            page3:Toggle("ออโต้หมัดชุปเปอร์ฮิวแมน",false, function(value)
                 _G.AutoSuperhuman = value
                 end)
             end
@@ -11458,27 +11452,103 @@ if _G.Mode == "English" then
     page9:Toggle("Auto Mirage Island [HOP]", _G.AutoMirageIslandHop, function(value)
         _G.MirageHop = value
         _G.AutoMirageIslandHop = value
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
+        if _G.MirageHop and not game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+            while _G.MirageHop do wait(5)
+            repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer
+            local HttpService, TPService = game:GetService "HttpService", game:GetService "TeleportService";
+            local OtherServers = HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/" ..
+                game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"))
+            function joinNew()
+                if not isfile('servers.sss') then
+                    writefile('servers.sss', HttpService:JSONEncode({}))
+                end
+                local dontJoin = readfile('servers.sss')
+                dontJoin = HttpService:JSONDecode(dontJoin)
+        
+                for Index, Server in next, OtherServers["data"] do
+                    if Server ~= game.JobId then
+                        local j = true
+                        for a, c in pairs(dontJoin) do
+                            if c == Server.id then
+                                j = false
+                            end
+                        end
+                        if j then
+                            table.insert(dontJoin, Server["id"])
+                            writefile("servers.sss", HttpService:JSONEncode(dontJoin))
+                            task.wait()
+                            return Server['id']
+                        end
+                    end
+                end
+            end
+        
+            local server = joinNew()
+            if not server then
+                writefile("servers.sss", HttpService:JSONEncode({}))
+                local server = joinNew()
+                TPService:TeleportToPlaceInstance(game.PlaceId, server)
+            else
+                TPService:TeleportToPlaceInstance(game.PlaceId, server)
+            end
+           end
+        else
+            toTarget(workspace.Map.MysticIsland.PrimaryPart.CFrame * CFrame.new(0, 300, 0))
+        end
+        
     end)
 else
-    page9:Toggle("Auto Mirage Island [HOP]", _G.AutoMirageIslandHop, function(value)
+    _G.Mode = "Thai"
+    page9:Toggle("ออโต้หาเกาะลับแบบย้ายเซิฟ", _G.AutoMirageIslandHop, function(value)
         _G.MirageHop = value
         _G.AutoMirageIslandHop = value
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "กำลังย้ายเซิฟ...",Icon = "rbxassetid://14645512457",Duration = 5})
+        if _G.MirageHop and not game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+            while _G.MirageHop do wait(5)
+            repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer
+            local HttpService, TPService = game:GetService "HttpService", game:GetService "TeleportService";
+            local OtherServers = HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/" ..
+                game.PlaceId .. "/servers/Public?sortOrder=Asc&limit=100"))
+            function joinNew()
+                if not isfile('servers.sss') then
+                    writefile('servers.sss', HttpService:JSONEncode({}))
+                end
+                local dontJoin = readfile('servers.sss')
+                dontJoin = HttpService:JSONDecode(dontJoin)
+        
+                for Index, Server in next, OtherServers["data"] do
+                    if Server ~= game.JobId then
+                        local j = true
+                        for a, c in pairs(dontJoin) do
+                            if c == Server.id then
+                                j = false
+                            end
+                        end
+                        if j then
+                            table.insert(dontJoin, Server["id"])
+                            writefile("servers.sss", HttpService:JSONEncode(dontJoin))
+                            task.wait()
+                            return Server['id']
+                        end
+                    end
+                end
+            end
+        
+            local server = joinNew()
+            if not server then
+                writefile("servers.sss", HttpService:JSONEncode({}))
+                local server = joinNew()
+                TPService:TeleportToPlaceInstance(game.PlaceId, server)
+            else
+                TPService:TeleportToPlaceInstance(game.PlaceId, server)
+            end
+           end
+        else
+            toTarget(workspace.Map.MysticIsland.PrimaryPart.CFrame * CFrame.new(0, 300, 0))
+        end
     end)
 end
-task.spawn(function()
-    if _G.MirageHop and not game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "กำลังย้ายเซิฟ...",Icon = "rbxassetid://14645512457",Duration = 5})
-        while _G.MirageHop and game:GetService("Players").LocalPlayer.Character and game:GetService("Players").LocalPlayer.Character.Parent == game.Workspace do
-            if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-                return
-            end
-            wait(5)
-            Hop()
-        end
-    else
-        toTarget(workspace.Map.MysticIsland.PrimaryPart.CFrame * CFrame.new(0, 300, 0))
-    end
-end)
     
 
 spawn(function()
@@ -12415,7 +12485,6 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         page12:Toggle("Infinities Energy", _G.InfinitiesEnergy, function(value)
             _G.InfinitiesEnergy = value
             InfinitiesEnergy()
-            SaveSettings()
         end)
     else
         _G.Mode = "Thai"
@@ -12460,4 +12529,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
             end
         end
     end)
-print(99999)
+print(213)
