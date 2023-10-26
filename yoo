@@ -6230,7 +6230,6 @@ if World1 then
                                                                               task.wait()
                                                                           end
                                                                         end)
-                                                                    
                                                                         
                                                                         page1:Toggle("Auto Event", _G.AutoEvent, function(value)
                                                                             _G.AutoEvent = value
@@ -6241,7 +6240,6 @@ if World1 then
                                                                             end
                                                                         end)
                                                                         
-                                                                        if not World1 then
                                                                             page1:Toggle("Teleport to Sea Beast",_G.TeleporttoSeaBeast, function(value)
                                                                                 _G.TeleporttoSeaBeast = value
                                                                                     if value == false then
@@ -6250,23 +6248,20 @@ if World1 then
                                                                                         task.wait()
                                                                                     end
                                                                                 end)
-                                                                            end               
+                                                                                         
                                                                     page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
                                                                     _G.increaseboatspeed  = value
                                                                     end)
                                                                     page1:Toggle("Delet All Rock",_G.deleterock, function(value)
                                                                     _G.deleterock = value
                                                                     end)
-                                                                    
                                                                       page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
                                                                       _G.TPTOBOAT = value
                                                                     end)
-                                                                    
                                                                     page1:Toggle("Auto Sail",_G.autoSail, function(value)
                                                                         _G.autoSail = value
                                                                     end)
                                                                     else
-                                                                        if not World1 then
                                                                             page1:Toggle("ออโต้เลวิธาน", _G.TeleporttoSeaBeast, function(value)
                                                                                 _G.TeleporttoSeaBeast = value
                                                                               if value == false then
@@ -6289,9 +6284,6 @@ if World1 then
                                                                                       end)
                                                                                   end
                                                                               end)
-                                                                           
-                                                                            end
-                                                                            
                                                                         
                                                                            task.spawn(function()
                                                                                 while task.wait() do
@@ -6328,9 +6320,6 @@ if World1 then
                                                                                 end
                                                                             end)
                                                                               
-                                                                              
-                                                                            
-                                                                            if not World1 then
                                                                                 page1:Toggle("เทเลพอร์ตไปหาเจ้าทะเล",_G.TeleporttoSeaBeast, function(value)
                                                                                     _G.TeleporttoSeaBeast = value
                                                                                         if value == false then
@@ -6353,15 +6342,14 @@ if World1 then
                                                                                                 end)
                                                                                             end
                                                                                         end)
-                                                                                 end
                                                             
                                                                         page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
                                                                         _G.increaseboatspeed  = value
                                                                         end)
 
-                                                                        task.spawn(function()
-                                                                        while task.wait() do
-                                                                        if _G.increaseboatspeed then
+                                                             task.spawn(function()
+                                                                while task.wait() do
+                                                                    if _G.increaseboatspeed then
                                                                         for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                                                                             if v:IsA("VehicleSeat")  then
                                                                               v.MaxSpeed = 350
@@ -6418,7 +6406,6 @@ if World1 then
                                                                         page1:Toggle("ออโต้ขับเรือ",_G.autoSail, function(value)
                                                                           _G.autoSail = value
                                                                         end)
-                                                                    end
                                                                 
                                                                     while task.IsLoadedwait() do
                                                                         if _G.autoSail then
@@ -7154,6 +7141,7 @@ coroutine.wrap(function()
 	while task.wait(0) do
 		local ac = CombatFrameworkR.activeController
 		if ac and ac.equipped then
+            task.wait(0.2)
 			if FastAttack or _G.FastAttack then
 				AttackFunction()
 				if _G.FastType == "Normal" then
@@ -11317,4 +11305,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print(444)
+print(121)
