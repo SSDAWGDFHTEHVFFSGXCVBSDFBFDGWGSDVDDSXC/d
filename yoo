@@ -6233,7 +6233,7 @@ if World1 then
                                                                                 end)
 
                                                                                 if _G.Mode == "English" then
-                                                                                    page1:Toggle("Auto Event",  _G.AutoEvent , function(value)
+                                                                                    page1:Toggle("Auto EventSea",  _G.AutoEvent , function(value)
                                                                                         _G.AutoEvent = value
                                                                                         if value == false then
                                                                                             task.wait()
@@ -6395,18 +6395,17 @@ if World1 then
                                                                                     
                                                                                     page1:Toggle("Auto Sail",_G.autoSail, function(value)
                                                                                         _G.autoSail = value
-                                                                                        while  _G.autoSai do task.wait()
+                                                                                        while wait() do
                                                                                             if _G.autoSail then
                                                                                                 keypress(0x57)
+                                                                                      elseif not _G.autoSail then
+                                                                                                 keyrelease(0x57)
                                                                                             end
-                                                                                        end
-                                                                                        if not _G.autoSail then
-                                                                                            keyrelease(0x57)
-                                                                                        end
+                                                                                       end 
                                                                                     end)
                                                                                     else
                                                                                         _G.Mode = "Thai"
-                                                                                        page1:Toggle("Auto Event",  _G.AutoEvent , function(value)
+                                                                                        page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
                                                                                             _G.AutoEvent = value
                                                                                             if value == false then
                                                                                                 task.wait()
@@ -6549,32 +6548,7 @@ if World1 then
                                                                                         end
                                                                                     end
                                                                                  end)
-                                                                                        function twoboat(gotoCFrame) --- Tween
-                                                                                            pcall(function()
-                                                                                                game.Players.LocalPlayer.Character.Humanoid.Sit = false
-                                                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
-                                                                                            end)
-                                                                                            if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 10 then
-                                                                                                pcall(function()
-                                                                                                    tweenz:Cancel()
-                                                                                                end)
-                                                                                                
-                                                                                            else
-                                                                                                local tween_s = game:service "TweenService"
-                                                                                                local info = TweenInfo.new(
-                                                                                                    (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position)
-                                                                                                    .Magnitude /
-                                                                                                    325, Enum.EasingStyle.Linear)
-                                                                                                tween, err = pcall(function()
-                                                                                                    tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
-                                                                                                    tweenz:Play()
-                                                                                                end)
-                                                                                                if not tween then return err end
-                                                                                            end
-                                                                                            function _TweenCanCle()
-                                                                                                tweenz:Cancel()
-                                                                                            end
-                                                                                          end
+                                                                                   
                                                                                           page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
                                                                                           _G.TPTOBOAT = value
                                                                                           while task.wait() do
@@ -6596,14 +6570,13 @@ if World1 then
                                                                                         
                                                                                         page1:Toggle("ออโต้ขับเรือ",_G.autoSail, function(value)
                                                                                           _G.autoSail = value
-                                                                                          while  _G.autoSai do task.wait()
-                                                                                              if _G.autoSail then
-                                                                                                  keypress(0x57)
-                                                                                              end
-                                                                                          end
-                                                                                          if not _G.autoSail then
-                                                                                              keyrelease(0x57)
-                                                                                          end
+                                                                                          while wait() do
+                                                                                            if _G.autoSail then
+                                                                                                keypress(0x57)
+                                                                                      elseif not _G.autoSail then
+                                                                                                 keyrelease(0x57)
+                                                                                                 end
+                                                                                       end 
                                                                                         end)
                                                                                     end
                                                                             page1:Line()
@@ -7332,7 +7305,7 @@ coroutine.wrap(function()
 	while task.wait(0) do
 		local ac = CombatFrameworkR.activeController
 		if ac and ac.equipped then
-            task.wait(0.2)
+            task.wait(0.002)
 			if FastAttack or _G.FastAttack then
 				AttackFunction()
 				if _G.FastType == "Normal" then
@@ -11496,4 +11469,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print("haha")
+print("Ezzz")
