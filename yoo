@@ -3846,7 +3846,7 @@ if _G.Mode == "English" then
             end
         end)
     end
-    page1:Toggle("Safe Mode", SafeMode, function(value)
+    page1:Toggle("เซฟโหมด", SafeMode, function(value)
         _G.SafeMode = value
         task.spawn(function()
             while _G.SafeMode do task.wait()
@@ -3868,7 +3868,7 @@ if _G.Mode == "English" then
             end
         end)
     else
-        page1:Toggle("ฟาร์มมอนรอบๆทดสอบไม่ใช้", _G.NeareastFarm, function(value)
+        page1:Toggle("ฟาร์มมอนรอบๆ", _G.NeareastFarm, function(value)
             _G.NeareastFarm = value
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -3898,7 +3898,7 @@ if _G.Mode == "English" then
                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                     StartMagnet = true
                                     FastAttack = true
-                                    totarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                     if not FastAttack then
                                     game:GetService 'VirtualUser':CaptureController()
                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -6438,10 +6438,6 @@ if World1 then
                                                                                           end
                                                                                       end
                                                                                     end)
-                                                                                    
-                                                                                    page1:Toggle("AutoSail",_G.autoSail, function(value)
-                                                                                        _G.autoSail = value
-                                                                                    end)
                                                                                     else
                                                                                         _G.Mode = "Thai"
                                                                                         page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
@@ -6606,22 +6602,6 @@ if World1 then
                                                                                               end
                                                                                           end
                                                                                         end)
-                                                                                        
-                                                                                        page1:Toggle("ออโต้ขับเรือ",_G.autoSail, function(value)
-                                                                                            _G.autoSail = value
-                                                                                        end)
-                                                                                    end
-                                                                                task.spawn(function()
-                                                                                    while wait() do
-                                                                                        pcall(function()
-                                                                                        if _G.autoSail then
-                                                                                            keypress(0x57)
-                                                                                  elseif not _G.autoSail then
-                                                                                             keyrelease(0x57)
-                                                                                          end
-                                                                                    end)
-                                                                                end
-                                                                            end)
 
                                                                         page1:Line()
                                                                     if _G.Mode == "English" then
@@ -6883,6 +6863,55 @@ if World1 then
                                                                                 task.wait()
                                                                                 two(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
                                                                                 task.wait()
+                                                                                task.spawn(function()
+                                                                                    while task.wait() do
+                                                                                        pcall(function()
+                                                                                            if _G.AutoFarmBone then
+                                                                                                if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
+                                                                                                    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                        if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+                                                                                                            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                                                                                                                repeat
+                                                                                                                    task.wait()
+                                                                                                                    StartMagnet = true
+                                                                                                                    FastAttack = true
+                                                                                                                    if _G.AutoHaki then
+                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+                                                                                                                                "Buso")
+                                                                                                                        end
+                                                                                                                    end
+                                                                                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(SelectWeapon) then
+                                                                                                                        task.wait()
+                                                                                                                        EquipWeapon(SelectWeapon)
+                                                                                                                    end
+                                                                                                                    PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                    if not _G.FastAttack then
+                                                                                                                        game:GetService 'VirtualUser':CaptureController()
+                                                                                                                        game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                    end
+                                                                                                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                                                                                    v.Humanoid.JumpPower = 0
+                                                                                                                    v.Humanoid.WalkSpeed = 0
+                                                                                                                    v.HumanoidRootPart.CanCollide = false
+                                                                                                                    v.Humanoid:ChangeState(11)
+                                                                                                                    v.Humanoid:ChangeState(14)
+                                                                                                                    v.Humanoid:ChangeState(16)
+                                                                                                                    v.HumanoidRootPart.CanCollide = false
+                                                                                                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                until not _G.AutoFarmBone or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
+                                                                                                                StartMagnet = false
+                                                                                                                FastAttack = false
+                                                                                                            end
+                                                                                                        end
+                                                                                                    end
+                                                                                                else
+                                                                                                    two(CFrame.new(-9504.8564453125, 172.14292907714844, 6057.259765625))
+                                                                                                end
+                                                                                            end
+                                                                                        end)
+                                                                                    end
+                                                                                end)
                                                                             end
                                                                         end)
                                                                         
@@ -6914,8 +6943,6 @@ if World1 then
                                                                                 task.wait()
                                                                                 two(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
                                                                                 task.wait()
-                                                                            end
-                                                                        end)
                                                                             task.spawn(function()
                                                                                 while task.wait() do
                                                                                     pcall(function()
@@ -6965,7 +6992,8 @@ if World1 then
                                                                                     end)
                                                                                 end
                                                                             end)
-                                                                        
+                                                                        end
+                                                                    end)
                                                                         page1:Toggle("ออโต้สุ่มกระดูก", _G.AutoRandomBone, function(value)
                                                                             _G.AutoRandomBone = value
                                                                         end)
@@ -6985,18 +7013,6 @@ if World1 then
                                                                                 task.wait()
                                                                                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
                                                                                 task.wait()
-                                                                            end
-                                                                        end)
-                                                                    else
-                                                                        page1:Toggle("ออโต้ฟาร์มบอสHallow", _G.AutoFarmBossHallow,function(value)
-                                                                            _G.AutoFarmBossHallow = value
-                                                                                if value == false then
-                                                                                    task.wait()
-                                                                                    toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                                                                                    task.wait()
-                                                                                end
-                                                                            end)
-                                                                        end
                                                                                 task.spawn(function()
                                                                                     while task.wait() do
                                                                                         pcall(function()
@@ -7041,6 +7057,63 @@ if World1 then
                                                                                         end)
                                                                                     end
                                                                                 end)
+                                                                            end
+                                                                        end)
+                                                                    else
+                                                                        page1:Toggle("ออโต้ฟาร์มบอสHallow", _G.AutoFarmBossHallow,function(value)
+                                                                            _G.AutoFarmBossHallow = value
+                                                                                if value == false then
+                                                                                    task.wait()
+                                                                                    toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                    task.wait()
+                                                                                    task.spawn(function()
+                                                                                        while task.wait() do
+                                                                                            pcall(function()
+                                                                                                if _G.AutoFarmBossHallow then
+                                                                                                    if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper") then
+                                                                                                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                            if string.find(v.Name , "Soul Reaper") then
+                                                                                                                repeat task.wait()
+                                                                                                                    StartMagnet = true
+                                                                                                                    FastAttack = true
+                                                                                                                    if _G.AutoHaki then
+                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                        end
+                                                                                                                    end
+                                                                                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                                                                        task.wait()
+                                                                                                                        EquipWeapon(_G.SelectWeapon)
+                                                                                                                    end
+                                                                                                                    PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                    if not _G.FastAttack then
+                                                                                                                        game:GetService'VirtualUser':CaptureController()
+                                                                                                                        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                    end
+                                                                                                                    v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                                                                                                    v.Humanoid.JumpPower = 0
+                                                                                                                    v.Humanoid.WalkSpeed = 0
+                                                                                                                    v.HumanoidRootPart.CanCollide = false
+                                                                                                                    v.Humanoid:ChangeState(11)
+                                                                                                                    v.Humanoid:ChangeState(14)
+                                                                                                                    v.Humanoid:ChangeState(16)
+                                                                                                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
+                                                                                                                StartMagnet = false
+                                                                                                                FastAttack = false
+                                                                                                            end
+                                                                                                        end
+                                                                                                    else
+                                                                                                        toTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
+                                                                                                    end
+                                                                                                end
+                                                                                            end)
+                                                                                        end
+                                                                                    end)
+                                                                                end
+                                                                            end)
+                                                                        end
+                                                                                
                                                                            
                                                                             if _G.Mode == "English" then
                                                                                 page1:Toggle("SpawnBossHallow", _G.SpawnBossHallow, function(value)
@@ -7060,35 +7133,173 @@ if World1 then
 
                                                                                 end)
                                                                             end
-                                                                            spawn(function()
-                                                                                while true do
-                                                                                    pcall(function()
-                                                                                        local cakeStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")
-                                                                        
-                                                                                        if string.len(cakeStatus) == 88 then
-                                                                                            MobKilledLabel:Set("Need Kill Mon : " .. string.sub(cakeStatus, 39, 41))
-                                                                                        elseif string.len(cakeStatus) == 87 then
-                                                                                            MobKilledLabel:Set("Need Kill Mon : " .. string.sub(cakeStatus, 39, 40))
-                                                                                        elseif string.len(cakeStatus) == 86 then
-                                                                                            MobKilledLabel:Set("Need Kill Mon : " .. string.sub(cakeStatus, 39, 39))
-                                                                                        else
-                                                                                            MobKilledLabel:Set("Boss Is Spawning")
-                                                                                        end
-                                                                                    end)
-                                                                        
-                                                                                    wait(0.5)
-                                                                                end
-                                                                            end)
+                                                                           
 
                                                                             if _G.Mode == "English" then
+                                                                                local MobKilledLabel = page1:Label("Need Kill Mon : Loading...", true)
+
+                                                                                spawn(function()
+                                                                                    while true do
+                                                                                        pcall(function()
+                                                                                            local cakeStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+
+                                                                                            if string.len(cakeStatus) == 88 then
+                                                                                                MobKilledLabel:Set("Need Kill Mon : " .. string.sub(cakeStatus, 39, 41))
+                                                                                            elseif string.len(cakeStatus) == 87 then
+                                                                                                MobKilledLabel:Set("Need Kill Mon : " .. string.sub(cakeStatus, 39, 40))
+                                                                                            elseif string.len(cakeStatus) == 86 then
+                                                                                                MobKilledLabel:Set("Need Kill Mon : " .. string.sub(cakeStatus, 39, 39))
+                                                                                            else
+                                                                                                MobKilledLabel:Set("Boss Is Spawning")
+                                                                                            end
+                                                                                        end)
+
+                                                                                        wait(0.5)
+                                                                                    end
+                                                                                end)
                                                                                 page1:Toggle("Auto Katakuri", _G.AutoCakePrince, function(value)
                                                                                     _G.AutoCakePrince = value
                                                                                     if value == false then
                                                                                         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
                                                                                     end
                                                                                     game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "OFF FASTTP",Icon = "rbxassetid://14645512457",Duration = 1})
+                                                                                    task.spawn(function()
+                                                                                        while task.wait() do
+                                                                                            if _G.AutoCakePrince then
+                                                                                                game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+                                                                                                if game.ReplicatedStorage:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
+                                                                                                    if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
+                                                                                                        for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                                                                                            if _G.AutoCakePrince and v.Name == "Cake Prince" and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                                                                                                                repeat
+                                                                                                                    task.wait()
+                                                                                                                    if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
+                                                                                                                        Farmtween = toTarget(v.HumanoidRootPart.CFrame)
+                                                                                                                    elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
+                                                                                                                        if Farmtween then
+                                                                                                                            Farmtween:Stop()
+                                                                                                                        end
+                                                                                                                        _G.FastType = "Normal"
+                                                                                                                        FastAttack = true
+                                                                                                                        if _G.AutoHaki then
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                            end
+                                                                                                                        end
+                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                                                                            task.wait()
+                                                                                                                            EquipWeapon(_G.SelectWeapon)
+                                                                                                                        end
+                                                                                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                        if not _G.FastAttack then
+                                                                                                                            game:GetService 'VirtualUser':CaptureController()
+                                                                                                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                        end
+                                                                                                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                                                                                        v.Humanoid.JumpPower = 0
+                                                                                                                        v.Humanoid.WalkSpeed = 0
+                                                                                                                        v.HumanoidRootPart.CanCollide = false
+                                                                                                                        v.Humanoid:ChangeState(11)
+                                                                                                                        v.Humanoid:ChangeState(14)
+                                                                                                                        v.Humanoid:ChangeState(16)
+                                                                                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                    end
+                                                                                                                until not _G.AutoCakePrince or not v.Parent or v.Humanoid.Health <= 0
+                                                                                                                FastAttack = false
+                                                                                                            end
+                                                                                                        end
+                                                                                                    else
+                                                                                                        if game:GetService("Workspace").Map.CakeLoaf.BigMirror.Other.Transparency == 0 and (CFrame.new(-1990.672607421875, 4532.99951171875, -14973.6748046875).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude >= 100 then -- 2000
+                                                                                                             FastAttack = false
+                                                                                                            Questtween = toTarget(CFrame.new(-2174.35546875, 69.97904968261719, -12396.609375))
+                                                                                                            if (CFrame.new(-2174.35546875, 69.97904968261719, -12396.609375).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
+                                                                                                                if Questtween then Questtween:Stop() end
+                                                                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2151.82153,149.315704, -12404.9053)
+                                                                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-2174.35546875,69.97904968261719, -12396.609375)
+                                                                                                                wait(.1)
+                                                                                                            end
+                                                                                                        end
+                                                                                                    end
+                                                                                                else
+                                                                                                    if game:GetService("Workspace").Enemies:FindFirstChild("Cookie Crafter") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Guard") or game:GetService("Workspace").Enemies:FindFirstChild("Baking Staff") or game:GetService("Workspace").Enemies:FindFirstChild("Head Baker") then
+                                                                                                        for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                                                                                            if (v.Name == "Cookie Crafter" or v.Name == "Cake Guard" or v.Name == "Baking Staff" or v.Name == "Head Baker") and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                                                                                                                repeat
+                                                                                                                    task.wait()
+                                                                                                                    if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300 then
+                                                                                                                        Farmtween = toTarget(v.HumanoidRootPart.CFrame)
+                                                                                                                    elseif (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
+                                                                                                                        if Farmtween then
+                                                                                                                            Farmtween:Stop()
+                                                                                                                        end
+                                                                                                                        _G.FastType "Fast"
+                                                                                                                        FastAttack = true
+                                                                                                                        StartMagnet = true
+                                                                                                                        if _G.AutoHaki then
+                                                                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                                                                            end
+                                                                                                                        end
+                                                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                                                                            task.wait()
+                                                                                                                            EquipWeapon(_G.SelecWeapon)
+                                                                                                                        end
+                                                                                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                                                                                        if not _G.FastAttack then
+                                                                                                                            game:GetService 'VirtualUser':CaptureController()
+                                                                                                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                                                                                        end
+                                                                                                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                                                                                        v.Humanoid.JumpPower = 0
+                                                                                                                        v.Humanoid.WalkSpeed = 0
+                                                                                                                        v.HumanoidRootPart.CanCollide = false
+                                                                                                                        v.Humanoid:ChangeState(11)
+                                                                                                                        v.Humanoid:ChangeState(14)
+                                                                                                                        v.Humanoid:ChangeState(16)
+                                                                                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                                                                                    end
+                                                                                                                until not _G.AutoCakePrince or not v.Parent or v.Humanoid.Health <= 0
+                                                                                                                StartMagnet = false
+                                                                                                                FastAttack = false
+                                                                                                            end
+                                                                                                        end
+                                                                                                    else
+                                                                                                        Questtween = toTarget(CFrame.new(-2079.6826171875, 227.9525909423828, -12321.923828125))
+                                                                                                        if (CFrame.new(-2079.6826171875, 227.9525909423828, -12321.923828125).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
+                                                                                                            if Questtween then Questtween:Stop() end
+                                                                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(
+                                                                                                                -2079.6826171875,
+                                                                                                                227.9525909423828, -12321.923828125)
+                                                                                                        end
+                                                                                                    end
+                                                                                                end
+                                                                                            else
+                                                                                                toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                                break
+                                                                                            end
+                                                                                        end
+                                                                                    end)
                                                                                 end)
                                                                             else
+                                                                                local MobKilledLabel = page1:Label("ต้องการฆ่า : Loading...", true)
+                                                                                spawn(function()
+                                                                                    while true do
+                                                                                        pcall(function()
+                                                                                            local cakeStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+                                                                                            if string.len(cakeStatus) == 88 then
+                                                                                                MobKilledLabel:Set("ต้องการฆ่า : " .. string.sub(cakeStatus, 39, 41))
+                                                                                            elseif string.len(cakeStatus) == 87 then
+                                                                                                MobKilledLabel:Set("ต้องการฆ่า : " .. string.sub(cakeStatus, 39, 40))
+                                                                                            elseif string.len(cakeStatus) == 86 then
+                                                                                                MobKilledLabel:Set("ต้องการฆ่า : " .. string.sub(cakeStatus, 39, 39))
+                                                                                            else
+                                                                                                MobKilledLabel:Set("บอสเกิดแล้ว")
+                                                                                            end
+                                                                                        end)
+                                                                            
+                                                                                        wait(0.5)
+                                                                                    end
+                                                                                end)
                                                                                 page1:Toggle("ออโต้บอสคาตาคุริ", _G.AutoCakePrince,function(value)
                                                                                     _G.AutoCakePrince = value
                                                                                         if value == false then
@@ -7096,9 +7307,6 @@ if World1 then
                                                                                         end
                                                                                        
                                                                                         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "ปิดวาร์ปเร็ว",Icon = "rbxassetid://14645512457",Duration = 1})
-                                                                            
-                                                                                    end)
-                                                                                end
                                                                                         task.spawn(function()
                                                                                             while task.wait() do
                                                                                                 if _G.AutoCakePrince then
@@ -7215,6 +7423,9 @@ if World1 then
                                                                                                 end
                                                                                             end
                                                                                         end)
+                                                                                    end)
+                                                                                end
+                                                                                        
                                                                                    
                                                                                         if _G.Mode == "English" then
                                                                                             page1:Label("Farm Materail")
@@ -7229,22 +7440,8 @@ if World1 then
                                                                                             page1:Toggle("Auto Farm Material", AutoFarmMaterial, function(x)
                                                                                                 AutoFarmMaterial = x
                                                                                                 if x == false then
-                                                                                                    toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.Position,
-                                                                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-                                                                                                end
-                                                                                            end)
-                                                                                        else
-                                                                                            page1:Dropdown("เลือกวัสดุ",AllMaterial, function(value)
-                                                                                                SelectModeMaterial = value
-                                                                                            end)
-                                                                                        
-                                                                                            page1:Toggle("ออโต้ฟาร์มวัสดุ", AutoFarmMaterial, function(x)
-                                                                                                AutoFarmMaterial = x
-                                                                                                if x == false then
                                                                                                     toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.Position,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
                                                                                                 end
-                                                                                            end)
-                                                                                        end
                                                                                                 task.spawn(function()
                                                                                                     while task.wait() do
                                                                                                         if AutoFarmMaterial then
@@ -7319,6 +7516,94 @@ if World1 then
                                                                                                         end
                                                                                                     end
                                                                                                 end)
+                                                                                            end)
+                                                                                        else
+                                                                                            page1:Dropdown("เลือกวัสดุ",AllMaterial, function(value)
+                                                                                                SelectModeMaterial = value
+                                                                                            end)
+                                                                                        
+                                                                                            page1:Toggle("ออโต้ฟาร์มวัสดุ", AutoFarmMaterial, function(x)
+                                                                                                AutoFarmMaterial = x
+                                                                                                if x == false then
+                                                                                                    toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.Position,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+                                                                                                end
+                                                                                                task.spawn(function()
+                                                                                                    while task.wait() do
+                                                                                                        if AutoFarmMaterial then
+                                                                                                            xpcall(function()
+                                                                                                                if (SelectModeMaterial ~= "") then
+                                                                                                                    CheckMaterial(SelectModeMaterial);
+                                                                                                                    if CustomFindFirstChild(MaterialMob) then
+                                                                                                                        for v0, v1 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                            if (AutoFarmMaterial and table.find(MaterialMob, v1.Name) and v1:FindFirstChild("HumanoidRootPart") and v1:FindFirstChild("Humanoid") and (v1.Humanoid.Health > 0)) then
+                                                                                                                                repeat
+                                                                                                                                    task.wait();
+                                                                                                                                    FarmtoTarget = toTarget(v1.HumanoidRootPart.CFrame * CFrame.new(0, 30, 1));
+                                                                                                                                    if (v1:FindFirstChild("HumanoidRootPart") and v1:FindFirstChild("Humanoid") and ((v1.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150)) then
+                                                                                                                                        if FarmtoTarget then FarmtoTarget:Stop(); end
+                                                                                                                                        FastAttack = true;
+                                                                                                                                        EquipWeapon(_G.SelectWeapon);
+                                                                                                                                        spawn(function()
+                                                                                                                                            for v4, v5 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                                                                                                                if (v5.Name == v1.Name) then
+                                                                                                                                                    spawn(function()
+                                                                                                                                                        if InMyNetWork(v5.HumanoidRootPart) then
+                                                                                                                                                            v5.HumanoidRootPart.CFrame = v1.HumanoidRootPart.CFrame;
+                                                                                                                                                            v5.Humanoid.JumpPower = 0;
+                                                                                                                                                            v5.Humanoid.WalkSpeed = 0;
+                                                                                                                                                            v5.HumanoidRootPart.CanCollide = false;
+                                                                                                                                                            v5.Humanoid:ChangeState(14);
+                                                                                                                                                            v5.Humanoid:ChangeState(16);
+                                                                                                                                                            v5.Humanoid:ChangeState(11);
+                                                                                                                                                            v5.HumanoidRootPart.Size = Vector3.new(55, 55, 55);
+                                                                                                                                                        end
+                                                                                                                                                    end);
+                                                                                                                                                end
+                                                                                                                                            end
+                                                                                                                                        end);
+                                                                                                                                        if (game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and (game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150)) then
+                                                                                                                                            game:service("VirtualInputManager"):SendKeyEvent(true, "V", false,game);
+                                                                                                                                            game:service("VirtualInputManager"):SendKeyEvent(false, "V",false, game);
+                                                                                                                                        end
+                                                                                                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v1.HumanoidRootPart.CFrame * CFrame.new(0, 30, 1);
+                                                                                                                                    end
+                                                                                                                                until not CustomFindFirstChild(MaterialMob) or not AutoFarmMaterial or (v1.Humanoid.Health <= 0) or not v1.Parent
+                                                                                                                                FastAttack = false;
+                                                                                                                            end
+                                                                                                                        end
+                                                                                                                    else
+                                                                                                                        FastAttack = false;
+                                                                                                                        Modstween = toTarget(CFrameMon);
+                                                                                                                        if (World1 and (table.find(MaterialMob, "Fishman Commando")) and ((CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000)) then
+                                                                                                                            if Modstween then Modstween:Stop(); end
+                                                                                                                            wait(0.5); game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+                                                                                                                                "requestEntrance", Vector3.new(61163.8515625, 11.6796875, 1819.7841796875));
+                                                                                                                        elseif (World1 and not (table.find(MaterialMob, "Fishman Commando")) and ((CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000)) then
+                                                                                                                            if Modstween then Modstween:Stop(); end
+                                                                                                                            wait(0.5); game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+                                                                                                                                "requestEntrance", Vector3.new(3864.8515625, 6.6796875, -1926.7841796875));
+                                                                                                                        elseif (World1 and (table.find(MaterialMob, "God's Guard")) and ((CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 3000)) then
+                                                                                                                            if Modstween then Modstween:Stop(); end
+                                                                                                                            wait(0.5); game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
+                                                                                                                                "requestEntrance",
+                                                                                                                                Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656));
+                                                                                                                        elseif ((CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150) then
+                                                                                                                            if Modstween then Modstween:Stop(); end
+                                                                                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
+                                                                                                                        end
+                                                                                                                    end
+                                                                                                                end
+                                                                                                            end, function(x)
+                                                                                                                print("Auto Farm Material Error : " .. x)
+                                                                                                            end)
+                                                                                                        else
+                                                                                                            break;
+                                                                                                        end
+                                                                                                    end
+                                                                                                end)
+                                                                                            end)
+                                                                                        end
+                                                                                                
                                                                                            
 if _G.Mode == "English" then
     page2:Seperator("Settings")
@@ -8238,9 +8523,6 @@ else
                                                         for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
                                                             if v.Name == "Cyborg" or v.Name == "The Gorilla King" or v.Name == "Wysper" or v.Name == "Thunder God" or v.Name == "Mob Leader" or v.Name == "Bobby" or v.Name == "Saber Expert" or v.Name == "Warden" or v.Name == "Chief Warden" or v.Name == "Swan" or v.Name == "Magma Admiral"  or v.Name == "Fishman Lord" or v.Name == "Wysper" or v.Name == "Ice Admiral" or v.Name == "Diamond" or v.Name == "Jeremy" or v.Name == "Fajita" or v.Name == "Don Swan" or v.Name == "Smoke Admiral" or v.Name == "Awakened Ice Admiral" or v.Name == "Tide Keeper" or v.Name == "Darkbeard" or v.Name == "Stone" or v.Name == "Island Empress" or v.Name == "Kilo Admiral" or v.Name == "Captain Elephant" or v.Name == "Beautiful Pirate" or v.Name == "Longma" or v.Name == "Cake Queen" or v.Name == "Greybeard" or v.Name == "Order" or v.Name == "Cursed Captain" or v.Name == "Soul Reaper" or v.Name == "Rip indra" or v.Name == "Mihawk Boss" or v.Name == "Cake Prince" or v.Name == "Dough King" or v.Name == "Cursed Skeleton Boss" or v.Name == "Factory" 
                                                             then
-                                                                table.insert(Boss, v.Name)
-                                                                BossName:Add(v.Name) 
-                                                            else
                                                                 table.insert(Boss, v.Name)
                                                                 BossName:Add(v.Name) 
                                                             end
@@ -11523,4 +11805,4 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         end
     end)
 end
-print(525)
+print(1111)
