@@ -7414,7 +7414,7 @@ do
                                                             if Farmtween then
                                                                 Farmtween:Stop()
                                                             end
-                                                            if _G.AutoCakePrince then
+                                                            if _G.AutoCakePrince  and game.ReplicatedStorage:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
                                                                 _G.FastType = "Normal"
                                                             else
                                                                 _G.FastType = "Fast"
@@ -7471,6 +7471,7 @@ do
                                                             if Farmtween then
                                                                 Farmtween:Stop()
                                                             end
+                                                            _G.FastType = "Fast"
                                                             FastAttack = true
                                                             StartMagnet = true
                                                             if _G.AutoHaki then
@@ -14478,4 +14479,4 @@ end
         end
     end
     end)
-print("Fastete")
+print("Kuy")
