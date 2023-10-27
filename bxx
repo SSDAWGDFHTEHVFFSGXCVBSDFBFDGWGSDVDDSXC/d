@@ -3821,6 +3821,7 @@ end
 if _G.Mode == "English" then
 page12 = Library:Tab("Misc")
 else
+_G.Mode == "Thai"
 page12 = Library:Tab("อื่นๆ")
 end   
 if _G.Mode == "English" then
@@ -3851,7 +3852,7 @@ page1:Toggle("Safe Mode", false, function(value)
     end
 end)
 end)    
-else
+elseif _G.Mode = "Thai" then
 page1:Toggle("ออโต้ฟาร์มเลเวล", false, function(value)
     _G.AutoFarm = value
     _G.DoubleQuest = value
@@ -7095,7 +7096,6 @@ end
 if _G.Mode == "English" then
     local count_number = 0
     local count_stack = page1:Label('Bone : ' .. count_number, true)
-if World3 then
     spawn(function()
         while true do
             local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
@@ -7104,8 +7104,6 @@ if World3 then
         end
     end)
 end
-
-
     page1:Toggle("Auto Farm Bone", _G.AutoFarmBone , function(value)
         _G.AutoFarmBone  = value
         if value == false then
@@ -7164,10 +7162,8 @@ end
         _G.AutoRandomBone = value
     end)
 else
-    _G.Mode = "Thai"
     local count_number = 0
     local count_stack = page1:Label('กระดูก : ' .. count_number, true)
-if World3 then 
     spawn(function()
         while task.wait() do
             local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
