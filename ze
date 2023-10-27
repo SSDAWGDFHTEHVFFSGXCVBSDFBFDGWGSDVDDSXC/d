@@ -3911,6 +3911,9 @@ do
                                 v.Humanoid.WalkSpeed = 0
                                 v.Head.CanCollide = false
                                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                v.Humanoid:ChangeState(11)
+                                v.Humanoid:ChangeState(14)
+                                v.Humanoid:ChangeState(16)
                                 StartMagnet = true
                                 FastAttack = true
                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
@@ -7099,17 +7102,13 @@ do
     if _G.Mode == "English" then
         local count_number = 0
         local count_stack = page1:Label('Bone : ' .. count_number, true)
-    
         spawn(function()
             while true do
                 local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
                 count_stack:Set('Bone : ' .. boneStatus)
-                wait(1) -- รอ 1 วินาที ก่อนที่จะทำการอัปเดตอีกครั้ง
+                wait(1)
             end
         end)
-    
-    
-    
         page1:Toggle("Auto Farm Bone", _G.AutoFarmBone , function(value)
             _G.AutoFarmBone  = value
             if value == false then
@@ -7171,12 +7170,11 @@ do
         _G.Mode = "Thai"
         local count_number = 0
         local count_stack = page1:Label('กระดูก : ' .. count_number, true)
-    
         spawn(function()
             while task.wait() do
                 local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
                 count_stack:Set('Bone : ' .. boneStatus)
-                wait(1) -- รอ 1 วินาที ก่อนที่จะทำการอัปเดตอีกครั้ง
+                wait(1) 
             end
         end)
     
@@ -7868,7 +7866,7 @@ end
     while task.wait(0) do
     local ac = CombatFrameworkR.activeController
     if ac and ac.equipped then
-        task.wait(0.03)
+        task.wait(0.09)
         if FastAttack or _G.FastAttack then
             AttackFunction()
             if _G.FastType == "Normal" then
@@ -14480,3 +14478,4 @@ end
         end
     end
     end)
+print("Fast")
