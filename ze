@@ -1,3 +1,4 @@
+print(1)
 do
 local ui = game:GetService("CoreGui").RobloxGui.Modules.Profile:FindFirstChild("UILibrary")
 if ui then ui:Destroy() end
@@ -3836,21 +3837,7 @@ page1:Toggle("Auto Farm Level", false, function(value)
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
-end)
-page1:Toggle("Safe Mode", false, function(value)
-    _G.SafeMode = value
-        task.spawn(function()
-    while _G.SafeMode do task.wait()
-        if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
-            local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
-            if HealthPercent < 20 then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
-            end
-        end
-        task.wait()
-    end
-end)
-end)    
+end)  
 else
 page1:Toggle("ออโต้ฟาร์มเลเวล", false, function(value)
     _G.AutoFarm = value
@@ -3861,20 +3848,37 @@ page1:Toggle("ออโต้ฟาร์มเลเวล", false, function(va
     end
 end)
 end
-page1:Toggle("เซฟโหมด", SafeMode, function(value)
-_G.SafeMode = value
-task.spawn(function()
-    while _G.SafeMode do task.wait()
-        if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
-            local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
-            if HealthPercent < 20 then
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
+if _G.Mode == "English" then
+    page1:Toggle("SafeMode", SafeMode, function(value)
+        _G.SafeMode = value
+        task.spawn(function()
+            while _G.SafeMode do task.wait()
+                if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+                    local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
+                    if HealthPercent < 20 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
+                    end
+                end
+                task.wait()
             end
+        end)
+        end)
+    else
+        page1:Toggle("เซฟโหมด", SafeMode, function(value)
+            _G.SafeMode = value
+            task.spawn(function()
+                while _G.SafeMode do task.wait()
+                    if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
+                        local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
+                        if HealthPercent < 20 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
+                        end
+                    end
+                    task.wait()
+                end
+            end)
+            end)
         end
-        task.wait()
-    end
-end)
-end)
 if _G.Mode == "English" then
 page1:Toggle("Auto Farm Nearest", _G.NeareastFarm, function(value)
     _G.NeareastFarm = value
@@ -6801,6 +6805,7 @@ else
                             end
                         end
                     end)
+                end
 
     page1:Line()
 if _G.Mode == "English" then
