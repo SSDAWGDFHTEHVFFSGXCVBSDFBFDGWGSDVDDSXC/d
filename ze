@@ -3821,7 +3821,6 @@ end
 if _G.Mode == "English" then
 page12 = Library:Tab("Misc")
 else
-_G.Mode == "Thai"
 page12 = Library:Tab("อื่นๆ")
 end   
 if _G.Mode == "English" then
@@ -10655,7 +10654,7 @@ else
         end)
     end
     if _G.Mode == "English" then
-        page3:Toggle("Auto Dragon Talon", _G.AutoDragonTalon, function(value)
+        page3:Toggle("Auto Dragon Talon",  _G.AutoDragonTalon , function(value)
             _G.AutoDragonTalon = value
             SaveSettings()
             if _G.AutoDragonTalon then
@@ -14485,4 +14484,3 @@ while task.wait() do
     end
 end
 end)
-print("test")
