@@ -6686,6 +6686,12 @@ if _G.Mode == "English" then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
     end)
+    page1:Toggle("Auto CastleRaid", _G.AutoCastleRaid, function(value)
+        _G.AutoCastleRaid = value
+        if value == false then
+            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+        end
+    end)
 else
     page1:Toggle("ออโต้จุดโคมไฟ", _G.AutoHolyTorch, function(value)
         _G.AutoHolyTorch = value
@@ -6694,7 +6700,15 @@ else
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
     end)
+    page1:Toggle("ออโต้ตีโจรเกาะกลาง", _G.AutoCastleRaid, function(value)
+        _G.AutoCastleRaid = value
+        if value == false then
+            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+        end
+    end)
 end
+
+
         
         task.spawn(function()
             while task.wait() do
@@ -6730,6 +6744,42 @@ end
             end
         end)
     
+        spawn(function()
+			while wait() do
+				pcall(function()
+					if _G.AutoCastleRaid then
+						if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
+							for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+								if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
+									repeat wait()
+										PosMon = v.HumanoidRootPart.CFrame
+										EquipWeapon(_G.SelectWeapon)
+										v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
+										StartMagnet = true
+										toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+										if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+											game:GetService("VirtualUser"):CaptureController()
+											game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+										end
+									until not _G.AutoCastleRaid or not v.Parent or v.Humanoid.Health <= 0
+									StartMagnet = false
+								end
+							end
+						else
+							if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
+								for i,v in pairs(game.ReplicatedStorage:GetChildren()) do
+									if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
+                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+									end
+								end
+							end
+							toTarget(CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125))
+						end
+					end
+				end)  
+			end
+		end)
+
         if World3 then
             local Elite_Hunter_Status = page1:Label("Status : N/Q")
             if _G.Mode == "English" then
@@ -6943,7 +6993,7 @@ end
                         if _G.AutoFarmBone then
                             if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
                                 for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                    if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+                                    if string.find(v.Name, "Reborn Skeleton") or string.find(v.Name, "Living Zombie") or string.find(v.Name, "Demonic Soul") or string.find(v.Name, "Posessed Mummy") then
                                         if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                             repeat
                                                 task.wait()
@@ -6951,8 +7001,7 @@ end
                                                 FastAttack = true
                                                 if _G.AutoHaki then
                                                     if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
-                                                            "Buso")
+                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                     end
                                                 end
                                                 if not game.Players.LocalPlayer.Character:FindFirstChild(SelectWeapon) then
@@ -7023,7 +7072,7 @@ end
                     if _G.AutoFarmBone then
                         if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
                             for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+                                if string.find(v.Name, "Reborn Skeleton") or string.find(v.Name, "Living Zombie") or string.find(v.Name, "Demonic Soul") or string.find(v.Name, "Posessed Mummy") then
                                     if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                         repeat
                                             task.wait()
@@ -10014,25 +10063,23 @@ while task.wait() do
 end
 end)
 
+
 spawn(function()
-while task.wait() do
-    if _G.KillAura then
-        for i, v in pairs(game.Workspace.Enemies:GetDescendants()) do
-            if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
-                pcall(function()
-                    repeat
-                        task.wait(.1)
-                        v.Humanoid.Health = 0
-                        v.HumanoidRootPart.CanCollide = false
-                        v.HumanoidRootPart.Size = Vector3.new(50, 50, 50)
-                        v.HumanoidRootPart.Transparency = 0.8
-                        sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                    until not _G.KillAura or not _G.AutoRaids or not RaidSuperhuman or not v.Parent or v.Humanoid.Health <= 0
-                end)
+    while wait() do
+        if _G.KillAura then
+            for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
+                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+                    pcall(function()
+                        repeat wait(.1)
+                            v.Humanoid.Health = 0
+                            v.HumanoidRootPart.CanCollide = false
+                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                        until not _G.KillAura  or not v.Parent or v.Humanoid.Health <= 0
+                    end)
+                end
             end
         end
     end
-end
 end)
 
 spawn(function()
@@ -11864,4 +11911,4 @@ while task.wait() do
 end
 end)
 end
-print("Bringmon")
+print("Bone/killaura")
