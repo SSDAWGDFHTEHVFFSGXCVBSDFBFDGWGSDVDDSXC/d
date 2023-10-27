@@ -5353,7 +5353,7 @@ end
                         end)
                     end)
             else
-                page1:Toggle("Auto EvoRaceV2",_G.Auto_Evo_Race_V2,function(value)
+                page1:Toggle("ออโต้อีโวเผ่าขั้นสอง",_G.Auto_Evo_Race_V2,function(value)
                     _G.Auto_Evo_Race_V2 = value
                     spawn(function()
                         while wait() do
@@ -12020,6 +12020,7 @@ page12:Toggle("ลบหมอก", _G.NoFog, function(value)
     end
 end)
 end
+game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Loadsucces",Icon = "rbxassetid://14645512457",Duration = 3})
 _G.AutoRejoin = true
 spawn(function()
 while task.wait() do
@@ -12032,4 +12033,3 @@ while task.wait() do
     end
 end
 end)
-print("VectorHub : LoadSucces")
