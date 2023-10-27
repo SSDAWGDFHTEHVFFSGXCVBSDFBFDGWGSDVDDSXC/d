@@ -6981,20 +6981,21 @@ if World3 then
 end
 
 
-page1:Toggle("Auto Farm Bone", _G.AutoFarmBone, function(value)
-    _G.AutoFarmBone = value
-    if value == false then
-        task.wait()
-        two(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-        task.wait()
+    page1:Toggle("Auto Farm Bone", _G.AutoFarmBone , function(value)
+        _G.AutoFarmBone  = value
+        if value == false then
+            task.wait()
+            two(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+            task.wait()
+        end
         task.spawn(function()
             while task.wait() do
                 pcall(function()
-                    if _G.AutoFarmBone then
+                    if _G.AutoFarmBone  then
                         if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
                             for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                if string.find(v.Name, "Reborn") or string.find(v.Name, "Living") or string.find(v.Name, "Demonic") or string.find(v.Name, "Posessed") then
-                                    if v.Humanoid.Health > 0 then
+                                if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                         repeat
                                             task.wait()
                                             StartMagnet = true
@@ -7004,24 +7005,23 @@ page1:Toggle("Auto Farm Bone", _G.AutoFarmBone, function(value)
                                                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                 end
                                             end
-                                            if not game.Players.LocalPlayer.Character:FindFirstChild(SelectWeapon) then
+                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
                                                 task.wait()
-                                                EquipWeapon(SelectWeapon)
+                                                EquipWeapon(_G.SelectWeapon)
                                             end
                                             PosMon = v.HumanoidRootPart.CFrame
                                             if not _G.FastAttack then
                                                 game:GetService 'VirtualUser':CaptureController()
                                                 game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                             end
-                                            v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                            v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                            v.HumanoidRootPart.Transparency = 1
                                             v.Humanoid.JumpPower = 0
                                             v.Humanoid.WalkSpeed = 0
-                                            v.Humanoid:ChangeState(11)
-                                            v.Humanoid:ChangeState(14)
-                                            v.Humanoid:ChangeState(16)
                                             v.HumanoidRootPart.CanCollide = false
+                                            v.Humanoid:ChangeState(11)
                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                        until not _G.AutoFarmBone or v.Humanoid.Health <= 0 
+                                        until not _G.AutoFarmBone  or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
                                         StartMagnet = false
                                         FastAttack = false
                                     end
@@ -7034,9 +7034,7 @@ page1:Toggle("Auto Farm Bone", _G.AutoFarmBone, function(value)
                 end)
             end
         end)
-    end
-end)
-    
+    end)
 
 
 
@@ -7044,6 +7042,7 @@ end)
         _G.AutoRandomBone = value
     end)
 else
+    _G.Mode = "Thai"
     local count_number = 0
     local count_stack = page1:Label('กระดูก : ' .. count_number, true)
 if World3 then 
@@ -7059,20 +7058,21 @@ end
 
 
 
-page1:Toggle("Auto Farm Bone", _G.AutoFarmBone, function(value)
-    _G.AutoFarmBone = value
-    if value == false then
-        task.wait()
-        two(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-        task.wait()
+    page1:Toggle("ออโต้ฟาร์มกระดูก", _G.AutoFarmBone , function(value)
+        _G.AutoFarmBone  = value
+        if value == false then
+            task.wait()
+            two(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+            task.wait()
+        end
         task.spawn(function()
             while task.wait() do
                 pcall(function()
-                    if _G.AutoFarmBone then
+                    if _G.AutoFarmBone  then
                         if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
                             for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                if string.find(v.Name, "Reborn") or string.find(v.Name, "Living") or string.find(v.Name, "Demonic") or string.find(v.Name, "Posessed") then
-                                    if v.Humanoid.Health > 0 then
+                                if v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy" then
+                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
                                         repeat
                                             task.wait()
                                             StartMagnet = true
@@ -7082,24 +7082,23 @@ page1:Toggle("Auto Farm Bone", _G.AutoFarmBone, function(value)
                                                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                 end
                                             end
-                                            if not game.Players.LocalPlayer.Character:FindFirstChild(SelectWeapon) then
+                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
                                                 task.wait()
-                                                EquipWeapon(SelectWeapon)
+                                                EquipWeapon(_G.SelectWeapon)
                                             end
                                             PosMon = v.HumanoidRootPart.CFrame
                                             if not _G.FastAttack then
                                                 game:GetService 'VirtualUser':CaptureController()
                                                 game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                             end
-                                            v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                            v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
+                                            v.HumanoidRootPart.Transparency = 1
                                             v.Humanoid.JumpPower = 0
                                             v.Humanoid.WalkSpeed = 0
-                                            v.Humanoid:ChangeState(11)
-                                            v.Humanoid:ChangeState(14)
-                                            v.Humanoid:ChangeState(16)
                                             v.HumanoidRootPart.CanCollide = false
+                                            v.Humanoid:ChangeState(11)
                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                        until not _G.AutoFarmBone or v.Humanoid.Health <= 0 
+                                        until not _G.AutoFarmBone  or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
                                         StartMagnet = false
                                         FastAttack = false
                                     end
@@ -7112,12 +7111,13 @@ page1:Toggle("Auto Farm Bone", _G.AutoFarmBone, function(value)
                 end)
             end
         end)
-    end
-end)
+    end)
     page1:Toggle("ออโต้สุ่มกระดูก", _G.AutoRandomBone, function(value)
         _G.AutoRandomBone = value
     end)
 end
+
+
 spawn(function()
     while wait(.1) do
         if _G.AutoRandomBone then
@@ -11908,4 +11908,4 @@ while task.wait() do
 end
 end)
 end
-print(22)
+print("testboe")
