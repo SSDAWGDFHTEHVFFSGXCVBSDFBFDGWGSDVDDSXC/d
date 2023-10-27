@@ -6903,7 +6903,7 @@ end
 			end
 		end)
 
-        if World3 then
+       
             local Elite_Hunter_Status = page1:Label("Status : N/Q")
             if _G.Mode == "English" then
                 spawn(function()
@@ -7087,13 +7087,12 @@ end
                             wait(5)
                 Teleport()
             end
-        end
     end
 end
 if _G.Mode == "English" then
     local count_number = 0
     local count_stack = page1:Label('Bone : ' .. count_number, true)
-if World3 then
+
     spawn(function()
         while true do
             local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
@@ -7101,7 +7100,7 @@ if World3 then
             wait(1) -- รอ 1 วินาที ก่อนที่จะทำการอัปเดตอีกครั้ง
         end
     end)
-end
+
 
 
     page1:Toggle("Auto Farm Bone", _G.AutoFarmBone , function(value)
@@ -7165,7 +7164,7 @@ else
     _G.Mode = "Thai"
     local count_number = 0
     local count_stack = page1:Label('กระดูก : ' .. count_number, true)
-if World3 then 
+
     spawn(function()
         while task.wait() do
             local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
@@ -7173,7 +7172,7 @@ if World3 then
             wait(1) -- รอ 1 วินาที ก่อนที่จะทำการอัปเดตอีกครั้ง
         end
     end)
-end
+
     page1:Toggle("ออโต้ฟาร์มกระดูก", _G.AutoFarmBone , function(value)
         _G.AutoFarmBone  = value
         if value == false then
@@ -7821,7 +7820,6 @@ task.spawn(function()
 end)
 end)
 end
-end       
 end                                                                                  
 if _G.Mode == "English" then
 page2:Seperator("Settings")
@@ -14482,4 +14480,4 @@ while task.wait() do
     end
 end
 end)
-print("kuy")
+print(111111111)
