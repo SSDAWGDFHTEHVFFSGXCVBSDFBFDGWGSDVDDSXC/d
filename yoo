@@ -7640,9 +7640,9 @@ if ac and ac.equipped then
         elseif _G.FastType == "Slow" then
             if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
         end
-            end
-        end
     end
+end
+end
 end)()
 _G.FastType = "Fast"
 Weapon = {
@@ -11769,16 +11769,16 @@ page12:Toggle("ลบหมอก", _G.NoFog, function(value)
 end)
 end
 _G.AutoRejoin = true
-spawn(function()
-while task.wait() do
-    if _G.AutoRejoin  then
-        _G.AutoRejoin  = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-                if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-                game:GetService("TeleportService"):Teleport(game.PlaceId)
+    spawn(function()
+        while task.wait() do
+            if _G.AutoRejoin  then
+                _G.AutoRejoin  = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+                        if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+                        game:GetService("TeleportService"):Teleport(game.PlaceId)
+                        end
+                    end)
+                end
             end
         end)
     end
-end
-end)
-end
-prin("Bring|Killaura|Fast")
+print(21122)
