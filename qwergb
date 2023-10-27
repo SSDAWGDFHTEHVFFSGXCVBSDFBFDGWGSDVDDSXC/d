@@ -12,22 +12,39 @@ local PlaceName = game:GetService("MarketplaceService"):GetProductInfo(game.Plac
 do local GUI = game:GetService("CoreGui").RobloxGui.Modules.Profile:FindFirstChild("VectorHub");if GUI then GUI:Destroy();end;
 end
 
+local Toggle = script.Parent
+local Hub = Instance.new("TextLabel")
+local Name = Instance.new("TextLabel")
+local BindButton = Instance.new("TextButton")
+local TabButton = Instance.new("TextButton")
+local Button = Instance.new("Frame")
+local Slider = Instance.new("Frame")
+local bar1 = Instance.new("Frame")
+local slidervalue = Instance.new("Frame")
+local Textbox = Instance.new("Frame")
+local Sep1 = Instance.new("Frame")
+local Sep3 = Instance.new("Frame")
+local Line = Instance.new("Frame")
+local function SetColor()
+    local hue = math.random(0, 360)
 
-local function RandomizeColor()
-    local r = math.random(0, 255)
-    local g = math.random(0, 255)
-    local b = math.random(0, 255)
-
-    _G.ColorRgb = Color3.fromRGB(r, g, b)
+    Toggle.BackgroundColor3 = Color3.fromHSV(hue, 1, 1)
+	Hub.TextColor3 = Color3.fromHSV(hue, 1, 1) 
+	Line.BackgroundColor3 = Color3.fromHSV(hue, 1, 1) 
+	Sep3.BackgroundColor3 = Color3.fromHSV(hue, 1, 1) 
+	Sep1.BackgroundColor3 = Color3.fromHSV(hue, 1, 1) 
+	Textbox.BackgroundColor3 = Color3.fromHSV(hue, 1, 1) 
+	slidervalue.BackgroundColor3 = Color3.fromHSV(hue, 1, 1) 
+	bar1.BackgroundColor3 =  Color3.fromHSV(hue, 1, 1) 
+	Slider.BackgroundColor3 = Color3.fromHSV(hue, 1, 1) 
+	Button.BackgroundColor3 = Color3.fromHSV(hue, 1, 1) 
+	TabButton.BorderColor3 = Color3.fromHSV(hue, 1, 1) 
+	BindButton.TextColor3 = Color3.fromHSV(hue, 1, 1) 
+	Name.TextColor3 = Color3.fromHSV(hue, 1, 1) 
+    wait(0.5)
+    SetColor()
 end
-
-spawn(function()
-    while true do
-        wait(0.5)
-        RandomizeColor()
-    end
-end)
-
+SetColor()
 
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
@@ -154,9 +171,9 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 	Name.Size = UDim2.new(0, 61, 0, 27)
 	Name.Font = Enum.Font.GothamSemibold
 	Name.Text = hubname
-	Name.TextColor3 = _G.ColorRgb 
+	Name.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Name.TextSize = 17.000
-
+	
 	local Hub = Instance.new("TextLabel")
 	Hub.Name = "Hub"
 	Hub.Parent = Top
@@ -166,7 +183,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 	Hub.Size = UDim2.new(0, 81, 0, 27)
 	Hub.Font = Enum.Font.GothamSemibold
 	Hub.Text = "  | "..gamename
-	Hub.TextColor3 = _G.ColorRgb
+	Hub.TextColor3 = Color3.fromRGB(255, 255, 255)
 	Hub.TextSize = 17.000
 	Hub.TextXAlignment = Enum.TextXAlignment.Left
 
@@ -179,7 +196,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 	BindButton.Size = UDim2.new(0, 100, 0, 27)
 	BindButton.Font = Enum.Font.GothamSemibold
 	BindButton.Text = "[F1]"
-	BindButton.TextColor3 = _G.ColorRgb
+	BindButton.TextColor3 = Color3.fromRGB(255, 255, 255)
 	BindButton.TextSize = 13.000
 
 	local Tab = Instance.new("Frame")
@@ -273,7 +290,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 		TabButton.Name = text.."Server"
 		TabButton.Text = text
 		TabButton.BackgroundColor3 = Color3.fromRGB(35, 35, 35)
-	    TabButton.BorderColor3 = _G.ColorRgb
+	    TabButton.BorderColor3 = Color3.fromRGB(255, 255, 255)
         TabButton.BorderSizePixel = 2
 		TabButton.Size = UDim2.new(0, 130, 0, 23)
 		TabButton.Font = Enum.Font.GothamSemibold
@@ -363,7 +380,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 			
 			Button.Name = "Button"
 			Button.Parent = MainFramePage
-			Button.BackgroundColor3 = _G.ColorRgb
+			Button.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Button.Size = UDim2.new(0, 470, 0, 31)
 			
 			UICorner.CornerRadius = UDim.new(0, 5)
@@ -433,7 +450,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 
 			Toggle.Name = "Toggle"
 			Toggle.Parent = MainFramePage
-			Toggle.BackgroundColor3 = _G.ColorRgb
+			Toggle.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Toggle.Size = UDim2.new(0, 470, 0, 31)
 
 			UICorner.CornerRadius = UDim.new(0, 5)
@@ -489,7 +506,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 					TweenService:Create(
 						Circle,
 						TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-						{BackgroundColor3 = _G.ColorRgb}
+						{BackgroundColor3 = Color3.fromRGB(255, 255, 255)}
 					):Play()
 				else
 					toggled = false
@@ -509,7 +526,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 				TweenService:Create(
 					Circle,
 					TweenInfo.new(0.4,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
-					{BackgroundColor3 = _G.ColorRgb}
+					{BackgroundColor3 = Color3.fromRGB(255, 255, 255)}
 				):Play()
 				pcall(callback,toggled)
 			end
@@ -728,7 +745,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 
 			Slider.Name = "Slider"
 			Slider.Parent = MainFramePage
-			Slider.BackgroundColor3 = _G.ColorRgb
+			Slider.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Slider.BackgroundTransparency = 0
 			Slider.Size = UDim2.new(0, 470, 0, 51)
 
@@ -783,7 +800,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 
 			bar1.Name = "bar1"
 			bar1.Parent = bar
-			bar1.BackgroundColor3 = _G.ColorRgb
+			bar1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			bar1.BackgroundTransparency = 0
 			bar1.Size = UDim2.new(set/max, 0, 0, 5)
 
@@ -806,7 +823,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 
 			slidervalue.Name = "slidervalue"
 			slidervalue.Parent = sliderr
-			slidervalue.BackgroundColor3 = _G.ColorRgb
+			slidervalue.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			slidervalue.BackgroundTransparency = 0
 			slidervalue.Position = UDim2.new(0, 395, 0, 5)
 			slidervalue.Size = UDim2.new(0, 65, 0, 18)
@@ -897,7 +914,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 
 			Textbox.Name = "Textbox"
 			Textbox.Parent = MainFramePage
-			Textbox.BackgroundColor3 = _G.ColorRgb
+			Textbox.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Textbox.BackgroundTransparency = 0
 			Textbox.Size = UDim2.new(0, 470, 0, 31)
 
@@ -1001,7 +1018,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 			
 			Sep1.Name = "Sep1"
 			Sep1.Parent = Seperator
-			Sep1.BackgroundColor3 = _G.ColorRgb
+			Sep1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Sep1.BorderSizePixel = 0
 			Sep1.Position = UDim2.new(0, 0, 0, 10)
 			Sep1.Size = UDim2.new(0, 80, 0, 1)
@@ -1019,7 +1036,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 			
 			Sep3.Name = "Sep3"
 			Sep3.Parent = Seperator
-			Sep3.BackgroundColor3 = _G.ColorRgb
+			Sep3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Sep3.BorderSizePixel = 0
 			Sep3.Position = UDim2.new(0, 390, 0, 10)
 			Sep3.Size = UDim2.new(0, 80, 0, 1)
@@ -1038,7 +1055,7 @@ function VectorHub:Window(text,gamenme,logo,keybind)
 			
 			Line.Name = "Line"
 			Line.Parent = Linee
-			Line.BackgroundColor3 = _G.ColorRgb
+			Line.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			Line.BorderSizePixel = 0
 			Line.Position = UDim2.new(0, 0, 0, 10)
 			Line.Size = UDim2.new(0, 470, 0, 1)
