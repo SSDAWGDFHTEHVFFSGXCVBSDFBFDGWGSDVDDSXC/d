@@ -945,29 +945,43 @@ SetSimulationRadius()
 end
 end)
 
-task.spawn(function()
-while task.wait() do
-pcall(function()
-    if StartMagnet then
-        for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-            if not string.find(v.Name, "Boss") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 200 then
-                 if InMyNetWork(v.HumanoidRootPart) then
-                    v.HumanoidRootPart.CFrame = PosMon
-                    v.Humanoid.JumpPower = 0
-                    v.Humanoid.WalkSpeed = 0
-                    v.HumanoidRootPart.CanCollide = false
-                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                    if v.Humanoid:FindFirstChild("Animator") then
-                        v.Humanoid.Animator:Destroy()
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            if StartMagnet then
+                for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                    if not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 500 then
+                        if InMyNetWork(v.HumanoidRootPart) then
+                            v.HumanoidRootPart.CFrame = PosMon
+                            v.Humanoid.JumpPower = 0
+                            v.Humanoid.WalkSpeed = 0
+                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                            v.HumanoidRootPart.Transparency = 1
+                            v.HumanoidRootPart.CanCollide = false
+                            v.Head.CanCollide = false
+                            if v.Humanoid:FindFirstChild("Animator") then
+                                v.Humanoid.Animator:Destroy()
+                            end
+                            v.Humanoid:ChangeState(11)
+                            v.Humanoid:ChangeState(14)
+                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
+                        end
                     end
-                    v.Humanoid:ChangeState(11)
                 end
             end
-        end
+        end)
     end
-end)
+end)			
+function InMyNetWork(object)
+    if isnetworkowner then
+        return isnetworkowner(object)
+    else
+        if (object.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 200 then 
+            return true
+        end
+        return false
+    end
 end
-end)
 
 -- [Nostun]
 if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
@@ -3967,6 +3981,8 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                         v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Humanoid:ChangeState(11)
+                                        v.Humanoid:ChangeState(14)
+                                        v.Humanoid:ChangeState(16)
                                         PosMon = v.HumanoidRootPart.CFrame
                                         StartMagnet = true
                                         FastAttack = true
@@ -4011,6 +4027,8 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                         v.Humanoid.WalkSpeed = 0
                                         v.Humanoid:ChangeState(11)
                                         v.HumanoidRootPart.CanCollide = false
+                                        v.Humanoid:ChangeState(14)
+                                        v.Humanoid:ChangeState(16)
                                         PosMon = v.HumanoidRootPart.CFrame
                                         StartMagnet = true
                                         FastAttack = true
@@ -4136,7 +4154,9 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             v.Humanoid.WalkSpeed = 0
                                             v.Head.CanCollide = false
                                             v.Humanoid:ChangeState(11)
-                                            v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                            v.Humanoid:ChangeState(14)
+                                            v.Humanoid:ChangeState(16)
+                                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
                                         if not _G.FastAttack then
                                             Click()
                                         end
@@ -4241,6 +4261,8 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid:ChangeState(11)
+                                    v.Humanoid:ChangeState(14)
+                                    v.Humanoid:ChangeState(16)
                                     PosMon = v.HumanoidRootPart.CFrame
                                     if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
                                         game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
@@ -4341,6 +4363,8 @@ else
                                 v.Humanoid.WalkSpeed = 0
                                 v.HumanoidRootPart.CanCollide = false
                                 v.Humanoid:ChangeState(11)
+                                v.Humanoid:ChangeState(14)
+                                v.Humanoid:ChangeState(16)
                                 PosMon = v.HumanoidRootPart.CFrame
                                 if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
                                     game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
@@ -4566,6 +4590,8 @@ end
                                             v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             v.Humanoid:ChangeState(11)
+                                            v.Humanoid:ChangeState(14)
+                                            v.Humanoid:ChangeState(16)
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
                                         until v.Humanoid.Health <= 0 or not v.Parent
                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
@@ -4681,6 +4707,8 @@ end
                                                         v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         v.Humanoid:ChangeState(11)
+                                                        v.Humanoid:ChangeState(14)
+                                                        v.Humanoid:ChangeState(16)
                                                     until v.Humanoid.Health <= 0 or _G.AutoSaber  == false
                                                 end
                                             end
@@ -4724,6 +4752,8 @@ end
                                         v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Humanoid:ChangeState(11)
+                                        v.Humanoid:ChangeState(14)
+                                        v.Humanoid:ChangeState(16)
                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
                                     until v.Humanoid.Health <= 0 or _G.AutoSaber  == false
                                     if v.Humanoid.Health <= 0 then
@@ -4794,6 +4824,8 @@ end
                                             v.HumanoidRootPart.CanCollide = false
                                             v.Humanoid.WalkSpeed = 0
                                             v.Humanoid:ChangeState(11)
+                                            v.Humanoid:ChangeState(14)
+                                            v.Humanoid:ChangeState(16)
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
                                         end
                                     until not _G.AutoPole or v.Humanoid.Health <= 0 or not v.Parent
@@ -4999,6 +5031,8 @@ end
                                                                                 v.HumanoidRootPart.CanCollide = false
                                                                                 v.Humanoid.WalkSpeed = 0
                                                                                 v.Humanoid:ChangeState(11)
+                                                                                v.Humanoid:ChangeState(14)
+                                                                                v.Humanoid:ChangeState(16)
                                                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                             end
                                                                         until not _G.AutoThirdSea or not v.Parent or v.Humanoid.Health <= 0
@@ -5048,6 +5082,8 @@ end
                                                                                 v.Humanoid.JumpPower = 0
                                                                                 v.HumanoidRootPart.CanCollide = false
                                                                                 v.Humanoid.WalkSpeed = 0
+                                                                                v.Humanoid:ChangeState(14)
+                                                                                v.Humanoid:ChangeState(16)
                                                                                 v.Humanoid:ChangeState(11)
                                                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                             end
@@ -5138,6 +5174,8 @@ end
                                                                                     v.HumanoidRootPart.CanCollide = false
                                                                                     v.Humanoid.WalkSpeed = 0
                                                                                     v.Humanoid:ChangeState(11)
+                                                                                    v.Humanoid:ChangeState(14)
+                                                                                    v.Humanoid:ChangeState(16)
                                                                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                                 end
                                                                             until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoThirdSea == false or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
@@ -5195,6 +5233,8 @@ end
                                                                             v.Humanoid.WalkSpeed = 0
                                                                             v.HumanoidRootPart.CanCollide = false
                                                                             v.Humanoid:ChangeState(11)
+                                                                            v.Humanoid:ChangeState(14)
+                                                                            v.Humanoid:ChangeState(16)
                                                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                         end
                                                                     until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoThirdSea == false
@@ -5271,24 +5311,16 @@ end
                                                             if game.Workspace.Enemies:FindFirstChild("Swan Pirate") then
                                                                 for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
                                                                     if v.Name == "Swan Pirate" then
-                                                                        pcall(
-                                                                            function()
+                                                                        pcall(function()
                                                                                 repeat
                                                                                     task.wait()
                                                                                     if
-                                                                                        (v.HumanoidRootPart.Position -
-                                                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude >
-                                                                                            300
+                                                                                        (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 300
                                                                                      then
                                                                                         Farmtween =
-                                                                                            toTarget(
-                                                                                            v.HumanoidRootPart.Position,
-                                                                                            v.HumanoidRootPart.CFrame
-                                                                                        )
+                                                                                            toTarget(v.HumanoidRootPart.Position,v.HumanoidRootPart.CFrame)
                                                                                     elseif
-                                                                                        (v.HumanoidRootPart.Position -
-                                                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <=
-                                                                                            300
+                                                                                        (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300
                                                                                      then
                                                                                         if Farmtween then
                                                                                             Farmtween:Stop()
@@ -5301,9 +5333,7 @@ end
                                                                                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                                                             end
                                                                                         end
-                                                                                        if
-                                                                                            not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon)
-                                                                                         then
+                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
                                                                                             task.wait()
                                                                                             EquipWeapon(_G.SelectWeapon)
                                                                                         end
@@ -5317,6 +5347,8 @@ end
                                                                                         v.Humanoid.WalkSpeed = 0
                                                                                         v.HumanoidRootPart.CanCollide = false
                                                                                         v.Humanoid:ChangeState(11)
+                                                                                        v.Humanoid:ChangeState(14)
+                                                                                        v.Humanoid:ChangeState(16)
                                                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                                     end
                                                                                 until not v.Parent or v.Humanoid.Health <= 0 or
@@ -5325,7 +5357,8 @@ end
                                                                                         false
                                                                                 StartMagnet = false
                                                                                 FastAttack = false
-                                                                            end)
+                                                                            end
+                                                                        )
                                                                     end
                                                                 end
                                                             else
@@ -5342,18 +5375,12 @@ end
                                                             end
                                                         else
                                                             Bartilotween =
-                                                                toTarget(
-                                                                CFrame.new(-456.28952, 73.0200958, 299.895966).Position,CFrame.new(-456.28952, 73.0200958, 299.895966)
-                                                            )
-                                                            if
-                                                                (CFrame.new(-456.28952, 73.0200958, 299.895966).Position -
-                                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300
-                                                             then
+                                                                toTarget(CFrame.new(-456.28952, 73.0200958, 299.895966).Position,CFrame.new(-456.28952, 73.0200958, 299.895966))
+                                                            if (CFrame.new(-456.28952, 73.0200958, 299.895966).Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 300 then
                                                                 if Bartilotween then
                                                                     Bartilotween:Stop()
                                                                 end
-                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame =
-                                                                    CFrame.new(-456.28952, 73.0200958, 299.895966)
+                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(-456.28952, 73.0200958, 299.895966)
                                                                 local args = {
                                                                     [1] = "StartQuest",
                                                                     [2] = "BartiloQuest",
@@ -5364,10 +5391,7 @@ end
                                                         end
                                                     end
                                                 elseif
-                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
-                                                        "BartiloQuestProgress",
-                                                        "Bartilo"
-                                                    ) == 1
+                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 1
                                                  then
                                                     if game.Workspace.Enemies:FindFirstChild("Jeremy") then
                                                         for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
@@ -5405,6 +5429,8 @@ end
                                                                         v.Humanoid.WalkSpeed = 0
                                                                         v.HumanoidRootPart.CanCollide = false
                                                                         v.Humanoid:ChangeState(11)
+                                                                        v.Humanoid:ChangeState(14)
+                                                                        v.Humanoid:ChangeState(16)
                                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                     end
                                                                 until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoBartiloQues == false
@@ -5522,6 +5548,8 @@ task.spawn(
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Humanoid.WalkSpeed = 0
                                         v.Humanoid:ChangeState(11)
+                                        v.Humanoid:ChangeState(14)
+                                        v.Humanoid:ChangeState(16)
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                     until _G.AutoDarkCoat == false or v.Humanoid.Health <= 0
                                     StartMagnet = false
@@ -5598,6 +5626,8 @@ if game:GetService("Workspace").Enemies:FindFirstChild("Ship Deckhand") or game:
                     v.HumanoidRootPart.CanCollide = false
                     v.Humanoid.WalkSpeed = 0
                     v.Humanoid:ChangeState(11)
+                    v.Humanoid:ChangeState(14)
+                    v.Humanoid:ChangeState(16)
                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                 until not _G.AutoEctoplasm or not v.Parent or v.Humanoid.Health <= 0
                 StartMagnet = false
@@ -5751,6 +5781,8 @@ end
                                         v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         v.Humanoid:ChangeState(11)
+                                        v.Humanoid:ChangeState(14)
+                                        v.Humanoid:ChangeState(16)
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                     until game.Players.LocalPlayer.Backpack:FindFirstChild("Hidden Key") or not _G.AutoRengoku or not v.Parent or v.Humanoid.Health <= 0
                                     StartMagnet = false
@@ -5813,6 +5845,8 @@ else
                                             v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             v.Humanoid:ChangeState(11)
+                                            v.Humanoid:ChangeState(14)
+                                            v.Humanoid:ChangeState(16)
                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         until not _G.AutoSwanGlasses or v.Humanoid.Health <= 0
                                         StartMagnet = false
@@ -5888,6 +5922,8 @@ else
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid:ChangeState(11)
+                                                v.Humanoid:ChangeState(14)
+                                                v.Humanoid:ChangeState(16)
                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                             until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                             StartMagnet = false
@@ -5924,6 +5960,8 @@ else
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid:ChangeState(11)
+                                                v.Humanoid:ChangeState(14)
+                                                v.Humanoid:ChangeState(16)
                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                             until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                             StartMagnet = false
@@ -5960,6 +5998,8 @@ else
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid:ChangeState(11)
+                                                v.Humanoid:ChangeState(14)
+                                                v.Humanoid:ChangeState(16)
                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                             until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                             StartMagnet = false
@@ -5996,6 +6036,8 @@ else
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid:ChangeState(11)
+                                                v.Humanoid:ChangeState(14)
+                                                v.Humanoid:ChangeState(16)
                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                             until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                             StartMagnet = false
@@ -6032,6 +6074,8 @@ else
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid:ChangeState(11)
+                                                v.Humanoid:ChangeState(14)
+                                                v.Humanoid:ChangeState(16)
                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                             until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                             StartMagnet = false
@@ -6248,6 +6292,8 @@ else
                                                     v.Humanoid.WalkSpeed = 0
                                                     v.HumanoidRootPart.CanCollide = false
                                                     v.Humanoid:ChangeState(11)
+                                                    v.Humanoid:ChangeState(14)
+                                                    v.Humanoid:ChangeState(16)
                                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                 until not _G.AutoKenHakiV2 or v.Humanoid.Health <= 0
                                                 StartMagnet = false
@@ -6287,6 +6333,8 @@ else
                                                     v.Humanoid.WalkSpeed = 0
                                                     v.HumanoidRootPart.CanCollide = false
                                                     v.Humanoid:ChangeState(11)
+                                                    v.Humanoid:ChangeState(14)
+                                                    v.Humanoid:ChangeState(16)
                                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                 until not _G.AutoKenHakiV2 or v.Humanoid.Health <= 0
                                                 StartMagnet = false
@@ -6921,6 +6969,8 @@ end
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid:ChangeState(11)
+                                                v.Humanoid:ChangeState(14)
+                                                v.Humanoid:ChangeState(16)
                                                 v.HumanoidRootPart.CanCollide = false
                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                             until not _G.AutoFarmBone or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
@@ -6999,6 +7049,8 @@ end
                                             v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             v.Humanoid:ChangeState(11)
+                                            v.Humanoid:ChangeState(14)
+                                            v.Humanoid:ChangeState(16)
                                             v.HumanoidRootPart.CanCollide = false
                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         until not _G.AutoFarmBone or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
@@ -7064,6 +7116,8 @@ if _G.Mode == "English" then
                                             v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             v.Humanoid:ChangeState(11)
+                                            v.Humanoid:ChangeState(14)
+                                            v.Humanoid:ChangeState(16)
                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
                                         StartMagnet = false
@@ -7115,6 +7169,8 @@ else
                                                 v.Humanoid.WalkSpeed = 0
                                                 v.HumanoidRootPart.CanCollide = false
                                                 v.Humanoid:ChangeState(11)
+                                                v.Humanoid:ChangeState(14)
+                                                v.Humanoid:ChangeState(16)
                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                             until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
                                             StartMagnet = false
@@ -7215,6 +7271,8 @@ else
                                                         v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         v.Humanoid:ChangeState(11)
+                                                        v.Humanoid:ChangeState(14)
+                                                        v.Humanoid:ChangeState(16)
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     end
                                                 until not _G.AutoCakePrince  or not v.Parent or v.Humanoid.Health <= 0
@@ -7266,6 +7324,8 @@ else
                                                         v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         v.Humanoid:ChangeState(11)
+                                                        v.Humanoid:ChangeState(14)
+                                                        v.Humanoid:ChangeState(16)
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     end
                                                 until not _G.AutoCakePrince  or not v.Parent or v.Humanoid.Health <= 0
@@ -7349,6 +7409,8 @@ else
                                                         v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         v.Humanoid:ChangeState(11)
+                                                        v.Humanoid:ChangeState(14)
+                                                        v.Humanoid:ChangeState(16)
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     end
                                                 until not _G.AutoCakePrince  or not v.Parent or v.Humanoid.Health <= 0
@@ -7400,6 +7462,8 @@ else
                                                         v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         v.Humanoid:ChangeState(11)
+                                                        v.Humanoid:ChangeState(14)
+                                                        v.Humanoid:ChangeState(16)
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     end
                                                 until not _G.AutoCakePrince  or not v.Parent or v.Humanoid.Health <= 0
@@ -7462,6 +7526,8 @@ else
                                                                                         v5.Humanoid.JumpPower = 0;
                                                                                         v5.Humanoid.WalkSpeed = 0;
                                                                                         v5.HumanoidRootPart.CanCollide = false;
+                                                                                        v5.Humanoid:ChangeState(14);
+                                                                                        v5.Humanoid:ChangeState(16);
                                                                                         v5.Humanoid:ChangeState(11);
                                                                                         v5.HumanoidRootPart.Size = Vector3.new(55, 55, 55);
                                                                                     end
@@ -7545,6 +7611,8 @@ task.spawn(function()
                                                             v5.Humanoid.JumpPower = 0;
                                                             v5.Humanoid.WalkSpeed = 0;
                                                             v5.HumanoidRootPart.CanCollide = false;
+                                                            v5.Humanoid:ChangeState(14);
+                                                            v5.Humanoid:ChangeState(16);
                                                             v5.Humanoid:ChangeState(11);
                                                             v5.HumanoidRootPart.Size = Vector3.new(55, 55, 55);
                                                         end
@@ -7640,6 +7708,7 @@ if ac and ac.equipped then
         elseif _G.FastType == "Slow" then
             if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
         end
+        sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
     end
 end
 end
@@ -8670,6 +8739,8 @@ while task.wait() do
                             v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.CanCollide = false
                             v.Humanoid:ChangeState(11)
+                            v.Humanoid:ChangeState(14)
+                            v.Humanoid:ChangeState(16)
                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                         until not _G.AutoBuddySwords or v.Humanoid.Health <= 0
                         StartMagnet = false
@@ -8722,6 +8793,8 @@ while task.wait() do
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid:ChangeState(11)
+                                    v.Humanoid:ChangeState(14)
+                                    v.Humanoid:ChangeState(16)
                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                 until not _G.AutoMusketeerHat or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                 StartMagnet = false
@@ -8767,6 +8840,8 @@ while task.wait() do
                                     v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.CanCollide = false
                                     v.Humanoid:ChangeState(11)
+                                    v.Humanoid:ChangeState(14)
+                                    v.Humanoid:ChangeState(16)
                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                 until not _G.AutoMusketeerHat or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
                                 StartMagnet = false
@@ -8831,6 +8906,8 @@ while task.wait() do
                             v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.CanCollide = false
                             v.Humanoid:ChangeState(11)
+                            v.Humanoid:ChangeState(14)
+                            v.Humanoid:ChangeState(16)
                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                         until not _G.AutoCavander or v.Humanoid.Health <= 0
                         StartMagnet = false
@@ -8899,6 +8976,8 @@ while task.wait() do
                         v.Humanoid.WalkSpeed = 0
                         v.HumanoidRootPart.CanCollide = false
                         v.Humanoid:ChangeState(11)
+                        v.Humanoid:ChangeState(14)
+                        v.Humanoid:ChangeState(16)
                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                     until not _G.AutoTushitaSword or not v.Parent or v.Humanoid.Health <= 0
                     StartMagnet = false
@@ -8949,6 +9028,8 @@ while task.wait() do
                         v.Humanoid.WalkSpeed = 0
                         v.HumanoidRootPart.CanCollide = false
                         v.Humanoid:ChangeState(11)
+                        v.Humanoid:ChangeState(14)
+                        v.Humanoid:ChangeState(16)
                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                     until not _G.AutoSerpentBow or not v.Parent or v.Humanoid.Health <= 0
                     StartMagnet = false
@@ -8999,6 +9080,8 @@ while task.wait() do
                             v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.CanCollide = false
                             v.Humanoid:ChangeState(11)
+                            v.Humanoid:ChangeState(14)
+                            v.Humanoid:ChangeState(16)
                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                         until not _G.AutoDarkDagger or not v.Parent or v.Humanoid.Health <= 0
                         StartMagnet = false
@@ -11769,16 +11852,16 @@ page12:Toggle("ลบหมอก", _G.NoFog, function(value)
 end)
 end
 _G.AutoRejoin = true
-    spawn(function()
-        while task.wait() do
-            if _G.AutoRejoin  then
-                _G.AutoRejoin  = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
-                        if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-                        game:GetService("TeleportService"):Teleport(game.PlaceId)
-                        end
-                    end)
-                end
+spawn(function()
+while task.wait() do
+    if _G.AutoRejoin  then
+        _G.AutoRejoin  = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
+                if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
+                game:GetService("TeleportService"):Teleport(game.PlaceId)
             end
         end)
     end
-print(21122)
+end
+end)
+end
+print("Bringmon")
