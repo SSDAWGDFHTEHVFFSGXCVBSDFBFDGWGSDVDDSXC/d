@@ -961,7 +961,6 @@ pcall(function()
                         v.Humanoid.Animator:Destroy()
                     end
                     v.Humanoid:ChangeState(11)
-                    sethiddenproperty(game.Players.LocalPlayer, "MaximumSimulationRadius",  math.huge)
                 end
             end
         end
@@ -7641,10 +7640,9 @@ if ac and ac.equipped then
         elseif _G.FastType == "Slow" then
             if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
         end
-        sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+            end
+        end
     end
-end
-end
 end)()
 _G.FastType = "Fast"
 Weapon = {
@@ -11783,4 +11781,4 @@ while task.wait() do
 end
 end)
 end
-print("Testbringmonandkillaura")
+prin("Bring|Killaura|Fast")
