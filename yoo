@@ -7415,8 +7415,6 @@ else
                                                         v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         v.Humanoid:ChangeState(11)
-                                                        v.Humanoid:ChangeState(14)
-                                                        v.Humanoid:ChangeState(16)
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     end
                                                 until not _G.AutoCakePrince  or not v.Parent or v.Humanoid.Health <= 0
@@ -7468,8 +7466,6 @@ else
                                                         v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         v.Humanoid:ChangeState(11)
-                                                        v.Humanoid:ChangeState(14)
-                                                        v.Humanoid:ChangeState(16)
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     end
                                                 until not _G.AutoCakePrince  or not v.Parent or v.Humanoid.Health <= 0
@@ -11870,4 +11866,4 @@ while task.wait() do
 end
 end)
 end
-print(1123)
+print("teststate")
