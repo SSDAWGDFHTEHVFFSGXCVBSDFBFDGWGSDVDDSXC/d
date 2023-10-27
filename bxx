@@ -7414,6 +7414,11 @@ do
                                                             if Farmtween then
                                                                 Farmtween:Stop()
                                                             end
+                                                            if _G.AutoCakePrince  and game.ReplicatedStorage:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
+                                                                _G.FastType = "Normal"
+                                                            else
+                                                                _G.FastType = "Fast"
+                                                            end
                                                             FastAttack = true 
                                                             if _G.AutoHaki then
                                                                 if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
@@ -7553,6 +7558,11 @@ do
                                                             if Farmtween then
                                                                 Farmtween:Stop()
                                                             end 
+                                                            if _G.AutoCakePrince then
+                                                                _G.FastType = "Normal"
+                                                            else
+                                                                _G.FastType = "Fast"
+                                                            end
                                                             FastAttack = true
                                                             if _G.AutoHaki then
                                                                 if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
@@ -7605,7 +7615,6 @@ do
                                                             if Farmtween then
                                                                 Farmtween:Stop()
                                                             end
-                                                            _G.FastType = "Fast"
                                                             FastAttack = true
                                                             StartMagnet = true
                                                             if _G.AutoHaki then
@@ -14458,8 +14467,8 @@ end
     end)
     end
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Loadsucces",Icon = "rbxassetid://14645512457",Duration = 3})
-    _G.AutoRejoin = true
-    spawn(function()
+ _G.AutoRejoin = true
+spawn(function()
     while task.wait() do
         if _G.AutoRejoin  then
             _G.AutoRejoin  = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded:Connect(function(child)
@@ -14469,4 +14478,4 @@ end
             end)
         end
     end
-    end)
+end)
