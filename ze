@@ -7414,11 +7414,6 @@ do
                                                             if Farmtween then
                                                                 Farmtween:Stop()
                                                             end
-                                                            if _G.AutoCakePrince  and game.ReplicatedStorage:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
-                                                                _G.FastType = "Normal"
-                                                            else
-                                                                _G.FastType = "Fast"
-                                                            end
                                                             FastAttack = true 
                                                             if _G.AutoHaki then
                                                                 if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
@@ -11200,6 +11195,7 @@ end
     local BossName = page1:Dropdown("Select Boss",Boss, function(value)
     _G.SelectBoss = value
     end)
+    if _G.Mode == "Englsih" then
     page1:Button("Refresh Boss",function()
     BossName:Clear()
     for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
@@ -11210,6 +11206,30 @@ end
     end
     end
     end)
+else
+if _G.Mode == "Englsih" then
+page1:Button("Refresh Boss",function()
+    BossName:Clear()
+        for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
+             if v.Name == "Cyborg" or v.Name == "The Gorilla King" or v.Name == "Wysper" or v.Name == "Thunder God" or v.Name == "Mob Leader" or v.Name == "Bobby" or v.Name == "Saber Expert" or v.Name == "Warden" or v.Name == "Chief Warden" or v.Name == "Swan" or v.Name == "Magma Admiral"  or v.Name == "Fishman Lord" or v.Name == "Wysper" or v.Name == "Ice Admiral" or v.Name == "Diamond" or v.Name == "Jeremy" or v.Name == "Fajita" or v.Name == "Don Swan" or v.Name == "Smoke Admiral" or v.Name == "Awakened Ice Admiral" or v.Name == "Tide Keeper" or v.Name == "Darkbeard" or v.Name == "Stone" or v.Name == "Island Empress" or v.Name == "Kilo Admiral" or v.Name == "Captain Elephant" or v.Name == "Beautiful Pirate" or v.Name == "Longma" or v.Name == "Cake Queen" or v.Name == "Greybeard" or v.Name == "Order" or v.Name == "Cursed Captain" or v.Name == "Soul Reaper" or v.Name == "Rip indra" or v.Name == "Mihawk Boss" or v.Name == "Cake Prince" or v.Name == "Dough King" or v.Name == "Cursed Skeleton Boss" or v.Name == "Factory" 
+            then
+             table.insert(Boss, v.Name)
+            BossName:Add(v.Name) 
+            end
+        end
+    end)
+else
+    page1:Button("รีเฟรชบอส",function()
+        BossName:Clear()
+            for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
+                 if v.Name == "Cyborg" or v.Name == "The Gorilla King" or v.Name == "Wysper" or v.Name == "Thunder God" or v.Name == "Mob Leader" or v.Name == "Bobby" or v.Name == "Saber Expert" or v.Name == "Warden" or v.Name == "Chief Warden" or v.Name == "Swan" or v.Name == "Magma Admiral"  or v.Name == "Fishman Lord" or v.Name == "Wysper" or v.Name == "Ice Admiral" or v.Name == "Diamond" or v.Name == "Jeremy" or v.Name == "Fajita" or v.Name == "Don Swan" or v.Name == "Smoke Admiral" or v.Name == "Awakened Ice Admiral" or v.Name == "Tide Keeper" or v.Name == "Darkbeard" or v.Name == "Stone" or v.Name == "Island Empress" or v.Name == "Kilo Admiral" or v.Name == "Captain Elephant" or v.Name == "Beautiful Pirate" or v.Name == "Longma" or v.Name == "Cake Queen" or v.Name == "Greybeard" or v.Name == "Order" or v.Name == "Cursed Captain" or v.Name == "Soul Reaper" or v.Name == "Rip indra" or v.Name == "Mihawk Boss" or v.Name == "Cake Prince" or v.Name == "Dough King" or v.Name == "Cursed Skeleton Boss" or v.Name == "Factory" 
+                then
+                 table.insert(Boss, v.Name)
+                BossName:Add(v.Name) 
+                end
+            end
+        end)
+end
     if _G.Mode == "English" then
     page1:Toggle("Auto Farm Boss", _G.AutoFarmBoss, function(value)
     _G.AutoFarmBoss = value
@@ -14479,4 +14499,4 @@ end
         end
     end
     end)
-print("Kuy")
+print("test2")
