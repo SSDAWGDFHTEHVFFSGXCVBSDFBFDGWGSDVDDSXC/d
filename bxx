@@ -3911,6 +3911,9 @@ do
                                 v.Humanoid.WalkSpeed = 0
                                 v.Head.CanCollide = false
                                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                v.Humanoid:ChangeState(11)
+                                v.Humanoid:ChangeState(14)
+                                v.Humanoid:ChangeState(16)
                                 StartMagnet = true
                                 FastAttack = true
                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
@@ -7099,17 +7102,13 @@ do
     if _G.Mode == "English" then
         local count_number = 0
         local count_stack = page1:Label('Bone : ' .. count_number, true)
-    
         spawn(function()
             while true do
                 local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
                 count_stack:Set('Bone : ' .. boneStatus)
-                wait(1) -- รอ 1 วินาที ก่อนที่จะทำการอัปเดตอีกครั้ง
+                wait(1)
             end
         end)
-    
-    
-    
         page1:Toggle("Auto Farm Bone", _G.AutoFarmBone , function(value)
             _G.AutoFarmBone  = value
             if value == false then
@@ -7171,12 +7170,11 @@ do
         _G.Mode = "Thai"
         local count_number = 0
         local count_stack = page1:Label('กระดูก : ' .. count_number, true)
-    
         spawn(function()
             while task.wait() do
                 local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
                 count_stack:Set('Bone : ' .. boneStatus)
-                wait(1) -- รอ 1 วินาที ก่อนที่จะทำการอัปเดตอีกครั้ง
+                wait(1) 
             end
         end)
     
@@ -7416,11 +7414,6 @@ do
                                                             if Farmtween then
                                                                 Farmtween:Stop()
                                                             end
-                                                            if _G.AutoCakePrince then
-                                                                _G.FastType = "Normal"
-                                                            else
-                                                                _G.FastType = "Fast"
-                                                            end
                                                             FastAttack = true 
                                                             if _G.AutoHaki then
                                                                 if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
@@ -7473,6 +7466,7 @@ do
                                                             if Farmtween then
                                                                 Farmtween:Stop()
                                                             end
+                                                            _G.FastType = "Fast"
                                                             FastAttack = true
                                                             StartMagnet = true
                                                             if _G.AutoHaki then
@@ -7868,7 +7862,7 @@ end
     while task.wait(0) do
     local ac = CombatFrameworkR.activeController
     if ac and ac.equipped then
-        task.wait(0.03)
+        task.wait(0.06)
         if FastAttack or _G.FastAttack then
             AttackFunction()
             if _G.FastType == "Normal" then
@@ -11201,6 +11195,7 @@ end
     local BossName = page1:Dropdown("Select Boss",Boss, function(value)
     _G.SelectBoss = value
     end)
+    if _G.Mode == "Englsih" then
     page1:Button("Refresh Boss",function()
     BossName:Clear()
     for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
@@ -11211,6 +11206,30 @@ end
     end
     end
     end)
+else
+if _G.Mode == "Englsih" then
+page1:Button("Refresh Boss",function()
+    BossName:Clear()
+        for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
+             if v.Name == "Cyborg" or v.Name == "The Gorilla King" or v.Name == "Wysper" or v.Name == "Thunder God" or v.Name == "Mob Leader" or v.Name == "Bobby" or v.Name == "Saber Expert" or v.Name == "Warden" or v.Name == "Chief Warden" or v.Name == "Swan" or v.Name == "Magma Admiral"  or v.Name == "Fishman Lord" or v.Name == "Wysper" or v.Name == "Ice Admiral" or v.Name == "Diamond" or v.Name == "Jeremy" or v.Name == "Fajita" or v.Name == "Don Swan" or v.Name == "Smoke Admiral" or v.Name == "Awakened Ice Admiral" or v.Name == "Tide Keeper" or v.Name == "Darkbeard" or v.Name == "Stone" or v.Name == "Island Empress" or v.Name == "Kilo Admiral" or v.Name == "Captain Elephant" or v.Name == "Beautiful Pirate" or v.Name == "Longma" or v.Name == "Cake Queen" or v.Name == "Greybeard" or v.Name == "Order" or v.Name == "Cursed Captain" or v.Name == "Soul Reaper" or v.Name == "Rip indra" or v.Name == "Mihawk Boss" or v.Name == "Cake Prince" or v.Name == "Dough King" or v.Name == "Cursed Skeleton Boss" or v.Name == "Factory" 
+            then
+             table.insert(Boss, v.Name)
+            BossName:Add(v.Name) 
+            end
+        end
+    end)
+else
+    page1:Button("รีเฟรชบอส",function()
+        BossName:Clear()
+            for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
+                 if v.Name == "Cyborg" or v.Name == "The Gorilla King" or v.Name == "Wysper" or v.Name == "Thunder God" or v.Name == "Mob Leader" or v.Name == "Bobby" or v.Name == "Saber Expert" or v.Name == "Warden" or v.Name == "Chief Warden" or v.Name == "Swan" or v.Name == "Magma Admiral"  or v.Name == "Fishman Lord" or v.Name == "Wysper" or v.Name == "Ice Admiral" or v.Name == "Diamond" or v.Name == "Jeremy" or v.Name == "Fajita" or v.Name == "Don Swan" or v.Name == "Smoke Admiral" or v.Name == "Awakened Ice Admiral" or v.Name == "Tide Keeper" or v.Name == "Darkbeard" or v.Name == "Stone" or v.Name == "Island Empress" or v.Name == "Kilo Admiral" or v.Name == "Captain Elephant" or v.Name == "Beautiful Pirate" or v.Name == "Longma" or v.Name == "Cake Queen" or v.Name == "Greybeard" or v.Name == "Order" or v.Name == "Cursed Captain" or v.Name == "Soul Reaper" or v.Name == "Rip indra" or v.Name == "Mihawk Boss" or v.Name == "Cake Prince" or v.Name == "Dough King" or v.Name == "Cursed Skeleton Boss" or v.Name == "Factory" 
+                then
+                 table.insert(Boss, v.Name)
+                BossName:Add(v.Name) 
+                end
+            end
+        end)
+end
     if _G.Mode == "English" then
     page1:Toggle("Auto Farm Boss", _G.AutoFarmBoss, function(value)
     _G.AutoFarmBoss = value
