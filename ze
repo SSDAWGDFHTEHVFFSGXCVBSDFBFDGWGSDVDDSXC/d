@@ -10800,7 +10800,7 @@ end
             end)
         end
 
-        page4:Seperator("🌌")
+        page4:Seperator("🚀")
 
     if _G.Mode == "English" then
         page4:Button("Teleport to World 1", function(value)
