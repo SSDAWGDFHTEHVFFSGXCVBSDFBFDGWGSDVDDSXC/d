@@ -38,13 +38,14 @@ local function SetColor()
 	bar1.BackgroundColor3 =  Color3.fromHSV(hue, 1, 1) 
 	Slider.BackgroundColor3 = Color3.fromHSV(hue, 1, 1) 
 	Button.BackgroundColor3 = Color3.fromHSV(hue, 1, 1) 
-	TabButton.BorderColor3 = Color3.fromHSV(hue, 1, 1) 
+	TabButton.BackgroundColor3 = Color3.fromHSV(hue, 1, 1)
 	BindButton.TextColor3 = Color3.fromHSV(hue, 1, 1) 
 	Name.TextColor3 = Color3.fromHSV(hue, 1, 1) 
     wait(0.5)
     SetColor()
 end
 SetColor()
+
 
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
