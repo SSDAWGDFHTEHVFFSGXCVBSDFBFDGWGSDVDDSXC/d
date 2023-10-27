@@ -7866,7 +7866,7 @@ end
     while task.wait(0) do
     local ac = CombatFrameworkR.activeController
     if ac and ac.equipped then
-        task.wait(0.09)
+        task.wait(0.06)
         if FastAttack or _G.FastAttack then
             AttackFunction()
             if _G.FastType == "Normal" then
@@ -14478,4 +14478,4 @@ end
         end
     end
     end)
-print("Fast")
+print("Fastete")
