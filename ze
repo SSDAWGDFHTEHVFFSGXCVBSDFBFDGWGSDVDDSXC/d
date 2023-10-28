@@ -7913,7 +7913,46 @@ end
     end)
     end
     end)
-    
+    local Method = {
+        "Upper",
+        "Behind",
+        "Below"
+        }
+        if _G.Method == nil then
+        _G.Method = "Upper"
+        end
+        if _G.Mode == "English" then
+        page2:Dropdown("Select Farm Method",Method, function(value)
+        _G.Method = value
+        end)
+        page2:Slider("Distance Auto Farm",1,80,30,function(value)
+            _G.DistanceAutoFarm = value
+            end)
+        else
+        page2:Dropdown("เลือกตำแหน่งฟาร์ม",Method, function(value)
+        _G.Method = value
+        page2:Slider("ระยะฟาร์ม",1,80,30,function(value)
+            _G.DistanceAutoFarm = value
+            end)
+        end)
+        end
+        
+        task.spawn(function()
+        while task.wait(0) do
+        pcall(function()
+            if _G.Method == "Behind" then
+                MethodFarm = CFrame.new(0, 0,  _G.DistanceAutoFarm)
+            elseif _G.Method == "Below" then
+                MethodFarm = CFrame.new(0, - _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(90), 0, 0)
+            elseif _G.Method == "Upper" then
+                MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
+            else
+                MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0)
+            end
+        end)
+        end
+        end)
+       
     if _G.Mode == "English" then
     page2:Toggle("Faster Attack", true, function(value)
     _G.FastAttack = value
@@ -7972,48 +8011,10 @@ end
     end
     end)
     
-    local Method = {
-    "Upper",
-    "Behind",
-    "Below"
-    }
-    if _G.Method == nil then
-    _G.Method = "Upper"
-    end
-    if _G.Mode == "English" then
-    page2:Dropdown("Select Farm Method",Method, function(value)
-    _G.Method = value
-    end)
-    else
-    page2:Dropdown("เลือกตำแหน่งฟาร์ม",Method, function(value)
-    _G.Method = value
-    end)
-    end
-    
-    task.spawn(function()
-    while task.wait(0) do
-    pcall(function()
-        if _G.Method == "Behind" then
-            MethodFarm = CFrame.new(0, 0,  _G.DistanceAutoFarm)
-        elseif _G.Method == "Below" then
-            MethodFarm = CFrame.new(0, - _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(90), 0, 0)
-        elseif _G.Method == "Upper" then
-            MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0) * CFrame.Angles(math.rad(0), 0, 0)
-        else
-            MethodFarm = CFrame.new(0,  _G.DistanceAutoFarm, 0)
-        end
-    end)
-    end
-    end)
-    
+
     local UserInputService = game:GetService("UserInputService")
     local RunService = game:GetService("RunService")
     if _G.Mode == "English" then
-    
-    page2:Slider("Distance Auto Farm",1,80,30,function(value)
-    _G.DistanceAutoFarm = value
-    end)
-    
     page2:Toggle("White Screen", false, function(value)
     _G.WhiteScreen = value
     if value then
@@ -8064,9 +8065,7 @@ end
     _G.BringMob = value
     end)
     else
-    page2:Slider("ระยะออโต้ฟาร์ม",1,80,30,function(value)
-    _G.DistanceAutoFarm = value
-    end)
+  
     
     page2:Toggle("จอขาว", false, function(value)
     _G.WhiteScreen = value
@@ -11908,8 +11907,7 @@ end
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame *
                                     CFrame.new(0, 30, 0)
                                 if game:GetService("Players").LocalPlayer.Character:FindFirstChild(_G.SelectWeaponGun) and game:GetService("Players").LocalPlayer.Character:FindFirstChild(_G.SelectWeaponGun):FindFirstChild("RemoteFunctionShoot") then
-                                    game:GetService("VirtualUser"):CaptureController()
-                                    game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
+                                   mouse1click()
                                     local args = {
                                         [1] = v.HumanoidRootPart.Position,
                                         [2] = v.HumanoidRootPart
@@ -14543,4 +14541,4 @@ spawn(function()
         end
     end
 end)
-print("อะไรวะ")
+print("ลองคลิก")
