@@ -7925,16 +7925,19 @@ end
         page2:Dropdown("Select Farm Method",Method, function(value)
         _G.Method = value
         end)
+        
         page2:Slider("Distance Auto Farm",1,80,30,function(value)
             _G.DistanceAutoFarm = value
             end)
+
         else
         page2:Dropdown("เลือกตำแหน่งฟาร์ม",Method, function(value)
         _G.Method = value
+    end)
+
         page2:Slider("ระยะฟาร์ม",1,80,30,function(value)
             _G.DistanceAutoFarm = value
             end)
-        end)
         end
         
         task.spawn(function()
@@ -11889,7 +11892,7 @@ end
                     PositionSkillMasteryGun = v.HumanoidRootPart.Position
                     repeat
                         task.wait()
-                        FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 0))
+                        FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                         if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
                             if FarmtoTarget then FarmtoTarget:Stop() end
                             StartMagnet = true
@@ -11904,8 +11907,7 @@ end
                                 EquipWeapon(_G.SelectWeaponGun)
                                 UseSkillMasteryGun = true
                                v.HumanoidRootPart.CanCollide = false
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame *
-                                    CFrame.new(0, 30, 0)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
                                 if game:GetService("Players").LocalPlayer.Character:FindFirstChild(_G.SelectWeaponGun) and game:GetService("Players").LocalPlayer.Character:FindFirstChild(_G.SelectWeaponGun):FindFirstChild("RemoteFunctionShoot") then
                                    mouse1click()
                                     local args = {
@@ -14541,4 +14543,4 @@ spawn(function()
         end
     end
 end)
-print("ลองคลิก")
+print("ของจริง")
