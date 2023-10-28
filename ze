@@ -1,6 +1,14 @@
 
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
+local notif1 = Notification.new("success", "Quarterly Hub Premium MB", "Script Loading.")
+wait(0.5)
+local notif2 = Notification.new("success", "Quarterly Hub Premium MB", "Script Loading..")
+wait(0.5)
+local notif3 = Notification.new("success", "Quarterly Hub Premium MB", "Script Loading...")
+wait(0.5)
 local notif4 = Notification.new("success", "Quarterly Hub Premium MB", "Script Success ✅")
+wait(0.5)
+wait(1)
 if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
 
 	setfpscap(60)
@@ -4877,6 +4885,82 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 						end
 					end
 				end
+			end
+		end
+	end)
+
+	ChestSection:AddToggle({
+		Name = "Auto Mirage Island (Vip จะ ดีกว่า)",
+		Flag = "Auto_Mirage_Island",
+		Value = _G.Settings.Auto_Mirage_Island,
+		Callback = function(value)
+			Auto_Mirage_Island = value
+			Point = value
+			Boat = false
+			_G.Settings.Auto_Mirage_Island = value
+
+			StopTween(Auto_Mirage_Island)
+			SaveSettings()      
+		end
+	})
+	
+	function BuyBoat()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat","PirateSloop")
+	end
+
+	spawn(function()
+		while task.wait() do
+			pcall(function()
+				if Auto_Mirage_Island then
+					for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"].Locations:GetChildren()) do
+						if v.Name == "Mirage Island" then
+							repeat task.wait()
+								for _,_v1 in pairs(game:GetService("Workspace").Map.MysticIsland:GetChildren()) do
+									if _v1.Name == 'Center' then
+										if game.Players.LocalPlayer.Character.Humanoid.Sit == true then game.Players.LocalPlayer.Character.Humanoid.Sit = false end
+										getgenv().ToTarget(_v1.CFrame * CFrame.new(0,300,0))
+									end
+								end
+							until Auto_Mirage_Island == false or not game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Mirage Island")
+						else
+							repeat task.wait()
+								local HHH = CFrame.new(2316.06592, 3.0538919, 2158.52979, -0.581450701, -9.7121891e-08, 0.813581645, -7.36259906e-08, 1, 6.67566766e-08, -0.813581645, -2.10850377e-08, -0.581450701)
+								local HydarBoat = CFrame.new(3230.96802, 9.4578352, 1555.08154, 0.980988681, 1.76605663e-08, 0.1940649, -4.35044489e-09, 1, -6.90121098e-08, -0.1940649, 6.68558329e-08, 0.980988681)
+								function Chackboat()
+									Boat = game:GetService("Workspace").Boats.PirateSloop
+									return {
+										[1] = Boat
+									} 
+								end
+								if Auto_Mirage_Island == true and Boat == true then
+									repeat task.wait()
+										getgenv().ToTarget(HHH)
+										if (HHH.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+											tweenModel(Chackboat()[1],game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+										end
+										wait(1)
+										Point = false
+									until game.Players.LocalPlayer.Character.Humanoid.Sit == true and Point == false
+								elseif Point == true then
+									getgenv().ToTarget(HydarBoat)
+									if (HydarBoat.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+										BuyBoat()
+										wait(0.1)
+										Boat = true
+									end
+								end
+							until Auto_Mirage_Island == false or game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Mirage Island")
+							game:GetService("VirtualInputManager"):SendKeyEvent(false,"W",false,game)
+						end
+					end
+				end
+			end)
+		end
+	end)
+	spawn(function()
+		while wait() do 
+			if Auto_Mirage_Island == true and game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+				game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game)
 			end
 		end
 	end)
@@ -10749,81 +10833,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		end
 	end)
 	
-	RV4Section:AddToggle({
-		Name = "Auto Mirage Island (Vip จะ ดีกว่า)",
-		Flag = "Auto_Mirage_Island",
-		Value = _G.Settings.Auto_Mirage_Island,
-		Callback = function(value)
-			Auto_Mirage_Island = value
-			Point = value
-			Boat = false
-			_G.Settings.Auto_Mirage_Island = value
-
-			StopTween(Auto_Mirage_Island)
-			SaveSettings()      
-		end
-	})
 	
-	function BuyBoat()
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat","PirateSloop")
-	end
-
-	spawn(function()
-		while task.wait() do
-			pcall(function()
-				if Auto_Mirage_Island then
-					for i,v in pairs(game:GetService("Workspace")["_WorldOrigin"].Locations:GetChildren()) do
-						if v.Name == "Mirage Island" then
-							repeat task.wait()
-								for _,_v1 in pairs(game:GetService("Workspace").Map.MysticIsland:GetChildren()) do
-									if _v1.Name == 'Center' then
-										if game.Players.LocalPlayer.Character.Humanoid.Sit == true then game.Players.LocalPlayer.Character.Humanoid.Sit = false end
-										getgenv().ToTarget(_v1.CFrame * CFrame.new(0,300,0))
-									end
-								end
-							until Auto_Mirage_Island == false or not game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Mirage Island")
-						else
-							repeat task.wait()
-								local HHH = CFrame.new(2316.06592, 3.0538919, 2158.52979, -0.581450701, -9.7121891e-08, 0.813581645, -7.36259906e-08, 1, 6.67566766e-08, -0.813581645, -2.10850377e-08, -0.581450701)
-								local HydarBoat = CFrame.new(3230.96802, 9.4578352, 1555.08154, 0.980988681, 1.76605663e-08, 0.1940649, -4.35044489e-09, 1, -6.90121098e-08, -0.1940649, 6.68558329e-08, 0.980988681)
-								function Chackboat()
-									Boat = game:GetService("Workspace").Boats.PirateSloop
-									return {
-										[1] = Boat
-									} 
-								end
-								if Auto_Mirage_Island == true and Boat == true then
-									repeat task.wait()
-										getgenv().ToTarget(HHH)
-										if (HHH.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
-											tweenModel(Chackboat()[1],game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-										end
-										wait(1)
-										Point = false
-									until game.Players.LocalPlayer.Character.Humanoid.Sit == true and Point == false
-								elseif Point == true then
-									getgenv().ToTarget(HydarBoat)
-									if (HydarBoat.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
-										BuyBoat()
-										wait(0.1)
-										Boat = true
-									end
-								end
-							until Auto_Mirage_Island == false or game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Mirage Island")
-							game:GetService("VirtualInputManager"):SendKeyEvent(false,"W",false,game)
-						end
-					end
-				end
-			end)
-		end
-	end)
-	spawn(function()
-		while wait() do 
-			if Auto_Mirage_Island == true and game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-				game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game)
-			end
-		end
-	end)
 
 	local function round(n)
 		return math.floor(tonumber(n) + 0.5)
@@ -11199,3 +11209,8 @@ else
 	game.Players.LocalPlayer:Kick("\n ❌ Check You Map ( Not Have ) Error:[493-2Q]❌")
 end
 
+wait(2)
+notif1:delete()
+notif2:delete()
+notif3:delete()
+notif4:delete()
