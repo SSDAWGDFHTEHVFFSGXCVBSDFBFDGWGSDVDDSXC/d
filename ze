@@ -28,52 +28,6 @@ do
     task.wait(10);
     end;
     --
-    -- [Save Settings]
-
-function LoadSettings()
-    if readfile and writefile and isfile and isfolder then
-        if not isfolder("VectorHub") then
-            makefolder("VectorHub")
-        end
-        if not isfolder("VectorHub/Blox Fruits/") then
-            makefolder("VectorHub/Blox Fruits/")
-        end
-        if not isfile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-            writefile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json",
-                game:GetService("HttpService"):JSONEncode(_G.Settings))
-        else
-            local Decode = game:GetService("HttpService"):JSONDecode(readfile("VectorHub/Blox Fruits/" ..
-                game.Players.LocalPlayer.Name .. ".json"))
-            for i, v in pairs(Decode) do
-                _G.Settings[i] = v
-            end
-        end
-    else
-        return warn("Status : Undetected Executor")
-    end
-end
-
-function SaveSettings()
-    if readfile and writefile and isfile and isfolder then
-        if not isfile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-            LoadSettings()
-        else
-            local Decode = game:GetService("HttpService"):JSONDecode(readfile("VectorHub/Blox Fruits/" ..
-                game.Players.LocalPlayer.Name .. ".json"))
-            local Array = {}
-            for i, v in pairs(_G.Settings) do
-                Array[i] = v
-            end
-            writefile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json",
-                game:GetService("HttpService"):JSONEncode(Array))
-        end
-    else
-        return warn("Status : Undetected Executor")
-    end
-end
-
---LoadSettings()
-
     --[[UIPERDPID]]
     local UserInputService = game:GetService("UserInputService")
     local VirtualInputManager = game:GetService("VirtualInputManager")
@@ -379,8 +333,7 @@ end
         Tween:Play()
     end
     
-    topbarobject.InputBegan:Connect(
-        function(input)
+    topbarobject.InputBegan:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.Touch then
                 Dragging = true
                 DragStart = input.Position
@@ -391,30 +344,25 @@ end
                         if input.UserInputState == Enum.UserInputState.End then
                             Dragging = true
                         end
-                    end
-                )
+                    end)
             end
-        end
-    )
+        end)
     
-    topbarobject.InputChanged:Connect(
-        function(input)
+    topbarobject.InputChanged:Connect(function(input)
             if
                 input.UserInputType == Enum.UserInputType.MouseMovement or
                 input.UserInputType == Enum.UserInputType.Touch
             then
                 DragInput = input
             end
-        end
-    )
+        end)
     
     UserInputService.InputChanged:Connect(
         function(input)
             if input == DragInput and Dragging then
                 Update(input)
             end
-        end
-    )
+        end)
     end
     
     local Scrollbar = Instance.new("Frame")
@@ -455,14 +403,7 @@ end
     osday.TextColor3 = Color3.fromRGB(255, 255, 255)
     osday.TextSize = 14.000
     
-    task.spawn(function()
-    while task.wait() do
-        pcall(function()
-            osday.Text = os.date("%I:%M:%S".." | ".."%B %d, %Y")
-        end)
-    end
-    end)
-    
+
     local Title = Instance.new("TextLabel")
     
     Title.Name = "Title"
@@ -474,7 +415,7 @@ end
     Title.Position = UDim2.new(0.5, 0, 0.280000001, 0)
     Title.Size = UDim2.new(0, 384, 0, 30)
     Title.Font = Enum.Font.GothamBold
-    Title.Text = "BLOX FRUIT PREMIUM EDITION"
+    Title.Text = "BLOX FRUIT"
     Title.TextTransparency = 1
     Title.TextColor3 = Color3.fromRGB(255, 0, 127)
     Title.TextSize = 14.000
@@ -487,18 +428,11 @@ end
         TweenInfo.new(.4, Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
         {FieldOfView = 70}
     ):Play()
-    
     TweenService:Create(
         Blur,
         TweenInfo.new(.4, Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
         {Size = 0}
     ):Play()
-    
-    --TweenService:Create(
-    --	Load,
-    --	TweenInfo.new(.4, Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
-    --	{Position = UDim2.new(0.5, 0, 0.5, 0)}
-    --):Play()
     TweenService:Create(
         Load,
         TweenInfo.new(.4, Enum.EasingStyle.Quart, Enum.EasingDirection.In),
@@ -6575,8 +6509,6 @@ end
                                                             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                     FastAttack = false
@@ -6731,8 +6663,6 @@ end
                                                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                             end
                                                             v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                                            v.Humanoid.JumpPower = 0
-                                                            v.Humanoid.WalkSpeed = 0
                                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                         until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                         FastAttack = false
@@ -8080,7 +8010,7 @@ end
     local RunService = game:GetService("RunService")
     if _G.Mode == "English" then
     
-    page2:Slider("Distance Auto Farm",1,100,25,function(value)
+    page2:Slider("Distance Auto Farm",1,80,30,function(value)
     _G.DistanceAutoFarm = value
     end)
     
@@ -8115,13 +8045,11 @@ end
     end)
     
     page2:Button("Auto Black Screen", function()
-    game:GetService("UserInputService").WindowFocused:connect(
-        function()
+    game:GetService("UserInputService").WindowFocused:connect(function()
             game.RunService:Set3dRenderingEnabled(true)
             game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen.Size = UDim2.new(1, 0, 500, 500)
         end)
-    game:GetService("UserInputService").WindowFocusReleased:connect(
-        function()
+    game:GetService("UserInputService").WindowFocusReleased:connect(function()
             game.RunService:Set3dRenderingEnabled(false)
             game:GetService("Players").LocalPlayer.PlayerGui.Main.Blackscreen.Size = UDim2.new(500, 0, 500, 500)
         end)
@@ -8136,7 +8064,7 @@ end
     _G.BringMob = value
     end)
     else
-    page2:Slider("ระยะออโต้ฟาร์ม",1,100,15,function(value)
+    page2:Slider("ระยะออโต้ฟาร์ม",1,80,30,function(value)
     _G.DistanceAutoFarm = value
     end)
     
@@ -11942,7 +11870,7 @@ end
                             game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
                             game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
                         end
-                        HealthMin = v.Humanoid.MaxHealth * _G.Settings.Mastery["Mob Health (%)"] / 100
+                        HealthMin = v.Humanoid.MaxHealth * _G.MobHealth / 100
                         PositionSkillMasteryGun = v.HumanoidRootPart.Position
                         if v.Humanoid.Health <= HealthMin and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                             EquipWeapon(_G.SelectWeaponGun)
@@ -12041,7 +11969,7 @@ end
                     if FarmtoTarget then FarmtoTarget:Stop() end
                     StartMagnet = true
                     PosMon = v.HumanoidRootPart.CFrame
-                    HealthMin = v.Humanoid.MaxHealth * _G.Settings.Mastery["Mob Health (%)"] / 100
+                    HealthMin = v.Humanoid.MaxHealth * _G.MobHealth / 100
                     if v.Humanoid.Health <= HealthMin and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                         EquipWeapon(game.Players.LocalPlayer.Data.DevilFruit.Value)
                         if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") then
@@ -12242,7 +12170,10 @@ end
         end
     end)
     end
-
+    page6:Slider("Mob Health (%)",1,100,20,function(value)
+    _G.MobHealth = value
+    end)
+    
     if _G.Mode == "English" then
     page6:Label("Skill List")
     else
@@ -14522,4 +14453,4 @@ spawn(function()
         end
     end
 end)
-print("do")
+print("why")
