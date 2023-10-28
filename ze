@@ -1,3 +1,4 @@
+print("ez")
 -- Gui to Lua
 -- Version: 3.2
 
@@ -372,8 +373,8 @@ end)
 
 local tis
 
-up.MouseButton1Down:connect(function()
-	tis = up.MouseEnter:connect(function()
+goup.MouseButton1Down:connect(function()
+	tis = goup.MouseEnter:connect(function()
 		while tis do
 			wait()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,1,0)
@@ -381,7 +382,7 @@ up.MouseButton1Down:connect(function()
 	end)
 end)
 
-up.MouseLeave:connect(function()
+goup.MouseLeave:connect(function()
 	if tis then
 		tis:Disconnect()
 		tis = nil
@@ -390,8 +391,8 @@ end)
 
 local dis
 
-down.MouseButton1Down:connect(function()
-	dis = down.MouseEnter:connect(function()
+godown.MouseButton1Down:connect(function()
+	dis = godown.MouseEnter:connect(function()
 		while dis do
 			wait()
 			game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-1,0)
@@ -399,7 +400,7 @@ down.MouseButton1Down:connect(function()
 	end)
 end)
 
-down.MouseLeave:connect(function()
+godown.MouseLeave:connect(function()
 	if dis then
 		dis:Disconnect()
 		dis = nil
@@ -472,32 +473,32 @@ mine.MouseButton1Down:connect(function()
 	end
 end)
 
-closebutton.MouseButton1Click:Connect(function()
+Close.MouseButton1Click:Connect(function()
 	main:Destroy()
 end)
 
-mini.MouseButton1Click:Connect(function()
-	up.Visible = false
-	down.Visible = false
+minimize.MouseButton1Click:Connect(function()
+	goup.Visible = false
+	godown.Visible = false
 	onof.Visible = false
 	plus.Visible = false
 	speed.Visible = false
 	mine.Visible = false
-	mini.Visible = false
-	mini2.Visible = true
+	minimize.Visible = false
+	minimize2.Visible = true
 	main.Frame.BackgroundTransparency = 1
-	closebutton.Position =  UDim2.new(0, 0, -1, 57)
+	Close.Position =  UDim2.new(0, 0, -1, 57)
 end)
 
-mini2.MouseButton1Click:Connect(function()
-	up.Visible = true
-	down.Visible = true
+minimize2.MouseButton1Click:Connect(function()
+	goup.Visible = true
+	godown.Visible = true
 	onof.Visible = true
 	plus.Visible = true
 	speed.Visible = true
 	mine.Visible = true
-	mini.Visible = true
-	mini2.Visible = false
+	minimize.Visible = true
+	minimize2.Visible = false
 	main.Frame.BackgroundTransparency = 0 
-	closebutton.Position =  UDim2.new(0, 0, -1, 27)
+	Close.Position =  UDim2.new(0, 0, -1, 27)
 end)
