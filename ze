@@ -12259,6 +12259,7 @@ end
         end
     end)
     end
+    _G.MobHealth = 20
     page6:Slider("Mob Health (%)",1,100,20,function(value)
     _G.MobHealth = value
     end)
@@ -14542,4 +14543,4 @@ spawn(function()
         end
     end
 end)
-print("รอบนี้แหละ")
+print("อะไรวะ")
