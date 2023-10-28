@@ -6135,47 +6135,6 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 			end
 		)
 		
-		local CameRa = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.CameraShaker)
-		CameRa.CameraShakeInstance.CameraShakeState = {FadingIn = 3,FadingOut = 2,Sustained = 0,Inactive =1}
-		
-		local Client = game.Players.LocalPlayer
-		local STOP = require(Client.PlayerScripts.CombatFramework.Particle)
-		local STOPRL = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib)
-		task.spawn(function()
-			pcall(function()
-				if not shared.orl then
-					shared.orl = STOPRL.wrapAttackAnimationAsync
-				end
-					if not shared.cpc then
-						shared.cpc = STOP.play 
-					end
-					spawn(function()
-						require(game.ReplicatedStorage.Util.CameraShaker):Stop()
-						game:GetService("RunService").Stepped:Connect(function()
-							STOPRL.wrapAttackAnimationAsync = function(a,b,c,d,func)
-								local Hits = STOPRL.getBladeHits(b,c,d)
-								if Hits then
-									if  _G.FastAttack then
-										STOP.play = function() end
-										a:Play(21,29,30)
-										func(Hits)
-										STOP.play = shared.cpc
-										wait(a.length * 9e9)
-										a:Stop()
-									else
-										func(Hits)
-										STOP.play = shared.cpc
-										wait(a.length * 9e9)
-										a:Stop()
-									end
-								end
-							end
-						end)
-					end)
-				end)
-			end)
-		end
-	end)
 
 	SettingSection:AddToggle{
 		Name = "Super Fast Attack (Kick 9e99%)",
@@ -11245,36 +11204,6 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	})
 	
 	
-	RV4Section:AddColorpicker("Esp Mirage Island Color",Color3.fromRGB(28, 255, 255),function(v)
-		_G.Esp_Mirage_Island_Color = v
-	end)
-
-	RV4Section:AddToggle({
-		Name = "Auto Gear",
-		Flag = "Auto_Gear",
-		Value = _G.Settings.Auto_Gear,
-		Callback = function(value)
-			Auto_Gear = value
-			ESPMirageIsland()
-			_G.Settings.Auto_Gear = value
-			SaveSettings() 
-		end
-	})
-
-	task.spawn(function()
-		while task.wait(.01) do
-			if Auto_Gear then
-				for i,v in pairs(game:GetService("Workspace").Map:FindFirstChild('MysticIsland'):GetChildren()) do
-					if v.Name == "Part" then
-						if v.ClassName == "MeshPart" then
-							getgenv().ToTarget(v.CFrame)
-							v.Transparency = 0
-						end
-					end
-				end
-			end
-		end
-	end)
 
 	RV4Section:AddLabelX({
 		Name = "Auto Trial V4"
@@ -11556,3 +11485,4 @@ notif1:delete()
 notif2:delete()
 notif3:delete()
 notif4:delete()
+print("testtab")
