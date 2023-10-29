@@ -14508,11 +14508,11 @@ end
 
     local Job = game.JobId
     if _G.Mode == "English" then
-    page12:Textbox("Job ID","",true,function(v)
+    page12:Textbox("Job ID","",_G.JobID,function(v)
         _G.JobID = v
     end)
 
-    page12:Button("Join JobID",function(v)
+    page12:Button("Join JobID",function()
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,_G.JobID)
     end)
 
@@ -14520,11 +14520,11 @@ end
         setclipboard(tostring(Job))
     end)
 else
-    page12:Textbox("Job ID","",true,function(v)
+    page12:Textbox("Job ID","",_G.JobID,function(v)
         _G.JobID = v
     end)
 
-    page12:Button("จอย JobID",function(v)
+    page12:Button("จอย JobID",function()
         game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,_G.JobID)
     end)
 
@@ -15166,3 +15166,4 @@ spawn(function()
         end
     end
 end)
+print(32)
