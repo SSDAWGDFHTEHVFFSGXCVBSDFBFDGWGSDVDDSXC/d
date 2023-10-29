@@ -14513,7 +14513,7 @@ end
     end)
 
     page12:Button("Join JobID",function()
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,_G.JobID)
+        game.ReplicatedStorage['__ServerBrowser']:InvokeServer('teleport',_G.JobID)
     end)
 
     page12:Button("Copy JobID",function(v)
@@ -14525,7 +14525,7 @@ else
     end)
 
     page12:Button("จอย JobID",function()
-        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,_G.JobID)
+        game.ReplicatedStorage['__ServerBrowser']:InvokeServer('teleport',_G.JobID)
     end)
 
     page12:Button("ก็อปปี้ JobID",function(v)
@@ -15166,4 +15166,4 @@ spawn(function()
         end
     end
 end)
-print(32)
+print("Ez")
