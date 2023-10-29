@@ -14505,6 +14505,33 @@ end
         game:GetService("Players").LocalPlayer.PlayerGui.Main.Compass.Visible = false
     end)
     end
+
+    local Job = game.JobId
+    if _G.Mode == "English" then
+    page12:Textbox("Job ID","",true,function(v)
+        _G.JobID = v
+    end)
+
+    page12:Button("Join JobID",function(v)
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,_G.JobID)
+    end)
+
+    page12:Button("Copy JobID",function(v)
+        setclipboard(tostring(Job))
+    end)
+else
+    page12:Textbox("Job ID","",true,function(v)
+        _G.JobID = v
+    end)
+
+    page12:Button("จอย JobID",function(v)
+        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,_G.JobID)
+    end)
+
+    page12:Button("ก็อปปี้ JobID",function(v)
+        setclipboard(tostring(Job))
+    end)
+end
     if _G.Mode == "English" then
     page12:Button("Hop Little Player Server", function()
         Teleport()
@@ -15139,4 +15166,3 @@ spawn(function()
         end
     end
 end)
-print(11111)
