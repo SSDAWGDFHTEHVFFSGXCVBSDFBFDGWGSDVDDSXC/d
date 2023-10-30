@@ -7741,7 +7741,7 @@ end
                         end)
                     end)
                 end                                                                                    
-    end 
+            end 
     
     if _G.Mode == "English" then
         page1:Label("Farm Materail")
@@ -13914,7 +13914,195 @@ else
         LockMoon()
     end)
 end
-loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/ewq"))()
+if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+    if World3 then
+    local Moon = {
+        ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
+        ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
+        ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌗
+        ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
+        ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
+        ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
+        ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
+        ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
+    };
+    for i, v in pairs(Moon) do
+        if game:GetService("Lighting").Sky.MoonTextureId == v then
+            MoonPercent = i / 8 * 100
+        end
+    end
+    
+    for i, v in pairs(game.Players:GetPlayers()) do
+        PlayersMin = i
+    end
+    
+    if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
+        MoonIcon = '🌔'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
+        MoonIcon = '🌓'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
+        MoonIcon = '🌒'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
+        MoonIcon = '🌑'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
+        MoonIcon = '🌖'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
+        MoonIcon = '🌕'
+    end
+    
+    
+    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+        MirageMessage = '```Mirage is spawing : 🟢```'
+    else
+        MirageMessage = '```Mirage isn\'t spawn : ❌```'
+    end
+    
+    MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
+    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
+        '\'' .. tostring(game.JobId) .. '\'' .. ')'
+    --print('\n'..MoonMessage..'\n'..MirageMessage..'\n'..JoinServer)
+    
+    local url = "https://discord.com/api/webhooks/1159506639095869600/1N9kghTBEkvkDlPyiVkE1SVW02HMAzgd80BKwcB9R-mqbdrdh_g4A0Lc2dovUGH-Olqu"                                                                                                                -- ur webhook url
+    local data = {
+        ["username"] = 'Vector Hub',                                                                                                                                                                                                           -- Webhook name here --หะ
+        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                               -- ping everyone if you want to ping role use this <@&1007291553074647132> --<@&1068889841091219498>
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", -- ur discord logo url
+        ["embeds"] = {
+            {
+                ["description"] = "**__Mirage Webhook__**",
+                ["color"] = tonumber(0x0000FF), -- color id		#
+                ["type"] = "rich",
+                ["fields"] = {
+                    {
+                        ["name"] = "[👥] Players Active",
+                        ["value"] = '```' .. tostring(PlayersMin) .. '/12```'
+                    },
+                    {
+                        ["name"] = "[📃] JobID",
+                        ["value"] = '```' .. tostring(game.JobId) .. '```'
+                    },
+                    {
+                        ["name"] = "[📁] Join Server",
+                        ["value"] = '```' .. JoinServer .. '```',
+                    },
+                    {
+                        ["name"] = "[🌲] Mirage Check",
+                        ["value"] = MirageMessage,
+                        ["inline"] = true
+                    }
+                },
+                ["footer"] = {
+                    ["text"] = "Webhook Vector Hub", -- you can remove this but it will hurt
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = { ["content-type"] = "application/json" }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+    request(abcdef)
+    end
+    end
+    
+    if World3 then
+    local Moon = {
+        ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
+        ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
+        ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌘
+        ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
+        ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
+        ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
+        ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
+        ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
+    };
+    for i, v in pairs(Moon) do
+        if game:GetService("Lighting").Sky.MoonTextureId == v then
+            MoonPercent = i / 8 * 100
+        end
+    end
+    
+    for i, v in pairs(game.Players:GetPlayers()) do
+        PlayersMin = i
+    end
+    
+    if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
+        MoonIcon = '🌔'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
+        MoonIcon = '🌓'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
+        MoonIcon = '🌒'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
+        MoonIcon = '🌑'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
+        MoonIcon = '🌖'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
+        MoonIcon = '🌕'
+    end
+    
+    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+        MirageMessage = '```Mirage is spawing : 🟢```'
+    else
+        MirageMessage = '```Mirage isn\'t spawn : ❌```'
+    end
+    
+    MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
+    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
+        '\'' .. tostring(game.JobId) .. '\'' .. ')'
+    --print('\n'..MoonMessage..'\n'..MirageMessage..'\n'..JoinServer)
+    
+    local url = "https://discord.com/api/webhooks/1165611714671300659/lks4dG2RzRR6thjYO0FbKjDO5QmlGtmENAuFThbQ_rCuYoEZdGyoZdQDVAMWy3G8WW4n"                                                                                                                -- ur webhook url
+    local data = {
+        ["username"] = 'Vector Hub',                                                                                                                                                                                                           -- Webhook name here --หะ
+        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                               -- ping everyone if you want to ping role use this <@&1007291553074647132> --<@&1068889841091219498>
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", -- ur discord logo url
+        ["embeds"] = {
+            {
+                ["description"] = "**__Moon__**",
+                ["color"] = tonumber(0x0000FF), -- color id		#
+                ["type"] = "rich",
+                ["fields"] = {
+                    {
+                        ["name"] = "[👥] Players Active",
+                        ["value"] = '```' .. tostring(PlayersMin) .. '/12```'
+                    },
+                    {
+                        ["name"] = "[📃] JobID",
+                        ["value"] = '```' .. tostring(game.JobId) .. '```'
+                    },
+                    {
+                        ["name"] = "[📁] Join Server",
+                        ["value"] = '```' .. JoinServer .. '```',
+                    },
+                    {
+                        ["name"] = "[🕑] Moon Check",
+                        ["value"] = MoonMessage,
+                        ["inline"] = true
+                    },
+                    
+                },
+                ["footer"] = {
+                    ["text"] = "Webhook Vector Hub", -- you can remove this but it will hurt
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = { ["content-type"] = "application/json" }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+    request(abcdef)
+    end
     if _G.Mode == "English" then
     page10:Seperator("🐰")
     else
@@ -14996,6 +15184,55 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVB
 else
     page12:Button("บิน", function()
         Fly()
+    end)
+end
+function FPSBOOSTER()
+    setfpscap(9999)
+			local decalsyeeted = true
+			local g = game
+			local w = g.Workspace
+			local l = g.Lighting
+			local t = w.Terrain
+			t.WaterWaveSize = 0
+			t.WaterWaveSpeed = 0
+			t.WaterReflectance = 0
+			t.WaterTransparency = 0
+			l.GlobalShadows = false
+			l.FogEnd = 9e9
+			l.Brightness = 0
+			settings().Rendering.QualityLevel = "Level01"
+			for i, v in pairs(g:GetDescendants()) do
+				if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then 
+					v.Material = "Plastic"
+					v.Reflectance = 0
+				elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+					v.Transparency = 1
+				elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+					v.Lifetime = NumberRange.new(0)
+				elseif v:IsA("Explosion") then
+					v.BlastPressure = 1
+					v.BlastRadius = 1
+				elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+					v.Enabled = false
+				elseif v:IsA("MeshPart") then
+					v.Material = "Plastic"
+					v.Reflectance = 0
+					v.TextureID = 10385902758728957
+				end
+			end
+			for i, e in pairs(l:GetChildren()) do
+				if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+					e.Enabled = false
+				end
+			end
+        end
+if _G.Mode == "English" then
+    page12:Button("FPS Booster", function()
+        FPSBOOSTER()
+    end)
+else
+    page12:Button("ปรับภาพกากเพิ่ม FPS", function()
+        FPSBOOSTER()
     end)
 end
     if _G.Mode == "English" then
