@@ -4006,10 +4006,34 @@ end
         toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
     end)
     end
+
+Random_CFrameMon = 1
+    spawn(function()
+	    while wait() do 
+		    Random_CFrameMon = math.random(1,5)
+		wait(0.3)
+	end
+end)
+
     function AutoFarmLevel()
     GetQuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title
     GetQuest = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
     local MyLevel = game.Players.LocalPlayer.Data.Level.Value
+    if FastAttack == false and GetQuest.Visible == true then
+        if Random_CFrameMon == 1 then
+            toTarget(CFrameMon.Position,CFrameMon * CFrame.new(0,30,20))
+        elseif Random_CFrameMon == 2 then
+            toTarget(CFrameMon.Position,CFrameMon * CFrame.new(0,30,-20))
+        elseif Random_CFrameMon == 3 then
+            toTarget(CFrameMon.Position,CFrameMon * CFrame.new(20,30,0))
+        elseif Random_CFrameMon == 4 then
+            toTarget(CFrameMon.Position,CFrameMon * CFrame.new(0,30,-20))
+        elseif Random_CFrameMon == 5 then
+            toTarget(CFrameMon.Position,CFrameMon * CFrame.new(-20,30,0))
+        else
+            toTarget(CFrameMon.Position,CFrameMon * CFrame.new(0,30,20))
+        end
+    end
     if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
         if _G.AutoHaki then
             if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
@@ -4079,7 +4103,11 @@ end
                                             PosMon = v.HumanoidRootPart.CFrame
                                             StartMagnet = true
                                             FastAttack = true
-                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                            if _G.AutoHaki then
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                end
+                                            end
                                             EquipWeapon(_G.SelectWeapon)
                                             if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
                                                 game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
@@ -4452,6 +4480,7 @@ end
         end
     end
     end
+   
     --[[CheckNotifyComplete]]
     function CheckNotifyComplete()
     for i, v in pairs(game:GetService("Players")["LocalPlayer"].PlayerGui:FindFirstChild("Notifications"):GetChildren()) do
@@ -7898,7 +7927,7 @@ end
     while task.wait(0) do
     local ac = CombatFrameworkR.activeController
     if ac and ac.equipped then
-        task.wait(0.04)
+        task.wait(0.05)
         if FastAttack or _G.FastAttack then
             AttackFunction()
             if _G.FastType == "Normal" then
@@ -15263,3 +15292,4 @@ spawn(function()
         end
     end
 end)
+print(55555)
