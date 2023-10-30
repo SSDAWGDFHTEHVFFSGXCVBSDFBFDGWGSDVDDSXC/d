@@ -1,14 +1,3 @@
-
-local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
-local notif1 = Notification.new("success", "Quarterly Hub Premium MB", "Script Loading.")
-wait(0.5)
-local notif2 = Notification.new("success", "Quarterly Hub Premium MB", "Script Loading..")
-wait(0.5)
-local notif3 = Notification.new("success", "Quarterly Hub Premium MB", "Script Loading...")
-wait(0.5)
-local notif4 = Notification.new("success", "Quarterly Hub Premium MB", "Script Success ✅")
-wait(0.5)
-wait(1)
 if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
 
 	setfpscap(60)
@@ -3006,45 +2995,45 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	end
 	
 	function CheckBossQuest()
-		if _G.Settings.Select_Boss == "Saber Expert [Lv. 200] [Boss]" then
-			MsBoss = "Saber Expert [Lv. 200] [Boss]"
+		if _G.Settings.Select_Boss == "Saber Expert" then
+			MsBoss = "Saber Expert"
 			NameBoss = "Saber Expert"
 			CFrameBoss = CFrame.new(-1458.89502, 29.8870335, -50.633564, 0.858821094, 1.13848939e-08, 0.512275636, -4.85649254e-09, 1, -1.40823326e-08, -0.512275636, 9.6063415e-09, 0.858821094)
-		elseif _G.Settings.Select_Boss == "The Saw [Lv. 100] [Boss]" then
-			MsBoss = "The Saw [Lv. 100] [Boss]"
+		elseif _G.Settings.Select_Boss == "The Saw" then
+			MsBoss = "The Saw"
 			NameBoss = "The Saw"
 			CFrameBoss = CFrame.new(-683.519897, 13.8534927, 1610.87854, -0.290192783, 6.88365773e-08, 0.956968188, 6.98413629e-08, 1, -5.07531119e-08, -0.956968188, 5.21077759e-08, -0.290192783)
-		elseif _G.Settings.Select_Boss == "Greybeard [Lv. 750] [Raid Boss]" then
-			MsBoss = "Greybeard [Lv. 750] [Raid Boss]"
+		elseif _G.Settings.Select_Boss == "Greybeard" then
+			MsBoss = "Greybeard"
 			NameBoss = "Greybeard"
 			CFrameBoss = CFrame.new(-4955.72949, 80.8163834, 4305.82666, -0.433646321, -1.03394289e-08, 0.901083171, -3.0443168e-08, 1, -3.17633075e-09, -0.901083171, -2.88092288e-08, -0.433646321)
-		elseif _G.Settings.Select_Boss == "The Gorilla King [Lv. 25] [Boss]" then
-			MsBoss = "The Gorilla King [Lv. 25] [Boss]"
+		elseif _G.Settings.Select_Boss == "The Gorilla King" then
+			MsBoss = "The Gorilla King"
 			NameBoss = "The Gorilla King"
 			NameQuestBoss = "JungleQuest"
 			LevelQuestBoss = 3
 			CFrameQuestBoss = CFrame.new(-1604.12012, 36.8521118, 154.23732, 0.0648873374, -4.70858913e-06, -0.997892559, 1.41431883e-07, 1, -4.70933674e-06, 0.997892559, 1.64442184e-07, 0.0648873374)
 			CFrameBoss = CFrame.new(-1223.52808, 6.27936459, -502.292664, 0.310949147, -5.66602516e-08, 0.950426519, -3.37275488e-08, 1, 7.06501808e-08, -0.950426519, -5.40241736e-08, 0.310949147)
-		elseif _G.Settings.Select_Boss == "Bobby [Lv. 55] [Boss]" then
-			MsBoss = "Bobby [Lv. 55] [Boss]"
+		elseif _G.Settings.Select_Boss == "Bobby" then
+			MsBoss = "Bobby"
 			NameBoss = "Bobby"
 			NameQuestBoss = "BuggyQuest1"
 			LevelQuestBoss = 3
 			CFrameQuestBoss = CFrame.new(-1139.59717, 4.75205183, 3825.16211, -0.959730506, -7.5857054e-09, 0.280922383, -4.06310328e-08, 1, -1.11807175e-07, -0.280922383, -1.18718916e-07, -0.959730506)
 			CFrameBoss = CFrame.new(-1147.65173, 32.5966301, 4156.02588, 0.956680477, -1.77109952e-10, -0.29113996, 5.16530874e-10, 1, 1.08897802e-09, 0.29113996, -1.19218679e-09, 0.956680477)
-		elseif _G.Settings.Select_Boss == "Yeti [Lv. 110] [Boss]" then
-			MsBoss = "Yeti [Lv. 110] [Boss]"
+		elseif _G.Settings.Select_Boss == "Yeti" then
+			MsBoss = "Yeti"
 			NameBoss = "Yeti"
 			NameQuestBoss = "SnowQuest"
 			LevelQuestBoss = 3
 			CFrameQuestBoss = CFrame.new(1384.90247, 87.3078308, -1296.6825, 0.280209213, 2.72035177e-08, -0.959938943, -6.75690828e-08, 1, 8.6151708e-09, 0.959938943, 6.24481444e-08, 0.280209213)
 			CFrameBoss = CFrame.new(1221.7356, 138.046906, -1488.84082, 0.349343032, -9.49245944e-08, 0.936994851, 6.29478194e-08, 1, 7.7838429e-08, -0.936994851, 3.17894653e-08, 0.349343032)
-		elseif _G.Settings.Select_Boss == "Mob Leader [Lv. 120] [Boss]" then
-			MsBoss = "Mob Leader [Lv. 120] [Boss]"
+		elseif _G.Settings.Select_Boss == "Mob Leader" then
+			MsBoss = "Mob Leader"
 			NameBoss = "Mob Leader"
 			CFrameBoss = CFrame.new(-2848.59399, 7.4272871, 5342.44043, -0.928248107, -8.7248246e-08, 0.371961564, -7.61816636e-08, 1, 4.44474857e-08, -0.371961564, 1.29216433e-08, -0.92824)
-		elseif _G.Settings.Select_Boss == "Vice Admiral [Lv. 130] [Boss]" then
-			MsBoss = "Vice Admiral [Lv. 130] [Boss]"
+		elseif _G.Settings.Select_Boss == "Vice Admiral" then
+			MsBoss = "Vice Admiral"
 			NameBoss = "Vice Admiral"
 			NameQuestBoss = "MarineQuest2"
 			LevelQuestBoss = 2
@@ -3929,7 +3918,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 			if MyLevel >= 15 and MyLevel <= 69 then
 				BringMobFarm = false
 				for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-					if v.Name == "God's Guard [Lv. 450]" then
+					if string.find(v.Name, "God's Guard") then
 						if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
 							repeat task.wait()
 								game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AbandonQuest")
@@ -11550,9 +11539,3 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 else
 	game.Players.LocalPlayer:Kick("\n ❌ Check You Map ( Not Have ) Error:[493-2Q]❌")
 end
-
-wait(2)
-notif1:delete()
-notif2:delete()
-notif3:delete()
-notif4:delete()
