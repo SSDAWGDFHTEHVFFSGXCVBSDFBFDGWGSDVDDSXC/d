@@ -1,4 +1,4 @@
-local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qwe", true))()
+local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qwe"))()
 
 local Library = VectorHub:Window("Vector Hub","","",Enum.KeyCode.F1);
 
@@ -25,11 +25,7 @@ page1:Button("Button",function()
     print("hi")
 end)
 
---[[
-Tab1:Button(
-1 = Button Name (string)
-2 = callback (function)
-]]
+
 
 page1:Toggle("Toggle",false,function(value)
 print(value)
@@ -68,7 +64,7 @@ Tab1:Dropdown(
 ]]
 
 
-page1:Textbox("JobID","",true,function(value)
+page1:Textbox("JobID","",_G.JobID,function(value)
     _G.JobID = value
 end)
 
