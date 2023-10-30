@@ -1,4 +1,4 @@
-local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/DDDDD21313212/BBB/main/guoiji", true))()
+local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qwe", true))()
 
 local Library = VectorHub:Window("Vector Hub","","",Enum.KeyCode.F1);
 
