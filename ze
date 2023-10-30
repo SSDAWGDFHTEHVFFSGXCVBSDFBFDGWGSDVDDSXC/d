@@ -508,7 +508,7 @@ end
     game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F1,false,game)
     end)
     --uiเปิดปิด
-    
+
     -- [Save Settings]
 function LoadSettings()
     if readfile and writefile and isfile and isfolder then
@@ -3972,7 +3972,7 @@ end
         end
     end
     end)
-    --[[
+
     if _G.Mode == "English" then
     if World1 then
         page1:Toggle("Auto Fast Level 1-300", _G.FastAutoFarm, function(value)
@@ -3985,7 +3985,7 @@ end
             _G.FastAutoFarm = value
         end)
     end
-    end]]
+    end
     if _G.Mode == "English" then
     page1:Toggle("FAST TP", _G.BypassTP, function(value)
         _G.BypassTP = value
