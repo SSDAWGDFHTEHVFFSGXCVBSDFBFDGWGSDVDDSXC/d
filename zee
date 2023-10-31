@@ -1,3 +1,17 @@
+local SoundClick = Instance.new("Sound")
+    
+    SoundClick.Name = "Sound Effect"
+    SoundClick.Parent = Load
+    SoundClick.SoundId = "rbxassetid://8055713313" 
+    SoundClick.Volume = 1
+    
+    local SoundClick2 = Instance.new("Sound")
+    
+    SoundClick2.Name = "Sound Effect"
+    SoundClick2.Parent = Load
+    SoundClick2.SoundId = "rbxassetid://3398620867" --
+    SoundClick2.Volume = 1
+
 local UIStroke = Instance.new("UIStroke")
 local UICorner = Instance.new("UICorner")
 
@@ -26,11 +40,71 @@ ImageButton.Size = UDim2.new(0, 55, 0, 55)
 ImageButton.Draggable = true
 ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 ImageButton.BackgroundTransparency = 0
-ImageButton.Image = "rbxassetid://13265033056" -- กำหนดรูปภาพให้กับ ImageButton
+ImageButton.Image = "rbxassetid://14645512457" -- กำหนดรูปภาพให้กับ ImageButton
 ImageButton.Style = RobloxButton               -- กำหนด Style ให้กับ ImageButton
 
 
 -- เมื่อคลิกปุ่มใน ImageButton
-ImageButton.MouseButton1Down:connect(function()
-    game.CoreGui:FindFirstChild("VectorHub").Enabled = not game.CoreGui:FindFirstChild("VectorHub").Enabled
-end)
+function LoadFunction()
+    TweenService:Create(
+        ImageButton,
+        TweenInfo.new(.4, Enum.EasingStyle.Quart, Enum.EasingDirection.In),
+        {ImageTransparency = 0}
+    ):Play()
+    
+    ImageButton.MouseEnter:Connect(function()
+        TweenService:Create(
+            ImageButton,
+            TweenInfo.new(.2, Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
+            {Size = UDim2.new(0, 80, 0, 80)}
+        ):Play()
+    end)
+    
+    ImageButton.MouseLeave:Connect(function()
+        TweenService:Create(
+            ImageButton,
+            TweenInfo.new(.2, Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
+            {Size = UDim2.new(0, 50, 0, 50)}
+        ):Play()
+    end)
+    
+    local LoadFocus = false
+    
+    ImageButton.MouseButton1Down:Connect(function()
+        if LoadFocus == false then 
+            LoadFocus = false
+            TweenService:Create(
+                ImageButton,
+                TweenInfo.new(.2, Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
+                {Rotation = 180}
+            ):Play()
+            SoundClick2:Play()
+            TweenService:Create(
+                ImageButton,
+                TweenInfo.new(.4, Enum.EasingStyle.Quart, Enum.EasingDirection.In),
+                {ImageTransparency = 0}
+            ):Play()
+            wait(.5)
+            TweenService:Create(
+                ImageButton,
+                TweenInfo.new(.2, Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
+                {Rotation = 0}
+            ):Play()
+            --SoundClick:Play()
+            TweenService:Create(
+                ImageButton,
+                TweenInfo.new(.4, Enum.EasingStyle.Quart, Enum.EasingDirection.In),
+                {ImageTransparency = 0}
+            ):Play()
+            wait(.5)	
+            
+        end
+    end)
+    end
+    LoadFunction()
+    
+    -- เมื่อคลิกปุ่มใน ImageButton
+    ImageButton.MouseButton1Down:connect(function()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F1,false,game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F1,false,game)
+    end)
