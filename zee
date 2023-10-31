@@ -660,7 +660,7 @@ end
         _G.AutoFactory or
         --[World 3]
         _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoMusketeerHat or _G.AutoBuddySword or
-        _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation or _G.AutoGodHuman or _G.AutoCavander or
+        _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
         _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
         _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
         _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
@@ -768,7 +768,7 @@ end
     _G.AutoFactory or
     --[World 3]
     _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoMusketeerHat or _G.AutoBuddySword or
-    _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation or _G.AutoGodHuman or _G.AutoCavander or
+    _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
     _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
     _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
     _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
@@ -808,7 +808,7 @@ end
             _G.AutoFactory or
             --[World 3]
             _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoMusketeerHat or _G.AutoBuddySword or
-            _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation or _G.AutoGodHuman or _G.AutoCavander or
+            _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
             _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
             _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
             _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
@@ -6344,8 +6344,6 @@ end)
         end)
         page1:Toggle("Auto Buy Legendary Sword Hop", _G.AutoBuyLegendarySwordHop, function(value)
             _G.AutoBuyLegendarySwordHop = value
-            _G.Settings.AutoBuyLegendarySwordHop = value
-            SaveSettings()
                             spawn(function()
                             while task.wait() do
                                 pcall(function()
@@ -6365,8 +6363,7 @@ end)
                             end)
                         end)
     else
-    page1:Toggle("ออโต้ซื้อดาบโซโล", _G.AutoBuyLegendarySword,
-    function(value)
+    page1:Toggle("ออโต้ซื้อดาบตำนาน", _G.AutoBuyLegendarySword,function(value)
     _G.AutoBuyLegendarySword = value
     task.spawn(function()
     while task.wait() do
@@ -6380,10 +6377,8 @@ end)
     end
     end)
     end)
-    page1:Toggle("ออโต้ซื้อดาบโซโล&ย้ายเซิฟเวอร์", _G.AutoBuyLegendarySwordHop, function(value)
+    page1:Toggle("ออโต้ซื้อดาบตำนาน&ย้ายเซิฟเวอร์", _G.AutoBuyLegendarySwordHop, function(value)
     _G.AutoBuyLegendarySwordHop = value
-    _G.Settings.AutoBuyLegendarySwordHop = value
-    SaveSettings()
     spawn(function()
                 while task.wait() do
                     pcall(function()
@@ -6402,28 +6397,11 @@ end)
                 end
                 end)
         end)
-    end    
-if World2 or World3 then
-    if _G.Mode == "English" then
-        page1:Toggle("Auto Buy Enchanment Haki", _G.AutoBuyEnchanmentHaki, function(value)
-            _G.AutoBuyEnchanmentHaki = value
-            task.spawn(function()
-                while task.wait() do
-                    pcall(function()
-                        if _G.AutoBuyEnchanmentHaki then
-                            local args = {
-                                [1] = "ColorsDealer",
-                                [2] = "2"
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        end
-                    end)
-                end
-            end)
-        end)
-    else
-        page1:Toggle("ออโต้ซื้อสีฮาคิ", _G.AutoBuyEnchanmentHaki,function(value)
-            _G.AutoBuyEnchanmentHaki = value
+    end     
+    if World2 or World3 then
+        if _G.Mode == "English" then
+            page1:Toggle("Auto Buy Color Haki", _G.AutoBuyEnchanmentHaki, function(value)
+                _G.AutoBuyEnchanmentHaki = value
                 task.spawn(function()
                     while task.wait() do
                         pcall(function()
@@ -6438,10 +6416,27 @@ if World2 or World3 then
                     end
                 end)
             end)
-        end 
-    end
-if World2 or World3 then
-local ObservationRange = page1:Label("")
+        else
+            page1:Toggle("ออโต้ซื้อสีฮาคิ", _G.AutoBuyEnchanmentHaki,function(value)
+                _G.AutoBuyEnchanmentHaki = value
+                    task.spawn(function()
+                        while task.wait() do
+                            pcall(function()
+                                if _G.AutoBuyEnchanmentHaki then
+                                    local args = {
+                                        [1] = "ColorsDealer",
+                                        [2] = "2"
+                                    }
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                                end
+                            end)
+                        end
+                    end)
+                end)
+            end   
+            
+
+local ObservationRange = page1:Label("..")
 spawn(function()
         while wait() do
             pcall(function()
@@ -6590,17 +6585,14 @@ spawn(function()
                 end
             end)
     	end)
-    end
+        end                                                                                          
         elseif World3 then
             if _G.Mode == "English" then
-                page1:Label(
-                "Status : World 3"
-                )
+                page1:Label("Status : World 3")
             else
-                page1:Label(
-                    "สถานะ : โลก 3"
-                    )
+                page1:Label("สถานะ : โลก 3")
             end
+            
     if _G.Mode == "English" then
         page1:Toggle("Auto Ken-Haki V2", _G.AutoKenHakiV2, function(value)
             _G.AutoKenHakiV2 = value
@@ -6762,7 +6754,7 @@ spawn(function()
                                     if _G.AutoEvent  then
                                         if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
                                             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                                if string.find(v.Name, "Fish Crew") or string.find(v.Name, "Piranha") or string.find(v.Name, "Shark") or string.find(v.Name , "Terror") then
+                                                if v.Name == "Fish Crew Member" or v.Name == "Piranha" or v.Name == "Shark" or string.find(v.Name , "Terrorshark") then
                                                     if v.Humanoid.Health > 0 then
                                                     repeat task.wait()
                                                         if _G.AutoEvent then
@@ -6789,7 +6781,21 @@ spawn(function()
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                     FastAttack = false
-                                                   
+                                                    while task.wait() do
+                                                        if v.Humanoid.Health <= 0  then
+                                                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                                                if v:IsA("VehicleSeat") then 
+                                                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 1 and v.Owner.Value == game.Players.LocalPlayer.Name then
+                                                                        repeat
+                                                                            task.wait()
+                                                                            local CFrame = v.CFrame
+                                                                            twoboat(CFrame)
+                                                                        until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.AutoEvent
+                                                                    end
+                                                                end
+                                                            end
+                                                        end
+                                                    end
                                                     end
                                                 end
                                             end
@@ -6902,7 +6908,7 @@ spawn(function()
                                         if _G.AutoEvent  then
                                             if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
                                                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                                    if string.find(v.Name, "Fish Crew") or string.find(v.Name, "Piranha") or string.find(v.Name, "Shark") or string.find(v.Name , "Terror") then
+                                                    if v.Name == "Fish Crew Member" or v.Name == "Piranha" or v.Name == "Shark" or string.find(v.Name , "Terrorshark") then
                                                         if v.Humanoid.Health > 0 then
                                                         repeat task.wait()
                                                             if _G.AutoEvent then
@@ -6929,7 +6935,21 @@ spawn(function()
                                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                         until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                         FastAttack = false
-                                                       
+                                                        while task.wait() do
+                                                            if v.Humanoid.Health <= 0  then
+                                                                for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                                                    if v:IsA("VehicleSeat") then 
+                                                                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 1 and v.Owner.Value == game.Players.LocalPlayer.Name then
+                                                                            repeat
+                                                                                task.wait()
+                                                                                local CFrame = v.CFrame
+                                                                                twoboat(CFrame)
+                                                                            until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.AutoEvent
+                                                                        end
+                                                                    end
+                                                                end
+                                                            end
+                                                        end
                                                         end
                                                     end
                                                 end
@@ -7283,8 +7303,6 @@ end
                 if _G.Mode == "English" then
                     page1:Toggle("Auto Elite Hunter Hop", _G.AutoEliteHunterHop, function(value)
                         _G.AutoEliteHunterHop = value
-                        _G.Settings.AutoEliteHunterHop = value
-                        SaveSettings()
                         Elite()
                         if value == false then
                             toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7293,8 +7311,6 @@ end
                 else
                     page1:Toggle("ออโต้ นักล่าชั้นยอด & ย้ายเซิฟ",_G.AutoEliteHunterHop, function(value)
                             _G.AutoEliteHunterHop = value
-                            _G.Settings.AutoEliteHunterHop = value
-                            SaveSettings()
                             Elite()
                             if value == false then
                                 toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -15491,4 +15507,4 @@ spawn(function()
         end
     end
 end)
-print(22222)
+print(111111)
