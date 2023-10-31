@@ -6,19 +6,12 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
-local SoundClick = Instance.new("Sound")
-    
-    SoundClick.Name = "Sound Effect"
-    SoundClick.Parent = ImageButton
-    SoundClick.SoundId = "rbxassetid://8055713313" 
-    SoundClick.Volume = 1
-    
-    local SoundClick2 = Instance.new("Sound")
-    
-    SoundClick2.Name = "Sound Effect"
-    SoundClick2.Parent = ImageButton
-    SoundClick2.SoundId = "rbxassetid://3398620867" --
-    SoundClick2.Volume = 1
+
+local SoundClick2 = Instance.new("Sound")
+
+SoundClick2.Name = "Sound Effect"
+SoundClick2.SoundId = "rbxassetid://3398620867"
+SoundClick2.Volume = 1
 
 local UIStroke = Instance.new("UIStroke")
 local UICorner = Instance.new("UICorner")
@@ -82,7 +75,6 @@ function LoadFunction()
                 TweenInfo.new(.2, Enum.EasingStyle.Back, Enum.EasingDirection.InOut),
                 {Rotation = 0}
             ):Play()
-            --SoundClick:Play()
             TweenService:Create(
                 ImageButton,
                 TweenInfo.new(.4, Enum.EasingStyle.Quart, Enum.EasingDirection.In),
@@ -92,7 +84,7 @@ function LoadFunction()
             
         end
     end)
-    end
+end
     LoadFunction()
     
     -- เมื่อคลิกปุ่มใน ImageButton
@@ -100,3 +92,4 @@ function LoadFunction()
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F1,false,game)
     game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F1,false,game)
     end)
+print(22222)
