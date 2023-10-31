@@ -34,24 +34,17 @@ UICorner.Parent = ImageButton
 -- กำหนดตำแหน่งและขนาดของ ImageButton
 ImageButton.Parent = ScreenGui
 ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-ImageButton.Size = UDim2.new(0, 55, 0, 55)
+ImageButton.Size = UDim2.new(0, 45, 0, 45)
 
 -- กำหนดค่าอื่นๆ ของ ImageButton
 ImageButton.Draggable = true
 ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-ImageButton.BackgroundTransparency = 0
-ImageButton.Image = "rbxassetid://14645512457" -- กำหนดรูปภาพให้กับ ImageButton
-ImageButton.Style = RobloxButton               -- กำหนด Style ให้กับ ImageButton
+ImageButton.BackgroundTransparency = 1
+ImageButton.Image = "rbxassetid://14645512457" -- กำหนดรูปภาพให้กับ ImageButton 
 
 
 -- เมื่อคลิกปุ่มใน ImageButton
-function LoadFunction()
-    TweenService:Create(
-        ImageButton,
-        TweenInfo.new(.4, Enum.EasingStyle.Quart, Enum.EasingDirection.In),
-        {ImageTransparency = 0}
-    ):Play()
-    
+function LoadFunction()    
     ImageButton.MouseEnter:Connect(function()
         TweenService:Create(
             ImageButton,
