@@ -1,3 +1,11 @@
+local UserInputService = game:GetService("UserInputService")
+local VirtualInputManager = game:GetService("VirtualInputManager")
+local TweenService = game:GetService("TweenService")
+local tween = game:service"TweenService"
+local RunService = game:GetService("RunService")
+local LocalPlayer = game:GetService("Players").LocalPlayer
+local Mouse = LocalPlayer:GetMouse()
+local GuiService = game:GetService("GuiService")
 local SoundClick = Instance.new("Sound")
     
     SoundClick.Name = "Sound Effect"
@@ -28,7 +36,7 @@ UIStroke.Transparency = 0.5
 UIStroke.Color = Color3.fromRGB(0, 0, 0)
 UIStroke.Parent = ImageButton
 
-UICorner.CornerRadius = UDim.new(0, 8)
+UICorner.CornerRadius = UDim.new(0, 0)
 UICorner.Parent = ImageButton
 
 -- กำหนดตำแหน่งและขนาดของ ImageButton
