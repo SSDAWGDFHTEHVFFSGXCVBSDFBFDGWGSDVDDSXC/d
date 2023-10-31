@@ -9,14 +9,14 @@ local GuiService = game:GetService("GuiService")
 local SoundClick = Instance.new("Sound")
     
     SoundClick.Name = "Sound Effect"
-    SoundClick.Parent = Load
+    SoundClick.Parent = ImageButton
     SoundClick.SoundId = "rbxassetid://8055713313" 
     SoundClick.Volume = 1
     
     local SoundClick2 = Instance.new("Sound")
     
     SoundClick2.Name = "Sound Effect"
-    SoundClick2.Parent = Load
+    SoundClick2.Parent = ImageButton
     SoundClick2.SoundId = "rbxassetid://3398620867" --
     SoundClick2.Volume = 1
 
@@ -29,15 +29,6 @@ local RobloxButton = Enum.ButtonStyle.RobloxButton
 
 ScreenGui.Parent = game.CoreGui
 ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
--- กำหนด Stroke และ Corner
-UIStroke.Thickness = 1
-UIStroke.Transparency = 0.5
-UIStroke.Color = Color3.fromRGB(0, 0, 0)
-UIStroke.Parent = ImageButton
-
-UICorner.CornerRadius = UDim.new(0, 0)
-UICorner.Parent = ImageButton
 
 -- กำหนดตำแหน่งและขนาดของ ImageButton
 ImageButton.Parent = ScreenGui
