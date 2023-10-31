@@ -12,7 +12,7 @@ local SoundClick2 = Instance.new("Sound")
 SoundClick2.Name = "Sound Effect"
 SoundClick2.SoundId = "rbxassetid://3398620867"
 SoundClick2.Volume = 1
-
+SoundClick2.Parent = game.Workspace
 local UIStroke = Instance.new("UIStroke")
 local UICorner = Instance.new("UICorner")
 
@@ -92,4 +92,3 @@ end
     game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F1,false,game)
     game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F1,false,game)
     end)
-print(22222)
