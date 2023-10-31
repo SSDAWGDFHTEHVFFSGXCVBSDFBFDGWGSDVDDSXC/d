@@ -6398,7 +6398,7 @@ end)
                 end)
         end)
     end     
-   
+    if World2 or World3 then
         if _G.Mode == "English" then
             page1:Toggle("Auto Buy Color Haki", _G.AutoBuyEnchanmentHaki, function(value)
                 _G.AutoBuyEnchanmentHaki = value
@@ -6416,7 +6416,7 @@ end)
                     end
                 end)
             end)
-        
+        else
             page1:Toggle("ออโต้ซื้อสีฮาคิ", _G.AutoBuyEnchanmentHaki,function(value)
                 _G.AutoBuyEnchanmentHaki = value
                     task.spawn(function()
@@ -6434,6 +6434,7 @@ end)
                     end)
                 end)
             end   
+
         end                                                                                          
         elseif World3 then
             if _G.Mode == "English" then
@@ -6441,42 +6442,7 @@ end)
             else
                 page1:Label("สถานะ : โลก 3")
             end
-            if _G.Mode == "English" then
-                page1:Toggle("Auto Buy Color Haki", _G.AutoBuyEnchanmentHaki, function(value)
-                    _G.AutoBuyEnchanmentHaki = value
-                    task.spawn(function()
-                        while task.wait() do
-                            pcall(function()
-                                if _G.AutoBuyEnchanmentHaki then
-                                    local args = {
-                                        [1] = "ColorsDealer",
-                                        [2] = "2"
-                                    }
-                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                                end
-                            end)
-                        end
-                    end)
-                end)
             
-                page1:Toggle("ออโต้ซื้อสีฮาคิ", _G.AutoBuyEnchanmentHaki,function(value)
-                    _G.AutoBuyEnchanmentHaki = value
-                        task.spawn(function()
-                            while task.wait() do
-                                pcall(function()
-                                    if _G.AutoBuyEnchanmentHaki then
-                                        local args = {
-                                            [1] = "ColorsDealer",
-                                            [2] = "2"
-                                        }
-                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                                    end
-                                end)
-                            end
-                        end)
-                    end)
-                end   
-            end           
     if _G.Mode == "English" then
         page1:Toggle("Auto Ken-Haki V2", _G.AutoKenHakiV2, function(value)
             _G.AutoKenHakiV2 = value
@@ -11450,7 +11416,13 @@ spawn(function()
                 while wait() do
                     if _G.AutoObservation then
                         if game:GetService("Players").LocalPlayer.VisionRadius.Value >= 3000 then
-                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "MaxObservation",Icon = "rbxassetid://14645512457",Duration = 5})
+                            game:GetService("StarterGui"):SetCore("SendNotification",
+                                {
+                                    Icon = "rbxassetid://14645512457",
+                                    Title = "Observation",
+                                    Text = "You Have Max Observation"
+                                }
+                            )
                             wait(2)
                         else
                             if World2 then
@@ -15536,4 +15508,4 @@ spawn(function()
         end
     end
 end)
-print("Why bro")
+print("อะไร")
