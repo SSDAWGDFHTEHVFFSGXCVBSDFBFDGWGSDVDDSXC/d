@@ -258,7 +258,7 @@ end
     pcall(function()
         --[World 1]
         if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-        _G.AutoSaber or _G.AutoPole or 
+        _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
         --[World 2]
         _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
         _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
@@ -318,7 +318,7 @@ end
     while wait(.1) do
     pcall(function()
         if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-        _G.AutoSaber or _G.AutoPole or 
+        _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
         --[World 2]
         _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
         _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
@@ -366,7 +366,7 @@ end
     spawn(function()
     game:GetService("RunService").Stepped:Connect(function()
     if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-    _G.AutoSaber or _G.AutoPole or 
+    _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
     --[World 2]
     _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
     _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
@@ -406,7 +406,7 @@ end
     while task.wait() do
     pcall(function()
         if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-            _G.AutoSaber or _G.AutoPole or 
+            _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
             --[World 2]
             _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
             _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
@@ -444,7 +444,7 @@ end
     spawn(function() ------body velocity
     game:GetService("RunService").Stepped:Connect(function()
     if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-            _G.AutoSaber or _G.AutoPole or 
+            _G.AutoSaber or _G.AutoPole or _G.TeleportIsland or
             --[World 2]
             _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
             _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
@@ -480,105 +480,7 @@ end
     end)
     
     
-    function changestate()
-    game.Workspace["Part"].CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y - 3.92,
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
-    end
-    
-    spawn(function()
-    while task.wait() do
-    pcall(function()
-        if _G.TeleportIsland
-        then
-            if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-                local Noclip = Instance.new("BodyVelocity")
-                Noclip.Name = "BodyClip"
-                Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-                Noclip.MaxForce = Vector3.new(100000, 100000, 100000)
-                Noclip.Velocity = Vector3.new(0, 0, 0)
-            end
-        else
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
-        end
-    end)
-    end
-    end)
-    
-    
-    -- [Body Gyro]
-    task.spawn(function()
-    game:GetService("RunService").Stepped:Connect(function()
-    pcall(function()
-        --[World 1]
-        if  _G.TeleportIsland
-        then
-            if syn then
-                setfflag("HumanoidParallelRemoveNoPhysics", "False")
-                setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
-                game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-                if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
-                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
-                end
-            else
-                if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                    if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1") then
-                        if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
-                            game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
-                        end
-                        local BodyVelocity = Instance.new("BodyVelocity")
-                        BodyVelocity.Name = "BodyVelocity1"
-                        BodyVelocity.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-                        BodyVelocity.MaxForce = Vector3.new(10000, 10000, 10000)
-                        BodyVelocity.Velocity = Vector3.new(0, 0, 0)
-                    end
-                end
-                for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                    if v:IsA("BasePart") then
-                        v.CanCollide = false
-                    end
-                end
-            end
-        else
-            if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1") then
-                game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1"):Destroy();
-            end
-        end
-    end)
-    end)
-    end)
-    
-    spawn(function()
-    while wait(.1) do
-    pcall(function()
-        if  _G.TeleportIsland
-        then
-            if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-                game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
-                wait(5)
-            end
-            PIO = false
-            if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
-                local L_1 = Instance.new("BodyVelocity")
-                L_1.Name = "BodyGyrozz"
-                L_1.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-                L_1.MaxForce = Vector3.new(1000000000, 1000000000, 1000000000)
-                L_1.Velocity = Vector3.new(0, 0, 0)
-            end
-        elseif PIO == false then
-            for i, v in pairs(game.Players.LocalPlayer.Character.HumanoidRootPart:GetChildren()) do
-                if v.Name == "BodyGyrozz" then
-                    v:Destroy()
-                    PIO = true
-                end
-            end
-        end
-    end)
-    end
-    end)
-    
-    
-    
+
     -- [BringMon]
     local function SetSimulationRadius()
     setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
@@ -5926,121 +5828,7 @@ end)
                             end
                         end)
                     end
-                end)
-    if _G.Mode == "English" then
-        page1:Label("Auto Buy")
-    else
-        page1:Label("ออโต้ซื้อ")
-    end
-    if _G.Mode == "English" then
-        page1:Toggle("Auto Buy Legendary Sword", _G.AutoBuyLegendarySword, function(value)
-            _G.AutoBuyLegendarySword = value
-            task.spawn(function()
-                while task.wait() do
-                    pcall(function()
-                        if _G.AutoBuyLegendarySword then
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
-                        end
-                    end)
-                end
-            end)
-        end)
-        page1:Toggle("Auto Buy Legendary Sword Hop", _G.AutoBuyLegendarySwordHop, function(value)
-            _G.AutoBuyLegendarySwordHop = value
-                            spawn(function()
-                            while task.wait() do
-                                pcall(function()
-                                        if _G.AutoBuyLegendarySwordHop then
-                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
-                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
-                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
-                                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
-                                            while _G.AutoBuyLegendarySwordHop do task.wait()
-                                            wait(5)
-                                            Teleport()
-                                            Hop()
-                                            end
-                                        end
-                                    end)
-                                end
-                            end)
-                        end)
-    else
-    page1:Toggle("ออโต้ซื้อดาบตำนาน", _G.AutoBuyLegendarySword,function(value)
-    _G.AutoBuyLegendarySword = value
-    task.spawn(function()
-    while task.wait() do
-        pcall(function()
-            if _G.AutoBuyLegendarySword then
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
-            end
-        end)
-    end
-    end)
-    end)
-    page1:Toggle("ออโต้ซื้อดาบตำนาน&ย้ายเซิฟเวอร์", _G.AutoBuyLegendarySwordHop, function(value)
-    _G.AutoBuyLegendarySwordHop = value
-    spawn(function()
-                while task.wait() do
-                    pcall(function()
-                        if _G.AutoBuyLegendarySwordHop then
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
-                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
-                            while _G.AutoBuyLegendarySwordHop do task.wait()
-                            wait(5)
-                            Teleport()
-                            Hop()
-                            end
-                        end
-                    end)
-                end
-                end)
-        end)
-    end     
-    if World2 or World3 then
-        if _G.Mode == "English" then
-            page1:Toggle("Auto Buy Color Haki", _G.AutoBuyEnchanmentHaki, function(value)
-                _G.AutoBuyEnchanmentHaki = value
-                task.spawn(function()
-                    while task.wait() do
-                        pcall(function()
-                            if _G.AutoBuyEnchanmentHaki then
-                                local args = {
-                                    [1] = "ColorsDealer",
-                                    [2] = "2"
-                                }
-                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                            end
-                        end)
-                    end
-                end)
-            end)
-        else
-            page1:Toggle("ออโต้ซื้อสีฮาคิ", _G.AutoBuyEnchanmentHaki,function(value)
-                _G.AutoBuyEnchanmentHaki = value
-                    task.spawn(function()
-                        while task.wait() do
-                            pcall(function()
-                                if _G.AutoBuyEnchanmentHaki then
-                                    local args = {
-                                        [1] = "ColorsDealer",
-                                        [2] = "2"
-                                    }
-                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                                end
-                            end)
-                        end
-                    end)
-                end)
-            end   
-
-        end                                                                                          
+                end)                                                                                              
         elseif World3 then
             if _G.Mode == "English" then
                 page1:Label("Status : World 3")
@@ -14025,12 +13813,121 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
     end)
     end
+    page11:Seperator("🛒")
+
     if _G.Mode == "English" then
-    page11:Seperator("🛒")
+        page11:Label("Auto Buy")
     else
-    _G.Mode = "Thai"
-    page11:Seperator("🛒")
+        page11:Label("ออโต้ซื้อ")
     end
+    if _G.Mode == "English" then
+        page1:Toggle("Auto Buy Zoro Sword", _G.AutoBuyLegendarySword, function(value)
+            _G.AutoBuyLegendarySword = value
+            task.spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        if _G.AutoBuyLegendarySword then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
+                        end
+                    end)
+                end
+            end)
+        end)
+        page11:Toggle("Auto Buy Zoro Sword Hop", _G.AutoBuyLegendarySwordHop, function(value)
+            _G.AutoBuyLegendarySwordHop = value
+                            spawn(function()
+                            while task.wait() do
+                                pcall(function()
+                                        if _G.AutoBuyLegendarySwordHop then
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
+                                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
+                                            while _G.AutoBuyLegendarySwordHop do task.wait()
+                                            wait(5)
+                                            Teleport()
+                                            Hop()
+                                            end
+                                        end
+                                    end)
+                                end
+                            end)
+                        end)
+    else
+    page11:Toggle("ออโต้ซื้อดาบโซโล", _G.AutoBuyLegendarySword,function(value)
+    _G.AutoBuyLegendarySword = value
+    task.spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.AutoBuyLegendarySword then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
+            end
+        end)
+    end
+    end)
+    end)
+    page11:Toggle("ออโต้ซื้อดาบโซโล&ย้ายเซิฟเวอร์", _G.AutoBuyLegendarySwordHop, function(value)
+    _G.AutoBuyLegendarySwordHop = value
+    spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        if _G.AutoBuyLegendarySwordHop then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
+                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
+                            while _G.AutoBuyLegendarySwordHop do task.wait()
+                            wait(5)
+                            Teleport()
+                            Hop()
+                            end
+                        end
+                    end)
+                end
+                end)
+        end)
+    end     
+
+    if _G.Mode == "English" then
+        page11:Toggle("Auto Buy Color Haki", _G.AutoBuyEnchanmentHaki, function(value)
+            _G.AutoBuyEnchanmentHaki = value
+            task.spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        if _G.AutoBuyEnchanmentHaki then
+                            local args = {
+                                [1] = "ColorsDealer",
+                                [2] = "2"
+                            }
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        end
+                    end)
+                end
+            end)
+        end)
+    else
+        page11:Toggle("ออโต้ซื้อสีฮาคิ", _G.AutoBuyEnchanmentHaki,function(value)
+            _G.AutoBuyEnchanmentHaki = value
+                task.spawn(function()
+                    while task.wait() do
+                        pcall(function()
+                            if _G.AutoBuyEnchanmentHaki then
+                                local args = {
+                                    [1] = "ColorsDealer",
+                                    [2] = "2"
+                                }
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                            end
+                        end)
+                    end
+                end)
+            end)
+        end   
+
     if _G.AutoBuyEnchanmentHaki then
     local args = {
         [1] = "ColorsDealer",
@@ -15109,4 +15006,4 @@ spawn(function()
         end
     end
 end)
-print("reasz")
+print("Ez")
