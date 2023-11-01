@@ -6095,35 +6095,55 @@ end)
                             end
                     page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
                         _G.increaseboatspeed = value
+                        _G.Checkspeed1 = false
+                        _G.Checkspeed2 = false
                         while task.wait() do
                             if _G.increaseboatspeed then
                                 repeat
                                     for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                                         if v:IsA("VehicleSeat") then
-                                            if v.MaxSpeed ~= 380 and v.Parent.Parent:FindFirstChildOfClass("Humanoid"):GetPlayer() == game.Players.LocalPlayer then
+                                            if v.MaxSpeed ~= 380 then
                                                 v.MaxSpeed = 380
+                                                if v.MaxSpeed == 380 then
+                                                    _G.Checkspeed1 = true
+                                                end
                                             end
                                         end
                                     end
-                                until v.MaxSpeed == 380
+                                until _G.Checkspeed1 == true
                             else
                                 repeat
                                     for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                                         if v:IsA("VehicleSeat") then
-                                            if v.MaxSpeed ~= 100 and v.Parent.Parent:FindFirstChildOfClass("Humanoid"):GetPlayer() == game.Players.LocalPlayer then
-                                                v.MaxSpeed = 10
+                                            if v.MaxSpeed ~= 100  then
+                                                v.MaxSpeed = 100
+                                                if v.MaxSpeed == 100 then
+                                                    _G.Checkspeed2 = true
+                                                end
                                             end
                                         end
                                     end
-                                until v.MaxSpeed == 100
+                                until _G.Checkspeed2 == true
                             end
                         end
-                        
-                    end)
-                    page1:Toggle("Noclip Rock",_G.Nocliprock, function(value)
-                    _G.Nocliprock = value
                     end)
                     
+                    page1:Toggle("Noclip Rock",_G.Nocliprock, function(value)
+                        _G.Nocliprock = value
+                        while task.wait() do
+                        if _G.Nocliprock then
+                            for i, v in pairs(Workspace:GetDescendants()) do
+                                if v:IsA("BasePart") and string.find(v.Name, "rock") then
+                                        v.CanCollide = false
+                                        if not _G.Nocliprock  then
+                                        v.CanCollide = true
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end)
+
                         page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
                         _G.TPTOBOAT = value
                         while task.wait() do
@@ -6253,44 +6273,55 @@ end)
                                 end
                         page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
                             _G.increaseboatspeed = value
+                            _G.Checkspeed1 = false
+                            _G.Checkspeed2 = false
                             while task.wait() do
                                 if _G.increaseboatspeed then
                                     repeat
                                         for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                                             if v:IsA("VehicleSeat") then
-                                                if v.MaxSpeed ~= 380 and v.Parent.Parent:FindFirstChildOfClass("Humanoid"):GetPlayer() == game.Players.LocalPlayer then
+                                                if v.MaxSpeed ~= 380 then
                                                     v.MaxSpeed = 380
+                                                    if v.MaxSpeed == 380 then
+                                                        _G.Checkspeed1 = true
+                                                    end
                                                 end
                                             end
                                         end
-                                    until v.MaxSpeed == 380
+                                    until _G.Checkspeed1 == true
                                 else
                                     repeat
                                         for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                                             if v:IsA("VehicleSeat") then
-                                                if v.MaxSpeed ~= 100 and v.Parent.Parent:FindFirstChildOfClass("Humanoid"):GetPlayer() == game.Players.LocalPlayer then
-                                                    v.MaxSpeed = 10
+                                                if v.MaxSpeed ~= 100  then
+                                                    v.MaxSpeed = 100
+                                                    if v.MaxSpeed == 100 then
+                                                        _G.Checkspeed2 = true
+                                                    end
                                                 end
                                             end
                                         end
-                                    until v.MaxSpeed == 100
+                                    until _G.Checkspeed2 == true
                                 end
                             end
                         end)
                         page1:Toggle("เรือทะลุหินได้",_G.Nocliprock, function(value)
-                        _G.Nocliprock = value
-                    end)
-                    
-                if _G.Nocliprock then
-                    for i, v in pairs(Workspace:GetDescendants()) do
-                        if v:IsA("BasePart") and string.find(v.Name, "rock") then
-                                v.CanCollide = false
-                                if _G.Nocliprock == false then
-                                break
+                            _G.Nocliprock = value
+                            while task.wait() do
+                            if _G.Nocliprock then
+                                for i, v in pairs(Workspace:GetDescendants()) do
+                                    if v:IsA("BasePart") and string.find(v.Name, "rock") then
+                                            v.CanCollide = false
+                                            if not _G.Nocliprock  then
+                                            v.CanCollide = true
+                                        end
+                                    end
+                                end
                             end
                         end
-                    end
-                end
+                    end)
+                    
+                
                 page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
                 _G.TPTOBOAT = value
                 while task.wait() do
@@ -15020,4 +15051,4 @@ spawn(function()
         end
     end
 end)
-print(1)
+print(22222)
