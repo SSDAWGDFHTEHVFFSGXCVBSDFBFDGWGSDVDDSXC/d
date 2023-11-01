@@ -5995,7 +5995,6 @@ end)
                             while task.wait() do
                                 pcall(function()
                                     if _G.AutoEvent  then
-                                        if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
                                             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                                 if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
                                                     if v.Humanoid.Health > 0 then
@@ -6042,7 +6041,6 @@ end)
                                                     end
                                                 end
                                             end
-                                        end
                                     end
                                 end)
                             end
@@ -6096,27 +6094,34 @@ end)
                                 end)
                             end
                     page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
-                    _G.increaseboatspeed  = value
-                    while task.wait() do
-                    if _G.increaseboatspeed then
-                    for i, v in pairs(game.Workspace.Boats:GetChildren()) do
-                        if v:IsA("VehicleSeat")  then
-                            v.MaxSpeed = 380
-                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                        end
-                        end
-                    elseif not _G.increaseboatspeed then
-                        for i, v in pairs(game.Workspace.Boats::GetChildren()) do 
-                            if v:IsA("VehicleSeat")  then
-                                v.MaxSpeed = 150
-                                sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                        _G.increaseboatspeed = value
+                        while task.wait() do
+                            if _G.increaseboatspeed then
+                                repeat
+                                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                        if v:IsA("VehicleSeat") then
+                                            if v.MaxSpeed ~= 380 and v.Parent.Parent:FindFirstChildOfClass("Humanoid"):GetPlayer() == game.Players.LocalPlayer then
+                                                v.MaxSpeed = 380
+                                            end
+                                        end
+                                    end
+                                until v.MaxSpeed == 380
+                            else
+                                repeat
+                                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                        if v:IsA("VehicleSeat") then
+                                            if v.MaxSpeed ~= 100 and v.Parent.Parent:FindFirstChildOfClass("Humanoid"):GetPlayer() == game.Players.LocalPlayer then
+                                                v.MaxSpeed = 10
+                                            end
+                                        end
+                                    end
+                                until v.MaxSpeed == 100
                             end
-                            end
                         end
-                    end
+                        
                     end)
-                    page1:Toggle("Delete All Rock[Lag]",_G.deleterock, function(value)
-                    _G.deleterock = value
+                    page1:Toggle("Noclip Rock",_G.Nocliprock, function(value)
+                    _G.Nocliprock = value
                     end)
                     
                         page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
@@ -6149,7 +6154,6 @@ end)
                                 while task.wait() do
                                     pcall(function()
                                         if _G.AutoEvent  then
-                                            if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
                                                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                                     if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
                                                         if v.Humanoid.Health > 0 then
@@ -6196,7 +6200,6 @@ end)
                                                         end
                                                     end
                                                 end
-                                            end
                                         end
                                     end)
                                 end
@@ -6249,34 +6252,45 @@ end)
                                     end)
                                 end
                         page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
-                        _G.increaseboatspeed  = value
-                        while task.wait() do
-                        if _G.increaseboatspeed then
-                        for i, v in pairs(game.Workspace.Boats:GetChildren()) do
-                            if v:IsA("VehicleSeat")  then
-                                v.MaxSpeed = 350
-                            end
-                            end
-                        elseif not _G.increaseboatspeed then
-                            for i, v in pairs(game.Workspace.Boats:GetChildren()) do
-                                if v:IsA("VehicleSeat")  then
-                                    v.MaxSpeed = 150
+                            _G.increaseboatspeed = value
+                            while task.wait() do
+                                if _G.increaseboatspeed then
+                                    repeat
+                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                            if v:IsA("VehicleSeat") then
+                                                if v.MaxSpeed ~= 380 and v.Parent.Parent:FindFirstChildOfClass("Humanoid"):GetPlayer() == game.Players.LocalPlayer then
+                                                    v.MaxSpeed = 380
+                                                end
+                                            end
+                                        end
+                                    until v.MaxSpeed == 380
+                                else
+                                    repeat
+                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                            if v:IsA("VehicleSeat") then
+                                                if v.MaxSpeed ~= 100 and v.Parent.Parent:FindFirstChildOfClass("Humanoid"):GetPlayer() == game.Players.LocalPlayer then
+                                                    v.MaxSpeed = 10
+                                                end
+                                            end
+                                        end
+                                    until v.MaxSpeed == 100
                                 end
-                                end
                             end
-                        end
                         end)
-                        page1:Toggle("ลบหินทั้งหมด[แลค]",_G.deleterock, function(value)
-                        _G.deleterock = value
+                        page1:Toggle("เรือทะลุหินได้",_G.Nocliprock, function(value)
+                        _G.Nocliprock = value
                     end)
-                    local delete = _G.deleterock
-                    for i, v in pairs(game.Workspace:GetChildren()) do
-                        if v.Name == "MediumFlat" or v.Name == "Large" or v.Name == "Largest" or v.Name == "MediumGroup" or v.Name == "SmallCluster" or v.Name == "SmallGroup" or v.Name == "Largest" or v.Name == "" then 
-                        if delete then
-                            v:destroy()
+                    
+                if _G.Nocliprock then
+                    for i, v in pairs(Workspace:GetDescendants()) do
+                        if v:IsA("BasePart") and string.find(v.Name, "rock") then
+                                v.CanCollide = false
+                                if _G.Nocliprock == false then
+                                break
                             end
                         end
                     end
+                end
                 page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
                 _G.TPTOBOAT = value
                 while task.wait() do
@@ -15006,4 +15020,4 @@ spawn(function()
         end
     end
 end)
-print("test")
+print(1)
