@@ -6095,52 +6095,49 @@ end)
                             end
                     page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
                         _G.increaseboatspeed = value
-                        _G.Checkspeed1 = false
-                        _G.Checkspeed2 = false
-                        while task.wait() do
-                            if _G.increaseboatspeed then
-                                repeat
-                                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                        if v:IsA("VehicleSeat") then
-                                            if v.MaxSpeed ~= 380 then
-                                                v.MaxSpeed = 380
-                                                if v.MaxSpeed == 380 then
-                                                    _G.Checkspeed1 = true
-                                                end
-                                            end
-                                        end
-                                    end
-                                until _G.Checkspeed1 == true
-                            else
-                                repeat
-                                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                        if v:IsA("VehicleSeat") then
-                                            if v.MaxSpeed ~= 100  then
-                                                v.MaxSpeed = 100
-                                                if v.MaxSpeed == 100 then
-                                                    _G.Checkspeed2 = true
-                                                end
-                                            end
-                                        end
-                                    end
-                                until _G.Checkspeed2 == true
-                            end
-                        end
-                    end)
-                    
-                    page1:Toggle("Noclip Rock",_G.Nocliprock, function(value)
-                        _G.Nocliprock = value
-                            if _G.Nocliprock then
-                                for i, v in pairs(Workspace:GetDescendants()) do
-                                    if v:IsA("BasePart") and string.find(v.Name, "rock") then
-                                            v.CanCollide = false
-                                            if not _G.Nocliprock  then
-                                            v.CanCollide = true
-                                        end
-                                    end
+                            local vehicleSeats = {}
+                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                if v:IsA("VehicleSeat") then
+                                    table.insert(vehicleSeats, v)
                                 end
                             end
-                        end)
+                            if _G.increaseboatspeed then
+                                for _, v in pairs(vehicleSeats) do
+                                    v.MaxSpeed = 380
+                                end
+                            else
+                                for _, v in pairs(vehicleSeats) do
+                                    v.MaxSpeed = 100
+                                end
+                            end
+                    end)
+                    page1:Toggle("AutoSail",_G.AutoSail, function(value)
+                        _G.AutoSail = value
+                        while _G.AutoSail do task.wait(0)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+                        end
+                    end)
+                    page1:Toggle("Noclip Rock",_G.Nocliprock, function(value)
+                        _G.Nocliprock = value
+                        function IsRock(v)
+                          return v:IsA("BasePart") and string.find(v.Name, "rock") or string.find(v.Name, "Rock") and not string.find(v.Name, "Rocks")
+                        end
+                        function SetNoclip(v, noclip)
+                          v.CanCollide = not noclip
+                        end
+                        function UpdateNocliprock()
+                          local rocks = {}
+                          for _,v in pairs(workspace:GetDescendants()) do
+                            if IsRock(v) then
+                              table.insert(rocks, v)
+                            end
+                          end
+                          for _,v in pairs(rocks) do
+                            SetNoclip(v, _G.Nocliprock)
+                          end
+                        end
+                        UpdateNocliprock()
+                    end)
 
                         page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
                         _G.TPTOBOAT = value
@@ -6271,50 +6268,48 @@ end)
                                 end
                         page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
                             _G.increaseboatspeed = value
-                            _G.Checkspeed1 = false
-                            _G.Checkspeed2 = false
-                            while task.wait() do
-                                if _G.increaseboatspeed then
-                                    repeat
-                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                            if v:IsA("VehicleSeat") then
-                                                if v.MaxSpeed ~= 380 then
-                                                    v.MaxSpeed = 380
-                                                    if v.MaxSpeed == 380 then
-                                                        _G.Checkspeed1 = true
-                                                    end
-                                                end
-                                            end
-                                        end
-                                    until _G.Checkspeed1 == true
-                                else
-                                    repeat
-                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                            if v:IsA("VehicleSeat") then
-                                                if v.MaxSpeed ~= 100  then
-                                                    v.MaxSpeed = 100
-                                                    if v.MaxSpeed == 100 then
-                                                        _G.Checkspeed2 = true
-                                                    end
-                                                end
-                                            end
-                                        end
-                                    until _G.Checkspeed2 == true
+                            local vehicleSeats = {}
+                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                if v:IsA("VehicleSeat") then
+                                    table.insert(vehicleSeats, v)
+                                end
+                            end
+                            if _G.increaseboatspeed then
+                                for _, v in pairs(vehicleSeats) do
+                                    v.MaxSpeed = 380
+                                end
+                            else
+                                for _, v in pairs(vehicleSeats) do
+                                    v.MaxSpeed = 100
                                 end
                             end
                         end)
+                        page1:Toggle("ออโต้ขับเรือ",_G.AutoSail, function(value)
+                        _G.AutoSail = value
+                        while _G.AutoSail do task.wait(0)
+                        game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+                        end
+                    end)
                         page1:Toggle("เรือทะลุหินได้",_G.Nocliprock, function(value)
                             _G.Nocliprock = value
-                            if _G.Nocliprock then
-                                for i, v in pairs(Workspace:GetDescendants()) do
-                                    if v:IsA("BasePart") and string.find(v.Name, "rock") then
-                                            v.CanCollide = false
-                                            if not _G.Nocliprock  then
-                                            v.CanCollide = true
-                                        end
-                                    end
-                                end
+                            function IsRock(v)
+                              return v:IsA("BasePart") and string.find(v.Name, "rock") or string.find(v.Name, "Rock") and not string.find(v.Name, "Rocks")
                             end
+                            function SetNoclip(v, noclip)
+                              v.CanCollide = not noclip
+                            end
+                            function UpdateNocliprock()
+                              local rocks = {}
+                              for _,v in pairs(workspace:GetDescendants()) do
+                                if IsRock(v) then
+                                  table.insert(rocks, v)
+                                end
+                              end
+                              for _,v in pairs(rocks) do
+                                SetNoclip(v, _G.Nocliprock)
+                              end
+                            end
+                            UpdateNocliprock()
                         end)
                     
                 
@@ -15047,4 +15042,4 @@ spawn(function()
         end
     end
 end)
-print(33333)
+print(3211)
