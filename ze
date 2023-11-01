@@ -6130,19 +6130,17 @@ end)
                     
                     page1:Toggle("Noclip Rock",_G.Nocliprock, function(value)
                         _G.Nocliprock = value
-                        while task.wait() do
-                        if _G.Nocliprock then
-                            for i, v in pairs(Workspace:GetDescendants()) do
-                                if v:IsA("BasePart") and string.find(v.Name, "rock") then
-                                        v.CanCollide = false
-                                        if not _G.Nocliprock  then
-                                        v.CanCollide = true
+                            if _G.Nocliprock then
+                                for i, v in pairs(Workspace:GetDescendants()) do
+                                    if v:IsA("BasePart") and string.find(v.Name, "rock") then
+                                            v.CanCollide = false
+                                            if not _G.Nocliprock  then
+                                            v.CanCollide = true
+                                        end
                                     end
                                 end
                             end
-                        end
-                    end
-                end)
+                        end)
 
                         page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
                         _G.TPTOBOAT = value
@@ -6307,7 +6305,6 @@ end)
                         end)
                         page1:Toggle("เรือทะลุหินได้",_G.Nocliprock, function(value)
                             _G.Nocliprock = value
-                            while task.wait() do
                             if _G.Nocliprock then
                                 for i, v in pairs(Workspace:GetDescendants()) do
                                     if v:IsA("BasePart") and string.find(v.Name, "rock") then
@@ -6318,8 +6315,7 @@ end)
                                     end
                                 end
                             end
-                        end
-                    end)
+                        end)
                     
                 
                 page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
@@ -15051,4 +15047,4 @@ spawn(function()
         end
     end
 end)
-print(22222)
+print(33333)
