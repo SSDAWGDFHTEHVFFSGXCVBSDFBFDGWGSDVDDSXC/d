@@ -6099,14 +6099,14 @@ end)
                     _G.increaseboatspeed  = value
                     while task.wait() do
                     if _G.increaseboatspeed then
-                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                    for i, v in pairs(game.Workspace.Boats:GetChildren()) do
                         if v:IsA("VehicleSeat")  then
                             v.MaxSpeed = 380
                             sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
                         end
                         end
                     elseif not _G.increaseboatspeed then
-                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                        for i, v in pairs(game.Workspace.Boats::GetChildren()) do 
                             if v:IsA("VehicleSeat")  then
                                 v.MaxSpeed = 150
                                 sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
@@ -6252,13 +6252,13 @@ end)
                         _G.increaseboatspeed  = value
                         while task.wait() do
                         if _G.increaseboatspeed then
-                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                        for i, v in pairs(game.Workspace.Boats:GetChildren()) do
                             if v:IsA("VehicleSeat")  then
                                 v.MaxSpeed = 350
                             end
                             end
                         elseif not _G.increaseboatspeed then
-                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                            for i, v in pairs(game.Workspace.Boats:GetChildren()) do
                                 if v:IsA("VehicleSeat")  then
                                     v.MaxSpeed = 150
                                 end
@@ -15006,4 +15006,4 @@ spawn(function()
         end
     end
 end)
-print("Ez")
+print("test")
