@@ -1,14 +1,3 @@
-do
-    local ui = game:GetService("CoreGui").RobloxGui.Modules.Profile:FindFirstChild("UILibrary")
-    if ui then ui:Destroy() end
-    end
-    
-    do
-    local ui = game:GetService("Lighting"):FindFirstChild("Blur")
-    if ui then ui:Destroy() end
-    end
-    
-    
     if not game:IsLoaded() then
     local Loaded = Instance.new("Message", workspace)
     Loaded.Text = 'Wait Game Loading'
@@ -269,7 +258,7 @@ end
     pcall(function()
         --[World 1]
         if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-        _G.AutoSaber or _G.AutoPole or 
+        _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
         --[World 2]
         _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
         _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
@@ -329,7 +318,7 @@ end
     while wait(.1) do
     pcall(function()
         if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-        _G.AutoSaber or _G.AutoPole or 
+        _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
         --[World 2]
         _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
         _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
@@ -377,7 +366,7 @@ end
     spawn(function()
     game:GetService("RunService").Stepped:Connect(function()
     if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-    _G.AutoSaber or _G.AutoPole or 
+    _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
     --[World 2]
     _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
     _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
@@ -417,7 +406,7 @@ end
     while task.wait() do
     pcall(function()
         if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-            _G.AutoSaber or _G.AutoPole or 
+            _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
             --[World 2]
             _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
             _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
@@ -455,7 +444,7 @@ end
     spawn(function() ------body velocity
     game:GetService("RunService").Stepped:Connect(function()
     if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-            _G.AutoSaber or _G.AutoPole or 
+            _G.AutoSaber or _G.AutoPole or _G.TeleportIsland or
             --[World 2]
             _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
             _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
@@ -491,105 +480,7 @@ end
     end)
     
     
-    function changestate()
-    game.Workspace["Part"].CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y - 3.92,
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
-    end
-    
-    spawn(function()
-    while task.wait() do
-    pcall(function()
-        if _G.TeleportIsland
-        then
-            if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-                local Noclip = Instance.new("BodyVelocity")
-                Noclip.Name = "BodyClip"
-                Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-                Noclip.MaxForce = Vector3.new(100000, 100000, 100000)
-                Noclip.Velocity = Vector3.new(0, 0, 0)
-            end
-        else
-            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
-        end
-    end)
-    end
-    end)
-    
-    
-    -- [Body Gyro]
-    task.spawn(function()
-    game:GetService("RunService").Stepped:Connect(function()
-    pcall(function()
-        --[World 1]
-        if  _G.TeleportIsland
-        then
-            if syn then
-                setfflag("HumanoidParallelRemoveNoPhysics", "False")
-                setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
-                game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-                if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
-                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
-                end
-            else
-                if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
-                    if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1") then
-                        if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
-                            game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
-                        end
-                        local BodyVelocity = Instance.new("BodyVelocity")
-                        BodyVelocity.Name = "BodyVelocity1"
-                        BodyVelocity.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-                        BodyVelocity.MaxForce = Vector3.new(10000, 10000, 10000)
-                        BodyVelocity.Velocity = Vector3.new(0, 0, 0)
-                    end
-                end
-                for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                    if v:IsA("BasePart") then
-                        v.CanCollide = false
-                    end
-                end
-            end
-        else
-            if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1") then
-                game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1"):Destroy();
-            end
-        end
-    end)
-    end)
-    end)
-    
-    spawn(function()
-    while wait(.1) do
-    pcall(function()
-        if  _G.TeleportIsland
-        then
-            if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-                game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
-                wait(5)
-            end
-            PIO = false
-            if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
-                local L_1 = Instance.new("BodyVelocity")
-                L_1.Name = "BodyGyrozz"
-                L_1.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-                L_1.MaxForce = Vector3.new(1000000000, 1000000000, 1000000000)
-                L_1.Velocity = Vector3.new(0, 0, 0)
-            end
-        elseif PIO == false then
-            for i, v in pairs(game.Players.LocalPlayer.Character.HumanoidRootPart:GetChildren()) do
-                if v.Name == "BodyGyrozz" then
-                    v:Destroy()
-                    PIO = true
-                end
-            end
-        end
-    end)
-    end
-    end)
-    
-    
-    
+
     -- [BringMon]
     local function SetSimulationRadius()
     setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
@@ -5937,121 +5828,7 @@ end)
                             end
                         end)
                     end
-                end)
-    if _G.Mode == "English" then
-        page1:Label("Auto Buy")
-    else
-        page1:Label("ออโต้ซื้อ")
-    end
-    if _G.Mode == "English" then
-        page1:Toggle("Auto Buy Legendary Sword", _G.AutoBuyLegendarySword, function(value)
-            _G.AutoBuyLegendarySword = value
-            task.spawn(function()
-                while task.wait() do
-                    pcall(function()
-                        if _G.AutoBuyLegendarySword then
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
-                        end
-                    end)
-                end
-            end)
-        end)
-        page1:Toggle("Auto Buy Legendary Sword Hop", _G.AutoBuyLegendarySwordHop, function(value)
-            _G.AutoBuyLegendarySwordHop = value
-                            spawn(function()
-                            while task.wait() do
-                                pcall(function()
-                                        if _G.AutoBuyLegendarySwordHop then
-                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
-                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
-                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
-                                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
-                                            while _G.AutoBuyLegendarySwordHop do task.wait()
-                                            wait(5)
-                                            Teleport()
-                                            Hop()
-                                            end
-                                        end
-                                    end)
-                                end
-                            end)
-                        end)
-    else
-    page1:Toggle("ออโต้ซื้อดาบตำนาน", _G.AutoBuyLegendarySword,function(value)
-    _G.AutoBuyLegendarySword = value
-    task.spawn(function()
-    while task.wait() do
-        pcall(function()
-            if _G.AutoBuyLegendarySword then
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
-                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
-            end
-        end)
-    end
-    end)
-    end)
-    page1:Toggle("ออโต้ซื้อดาบตำนาน&ย้ายเซิฟเวอร์", _G.AutoBuyLegendarySwordHop, function(value)
-    _G.AutoBuyLegendarySwordHop = value
-    spawn(function()
-                while task.wait() do
-                    pcall(function()
-                        if _G.AutoBuyLegendarySwordHop then
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
-                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
-                            while _G.AutoBuyLegendarySwordHop do task.wait()
-                            wait(5)
-                            Teleport()
-                            Hop()
-                            end
-                        end
-                    end)
-                end
-                end)
-        end)
-    end     
-    if World2 or World3 then
-        if _G.Mode == "English" then
-            page1:Toggle("Auto Buy Color Haki", _G.AutoBuyEnchanmentHaki, function(value)
-                _G.AutoBuyEnchanmentHaki = value
-                task.spawn(function()
-                    while task.wait() do
-                        pcall(function()
-                            if _G.AutoBuyEnchanmentHaki then
-                                local args = {
-                                    [1] = "ColorsDealer",
-                                    [2] = "2"
-                                }
-                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                            end
-                        end)
-                    end
-                end)
-            end)
-        else
-            page1:Toggle("ออโต้ซื้อสีฮาคิ", _G.AutoBuyEnchanmentHaki,function(value)
-                _G.AutoBuyEnchanmentHaki = value
-                    task.spawn(function()
-                        while task.wait() do
-                            pcall(function()
-                                if _G.AutoBuyEnchanmentHaki then
-                                    local args = {
-                                        [1] = "ColorsDealer",
-                                        [2] = "2"
-                                    }
-                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                                end
-                            end)
-                        end
-                    end)
-                end)
-            end   
-
-        end                                                                                          
+                end)                                                                                              
         elseif World3 then
             if _G.Mode == "English" then
                 page1:Label("Status : World 3")
@@ -6218,7 +5995,6 @@ end)
                             while task.wait() do
                                 pcall(function()
                                     if _G.AutoEvent  then
-                                        if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
                                             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                                 if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
                                                     if v.Humanoid.Health > 0 then
@@ -6265,7 +6041,6 @@ end)
                                                     end
                                                 end
                                             end
-                                        end
                                     end
                                 end)
                             end
@@ -6319,29 +6094,54 @@ end)
                                 end)
                             end
                     page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
-                    _G.increaseboatspeed  = value
-                    while task.wait() do
-                    if _G.increaseboatspeed then
-                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                        if v:IsA("VehicleSeat")  then
-                            v.MaxSpeed = 380
-                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                        end
-                        end
-                    elseif not _G.increaseboatspeed then
-                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                            if v:IsA("VehicleSeat")  then
-                                v.MaxSpeed = 150
-                                sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+                        _G.increaseboatspeed = value
+                        _G.Checkspeed1 = false
+                        _G.Checkspeed2 = false
+                        while task.wait() do
+                            if _G.increaseboatspeed then
+                                repeat
+                                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                        if v:IsA("VehicleSeat") then
+                                            if v.MaxSpeed ~= 380 then
+                                                v.MaxSpeed = 380
+                                                if v.MaxSpeed == 380 then
+                                                    _G.Checkspeed1 = true
+                                                end
+                                            end
+                                        end
+                                    end
+                                until _G.Checkspeed1 == true
+                            else
+                                repeat
+                                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                        if v:IsA("VehicleSeat") then
+                                            if v.MaxSpeed ~= 100  then
+                                                v.MaxSpeed = 100
+                                                if v.MaxSpeed == 100 then
+                                                    _G.Checkspeed2 = true
+                                                end
+                                            end
+                                        end
+                                    end
+                                until _G.Checkspeed2 == true
                             end
-                            end
                         end
-                    end
-                    end)
-                    page1:Toggle("Delete All Rock[Lag]",_G.deleterock, function(value)
-                    _G.deleterock = value
                     end)
                     
+                    page1:Toggle("Noclip Rock",_G.Nocliprock, function(value)
+                        _G.Nocliprock = value
+                            if _G.Nocliprock then
+                                for i, v in pairs(Workspace:GetDescendants()) do
+                                    if v:IsA("BasePart") and string.find(v.Name, "rock") or string.find(v.Name, "Rock") then
+                                            v.CanCollide = false
+                                            if not _G.Nocliprock  then
+                                            v.CanCollide = true
+                                        end
+                                    end
+                                end
+                            end
+                        end)
+
                         page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
                         _G.TPTOBOAT = value
                         while task.wait() do
@@ -6372,7 +6172,6 @@ end)
                                 while task.wait() do
                                     pcall(function()
                                         if _G.AutoEvent  then
-                                            if game:GetService("Workspace").Enemies:FindFirstChild("Shark") then
                                                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                                     if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
                                                         if v.Humanoid.Health > 0 then
@@ -6419,7 +6218,6 @@ end)
                                                         end
                                                     end
                                                 end
-                                            end
                                         end
                                     end)
                                 end
@@ -6472,34 +6270,54 @@ end)
                                     end)
                                 end
                         page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
-                        _G.increaseboatspeed  = value
-                        while task.wait() do
-                        if _G.increaseboatspeed then
-                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                            if v:IsA("VehicleSeat")  then
-                                v.MaxSpeed = 350
-                            end
-                            end
-                        elseif not _G.increaseboatspeed then
-                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                if v:IsA("VehicleSeat")  then
-                                    v.MaxSpeed = 150
+                            _G.increaseboatspeed = value
+                            _G.Checkspeed1 = false
+                            _G.Checkspeed2 = false
+                            while task.wait() do
+                                if _G.increaseboatspeed then
+                                    repeat
+                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                            if v:IsA("VehicleSeat") then
+                                                if v.MaxSpeed ~= 380 then
+                                                    v.MaxSpeed = 380
+                                                    if v.MaxSpeed == 380 then
+                                                        _G.Checkspeed1 = true
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    until _G.Checkspeed1 == true
+                                else
+                                    repeat
+                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                            if v:IsA("VehicleSeat") then
+                                                if v.MaxSpeed ~= 100  then
+                                                    v.MaxSpeed = 100
+                                                    if v.MaxSpeed == 100 then
+                                                        _G.Checkspeed2 = true
+                                                    end
+                                                end
+                                            end
+                                        end
+                                    until _G.Checkspeed2 == true
                                 end
-                                end
                             end
-                        end
                         end)
-                        page1:Toggle("ลบหินทั้งหมด[แลค]",_G.deleterock, function(value)
-                        _G.deleterock = value
-                    end)
-                    local delete = _G.deleterock
-                    for i, v in pairs(game.Workspace:GetChildren()) do
-                        if v.Name == "MediumFlat" or v.Name == "Large" or v.Name == "Largest" or v.Name == "MediumGroup" or v.Name == "SmallCluster" or v.Name == "SmallGroup" or v.Name == "Largest" or v.Name == "" then 
-                        if delete then
-                            v:destroy()
+                        page1:Toggle("เรือทะลุหินได้",_G.Nocliprock, function(value)
+                            _G.Nocliprock = value
+                            if _G.Nocliprock then
+                                for i, v in pairs(Workspace:GetDescendants()) do
+                                    if v:IsA("BasePart") and string.find(v.Name, "rock") or string.find(v.Name, "Rock") then
+                                            v.CanCollide = false
+                                            if not _G.Nocliprock  then
+                                            v.CanCollide = true
+                                        end
+                                    end
+                                end
                             end
-                        end
-                    end
+                        end)
+                    
+                
                 page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
                 _G.TPTOBOAT = value
                 while task.wait() do
@@ -10979,172 +10797,155 @@ end
     end
     
 
-local ObservationRange = page1:Label("")
-spawn(function()
-        while wait() do
-            pcall(function()
-                    ObservationRange:Set("Observation Range Level : " ..math.floor(game:GetService("Players").LocalPlayer.VisionRadius.Value))
-            end)
-        end
-    end)
-if _G.Mode == "English" then
-page1:Toggle("Auto Farm Observation",_G.AutoObservation,function(value)
-	_G.AutoObservation = value
-	_G.Settings.AutoObservation = value
-	SaveSettings()
-	if value == false then
-		task.wait()
-		toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-		task.wait()
-	end
-end)
-else
-    page1:Toggle("ออโต้ฟาร์มฮาคิสังเกต",_G.AutoObservation,function(value)
+    local ObservationRange = page1:Label("...")
+    spawn(function()
+            while wait() do
+                pcall(function()
+                    ObservationRange:Set("Observation Range Level : "..math.floor(game:GetService("Players").LocalPlayer.VisionRadius.Value))
+                end)
+            end
+        end)
+    
+    page1:Toggle("Auto Farm Observation",_G.AutoObservation,function(value)
         _G.AutoObservation = value
         _G.Settings.AutoObservation = value
         SaveSettings()
         if value == false then
             task.wait()
-            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+            two(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             task.wait()
         end
     end)
-end
-spawn(function()
-        while wait() do
-            pcall(function()
-                    if _G.AutoObservation then
-                        repeat
-                            task.wait()
-                            if
-                                not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-                             then
-                                game:GetService("VirtualUser"):CaptureController()
-                                game:GetService("VirtualUser"):SetKeyDown("0x65")
-                                wait(2)
-                                game:GetService("VirtualUser"):SetKeyUp("0x65")
-                            end
-                        until game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") or not _G.AutoObservation
+    
+    spawn(function()
+            while wait() do
+                pcall(function()
+                        if _G.AutoObservation then
+                            repeat
+                                task.wait()
+                                if
+                                    not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                 then
+                                    game:GetService("VirtualUser"):CaptureController()
+                                    game:GetService("VirtualUser"):SetKeyDown("0x65")
+                                    wait(2)
+                                    game:GetService("VirtualUser"):SetKeyUp("0x65")
+                                end
+                            until game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") or not _G.AutoObservation
+                        end
                     end
-                end
-            )
+                )
+            end
         end
-    end
-)
-if _G.Mode == "English" then
-page1:Toggle("Auto Farm Observation Hop",_G.AutoObservation_Hop,function(value)
-        _G.AutoObservation_Hop = value
-		_G.Settings.AutoObservation_Hop = value
-		SaveSettings()
-    end)
-else
-    page1:Toggle("ออโต้ฟาร์มฮาคิสังเกต&ย้ายเซิฟ",_G.AutoObservation_Hop,function(value)
-        _G.AutoObservation_Hop = value
-		_G.Settings.AutoObservation_Hop = value
-		SaveSettings()
-    end)
-end
-spawn(function()
-        pcall(function()
-                while wait() do
-                    if _G.AutoObservation then
-                        if game:GetService("Players").LocalPlayer.VisionRadius.Value >= 3000 then
-                            game:GetService("StarterGui"):SetCore("SendNotification",
-                                {
-                                    Icon = "rbxassetid://14645512457",
-                                    Title = "Observation",
-                                    Text = "You Have Max Observation"
-                                }
-                            )
-                            wait(2)
-                        else
-                            if World2 then
-                                if game:GetService("Workspace").Enemies:FindFirstChild("Lava Pirate") then
-                                    if
-                                        game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-                                     then
-                                        repeat
-                                            task.wait()
-                                            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Lava Pirate").HumanoidRootPart.CFrame * CFrame.new(3, 0, 0)
-                                        until _G.AutoObservation == false or
-                                            not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+    )
+    
+    page1:Toggle("Auto Farm Observation Hop",_G.AutoObservation_Hop,function(value)
+            _G.AutoObservation_Hop = value
+            _G.Settings.AutoObservation_Hop = value
+            SaveSettings()
+        end)
+    
+    spawn(function()
+            pcall(function()
+                    while wait() do
+                        if _G.AutoObservation then
+                            if game:GetService("Players").LocalPlayer.VisionRadius.Value >= 3000 then
+                                game:GetService("StarterGui"):SetCore("SendNotification",
+                                    {
+                                        Icon = "rbxassetid://14645512457",
+                                        Title = "Observation",
+                                        Text = "You Have Max Observation"
+                                    }
+                                )
+                                wait(2)
+                            else
+                                if World2 then
+                                    if game:GetService("Workspace").Enemies:FindFirstChild("Lava Pirate") then
+                                        if
+                                            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                         then
+                                            repeat
+                                                task.wait()
+                                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Lava Pirate").HumanoidRootPart.CFrame * CFrame.new(3, 0, 0)
+                                            until _G.AutoObservation == false or
+                                                not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                        else
+                                            repeat
+                                                task.wait()
+                                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Lava Pirate").HumanoidRootPart.CFrame * CFrame.new(0, 50, 0)
+                                                    wait(1)
+                                                if
+                                                    not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") and _G.AutoObservation_Hop == true
+                                                 then
+                                                    game:GetService("TeleportService"):Teleport(game.PlaceId,game:GetService("Players").LocalPlayer)
+                                                end
+                                            until _G.AutoObservation == false or
+                                                game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                        end
                                     else
-                                        repeat
-                                            task.wait()
-                                            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Lava Pirate").HumanoidRootPart.CFrame * CFrame.new(0, 50, 0)
+                                        two(CFrame.new(-5478.39209, 15.9775667, -5246.9126))
+                                    end
+                                elseif World1 then
+                                    if game:GetService("Workspace").Enemies:FindFirstChild("Galley Captain") then
+                                        if
+                                            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                         then
+                                            repeat
+                                                task.wait()
+                                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                                    game:GetService("Workspace").Enemies:FindFirstChild("Galley Captain").HumanoidRootPart.CFrame * CFrame.new(3, 0, 0)
+                                            until _G.AutoObservation == false or
+                                                not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                        else
+                                            repeat
+                                                task.wait()
+                                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Galley Captain").HumanoidRootPart.CFrame * CFrame.new(0, 50, 0)
+                                                    wait(1)
+                                                if
+                                                    not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") and _G.AutoObservation_Hop == true
+                                                 then
+                                                    game:GetService("TeleportService"):Teleport(game.PlaceId,game:GetService("Players").LocalPlayer)
+                                                end
+                                            until _G.AutoObservation == false or
+                                                game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                        end
+                                    else
+                                        two(CFrame.new(5533.29785, 88.1079102, 4852.3916))
+                                    end
+                                elseif World3 then
+                                    if game:GetService("Workspace").Enemies:FindFirstChild("Giant Islander") then
+                                        if
+                                            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                         then
+                                            repeat
+                                                task.wait()
+                                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                                    game:GetService("Workspace").Enemies:FindFirstChild("Giant Islander").HumanoidRootPart.CFrame * CFrame.new(3, 0, 0)
+                                            until _G.AutoObservation == false or
+                                                not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                        else
+                                            repeat
+                                                task.wait()
+                                                game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame =
+                                                    game:GetService("Workspace").Enemies:FindFirstChild("Giant Islander").HumanoidRootPart.CFrame * CFrame.new(0, 50, 0)
                                                 wait(1)
-                                            if
-                                                not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") and _G.AutoObservation_Hop == true
-                                             then
-                                                game:GetService("TeleportService"):Teleport(game.PlaceId,game:GetService("Players").LocalPlayer)
-                                            end
-                                        until _G.AutoObservation == false or
-                                            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-                                    end
-                                else
-                                    toTarget(CFrame.new(-5478.39209, 15.9775667, -5246.9126))
-                                end
-                            elseif World1 then
-                                if game:GetService("Workspace").Enemies:FindFirstChild("Galley Captain") then
-                                    if
-                                        game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-                                     then
-                                        repeat
-                                            task.wait()
-                                            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame =
-                                                game:GetService("Workspace").Enemies:FindFirstChild("Galley Captain").HumanoidRootPart.CFrame * CFrame.new(3, 0, 0)
-                                        until _G.AutoObservation == false or
-                                            not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                                if
+                                                    not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") and _G.AutoObservation_Hop == true
+                                                 then
+                                                    game:GetService("TeleportService"):Teleport(game.PlaceId,game:GetService("Players").LocalPlayer)
+                                                end
+                                            until _G.AutoObservation == false or
+                                                game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                        end
                                     else
-                                        repeat
-                                            task.wait()
-                                            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Enemies:FindFirstChild("Galley Captain").HumanoidRootPart.CFrame * CFrame.new(0, 50, 0)
-												wait(1)
-                                            if
-                                                not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") and _G.AutoObservation_Hop == true
-                                             then
-                                                game:GetService("TeleportService"):Teleport(game.PlaceId,game:GetService("Players").LocalPlayer)
-                                            end
-                                        until _G.AutoObservation == false or
-                                            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
+                                        two(CFrame.new(4530.3540039063, 656.75695800781, -131.60952758789))
                                     end
-                                else
-                                    toTarget(CFrame.new(5533.29785, 88.1079102, 4852.3916))
-                                end
-                            elseif World3 then
-                                if game:GetService("Workspace").Enemies:FindFirstChild("Giant Islander") then
-                                    if
-                                        game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-                                     then
-                                        repeat
-                                            task.wait()
-                                            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame =
-                                                game:GetService("Workspace").Enemies:FindFirstChild("Giant Islander").HumanoidRootPart.CFrame * CFrame.new(3, 0, 0)
-                                        until _G.AutoObservation == false or
-                                            not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-                                    else
-                                        repeat
-                                            task.wait()
-                                            game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame =
-                                                game:GetService("Workspace").Enemies:FindFirstChild("Giant Islander").HumanoidRootPart.CFrame * CFrame.new(0, 50, 0)
-                                            wait(1)
-                                            if
-                                                not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") and _G.AutoObservation_Hop == true
-                                             then
-                                                game:GetService("TeleportService"):Teleport(game.PlaceId,game:GetService("Players").LocalPlayer)
-                                            end
-                                        until _G.AutoObservation == false or
-                                            game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-                                    end
-                                else
-                                    toTarget(CFrame.new(4530.3540039063, 656.75695800781, -131.60952758789))
                                 end
                             end
                         end
                     end
-                end
+                end)
             end)
-    	end)
     page1:Line()
     local Boss = {}
     local BossName = page1:Dropdown("Select Boss",Boss, function(value)
@@ -14053,12 +13854,121 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
     end)
     end
+    page11:Seperator("🛒")
+
     if _G.Mode == "English" then
-    page11:Seperator("🛒")
+        page11:Label("Auto Buy")
     else
-    _G.Mode = "Thai"
-    page11:Seperator("🛒")
+        page11:Label("ออโต้ซื้อ")
     end
+    if _G.Mode == "English" then
+        page1:Toggle("Auto Buy Zoro Sword", _G.AutoBuyLegendarySword, function(value)
+            _G.AutoBuyLegendarySword = value
+            task.spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        if _G.AutoBuyLegendarySword then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
+                        end
+                    end)
+                end
+            end)
+        end)
+        page11:Toggle("Auto Buy Zoro Sword Hop", _G.AutoBuyLegendarySwordHop, function(value)
+            _G.AutoBuyLegendarySwordHop = value
+                            spawn(function()
+                            while task.wait() do
+                                pcall(function()
+                                        if _G.AutoBuyLegendarySwordHop then
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
+                                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
+                                            while _G.AutoBuyLegendarySwordHop do task.wait()
+                                            wait(5)
+                                            Teleport()
+                                            Hop()
+                                            end
+                                        end
+                                    end)
+                                end
+                            end)
+                        end)
+    else
+    page11:Toggle("ออโต้ซื้อดาบโซโล", _G.AutoBuyLegendarySword,function(value)
+    _G.AutoBuyLegendarySword = value
+    task.spawn(function()
+    while task.wait() do
+        pcall(function()
+            if _G.AutoBuyLegendarySword then
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
+                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
+            end
+        end)
+    end
+    end)
+    end)
+    page11:Toggle("ออโต้ซื้อดาบโซโล&ย้ายเซิฟเวอร์", _G.AutoBuyLegendarySwordHop, function(value)
+    _G.AutoBuyLegendarySwordHop = value
+    spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        if _G.AutoBuyLegendarySwordHop then
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
+                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
+                            while _G.AutoBuyLegendarySwordHop do task.wait()
+                            wait(5)
+                            Teleport()
+                            Hop()
+                            end
+                        end
+                    end)
+                end
+                end)
+        end)
+    end     
+
+    if _G.Mode == "English" then
+        page11:Toggle("Auto Buy Color Haki", _G.AutoBuyEnchanmentHaki, function(value)
+            _G.AutoBuyEnchanmentHaki = value
+            task.spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        if _G.AutoBuyEnchanmentHaki then
+                            local args = {
+                                [1] = "ColorsDealer",
+                                [2] = "2"
+                            }
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        end
+                    end)
+                end
+            end)
+        end)
+    else
+        page11:Toggle("ออโต้ซื้อสีฮาคิ", _G.AutoBuyEnchanmentHaki,function(value)
+            _G.AutoBuyEnchanmentHaki = value
+                task.spawn(function()
+                    while task.wait() do
+                        pcall(function()
+                            if _G.AutoBuyEnchanmentHaki then
+                                local args = {
+                                    [1] = "ColorsDealer",
+                                    [2] = "2"
+                                }
+                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                            end
+                        end)
+                    end
+                end)
+            end)
+        end   
+
     if _G.AutoBuyEnchanmentHaki then
     local args = {
         [1] = "ColorsDealer",
@@ -14227,10 +14137,6 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     end)
     end
     function kaituncap()
-    do
-        local ui = game:GetService("CoreGui").RobloxGui.Modules.Profile:FindFirstChild("UILibrary")
-        if ui then ui:Destroy() end
-    end
     local UserInputService = game:GetService("UserInputService")
     local TweenService = game:GetService("TweenService")
     local RunService = game:GetService("RunService")
