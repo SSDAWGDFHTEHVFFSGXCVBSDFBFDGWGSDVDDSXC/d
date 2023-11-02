@@ -6094,7 +6094,7 @@ end)
                             end
                             if _G.increaseboatspeed then
                                 for _, v in pairs(vehicleSeats) do
-                                    v.MaxSpeed = 350
+                                    v.MaxSpeed = 380
                                 end
                             else
                                 for _, v in pairs(vehicleSeats) do
@@ -6267,7 +6267,7 @@ end)
                             end
                             if _G.increaseboatspeed then
                                 for _, v in pairs(vehicleSeats) do
-                                    v.MaxSpeed = 350
+                                    v.MaxSpeed = 380
                                 end
                             else
                                 for _, v in pairs(vehicleSeats) do
@@ -7365,6 +7365,9 @@ end
     end
     end)()
     _G.FastType = "Fast"
+    if SelectWeapon == nil then
+        SelectWeapon = "Melee"
+    end
     Weapon = {
     "Melee",
     "Sword",
@@ -7649,9 +7652,8 @@ end
         CameraShaker()
     end)
     end
-    if _G.Mode == "English" then
     page3:Seperator("📊")
-    
+    if _G.Mode == "English" then
     local SelectStats = {
         "Melee",
         "Defense",
@@ -7659,7 +7661,6 @@ end
         "Gun",
         "Devil Fruits"
     }
-
 
     page3:Dropdown("Select Stats",SelectStats, function(value)
         _G.SelectStats = value
@@ -7758,9 +7759,6 @@ end
         end
     end)
 else
-    _G.Mode = "Thai"
-    page3:Seperator("สแตค")
-
     local SelectStats = {
         "Melee",
         "Defense",
@@ -13548,13 +13546,13 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
-    --print('\n'..MoonMessage..'\n'..MirageMessage..'\n'..JoinServer)
+
     
-    local url = "https://discord.com/api/webhooks/1159506639095869600/1N9kghTBEkvkDlPyiVkE1SVW02HMAzgd80BKwcB9R-mqbdrdh_g4A0Lc2dovUGH-Olqu"                                                                                                                -- ur webhook url
+    local url = "https://discord.com/api/webhooks/1159506639095869600/1N9kghTBEkvkDlPyiVkE1SVW02HMAzgd80BKwcB9R-mqbdrdh_g4A0Lc2dovUGH-Olqu"                                                                                                                
     local data = {
-        ["username"] = 'Vector Hub',                                                                                                                                                                                                           -- Webhook name here --หะ
-        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                               -- ping everyone if you want to ping role use this <@&1007291553074647132> --<@&1068889841091219498>
-        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", -- ur discord logo url
+        ["username"] = 'Vector Hub',                                                                                                                                                                                                           
+        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
         ["embeds"] = {
             {
                 ["description"] = "**__Mirage Webhook__**",
@@ -13580,7 +13578,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
                     }
                 },
                 ["footer"] = {
-                    ["text"] = "Webhook Vector Hub", -- you can remove this but it will hurt
+                    ["text"] = "Webhook Vector Hub", 
                 },
                 ["timestamp"] = DateTime.now():ToIsoDate(),
             }
@@ -13642,17 +13640,16 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
-    --print('\n'..MoonMessage..'\n'..MirageMessage..'\n'..JoinServer)
     
-    local url = "https://discord.com/api/webhooks/1165611714671300659/lks4dG2RzRR6thjYO0FbKjDO5QmlGtmENAuFThbQ_rCuYoEZdGyoZdQDVAMWy3G8WW4n"                                                                                                                -- ur webhook url
+    local url = "https://discord.com/api/webhooks/1169591041242972160/1WYSoZhk0quI1EmKeUOPvAp3K5C7Jd7vaGHQIKpmeCDiJHGJAOJyFo-sNlo5m-NutBJa"                                                                                                               
     local data = {
-        ["username"] = 'Vector Hub',                                                                                                                                                                                                           -- Webhook name here --หะ
-        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                               -- ping everyone if you want to ping role use this <@&1007291553074647132> --<@&1068889841091219498>
-        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", -- ur discord logo url
+        ["username"] = 'Vector Hub',                                                                                                                                                                                                          
+        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
         ["embeds"] = {
             {
                 ["description"] = "**__Moon__**",
-                ["color"] = tonumber(0x0000FF), -- color id		#
+                ["color"] = tonumber(0x0000FF), 
                 ["type"] = "rich",
                 ["fields"] = {
                     {
@@ -13675,7 +13672,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
                     
                 },
                 ["footer"] = {
-                    ["text"] = "Webhook Vector Hub", -- you can remove this but it will hurt
+                    ["text"] = "Webhook Vector Hub", 
                 },
                 ["timestamp"] = DateTime.now():ToIsoDate(),
             }
