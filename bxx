@@ -6094,7 +6094,7 @@ end)
                             end
                             if _G.increaseboatspeed then
                                 for _, v in pairs(vehicleSeats) do
-                                    v.MaxSpeed = 380
+                                    v.MaxSpeed = 350
                                 end
                             else
                                 for _, v in pairs(vehicleSeats) do
@@ -6267,7 +6267,7 @@ end)
                             end
                             if _G.increaseboatspeed then
                                 for _, v in pairs(vehicleSeats) do
-                                    v.MaxSpeed = 380
+                                    v.MaxSpeed = 350
                                 end
                             else
                                 for _, v in pairs(vehicleSeats) do
