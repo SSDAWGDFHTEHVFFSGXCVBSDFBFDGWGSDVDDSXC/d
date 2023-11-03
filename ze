@@ -168,26 +168,32 @@ end
     local Mouse = LocalPlayer:GetMouse()
     local GuiService = game:GetService("GuiService")
     
-    if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
-    repeat
-    task.wait()
-    if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-        if _G.SelectTeam == "Pirate" then
-            for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do
-                v.Function()
-            end
-        elseif _G.SelectTeam == "Marine" then
-            for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.ViewportFrame.TextButton.Activated)) do
-                v.Function()
-            end
-        else
-            for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do
-                v.Function()
+    repeat wait()
+        if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == true then
+            if _G.SelectTeam == "Pirate" then
+                game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Size = UDim2.new(0, 10000, 0, 10000)
+                game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Position = UDim2.new(-4, 0, -5, 0)
+                game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.BackgroundTransparency = 1
+                wait(.5)
+                game:service'VirtualInputManager':SendMouseButtonEvent(500,500, 0, true, game, 1)
+                game:service'VirtualInputManager':SendMouseButtonEvent(500,500, 0, false, game, 1)
+            elseif _G.SelectTeam == "Marine" then
+                game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Marines.Frame.ViewportFrame.TextButton.Size = UDim2.new(0, 10000, 0, 10000)
+                game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Marines.Frame.ViewportFrame.TextButton.Position = UDim2.new(-4, 0, -5, 0)
+                game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Marines.Frame.ViewportFrame.TextButton.BackgroundTransparency = 1
+                wait(.5)
+                game:service'VirtualInputManager':SendMouseButtonEvent(500,500, 0, true, game, 1)
+                game:service'VirtualInputManager':SendMouseButtonEvent(500,500, 0, false, game, 1)
+            else
+                game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Size = UDim2.new(0, 10000, 0, 10000)
+                game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Position = UDim2.new(-4, 0, -5, 0)
+                game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.BackgroundTransparency = 1
+                wait(.5)
+                game:service'VirtualInputManager':SendMouseButtonEvent(500,500, 0, true, game, 1)
+                game:service'VirtualInputManager':SendMouseButtonEvent(500,500, 0, false, game, 1)
             end
         end
-    end
     until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-    end
     -- [Place Id Check]
     local id = game.PlaceId
     if id == 2753915549 then
@@ -6094,7 +6100,7 @@ end)
                             end
                             if _G.increaseboatspeed then
                                 for _, v in pairs(vehicleSeats) do
-                                    v.MaxSpeed = 380
+                                    v.MaxSpeed = 350
                                 end
                             else
                                 for _, v in pairs(vehicleSeats) do
@@ -6267,7 +6273,7 @@ end)
                             end
                             if _G.increaseboatspeed then
                                 for _, v in pairs(vehicleSeats) do
-                                    v.MaxSpeed = 380
+                                    v.MaxSpeed = 350
                                 end
                             else
                                 for _, v in pairs(vehicleSeats) do
@@ -7653,7 +7659,6 @@ end
     end)
     end
     page3:Seperator("📊")
-    if _G.Mode == "English" then
     local SelectStats = {
         "Melee",
         "Defense",
@@ -7664,7 +7669,6 @@ end
 
     page3:Dropdown("Select Stats",SelectStats, function(value)
         _G.SelectStats = value
-        SaveSettings()
         task.spawn(function()
             pcall(function()
                 while task.wait() do
@@ -7729,12 +7733,10 @@ end
 
     page3:Toggle("Auto Stats", _G.EnabledAutoStats, function(value)
         _G.EnabledAutoStats = value
-        SaveSettings()
     end)
 
     page3:Toggle("Auto Stat Kaitun", true, function(value)
         _G.AutoStatsKaitun = value
-        SaveSettings()
     end)
 
     spawn(function()
@@ -7758,112 +7760,6 @@ end
             end
         end
     end)
-else
-    local SelectStats = {
-        "Melee",
-        "Defense",
-        "Sword",
-        "Gun",
-        "Devil Fruits"
-    }
-
-    page3:Dropdown("เลือกสแตค",SelectStats, function(value)
-        _G.SelectStats = value
-        SaveSettings()
-        task.spawn(function()
-            pcall(function()
-                while task.wait() do
-                    if _G.EnabledAutoStats then
-                        if _G.SelectStats == "Melee" then
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Melee",
-                                [3] = 3333
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        elseif _G.SelectStats == "Defense" then
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Defense",
-                                [3] = 3333
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        elseif _G.SelectStats == "Sword" then
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Sword",
-                                [3] = 3333
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        elseif _G.SelectStats == "Gun" then
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Gun",
-                                [3] = 3333
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        elseif _G.SelectStats == "Devil Fruits" then
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Demon Fruit",
-                                [3] = 3333
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        elseif _G.SelectStats == "Max Stats" then
-                            if game:GetService("Players").LocalPlayer.Data.Stats.Melee.Level.Value < 2550 then
-                                local args = {
-                                    [1] = "AddPoint",
-                                    [2] = "Melee",
-                                    [3] = 3333
-                                }
-                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                            else
-                                local args = {
-                                    [1] = "AddPoint",
-                                    [2] = "Defense",
-                                    [3] = 3333
-                                }
-                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                            end
-                        end
-                    end
-                end
-            end)
-        end)
-    end)
-
-    page3:Toggle("ออโต้อัพสแตค", _G.EnabledAutoStats, function(value)
-        _G.EnabledAutoStats = value
-        SaveSettings()
-    end)
-
-    page3:Toggle("ออโต้อัพสแตคไก่ตัน", true,function(value)
-            _G.AutoStatsKaitun = value
-            SaveSettings()
-        end)
-
-    spawn(function()
-        while task.wait() do
-            if _G.AutoStatsKaitun then
-                if game:GetService("Players").LocalPlayer.Data.Stats.Melee.Level.Value < 2550 then
-                    local args = {
-                        [1] = "AddPoint",
-                        [2] = "Melee",
-                        [3] = 3333
-                    }
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                else
-                    local args = {
-                        [1] = "AddPoint",
-                        [2] = "Defense",
-                        [3] = 3333
-                    }
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                end
-            end
-        end
-    end)
-end
     if _G.Mode == "English" then
     page3:Label("Redeem Code")
     page3:Toggle("Redeem Code", _G.EnabledAutoRedeemCode, function(value)
@@ -7878,7 +7774,7 @@ end
     
     spawn(function()
         while task.wait() do
-            if _G.EnabledAutoRedeemCode then
+            if _G.EnabledAutoRedeemCode or _G.AutoFarm then
                 function UseCode(Text)
                     game:GetService("ReplicatedStorage").Remotes.Redeem:InvokeServer(Text)
                 end
@@ -8044,8 +7940,7 @@ end
                                             [2] = "DragonClaw",
                                             [3] = "2"
                                         }
-                                        HaveDragonClaw = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
-                                            unpack(args))
+                                        HaveDragonClaw = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
                                         if _G.AutoGodHuman and game.Players.LocalPlayer.Data.Fragments.Value <= 1500 and HaveDragonClaw == 0 then
                                             if game.Players.LocalPlayer.Data.Level.Value > 1100 then
                                                 if _G.AutoFarm then _G.AutoFarm = false end
@@ -10771,8 +10666,6 @@ end
     if _G.Mode == "English" then
     page1:Toggle("Auto Farm Observation",_G.AutoObservation,function(value)
         _G.AutoObservation = value
-        _G.Settings.AutoObservation = value
-        SaveSettings()
         if value == false then
             task.wait()
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -10782,8 +10675,6 @@ end
 else
     page1:Toggle("ออโต้ฟาร์มฮาคิสังเกต",_G.AutoObservation,function(value)
         _G.AutoObservation = value
-        _G.Settings.AutoObservation = value
-        SaveSettings()
         if value == false then
             task.wait()
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -10797,9 +10688,8 @@ end
                         if _G.AutoObservation then
                             repeat
                                 task.wait()
-                                if
-                                    not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel")
-                                 then
+                                if not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
+                                    wait(5)
                                     game:GetService("VirtualUser"):CaptureController()
                                     game:GetService("VirtualUser"):SetKeyDown("0x65")
                                     wait(2)
@@ -10815,14 +10705,10 @@ end
     if _G.Mode == "English" then
     page1:Toggle("Auto Farm Observation Hop",_G.AutoObservation_Hop,function(value)
             _G.AutoObservation_Hop = value
-            _G.Settings.AutoObservation_Hop = value
-            SaveSettings()
         end)
     else
         page1:Toggle("ออโด้ฟาร์มฮาคิสังเกต&ย้ายเซิฟ",_G.AutoObservation_Hop,function(value)
             _G.AutoObservation_Hop = value
-            _G.Settings.AutoObservation_Hop = value
-            SaveSettings()
         end)
     end
     spawn(function()
@@ -12146,16 +12032,56 @@ end
     page7:Toggle("Auto Store Fruits", _G.AutoStoreFruits, function(value)
     _G.AutoStoreFruits = value
     end)
+    page7:Toggle("Auto Store Fruits&Drop", _G.AutoStoreFruits, function(value)
+        _G.AutoStoreFruits = value
+    end)
     else
     _G.Mode = "Thai"
     page7:Toggle("ออโต้เก็บผลปีศาจเข้ากระเป๋า",_G.AutoStoreFruits, function(value)
         _G.AutoStoreFruits = value
     end)
+    page7:Toggle("ออโต้เก็บผลปีศาจเข้ากระเป๋าถ้าผลซ้ำโยน",_G.AutoStoreFruits, function(value)
+        _G.AutoStoreFruits = value
+        _G.AutoStore_Drop = value
+    end)
+    end
+    function DropFruit()
+        pcall(function()
+            game.Players.LocalPlayer.PlayerGui.Main.FruitInventory.Position = UDim2.new(10.100, 0, 0.100, 0) -- HideUi
+            game.Players.LocalPlayer.PlayerGui.Main.FruitInventory.Visible = true -- เปิดไว้ถึงจะเช็คได้
+            local invenfruit = game.Players.LocalPlayer.PlayerGui.Main.FruitInventory.Container.Stored.ScrollingFrame.Frame
+            wait(.3)
+            for i,v in pairs(invenfruit:GetChildren()) do
+                if string.find(v.Name,"-") then
+                    for _,Backpack in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) do
+                        FruitStoreF = string.split(Backpack.Name, " ")[1]
+                        FruitStoreR = FruitStoreF.."-"..FruitStoreF
+                        if v.Name == FruitStoreR then
+                            game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(Backpack.Name):Destroy()
+                        end												
+                    end
+                end
+            end
+            for i,v in pairs(invenfruit:GetChildren()) do
+                if string.find(v.Name,"-") then
+                    for _,Character in pairs(game:GetService("Players").LocalPlayer.Character:GetChildren()) do
+                        FruitStoreF = string.split(Character.Name, " ")[1]
+                        FruitStoreR = FruitStoreF.."-"..FruitStoreF
+                        if v.Name == FruitStoreR then
+                            game:GetService("Players").LocalPlayer.Character:FindFirstChild(Character.Name):Destroy()
+                        end												
+                    end
+                end
+            end
+        end)
     end
     spawn(function()
     while task.wait() do
         if _G.AutoStoreFruits then
             pcall(function()
+                if _G.AutoStore_Drop then
+                DropFruit()
+                end
                 task.wait()
                 if game:GetService("Players").LocalPlayer.Character:FindFirstChild("Bomb Fruit") or game:GetService("Players").LocalPlayer.Backpack:FindFirstChild("Bomb Fruit") then
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StoreFruit", "Bomb-Bomb",
@@ -13546,13 +13472,13 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
-    --print('\n'..MoonMessage..'\n'..MirageMessage..'\n'..JoinServer)
+
     
-    local url = "https://discord.com/api/webhooks/1159506639095869600/1N9kghTBEkvkDlPyiVkE1SVW02HMAzgd80BKwcB9R-mqbdrdh_g4A0Lc2dovUGH-Olqu"                                                                                                                -- ur webhook url
+    local url = "https://discord.com/api/webhooks/1159506639095869600/1N9kghTBEkvkDlPyiVkE1SVW02HMAzgd80BKwcB9R-mqbdrdh_g4A0Lc2dovUGH-Olqu"                                                                                                                
     local data = {
-        ["username"] = 'Vector Hub',                                                                                                                                                                                                           -- Webhook name here --หะ
-        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                               -- ping everyone if you want to ping role use this <@&1007291553074647132> --<@&1068889841091219498>
-        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", -- ur discord logo url
+        ["username"] = 'Vector Hub',                                                                                                                                                                                                           
+        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
         ["embeds"] = {
             {
                 ["description"] = "**__Mirage Webhook__**",
@@ -13578,7 +13504,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
                     }
                 },
                 ["footer"] = {
-                    ["text"] = "Webhook Vector Hub", -- you can remove this but it will hurt
+                    ["text"] = "Webhook Vector Hub", 
                 },
                 ["timestamp"] = DateTime.now():ToIsoDate(),
             }
@@ -13640,17 +13566,16 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
-    --print('\n'..MoonMessage..'\n'..MirageMessage..'\n'..JoinServer)
     
-    local url = "https://discord.com/api/webhooks/1165611714671300659/lks4dG2RzRR6thjYO0FbKjDO5QmlGtmENAuFThbQ_rCuYoEZdGyoZdQDVAMWy3G8WW4n"                                                                                                                -- ur webhook url
+    local url = "https://discord.com/api/webhooks/1169591041242972160/1WYSoZhk0quI1EmKeUOPvAp3K5C7Jd7vaGHQIKpmeCDiJHGJAOJyFo-sNlo5m-NutBJa"                                                                                                               
     local data = {
-        ["username"] = 'Vector Hub',                                                                                                                                                                                                           -- Webhook name here --หะ
-        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                               -- ping everyone if you want to ping role use this <@&1007291553074647132> --<@&1068889841091219498>
-        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", -- ur discord logo url
+        ["username"] = 'Vector Hub',                                                                                                                                                                                                          
+        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
         ["embeds"] = {
             {
                 ["description"] = "**__Moon__**",
-                ["color"] = tonumber(0x0000FF), -- color id		#
+                ["color"] = tonumber(0x0000FF), 
                 ["type"] = "rich",
                 ["fields"] = {
                     {
@@ -13673,7 +13598,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
                     
                 },
                 ["footer"] = {
-                    ["text"] = "Webhook Vector Hub", -- you can remove this but it will hurt
+                    ["text"] = "Webhook Vector Hub", 
                 },
                 ["timestamp"] = DateTime.now():ToIsoDate(),
             }
@@ -14110,7 +14035,21 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     end)
     if _G.Mode == "English" then
     page12:Seperator("🧍")
-    
+    local TPS = game:GetService("TeleportService")
+    local LP = game:GetService("Players").LocalPlayer
+
+    page12:Textbox("JobID","",function(x)
+    JobId_Textbox = x
+    end)
+    page12:Button("Join JobID",function()
+        TPS:TeleportToPlaceInstance(game.PlaceId, JobId_Textbox, LP)
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Success JobID Please Wait",Icon = "rbxassetid://14645512457",Duration = 3}) 
+    end)
+
+    page12:Button("Copy JobID",function()
+        setclipboard(game.JobId)
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Success Copy JobID",Icon = "rbxassetid://14645512457",Duration = 3})   
+    end)
     page12:Button("Join Pirates Team", function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
     end)
@@ -14121,7 +14060,18 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     else
     _G.Mode = "Thai"
     page12:Seperator("🧍")
-    
+     page12:Textbox("JobID","",function(x)
+    JobId_Textbox = x
+    end)
+    page12:Button("จอย JobID",function()
+        TPS:TeleportToPlaceInstance(game.PlaceId, JobId_Textbox, LP)
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Success JobID Please Wait",Icon = "rbxassetid://14645512457",Duration = 3}) 
+    end)
+
+    page12:Button("ก็อปปี้ JobID",function()
+        setclipboard(game.JobId)
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Success Copy JobID",Icon = "rbxassetid://14645512457",Duration = 3})   
+    end)
     page12:Button("เข้าร่วมทีมโจรสลัด", function()
         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetTeam", "Pirates")
     end)
