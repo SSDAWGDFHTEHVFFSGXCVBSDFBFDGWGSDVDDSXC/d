@@ -205,7 +205,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     game:Shutdown()
     end;
     repeat wait()
-        if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == false then
+        if game.Players.LocalPlayer.Team ~= nil and game:IsLoaded() then
        
     -- [Anti AFK]
     
