@@ -1,5 +1,3 @@
-for i = 1, 3 do
-
    local Ui = game:GetService("CoreGui"):FindFirstChild("ScreenGui")
     if Ui then
         Ui:Destroy()
@@ -3347,7 +3345,8 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
     end
     end
-    wait(5)
+    if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == false  then
+    for i = 1, 3 do
     --[[page/Tab]]
     local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qwe"))()
     
@@ -15055,4 +15054,5 @@ spawn(function()
         end
     end
 end)
+end
 end
