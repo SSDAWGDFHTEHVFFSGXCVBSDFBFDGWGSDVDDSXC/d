@@ -2,13 +2,20 @@
     if Ui then
         Ui:Destroy()
     end
-   if not game:IsLoaded() then
-    local Loaded = Instance.new("Message", workspace)
-    Loaded.Text = 'Wait Game Loading'
-    game.Loaded:Wait()
-    Loaded:Destroy()
-    task.wait(10)
-    end
+    if not game:IsLoaded() then
+        local GameLoadGui = Instance.new("Message", workspace);
+        GameLoadGui.Text = 'Wait Game Loading';
+        game.Loaded:Wait();
+        GameLoadGui:Destroy();
+        task.wait(10);
+    end;
+    
+    repeat task.wait() until game:IsLoaded()
+    repeat task.wait() until game:GetService("Players")
+    repeat task.wait() until game:GetService("Players").LocalPlayer
+    repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
+    repeat task.wait() until game:GetService("ReplicatedStorage").Effect.Container
+    local UserInputService = game:GetService("UserInputService")
     
     --
     --[[UIPERDPID]]
@@ -185,6 +192,7 @@ repeat wait()
         end
     end
 until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
+
 -- [Place Id Check]
     local id = game.PlaceId
     if id == 2753915549 then
@@ -196,7 +204,9 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     else
     game:Shutdown()
     end;
-    
+    repeat wait()
+        if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == false then
+       
     -- [Anti AFK]
     
     game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -15045,3 +15055,5 @@ spawn(function()
         end
     end
 end)
+end
+until game:GetService("CoreGui").RobloxGui.Modules.Profile:FindFirstChild("VectorHub")
