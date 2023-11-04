@@ -3346,7 +3346,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
     end
     if game.Players.LocalPlayer.Team ~= nil then
-    for i = 1, 3 do
+    for i = 1, 2 do
     --[[page/Tab]]
     local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qwe"))()
     
@@ -3410,8 +3410,9 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     page12 = Library:Tab("🧍")
     else
     page12 = Library:Tab("🧍")
-    end   
-
+        end   
+    end
+end
   --  page1:Seperator("🏚️")
 
     if _G.Mode == "English" then
@@ -15054,5 +15055,3 @@ spawn(function()
         end
     end
 end)
-end
-end
