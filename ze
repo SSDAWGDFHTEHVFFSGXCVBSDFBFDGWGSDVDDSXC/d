@@ -3350,64 +3350,64 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     
     local Library = VectorHub:Window("Vector Hub","","",Enum.KeyCode.F1);
     if _G.Mode == "English" then
-    page1 = Library:Tab("Main")
+    page1 = Library:Tab("Main", "rbxassetid://6026568198")
     else
-    page1 = Library:Tab("หน้าหลัก")
+    page1 = Library:Tab("หน้าหลัก", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page2 = Library:Tab("setting")
+    page2 = Library:Tab("setting", "rbxassetid://6026568198")
     else
-    page2 = Library:Tab("ตั้งค่า")
+    page2 = Library:Tab("ตั้งค่า", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page3 = Library:Tab("Stats")
+    page3 = Library:Tab("Stats", "rbxassetid://6026568198")
     else
-    page3 = Library:Tab("สเตตัส")
+    page3 = Library:Tab("สเตตัส", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page4 = Library:Tab("Teleport")
+    page4 = Library:Tab("Teleport", "rbxassetid://6026568198")
     else
-    page4 = Library:Tab("เทเลพอร์ต")
+    page4 = Library:Tab("เทเลพอร์ต", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page5 = Library:Tab("Item")
+    page5 = Library:Tab("Item", "rbxassetid://6026568198")
     else
-    page5 = Library:Tab("ไอเท็ม")
+    page5 = Library:Tab("ไอเท็ม", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page6 = Library:Tab("Mastery")
+    page6 = Library:Tab("Mastery", "rbxassetid://6026568198")
     else
-    page6 = Library:Tab("มาสเตอรี่")
+    page6 = Library:Tab("มาสเตอรี่", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page7 = Library:Tab("DevilFruit")
+    page7 = Library:Tab("DevilFruit", "rbxassetid://6026568198")
     else
-    page7 = Library:Tab("ผลปีศาจ")
+    page7 = Library:Tab("ผลปีศาจ", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page8 = Library:Tab("Riad")
+    page8 = Library:Tab("Riad", "rbxassetid://6026568198")
     else
-    page8 = Library:Tab("ดันเจี้ยน")
+    page8 = Library:Tab("ดันเจี้ยน", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page9 = Library:Tab("MirageIsland")
+    page9 = Library:Tab("MirageIsland", "rbxassetid://6026568198")
     else
-    page9 = Library:Tab("เกาะลับ")
+    page9 = Library:Tab("เกาะลับ", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page10 = Library:Tab("RaceV4")
+    page10 = Library:Tab("RaceV4", "rbxassetid://6026568198")
     else
-    page10 = Library:Tab("เผ่าวีสี่")
+    page10 = Library:Tab("เผ่าวีสี่", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page11 = Library:Tab("Shop")
+    page11 = Library:Tab("Shop", "rbxassetid://6026568198")
     else
-    page11 = Library:Tab("ร้านค้า")
+    page11 = Library:Tab("ร้านค้า", "rbxassetid://6026568198")
     end
     if _G.Mode == "English" then
-    page12 = Library:Tab("🧍")
+    page12 = Library:Tab("🧍", "rbxassetid://6026568198")
     else
-    page12 = Library:Tab("🧍")
+    page12 = Library:Tab("🧍", "rbxassetid://6026568198")
     end   
 
     page1:Seperator("🏚️")
