@@ -205,7 +205,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     game:Shutdown()
     end;
     repeat wait()
-        if game.Players.LocalPlayer.Team ~= nil and game:IsLoaded() then
+        if game.Players.LocalPlayer.Team ~= nil or game:IsLoaded() then
        
     -- [Anti AFK]
     
