@@ -798,33 +798,33 @@ function library:Evil()
 					if x.Name == "Tab" then
 						TweenService:Create(
 							x.TextLabel,
-							TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+							TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 							{TextColor3 = Color3.fromRGB(255, 255, 255)}
 						):Play()
 						TweenService:Create(
 							x.ImageLabel,
-							TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+							TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 							{ImageColor3 = Color3.fromRGB(255, 255, 255)}
 						):Play()
 						TweenService:Create(
 							x.ImageLabel,
-							TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+							TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 							{ImageTransparency = 0.2}
 						):Play()
 						TweenService:Create(
 							x.TextLabel,
-							TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+							TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 							{TextTransparency = 0.2}
 						):Play()
 						TweenService:Create(
 							x.FrameTab,
-							TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+							TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 							{Size = UDim2.new(0, 0, 0, 1)}
 						):Play()
 						for index, y in next, Bottom:GetChildren() do
 							TweenService:Create(
 								y,
-								TweenInfo.new(0.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+								TweenInfo.new(0,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
 								{Position = UDim2.new(0,1500,0,0)}
 							):Play()
 						end
@@ -837,34 +837,34 @@ function library:Evil()
 				end
 				TweenService:Create(
 					TextLabel,
-					TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+					TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 					{TextColor3 = Color3.fromRGB(255, 255, 255)}
 				):Play()
 				TweenService:Create(
 					ImageLabel,
-					TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+					TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 					{ImageColor3 = Color3.fromRGB(255, 255, 255)}
 				):Play()
 				TweenService:Create(
 					ImageLabel,
-					TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+					TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 					{ImageTransparency = 0}
 				):Play()
 				TweenService:Create(
 					TextLabel,
-					TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+					TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 					{TextTransparency = 0}
 				):Play()
 				FrameTab.Visible = true
 				TweenService:Create(
 					FrameTab,
-					TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+					TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 					{Size = UDim2.new(0, 50, 0, 1)}
 				):Play()
 				Page.Position = UDim2.new(0,0,0,1500)
 				TweenService:Create(
 					Page,
-					TweenInfo.new(0.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+					TweenInfo.new(0,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
 					{Position = UDim2.new(0,0,0,0)}
 				):Play()
 				Page.Visible = true
