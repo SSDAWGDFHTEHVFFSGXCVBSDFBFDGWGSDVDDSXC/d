@@ -3345,7 +3345,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
     end
     end
-    if game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == false  then
+    if game.Players.LocalPlayer.Team ~= nil then
     for i = 1, 3 do
     --[[page/Tab]]
     local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qwe"))()
