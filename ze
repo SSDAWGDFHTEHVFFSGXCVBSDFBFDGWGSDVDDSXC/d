@@ -3346,9 +3346,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     
     --[[page/Tab]]
     local Update = loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qwee")()
-    local Library = Update:Window("Turbo Hub","",Enum.KeyCode.RightControl);
-    
-    local Library = VectorHub:Window("Vector Hub","","",Enum.KeyCode.F1);
+    local Library = Update:Window("Turbo Hub","",Enum.KeyCode.F1);
     if _G.Mode == "English" then
     page1 = Library:Tab("Main", "rbxassetid://6026568198")
     else
