@@ -3409,7 +3409,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     page12 = Library:Tab("🧍")
     end   
 
-    page1:Seperator("🏚️")
+    page1:Seperator("Main")
 
     if _G.Mode == "English" then
     page1:Toggle("Auto Farm Level", false, function(value)
@@ -7322,7 +7322,7 @@ if (SelectModeMaterial ~= "") then
         end)
     end)   
 end                                                                             
-    page2:Seperator("⚙️")
+    page2:Seperator("Settins")
     if _G.Mode == "English"then
     local FastAttackType = {
     "Fast",
@@ -7655,7 +7655,7 @@ end
         CameraShaker()
     end)
     end
-    page3:Seperator("📊")
+    
     local SelectStats = {
         "Melee",
         "Defense",
@@ -7663,7 +7663,7 @@ end
         "Gun",
         "Devil Fruits"
     }
-
+    page3:Seperator("Stats")
     page3:Dropdown("Select Stats",SelectStats, function(value)
         _G.SelectStats = value
         task.spawn(function()
@@ -10254,7 +10254,7 @@ end
             end)
         end
 
-        page4:Seperator("🚀")
+        page4:Seperator("Teleport")
 
     if _G.Mode == "English" then
         page4:Button("Teleport to World 1", function(value)
@@ -10948,7 +10948,7 @@ end
     local DeathComplete = false
     local GodComplete = false
 
-    page5:Seperator("💼")
+    page5:Seperator("Items")
 
     page5:Toggle("Auto Buddy Swords", _G.AutoBuddySwords, function(value)
     _G.AutoBuddySwords = value
@@ -11881,7 +11881,7 @@ end
     end
     end
 
-    page6:Seperator("✨")
+    page6:Seperator("Mastery")
 
     
     if _G.Mode == "English" then
@@ -11984,7 +11984,7 @@ end
     end
     end)
     if _G.Mode == "English" then
-    page7:Seperator("🍈")
+    page7:Seperator("Fruit")
     
     page7:Toggle("Auto Random Fruits", _G.AutoBuyRandomFruits, function(value)
     _G.AutoBuyRandomFruits = value
@@ -12002,7 +12002,7 @@ end
     end)
     else
     _G.Mode = "Thai"
-    page7:Seperator("🍈")
+    page7:Seperator("Fruit")
     
     page7:Toggle("ออโต้สุ่มผลปีศาจ", _G.AutoBuyRandomFruits,function(value)
         _G.AutoBuyRandomFruits = value
@@ -12233,7 +12233,7 @@ end
     "Dough"
     }
     if _G.Mode == "English" then
-    page8:Seperator("⚔️")
+    page8:Seperator("Raids")
     page8:Dropdown("Select Raids",SelectRaids, function(value)
         _G.SelectRaids = value
     end)
@@ -12259,7 +12259,7 @@ end
     end)
     else
     _G.Mode = "Thai"
-    page8:Seperator("⚔️")
+    page8:Seperator("Raids")
     page8:Dropdown("เลือกดันเจี้ยน",SelectRaids, function(value)
         _G.SelectRaids = value
     end)
@@ -13082,10 +13082,10 @@ end
     end
     end
     if _G.Mode == "English" then
-    page9:Seperator("🏝️")
+    page9:Seperator("Mirage")
     else
     _G.Mode = "Thai"
-    page9:Seperator("🏝️")
+    page9:Seperator("Mirage")
     end
     local FM = page9:Label('...')
     local Mirragecheck = page9:Label('...')
@@ -13608,9 +13608,9 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     request(abcdef)
     end
     if _G.Mode == "English" then
-    page10:Seperator("🐰")
+    page10:Seperator("RaceV4")
     else
-    page10:Seperator("🐰")
+    page10:Seperator("RaceV4")
     end
     if _G.Mode == "English" then
     page10:Button("Teleport To Top GreatTree", function()
@@ -13770,7 +13770,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
     end)
     end
-    page11:Seperator("🛒")
+    page11:Seperator("Shop")
 
     if _G.Mode == "English" then
         page11:Label("Auto Buy")
@@ -14031,7 +14031,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Swordsman Hat")
     end)
     if _G.Mode == "English" then
-    page12:Seperator("🧍")
+    page12:Seperator("Misc")
     local TPS = game:GetService("TeleportService")
     local LP = game:GetService("Players").LocalPlayer
 
@@ -14058,7 +14058,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     _G.Mode = "Thai"
     local TPS = game:GetService("TeleportService")
     local LP = game:GetService("Players").LocalPlayer
-    page12:Seperator("🧍")
+    page12:Seperator("Misc")
      page12:Textbox("JobID","",function(x)
     JobId_Textbox = x
     end)
@@ -14954,28 +14954,89 @@ end
         InfinitiesEnergy()
     end)
     end
+    function FullBright()
+        pcall(function()
+                local lighting = game:GetService("Lighting")
+                lighting.Ambient = Color3.fromRGB(255, 255, 255)
+                lighting.Brightness = 1
+                lighting.FogEnd = 1e10
+                for i, v in pairs(lighting:GetDescendants()) do
+                    if
+                        v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or
+                            v:IsA("SunRaysEffect")
+                     then
+                        v.Enabled = false
+                    end
+                end
+                lighting.Changed:Connect(
+                    function()
+                        lighting.Ambient = Color3.fromRGB(255, 255, 255)
+                        lighting.Brightness = 1
+                        lighting.FogEnd = 1e10
+                    end)
+                spawn(function()
+                        local character = game:GetService("Players").LocalPlayer.Character
+                        while wait() do
+                            repeat
+                                wait()
+                            until character ~= nil
+                            if not character.HumanoidRootPart:FindFirstChildWhichIsA("PointLight") then
+                                local headlight = Instance.new("PointLight", character.HumanoidRootPart)
+                                headlight.Brightness = 1
+                                headlight.Range = 60
+                            end
+                        end
+                    end)
+                end)
+        repeat
+            task.wait()
+        until game:IsLoaded()
+        wait(5)
+        for i, v in pairs(game.Lighting:GetChildren()) do
+            if v:IsA("") or v:IsA("Sky") or v:IsA("BlurEffect") or v:IsA("BloomEffect") or v:IsA("SunRaysEffect") then
+                v:Destroy()
+            end
+        end
+        game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+        game.Lighting.Brightness = 1
+        game.Lighting.ClockTime = 14
+        game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+        game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+        game.Lighting.ExposureCompensation = 0
+        game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+        game.Lighting.FogEnd = 999999999
+        game.Lighting.GeographicLatitude = 41.733
+        game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+        game.Lighting.GlobalShadows = true
+        game.Lighting.Changed:Connect(function()
+                game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+                game.Lighting.Brightness = 1
+                game.Lighting.ClockTime = 14
+                game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+                game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+                game.Lighting.ExposureCompensation = 0
+                game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+                game.Lighting.FogEnd = 999999999
+                game.Lighting.GeographicLatitude = 41.733
+                game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+                game.Lighting.GlobalShadows = true
+            end)
+        game.Lighting.DescendantAdded:Connect(
+            function(obj)
+                if obj:IsA("") or obj:IsA("Sky") or obj:IsA("BlurEffect") or obj:IsA("BloomEffect") or obj:IsA("SunRaysEffect") then
+                    obj:Destroy()
+                end
+            end)
+        end
+        
     if _G.Mode == "English" then
-    page12:Toggle("RemoveFog", _G.NoFog, function(value)
-        _G.NoFog  = value
-        while _G.NoFog  do task.wait(0)
-        game.Lighting.FogEnd = 100000
-        game.Lighting.FogStart = 0
-        game.Lighting.ClockTime = 14
-        game.Lighting.Brightness = 2
-        game.Lighting.GlobalShadows = false
-        end
-    end)
+        page12:Button("FullBright", function()
+            FullBright()
+        end)
     else
-    page12:Toggle("ลบหมอก", _G.NoFog, function(value)
-        _G.NoFog  = value
-        while _G.NoFog  do task.wait(0)
-        game.Lighting.FogEnd = 100000
-        game.Lighting.FogStart = 0
-        game.Lighting.ClockTime = 14
-        game.Lighting.Brightness = 2
-        game.Lighting.GlobalShadows = false
-        end
-    end)
+        page12:Button("แมพสว่าง", function()
+            FullBright()
+        end)
     end
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Loadsucces",Icon = "rbxassetid://14645512457",Duration = 3})
  _G.AutoRejoin = true
