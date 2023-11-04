@@ -6678,7 +6678,7 @@ end
         spawn(function()
             while task.wait() do
                 local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
-                count_stack:Set('Bone : ' .. boneStatus)
+                count_stack:Set('Bone : '.. boneStatus)
                 wait(1) 
             end
         end)
