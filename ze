@@ -1,4 +1,4 @@
-    if not game:IsLoaded() then
+if not game:IsLoaded() then
     local Loaded = Instance.new("Message", workspace)
     Loaded.Text = 'Wait Game Loading'
     game.Loaded:Wait()
@@ -3345,7 +3345,8 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
     
     --[[page/Tab]]
-    local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qwee"))()
+    local Update = loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qwee")()
+    local Library = Update:Window("Turbo Hub","",Enum.KeyCode.RightControl);
     
     local Library = VectorHub:Window("Vector Hub","","",Enum.KeyCode.F1);
     if _G.Mode == "English" then
