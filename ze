@@ -3435,7 +3435,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
         local page12 = Other:Page("Other")
  end   
     if _G.Mode == "English" then
-    page1:Toggle("Auto Farm Level", false, function(value)
+    page1:Toggle("Auto Farm Level","",false, function(value)
         _G.AutoFarm = value
         _G.DoubleQuest = value
         getgenv().noclip = value
@@ -3444,7 +3444,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
         end
     end)  
     else
-    page1:Toggle("ออโต้ฟาร์มเลเวล", false, function(value)
+    page1:Toggle("ออโต้ฟาร์มเลเวล","",false, function(value)
         _G.AutoFarm = value
         _G.DoubleQuest = value
         getgenv().noclip = value
