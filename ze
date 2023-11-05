@@ -168,31 +168,6 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
---[[
-repeat wait()
-    if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == true then
-        if _G.SelectTeam == "Pirate" then
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Size = UDim2.new(0, 10000, 0, 10000)
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Position = UDim2.new(-4, 0, -5, 0)
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.BackgroundTransparency = 1
-            wait(.5)
-            mouse1click()
-        elseif _G.SelectTeam == "Marine" then
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Size = UDim2.new(0, 10000, 0, 10000)
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Position = UDim2.new(-4, 0, -5, 0)
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.BackgroundTransparency = 1
-            wait(.5)
-            mouse1click()
-        else
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Size = UDim2.new(0, 10000, 0, 10000)
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Position = UDim2.new(-4, 0, -5, 0)
-            game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.BackgroundTransparency = 1
-            wait(.5)
-            mouse1click()
-        end
-    end
-until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-]]
 if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
     repeat
         task.wait()
