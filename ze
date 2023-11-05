@@ -3350,93 +3350,50 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     --[[page/Tab]]
     local Vectorui = loadstring(game:HttpGet('https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/alpp',true))();
     local Library = Vectorui:Init("Vector Hub ",14645512457)
-    if _G.Mode == "English" then
-    local NameTab1 = "General"
-    local NamePage1 = "Main"
-    else
-    local NameTab1 = "ทั่วไป"
-    local NamePage1 = "หน้าหลัก"
-    end
-    local GeneralTab = Library:Tab(NameTab1,14645512457)
-    local page1 = GeneralTab:Page(NamePage1)
 
-    if _G.Mode == "English" then
+        local GeneralTab = Library:Tab("General",14645512457)
+        local page1 = GeneralTab:Page("Main")
+    
         local Settings = Library:Tab("Settings",14645512457)
         local page2 = Settings:Page("Settings")
-    else
-        local Settings = Library:Tab("ตั้งค่า",14645512457)
-        local page2 = Settings:Page("ตั้งค่า")
-    end
-    if _G.Mode == "English" then
+   
+  
         local Stats = Library:Tab("Stats",14645512457)
         local page3 = Stats:Page("Stats")
-    else
-        local Stats = Library:Tab("สเตตัส",14645512457)
-        local page3 = Stats:Page("สเตตัส")
-    end
-    if _G.Mode == "English" then
+   
+    
         local Teleport = Library:Tab("Teleport",14645512457)
         local page4 = Teleport:Page("Teleport")
-    else
-        local Teleport = Library:Tab("เทเลพอร์ต",14645512457)
-        local page4 = Teleport:Page("เทเลพอร์ต")
-    end
-    if _G.Mode == "English" then
+   
+   
         local Item = Library:Tab("Item",14645512457)
         local page5 = Item:Page("Item")
-    else
-        local Item = Library:Tab("ไอเท็ม",14645512457)
-        local page5 = Item:Page("ไอเท็ม")
-    end
-    if _G.Mode == "English" then
+  
+    
         local Mastery = Library:Tab("Mastery",14645512457)
         local page6 = Mastery:Page("Mastery")
-    else
-        local Mastery = Library:Tab("มาสเตอรี่",14645512457)
-        local page6 = Mastery:Page("มาสเตอรี่")
-    end
-    if _G.Mode == "English" then
+   
         local DevilFruit = Library:Tab("DevilFruit",14645512457)
         local page7 = DevilFruit:Page("DevilFruit")
-    else
-        local DevilFruit = Library:Tab("ผลปีศาจ",14645512457)
-        local page7 = DevilFruit:Page("ผลปีศาจ")
-    end
-    if _G.Mode == "English" then
+    
         local Riad = Library:Tab("Riad",14645512457)
         local page8 = Riad:Page("Riad")
-    else
-        local Riad = Library:Tab("ดันเจี้ยน",14645512457)
-        local page8 = Riad:Page("ดันเจี้ยน")
-    end
-    if _G.Mode == "English" then
+    
+   
         local MirageIsland = Library:Tab("MirageIsland",14645512457)
         local page9 = MirageIsland:Page("MirageIsland")
-    else
-        local MirageIsland = Library:Tab("เกาะลับ",14645512457)
-        local page9 = MirageIsland:Page("เกาะลับ")
-    end
-    if _G.Mode == "English" then
+   
+   
         local RaceV4 = Library:Tab("RaceV4",14645512457)
         local page10 = RaceV4:Page("RaceV4")
-    else
-        local RaceV4 = Library:Tab("เผ่าวีสี่",14645512457)
-        local page10 = RaceV4:Page("เผ่าวีสี่")
-    end
-    if _G.Mode == "English" then
+   
+   
         local Shop = Library:Tab("Shop",14645512457)
         local page11 = Shop:Page("Shop")
-    else
-        local Shop = Library:Tab("ร้านค้า",14645512457)
-        local page11 = Shop:Page("ร้านค้า")
-    end
-    if _G.Mode == "English" then
+   
         local Other = Library:Tab("Other",14645512457)
         local page12 = Other:Page("Other")
-    else
-        local Other = Library:Tab("Other",14645512457)
-        local page12 = Other:Page("Other")
- end   
+  
     if _G.Mode == "English" then
 
     page1:Toggle("Auto Farm Level","",false,function(value)
