@@ -3347,68 +3347,92 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
 
     --[[page/Tab]]
-    local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Dara"))()
-    
-    local Library = VectorHub:Window("Vector Hub","","",Enum.KeyCode.F1);
+    local Vectorui = loadstring(game:HttpGet('https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/alpp',true))();
+    local Library = Vectorui:Init("Vector Hub ",14645512457)
+
     if _G.Mode == "English" then
-    page1 = Library:Tab("Main")
+        local GeneralTab = Library:Tab("General",14645512457)
+        local page1 = GeneralTab:Page("Main")
     else
-    page1 = Library:Tab("หน้าหลัก")
+        local GeneralTab = Library:Tab("ทั่วไป",14645512457)
+        local page1 = GeneralTab:Page("หน้าหลัก")
     end
     if _G.Mode == "English" then
-    page2 = Library:Tab("setting")
+        local Settings = Library:Tab("Settings",14645512457)
+        local page2 = Settings:Page("Settings")
     else
-    page2 = Library:Tab("ตั้งค่า")
+        local Settings = Library:Tab("ตั้งค่า",14645512457)
+        local page2 = Settings:Page("ตั้งค่า")
     end
     if _G.Mode == "English" then
-    page3 = Library:Tab("Stats")
+        local Stats = Library:Tab("Stats",14645512457)
+        local page3 = Stats:Page("Stats")
     else
-    page3 = Library:Tab("สเตตัส")
+        local Stats = Library:Tab("สเตตัส",14645512457)
+        local page3 = Stats:Page("สเตตัส")
     end
     if _G.Mode == "English" then
-    page4 = Library:Tab("Teleport")
+        local Teleport = Library:Tab("Teleport",14645512457)
+        local page4 = Teleport:Page("Teleport")
     else
-    page4 = Library:Tab("เทเลพอร์ต")
+        local Teleport = Library:Tab("เทเลพอร์ต",14645512457)
+        local page4 = Teleport:Page("เทเลพอร์ต")
     end
     if _G.Mode == "English" then
-    page5 = Library:Tab("Item")
+        local Item = Library:Tab("Item",14645512457)
+        local page5 = Item:Page("Item")
     else
-    page5 = Library:Tab("ไอเท็ม")
+        local Item = Library:Tab("ไอเท็ม",14645512457)
+        local page5 = Item:Page("ไอเท็ม")
     end
     if _G.Mode == "English" then
-    page6 = Library:Tab("Mastery")
+        local Mastery = Library:Tab("Mastery",14645512457)
+        local page6 = Mastery:Page("Mastery")
     else
-    page6 = Library:Tab("มาสเตอรี่")
+        local Mastery = Library:Tab("มาสเตอรี่",14645512457)
+        local page6 = Mastery:Page("มาสเตอรี่")
     end
     if _G.Mode == "English" then
-    page7 = Library:Tab("DevilFruit")
+        local DevilFruit = Library:Tab("DevilFruit",14645512457)
+        local page7 = DevilFruit:Page("DevilFruit")
     else
-    page7 = Library:Tab("ผลปีศาจ")
+        local DevilFruit = Library:Tab("ผลปีศาจ",14645512457)
+        local page7 = DevilFruit:Page("ผลปีศาจ")
     end
     if _G.Mode == "English" then
-    page8 = Library:Tab("Riad")
+        local Riad = Library:Tab("Riad",14645512457)
+        local page8 = Riad:Page("Riad")
     else
-    page8 = Library:Tab("ดันเจี้ยน")
+        local Riad = Library:Tab("ดันเจี้ยน",14645512457)
+        local page8 = Riad:Page("ดันเจี้ยน")
     end
     if _G.Mode == "English" then
-    page9 = Library:Tab("MirageIsland")
+        local MirageIsland = Library:Tab("MirageIsland",14645512457)
+        local page9 = MirageIsland:Page("MirageIsland")
     else
-    page9 = Library:Tab("เกาะลับ")
+        local MirageIsland = Library:Tab("เกาะลับ",14645512457)
+        local page9 = MirageIsland:Page("เกาะลับ")
     end
     if _G.Mode == "English" then
-    page10 = Library:Tab("RaceV4")
+        local RaceV4 = Library:Tab("RaceV4",14645512457)
+        local page10 = RaceV4:Page("RaceV4")
     else
-    page10 = Library:Tab("เผ่าวีสี่")
+        local RaceV4 = Library:Tab("เผ่าวีสี่",14645512457)
+        local page10 = RaceV4:Page("เผ่าวีสี่")
     end
     if _G.Mode == "English" then
-    page11 = Library:Tab("Shop")
+        local Shop = Library:Tab("Shop",14645512457)
+        local page11 = Shop:Page("Shop")
     else
-    page11 = Library:Tab("ร้านค้า")
+        local Shop = Library:Tab("ร้านค้า",14645512457)
+        local page11 = Shop:Page("ร้านค้า")
     end
     if _G.Mode == "English" then
-    page12 = Library:Tab("🧍")
+        local Other = Library:Tab("Other",14645512457)
+        local page12 = Other:Page("Other")
     else
-    page12 = Library:Tab("🧍")
+        local Other = Library:Tab("Other",14645512457)
+        local page12 = Other:Page("Other")
  end   
 
     page1:Seperator("🏚️")
@@ -6902,7 +6926,6 @@ end
                             while task.wait() do
                                 pcall(function() 
                                 if _G.AutoCakePrince  then
-                                    game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")
                                     if game.ReplicatedStorage:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
                                         if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
                                             for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
@@ -7010,6 +7033,12 @@ end
                             end
                         end)
                     end)
+                    page1:Toggle("Auto Spawn Katakuri", _G.AutoCakePrince ,function(value)
+                        _G.Spawnka = value
+                        while _G.Spawnka do wait()
+                        game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+                        end
+                    end)
             else
                 _G.Mode = "Thai"
                 local MobKilledLabel = page1:Label("ต้องการฆ่าอีก : Loading...", true)
@@ -7039,8 +7068,7 @@ end
                         task.spawn(function()
                             while task.wait() do
                                 pcall(function() 
-                                if _G.AutoCakePrince  then
-                                    game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+                                if _G.AutoCakePrince then
                                     if game.ReplicatedStorage:FindFirstChild("Cake Prince") or game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
                                         if game:GetService("Workspace").Enemies:FindFirstChild("Cake Prince") then
                                             for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
@@ -7147,7 +7175,13 @@ end
                             end
                         end)
                     end)
-                end                                                                                    
+                end   
+                page1:Toggle("ออโต้เสกบอสคาตาคุริ", _G.AutoCakePrince ,function(value)
+                    _G.Spawnka = value
+                    while _G.Spawnka do wait()
+                    game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+                    end
+                end)                                                                                 
             end 
     
     if _G.Mode == "English" then
