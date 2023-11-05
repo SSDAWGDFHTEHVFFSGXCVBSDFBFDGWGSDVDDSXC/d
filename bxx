@@ -3346,9 +3346,8 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
     end
 
-        wait(1)
     --[[page/Tab]]
-    local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/qwe"))()
+    local VectorHub = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Dara"))()
     
     local Library = VectorHub:Window("Vector Hub","","",Enum.KeyCode.F1);
     if _G.Mode == "English" then
