@@ -280,7 +280,7 @@ function Vectorui:Init(text,logo)
     NameReal.AnchorPoint = Vector2.new(0.5, 0)
     NameReal.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     NameReal.BackgroundTransparency = 1.000
-    NameReal.Position = UDim2.new(-0.0854563117, 0, 2.21267605, 0)
+    NameReal.Position = UDim2.new(-0.101428136, 0, -0.754071355, 0) 
     NameReal.Size = UDim2.new(0.931070328, -14, -0.0002422783, 20)
     NameReal.Font = Enum.Font.GothamSemibold
     NameReal.Text = tostring(text)
@@ -603,16 +603,7 @@ function Vectorui:Init(text,logo)
         UISetToggle(false)
     end
 
-    local LogoTop = Instance.new("ImageLabel")
-    LogoTop.Name = "LogoTop"
-    LogoTop.Parent = NameReal
-    LogoTop.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    LogoTop.BackgroundTransparency = 1.000
-    LogoTop.Position = UDim2.new(-0.101428136, 0, -0.754071355, 0)
-    LogoTop.Size = UDim2.new(0, 50, 0, 50)
-    LogoTop.Image = "http://www.roblox.com/asset/?id="..tostring(logo)
-    LogoTop.ScaleType = Enum.ScaleType.Fit
-
+   
     local UIGradient = Instance.new("UIGradient")
 
     UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 70, 235)), ColorSequenceKeypoint.new(0.26, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
@@ -761,7 +752,7 @@ function Vectorui:Init(text,logo)
         TextButton_Label.Parent = Frame_Tap
         TextButton_Label.Active = true
         TextButton_Label.AnchorPoint = Vector2.new(0.5, 0.5)
-        TextButton_Label.BackgroundColor3 = Color3.fromRGB(0, 70, 2350, 70, 235)
+        TextButton_Label.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
         TextButton_Label.BorderSizePixel = 0
         TextButton_Label.Position = UDim2.new(-0.02, 0, 0.481999993, 0)
         TextButton_Label.Size = UDim2.new(0, 0, 0, 0)
@@ -774,6 +765,16 @@ function Vectorui:Init(text,logo)
 
         UICorner.Parent = TextButton_Label
 
+        local LogoBar = Instance.new("ImageLabel")
+
+        LogoBar.Name = "LogoBar"
+        LogoBar.Parent = NameReal
+        LogoBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+        LogoBar.BackgroundTransparency = 1.000
+        LogoBar.Position = UDim2.new(-0.0854563117, 0, 2.21267605, 0)
+        LogoBar.Size = UDim2.new(0, 85, 0, 85)
+        LogoBar.Image = "http://www.roblox.com/asset/?id="..tostring(logo)
+        LogoBar.ScaleType = Enum.ScaleType.Fit
 
         local MainPage = Instance.new("Frame")
 
