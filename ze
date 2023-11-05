@@ -3396,6 +3396,23 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
   
     if _G.Mode == "English" then
 
+local Time = page1:Label("Executer Time")
+function UpdateTime()
+local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+local Hour = math.floor(GameTime/(60^2))%24
+local Minute = math.floor(GameTime/(60^1))%60
+local Second = math.floor(GameTime/(60^0))%60
+Time:Set("[GameTime] : Hours : "..Hour.." Minutes : "..Minute.." Seconds : "..Second)
+end
+
+spawn(function()
+ while task.wait() do
+ pcall(function()
+  UpdateTime()
+  end)
+ end
+ end)
+
     page1:Toggle("Auto Farm Level","",false,function(value)
         _G.AutoFarm = value
         _G.DoubleQuest = value
@@ -4069,14 +4086,14 @@ end)
     _G.DoubleQuest = true
     page1:Line()
     if _G.Mode == "English" then
-    page1:Toggle("Auto Farm Chest", _G.AutoFarmChest, function(value)
+    page1:Toggle("Auto Farm Chest","", _G.AutoFarmChest, function(value)
         _G.AutoFarmChest = value
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
     end)
     else
-    page1:Toggle("ฟาร์มกล่อง", _G.AutoFarmChest, function(value)
+    page1:Toggle("ฟาร์มกล่อง", "",_G.AutoFarmChest, function(value)
     _G.AutoFarmChest = value
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -4124,7 +4141,7 @@ end)
     page1:Label("สถานะ : โลก 1")
     end
     if _G.Mode == "English" then
-    page1:Toggle("Auto New World", _G.AutoNewWorld, function(value)
+    page1:Toggle("Auto New World", "",_G.AutoNewWorld, function(value)
         _G.AutoNewWorld = value
         if value == false then
             task.wait()
@@ -4133,7 +4150,7 @@ end)
         end
     end)
     else
-    page1:Toggle("ออโต้โลก 2", _G.AutoNewWorld, function(value)
+    page1:Toggle("ออโต้โลก 2","", _G.AutoNewWorld, function(value)
         _G.AutoNewWorld = value
         if value == false then
             task.wait()
@@ -4204,7 +4221,7 @@ end)
     
     
     if _G.Mode == "English" then
-    page1:Toggle("Auto Saber", _G.AutoSaber , function(value)
+    page1:Toggle("Auto Saber", "",_G.AutoSaber , function(value)
         _G.AutoSaber  = value
         if value == false then
             task.wait()
@@ -4214,7 +4231,7 @@ end)
         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Close FastTP",Icon = "rbxassetid://14645512457",Duration = 1})
     end)
     else
-    page1:Toggle("ออโต้ดาบแชงค์", _G.AutoSaber , function(value)
+    page1:Toggle("ออโต้ดาบแชงค์", "",_G.AutoSaber , function(value)
         _G.AutoSaber  = value
         if value == false then
             task.wait()
@@ -4361,7 +4378,7 @@ end)
         end)
     
     if _G.Mode == "English" then
-        page1:Toggle("Auto Pole", _G.AutoPole, function(value)
+        page1:Toggle("Auto Pole", "",_G.AutoPole, function(value)
             _G.AutoPole = value
             if value == false then
                 task.wait()
@@ -4371,7 +4388,7 @@ end)
         
         end)
     else
-        page1:Toggle("ออโต้กระบองเอเนล", _G.AutoPole, function(value)
+        page1:Toggle("ออโต้กระบองเอเนล", "",_G.AutoPole, function(value)
             _G.AutoPole = value
             if value == false then
                 task.wait()
@@ -4434,7 +4451,7 @@ end)
                 end
             end)
             if _G.Mode == "English" then
-                page1:Toggle("Auto Buy Ablility", _G.AutoBuyAbility, function(value)
+                page1:Toggle("Auto Buy Ablility", "",_G.AutoBuyAbility, function(value)
                     _G.AutoBuyAbility = value
                     if value == false then
                         task.wait()
@@ -4443,8 +4460,7 @@ end)
                     end
                 end)
             else
-                page1:Toggle("ออโต้ซื้อฮาคิอัติโนมัติ",
-                _G.AutoBuyAbility, function(value)
+                page1:Toggle("ออโต้ซื้อฮาคิอัติโนมัติ","",_G.AutoBuyAbility, function(value)
                     _G.AutoBuyAbility = value
                         if value == false then
                             task.wait()
@@ -4560,7 +4576,7 @@ end)
                             page1:Label("สถานะ : โลก 2")
                         end
                         if _G.Mode == "English" then
-                            page1:Toggle("Auto Third World", _G.AutoThirdSea, function(value)
+                            page1:Toggle("Auto Third World","", _G.AutoThirdSea, function(value)
                                 _G.AutoThirdSea = value
                                 if value == false then
                                     task.wait()
@@ -4569,7 +4585,7 @@ end)
                                 end
                             end)
                         else
-                            page1:Toggle("ออโต้โลก 3", _G.AutoThirdSea, function(value)
+                            page1:Toggle("ออโต้โลก 3", "",_G.AutoThirdSea, function(value)
                                 _G.AutoThirdSea = value
                                 if value == false then
                                     task.wait()
@@ -4887,7 +4903,7 @@ end)
                                 end)
                             end)
                             if _G.Mode == "English" then
-                                page1:Toggle("Auto EvoRaceV2",_G.Auto_Evo_Race_V2,function(value)
+                                page1:Toggle("Auto EvoRaceV2","",_G.Auto_Evo_Race_V2,function(value)
                                 _G.Auto_Evo_Race_V2 = value
                              spawn(function()
                                     while wait() do
@@ -4940,7 +4956,7 @@ end)
                             end)
                         end)
                 else
-                    page1:Toggle("ออโต้อีโวเผ่าขั้นสอง",_G.Auto_Evo_Race_V2,function(value)
+                    page1:Toggle("ออโต้อีโวเผ่าขั้นสอง","",_G.Auto_Evo_Race_V2,function(value)
                         _G.Auto_Evo_Race_V2 = value
                         spawn(function()
                             while wait() do
@@ -4994,7 +5010,7 @@ end)
                 end)
              end
                         if _G.Mode == "English" then
-                            page1:Toggle("Auto Bartilo Quest", _G.AutoBartiloQuest,function(value)
+                            page1:Toggle("Auto Bartilo Quest", "",_G.AutoBartiloQuest,function(value)
                                 _G.AutoBartiloQuest   = value
                                 if value == false then
                                     task.wait()
@@ -5003,7 +5019,7 @@ end)
                                 end
                             end)
                         else
-                            page1:Toggle("ออโต้บาโธโลมีโอเควส", _G.AutoBartiloQuest,function(value)
+                            page1:Toggle("ออโต้บาโธโลมีโอเควส", "",_G.AutoBartiloQuest,function(value)
                                 _G.AutoBartiloQuest   = value
                                     if value == false then
                                         task.wait()
@@ -5197,10 +5213,7 @@ end)
                                     end
                                 end)                        
     if _G.Mode == "English" then
-        page1:Toggle(
-            "Auto Dark Coat",
-            _G.AutoDarkCoat,
-            function(value)
+        page1:Toggle("Auto Dark Coat","",_G.AutoDarkCoat,function(value)
                 _G.AutoDarkCoat = value
                 if value == false then
                     task.wait()
@@ -5210,10 +5223,7 @@ end)
             end
         )
     else
-        page1:Toggle(
-            "ออโต้ผ้าคลุมหนวดดำ",
-            _G.AutoDarkCoat,
-            function(value)
+        page1:Toggle("ออโต้ผ้าคลุมหนวดดำ","",_G.AutoDarkCoat,function(value)
                 _G.AutoDarkCoat = value
                 if value == false then
                     task.wait()
@@ -5280,10 +5290,7 @@ end)
     
     
     if _G.Mode == "English" then
-        page1:Toggle(
-            "Auto Ectoplasm",
-            _G.AutoEctoplasm,
-            function(value)
+        page1:Toggle("Auto Ectoplasm","",_G.AutoEctoplasm,function(value)
                 _G.AutoEctoplasm = value
                 if value == false then
                     task.wait()
@@ -5293,10 +5300,7 @@ end)
             end
         )
     else
-        page1:Toggle(
-            "ออโต้เอ็กโตพลาสซึม",
-            _G.AutoEctoplasm,
-            function(value)
+        page1:Toggle("ออโต้เอ็กโตพลาสซึม","",_G.AutoEctoplasm,function(value)
                 _G.AutoEctoplasm = value
                 if value == false then
                     task.wait()
@@ -5356,10 +5360,7 @@ end)
         end
     end)
     if _G.Mode == "English" then
-        page1:Toggle(
-            "Auto Factory",
-            _G.AutoFactory,
-            function(value)
+        page1:Toggle("Auto Factory","",_G.AutoFactory,function(value)
                 _G.AutoFactory = value
                 if value == false then
                     task.wait()
@@ -5369,10 +5370,7 @@ end)
             end
         )
     else
-        page1:Toggle(
-            "ออโต้ตีโรงงาน",
-            _G.AutoFactory,
-            function(value)
+        page1:Toggle("ออโต้ตีโรงงาน","",_G.AutoFactory,function(value)
                 _G.AutoFactory = value
                 if value == false then
                     task.wait()
@@ -5413,7 +5411,7 @@ end)
     end)
     
     if _G.Mode == "English" then
-    page1:Toggle("Auto True Triple Katana", _G.AutoTrueTriplKatana, function(value)
+    page1:Toggle("Auto True Triple Katana", "",_G.AutoTrueTriplKatana, function(value)
     _G.AutoTrueTriplKatana = value
     if value == false then
         task.wait()
@@ -5422,7 +5420,7 @@ end)
     end
     end)
     else
-    page1:Toggle("ออโต้สามดาบ", _G.AutoTrueTriplKatana, function(value)
+    page1:Toggle("ออโต้สามดาบ", "",_G.AutoTrueTriplKatana, function(value)
     _G.AutoTrueTriplKatana = value
     if value == false then
         task.wait()
@@ -5446,14 +5444,14 @@ end)
     end)
     
     if _G.Mode == "English" then
-        page1:Toggle("Auto Rengoku Swords", _G.AutoRengoku, function(value)
+        page1:Toggle("Auto Rengoku Swords", "",_G.AutoRengoku, function(value)
             _G.AutoRengoku = value
             if value == false then
                 toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
         end)
     else
-        page1:Toggle("ออโต้ดาบเรนโกคุ", _G.AutoRengoku, function(value)
+        page1:Toggle("ออโต้ดาบเรนโกคุ","", _G.AutoRengoku, function(value)
             _G.AutoRengoku = value
             if value == false then
                 toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -5512,7 +5510,7 @@ end)
             end)
         
     if _G.Mode == "English" then
-        page1:Toggle("Auto Swan Glasses", _G.AutoSwanGlasses, function(value)
+        page1:Toggle("Auto Swan Glasses", "",_G.AutoSwanGlasses, function(value)
             _G.AutoSwanGlasses = value
             if value == false then
                 toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -5520,7 +5518,7 @@ end)
         end)
         
     else
-        page1:Toggle("ออโต้แว่นตาโดฟา", _G.AutoSwanGlasses,function(value)
+        page1:Toggle("ออโต้แว่นตาโดฟา","", _G.AutoSwanGlasses,function(value)
                 _G.AutoSwanGlasses = value
                 if value == false then
                     toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -5572,248 +5570,246 @@ end)
                         end)
                     end
                 end)
-                    
-    if _G.Mode == "English" then
-        page1:Toggle("Auto Rainbow Haki", _G.AutoRainbowHaki, function(value)
-            _G.AutoRainbowHaki = value
-            if value == false then
-                task.wait()
-                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                task.wait()
-            end
-            
-        end)
-    else
-        page1:Toggle("ออโต้ฮาคิสีรุ้ง", _G.AutoRainbowHaki,function(value)
-            _G.AutoRainbowHaki = value
-                if value == false then
-                    task.wait()
-                    toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                    task.wait()
-                end
-            end)
-        end
-                task.spawn(function()
-                    while task.wait() do
-                        pcall(function()
-                            if _G.AutoRainbowHaki then
-                                if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-                                    toTarget(CFrame.new(-11892.0703125, 930.57672119141, -8760.1591796875))
-                                    if (Vector3.new(-11892.0703125, 930.57672119141, -8760.1591796875) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
-                                        wait(1.5)
-                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("HornedMan",
-                                            "Bet")
-                                    end
-                                elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true and string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Stone") then
-                                    if game:GetService("Workspace").Enemies:FindFirstChild("Stone") then
-                                        for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                            if v.Name == "Stone" then
-                                                repeat
-                                                    task.wait()
-                                                    StartMagnet = true
-                                                    FastAttack = true
-                                                    if _G.AutoHaki then
-                                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                        end
-                                                    end
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                        task.wait()
-                                                        EquipWeapon(_G.SelectWeapon)
-                                                    end
-                                                    PosMon = v.HumanoidRootPart.CFrame
-                                                    if not _G.FastAttack then
-                                                        game:GetService 'VirtualUser':CaptureController()
-                                                        game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                    end
-                                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                    v.Humanoid.JumpPower = 0
-                                                    v.Humanoid.WalkSpeed = 0
-                                                    v.HumanoidRootPart.CanCollide = false
-                                                    v.Humanoid:ChangeState(11)
-                                                    v.Humanoid:ChangeState(14)
-                                                    v.Humanoid:ChangeState(16)
-                                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                                until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                                StartMagnet = false
-                                                FastAttack = false
-                                            end
-                                        end
-                                    else
-                                        toTarget(CFrame.new(-1086.11621, 38.8425903, 6768.71436, 0.0231462717,-0.592676699,0.805107772, 2.03251839e-05, 0.805323839, 0.592835128, -0.999732077,-0.0137055516, 0.0186523199))
-                                    end
-                                elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true and string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Island Empress") then
-                                    if game:GetService("Workspace").Enemies:FindFirstChild("Island Empress") then
-                                        for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                            if v.Name == "Island Empress" then
-                                                repeat
-                                                    task.wait()
-                                                    StartMagnet = true
-                                                    FastAttack = true
-                                                    if _G.AutoHaki then
-                                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                        end
-                                                    end
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                        task.wait()
-                                                        EquipWeapon(_G.SelectWeapon)
-                                                    end
-                                                    PosMon = v.HumanoidRootPart.CFrame
-                                                    if not _G.FastAttack then
-                                                        game:GetService 'VirtualUser':CaptureController()
-                                                        game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                    end
-                                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                    v.Humanoid.JumpPower = 0
-                                                    v.Humanoid.WalkSpeed = 0
-                                                    v.HumanoidRootPart.CanCollide = false
-                                                    v.Humanoid:ChangeState(11)
-                                                    v.Humanoid:ChangeState(14)
-                                                    v.Humanoid:ChangeState(16)
-                                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                                until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                                StartMagnet = false
-                                                FastAttack = false
-                                            end
-                                        end
-                                    else
-                                        toTarget(CFrame.new(5713.98877, 601.922974, 202.751251, -0.101080291, -0,-0.994878292, -0, 1, -0, 0.994878292, 0, -0.101080291))
-                                    end
-                                elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Kilo Admiral") then
-                                    if game:GetService("Workspace").Enemies:FindFirstChild("Kilo Admiral") then
-                                        for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                            if v.Name == "Kilo Admiral" then
-                                                repeat
-                                                    task.wait()
-                                                    StartMagnet = true
-                                                    FastAttack = true
-                                                    if _G.AutoHaki then
-                                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                        end
-                                                    end
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                        task.wait()
-                                                        EquipWeapon(_G.SelectWeapon)
-                                                    end
-                                                    PosMon = v.HumanoidRootPart.CFrame
-                                                    if not _G.FastAttack then
-                                                        game:GetService 'VirtualUser':CaptureController()
-                                                        game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                    end
-                                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                    v.Humanoid.JumpPower = 0
-                                                    v.Humanoid.WalkSpeed = 0
-                                                    v.HumanoidRootPart.CanCollide = false
-                                                    v.Humanoid:ChangeState(11)
-                                                    v.Humanoid:ChangeState(14)
-                                                    v.Humanoid:ChangeState(16)
-                                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                                until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                                StartMagnet = false
-                                                FastAttack = false
-                                            end
-                                        end
-                                    else
-                                        toTarget(CFrame.new(2877.61743, 423.558685, -7207.31006, -0.989591599, -0,-0.143904909, -0, 1.00000012, -0, 0.143904924, 0, -0.989591479))
-                                    end
-                                elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Captain Elephant") then
-                                    if game:GetService("Workspace").Enemies:FindFirstChild("Captain Elephant") then
-                                        for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                            if v.Name == "Captain Elephant" then
-                                                repeat
-                                                    task.wait()
-                                                    StartMagnet = true
-                                                    FastAttack = true
-                                                    if _G.AutoHaki then
-                                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                        end
-                                                    end
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                        task.wait()
-                                                        EquipWeapon(_G.SelectWeapon)
-                                                    end
-                                                    PosMon = v.HumanoidRootPart.CFrame
-                                                    if not _G.FastAttack then
-                                                        game:GetService 'VirtualUser':CaptureController()
-                                                        game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                    end
-                                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                    v.Humanoid.JumpPower = 0
-                                                    v.Humanoid.WalkSpeed = 0
-                                                    v.HumanoidRootPart.CanCollide = false
-                                                    v.Humanoid:ChangeState(11)
-                                                    v.Humanoid:ChangeState(14)
-                                                    v.Humanoid:ChangeState(16)
-                                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                                until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                                StartMagnet = false
-                                                    FastAttack = false
-                                            end
-                                        end
-                                    else
-                                        toTarget(CFrame.new(-13485.0283, 331.709259, -8012.4873, 0.714521289,7.98849911e-08,0.69961375, -1.02065748e-07, 1, -9.94383065e-09, -0.69961375, -6.43015241e-08,0.714521289))
-                                    end
-                                elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Beautiful Pirate") then
-                                    if game:GetService("Workspace").Enemies:FindFirstChild("Beautiful Pirate") then
-                                        for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                            if v.Name == "Beautiful Pirate" then
-                                                repeat
-                                                    task.wait()
-                                                    StartMagnet = true
-                                                    FastAttack = true
-                                                    if _G.AutoHaki then
-                                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                        end
-                                                    end
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                        task.wait()
-                                                        EquipWeapon(_G.SelectWeapon)
-                                                    end
-                                                    PosMon = v.HumanoidRootPart.CFrame
-                                                    if not _G.FastAttack then
-                                                        game:GetService 'VirtualUser':CaptureController()
-                                                        game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                    end
-                                                    v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                    v.Humanoid.JumpPower = 0
-                                                    v.Humanoid.WalkSpeed = 0
-                                                    v.HumanoidRootPart.CanCollide = false
-                                                    v.Humanoid:ChangeState(11)
-                                                    v.Humanoid:ChangeState(14)
-                                                    v.Humanoid:ChangeState(16)
-                                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                                until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                                StartMagnet = false
-                                                FastAttack = false
-                                            end
-                                        end
-                                    else
-                                        toTarget(CFrame.new(5312.3598632813, 20.141201019287, -10.158538818359))
-                                    end
-                                else
-                                    toTarget(CFrame.new(-11892.0703125, 930.57672119141, -8760.1591796875))
-                                    if (Vector3.new(-11892.0703125, 930.57672119141, -8760.1591796875) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
-                                        wait(1.5)
-                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("HornedMan","Bet")
-                                    end
-                                end
-                            end
-                        end)
-                    end
-                end)                                                                                              
         elseif World3 then
             if _G.Mode == "English" then
                 page1:Label("Status : World 3")
             else
                 page1:Label("สถานะ : โลก 3")
             end
-            
+            if _G.Mode == "English" then
+                page1:Toggle("Auto Rainbow Haki", "",_G.AutoRainbowHaki, function(value)
+                    _G.AutoRainbowHaki = value
+                    if value == false then
+                        task.wait()
+                        toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                        task.wait()
+                    end
+                    
+                end)
+            else
+                page1:Toggle("ออโต้ฮาคิสีรุ้ง","", _G.AutoRainbowHaki,function(value)
+                    _G.AutoRainbowHaki = value
+                        if value == false then
+                            task.wait()
+                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                            task.wait()
+                        end
+                    end)
+                end
+                        task.spawn(function()
+                            while task.wait() do
+                                pcall(function()
+                                    if _G.AutoRainbowHaki then
+                                        if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+                                            toTarget(CFrame.new(-11892.0703125, 930.57672119141, -8760.1591796875))
+                                            if (Vector3.new(-11892.0703125, 930.57672119141, -8760.1591796875) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
+                                                wait(1.5)
+                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("HornedMan",
+                                                    "Bet")
+                                            end
+                                        elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true and string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Stone") then
+                                            if game:GetService("Workspace").Enemies:FindFirstChild("Stone") then
+                                                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                    if v.Name == "Stone" then
+                                                        repeat
+                                                            task.wait()
+                                                            StartMagnet = true
+                                                            FastAttack = true
+                                                            if _G.AutoHaki then
+                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                end
+                                                            end
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                task.wait()
+                                                                EquipWeapon(_G.SelectWeapon)
+                                                            end
+                                                            PosMon = v.HumanoidRootPart.CFrame
+                                                            if not _G.FastAttack then
+                                                                game:GetService 'VirtualUser':CaptureController()
+                                                                game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                            end
+                                                            v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                            v.Humanoid.JumpPower = 0
+                                                            v.Humanoid.WalkSpeed = 0
+                                                            v.HumanoidRootPart.CanCollide = false
+                                                            v.Humanoid:ChangeState(11)
+                                                            v.Humanoid:ChangeState(14)
+                                                            v.Humanoid:ChangeState(16)
+                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                        until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                                        StartMagnet = false
+                                                        FastAttack = false
+                                                    end
+                                                end
+                                            else
+                                                toTarget(CFrame.new(-1086.11621, 38.8425903, 6768.71436, 0.0231462717,-0.592676699,0.805107772, 2.03251839e-05, 0.805323839, 0.592835128, -0.999732077,-0.0137055516, 0.0186523199))
+                                            end
+                                        elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true and string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Island Empress") then
+                                            if game:GetService("Workspace").Enemies:FindFirstChild("Island Empress") then
+                                                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                    if v.Name == "Island Empress" then
+                                                        repeat
+                                                            task.wait()
+                                                            StartMagnet = true
+                                                            FastAttack = true
+                                                            if _G.AutoHaki then
+                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                end
+                                                            end
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                task.wait()
+                                                                EquipWeapon(_G.SelectWeapon)
+                                                            end
+                                                            PosMon = v.HumanoidRootPart.CFrame
+                                                            if not _G.FastAttack then
+                                                                game:GetService 'VirtualUser':CaptureController()
+                                                                game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                            end
+                                                            v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                            v.Humanoid.JumpPower = 0
+                                                            v.Humanoid.WalkSpeed = 0
+                                                            v.HumanoidRootPart.CanCollide = false
+                                                            v.Humanoid:ChangeState(11)
+                                                            v.Humanoid:ChangeState(14)
+                                                            v.Humanoid:ChangeState(16)
+                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                        until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                                        StartMagnet = false
+                                                        FastAttack = false
+                                                    end
+                                                end
+                                            else
+                                                toTarget(CFrame.new(5713.98877, 601.922974, 202.751251, -0.101080291, -0,-0.994878292, -0, 1, -0, 0.994878292, 0, -0.101080291))
+                                            end
+                                        elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Kilo Admiral") then
+                                            if game:GetService("Workspace").Enemies:FindFirstChild("Kilo Admiral") then
+                                                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                    if v.Name == "Kilo Admiral" then
+                                                        repeat
+                                                            task.wait()
+                                                            StartMagnet = true
+                                                            FastAttack = true
+                                                            if _G.AutoHaki then
+                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                end
+                                                            end
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                task.wait()
+                                                                EquipWeapon(_G.SelectWeapon)
+                                                            end
+                                                            PosMon = v.HumanoidRootPart.CFrame
+                                                            if not _G.FastAttack then
+                                                                game:GetService 'VirtualUser':CaptureController()
+                                                                game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                            end
+                                                            v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                            v.Humanoid.JumpPower = 0
+                                                            v.Humanoid.WalkSpeed = 0
+                                                            v.HumanoidRootPart.CanCollide = false
+                                                            v.Humanoid:ChangeState(11)
+                                                            v.Humanoid:ChangeState(14)
+                                                            v.Humanoid:ChangeState(16)
+                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                        until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                                        StartMagnet = false
+                                                        FastAttack = false
+                                                    end
+                                                end
+                                            else
+                                                toTarget(CFrame.new(2877.61743, 423.558685, -7207.31006, -0.989591599, -0,-0.143904909, -0, 1.00000012, -0, 0.143904924, 0, -0.989591479))
+                                            end
+                                        elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Captain Elephant") then
+                                            if game:GetService("Workspace").Enemies:FindFirstChild("Captain Elephant") then
+                                                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                    if v.Name == "Captain Elephant" then
+                                                        repeat
+                                                            task.wait()
+                                                            StartMagnet = true
+                                                            FastAttack = true
+                                                            if _G.AutoHaki then
+                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                end
+                                                            end
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                task.wait()
+                                                                EquipWeapon(_G.SelectWeapon)
+                                                            end
+                                                            PosMon = v.HumanoidRootPart.CFrame
+                                                            if not _G.FastAttack then
+                                                                game:GetService 'VirtualUser':CaptureController()
+                                                                game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                            end
+                                                            v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                            v.Humanoid.JumpPower = 0
+                                                            v.Humanoid.WalkSpeed = 0
+                                                            v.HumanoidRootPart.CanCollide = false
+                                                            v.Humanoid:ChangeState(11)
+                                                            v.Humanoid:ChangeState(14)
+                                                            v.Humanoid:ChangeState(16)
+                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                        until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                                        StartMagnet = false
+                                                            FastAttack = false
+                                                    end
+                                                end
+                                            else
+                                                toTarget(CFrame.new(-13485.0283, 331.709259, -8012.4873, 0.714521289,7.98849911e-08,0.69961375, -1.02065748e-07, 1, -9.94383065e-09, -0.69961375, -6.43015241e-08,0.714521289))
+                                            end
+                                        elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Beautiful Pirate") then
+                                            if game:GetService("Workspace").Enemies:FindFirstChild("Beautiful Pirate") then
+                                                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                    if v.Name == "Beautiful Pirate" then
+                                                        repeat
+                                                            task.wait()
+                                                            StartMagnet = true
+                                                            FastAttack = true
+                                                            if _G.AutoHaki then
+                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                end
+                                                            end
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                task.wait()
+                                                                EquipWeapon(_G.SelectWeapon)
+                                                            end
+                                                            PosMon = v.HumanoidRootPart.CFrame
+                                                            if not _G.FastAttack then
+                                                                game:GetService 'VirtualUser':CaptureController()
+                                                                game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                            end
+                                                            v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                            v.Humanoid.JumpPower = 0
+                                                            v.Humanoid.WalkSpeed = 0
+                                                            v.HumanoidRootPart.CanCollide = false
+                                                            v.Humanoid:ChangeState(11)
+                                                            v.Humanoid:ChangeState(14)
+                                                            v.Humanoid:ChangeState(16)
+                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                        until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                                        StartMagnet = false
+                                                        FastAttack = false
+                                                    end
+                                                end
+                                            else
+                                                toTarget(CFrame.new(5312.3598632813, 20.141201019287, -10.158538818359))
+                                            end
+                                        else
+                                            toTarget(CFrame.new(-11892.0703125, 930.57672119141, -8760.1591796875))
+                                            if (Vector3.new(-11892.0703125, 930.57672119141, -8760.1591796875) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
+                                                wait(1.5)
+                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("HornedMan","Bet")
+                                            end
+                                        end
+                                    end
+                                end)
+                            end
+                        end)   
     if _G.Mode == "English" then
-        page1:Toggle("Auto Ken-Haki V2", _G.AutoKenHakiV2, function(value)
+        page1:Toggle("Auto Ken-Haki V2", "",_G.AutoKenHakiV2, function(value)
             _G.AutoKenHakiV2 = value
             if value == false then
                 task.wait()
@@ -5822,7 +5818,7 @@ end)
             end
         end)
     else
-        page1:Toggle("ออโต้ฮาคิสังเกตขั้นสอง",_G.AutoKenHakiV2, function(value)
+        page1:Toggle("ออโต้ฮาคิสังเกตขั้นสอง","",_G.AutoKenHakiV2, function(value)
             _G.AutoKenHakiV2 = value
                 if value == false then
                     task.wait()
@@ -5960,7 +5956,7 @@ end)
                 end)
     
                 if _G.Mode == "English" then
-                    page1:Toggle("Auto EventSea",  _G.AutoEvent , function(value)
+                    page1:Toggle("Auto EventSea","",  _G.AutoEvent , function(value)
                         _G.AutoEvent = value
                         if value == false then
                             task.wait()
@@ -5996,24 +5992,9 @@ end)
                                                             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(100,100,100)
-                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                        two(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                     FastAttack = false
-                                                    while task.wait() do
-                                                        if v.Humanoid.Health <= 0  then
-                                                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                                if v:IsA("VehicleSeat") then 
-                                                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 1 and v.Owner.Value == game.Players.LocalPlayer.Name then
-                                                                        repeat
-                                                                            task.wait()
-                                                                            local CFrame = v.CFrame
-                                                                            twoboat(CFrame)
-                                                                        until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.AutoEvent
-                                                                    end
-                                                                end
-                                                            end
-                                                        end
-                                                    end
                                                     end
                                                 end
                                             end
@@ -6023,7 +6004,7 @@ end)
                         end)
                     end)
                     if not World1 then
-                        page1:Toggle("Auto Leviathan", _G.TeleporttoSeaBeast, function(value)
+                        page1:Toggle("Auto Leviathan", "",_G.TeleporttoSeaBeast, function(value)
                             _G.TeleporttoSeaBeast = value
                             if value == false then
                                 task.wait()
@@ -6047,7 +6028,7 @@ end)
                     end
                         
                         if not World1 then
-                            page1:Toggle("Teleport to Sea Beast",_G.TeleporttoSeaBeast, function(value)
+                            page1:Toggle("Teleport to Sea Beast","",_G.TeleporttoSeaBeast, function(value)
                                 _G.TeleporttoSeaBeast = value
                                     if value == false then
                                         task.wait()
@@ -6069,7 +6050,7 @@ end)
                                     end)
                                 end)
                             end
-                    page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
+                    page1:Toggle("Increase Boat Speed","",_G.increaseboatspeed, function(value)
                         _G.increaseboatspeed = value
                             local vehicleSeats = {}
                             for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
@@ -6087,13 +6068,13 @@ end)
                                 end
                             end
                     end)
-                    page1:Toggle("AutoSail",_G.AutoSail, function(value)
+                    page1:Toggle("AutoSail","",_G.AutoSail, function(value)
                         _G.AutoSail = value
                         while _G.AutoSail do task.wait(0)
                         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
                         end
                     end)
-                    page1:Toggle("Noclip Rock",_G.Nocliprock, function(value)
+                    page1:Toggle("Noclip Rock","",_G.Nocliprock, function(value)
                         _G.Nocliprock = value
                         function IsRock(v)
                           return v:IsA("BasePart") and string.find(v.Name, "rock") or string.find(v.Name, "Rock") and not string.find(v.Name, "Rocks")
@@ -6115,7 +6096,7 @@ end)
                         UpdateNocliprock()
                     end)
 
-                        page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
+                        page1:Toggle("Teleport To a Nearby Ship","",_G.TPTOBOAT, function(value)
                         _G.TPTOBOAT = value
                         while task.wait() do
                             if _G.TPTOBOAT then
@@ -6134,7 +6115,7 @@ end)
                         end
                     end)
                     else
-                        page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
+                        page1:Toggle("ออโต้อีเว้นท์ทะเล", "", _G.AutoEvent , function(value)
                             _G.AutoEvent = value
                             if value == false then
                                 task.wait()
@@ -6170,24 +6151,9 @@ end)
                                                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                             end
                                                             v.HumanoidRootPart.Size = Vector3.new(100,100,100)
-                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                            two(v.HumanoidRootPart.CFrame * MethodFarm)
                                                         until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                         FastAttack = false
-                                                        while task.wait() do
-                                                            if v.Humanoid.Health <= 0  then
-                                                                for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                                    if v:IsA("VehicleSeat") then 
-                                                                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 1 and v.Owner.Value == game.Players.LocalPlayer.Name then
-                                                                            repeat
-                                                                                task.wait()
-                                                                                local CFrame = v.CFrame
-                                                                                twoboat(CFrame)
-                                                                            until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.AutoEvent
-                                                                        end
-                                                                    end
-                                                                end
-                                                            end
-                                                        end
                                                         end
                                                     end
                                                 end
@@ -6197,7 +6163,7 @@ end)
                             end)
                         end)
                         if not World1 then
-                            page1:Toggle("ออโต้เลวิธาน",_G.TeleporttoSeaBeast, function(value)
+                            page1:Toggle("ออโต้เลวิธาน","",_G.TeleporttoSeaBeast, function(value)
                                 _G.TeleporttoSeaBeast = value
                                 if value == false then
                                     task.wait()
@@ -6220,7 +6186,7 @@ end)
                             end)
                          end
                             if not World1 then
-                                page1:Toggle("เทเลพอร์ตไปหาเจ้าทะเล",_G.TeleporttoSeaBeast, function(value)
+                                page1:Toggle("เทเลพอร์ตไปหาเจ้าทะเล","",_G.TeleporttoSeaBeast, function(value)
                                     _G.TeleporttoSeaBeast = value
                                         if value == false then
                                             task.wait()
@@ -6242,7 +6208,7 @@ end)
                                         end)
                                     end)
                                 end
-                        page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
+                        page1:Toggle("เพิมความเร็วเรือ","",_G.increaseboatspeed, function(value)
                             _G.increaseboatspeed = value
                             local vehicleSeats = {}
                             for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
@@ -6260,13 +6226,13 @@ end)
                                 end
                             end
                         end)
-                        page1:Toggle("ออโต้ขับเรือ",_G.AutoSail, function(value)
+                        page1:Toggle("ออโต้ขับเรือ","",_G.AutoSail, function(value)
                         _G.AutoSail = value
                         while _G.AutoSail do task.wait(0)
                         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
                         end
                     end)
-                        page1:Toggle("เรือทะลุหินได้",_G.Nocliprock, function(value)
+                        page1:Toggle("เรือทะลุหินได้","",_G.Nocliprock, function(value)
                             _G.Nocliprock = value
                             function IsRock(v)
                               return v:IsA("BasePart") and string.find(v.Name, "rock") or string.find(v.Name, "Rock") and not string.find(v.Name, "Rocks")
@@ -6289,7 +6255,7 @@ end)
                         end)
                     
                 
-                page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
+                page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง","",_G.TPTOBOAT, function(value)
                 _G.TPTOBOAT = value
                 while task.wait() do
                     if _G.TPTOBOAT then
@@ -6312,7 +6278,7 @@ end)
     
         page1:Line()
     if _G.Mode == "English" then
-        page1:Toggle("Auto Holy Torch",  _G.AutoHolyTorch, function(value)
+        page1:Toggle("Auto Holy Torch",  "",_G.AutoHolyTorch, function(value)
             _G.AutoHolyTorch = value
             _G.BypassTP = false
             if value == false then
@@ -6320,7 +6286,7 @@ end)
             end
         end)
     else
-        page1:Toggle("ออโต้จุดโคมไฟ", _G.AutoHolyTorch, function(value)
+        page1:Toggle("ออโต้จุดโคมไฟ", "",_G.AutoHolyTorch, function(value)
             _G.AutoHolyTorch = value
             _G.BypassTP = false
             if value == false then
@@ -6362,14 +6328,14 @@ end)
         end
     end)
     if _G.Mode == "English" then
-        page1:Toggle("Auto CastleRaid", _G.AutoCastleRaid, function(value)
+        page1:Toggle("Auto CastleRaid", "",_G.AutoCastleRaid, function(value)
             _G.AutoCastleRaid = value
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
         end)
     else
-        page1:Toggle("ออโต้ตีโจรเกาะกลาง", _G.AutoCastleRaid, function(value)
+        page1:Toggle("ออโต้ตีโจรเกาะกลาง","",_G.AutoCastleRaid, function(value)
             _G.AutoCastleRaid = value
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -6556,7 +6522,7 @@ end
                     end)
                 end
                 if _G.Mode == "English" then
-                    page1:Toggle("Auto Elite Hunter Hop", _G.AutoEliteHunterHop, function(value)
+                    page1:Toggle("Auto Elite Hunter Hop","", _G.AutoEliteHunterHop, function(value)
                         _G.AutoEliteHunterHop = value
                         Elite()
                         if value == false then
@@ -6564,7 +6530,7 @@ end
                         end
                     end)
                 else
-                    page1:Toggle("ออโต้ นักล่าชั้นยอด & ย้ายเซิฟ",_G.AutoEliteHunterHop, function(value)
+                    page1:Toggle("ออโต้ นักล่าชั้นยอด & ย้ายเซิฟ","",_G.AutoEliteHunterHop, function(value)
                             _G.AutoEliteHunterHop = value
                             Elite()
                             if value == false then
@@ -6573,7 +6539,7 @@ end
                         end)
                 end
                 if _G.Mode == "English" then
-                    page1:Toggle("Auto Elite Hunter", _G.AutoEliteHunter, function(value)
+                    page1:Toggle("Auto Elite Hunter", "",_G.AutoEliteHunter, function(value)
                         _G.AutoEliteHunter = value
                         Elite()
                         if value == false then
@@ -6581,7 +6547,7 @@ end
                         end
                     end)
                 else
-                    page1:Toggle("ออโต้นักล่าชั้นยอด", _G.AutoEliteHunter,function(value)
+                    page1:Toggle("ออโต้นักล่าชั้นยอด","", _G.AutoEliteHunter,function(value)
                         _G.AutoEliteHunter = value
                         Elite()
                             if value == false then
@@ -6599,7 +6565,7 @@ end
                 wait(1)
             end
         end)
-        page1:Toggle("Auto Farm Bone", _G.AutoFarmBone , function(value)
+        page1:Toggle("Auto Farm Bone", "",_G.AutoFarmBone , function(value)
             _G.AutoFarmBone  = value
             if value == false then
                 task.wait()
@@ -6650,7 +6616,7 @@ end
                 end
             end)
         end)
-        page1:Toggle("Auto Random Bone", _G.AutoRandomBone, function(value)
+        page1:Toggle("Auto Random Bone","", _G.AutoRandomBone, function(value)
             _G.AutoRandomBone = value
         end)
     else
@@ -6665,7 +6631,7 @@ end
             end
         end)
     
-        page1:Toggle("ออโต้ฟาร์มกระดูก", _G.AutoFarmBone , function(value)
+        page1:Toggle("ออโต้ฟาร์มกระดูก", "",_G.AutoFarmBone , function(value)
             _G.AutoFarmBone  = value
             if value == false then
                 task.wait()
@@ -6716,7 +6682,7 @@ end
                 end
             end)
         end)
-        page1:Toggle("ออโต้สุ่มกระดูก", _G.AutoRandomBone, function(value)
+        page1:Toggle("ออโต้สุ่มกระดูก", "",_G.AutoRandomBone, function(value)
             _G.AutoRandomBone = value
         end)
     end
@@ -6730,7 +6696,7 @@ end
     end)
     
     if _G.Mode == "English" then 
-        page1:Toggle("Auto Farm Boss Hallow", _G.AutoFarmBossHallow, function(value)
+        page1:Toggle("Auto Farm Boss Hallow","", _G.AutoFarmBossHallow, function(value)
             _G.AutoFarmBossHallow = value
             if value == false then
                 task.wait()
@@ -6780,7 +6746,7 @@ end
             end
         end)
     else
-        page1:Toggle("ออโต้ฟาร์มบอสHallow", _G.AutoFarmBossHallow,function(value)
+        page1:Toggle("ออโต้ฟาร์มบอสHallow", "",_G.AutoFarmBossHallow,function(value)
             _G.AutoFarmBossHallow = value
                 if value == false then
                     task.wait()
@@ -6836,7 +6802,7 @@ end
                 
             
             if _G.Mode == "English" then
-                page1:Toggle("SpawnBossHallow", _G.SpawnBossHallow, function(value)
+                page1:Toggle("SpawnBossHallow", "",_G.SpawnBossHallow, function(value)
                     _G.SpawnBossHallow = value
                     toTarget(CFrame.new(-8933.0537109375, 146.79251098632812, 6063.353515625))
                     if value == false then
@@ -6844,7 +6810,7 @@ end
                     end
                 end)
             else
-                page1:Toggle("เสกบอสHallow", _G.SpawnBossHallow, function(value)
+                page1:Toggle("เสกบอสHallow","", _G.SpawnBossHallow, function(value)
                     _G.SpawnBossHallow = value
                     toTarget(CFrame.new(-8933.0537109375, 146.79251098632812, 6063.353515625))
                     if value == false then
@@ -6872,7 +6838,7 @@ end
                         wait(1)
                     end
                 end)
-                page1:Toggle("Auto Katakuri", _G.AutoCakePrince ,function(value)
+                page1:Toggle("Auto Katakuri","", _G.AutoCakePrince ,function(value)
                         _G.AutoCakePrince  = value
                         if value == false then
                             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -6989,7 +6955,7 @@ end
                             end
                         end)
                     end)
-                    page1:Toggle("Auto Spawn Katakuri", _G.AutoCakePrince ,function(value)
+                    page1:Toggle("Auto Spawn Katakuri","", _G.AutoCakePrince ,function(value)
                         _G.Spawnka = value
                         while _G.Spawnka do wait()
                         game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")
@@ -7015,7 +6981,7 @@ end
                         wait(1)
                     end
                 end)
-                page1:Toggle("ออโต้บอสคาตาคุริ", _G.AutoCakePrince ,function(value)
+                page1:Toggle("ออโต้บอสคาตาคุริ","", _G.AutoCakePrince ,function(value)
                         _G.AutoCakePrince  = value
                         if value == false then
                             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7132,7 +7098,7 @@ end
                         end)
                     end)
                 end   
-                page1:Toggle("ออโต้เสกบอสคาตาคุริ", _G.AutoCakePrince ,function(value)
+                page1:Toggle("ออโต้เสกบอสคาตาคุริ","", _G.AutoCakePrince ,function(value)
                     _G.Spawnka = value
                     while _G.Spawnka do wait()
                     game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")
@@ -7150,7 +7116,7 @@ end
             SelectModeMaterial = value
         end)
     
-        page1:Toggle("Auto Farm Material", AutoFarmMaterial, function(x)
+        page1:Toggle("Auto Farm Material", "",AutoFarmMaterial, function(x)
             AutoFarmMaterial = x
             if x == false then
                 toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.Position,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7235,7 +7201,7 @@ page1:Dropdown("เลือกวัสดุ",AllMaterial, function(value)
 SelectModeMaterial = value
 end)
 
-page1:Toggle("ออโต้ฟาร์มวัสดุ", AutoFarmMaterial, function(x)
+page1:Toggle("ออโต้ฟาร์มวัสดุ","", AutoFarmMaterial, function(x)
 AutoFarmMaterial = x
 if x == false then
 toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.Position,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7460,21 +7426,21 @@ end
         end)
        
     if _G.Mode == "English" then
-    page2:Toggle("Faster Attack", true, function(value)
+    page2:Toggle("Faster Attack", "",true, function(value)
     _G.FastAttack = value
     end)
     
     
-    page2:Toggle("Auto Haki", true, function(value)
+    page2:Toggle("Auto Haki", "",true, function(value)
     _G.AutoHaki = value
     end)
     else
-    page2:Toggle("โจมตีเร็ว", true, function(value)
+    page2:Toggle("โจมตีเร็ว", "",true, function(value)
     _G.FastAttack = value
     end)
     
     
-    page2:Toggle("ออโต้เปิดฮาคิ", true, function(value)
+    page2:Toggle("ออโต้เปิดฮาคิ", "",true, function(value)
     _G.AutoHaki = value
     end)
     end
@@ -7491,11 +7457,11 @@ end
     end
     end)
     if _G.Mode == "English" then
-    page2:Toggle("Auto Ken", _G.AutoKen, function(value)
+    page2:Toggle("Auto Ken","", _G.AutoKen, function(value)
     _G.AutoKen = value
     end)
     else
-    page2:Toggle("ออโต้เปิดฮาคิสังเกต", _G.AutoKen,function(value)
+    page2:Toggle("ออโต้เปิดฮาคิสังเกต", "",_G.AutoKen,function(value)
     _G.AutoKen = value
     end)
     end
@@ -7521,7 +7487,7 @@ end
     local UserInputService = game:GetService("UserInputService")
     local RunService = game:GetService("RunService")
     if _G.Mode == "English" then
-    page2:Toggle("White Screen", false, function(value)
+    page2:Toggle("White Screen","", false, function(value)
     _G.WhiteScreen = value
     if value then
         game.RunService:Set3dRenderingEnabled(false)
@@ -7540,7 +7506,7 @@ end
             game.RunService:Set3dRenderingEnabled(false)
         end)
     end)
-    page2:Toggle("Black Screen", false, function(value)
+    page2:Toggle("Black Screen", "",false, function(value)
     _G.BlackScreen = value
     if value then
         game.RunService:Set3dRenderingEnabled(false)
@@ -7563,17 +7529,17 @@ end
     end)
     
     
-    page2:Toggle("HideNotification", false, function(value)
+    page2:Toggle("HideNotification", "",false, function(value)
     game:GetService("Players").LocalPlayer.PlayerGui.Notifications.Enabled = not game:GetService("Players").LocalPlayer.PlayerGui.Notifications.Enabled
     end)
     
-    page2:Toggle("Bring Mon", true, function(value)
+    page2:Toggle("Bring Mon","", true, function(value)
     _G.BringMob = value
     end)
     else
   
     
-    page2:Toggle("จอขาว", false, function(value)
+    page2:Toggle("จอขาว","", false, function(value)
     _G.WhiteScreen = value
     if value then
         game.RunService:Set3dRenderingEnabled(false)
@@ -7593,7 +7559,7 @@ end
         end)
     end)
     
-    page2:Toggle("จอดำ", false, function(value)
+    page2:Toggle("จอดำ","", false, function(value)
     _G.BlackScreen = value
     if value then
         game.RunService:Set3dRenderingEnabled(false)
@@ -7617,31 +7583,31 @@ end
         end)
     end)
     
-    page2:Toggle("ซ่อนแจ้งเตือน", false, function(value)
+    page2:Toggle("ซ่อนแจ้งเตือน", "",false, function(value)
     game:GetService("Players").LocalPlayer.PlayerGui.Notifications.Enabled = not game:GetService("Players").LocalPlayer.PlayerGui.Notifications.Enabled
     end)
     
-    page2:Toggle("รวมมอน", true, function(value)
+    page2:Toggle("รวมมอน","", true, function(value)
     _G.BringMob = value
     end)
     end
     if _G.Mode == "English" then
-    page2:Toggle("Disabled Damage",  true, function(value)
+    page2:Toggle("Disabled Damage",  "",true, function(value)
     _G.Disdamage = value
     DisabledDamage()
     end)
     
-    page2:Toggle("Camera Shaker", true, function(value)
+    page2:Toggle("Camera Shaker","", true, function(value)
     _G.CameraShaker = value
     CameraShaker()
     end)
     else
-    page2:Toggle("ซ่อนดาเมจ",  true, function(value)
+    page2:Toggle("ซ่อนดาเมจ", "", true, function(value)
     _G.Disdamage = value
     DisabledDamage()
     end)
     
-    page2:Toggle("หยุดการสั่นของกล้อง",true,function(value)
+    page2:Toggle("หยุดการสั่นของกล้อง","",true,function(value)
         _G.CameraShaker = value
         CameraShaker()
     end)
@@ -7718,11 +7684,11 @@ end
         end)
     end)
 
-    page3:Toggle("Auto Stats", _G.EnabledAutoStats, function(value)
+    page3:Toggle("Auto Stats", "",_G.EnabledAutoStats, function(value)
         _G.EnabledAutoStats = value
     end)
 
-    page3:Toggle("Auto Stat Kaitun", true, function(value)
+    page3:Toggle("Auto Stat Kaitun","", true, function(value)
         _G.AutoStatsKaitun = value
     end)
 
@@ -7749,12 +7715,12 @@ end
     end)
     if _G.Mode == "English" then
     page3:Label("Redeem Code")
-    page3:Toggle("Redeem Code", _G.EnabledAutoRedeemCode, function(value)
+    page3:Toggle("Redeem Code","", _G.EnabledAutoRedeemCode, function(value)
         _G.EnabledAutoRedeemCode = value
     end)
     else
     page3:Label("ใส่โค้ด")
-    page3:Toggle("ออโต้ใส่โค้ด", _G.EnabledAutoRedeemCode, function(value)
+    page3:Toggle("ออโต้ใส่โค้ด","", _G.EnabledAutoRedeemCode, function(value)
         _G.EnabledAutoRedeemCode = value
     end)
     end
@@ -7797,7 +7763,7 @@ end
             "FightingStyle"
         )
     
-        page3:Toggle("Auto God Human", _G.AutoGodHuman, function(value)
+        page3:Toggle("Auto God Human","", _G.AutoGodHuman, function(value)
             _G.AutoGodHuman = value
             BuyGodhuman = tonumber(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true))
             if BuyGodhuman then
@@ -8552,8 +8518,7 @@ end
     else
         _G.Mode = "Thai"
         page3:Label("สไตล์การต่อสู้")
-        page3:Toggle("ออโต้หมัดก็อตฮิวแมน", _G.AutoGodHuman,
-            function(value)
+        page3:Toggle("ออโต้หมัดก็อตฮิวแมน","", _G.AutoGodHuman,function(value)
                 _G.AutoGodHuman = value
                 BuyGodhuman = tonumber(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true))
                 if BuyGodhuman then
@@ -9308,7 +9273,7 @@ end
         end)
     end
     if _G.Mode == "English" then
-        page3:Toggle("Auto Superhuman", _G.AutoSuperhuman, function(value)
+        page3:Toggle("Auto Superhuman","", _G.AutoSuperhuman, function(value)
             _G.AutoSuperhuman = value
             task.spawn(function()
                 while task.wait() do
@@ -9439,8 +9404,7 @@ end
         end)
     else
         _G.Mode = "Thai"
-        page3:Toggle("ออโต้หมัดชุปเปอร์ฮิวแมน",
-        _G.AutoSuperhuman, function(value)
+        page3:Toggle("ออโต้หมัดชุปเปอร์ฮิวแมน","",_G.AutoSuperhuman, function(value)
                 _G.AutoSuperhuman = value
                 task.spawn(function()
                     while task.wait() do
@@ -9597,7 +9561,7 @@ end
     
     
     if _G.Mode == "English" then
-        page3:Toggle("Auto Electric Claw", _G.AutoElectricClaw, function(value)
+        page3:Toggle("Auto Electric Claw","", _G.AutoElectricClaw, function(value)
             _G.AutoElectricClaw = value
             if _G.AutoElectricClaw then
                 Com("F_", "BuyElectro")
@@ -9650,8 +9614,7 @@ end
             end)
         end)
     else
-        page3:Toggle("ออโต้หมัดสายฟ้าขั้นสอง",
-        _G.AutoElectricClaw, function(value)
+        page3:Toggle("ออโต้หมัดสายฟ้าขั้นสอง","",_G.AutoElectricClaw, function(value)
             _G.AutoElectricClaw = value
                 if _G.AutoElectricClaw then
                     Com("F_", "BuyElectro")
@@ -9699,7 +9662,7 @@ end
             end)
     end
     if _G.Mode == "English" then
-        page3:Toggle("Auto Death Step", _G.AutoDeathStep, function(value)
+        page3:Toggle("Auto Death Step","", _G.AutoDeathStep, function(value)
             _G.AutoDeathStep = value
             if _G.AutoDeathStep then
                 Com("F_", "BuyBlackLeg")
@@ -9800,7 +9763,7 @@ end
             end)
         end)
     else
-        page3:Toggle("ออโต้ขาดำขั้นสอง", _G.AutoDeathStep, function(value)
+        page3:Toggle("ออโต้ขาดำขั้นสอง", "",_G.AutoDeathStep, function(value)
             _G.AutoDeathStep = value
             if _G.AutoDeathStep then
                 Com("F_", "BuyBlackLeg")
@@ -9902,7 +9865,7 @@ end
         end)
     end
     if _G.Mode == "English" then
-        page3:Toggle("Auto SharkmanKarate",_G.AutoSharkManKarate, function(value)
+        page3:Toggle("Auto SharkmanKarate","",_G.AutoSharkManKarate, function(value)
                 _G.AutoSharkManKarate = value
                 if _G.AutoSharkManKarate then
                     Com("F_", "BuySharkmanKarate")
@@ -10002,8 +9965,7 @@ end
             end)
     else
         _G.Mode = "Thai"
-        page3:Toggle("ออโต้หมัดคาราเต้มนุษย์เงือกขั้นสอง",
-            _G.AutoSharkManKarate, function(value)
+        page3:Toggle("ออโต้หมัดคาราเต้มนุษย์เงือกขั้นสอง","",_G.AutoSharkManKarate, function(value)
                 _G.AutoSharkManKarate = value
                 if _G.AutoSharkManKarate then
                     Com("F_", "BuySharkmanKarate")
@@ -10103,7 +10065,7 @@ end
             end)
         end
         if _G.Mode == "English" then
-            page3:Toggle("Auto Dragon Talon",  _G.AutoDragonTalon , function(value)
+            page3:Toggle("Auto Dragon Talon",  "",_G.AutoDragonTalon , function(value)
                 _G.AutoDragonTalon = value
                 if _G.AutoDragonTalon then
                     Com("F_", "BlackbeardReward", "DragonClaw", "2")
@@ -10173,7 +10135,7 @@ end
                 end)
             end)
         else
-            page3:Toggle("ออโต้หมัดมังกร", _G.AutoDragonTalon, function(value)
+            page3:Toggle("ออโต้หมัดมังกร","", _G.AutoDragonTalon, function(value)
                 _G.AutoDragonTalon = value
                 if _G.AutoDragonTalon then
                     Com("F_", "BlackbeardReward", "DragonClaw", "2")
@@ -10295,7 +10257,7 @@ end
     end)
     end
     if _G.Mode == "English" then
-    page4:Toggle("Teleport To Select", _G.TeleportIsland,function(value)
+    page4:Toggle("Teleport To Select","", _G.TeleportIsland,function(value)
     _G.TeleportIsland = value
     if _G.TeleportIsland then
     if World1  then
@@ -10466,7 +10428,7 @@ end
     toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
     end)
     else
-    page4:Toggle("เทเลพอร์ตไปยังเกาะที่เลือก", _G.TeleportIsland,function(value)
+    page4:Toggle("เทเลพอร์ตไปยังเกาะที่เลือก", "",_G.TeleportIsland,function(value)
     _G.TeleportIsland = value
     if _G.TeleportIsland then
         if World1  then
@@ -10648,7 +10610,7 @@ end
             end
         end)
     if _G.Mode == "English" then
-    page1:Toggle("Auto Farm Observation",_G.AutoObservation,function(value)
+    page1:Toggle("Auto Farm Observation","",_G.AutoObservation,function(value)
         _G.AutoObservation = value
         if value == false then
             task.wait()
@@ -10657,7 +10619,7 @@ end
         end
     end)
 else
-    page1:Toggle("ออโต้ฟาร์มฮาคิสังเกต",_G.AutoObservation,function(value)
+    page1:Toggle("ออโต้ฟาร์มฮาคิสังเกต","",_G.AutoObservation,function(value)
         _G.AutoObservation = value
         if value == false then
             task.wait()
@@ -10687,11 +10649,11 @@ end
         end
     )
     if _G.Mode == "English" then
-    page1:Toggle("Auto Farm Observation Hop",_G.AutoObservation_Hop,function(value)
+    page1:Toggle("Auto Farm Observation Hop","",_G.AutoObservation_Hop,function(value)
             _G.AutoObservation_Hop = value
         end)
     else
-        page1:Toggle("ออโด้ฟาร์มฮาคิสังเกต&ย้ายเซิฟ",_G.AutoObservation_Hop,function(value)
+        page1:Toggle("ออโด้ฟาร์มฮาคิสังเกต&ย้ายเซิฟ","",_G.AutoObservation_Hop,function(value)
             _G.AutoObservation_Hop = value
         end)
     end
@@ -10825,7 +10787,7 @@ else
         end)
 end
     if _G.Mode == "English" then
-    page1:Toggle("Auto Farm Boss", _G.AutoFarmBoss, function(value)
+    page1:Toggle("Auto Farm Boss","", _G.AutoFarmBoss, function(value)
     _G.AutoFarmBoss = value
     if value == false then
     task.wait()
@@ -10834,7 +10796,7 @@ end
     end
     end)
     else
-    page1:Toggle("ออโต้ฟาร์มบอส", _G.AutoFarmBoss, function(value)
+    page1:Toggle("ออโต้ฟาร์มบอส", "",_G.AutoFarmBoss, function(value)
     _G.AutoFarmBoss = value
     if value == false then
     task.wait()
@@ -10879,7 +10841,7 @@ end
     end
     end)
     if _G.Mode == "English" then
-    page1:Toggle("Auto All Boss", _G.AutoAllBoss, function(value)
+    page1:Toggle("Auto All Boss","", _G.AutoAllBoss, function(value)
     _G.AutoAllBoss = value
     if value == false then
     task.wait()
@@ -10888,7 +10850,7 @@ end
     end
     end)
     else
-    page1:Toggle("ออโต้ฟาร์มบอสทั้งหมด", _G.AutoAllBoss,function(value)
+    page1:Toggle("ออโต้ฟาร์มบอสทั้งหมด","", _G.AutoAllBoss,function(value)
     _G.AutoAllBoss = value
     if value == false then
         task.wait()
@@ -10936,7 +10898,7 @@ end
     local GodComplete = false
 
 
-    page5:Toggle("Auto Buddy Swords", _G.AutoBuddySwords, function(value)
+    page5:Toggle("Auto Buddy Swords", "",_G.AutoBuddySwords, function(value)
     _G.AutoBuddySwords = value
     if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -10986,7 +10948,7 @@ end
     end)
     end)
     
-    page5:Toggle("Auto Musketeer Hat", _G.AutoMusketeerHat, function(value)
+    page5:Toggle("Auto Musketeer Hat", "",_G.AutoMusketeerHat, function(value)
     _G.AutoMusketeerHat = value
     if value == false then
     task.wait()
@@ -11101,7 +11063,7 @@ end
     
     
     
-    page5:Toggle("Auto Cavander", _G.AutoCavander, function(value)
+    page5:Toggle("Auto Cavander","", _G.AutoCavander, function(value)
     _G.AutoCavander = value
     if value == false then
     task.wait()
@@ -11155,7 +11117,7 @@ end
     end)
     end)
     
-    page5:Toggle("Auto Yama Sword", _G.AutoYamaSword, function(value)
+    page5:Toggle("Auto Yama Sword", "",_G.AutoYamaSword, function(value)
     _G.AutoYamaSword = value
     spawn(function()
     while task.wait() do
@@ -11172,7 +11134,7 @@ end
     end)
     
     
-    page5:Toggle("Auto Tushita Sword", _G.AutoTushitaSword, function(value)
+    page5:Toggle("Auto Tushita Sword","", _G.AutoTushitaSword, function(value)
     _G.AutoTushitaSword = value
     if value == false then
     task.wait()
@@ -11224,7 +11186,7 @@ end
     end)
     end)
     
-    page5:Toggle("Auto Serpent Bow", _G.AutoSerpentBow, function(value)
+    page5:Toggle("Auto Serpent Bow","", _G.AutoSerpentBow, function(value)
     _G.AutoSerpentBow = value
     if value == false then
     task.wait()
@@ -11275,7 +11237,7 @@ end
     end
     end)
     end)
-    page5:Toggle("Auto Dark Dagger", _G.AutoDarkDagger, function(value)
+    page5:Toggle("Auto Dark Dagger","", _G.AutoDarkDagger, function(value)
     _G.AutoDarkDagger = value
     if value == false then
     task.wait()
@@ -11870,26 +11832,26 @@ end
 
     
     if _G.Mode == "English" then
-    page6:Toggle("Auto Fruit Mastery", _G.AutoFarmFruitMastery, function(value)
+    page6:Toggle("Auto Fruit Mastery","", _G.AutoFarmFruitMastery, function(value)
     _G.AutoFarmFruitMastery = value
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
     end)
-    page6:Toggle("Auto Gun Mastery", _G.AutoFarmGunMastery, function(value)
+    page6:Toggle("Auto Gun Mastery", "",_G.AutoFarmGunMastery, function(value)
     _G.AutoFarmGunMastery = value
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
     end)
     else
-    page6:Toggle("ฟาร์มมาสเตอรี่ผลปีศาจ",_G.AutoFarmFruitMastery, function(value)
+    page6:Toggle("ฟาร์มมาสเตอรี่ผลปีศาจ","",_G.AutoFarmFruitMastery, function(value)
     _G.AutoFarmFruitMastery = value
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
     end)
-    page6:Toggle("ฟาร์มมาสเตอรี่ปืน", _G.AutoFarmGunMastery,function(value)
+    page6:Toggle("ฟาร์มมาสเตอรี่ปืน", "",_G.AutoFarmGunMastery,function(value)
         _G.AutoFarmGunMastery = value
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -11908,41 +11870,41 @@ end
     page6:Label("สกิล")
     end
     if _G.Mode == "English" then
-    page6:Toggle("Skill Z", _G.SkillZ, function(value)
+    page6:Toggle("Skill Z", "",_G.SkillZ, function(value)
     _G.SkillZ = value
     end)
-    page6:Toggle("Skill X", _G.SkillX, function(value)
+    page6:Toggle("Skill X", "",_G.SkillX, function(value)
     _G.SkillX = value
     end)
     
-    page6:Toggle("Skill C", _G.SkillC, function(value)
+    page6:Toggle("Skill C", "",_G.SkillC, function(value)
     _G.SkillC = value
     end)
     
-    page6:Toggle("Skill V", _G.SkillV, function(value)
+    page6:Toggle("Skill V", "",_G.SkillV, function(value)
     _G.SkillV = value
     end)
     
-    page6:Toggle("Skill F",_G.SkillF, function(value)
+    page6:Toggle("Skill F","",_G.SkillF, function(value)
     _G.SkillF = value
     end)
     else
     _G.Mode = "Thai"
-    page6:Toggle("สกิล Z", _G.SkillZ, function(value)
+    page6:Toggle("สกิล Z", "",_G.SkillZ, function(value)
     _G.SkillZ = value
     end)
-    page6:Toggle("สกิล X", _G.SkillX, function(value)
+    page6:Toggle("สกิล X","", _G.SkillX, function(value)
     _G.SkillX = value
     end)
     
-    page6:Toggle("สกิล C",_G.SkillC, function(value)
+    page6:Toggle("สกิล C","",_G.SkillC, function(value)
     _G.SkillC = value
     end)
     
-    page6:Toggle("สกิล V", _G.SkillV, function(value)
+    page6:Toggle("สกิล V","", _G.SkillV, function(value)
     _G.SkillV = value
     end)
-    page6:Toggle("Skill F", _G.SkillF, function(value)
+    page6:Toggle("Skill F", "",_G.SkillF, function(value)
     _G.SkillF = value
     end)
     end
@@ -11970,7 +11932,7 @@ end
     end)
     if _G.Mode == "English" then
     
-    page7:Toggle("Auto Random Fruits", _G.AutoBuyRandomFruits, function(value)
+    page7:Toggle("Auto Random Fruits", "",_G.AutoBuyRandomFruits, function(value)
     _G.AutoBuyRandomFruits = value
     end)
     page7:Button("Buy Random Fruits", function()
@@ -11987,7 +11949,7 @@ end
     else
     _G.Mode = "Thai"
     
-    page7:Toggle("ออโต้สุ่มผลปีศาจ", _G.AutoBuyRandomFruits,function(value)
+    page7:Toggle("ออโต้สุ่มผลปีศาจ", "",_G.AutoBuyRandomFruits,function(value)
         _G.AutoBuyRandomFruits = value
     end)
     page7:Button("สุ่มผลปีศาจ", function()
@@ -12009,18 +11971,18 @@ end
     end
     end)
     if _G.Mode == "English" then
-    page7:Toggle("Auto Store Fruits", _G.AutoStoreFruits, function(value)
+    page7:Toggle("Auto Store Fruits", "",_G.AutoStoreFruits, function(value)
     _G.AutoStoreFruits = value
     end)
-    page7:Toggle("Auto Store Fruits&Drop", _G.AutoStoreFruits, function(value)
+    page7:Toggle("Auto Store Fruits&Drop", "",_G.AutoStoreFruits, function(value)
         _G.AutoStoreFruits = value
     end)
     else
     _G.Mode = "Thai"
-    page7:Toggle("ออโต้เก็บผลปีศาจเข้ากระเป๋า",_G.AutoStoreFruits, function(value)
+    page7:Toggle("ออโต้เก็บผลปีศาจเข้ากระเป๋า","",_G.AutoStoreFruits, function(value)
         _G.AutoStoreFruits = value
     end)
-    page7:Toggle("ออโต้เก็บผลปีศาจเข้ากระเป๋าถ้าผลซ้ำโยน",_G.AutoStoreFruits, function(value)
+    page7:Toggle("ออโต้เก็บผลปีศาจเข้ากระเป๋าถ้าผลซ้ำโยน","",_G.AutoStoreFruits, function(value)
         _G.AutoStoreFruits = value
         _G.AutoStore_Drop = value
     end)
@@ -12219,7 +12181,7 @@ end
     page8:Dropdown("Select Raids",SelectRaids, function(value)
         _G.SelectRaids = value
     end)
-    page8:Toggle("Auto Raids", _G.AutoRaids, function(value)
+    page8:Toggle("Auto Raids", "",_G.AutoRaids, function(value)
         _G.AutoRaids = value
         if value == false then
             task.wait()
@@ -12227,16 +12189,16 @@ end
             task.wait()
         end
     end)
-    page8:Toggle("Kill Aura", _G.KillAura, function(value)
+    page8:Toggle("Kill Aura","", _G.KillAura, function(value)
         _G.KillAura = value
     end)
-    page8:Toggle("Auto Next Place", _G.AutoNextPlace, function(value)
+    page8:Toggle("Auto Next Place", "",_G.AutoNextPlace, function(value)
         _G.AutoNextPlace = value
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
     end)
-    page8:Toggle("Auto Awakened", _G.AutoAwakened, function(value)
+    page8:Toggle("Auto Awakened", "",_G.AutoAwakened, function(value)
         _G.AutoAwakened = value
     end)
     else
@@ -12244,7 +12206,7 @@ end
     page8:Dropdown("เลือกดันเจี้ยน",SelectRaids, function(value)
         _G.SelectRaids = value
     end)
-    page8:Toggle("ออโต้ดันเจี้ยน", _G.AutoRaids, function(value)
+    page8:Toggle("ออโต้ดันเจี้ยน", "",_G.AutoRaids, function(value)
         _G.AutoRaids = value
         if value == false then
             task.wait()
@@ -12252,16 +12214,16 @@ end
             task.wait()
         end
     end)
-    page8:Toggle("ออร่าฆ่า", _G.KillAura, function(value)
+    page8:Toggle("ออร่าฆ่า", "",_G.KillAura, function(value)
         _G.KillAura = value
     end)
-    page8:Toggle("ออโต้เกาะต่อไป", _G.AutoNextPlace, function(value)
+    page8:Toggle("ออโต้เกาะต่อไป","", _G.AutoNextPlace, function(value)
         _G.AutoNextPlace = value
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
     end)
-    page8:Toggle("ออโต้ซื้อสกิลตื่น", _G.AutoAwakened,function(value)
+    page8:Toggle("ออโต้ซื้อสกิลตื่น", "",_G.AutoAwakened,function(value)
             _G.AutoAwakened = value
         end)
     end
@@ -12445,7 +12407,7 @@ end
             end
         end
     end)
-    page8:Toggle("Teleport to Player", teleporttop, function(value)
+    page8:Toggle("Teleport to Player", "",teleporttop, function(value)
         teleporttop = value
         if value == false then
             task.wait()
@@ -12453,7 +12415,7 @@ end
             task.wait()
         end
     end)
-    page8:Toggle("Spectate Player", SpectatePlys, function(value)
+    page8:Toggle("Spectate Player", "",SpectatePlys, function(value)
         SpectatePlys = value
         local plr1 = game:GetService("Players").LocalPlayer.Character.Humanoid
         local plr2 = game:GetService("Players"):FindFirstChild(SelectPlayer)
@@ -12475,10 +12437,10 @@ end
             end
         end
     end)
-    page8:Toggle("Aimbot Gun", false, function(value)
+    page8:Toggle("Aimbot Gun", "",false, function(value)
         Aimbot = value
     end)
-    page8:Toggle("Aimbot Skill", false, function(value)
+    page8:Toggle("Aimbot Skill", "",false, function(value)
         Skillaimbot = value
     end)
     else
@@ -12508,7 +12470,7 @@ end
             end
         end
     end)
-    page8:Toggle("เทเลพอร์ตไปหาเพลย์เยอร์", teleporttop, function(value)
+    page8:Toggle("เทเลพอร์ตไปหาเพลย์เยอร์","", teleporttop, function(value)
         teleporttop = value
         if value == false then
             task.wait()
@@ -12516,7 +12478,7 @@ end
             task.wait()
         end
     end)
-    page8:Toggle("ดูเพลย์เยอร์", SpectatePlys, function(value)
+    page8:Toggle("ดูเพลย์เยอร์","", SpectatePlys, function(value)
         SpectatePlys = value
         local plr1 = game:GetService("Players").LocalPlayer.Character.Humanoid
         local plr2 = game:GetService("Players"):FindFirstChild(SelectPlayer)
@@ -12538,10 +12500,10 @@ end
             end
         end
     end)
-    page8:Toggle("อิมบอทปืน", false, function(value)
+    page8:Toggle("อิมบอทปืน","", false, function(value)
         Aimbot = value
     end)
-    page8:Toggle("อิมบอทสกิล", false, function(value)
+    page8:Toggle("อิมบอทสกิล","", false, function(value)
         Skillaimbot = value
     end)
     end
@@ -12613,7 +12575,7 @@ end
     end)
     if _G.Mode == "English" then
     page8:Label("ESP")
-    page8:Toggle("ESPPlayer", _G.ESPPlayer, function(value)
+    page8:Toggle("ESPPlayer", "",_G.ESPPlayer, function(value)
     ESPPlayer = value
     while ESPPlayer do
         task.wait()
@@ -12627,28 +12589,28 @@ end
         end
     end
     end)
-    page8:Toggle("ESPChest", _G.ChestEsp, function(value)
+    page8:Toggle("ESPChest", "",_G.ChestEsp, function(value)
     ChestESP = value
     while ChestESP do
         task.wait()
         UpdateChestEsp()
     end
     end)
-    page8:Toggle("ESPDevilFruit", _G.DevilFruitESP, function(value)
+    page8:Toggle("ESPDevilFruit", "",_G.DevilFruitESP, function(value)
     DevilFruitESP = value
     while DevilFruitESP do
         task.wait()
         UpdateBfEsp()
     end
     end)
-    page8:Toggle("ESPFlower", _G.DevilFruitESP, function(value)
+    page8:Toggle("ESPFlower","", _G.DevilFruitESP, function(value)
     FlowerESP = value
     while FlowerESP do
         task.wait()
         UpdateFlowerEsp()
     end
     end)
-    page8:Toggle("ESPIsland", _G.DevilFruitESP, function(value)
+    page8:Toggle("ESPIsland", "",_G.DevilFruitESP, function(value)
     IslandESP = value
     while IslandESP do
         task.wait()
@@ -12657,7 +12619,7 @@ end
     end)
     else
     page8:Label("มองทะลุ")
-    page8:Toggle("มองทะลุหาเพลย์เยอร์", _G.ESPPlayer, function(value)
+    page8:Toggle("มองทะลุหาเพลย์เยอร์", "",_G.ESPPlayer, function(value)
     ESPPlayer = value
     while ESPPlayer do
         task.wait()
@@ -12671,7 +12633,7 @@ end
         end
     end
     end)
-    page8:Toggle("มองทะลุหากล่องสมบัติ", _G.ChestEsp, function(value)
+    page8:Toggle("มองทะลุหากล่องสมบัติ","", _G.ChestEsp, function(value)
     ChestESP = value
     while ChestESP do
         task.wait()
@@ -12679,14 +12641,14 @@ end
     end
     end)
     
-    page8:Toggle("มองทะลุหาผลปีศาจ", _G.DevilFruitESP, function(value)
+    page8:Toggle("มองทะลุหาผลปีศาจ", "",_G.DevilFruitESP, function(value)
     DevilFruitESP = value
     while DevilFruitESP do
         task.wait()
         UpdateBfEsp()
     end
     end)
-    page8:Toggle("มองทะลุหาดอกไม้", _G.DevilFruitESP, function(value)
+    page8:Toggle("มองทะลุหาดอกไม้", "",_G.DevilFruitESP, function(value)
     FlowerESP = value
     while FlowerESP do
         task.wait()
@@ -12694,7 +12656,7 @@ end
     end
     end)
     
-    page8:Toggle("มองทะลุหาเกาะ", _G.DevilFruitESP, function(value)
+    page8:Toggle("มองทะลุหาเกาะ","", _G.DevilFruitESP, function(value)
     IslandESP = value
     while IslandESP do
         task.wait()
@@ -13112,7 +13074,7 @@ end
     end
     
     if _G.Mode == "English" then
-    page9:Toggle("Auto Mirage Island",  _G.AutoMirageIsland, function(value)
+    page9:Toggle("Auto Mirage Island", "", _G.AutoMirageIsland, function(value)
     _G.Mirage = value
     _G.AutoMirageIsland = value 
     if value == false then
@@ -13121,7 +13083,7 @@ end
     end)
     else
     _G.Mode = "Thai"
-    page9:Toggle("ออโต้หาเกาะลับ",  _G.AutoMirageIsland, function(value)
+    page9:Toggle("ออโต้หาเกาะลับ", "", _G.AutoMirageIsland, function(value)
     _G.Mirage = value
     _G.AutoMirageIsland = value 
     if value == false then
@@ -13130,7 +13092,7 @@ end
     end)
     end
     if _G.Mode == "English" then
-    page9:Toggle("Auto Mirage Island [HOP]", _G.AutoMirageIslandHop, function(value)
+    page9:Toggle("Auto Mirage Island [HOP]", "",_G.AutoMirageIslandHop, function(value)
     _G.MirageHop = value
     _G.AutoMirageIslandHop = value
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
@@ -13181,7 +13143,7 @@ end
     end)
     else
     _G.Mode = "Thai"
-    page9:Toggle("ออโต้หาเกาะลับแบบย้ายเซิฟ", _G.AutoMirageIslandHop, function(value)
+    page9:Toggle("ออโต้หาเกาะลับแบบย้ายเซิฟ","", _G.AutoMirageIslandHop, function(value)
     _G.MirageHop = value
     _G.AutoMirageIslandHop = value
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "กำลังย้ายเซิฟ...",Icon = "rbxassetid://14645512457",Duration = 5})
@@ -13305,12 +13267,12 @@ end)
 
 
 if _G.Mode == "English" then
-    page9:Toggle("ESPMirageIsland", _G.ESPMirageIsland, function(value)
+    page9:Toggle("ESPMirageIsland","", _G.ESPMirageIsland, function(value)
         _G.ESPMirageIsland = value
         ESPMirageIsland()
     end)
 else
-    page9:Toggle("มองทะลุเกาะลับ", _G.ESPMirageIsland, function(value)
+    page9:Toggle("มองทะลุเกาะลับ", "",_G.ESPMirageIsland, function(value)
         _G.ESPMirageIsland = value
         ESPMirageIsland() 
     end)
@@ -13318,7 +13280,7 @@ end
 
 
 if _G.Mode == "English" then
-    page9:Toggle("Auto Gear", _G.Auto_Gear, function(value)
+    page9:Toggle("Auto Gear","", _G.Auto_Gear, function(value)
         _G.Auto_Gear = value
         task.spawn(function()
             while task.wait(.01) do
@@ -13336,7 +13298,7 @@ if _G.Mode == "English" then
         end)
     end)
 else
-    page9:Toggle("ออโต้หาเกียร์", _G.Auto_Gear, function(value)
+    page9:Toggle("ออโต้หาเกียร์","", _G.Auto_Gear, function(value)
         _G.Auto_Gear = value
         task.spawn(function()
             while task.wait(.01) do
@@ -13384,12 +13346,12 @@ game:GetService("RunService").RenderStepped:Connect(function()
 end)
 end
 if _G.Mode == "English" then
-page9:Toggle("LockMoon", _G.LockMoon , function(value)
+page9:Toggle("LockMoon","", _G.LockMoon , function(value)
     _G.LockMoon = value
     LockMoon()
 end)
 else
-    page9:Toggle("ดูดวงจันทร์", _G.LockMoon , function(value)
+    page9:Toggle("ดูดวงจันทร์", "",_G.LockMoon , function(value)
         _G.LockMoon = value
         LockMoon()
     end)
@@ -13746,7 +13708,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         page11:Label("ออโต้ซื้อ")
     end
     if _G.Mode == "English" then
-        page1:Toggle("Auto Buy Zoro Sword", _G.AutoBuyLegendarySword, function(value)
+        page1:Toggle("Auto Buy Zoro Sword","", _G.AutoBuyLegendarySword, function(value)
             _G.AutoBuyLegendarySword = value
             task.spawn(function()
                 while task.wait() do
@@ -13760,7 +13722,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
                 end
             end)
         end)
-        page11:Toggle("Auto Buy Zoro Sword Hop", _G.AutoBuyLegendarySwordHop, function(value)
+        page11:Toggle("Auto Buy Zoro Sword Hop", "",_G.AutoBuyLegendarySwordHop, function(value)
             _G.AutoBuyLegendarySwordHop = value
                             spawn(function()
                             while task.wait() do
@@ -13781,7 +13743,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
                             end)
                         end)
     else
-    page11:Toggle("ออโต้ซื้อดาบโซโล", _G.AutoBuyLegendarySword,function(value)
+    page11:Toggle("ออโต้ซื้อดาบโซโล", "",_G.AutoBuyLegendarySword,function(value)
     _G.AutoBuyLegendarySword = value
     task.spawn(function()
     while task.wait() do
@@ -13795,7 +13757,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     end
     end)
     end)
-    page11:Toggle("ออโต้ซื้อดาบโซโล&ย้ายเซิฟเวอร์", _G.AutoBuyLegendarySwordHop, function(value)
+    page11:Toggle("ออโต้ซื้อดาบโซโล&ย้ายเซิฟเวอร์", "",_G.AutoBuyLegendarySwordHop, function(value)
     _G.AutoBuyLegendarySwordHop = value
     spawn(function()
                 while task.wait() do
@@ -13818,7 +13780,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     end     
 
     if _G.Mode == "English" then
-        page11:Toggle("Auto Buy Color Haki", _G.AutoBuyEnchanmentHaki, function(value)
+        page11:Toggle("Auto Buy Color Haki", "",_G.AutoBuyEnchanmentHaki, function(value)
             _G.AutoBuyEnchanmentHaki = value
             task.spawn(function()
                 while task.wait() do
@@ -13835,7 +13797,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
             end)
         end)
     else
-        page11:Toggle("ออโต้ซื้อสีฮาคิ", _G.AutoBuyEnchanmentHaki,function(value)
+        page11:Toggle("ออโต้ซื้อสีฮาคิ","", _G.AutoBuyEnchanmentHaki,function(value)
             _G.AutoBuyEnchanmentHaki = value
                 task.spawn(function()
                     while task.wait() do
@@ -14837,25 +14799,25 @@ else
     end)
 end
     if _G.Mode == "English" then
-    page12:Toggle("InfAbility", false, function(value)
+    page12:Toggle("InfAbility", "",false, function(value)
         _G.InfAbility = value
         InfAbility()
     end)
     else
     _G.Mode = "Thai"
-    page12:Toggle("ความสามารถไม่จำกัด", false, function(value)
+    page12:Toggle("ความสามารถไม่จำกัด", "",false, function(value)
         _G.InfAbility = value
         InfAbility()
     end)
     end
     if _G.Mode == "English" then
-    page12:Toggle("Infinities Dash", _G.NoDashCooldown, function(value)
+    page12:Toggle("Infinities Dash", "",_G.NoDashCooldown, function(value)
         _G.NoDashCooldown = value
         DodgeNoCoolDown()
     end)
     else
     _G.Mode = "Thai"
-    page12:Toggle("แดชไม่จำกัด", _G.NoDashCooldown, function(value)
+    page12:Toggle("แดชไม่จำกัด", "",_G.NoDashCooldown, function(value)
         _G.NoDashCooldown = value
         DodgeNoCoolDown()
     end)
@@ -14879,13 +14841,13 @@ end
     end
     end
     if _G.Mode == "English" then
-    page12:Toggle("Infinities Geppo", _G.InfinitiesSkyJump, function(value)
+    page12:Toggle("Infinities Geppo","",_G.InfinitiesSkyJump, function(value)
         _G.InfinitiesSkyJump = value
         SkyJumpNoCoolDown()
     end)
     else
     _G.Mode = "Thai"
-    page12:Toggle("เดินชมจันทร์ไม่จำกัด", _G.InfinitiesSkyJump,function(value)
+    page12:Toggle("เดินชมจันทร์ไม่จำกัด", "",_G.InfinitiesSkyJump,function(value)
             _G.InfinitiesSkyJump = value
             SkyJumpNoCoolDown()
         end)
@@ -14909,13 +14871,13 @@ end
     end
     end
     if _G.Mode == "English" then
-    page12:Toggle("Infinities Energy", _G.InfinitiesEnergy, function(value)
+    page12:Toggle("Infinities Energy", "",_G.InfinitiesEnergy, function(value)
         _G.InfinitiesEnergy = value
         InfinitiesEnergy()
     end)
     else
     _G.Mode = "Thai"
-    page12:Toggle("พลังงานไม่จำกัด", _G.InfinitiesEnergy, function(value)
+    page12:Toggle("พลังงานไม่จำกัด", "",_G.InfinitiesEnergy, function(value)
         _G.InfinitiesEnergy = value
         InfinitiesEnergy()
     end)
