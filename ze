@@ -3435,7 +3435,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
         local page12 = Other:Page("Other")
  end   
     if _G.Mode == "English" then
-    page1:Toggle("Auto Farm Level","",false, function(value)
+    page1:Toggle("Auto Farm Level","",false,function(value)
         _G.AutoFarm = value
         _G.DoubleQuest = value
         getgenv().noclip = value
@@ -3444,7 +3444,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
         end
     end)  
     else
-    page1:Toggle("ออโต้ฟาร์มเลเวล","",false, function(value)
+    page1:Toggle("ออโต้ฟาร์มเลเวล","",false,function(value)
         _G.AutoFarm = value
         _G.DoubleQuest = value
         getgenv().noclip = value
@@ -3454,7 +3454,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end)
     end
     if _G.Mode == "English" then
-        page1:Toggle("SafeMode", SafeMode, function(value)
+        page1:Toggle("SafeMode","",SafeMode,function(value)
             _G.SafeMode = value
             task.spawn(function()
                 while _G.SafeMode do task.wait()
@@ -3469,7 +3469,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
             end)
             end)
         else
-            page1:Toggle("เซฟโหมด", SafeMode, function(value)
+            page1:Toggle("เซฟโหมด","",SafeMode,function(value)
                 _G.SafeMode = value
                 task.spawn(function()
                     while _G.SafeMode do task.wait()
@@ -3485,14 +3485,14 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
                 end)
             end
     if _G.Mode == "English" then
-    page1:Toggle("Auto Farm Nearest", _G.NeareastFarm, function(value)
+    page1:Toggle("Auto Farm Nearest", "",_G.NeareastFarm, function(value)
         _G.NeareastFarm = value
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
     end)
     else
-    page1:Toggle("ฟาร์มมอนรอบๆ", _G.NeareastFarm, function(value)
+    page1:Toggle("ฟาร์มมอนรอบๆ", "",_G.NeareastFarm, function(value)
         _G.NeareastFarm = value
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -3555,22 +3555,20 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
     end
     if _G.Mode == "English" then
-    page1:Toggle("FAST TP", _G.BypassTP, function(value)
-        _G.BypassTP = value
+    page1:Toggle("FAST TP", "",_G.BypassTP, function()
         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "If Bug Turn Off",Icon = "rbxassetid://14645512457",Duration = 3})
     end)
     else
-    page1:Toggle("วาร์ปเร็ว", _G.BypassTP, function(value)
-        _G.BypassTP = value
+    page1:Toggle("วาร์ปเร็ว", "",_G.BypassTP, function()
         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "ถ้าตายรัวๆให้ปิด",Icon = "rbxassetid://14645512457",Duration = 3})
     end)
     end
     if _G.Mode == "English" then
-    page1:Button("Stop Teleport", function(value)
+    page1:Button("Stop Teleport", function()
         toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
     end)
     else
-    page1:Button("หยุดเทเลพอร์ต", function(value)
+    page1:Button("หยุดเทเลพอร์ต", function()
         toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
     end)
     end
