@@ -253,7 +253,7 @@ function Vectorui:Init(text,logo)
     MainSceen.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
     MainSceen.BorderColor3 = Color3.fromRGB(10, 10, 10)
     MainSceen.Position = UDim2.new(0.483071834, 0, 0.437730134, 0)
-    MainSceen.Size = UDim2.new(0, 453, 0, 366)
+    MainSceen.Size = UDim2.new(0, 553, 0, 466)
     MainSceen.ClipsDescendants = true
 
     local Main_UiConner = Instance.new("UICorner")
