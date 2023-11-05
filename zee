@@ -188,7 +188,7 @@ if BF then
 	end
 	if SaveSettings["Settings"]["Version"] == nil or SaveSettings["Settings"]["Version"] > Version or SaveSettings["Settings"]["Version"] < Version  then
 		SaveSettings["Settings"]["Version"] = Version
-		delfile("/Nono Hub/BLoxFruit-" .. game.Players.LocalPlayer.Name .. ".json")
+		print(1)
 	end
     Save()
 	repeat wait()
