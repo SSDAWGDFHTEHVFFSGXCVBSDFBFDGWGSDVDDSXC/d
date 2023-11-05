@@ -6077,7 +6077,7 @@ end)
                     page1:Toggle("Noclip Rock","",_G.Nocliprock, function(value)
                         _G.Nocliprock = value
                         function IsRock(v)
-                          return v:IsA("BasePart") and string.find(v.Name, "rock") or string.find(v.Name, "Rock") and not string.find(v.Name, "Rocks")
+                          return v:IsA("BasePart") and string.find(v.Name, "rock") or string.find(v.Name, "Rock") and not string.find(v.Name, "Rocks") and not string.find(v.Name, "LavaRock")
                         end
                         function SetNoclip(v, noclip)
                           v.CanCollide = not noclip
@@ -6235,7 +6235,7 @@ end)
                         page1:Toggle("เรือทะลุหินได้","",_G.Nocliprock, function(value)
                             _G.Nocliprock = value
                             function IsRock(v)
-                              return v:IsA("BasePart") and string.find(v.Name, "rock") or string.find(v.Name, "Rock") and not string.find(v.Name, "Rocks")
+                                return v:IsA("BasePart") and string.find(v.Name, "rock") or string.find(v.Name, "Rock") and not string.find(v.Name, "Rocks") and not string.find(v.Name, "LavaRock")
                             end
                             function SetNoclip(v, noclip)
                               v.CanCollide = not noclip
