@@ -197,11 +197,11 @@ if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseT
     repeat
         task.wait()
         if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-            if _G.Settings.Configs["Select Team"] == "Pirate" then
+            if _G.SelectTeam == "Pirate" then
                 for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do
                     v.Function()
                 end
-            elseif _G.Settings.Configs["Select Team"] == "Marine" then
+            elseif _G.SelectTeam == "Marine" then
                 for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Activated)) do
                     v.Function()
                 end
