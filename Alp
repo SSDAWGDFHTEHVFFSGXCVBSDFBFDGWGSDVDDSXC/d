@@ -280,7 +280,7 @@ function Vectorui:Init(text,logo)
     NameReal.AnchorPoint = Vector2.new(0.5, 0)
     NameReal.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     NameReal.BackgroundTransparency = 1.000
-    NameReal.Position = UDim2.new(0.513530612, 17, 0.0316386409, 0)
+    NameReal.Position = UDim2.new(-0.0854563117, 0, 2.21267605, 0) 
     NameReal.Size = UDim2.new(0.931070328, -14, -0.0002422783, 20)
     NameReal.Font = Enum.Font.GothamSemibold
     NameReal.Text = tostring(text)
@@ -614,8 +614,8 @@ function Vectorui:Init(text,logo)
     LogoTop.ScaleType = Enum.ScaleType.Fit
 
     local UIGradient = Instance.new("UIGradient")
-
-    UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(85, 170, 255)), ColorSequenceKeypoint.new(0.26, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
+-- สี  Color3.fromRGB(0, 70, 235)
+    UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 70, 235)), ColorSequenceKeypoint.new(0.26, Color3.fromRGB(0, 70, 235)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
     UIGradient.Parent = NameReal
 
     local Line1 = Instance.new("Frame")
@@ -781,7 +781,7 @@ function Vectorui:Init(text,logo)
         LogoBar.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
         LogoBar.BackgroundTransparency = 1.000
         LogoBar.Position = UDim2.new(-0.0854563117, 0, 2.21267605, 0)
-        LogoBar.Size = UDim2.new(0, 85, 0, 85)
+        LogoBar.Size = UDim2.new(0, 0, 0, 0) --(0, 85, 0, 85)
         LogoBar.Image = "http://www.roblox.com/asset/?id="..tostring(logo)
         LogoBar.ScaleType = Enum.ScaleType.Fit
 
