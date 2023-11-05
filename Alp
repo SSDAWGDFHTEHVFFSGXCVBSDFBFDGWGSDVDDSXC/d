@@ -603,7 +603,15 @@ function Vectorui:Init(text,logo)
         UISetToggle(false)
     end
 
-
+    local LogoTop = Instance.new("ImageLabel")
+    LogoTop.Name = "LogoTop"
+    LogoTop.Parent = NameReal
+    LogoTop.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    LogoTop.BackgroundTransparency = 1.000
+    LogoTop.Position = UDim2.new(-0.101428136, 0, -0.754071355, 0)
+    LogoTop.Size = UDim2.new(0, 0, 0, 0)
+    LogoTop.Image = "http://www.roblox.com/asset/?id="..tostring(logo)
+    LogoTop.ScaleType = Enum.ScaleType.Fit
 
     local UIGradient = Instance.new("UIGradient")
 
