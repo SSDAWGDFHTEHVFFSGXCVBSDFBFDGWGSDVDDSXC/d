@@ -241,7 +241,7 @@ function Vectorui:Init(text,logo)
     local focusui = false
 
     if logo == nil then
-        logo = 9039412253
+        logo = 14645512457
     end
 
     local MainSceen = Instance.new("Frame")
@@ -309,7 +309,7 @@ function Vectorui:Init(text,logo)
 
     function Vectorui:Notification(text,text2,delays,logo)
         if logo == nil then
-            logo = "9039413591"
+            logo = "14645512457"
         end
         if delays == nil then
             delays = 1
@@ -355,12 +355,12 @@ function Vectorui:Init(text,logo)
 
         txdlid.Name = "txdlid"
         txdlid.Parent = TitleFrame
-        txdlid.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+        txdlid.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
         txdlid.BackgroundTransparency = 1.000
         txdlid.Position = UDim2.new(0.25, 0, 0.25, 0)
         txdlid.Size = UDim2.new(0, 175, 0, 24)
         txdlid.Font = Enum.Font.GothamSemibold
-        txdlid.TextColor3 = Color3.fromRGB(85, 170, 255)
+        txdlid.TextColor3 = Color3.fromRGB(0, 70, 235)
         txdlid.TextSize = 13.000
         txdlid.Text = text
         txdlid.TextXAlignment = Enum.TextXAlignment.Left
@@ -396,7 +396,7 @@ function Vectorui:Init(text,logo)
         Time.Name = "Time"
         Time.Parent = TitleFrame
         Time.Active = true
-        Time.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+        Time.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
         Time.BorderSizePixel = 0
         Time.Position = UDim2.new(0.0320000015, 0, 0.870000005, 0)
         Time.Size = UDim2.new(0, 236, 0, 3)
@@ -461,7 +461,7 @@ function Vectorui:Init(text,logo)
     TextButton7.ClipsDescendants = true
     TextButton7.Position = UDim2.new(0.94, 0, 0.3, 0)
     TextButton7.BorderSizePixel = 0
-    TextButton7.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+    TextButton7.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
     TextButton7.AutoButtonColor = false
     TextButton7.FontSize = Enum.FontSize.Size11
     TextButton7.TextSize = 11
@@ -609,13 +609,13 @@ function Vectorui:Init(text,logo)
     LogoTop.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     LogoTop.BackgroundTransparency = 1.000
     LogoTop.Position = UDim2.new(-0.101428136, 0, -0.754071355, 0)
-    LogoTop.Size = UDim2.new(0, 50, 0, 50)
+    LogoTop.Size = UDim2.new(0, 100, 0, 100)
     LogoTop.Image = "http://www.roblox.com/asset/?id="..tostring(logo)
     LogoTop.ScaleType = Enum.ScaleType.Fit
 
     local UIGradient = Instance.new("UIGradient")
 
-    UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(85, 170, 255)), ColorSequenceKeypoint.new(0.26, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
+    UIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 70, 235)), ColorSequenceKeypoint.new(0.26, Color3.fromRGB(255, 255, 255)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))}
     UIGradient.Parent = NameReal
 
     local Line1 = Instance.new("Frame")
@@ -724,7 +724,7 @@ function Vectorui:Init(text,logo)
 
     function Vectortabui:Tab(text,logo)
         if logo == nil then
-            logo = 9039413591
+            logo = 14645512457
         end
         PageOrders = PageOrders + 1
 
@@ -761,7 +761,7 @@ function Vectorui:Init(text,logo)
         TextButton_Label.Parent = Frame_Tap
         TextButton_Label.Active = true
         TextButton_Label.AnchorPoint = Vector2.new(0.5, 0.5)
-        TextButton_Label.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+        TextButton_Label.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
         TextButton_Label.BorderSizePixel = 0
         TextButton_Label.Position = UDim2.new(-0.02, 0, 0.481999993, 0)
         TextButton_Label.Size = UDim2.new(0, 0, 0, 0)
@@ -1060,7 +1060,7 @@ function Vectorui:Init(text,logo)
 
             function Vectorfunction:Toggle(text,logo,config,callback)
                 if logo == nil then
-                    logo = 9039413591
+                    logo = nil
                 end
                 local ToggleFrame = Instance.new("Frame")
                 local ToggleMain = Instance.new("TextButton")
@@ -1099,7 +1099,7 @@ function Vectorui:Init(text,logo)
                 ToggleMainStroke.Parent = ToggleMain
                 ToggleMainStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
                 ToggleMainStroke.LineJoinMode = Enum.LineJoinMode.Round
-                ToggleMainStroke.Color = Color3.fromRGB(85, 170, 255)
+                ToggleMainStroke.Color = Color3.fromRGB(0, 70, 235)
                 ToggleMainStroke.Transparency = 0.6
 
                 ToggleMainUICorner.CornerRadius = UDim.new(0, 6)
@@ -1353,7 +1353,7 @@ end
                 LineMain.Position = UDim2.new(0.5, 0, 0.5, 0)
                 LineMain.Size = UDim2.new(0, 397, 0, 2)
 
-                LineUIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(15, 15, 15)), ColorSequenceKeypoint.new(0.16, Color3.fromRGB(36, 62, 89)), ColorSequenceKeypoint.new(0.51, Color3.fromRGB(85, 170, 255)), ColorSequenceKeypoint.new(0.85, Color3.fromRGB(36, 63, 90)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(15, 15, 15))}
+                LineUIGradient.Color = ColorSequence.new{ColorSequenceKeypoint.new(0.00, Color3.fromRGB(15, 15, 15)), ColorSequenceKeypoint.new(0.16, Color3.fromRGB(36, 62, 89)), ColorSequenceKeypoint.new(0.51, Color3.fromRGB(0, 70, 235)), ColorSequenceKeypoint.new(0.85, Color3.fromRGB(36, 63, 90)), ColorSequenceKeypoint.new(1.00, Color3.fromRGB(15, 15, 15))}
                 LineUIGradient.Name = "LineUIGradient"
                 LineUIGradient.Parent = LineMain
             end
@@ -1377,7 +1377,7 @@ end
                 LabelMain.BackgroundTransparency = 1.000
                 LabelMain.Size = UDim2.new(0, 397, 0, 41)
                 LabelMain.Font = Enum.Font.GothamSemibold
-                LabelMain.TextColor3 = Color3.fromRGB(85, 170, 255)
+                LabelMain.TextColor3 = Color3.fromRGB(0, 70, 235)
                 LabelMain.TextSize = 13.000
                 LabelMain.Text = tostring(text)
                 LabelMain.RichText = true
@@ -1443,7 +1443,7 @@ end
                 FrameBoxStroke.Parent = FrameBox
                 FrameBoxStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
                 FrameBoxStroke.LineJoinMode = Enum.LineJoinMode.Round
-                FrameBoxStroke.Color = Color3.fromRGB(85, 170, 255)
+                FrameBoxStroke.Color = Color3.fromRGB(0, 70, 235)
                 FrameBoxStroke.Transparency = 0.6
 
                 local ConerTextBox2 = Instance.new("UICorner")
@@ -1482,12 +1482,12 @@ end
                     TweenService:Create(
                         TextFrame2,
                         TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {PlaceholderColor3 = Color3.fromRGB(85, 170, 255)} -- UDim2.new(0, 128, 0, 25)
+                        {PlaceholderColor3 = Color3.fromRGB(0, 70, 235)} -- UDim2.new(0, 128, 0, 25)
                     ):Play()
                     TweenService:Create(
                         TextFrame2,
                         TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {TextColor3 = Color3.fromRGB(85, 170, 255)} -- UDim2.new(0, 128, 0, 25)
+                        {TextColor3 = Color3.fromRGB(0, 70, 235)} -- UDim2.new(0, 128, 0, 25)
                     ):Play()
                 end)
 
@@ -1550,7 +1550,7 @@ end
                 FrameBoxStroke.Parent = DropFrame
                 FrameBoxStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
                 FrameBoxStroke.LineJoinMode = Enum.LineJoinMode.Round
-                FrameBoxStroke.Color = Color3.fromRGB(85, 170, 255)
+                FrameBoxStroke.Color = Color3.fromRGB(0, 70, 235)
                 FrameBoxStroke.Transparency = 0.6
 
                 local ConnerDropFrame = Instance.new("UICorner")
@@ -1870,7 +1870,7 @@ end
                 Main_UiStroke2.Parent = SliderFrame
                 Main_UiStroke2.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
                 Main_UiStroke2.LineJoinMode = Enum.LineJoinMode.Round
-                Main_UiStroke2.Color = Color3.fromRGB(85, 170, 255)
+                Main_UiStroke2.Color = Color3.fromRGB(0, 70, 235)
                 Main_UiStroke2.Transparency = 0.6
 
                 local SliderFrame_UICorner = Instance.new("UICorner")
@@ -1913,7 +1913,7 @@ end
                 Main_UiStroke3.Parent = ShowValueFrame
                 Main_UiStroke3.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
                 Main_UiStroke3.LineJoinMode = Enum.LineJoinMode.Round
-                Main_UiStroke3.Color = Color3.fromRGB(85, 170, 255)
+                Main_UiStroke3.Color = Color3.fromRGB(0, 70, 235)
                 Main_UiStroke3.Transparency = 0.6
 
                 SliderFrame.MouseEnter:Connect(function()
@@ -1967,7 +1967,7 @@ end
                 Addvalue.Position = UDim2.new(0.75, 0, 0.15, 0)
                 Addvalue.Size = UDim2.new(0, 15, 0, 15)
                 Addvalue.Image = "http://www.roblox.com/asset/?id=6035067836"
-                Addvalue.ImageColor3 =  Color3.fromRGB(85, 170, 255)
+                Addvalue.ImageColor3 =  Color3.fromRGB(0, 70, 235)
 
                 local Deletevalue = Instance.new("ImageButton")
 
@@ -1978,7 +1978,7 @@ end
                 Deletevalue.Position = UDim2.new(0.70, 0, 0.15, 0)
                 Deletevalue.Size = UDim2.new(0, 15, 0, 15)
                 Deletevalue.Image = "http://www.roblox.com/asset/?id=6035047377"
-                Deletevalue.ImageColor3 =  Color3.fromRGB(85, 170, 255)
+                Deletevalue.ImageColor3 =  Color3.fromRGB(0, 70, 235)
 
                 local CustomValue = Instance.new("TextBox")
 
@@ -2041,7 +2041,7 @@ end
 
                 MainValue.Name = "MainValue"
                 MainValue.Parent = PartValue
-                MainValue.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+                MainValue.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                 MainValue.Position = UDim2.new(0.00101725257, 0, 0.200000003, 0)
                 MainValue.Size = UDim2.new((tonumber(CustomValue.Text or min)-min) / (max-min), 0, 0, 5)
                 MainValue.BorderSizePixel = 0
@@ -2288,7 +2288,7 @@ end
                 DropFrameStroke.Name = ""
                 DropFrameStroke.Parent = DropFrame
                 DropFrameStroke.LineJoinMode = Enum.LineJoinMode.Round
-                DropFrameStroke.Color = Color3.fromRGB(85, 170, 255)
+                DropFrameStroke.Color = Color3.fromRGB(0, 70, 235)
                 DropFrameStroke.Transparency = 0.6
 
                 local LabelFrameDrop = Instance.new("TextLabel")
@@ -2439,7 +2439,7 @@ end
                     local farmtoglist = Instance.new("TextButton")
 
                     farmtoglist.Parent = listtextbutton
-                    farmtoglist.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+                    farmtoglist.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                     farmtoglist.BorderColor3 = Color3.fromRGB(255, 255, 255)
                     farmtoglist.BorderSizePixel = 0
                     farmtoglist.AnchorPoint = Vector2.new(0.5, 0.5)
@@ -2456,7 +2456,7 @@ end
 
                     farmtoglist2.Parent = farmtoglist
                     farmtoglist2.BackgroundColor3 = Color3.fromRGB(10,10,10)
-                    farmtoglist2.BorderColor3 = Color3.fromRGB(85, 170, 255)
+                    farmtoglist2.BorderColor3 = Color3.fromRGB(0, 70, 235)
                     farmtoglist2.BorderSizePixel = 0
                     farmtoglist2.AnchorPoint = Vector2.new(0.5, 0.5)
                     farmtoglist2.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -2471,7 +2471,7 @@ end
                     local listimage = Instance.new("ImageButton")
 
                     listimage.Parent = farmtoglist2
-                    listimage.BackgroundColor3 = Color3.fromRGB(85, 170, 255)
+                    listimage.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                     listimage.BackgroundTransparency = 0
                     listimage.AnchorPoint = Vector2.new(0.5, 0.5)
                     listimage.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -2520,7 +2520,7 @@ end
                         TweenService:Create(
                             textlist,
                             TweenInfo.new(0.4, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                            {TextColor3 = Color3.fromRGB(85, 170, 255)} -- UDim2.new(0, 128, 0, 25)
+                            {TextColor3 = Color3.fromRGB(0, 70, 235)} -- UDim2.new(0, 128, 0, 25)
                         ):Play()
                     end)
 
