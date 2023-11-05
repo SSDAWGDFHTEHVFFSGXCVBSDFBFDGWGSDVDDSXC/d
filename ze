@@ -3434,9 +3434,6 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
         local Other = Library:Tab("Other",14645512457)
         local page12 = Other:Page("Other")
  end   
-
-    page1:Seperator("🏚️")
-
     if _G.Mode == "English" then
     page1:Toggle("Auto Farm Level", false, function(value)
         _G.AutoFarm = value
@@ -7358,7 +7355,6 @@ if (SelectModeMaterial ~= "") then
         end)
     end)   
 end                                                                             
- page2:Seperator("⚙️")
     if _G.Mode == "English"then
     local FastAttackType = {
     "Fast",
@@ -7691,7 +7687,6 @@ end
         CameraShaker()
     end)
     end
-page3:Seperator("📊")
     local SelectStats = {
         "Melee",
         "Defense",
@@ -10289,9 +10284,6 @@ page3:Seperator("📊")
                 end)
             end)
         end
-
-    page4:Seperator("🚀")
-
     if _G.Mode == "English" then
         page4:Button("Teleport to World 1", function(value)
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelMain")
@@ -10984,7 +10976,6 @@ end
     local DeathComplete = false
     local GodComplete = false
 
-page5:Seperator("💼")
 
     page5:Toggle("Auto Buddy Swords", _G.AutoBuddySwords, function(value)
     _G.AutoBuddySwords = value
@@ -11917,7 +11908,6 @@ page5:Seperator("💼")
     end
     end
 
- page6:Seperator("✨")
 
     
     if _G.Mode == "English" then
@@ -12020,7 +12010,6 @@ page5:Seperator("💼")
     end
     end)
     if _G.Mode == "English" then
-page7:Seperator("🍈")
     
     page7:Toggle("Auto Random Fruits", _G.AutoBuyRandomFruits, function(value)
     _G.AutoBuyRandomFruits = value
@@ -12038,7 +12027,6 @@ page7:Seperator("🍈")
     end)
     else
     _G.Mode = "Thai"
-page7:Seperator("🍈")
     
     page7:Toggle("ออโต้สุ่มผลปีศาจ", _G.AutoBuyRandomFruits,function(value)
         _G.AutoBuyRandomFruits = value
@@ -12269,7 +12257,6 @@ page7:Seperator("🍈")
     "Dough"
     }
     if _G.Mode == "English" then
-  page8:Seperator("⚔️")
     page8:Dropdown("Select Raids",SelectRaids, function(value)
         _G.SelectRaids = value
     end)
@@ -12295,7 +12282,6 @@ page7:Seperator("🍈")
     end)
     else
     _G.Mode = "Thai"
-page8:Seperator("⚔️")
     page8:Dropdown("เลือกดันเจี้ยน",SelectRaids, function(value)
         _G.SelectRaids = value
     end)
@@ -13117,12 +13103,6 @@ page8:Seperator("⚔️")
     end)
     end
     end
-    if _G.Mode == "English" then
-  page9:Seperator("🏝️")
-    else
-    _G.Mode = "Thai"
-  page9:Seperator("🏝️")
-    end
     local FM = page9:Label('...')
     local Mirragecheck = page9:Label('...')
     
@@ -13644,11 +13624,6 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     request(abcdef)
     end
     if _G.Mode == "English" then
-  page10:Seperator("🐰")
-    else
-  page10:Seperator("🐰")
-    end
-    if _G.Mode == "English" then
     page10:Button("Teleport To Top GreatTree", function()
         toTarget(CFrame.new(2947.556884765625, 2281.630615234375, -7213.54931640625))
     end)
@@ -13806,8 +13781,6 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
     end)
     end
- page11:Seperator("🛒")
-
     if _G.Mode == "English" then
         page11:Label("Auto Buy")
     else
@@ -14067,7 +14040,6 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Swordsman Hat")
     end)
     if _G.Mode == "English" then
-  page12:Seperator("🧍")
     local TPS = game:GetService("TeleportService")
     local LP = game:GetService("Players").LocalPlayer
 
@@ -14094,7 +14066,6 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     _G.Mode = "Thai"
     local TPS = game:GetService("TeleportService")
     local LP = game:GetService("Players").LocalPlayer
-  page12:Seperator("🧍")
      page12:Textbox("JobID","",function(x)
     JobId_Textbox = x
     end)
