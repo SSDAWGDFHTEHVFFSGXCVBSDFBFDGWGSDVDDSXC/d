@@ -3345,7 +3345,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
     end
     end
-
+    _G.Mode = "Thai"
     --[[page/Tab]]
     local Vectorui = loadstring(game:HttpGet('https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/alpp',true))();
     local Library = Vectorui:Init("Vector Hub ",14645512457)
