@@ -170,7 +170,7 @@ local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
 if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
     repeat
-        task.wait()
+        wait()
         if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
             if _G.SelectTeam == "Pirate" then
                 for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do
