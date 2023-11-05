@@ -168,7 +168,7 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
-
+--[[
 repeat wait()
     if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == true then
         if _G.SelectTeam == "Pirate" then
@@ -192,6 +192,27 @@ repeat wait()
         end
     end
 until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
+]]
+if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
+    repeat
+        task.wait()
+        if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
+            if _G.Settings.Configs["Select Team"] == "Pirate" then
+                for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do
+                    v.Function()
+                end
+            elseif _G.Settings.Configs["Select Team"] == "Marine" then
+                for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Activated)) do
+                    v.Function()
+                end
+            else
+                for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do
+                    v.Function()
+                end
+            end
+        end
+    until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
+end
 
 -- [Place Id Check]
     local id = game.PlaceId
@@ -3349,8 +3370,16 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     --[[page/Tab]]
     local Vectorui = loadstring(game:HttpGet('https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/alpp',true))();
     local Library = Vectorui:Init("Vector Hub ",14645512457)
+    if _G.Mode == "English" then
+    local NameTab1 = "General"
+    local NamePage1 = "Main"
+    else
+    local NameTab1 = "ทั่วไป"
+    local NamePage1 = "หน้าหลัก"
+    end
+    local GeneralTab = Library:Tab(NameTab1,14645512457)
+    local page1 = GeneralTab:Page(NamePage1)
 
-  
     if _G.Mode == "English" then
         local Settings = Library:Tab("Settings",14645512457)
         local page2 = Settings:Page("Settings")
@@ -3428,8 +3457,6 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
         local Other = Library:Tab("Other",14645512457)
         local page12 = Other:Page("Other")
  end   
- local GeneralTab = Library:Tab("General",14645512457)
- local page1 = GeneralTab:Page("Main")
     if _G.Mode == "English" then
 
     page1:Toggle("Auto Farm Level","",false,function(value)
