@@ -1,5 +1,5 @@
-local alphaui = {}
-local ui = game:GetService("CoreGui"):WaitForChild("RobloxGui"):WaitForChild("Modules"):FindFirstChild("alpha")
+local Vectorui = {}
+local ui = game:GetService("CoreGui"):WaitForChild("RobloxGui"):WaitForChild("Modules"):FindFirstChild("Vector")
 local UserInputService = game:GetService("UserInputService")
 if ui then ui:Destroy() end
 local TweenService = game:GetService("TweenService")
@@ -7,13 +7,13 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local tween = game:GetService("TweenService")
-local alpha = Instance.new("ScreenGui")
-alpha.Name = "alpha"
-alpha.Parent = game:GetService("CoreGui").RobloxGui.Modules
-alpha.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+local Vector = Instance.new("ScreenGui")
+Vector.Name = "Vector"
+Vector.Parent = game:GetService("CoreGui").RobloxGui.Modules
+Vector.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
 if syn and syn.protect_gui then
-    syn.protect_gui(alpha)
+    syn.protect_gui(Vector)
 end
 
 local function MakeDraggable(topbarobject, object)
@@ -237,7 +237,7 @@ getgenv().Settings = {
     Key = Enum.KeyCode.F1
 }
 
-function alphaui:Init(text,logo)
+function Vectorui:Init(text,logo)
     local focusui = false
 
     if logo == nil then
@@ -247,13 +247,13 @@ function alphaui:Init(text,logo)
     local MainSceen = Instance.new("Frame")
 
     MainSceen.Name = "MainSceen"
-    MainSceen.Parent = alpha
+    MainSceen.Parent = Vector
     MainSceen.Active = true
     MainSceen.AnchorPoint = Vector2.new(0.5, 0.5)
     MainSceen.BackgroundColor3 = Color3.fromRGB(15, 15, 15)
     MainSceen.BorderColor3 = Color3.fromRGB(10, 10, 10)
     MainSceen.Position = UDim2.new(0.483071834, 0, 0.437730134, 0)
-    MainSceen.Size = UDim2.new(0, 553, 0, 466)
+    MainSceen.Size = UDim2.new(0, 453, 0, 366)
     MainSceen.ClipsDescendants = true
 
     local Main_UiConner = Instance.new("UICorner")
@@ -292,7 +292,7 @@ function alphaui:Init(text,logo)
 
     local NotiFrame = Instance.new("Frame")
     NotiFrame.Name = "NotiFrame"
-    NotiFrame.Parent = alpha
+    NotiFrame.Parent = Vector
     NotiFrame.AnchorPoint = Vector2.new(0.5, 0.5)
     NotiFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     NotiFrame.BackgroundTransparency = 1
@@ -307,7 +307,7 @@ function alphaui:Init(text,logo)
     Notilistlayout.SortOrder = Enum.SortOrder.LayoutOrder
     Notilistlayout.Padding = UDim.new(0, 5)
 
-    function alphaui:Notification(text,text2,delays,logo)
+    function Vectorui:Notification(text,text2,delays,logo)
         if logo == nil then
             logo = "14645512457"
         end
@@ -469,7 +469,7 @@ function alphaui:Init(text,logo)
     TextButton7.Text = ""
     TextButton7.Font = Enum.Font.GothamSemibold
     TextButton7.TextXAlignment = Enum.TextXAlignment.Left
-    TextButton7.Parent = alpha
+    TextButton7.Parent = Vector
 
     local TextButton7_UiConner = Instance.new("UICorner")
 
@@ -548,10 +548,10 @@ function alphaui:Init(text,logo)
                 ):Play()
                 wait(.51)
                 if TextButton7.Size.Y.Offset == UDim2.new(0, 0, 0, 0) then
-                    alpha.Enabled = false
+                    Vector.Enabled = false
                 end
             else
-                alpha.Enabled = true
+                Vector.Enabled = true
                 TweenService:Create(
                     MainSceen,
                     TweenInfo.new(.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out),
@@ -560,7 +560,7 @@ function alphaui:Init(text,logo)
                 repeat wait() until MainSceen.Size == UDim2.new(0, 553, 0, 466)
                 uitoggled = false
                 if MainSceen.Size == UDim2.new(0, 553, 0, 466) then
-                    alpha.Enabled = true
+                    Vector.Enabled = true
                 end
             end
         end
@@ -586,9 +586,9 @@ function alphaui:Init(text,logo)
                 {Size = UDim2.new(0, 0, 0, 0)}
             ):Play()
             wait(.5)
-            alpha.Enabled = false
+            Vector.Enabled = false
         else
-            alpha.Enabled = true
+            Vector.Enabled = true
             TweenService:Create(
                 MainSceen,
                 TweenInfo.new(.5, Enum.EasingStyle.Quart, Enum.EasingDirection.Out),
@@ -596,7 +596,7 @@ function alphaui:Init(text,logo)
             ):Play()
             repeat wait() until MainSceen.Size == UDim2.new(0, 553, 0, 466)
             uitoggled = false
-            alpha.Enabled = true
+            Vector.Enabled = true
         end
     end
     if Config and Config.HideUI then
@@ -720,9 +720,9 @@ function alphaui:Init(text,logo)
     MakeDraggable(ClickFrame,MainSceen)
     MakeDraggable(ScrollingFrame_Menubar,MainSceen)
 
-    local alphatabui = {}
+    local Vectortabui = {}
 
-    function alphatabui:Tab(text,logo)
+    function Vectortabui:Tab(text,logo)
         if logo == nil then
             logo = 14645512457 --ลอง
         end
@@ -874,9 +874,9 @@ function alphaui:Init(text,logo)
         UIPadding_Pagefrist.PaddingLeft = UDim.new(0, 10)
         UIPadding_Pagefrist.PaddingTop = UDim.new(0, 25)
 
-        local alphapageui = {}
+        local Vectorpageui = {}
 
-        function alphapageui:Page(text)
+        function Vectorpageui:Page(text)
             local Pageframe = Instance.new("Frame")
 
             Pageframe.Name = "Pageframe"
@@ -966,9 +966,9 @@ function alphaui:Init(text,logo)
                 ScrollingFrame_Pagefrist.CanvasSize = UDim2.new(0,UIGridLayout_Pagefrist.AbsoluteContentSize.X + 18,0,0)
             end)
 
-            local alphafunction = {}
+            local Vectorfunction = {}
 
-            function alphafunction:Button(text,callback)
+            function Vectorfunction:Button(text,callback)
                 local ButtonFrame = Instance.new("Frame")
                 local ButtonMain = Instance.new("TextButton")
                 local ButtonMainUICorner = Instance.new("UICorner")
@@ -983,7 +983,7 @@ function alphaui:Init(text,logo)
 
                 ButtonMain.Name = "ButtonMain"
                 ButtonMain.Parent = ButtonFrame
-                ButtonMain.BackgroundColor3 = Color3.fromRGB(56, 112, 168)
+                ButtonMain.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                 ButtonMain.BorderSizePixel = 0
                 ButtonMain.AnchorPoint = Vector2.new(0.5, 0.5)
                 ButtonMain.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -1003,7 +1003,7 @@ function alphaui:Init(text,logo)
                 TransparencyButton.Name = "TransparencyButton"
                 TransparencyButton.Parent = ButtonMain
                 TransparencyButton.AnchorPoint = Vector2.new(0.5, 0.5)
-                TransparencyButton.BackgroundColor3 = Color3.fromRGB(56, 112, 168)
+                TransparencyButton.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                 TransparencyButton.BackgroundTransparency = 0.700
                 TransparencyButton.BorderSizePixel = 0
                 TransparencyButton.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -1058,7 +1058,7 @@ function alphaui:Init(text,logo)
                 end)
             end
 
-            function alphafunction:Toggle(text,logo,config,callback)
+            function Vectorfunction:Toggle(text,logo,config,callback)
                 if logo == nil then
                     logo = nil --9039413591
                 end
@@ -1080,7 +1080,7 @@ function alphaui:Init(text,logo)
 
                 ToggleMain.Name = "ToggleMain"
                 ToggleMain.Parent = ToggleFrame
-                ToggleMain.BackgroundColor3 = Color3.fromRGB(56, 112, 168)
+                ToggleMain.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                 ToggleMain.BackgroundTransparency = 1.000
                 ToggleMain.BorderSizePixel = 0
                 ToggleMain.Size = UDim2.new(0, 397, 0, 41)
@@ -1334,7 +1334,7 @@ end
                 return  check.togfunction
             end
 
-            function alphafunction:Line()
+            function Vectorfunction:Line()
                 local LineFrame = Instance.new("Frame")
                 local LineMain = Instance.new("Frame")
                 local LineUIGradient = Instance.new("UIGradient")
@@ -1358,7 +1358,7 @@ end
                 LineUIGradient.Parent = LineMain
             end
 
-            function alphafunction:Label(text)
+            function Vectorfunction:Label(text)
 
                 local LabelRefresh = {}
 
@@ -1389,7 +1389,7 @@ end
                 return  LabelRefresh
             end
 
-            function alphafunction:Textbox(text,text2,default,callback)
+            function Vectorfunction:Textbox(text,text2,default,callback)
                 local TextFrame = Instance.new("Frame")
 
                 TextFrame.Name = "TextFrame"
@@ -1517,7 +1517,7 @@ end
                 pcall(callback,default or "")
             end
 
-            function alphafunction:Dropdown(text,option,default,callback)
+            function Vectorfunction:Dropdown(text,option,default,callback)
 
                 local defaultt = default or ""
 
@@ -1848,7 +1848,7 @@ end
                 return dropfunc
             end
 
-            function alphafunction:Slider(text,floor,min,max,de,lol,callback,callback2)
+            function Vectorfunction:Slider(text,floor,min,max,de,lol,callback,callback2)
                 local Realtime = false
                 if callback == true then Realtime = true callback = callback2 end
                 local sliderfunc = {}
@@ -2252,7 +2252,7 @@ end
                 return sliderfunc
             end
 
-            function alphafunction:MultiDropdown(text,use,option,callback)
+            function Vectorfunction:MultiDropdown(text,use,option,callback)
                 local location = option.location or self.flags
                 local flag = not use and option.flag or ""
                 local callback = callback or function() end
@@ -2621,7 +2621,7 @@ end
 
             end
 
-            function alphafunction:allstartog(logo,text1,text2,text3,config,callback)
+            function Vectorfunction:allstartog(logo,text1,text2,text3,config,callback)
                 local PictureFrame = Instance.new("Frame")
                 local PictureImage = Instance.new("ImageLabel")
                 local PictureImageUICorner = Instance.new("UICorner")
@@ -2676,7 +2676,7 @@ end
 
                 Toggle.Name = "Toggle"
                 Toggle.Parent = PictureFrame
-                Toggle.BackgroundColor3 = Color3.fromRGB(56, 112, 168)
+                Toggle.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                 Toggle.BackgroundTransparency = 1.000
                 Toggle.Position = UDim2.new(1.08000004, 0, 0.610409558, 0)
                 Toggle.Size = UDim2.new(0, 292, 0, 37)
@@ -2844,7 +2844,7 @@ end
                     end
                 end
             end
-            function alphafunction:modelToggle(Model,text1,text2,text3,config,callback)
+            function Vectorfunction:modelToggle(Model,text1,text2,text3,config,callback)
                 local PictureFrame = Instance.new("Frame")
                 local PictureImage = Instance.new("ImageLabel")
                 local PictureImageUICorner = Instance.new("UICorner")
@@ -2885,7 +2885,7 @@ end
                     Camera.CFrame = CFrame.new(Camera.CFrame.Position,Preview.Head.Position)
                     ViewportFrame.CurrentCamera = Camera
                 else
-                    alphaui:Notification("3D Toggle Notifications","Cannot Found Model",4,"")
+                    Vectorui:Notification("3D Toggle Notifications","Cannot Found Model",4,"")
                 end
                 
                 local PictureImageUiStroke = Instance.new("UIStroke")
@@ -2916,7 +2916,7 @@ end
 
                 Toggle.Name = "Toggle"
                 Toggle.Parent = PictureFrame
-                Toggle.BackgroundColor3 = Color3.fromRGB(56, 112, 168)
+                Toggle.BackgroundColor3 = Color3.fromRGB(0, 70, 235) 
                 Toggle.BackgroundTransparency = 1.000
                 Toggle.Position = UDim2.new(1.08000004, 0, 0.610409558, 0)
                 Toggle.Size = UDim2.new(0, 292, 0, 37)
@@ -3084,10 +3084,10 @@ end
                     end
                 end
             end
-            return alphafunction
+            return Vectorfunction
         end
-        return alphapageui
+        return Vectorpageui
     end
-    return alphatabui
+    return Vectortabui
 end
-return alphaui
+return Vectorui
