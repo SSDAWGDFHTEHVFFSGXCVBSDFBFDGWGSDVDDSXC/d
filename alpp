@@ -983,7 +983,7 @@ function Vectorui:Init(text,logo)
 
                 ButtonMain.Name = "ButtonMain"
                 ButtonMain.Parent = ButtonFrame
-                ButtonMain.BackgroundColor3 = Color3.fromRGB(56, 112, 168)
+                ButtonMain.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                 ButtonMain.BorderSizePixel = 0
                 ButtonMain.AnchorPoint = Vector2.new(0.5, 0.5)
                 ButtonMain.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -1003,7 +1003,7 @@ function Vectorui:Init(text,logo)
                 TransparencyButton.Name = "TransparencyButton"
                 TransparencyButton.Parent = ButtonMain
                 TransparencyButton.AnchorPoint = Vector2.new(0.5, 0.5)
-                TransparencyButton.BackgroundColor3 = Color3.fromRGB(56, 112, 168)
+                TransparencyButton.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                 TransparencyButton.BackgroundTransparency = 0.700
                 TransparencyButton.BorderSizePixel = 0
                 TransparencyButton.Position = UDim2.new(0.5, 0, 0.5, 0)
@@ -1080,7 +1080,7 @@ function Vectorui:Init(text,logo)
 
                 ToggleMain.Name = "ToggleMain"
                 ToggleMain.Parent = ToggleFrame
-                ToggleMain.BackgroundColor3 = Color3.fromRGB(56, 112, 168)
+                ToggleMain.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                 ToggleMain.BackgroundTransparency = 1.000
                 ToggleMain.BorderSizePixel = 0
                 ToggleMain.Size = UDim2.new(0, 397, 0, 41)
@@ -1182,7 +1182,7 @@ function Vectorui:Init(text,logo)
                         TweenService:Create(
                             Corner1,
                             TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                            {BackgroundColor3 = Color3.fromRGB(35,35,35)} -- UDim2.new(0, 128, 0, 25)
+                            {BackgroundColor3 = Color3.fromRGB(0,0,0)} -- UDim2.new(0, 128, 0, 25)
                         ):Play()
                         TweenService:Create(
                             Corner2,
@@ -1263,7 +1263,7 @@ function Vectorui:Init(text,logo)
                     TweenService:Create(
                         Corner1,
                         TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                        {BackgroundColor3 = Color3.fromRGB(35,35,35)} -- UDim2.new(0, 128, 0, 25)
+                        {BackgroundColor3 = Color3.fromRGB(0,0,0)} -- UDim2.new(0, 128, 0, 25)
                     ):Play()
                     TweenService:Create(
                         Corner2,
@@ -2676,7 +2676,7 @@ end
 
                 Toggle.Name = "Toggle"
                 Toggle.Parent = PictureFrame
-                Toggle.BackgroundColor3 = Color3.fromRGB(56, 112, 168)
+                Toggle.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                 Toggle.BackgroundTransparency = 1.000
                 Toggle.Position = UDim2.new(1.08000004, 0, 0.610409558, 0)
                 Toggle.Size = UDim2.new(0, 292, 0, 37)
@@ -2916,7 +2916,7 @@ end
 
                 Toggle.Name = "Toggle"
                 Toggle.Parent = PictureFrame
-                Toggle.BackgroundColor3 = Color3.fromRGB(56, 112, 168)
+                Toggle.BackgroundColor3 = Color3.fromRGB(0, 70, 235)
                 Toggle.BackgroundTransparency = 1.000
                 Toggle.Position = UDim2.new(1.08000004, 0, 0.610409558, 0)
                 Toggle.Size = UDim2.new(0, 292, 0, 37)
@@ -3032,7 +3032,7 @@ end
                         TweenService:Create(
                             Corner1,
                             TweenInfo.new(0.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-                            {BackgroundColor3 = Color3.fromRGB(35,35,35)} -- UDim2.new(0, 128, 0, 25)
+                            {BackgroundColor3 = Color3.fromRGB(0,0,0)} -- UDim2.new(0, 128, 0, 25)
                         ):Play()
                         TweenService:Create(
                             Corner2,
