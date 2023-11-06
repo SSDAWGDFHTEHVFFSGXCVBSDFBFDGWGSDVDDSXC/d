@@ -3351,47 +3351,47 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
         local Vectorui = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/alpp"))()
         local Library = Vectorui:Init("Vector Hub ",14645512457)
 
-        local GeneralTab = Library:Tab("General",14645512457)
+        local GeneralTab = Library:Tab("General")
         local page1 = GeneralTab:Page("Main")
     
-        local Settings = Library:Tab("Settings",14645512457)
+        local Settings = Library:Tab("Settings")
         local page2 = Settings:Page("Settings")
    
   
-        local Stats = Library:Tab("Stats",14645512457)
+        local Stats = Library:Tab("Stats")
         local page3 = Stats:Page("Stats")
    
     
-        local Teleport = Library:Tab("Teleport",14645512457)
+        local Teleport = Library:Tab("Teleport")
         local page4 = Teleport:Page("Teleport")
    
    
-        local Item = Library:Tab("Item",14645512457)
+        local Item = Library:Tab("Item")
         local page5 = Item:Page("Item")
   
     
-        local Mastery = Library:Tab("Mastery",14645512457)
+        local Mastery = Library:Tab("Mastery")
         local page6 = Mastery:Page("Mastery")
    
-        local DevilFruit = Library:Tab("DevilFruit",14645512457)
+        local DevilFruit = Library:Tab("DevilFruit")
         local page7 = DevilFruit:Page("DevilFruit")
     
-        local Riad = Library:Tab("Riad",14645512457)
+        local Riad = Library:Tab("Riad")
         local page8 = Riad:Page("Riad")
     
    
-        local MirageIsland = Library:Tab("MirageIsland",14645512457)
+        local MirageIsland = Library:Tab("MirageIsland")
         local page9 = MirageIsland:Page("MirageIsland")
    
    
-        local RaceV4 = Library:Tab("RaceV4",14645512457)
+        local RaceV4 = Library:Tab("RaceV4")
         local page10 = RaceV4:Page("RaceV4")
    
    
-        local Shop = Library:Tab("Shop",14645512457)
+        local Shop = Library:Tab("Shop")
         local page11 = Shop:Page("Shop")
    
-        local Other = Library:Tab("Other",14645512457)
+        local Other = Library:Tab("Other")
         local page12 = Other:Page("Other")
 
         page1:Label("Main")
