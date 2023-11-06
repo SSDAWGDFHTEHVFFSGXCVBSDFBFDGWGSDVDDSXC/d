@@ -7084,7 +7084,7 @@ end
         page1:Label("ฟาร์มวัสดุ")
     end
     if _G.Mode == "English" then
-        page1:Dropdown("Select Material",AllMaterial, function(value)
+        page1:Dropdown("Select Material",AllMaterial,"", function(value)
             SelectModeMaterial = value
         end)
     
@@ -7169,7 +7169,7 @@ end
             end)
         end)
     else
-page1:Dropdown("เลือกวัสดุ",AllMaterial, function(value)
+page1:Dropdown("เลือกวัสดุ",AllMaterial,"", function(value)
 SelectModeMaterial = value
 end)
 
@@ -7260,7 +7260,7 @@ page2:Label("Setting")
     "Slow"
     }
     
-    page2:Dropdown("Fast Attack Type",FastAttackType, function(value)
+    page2:Dropdown("Fast Attack Type",FastAttackType, "",function(value)
     _G.FastType = value
     end)
     else
@@ -7270,7 +7270,7 @@ page2:Label("Setting")
     "Slow"
     }
     
-    page2:Dropdown("เลือกโจมตีเร็ว",FastAttackType, function(value)
+    page2:Dropdown("เลือกโจมตีเร็ว",FastAttackType,"", function(value)
     _G.FastType = value
     end)
     end
@@ -7307,11 +7307,11 @@ page2:Label("Setting")
     "Fruit"
     }
     if _G.Mode == "English" then
-    page2:Dropdown("Select Weapon",Weapon, function(value)
+    page2:Dropdown("Select Weapon",Weapon, "",function(value)
     SelectWeapon = value
     end)
     else 
-    page2:Dropdown("เลือกอาวุธ",Weapon, function(value)
+    page2:Dropdown("เลือกอาวุธ",Weapon,"", function(value)
     SelectWeapon = value
     end)
     end
@@ -7364,7 +7364,7 @@ page2:Label("Setting")
         _G.Method = "Upper"
         end
         if _G.Mode == "English" then
-        page2:Dropdown("Select Farm Method",Method, function(value)
+        page2:Dropdown("Select Farm Method",Method,"", function(value)
         _G.Method = value
         end)
         
@@ -7373,7 +7373,7 @@ page2:Label("Setting")
             end)
 
         else
-        page2:Dropdown("เลือกตำแหน่งฟาร์ม",Method, function(value)
+        page2:Dropdown("เลือกตำแหน่งฟาร์ม",Method, "",function(value)
         _G.Method = value
     end)
 
@@ -7593,7 +7593,7 @@ page2:Label("Setting")
         "Devil Fruits"
     }
     page3:Label("Stats")
-    page3:Dropdown("Select Stats",SelectStats, function(value)
+    page3:Dropdown("Select Stats",SelectStats, "",function(value)
         _G.SelectStats = value
         task.spawn(function()
             pcall(function()
@@ -10222,11 +10222,11 @@ page2:Label("Setting")
     end
     page4:Line()
     if _G.Mode == "English" then
-    page4:Dropdown("Select Place",TeleportTable, function(value)
+    page4:Dropdown("Select Place",TeleportTable,"", function(value)
     _G.SelectLocalTeleport = value
     end)
     else
-    page4:Dropdown("เลือกเกาะ",TeleportTable, function(value)
+    page4:Dropdown("เลือกเกาะ",TeleportTable,"", function(value)
     _G.SelectLocalTeleport = value
     end)
     end
@@ -10734,7 +10734,7 @@ end
             end)
     page1:Line()
     local Boss = {}
-    local BossName = page1:Dropdown("Select Boss",Boss, function(value)
+    local BossName = page1:Dropdown("Select Boss",Boss,"", function(value)
     _G.SelectBoss = value
     end)
     if _G.Mode == "English" then
@@ -12154,7 +12154,7 @@ end
     }
     page8:Label("Raid")
     if _G.Mode == "English" then
-    page8:Dropdown("Select Raids",SelectRaids, function(value)
+    page8:Dropdown("Select Raids",SelectRaids, "",function(value)
         _G.SelectRaids = value
     end)
     page8:Toggle("Auto Raids", "",_G.AutoRaids, function(value)
@@ -12179,7 +12179,7 @@ end
     end)
     else
     _G.Mode = "Thai"
-    page8:Dropdown("เลือกดันเจี้ยน",SelectRaids, function(value)
+    page8:Dropdown("เลือกดันเจี้ยน",SelectRaids,"", function(value)
         _G.SelectRaids = value
     end)
     page8:Toggle("ออโต้ดันเจี้ยน", "",_G.AutoRaids, function(value)
@@ -12370,7 +12370,7 @@ end
             end
         end
     end
-    local PlayerDrop = page8:Dropdown("Select Player",getplayers, function(value)
+    local PlayerDrop = page8:Dropdown("Select Player",getplayers, "",function(value)
         SelectPlayer = value
     end)
     page8:Button("Refresh", function()
@@ -12433,7 +12433,7 @@ end
             end
         end
     end
-    local PlayerDrop = page8:Dropdown("เลือกเพลย์เยอร์",getplayers, function(value)
+    local PlayerDrop = page8:Dropdown("เลือกเพลย์เยอร์",getplayers, "",function(value)
         SelectPlayer = value
     end)
     page8:Button("รีัเฟรช", function()
