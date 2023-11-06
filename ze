@@ -112,6 +112,8 @@
         ImageButton.MouseButton1Down:connect(function()
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F1,false,game)
         game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F1,false,game)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.RightControl,false,game)
+        game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.RightControl,false,game)
         end)
     --[[UIPERPID]]
 
@@ -7170,10 +7172,10 @@ end
             end)
         end)
     else
-        --[[
+        
 page1:Dropdown("เลือกวัสดุ",AllMaterial,"", function(value)
 SelectModeMaterial = value
-end)]]
+end)
 
 page1:Toggle("ออโต้ฟาร์มวัสดุ","", AutoFarmMaterial, function(x)
 AutoFarmMaterial = x
@@ -14960,4 +14962,3 @@ spawn(function()
         end
     end
 end)
-print(1)
