@@ -7084,9 +7084,10 @@ end
         page1:Label("ฟาร์มวัสดุ")
     end
     if _G.Mode == "English" then
+        --[[
         page1:Dropdown("Select Material",AllMaterial,"", function(value)
             SelectModeMaterial = value
-        end)
+        end)]]
     
         page1:Toggle("Auto Farm Material", "",AutoFarmMaterial, function(x)
             AutoFarmMaterial = x
@@ -7169,9 +7170,10 @@ end
             end)
         end)
     else
+        --[[
 page1:Dropdown("เลือกวัสดุ",AllMaterial,"", function(value)
 SelectModeMaterial = value
-end)
+end)]]
 
 page1:Toggle("ออโต้ฟาร์มวัสดุ","", AutoFarmMaterial, function(x)
 AutoFarmMaterial = x
@@ -7259,8 +7261,7 @@ page2:Label("Setting")
     "Normal",
     "Slow"
     }
-    
-    page2:Dropdown("Fast Attack Type",FastAttackType, "",function(value)
+    page2:Dropdown("Fast Attack Type",{ "Fast","Normal","Slow"},"",function(value)
     _G.FastType = value
     end)
     else
@@ -7270,7 +7271,7 @@ page2:Label("Setting")
     "Slow"
     }
     
-    page2:Dropdown("เลือกโจมตีเร็ว",FastAttackType,"", function(value)
+    page2:Dropdown("เลือกโจมตีเร็ว",{ "Fast","Normal","Slow"},"",function(value)
     _G.FastType = value
     end)
     end
@@ -14959,3 +14960,4 @@ spawn(function()
         end
     end
 end)
+print(1)
