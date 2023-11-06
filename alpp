@@ -498,7 +498,32 @@ function Vectorui:Init(text,logo)
     TextButton8_UiConner.Name = "Main_UiConner"
     TextButton8_UiConner.Parent = TextButton8
 
-    
+    local TextLabel13 = Instance.new("TextLabel")
+    TextLabel13.AnchorPoint = Vector2.new(0.5, 0.5)
+    TextLabel13.Size = UDim2.new(0, 198, 0, 50)
+    TextLabel13.ClipsDescendants = true
+    TextLabel13.BackgroundTransparency = 1
+    TextLabel13.Position = UDim2.new(0.5, 0, 0.5, 0)
+    TextLabel13.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel13.TextSize = 13
+    TextLabel13.TextColor3 = Color3.fromRGB(255, 255, 255)
+    TextLabel13.Text = "Ui Toggle : " .. getgenv().Settings.Key.Name
+    TextLabel13.TextWrap = true
+    TextLabel13.Font = Enum.Font.GothamSemibold
+    TextLabel13.TextWrapped = true
+    TextLabel13.Parent = TextButton8
+
+    KeyButton.MouseButton1Click:Connect(function()
+        KeyButton.Text = "..."
+        local inputwait = UserInputService.InputBegan:wait()
+        if inputwait.KeyCode.Name ~= "Unknown" then
+            getgenv().Settings.Key = inputwait.KeyCode
+            KeyButton.Text = "[ " .. inputwait.KeyCode.Name .. " ]"
+            TextLabel13.Text = "Ui Toggle : " .. inputwait.KeyCode.Name
+
+            Key = inputwait.KeyCode.Name
+        end
+    end)
     local uitoggled = false
     UserInputService.InputBegan:Connect(function(io, p)
         if io.KeyCode == getgenv().Settings.Key then
