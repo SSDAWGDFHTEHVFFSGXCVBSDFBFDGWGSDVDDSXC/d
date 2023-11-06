@@ -6246,26 +6246,15 @@ end)
                 end
             end)
         end
-                    
     
-        page1:Line()
-    if _G.Mode == "English" then
-        page1:Toggle("Auto Holy Torch","",_G.AutoHolyTorch, function(value)
+   
+        page2:Toggle("Auto Holy Torch","",_G.AutoHolyTorch, function(value)
             _G.AutoHolyTorch = value
             _G.BypassTP = false
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
         end)
-    else
-        page1:Toggle("ออโต้จุดโคมไฟ","",_G.AutoHolyTorch, function(value)
-            _G.AutoHolyTorch = value
-            _G.BypassTP = false
-            if value == false then
-                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-            end
-        end)
-    end
     task.spawn(function()
         while task.wait() do
             if _G.AutoHolyTorch then
@@ -6300,14 +6289,14 @@ end)
         end
     end)
     if _G.Mode == "English" then
-        page1:Toggle("Auto CastleRaid", "",_G.AutoCastleRaid, function(value)
+        page2:Toggle("Auto CastleRaid", "",_G.AutoCastleRaid, function(value)
             _G.AutoCastleRaid = value
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
         end)
     else
-        page1:Toggle("ออโต้ตีโจรเกาะกลาง","",_G.AutoCastleRaid, function(value)
+        page2:Toggle("ออโต้ตีโจรเกาะกลาง","",_G.AutoCastleRaid, function(value)
             _G.AutoCastleRaid = value
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
