@@ -112,8 +112,6 @@
         ImageButton.MouseButton1Down:connect(function()
         game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.F1,false,game)
         game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F1,false,game)
-        game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.RightControl,false,game)
-        game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.RightControl,false,game)
         end)
     --[[UIPERPID]]
 
@@ -3350,7 +3348,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
     _G.Mode = "Thai"
     --[[page/Tab]]
-        local Vectorui = loadstring(game:HttpGet('https://pastebin.com/raw/zq80V2x3',true))();
+        local Vectorui = loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/alpp"))()
         local Library = Vectorui:Init("Vector Hub ",14645512457)
 
         local GeneralTab = Library:Tab("General",14645512457)
