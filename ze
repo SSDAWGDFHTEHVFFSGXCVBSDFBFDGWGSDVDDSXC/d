@@ -3348,8 +3348,8 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
     _G.Mode = "Thai"
     --[[page/Tab]]
-    local Vectorui = loadstring(game:HttpGet('https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/alpp',true))();
-    local Library = Vectorui:Init("Vector Hub ",14645512457)
+        local Vectorui = loadstring(game:HttpGet('https://pastebin.com/raw/zq80V2x3',true))();
+        local Library = Vectorui:Init("Vector Hub ",14645512457)
 
         local GeneralTab = Library:Tab("General",14645512457)
         local page1 = GeneralTab:Page("Main")
@@ -3393,26 +3393,9 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
    
         local Other = Library:Tab("Other",14645512457)
         local page12 = Other:Page("Other")
-  
+
+        page1:Label("Main")
     if _G.Mode == "English" then
-
-local Time = page1:Label("Executer Time")
-function UpdateTime()
-local GameTime = math.floor(workspace.DistributedGameTime+0.5)
-local Hour = math.floor(GameTime/(60^2))%24
-local Minute = math.floor(GameTime/(60^1))%60
-local Second = math.floor(GameTime/(60^0))%60
-Time:Set("[GameTime] : Hours : "..Hour.." Minutes : "..Minute.." Seconds : "..Second)
-end
-
-spawn(function()
- while task.wait() do
- pcall(function()
-  UpdateTime()
-  end)
- end
- end)
-
     page1:Toggle("Auto Farm Level","",false,function(value)
         _G.AutoFarm = value
         _G.DoubleQuest = value
@@ -7268,7 +7251,8 @@ if (SelectModeMaterial ~= "") then
             end
         end)
     end)   
-end                                                                             
+end        
+page2:Label("Setting")                                                                     
     if _G.Mode == "English"then
     local FastAttackType = {
     "Fast",
@@ -7608,7 +7592,7 @@ end
         "Gun",
         "Devil Fruits"
     }
-
+    page3:Label("Stats")
     page3:Dropdown("Select Stats",SelectStats, function(value)
         _G.SelectStats = value
         task.spawn(function()
@@ -10194,6 +10178,7 @@ end
                 end)
             end)
         end
+        page4:Label("Teleport")
     if _G.Mode == "English" then
         page4:Button("Teleport to World 1", function(value)
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelMain")
@@ -10886,7 +10871,7 @@ end
     local DeathComplete = false
     local GodComplete = false
 
-
+    page5:Label("Items")
     page5:Toggle("Auto Buddy Swords", "",_G.AutoBuddySwords, function(value)
     _G.AutoBuddySwords = value
     if value == false then
@@ -11819,7 +11804,7 @@ end
     end
 
 
-    
+    page6:Label("Mastery")
     if _G.Mode == "English" then
     page6:Toggle("Auto Fruit Mastery","", _G.AutoFarmFruitMastery, function(value)
     _G.AutoFarmFruitMastery = value
@@ -11919,6 +11904,7 @@ end
     end
     end
     end)
+    page7:Label("DevilFruit")
     if _G.Mode == "English" then
     
     page7:Toggle("Auto Random Fruits", "",_G.AutoBuyRandomFruits, function(value)
@@ -12166,6 +12152,7 @@ end
     "Bird: Phoenix",
     "Dough"
     }
+    page8:Label("Raid")
     if _G.Mode == "English" then
     page8:Dropdown("Select Raids",SelectRaids, function(value)
         _G.SelectRaids = value
@@ -13013,6 +13000,7 @@ end
     end)
     end
     end
+    page9:Label("MirageIsland")
     local FM = page9:Label('...')
     local Mirragecheck = page9:Label('...')
     
@@ -13533,6 +13521,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
     request(abcdef)
     end
+    page10:Label("RaceV4")
     if _G.Mode == "English" then
     page10:Button("Teleport To Top GreatTree", function()
         toTarget(CFrame.new(2947.556884765625, 2281.630615234375, -7213.54931640625))
@@ -13691,6 +13680,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
     end)
     end
+    page11:Label("Shop")
     if _G.Mode == "English" then
         page11:Label("Auto Buy")
     else
@@ -13949,6 +13939,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     page11:Button("Swordsman Hat [150,000]", function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Swordsman Hat")
     end)
+    page12:Label("Misc")
     if _G.Mode == "English" then
     local TPS = game:GetService("TeleportService")
     local LP = game:GetService("Players").LocalPlayer
