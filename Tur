@@ -72,7 +72,7 @@ function Update:Window(text, logo, keybind)
     local uihide = false
     local abc = false
     local currentpage = ""
-    local keybind = keybind or Enum.KeyCode.RightControl
+    local keybind = keybind or Enum.KeyCode.F1
     local yoo = string.gsub(tostring(keybind), "Enum.KeyCode.", "")
 
     local RELZHUB = Instance.new("ScreenGui")
@@ -261,7 +261,7 @@ BtnStroke.Name = "BtnStroke"
 
 
     UserInputService.InputBegan:Connect(function(input)
-        if input.KeyCode == Enum.KeyCode.RightControl then
+        if input.KeyCode == Enum.KeyCode.F1 then
             if uihide == false then
                 uihide = true
                 Main:TweenSize(UDim2.new(0, 0, 0, 0), "In", "Quad", 0.4, true)
