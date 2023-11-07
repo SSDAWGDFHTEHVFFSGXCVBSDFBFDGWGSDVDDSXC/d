@@ -3394,18 +3394,67 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     local Update =   loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Tur"))()
     local Library = Update:Window("Vector Hub","",Enum.KeyCode.F1);
 
-        local page1 = Library:Tab("General","rbxassetid://")
+        if _G.Mode == "English" then
+local page1 = Library:Tab("General","rbxassetid://")
+else
+local page1 = Library:Tab("ทั่วไป","rbxassetid://")
+end
+if _G.Mode == "English" then
         local page2 = Library:Tab("Setting","rbxassetid://")
+else
+local page2 = Library:Tab("ต้้งค่า","rbxassetid://")
+end
+if _G.Mode == "English" then
         local page3 = Library:Tab("Stats","rbxassetid://")
+else
+local page3 = Library:Tab("สเตตัส","rbxassetid://")
+end
+if _G.Mode == "English" then
         local page4 = Library:Tab("Teleport","rbxassetid://")
+else
+local page4 = Library:Tab("เทเลพอร์ต","rbxassetid://")
+end
+if _G.Mode == "English" then
         local page5 = Library:Tab("Item","rbxassetid://")
+else
+local page5 = Library:Tab("ไอเท็ม","rbxassetid://")
+end
+if _G.Mode == "English" then
         local page6 = Library:Tab("Mastery","rbxassetid://")
+else
+local page6 = Library:Tab("มาสเตอรี่","rbxassetid://")
+end
+if _G.Mode == "English" then
         local page7 = Library:Tab("DevilFruit","rbxassetid://")
+else
+local page7 = Library:Tab("ผลปีศาจ","rbxassetid://")
+end
+If _G.Mode == "English" then
         local page8 = Library:Tab("Raid","rbxassetid://")
-        local page9 = Library:Tab("Mirage","rbxassetid://")
+else
+local page8 = Library:Tab("ดันเจี้ยน","rbxassetid://")
+end
+If _G.Mode == "English" then
+        local page9 = Library:Tab("MirageIsland","rbxassetid://")
+else
+local page9 = Library:Tab("เกาะลับ","rbxassetid://")
+end
+If _G.Mode == "English" then
         local page10 = Library:Tab("RaceV4","rbxassetid://")
+else
+local page10 = Library:Tab("เผ่าวีสี่","rbxassetid://")
+end
+If _G.Mode == "English" then
         local page11 = Library:Tab("Shop","rbxassetid://")
-        local page12 = Library:Tab("Misc","rbxassetid://")
+else
+local page11 = Library:Tab("ร้านค้า","rbxassetid://")
+end
+If _G.Mode == "English" then
+        local page12 = Library:Tab("Other","rbxassetid://")
+else
+local page12 = Library:Tab("อื่นๆ","rbxassetid://")
+end
+
 
     page1:Seperator("🏚️")
     Time = page1:Label("..")
