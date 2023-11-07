@@ -7411,6 +7411,9 @@ local Method = {
     if _G.Method == nil then
     _G.Method = "Upper"
     end
+    if  _G.DistanceAutoFarm == nil then
+        _G.DistanceAutoFarm = 30
+    end
     if _G.Mode == "English" then
     page2:Dropdown("Select Farm Method",Method, function(value)
     _G.Method = value
