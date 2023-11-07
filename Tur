@@ -1,13 +1,5 @@
-  do
-    if game:GetService("CoreGui"):FindFirstChild("VectorHub") then
-        game:GetService("CoreGui").VectorHub:Destroy()
-        game:GetService("CoreGui").ScreenGui:Destroy()
-    end
-end
-
-
 repeat wait(1) until game:IsLoaded()
-
+if game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("VVV") then game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("VVV"):Destroy() end
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 
@@ -68,6 +60,7 @@ end
 local Update = {}
 
 function Update:Window(text, logo, keybind)
+    local UICorner = Instance.new("UICorner")
     local osfunc = {}
     local uihide = false
     local abc = false
@@ -75,19 +68,20 @@ function Update:Window(text, logo, keybind)
     local keybind = keybind or Enum.KeyCode.F1
     local yoo = string.gsub(tostring(keybind), "Enum.KeyCode.", "")
 
-    local RELZHUB = Instance.new("ScreenGui")
-    RELZHUB.Name = "VectorHub"
-    RELZHUB.Parent = game.CoreGui
-    RELZHUB.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    local Window = Instance.new("ScreenGui")
+    Window.Name = "VVV"
+    Window.Parent = game:GetService("CoreGui").RobloxGui.Modules
+    Window.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     local Main = Instance.new("Frame")
     Main.Name = "Main"
-    Main.Parent = RELZHUB
+    Main.Parent = Window
     Main.ClipsDescendants = true
     Main.AnchorPoint = Vector2.new(0.5, 0.5)
     Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     Main.Position = UDim2.new(0.5, 0, 0.5, 0)
     Main.Size = UDim2.new(0, 0, 0, 0)
+    UICorner.Parent = Main
 
     --Main:TweenSize(UDim2.new(0, 656, 0, 400),"Out","Quad",0.4,true)
     --Main:TweenSize(UDim2.new(0, 656, 0, 350),"Out","Quad",0.4,true)
@@ -148,9 +142,9 @@ function Update:Window(text, logo, keybind)
     Logo.Parent = Main
     Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Logo.BackgroundTransparency = 1.000
-    Logo.Position = UDim2.new(0, -70, 0, -115)
-    Logo.Size = UDim2.new(0, 280, 0, 280) --330280
-    Logo.Image = "rbxassetid://13287712928"
+    Logo.Position = UDim2.new(0, 5, 0, -115)
+    Logo.Size = UDim2.new(0, 80, 0, 80) --330280
+    Logo.Image = "rbxassetid://14645512457"
 
     local Tab = Instance.new("Frame")
     Tab.Name = "Tab"
