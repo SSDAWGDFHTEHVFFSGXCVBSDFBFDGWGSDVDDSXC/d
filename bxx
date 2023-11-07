@@ -12,8 +12,11 @@ repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 repeat task.wait() until game:GetService("ReplicatedStorage").Effect.Container
 local UserInputService = game:GetService("UserInputService")
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "ถ้าหน้าต่างโปรไม่โหลดให้กดรันซ้ำ",Icon = "rbxassetid://14645512457",Duration = 10})
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "If the ui doesn't load, press run again" ,Icon = "rbxassetid://14645512457",Duration = 10})
+if _G.Mode == "English" then
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "If the ui doesn't load, press run again" ,Icon = "rbxassetid://14645512457",Duration = 10})
+else
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "ถ้าหน้าต่างโปรไม่โหลดให้กดรันซ้ำ",Icon = "rbxassetid://14645512457",Duration = 10})
+end
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
     Ui:Destroy()
