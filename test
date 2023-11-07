@@ -1,10 +1,7 @@
-  do
-    if game:GetService("CoreGui"):FindFirstChild("VectorHub") then
-        game:GetService("CoreGui").VectorHub:Destroy()
-        game:GetService("CoreGui").ScreenGui:Destroy()
-    end
+local Ui = game:GetService("CoreGui"):WaitForChild("RobloxGui"):WaitForChild("Modules"):FindFirstChild("VectorHub")
+if Ui then
+	Ui:Destroy()
 end
-
 
 repeat wait(1) until game:IsLoaded()
 
@@ -77,7 +74,7 @@ function Update:Window(text, logo, keybind)
 
     local TT = Instance.new("ScreenGui")
     TT.Name = "VectorHub"
-    TT.Parent = game.CoreGui
+    TT.Parent = game:GetService("CoreGui").RobloxGui.Modules
     TT.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
 
     local Main = Instance.new("Frame")
@@ -147,16 +144,16 @@ function Update:Window(text, logo, keybind)
     Logo.Name = "Logo"
     Logo.Parent = Main
     Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-  --  Logo.BackgroundTransparency = 1.000
-    Logo.Position = UDim2.new(0, -70, 0, -80)
-    Logo.Size = UDim2.new(0, 100, 0, 100) --330280
+    Logo.BackgroundTransparency = 1.000
+    Logo.Position = UDim2.new(0, -70, 0, -115)
+    Logo.Size = UDim2.new(0, 90, 0, 90) --330280
     Logo.Image = "rbxassetid://14645512457"
 
     local Tab = Instance.new("Frame")
     Tab.Name = "Tab"
     Tab.Parent = Main
     Tab.BackgroundColor3 = Color3.fromRGB(45, 45, 45)
-    Tab.Position = UDim2.new(0, 5, 0, 170) --0, 5, 0, 50
+    Tab.Position = UDim2.new(0, 5, 0, -70) --0, 5, 0, 50
     --Tab.CornerRadius = UDim.new(0,5)
     Tab.Size = UDim2.new(0, 0, 0, 0)
     --Tab.Size = UDim2.new(0, 150, 0, 365)
