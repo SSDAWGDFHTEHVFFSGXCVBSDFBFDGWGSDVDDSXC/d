@@ -60,6 +60,7 @@ end
 local Update = {}
 
 function Update:Window(text, logo, keybind)
+    local UICorner = Instance.new("UICorner")
     local osfunc = {}
     local uihide = false
     local abc = false
@@ -80,6 +81,7 @@ function Update:Window(text, logo, keybind)
     Main.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
     Main.Position = UDim2.new(0.5, 0, 0.5, 0)
     Main.Size = UDim2.new(0, 0, 0, 0)
+    UICorner.Parent = Main
 
     --Main:TweenSize(UDim2.new(0, 656, 0, 400),"Out","Quad",0.4,true)
     --Main:TweenSize(UDim2.new(0, 656, 0, 350),"Out","Quad",0.4,true)
@@ -140,7 +142,7 @@ function Update:Window(text, logo, keybind)
     Logo.Parent = Main
     Logo.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
     Logo.BackgroundTransparency = 1.000
-    Logo.Position = UDim2.new(0, -70, 0, -115)
+    Logo.Position = UDim2.new(0, 5, 0, -115)
     Logo.Size = UDim2.new(0, 80, 0, 80) --330280
     Logo.Image = "rbxassetid://14645512457"
 
