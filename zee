@@ -1,7 +1,3 @@
-   local Ui = game:GetService("CoreGui"):FindFirstChild("ScreenGui")
-    if Ui then
-        Ui:Destroy()
-    end
     if not game:IsLoaded() then
         local GameLoadGui = Instance.new("Message", workspace);
         GameLoadGui.Text = 'Wait Game Loading';
@@ -17,7 +13,54 @@
     repeat task.wait() until game:GetService("ReplicatedStorage").Effect.Container
     local UserInputService = game:GetService("UserInputService")
     
-    --
+    local ScreenGui = Instance.new("ScreenGui")
+	ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+	ScreenGui.Name = "Notification"
+
+local Frame = Instance.new("Frame")
+	Frame.Parent = ScreenGui
+	Frame.BackgroundColor3 = Color3.fromRGB(77, 77, 77)
+	Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	Frame.BorderSizePixel = 0
+	Frame.Size = UDim2.new(0, 2061, 0, 1048)
+if _G.Mode == "English" then
+	local name = "If the ui doesn't load, press run again"
+local TextLabel = Instance.new("TextLabel")
+	TextLabel.Parent = Frame
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(0.228529841, 0, 0.281488538, 0)
+	TextLabel.Size = UDim2.new(0, 200, 0, 200)
+	TextLabel.Font = Enum.Font.SourceSans
+	TextLabel.Text = name
+	TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.TextSize = 60.000
+else
+	_G.Mode = "Thai"
+	local name = "ถ้าหน้าต่างโปรไม่โหลดให้กดรันซ้ำ"
+	local TextLabel = Instance.new("TextLabel")
+	TextLabel.Parent = Frame
+	TextLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+	TextLabel.BackgroundTransparency = 1.000
+	TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.BorderSizePixel = 0
+	TextLabel.Position = UDim2.new(0.228529841, 0, 0.281488538, 0)
+	TextLabel.Size = UDim2.new(0, 200, 0, 200)
+	TextLabel.Font = Enum.Font.SourceSans
+	TextLabel.Text = name
+	TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+	TextLabel.TextSize = 60.000
+end
+    task.wait(1)
+    game.Players.LocalPlayer.PlayerGui:FindFirstChild("Notification"):Destroy()
+
+    local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
+    if Ui then
+        Ui:Destroy()
+    end
     --[[UIPERDPID]]
     local UserInputService = game:GetService("UserInputService")
     local VirtualInputManager = game:GetService("VirtualInputManager")
@@ -42,6 +85,7 @@
     local RobloxButton = Enum.ButtonStyle.RobloxButton
     
     ScreenGui.Parent = game.CoreGui
+    ScreenGui.Name = "Perpid"
     ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
     
     -- กำหนดตำแหน่งและขนาดของ ImageButton
@@ -196,7 +240,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
 -- [Place Id Check]
     local id = game.PlaceId
     if id == 2753915549 then
-    World1 = true;
+    World1 = true; 
     elseif id == 4442272183 then
     World2 = true;
     elseif id == 7449423635 then
@@ -3347,7 +3391,7 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
     end
 
     --[[page/Tab]]
-    local Update =  loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/test"))()
+    local Update =   loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Tur"))()
     local Library = Update:Window("Vector Hub","",Enum.KeyCode.F1);
 
         local page1 = Library:Tab("General","rbxassetid://")
@@ -3364,7 +3408,23 @@ until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
         local page12 = Library:Tab("Misc","rbxassetid://")
 
     page1:Seperator("🏚️")
+    Time = page1:Label("..")
 
+    function UpdateTime()
+    local GameTime = math.floor(workspace.DistributedGameTime+0.5)
+    local Hour = math.floor(GameTime/(60^2))%24
+    local Minute = math.floor(GameTime/(60^1))%60
+    local Second = math.floor(GameTime/(60^0))%60
+    Time:Set("[GameTime] : Hours : "..Hour.." Minutes : "..Minute.." Seconds : "..Second)
+    end
+    
+    spawn(function()
+     while task.wait() do
+     pcall(function()
+      UpdateTime()
+      end)
+     end
+end)
     if _G.Mode == "English" then
     page1:Toggle("Auto Farm Level", false, function(value)
         _G.AutoFarm = value
@@ -13568,11 +13628,39 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
     request(abcdef)
     end
-    if _G.Mode == "English" then
+
   page10:Seperator("🐰")
-    else
-  page10:Seperator("🐰")
+  if _G.Mode == "English" then
+    page10:Toggle("Auto Active RaceV3",_G.AutoActiveRace,function(value)  
+        _G.AutoActiveRace = value
+    while _G.AutoActiveRace do wait()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.T,false,game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.T,false,game)
     end
+end)
+    page10:Toggle("Auto Active RaceV4",_G.AutoActiveRaceV4,function(value)  
+        _G.AutoActiveRaceV4 = value
+    while _G.AutoActiveRaceV4 do wait()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Y,false,game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.Y,false,game)
+    end
+end)
+else
+    page10:Toggle("ออโต้เปิดใช้งานเผ่าวีสาม",_G.AutoActiveRace,function(value)  
+        _G.AutoActiveRace = value
+    while _G.AutoActiveRace do wait()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.T,false,game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.T,false,game)
+    end
+end)
+    page10:Toggle("ออโต้เปิดใช้งานเผ่าวีสี่",_G.AutoActiveRaceV4,function(value)  
+        _G.AutoActiveRaceV4 = value
+    while _G.AutoActiveRaceV4 do wait()
+    game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.Y,false,game)
+    game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.Y,false,game)
+    end
+end)
+end
     if _G.Mode == "English" then
     page10:Button("Teleport To Top GreatTree", function()
         toTarget(CFrame.new(2947.556884765625, 2281.630615234375, -7213.54931640625))
@@ -14308,6 +14396,20 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     page12:Button("ถ่ายภาพไก่ตัน", function()
         kaituncap()
     end)
+    page12:Toggle("Auto Click",false,function(value)
+        _G.click = value
+            end)
+                
+            spawn(function()
+            game:GetService("RunService").RenderStepped:Connect(function()
+                if _G.click then
+                     pcall(function()
+                        game:GetService'VirtualUser':CaptureController()
+                        game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+                    end)
+                end
+            end)
+        end)
     page12:Button("แสดงสกิลตื่น", function()
         local args = {
             [1] = "getAwakenedAbilities"
@@ -14999,6 +15101,227 @@ end
             FullBright()
         end)
     end
+    page12:Label("Name : "..game.Players.LocalPlayer.Name)
+
+
+
+if World1 then 
+    page12:Label("World : 1")
+end
+
+if World2 then
+    page12:Label("World : 2")
+end
+
+if World3 then
+    page12:Label("World : 3")
+end
+
+page12:Label("Race : "..game:GetService("Players").LocalPlayer.Data.Race.Value)
+
+page12:Label("Fruit : "..game.Players.LocalPlayer.Data.DevilFruit.Value)
+
+page12:Label("Level : "..game.Players.localPlayer.Data.Level.Value)
+
+page12:Label("Bounty : "..game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value)
+
+page12:Seperator("Sword")
+
+local Saber = page12:Label("❌: Saber")
+local Rengoku = page12:Label("❌: Rengoku")
+local Midnight_Blade = page12:Label("❌: Midnight Blade")
+local Dragon_Trident = page12:Label("❌: Dragon Trident")
+local Yama = page12:Label("❌: Yama")
+local Buddy_Sword = page12:Label("❌: Buddy Sword")
+local Canvander = page12:Label("❌: Canvander")
+local Twin_Hooks = page12:Label("❌: Twin Hooks")
+local Spikey_Trident = page12:Label("❌: Spikey Trident")
+local Hallow_Scythe = page12:Label("❌: Hallow Scythe")
+local Dark_Dagger = page12:Label("❌: Dark Dagger")
+local Tushita = page12:Label("❌: Tushita")
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
+                if v.Name == "Saber" then
+                    Saber:Set("✅: Saber")
+                end
+                if v.Name == "Rengoku" then
+                    Rengoku:Set("✅: Rengoku")
+                end
+                if v.Name == "Midnight Blade" then
+                    Midnight_Blade:Set("✅: Midnight Blade")
+                end
+                if v.Name == "Dragon Trident" then
+                    Dragon_Trident:Set("✅: Dragon Trident")
+                end
+                if v.Name == "Yama" then
+                    Yama:Set("✅: Yama")
+                end
+                if v.Name == "Buddy Sword" then
+                    Buddy_Sword:Set("✅: Buddy Sword")
+                end
+                if v.Name == "Canvander" then
+                    Canvander:Set("✅: Canvander")
+                end
+                if v.Name == "Twin Hooks" then
+                    Twin_Hooks:Set("✅: Twin Hooks")
+                end
+                if v.Name == "Spikey Trident" then
+                    Spikey_Trident:Set("✅: Spikey Trident")
+                end
+                if v.Name == "Hallow Scythe" then
+                    Hallow_Scythe:Set("✅: Hallow Scythe")
+                end
+                if v.Name == "Dark Dagger" then
+                    Dark_Dagger:Set("✅: Dark Dagger")
+                end
+                if v.Name == "Tushita" then
+                    Tushita:Set("✅: Tushita")
+                 end
+            end
+        end)
+    end
+end)
+
+page12:Seperator("Quest")
+
+local Bartilo_Quest = page12:Label("❌: Bartilo Quest")
+local Don_Swan_Quest = page12:Label("❌: Don Swan Quest")
+local Kill_Don_Swan = page12:Label("❌: Kill Don Swan")
+
+spawn(function()
+    while task.wait() do
+        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 3 then
+            Bartilo_Quest:Set("✅: Bartilo Quest")
+        end
+
+        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetUnlockables").FlamingoAccess == nil then
+            --Nothing
+        else
+            Don_Swan_Quest:Set("✅: Don Swan Quest")
+        end
+
+        if game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("ZQuestProgress", "Check") == 1 then
+            Kill_Don_Swan:Set("✅: Kill Don Swan")
+        end
+    end
+end)
+
+page12:Seperator("Sword Legendary")
+
+local Shisui = page12:Label("❌: Shisui")
+local Saddi = page12:Label("❌: Saddi")
+local Wando = page12:Label("❌: Wando")
+local True_Triple_Katana = page12:Label("❌: True Triple Katana")
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
+                if v.Name == "Shisui" then
+                    Shisui:Set("✅: Shisui")
+                end
+                if v.Name == "Saddi" then
+                    Saddi:Set("✅: Saddi")
+                end
+                if v.Name == "Wando" then
+                    Wando:Set("✅: Wando")
+                end
+                if v.Name == "True Triple Katana" then
+                    True_Triple_Katana:Set("✅: True Triple Katana")
+                end
+            end
+        end)
+    end
+end)
+
+page12:Seperator("Melee")
+
+local Superhuman = page12:Label("❌: Superhuman")
+local Death_Step = page12:Label("❌: Death Step")
+local Sharkman_Karate = page12:Label("❌: Sharkman Karate")
+local Electric_Claw = page12:Label("❌: Electric Claw")
+local Dragon_Talon = page12:Label("❌: Dragon Talon")
+local God_Human = page12:Label("❌: God Human")
+
+spawn(function()
+    while task.wait() do
+        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySuperhuman",true) == 1 then
+            Superhuman:Set("✅: Superhuman")
+        end
+        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDeathStep",true) == 1 then
+            Death_Step:Set("✅: Death Step")
+        end
+        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySharkmanKarate",true) == 1 then
+            Sharkman_Karate:Set("✅: Sharkman Karate")
+        end
+        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyElectricClaw",true) == 1 then
+            Electric_Claw:Set("✅: Electric Claw")
+        end
+        if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyDragonTalon",true) == 1 then
+            Dragon_Talon:Set("✅: Dragon Talon")
+        end
+    end
+end)
+
+page12:Seperator("Gun")
+
+local Kabu_cha = page12:Label("❌: Kabucha")
+local Acidum_Rifle = page12:Label("❌: Acidum Rifle")
+local Bizarre_Rifle = page12:Label("❌: Bizarre Rifle")
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
+                if v.Name == "Kabucha" then
+                    Kabu_cha:Set("✅: Kabucha")
+                end
+                if v.Name == "Acidum Rifle" then
+                    Acidum_Rifle:Set("✅: Acidum Rifle")
+                end
+                if v.Name == "Bizarre Rifle" then
+                    Bizarre_Rifle:Set("✅: Bizarre Rifle")
+                end
+            end
+        end)
+    end
+end)
+
+page12:Seperator("Accessory")
+
+local Dark_Coat = page12:Label("❌: Dark Coat")
+local Ghoul_Mask = page12:Label("❌: Ghoul Mask")
+local Swan_Glass = page12:Label("❌: Swan Glass")
+local Pale_Scarf = page12:Label("❌: Pale Scarf")
+local Valkyrie_Helm = page12:Label("❌: Valkyrie Helm")
+
+
+spawn(function()
+    while task.wait() do
+        pcall(function()
+            for i,v in pairs(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("getInventoryWeapons")) do
+                if v.Name == "Saber" then
+                    Dark_Coat:Set("✅: Dark Coat")
+                end
+                if v.Name == "Ghoul Mask" then
+                    Ghoul_Mask:Set("✅: Ghoul Mask")
+                end
+                if v.Name == "Swan Glasses" then
+                    Swan_Glass:Set("✅: Swan Glass")
+                end
+                if v.Name == "Pale Scarf" then
+                    Pale_Scarf:Set("✅: Pale Scarf")
+                end
+                if v.Name == "Valkyrie Helmet" then
+                    Valkyrie_Helm:Set("✅: Valkyrie Helmet")
+                end
+            end
+        end)
+    end
+end)
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Loadsucces",Icon = "rbxassetid://14645512457",Duration = 3})
  _G.AutoRejoin = true
 spawn(function()
