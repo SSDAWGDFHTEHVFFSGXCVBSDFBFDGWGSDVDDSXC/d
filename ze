@@ -3349,16 +3349,12 @@ elseif LevelFarm == 45 then
 end
 end
 end
-_G.Mode = nil
+
 --[[page/Tab]]
 local Update =   loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Tur"))()
 local Library = Update:Window("Vector Hub","",Enum.KeyCode.F1);
-if _G.Mode == "English" then
-local namepage1 = "General"
-else
-    local namepage1 = "ทั่วไป"
-end
-    local page1 = Library:Tab(namepage1,"rbxassetid://")
+
+    local page1 = Library:Tab("General","rbxassetid://")
     local page2 = Library:Tab("Setting","rbxassetid://")
     local page3 = Library:Tab("Stats","rbxassetid://")
     local page4 = Library:Tab("Teleport","rbxassetid://")
@@ -3366,10 +3362,10 @@ end
     local page6 = Library:Tab("Mastery","rbxassetid://")
     local page7 = Library:Tab("DevilFruit","rbxassetid://")
     local page8 = Library:Tab("Raid","rbxassetid://")
-    local page9 = Library:Tab("MirageIsland","rbxassetid://")
+    local page9 = Library:Tab("Mirage","rbxassetid://")
     local page10 = Library:Tab("RaceV4","rbxassetid://")
     local page11 = Library:Tab("Shop","rbxassetid://")
-    local page12 = Library:Tab("Other","rbxassetid://")
+    local page12 = Library:Tab("Misc","rbxassetid://")
 
 page1:Seperator("🏚️")
 Time = page1:Label("..")
@@ -5992,21 +5988,6 @@ else
                                                     two(v.HumanoidRootPart.CFrame * MethodFarm)
                                                 until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                 FastAttack = false
-                                                while task.wait() do
-                                                    if v.Humanoid.Health <= 0  then
-                                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                            if v:IsA("VehicleSeat") then 
-                                                                if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 1 and v.Owner.Value == game.Players.LocalPlayer.Name then
-                                                                    repeat
-                                                                        task.wait()
-                                                                        local CFrame = v.CFrame
-                                                                        twoboat(CFrame)
-                                                                    until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.AutoEvent
-                                                                end
-                                                            end
-                                                        end
-                                                    end
-                                                end
                                                 end
                                             end
                                         end
@@ -6166,21 +6147,6 @@ else
                                                         two(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                     FastAttack = false
-                                                    while task.wait() do
-                                                        if v.Humanoid.Health <= 0  then
-                                                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                                if v:IsA("VehicleSeat") then 
-                                                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 1 and v.Owner.Value == game.Players.LocalPlayer.Name then
-                                                                        repeat
-                                                                            task.wait()
-                                                                            local CFrame = v.CFrame
-                                                                            twoboat(CFrame)
-                                                                        until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.AutoEvent
-                                                                    end
-                                                                end
-                                                            end
-                                                        end
-                                                    end
                                                     end
                                                 end
                                             end
