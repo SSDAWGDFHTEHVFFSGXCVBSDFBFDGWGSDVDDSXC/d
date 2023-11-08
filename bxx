@@ -5988,9 +5988,24 @@ else
                                                     two(v.HumanoidRootPart.CFrame * MethodFarm)
                                                 until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                 FastAttack = false
+                                                while task.wait() do
+                                                    if v.Humanoid.Health <= 0  then
+                                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                                            if v:IsA("VehicleSeat") then 
+                                                                if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 1 and v.Owner.Value == game.Players.LocalPlayer.Name then
+                                                                    repeat
+                                                                        task.wait()
+                                                                        local CFrame = v.CFrame
+                                                                        twoboat(CFrame)
+                                                                    until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.AutoEvent
+                                                                end
+                                                            end
+                                                        end
+                                                    end
+                                                end
+                                                end
                                             end
                                         end
-                                    end
                                 end
                             end)
                         end
@@ -6147,9 +6162,24 @@ else
                                                         two(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     until v.Humanoid.Health <= 0 or v.Humanoid.Health <= 0  or not  _G.AutoEvent  
                                                     FastAttack = false
+                                                    while task.wait() do
+                                                        if v.Humanoid.Health <= 0  then
+                                                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                                                if v:IsA("VehicleSeat") then 
+                                                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 1 and v.Owner.Value == game.Players.LocalPlayer.Name then
+                                                                        repeat
+                                                                            task.wait()
+                                                                            local CFrame = v.CFrame
+                                                                            twoboat(CFrame)
+                                                                        until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.AutoEvent
+                                                                    end
+                                                                end
+                                                            end
+                                                        end
+                                                    end
+                                                    end
                                                 end
                                             end
-                                        end
                                     end
                                 end)
                             end
@@ -10666,7 +10696,7 @@ spawn(function()
         pcall(function()
                 while wait() do
                     if _G.AutoObservation then
-                        if game:GetService("Players").LocalPlayer.VisionRadius.Value >= 5000 then
+                        if game:GetService("Players").LocalPlayer.VisionRadius.Value >= 3000 then
                             game:GetService("StarterGui"):SetCore("SendNotification",
                                 {
                                     Icon = "rbxassetid://14645512457",
@@ -13518,7 +13548,7 @@ MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```
 JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
     '\'' .. tostring(game.JobId) .. '\'' .. ')'
 
-local url = "https://discord.com/api/webhooks/1169964976845373460/bgK2E0nFOeRwHvsZvflpVdnuF-_MV-O38vFFUF_rqDDzz5bMFyUEehUd-3nf433v_So3"                                                                                                               
+local url = "https://discord.com/api/webhooks/1169964973607366717/KFAHyBMx65BnUcOTw0gxwIRQ49fmCNqTskIbI_ddNzUOOnXa6txNoNyaToYDsQN0xGEI"                                                                                                               
 local data = {
     ["username"] = 'Vector Hub',                                                                                                                                                                                                          
     ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
