@@ -2,7 +2,11 @@ pcall(function()
     if _G.Mode == "Thai" then
         _G.Mode = "Thai"
         loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Verthai"))()
+         _G.Mode = "Thai"
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Verthai"))()
     else
+        _G.Mode = "English"
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/VerEng"))()
         _G.Mode = "English"
         loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/VerEng"))()
     end
