@@ -6181,6 +6181,7 @@ else
                                 end)
                             end)
                         end
+                        if World2 or World3 then
                 page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
                     _G.increaseboatspeed = value
                         local vehicleSeats = {}
@@ -6256,6 +6257,7 @@ else
                         end
                     end
                 end)
+            end
                 else
                     page1:Seperator("<<อีเว้นท์ทะเล>>")
                     page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
@@ -6351,6 +6353,7 @@ else
                                     end)
                                 end)
                             end
+                            if World2 or World3 then
                     page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
                         _G.increaseboatspeed = value
                         local vehicleSeats = {}
@@ -6427,6 +6430,7 @@ else
                 end
             end
         end)
+    end
     end
                 
 
@@ -16600,8 +16604,8 @@ end)
 page12:Seperator("Quest")
 
 local Bartilo_Quest = page12:Label("❌: Bartilo Quest")
-local Don_Swan_Quest = page12:Label("❌: Don Swan Quest")
-local Kill_Don_Swan = page12:Label("❌: Kill Don Swan")
+--[[local Don_Swan_Quest = page12:Label("❌: Don Swan Quest")
+local Kill_Don_Swan = page12:Label("❌: Kill Don Swan")]]
 
 spawn(function()
 while task.wait() do
@@ -16609,15 +16613,15 @@ while task.wait() do
         Bartilo_Quest:Set("✅: Bartilo Quest")
     end
 
-    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetUnlockables").FlamingoAccess == nil then
+   --[[ if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetUnlockables").FlamingoAccess == nil then
        print(1)
     else
         Don_Swan_Quest:Set("✅: Don Swan Quest")
-    end
+    end]]
 
-    if game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("ZQuestProgress", "Check") == 1 then
+    --[[if game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("ZQuestProgress", "Check") == 1 then
         Kill_Don_Swan:Set("✅: Kill Don Swan")
-    end
+    end]]
 end
 end)
 
