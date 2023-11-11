@@ -664,7 +664,7 @@ for indexincrement = 1, 1 do
             Highlight.Parent = v
         end]]
         for k, v in pairs(ac.animator.anims.basic) do
-            v:Play(0, 0, 0) --v:Play(0.01, 0.01, 0.01)
+            v:Play(0.001, 0.001, 0.001) --v:Play(0.01, 0.01, 0.01)
         end
         if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
             game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
@@ -16550,7 +16550,6 @@ while task.wait() do
     end)
 end
 end)
-game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Loadsucces",Icon = "rbxassetid://14645512457",Duration = 3})
 _G.AutoRejoin = true
 spawn(function()
 while task.wait() do
