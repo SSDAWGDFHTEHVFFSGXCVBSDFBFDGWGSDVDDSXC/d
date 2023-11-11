@@ -278,8 +278,7 @@ pcall(function()
     _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
     _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
     _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
-    _G.TeleporttoSeaBeast  or _G.AutoEvent or
-    _G.TPTOBOAT or 
+    _G.TeleporttoSeaBeast  or _G.AutoEvent or _G.TPTOBOAT or 
     Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
     --[Boss]
     _G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
@@ -5953,7 +5952,7 @@ else
                     _G.AutoEvent = value
                     if value == false then
                         task.wait()
-                        two(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                        toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
                         task.wait()
                     end
                     task.spawn(function()
@@ -5963,7 +5962,6 @@ else
                                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                             if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
                                                 if v.Humanoid.Health > 0 then
-                                                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
                                                 repeat task.wait()
                                                     if _G.AutoEvent then
                                                         _G.FastType = "Normal"
@@ -5992,8 +5990,6 @@ else
                                                 end
                                             end
                                         end
-                                    else
-                                        game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = true 
                                 end
                             end)
                         end
@@ -6115,7 +6111,7 @@ else
                         _G.AutoEvent = value
                         if value == false then
                             task.wait()
-                            two(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
                             task.wait()
                         end
                         task.spawn(function()
@@ -6125,7 +6121,6 @@ else
                                             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                                 if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
                                                     if v.Humanoid.Health > 0 then
-                                                        game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
                                                     repeat task.wait()
                                                         if _G.AutoEvent then
                                                             _G.FastType = "Normal"
@@ -6154,8 +6149,6 @@ else
                                                     end
                                                 end
                                             end
-                                        else
-                                            game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = true
                                     end
                                 end)
                             end
