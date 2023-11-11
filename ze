@@ -1,4 +1,4 @@
-print("Real")
+print("เหนื่อยละ")
 if not game:IsLoaded() then
     local GameLoadGui = Instance.new("Message", workspace);
     GameLoadGui.Text = 'Wait Game Loading';
@@ -3772,24 +3772,26 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                 until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, QuestName) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                                 FastAttack = false
                                 StartMagnet = false
-                                spawn(function()
-                                    if posrandom <= 1 then
-                                        toTarget(CFrameMon * CFrame.new(0,0,35))
-                                        posrandom = posrandom + 0.1
-                                    elseif posrandom >= 1 and posrandom <= 2 then
+                                repeat task.wait()
+                                    spawn(function()
+                                        if posrandom <= 1 then
+                                            toTarget(CFrameMon * CFrame.new(0,0,35))
+                                            posrandom = posrandom + 0.1
+                                        elseif posrandom >= 1 and posrandom <= 2 then
+                                            toTarget(CFrameMon * CFrame.new(35,0,0))
+                                            posrandom = posrandom + 0.1
+                                        elseif posrandom >= 2 and posrandom <= 3 then
+                                            toTarget(CFrameMon *CFrame.new(0,0,-35))
+                                            posrandom = posrandom + 0.1
+                                        elseif posrandom >= 3 and posrandom <= 4  then
+                                            toTarget(CFrameMon * CFrame.new(-35,0,0))
+                                            posrandom = posrandom + 0.1
+                                    elseif posrandom >= 4 and posrandom <= 5 then
                                         toTarget(CFrameMon * CFrame.new(35,0,0))
-                                        posrandom = posrandom + 0.1
-                                    elseif posrandom >= 2 and posrandom <= 3 then
-                                        toTarget(CFrameMon *CFrame.new(0,0,-35))
-                                        posrandom = posrandom + 0.1
-                                    elseif posrandom >= 3 and posrandom <= 4  then
-                                        toTarget(CFrameMon * CFrame.new(-35,0,0))
-                                        posrandom = posrandom + 0.1
-                                elseif posrandom >= 4 and posrandom <= 5 then
-                                    toTarget(CFrameMon * CFrame.new(35,0,0))
-                                    posrandom = 0
-                                end
-                            end)
+                                        posrandom = 0
+                                    end
+                                end)
+                            until game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm  or v.Humanoid.Health >= 0
                             else
                                 Com("F_","AbandonQuest");
                             end
@@ -3889,24 +3891,26 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                             until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                             StartMagnet = false
                             FastAttack = false
-                            spawn(function()
-                                if posrandom <= 1 then
-                                    toTarget(CFrameMon * CFrame.new(0,0,35))
-                                    posrandom = posrandom + 0.1
-                                elseif posrandom >= 1 and posrandom <= 2 then
+                            repeat task.wait()
+                                spawn(function()
+                                    if posrandom <= 1 then
+                                        toTarget(CFrameMon * CFrame.new(0,0,35))
+                                        posrandom = posrandom + 0.1
+                                    elseif posrandom >= 1 and posrandom <= 2 then
+                                        toTarget(CFrameMon * CFrame.new(35,0,0))
+                                        posrandom = posrandom + 0.1
+                                    elseif posrandom >= 2 and posrandom <= 3 then
+                                        toTarget(CFrameMon *CFrame.new(0,0,-35))
+                                        posrandom = posrandom + 0.1
+                                    elseif posrandom >= 3 and posrandom <= 4  then
+                                        toTarget(CFrameMon * CFrame.new(-35,0,0))
+                                        posrandom = posrandom + 0.1
+                                elseif posrandom >= 4 and posrandom <= 5 then
                                     toTarget(CFrameMon * CFrame.new(35,0,0))
-                                    posrandom = posrandom + 0.1
-                                elseif posrandom >= 2 and posrandom <= 3 then
-                                    toTarget(CFrameMon *CFrame.new(0,0,-35))
-                                    posrandom = posrandom + 0.1
-                                elseif posrandom >= 3 and posrandom <= 4  then
-                                    toTarget(CFrameMon * CFrame.new(-35,0,0))
-                                    posrandom = posrandom + 0.1
-                            elseif posrandom >= 4 and posrandom <= 5 then
-                                toTarget(CFrameMon * CFrame.new(35,0,0))
-                                posrandom = 0
-                            end
-                        end)
+                                    posrandom = 0
+                                end
+                            end)
+                        until game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm  or v.Humanoid.Health >= 0
                         else
                             Com("F_","AbandonQuest");
                         end
@@ -4007,6 +4011,7 @@ else
                         until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                         StartMagnet = false
                         FastAttack = false
+                        repeat task.wait()
                         spawn(function()
                             if posrandom <= 1 then
                                 toTarget(CFrameMon * CFrame.new(0,0,35))
@@ -4025,6 +4030,7 @@ else
                             posrandom = 0
                         end
                     end)
+                until game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm  or v.Humanoid.Health >= 0
                     else
                         Com("F_","AbandonQuest");
                     end
