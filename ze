@@ -1,4 +1,4 @@
-print(11)
+print(321)
 --Config
 _G.SelectWeapon = nil
 SelectWeapon = nil
@@ -3427,7 +3427,53 @@ elseif LevelFarm == 45 then
 end
 end
 end
-
+spawn(function()
+    while wait() do
+        pcall(function()
+            wait(0.1) 
+            game:GetService('TweenService'):Create(
+                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                {TextColor3 = Color3.fromRGB(255, 0, 0)}
+            ):Play() 
+            wait(.5)            
+            game:GetService('TweenService'):Create(
+                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                {TextColor3 = Color3.fromRGB(255, 155, 0)} 
+            ):Play() 
+            wait(.5)            
+            game:GetService('TweenService'):Create(
+                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                {TextColor3 = Color3.fromRGB(255, 255, 0)}
+            ):Play() 
+            wait(.5)            
+            game:GetService('TweenService'):Create(
+                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                {TextColor3 = Color3.fromRGB(0, 255, 0)}
+            ):Play() 
+            wait(.5)            
+            game:GetService('TweenService'):Create(
+                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                {TextColor3 = Color3.fromRGB(0, 255, 255)}
+            ):Play() 
+            wait(.5)            
+            game:GetService('TweenService'):Create(
+                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                {TextColor3 = Color3.fromRGB(0, 155, 255)}
+            ):Play() 
+            wait(.5)            
+            game:GetService('TweenService'):Create(
+                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                {TextColor3 = Color3.fromRGB(255, 0, 255)}
+            ):Play() 
+            wait(.5)            
+            game:GetService('TweenService'):Create(
+                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                {TextColor3 = Color3.fromRGB(255, 0, 155)}
+            ):Play() 
+            wait(.5)
+        end)
+    end
+end)
 --[[page/Tab]]
 local Update =   loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Tur"))()
 local Library = Update:Window("Vector Hub","",Enum.KeyCode.F1);
