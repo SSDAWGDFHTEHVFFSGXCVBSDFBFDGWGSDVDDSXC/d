@@ -1,3 +1,29 @@
+print(2)
+repeat wait() until game.Players.LocalPlayer
+
+local placeId = game.PlaceId
+if placeId == 2753915549 then
+OldWorld = true
+elseif placeId == 4442272183 then
+NewWorld = true
+elseif placeId == 7449423635 then
+ThreeWorld = true
+else
+game.Players.LocalPlayer:Kick("..")
+end
+
+-- [Place Id Check]
+local id = game.PlaceId
+if id == 2753915549 then
+World1 = true; 
+elseif id == 4442272183 then
+World2 = true;
+elseif id == 7449423635 then
+World3 = true;
+else
+game:Shutdown()
+end;
+
 _G.AutoFarm = false
 _G.DoubleQuest = false
 _G.NeareastFarm = false
@@ -70,9 +96,9 @@ _G.AutoRaids = false
 _G.AutoNextPlace = false
 
 if _G.Mode == "English" then
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":If the ui doesn't load, press run again:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":Don't press and run the pro several times, it will cause a bug and cause lag:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 else
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":ถ้าหน้าต่างโปรไม่โหลดให้กดรันซ้ำ:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":อย่ากดรันโปรซ้ำหลายรอบจะเกิดบัคและทำให้แลค:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 end
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
@@ -225,7 +251,7 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
-
+--[[
 repeat wait()
 if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == true then
     if _G.SelectTeam == "Pirate" then
@@ -248,19 +274,7 @@ if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPla
         mouse1click()
     end
 end
-until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-
--- [Place Id Check]
-local id = game.PlaceId
-if id == 2753915549 then
-World1 = true; 
-elseif id == 4442272183 then
-World2 = true;
-elseif id == 7449423635 then
-World3 = true;
-else
-game:Shutdown()
-end;
+until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()]]
 
 -- [Anti AFK]
 
@@ -1088,17 +1102,6 @@ return ReturnText
 else
 return "Not Have"
 end
-end
-
-local placeId = game.PlaceId
-if placeId == 2753915549 then
-OldWorld = true
-elseif placeId == 4442272183 then
-NewWorld = true
-elseif placeId == 7449423635 then
-ThreeWorld = true
-else
-game.Players.LocalPlayer:Kick("..")
 end
 
 function CheckMasteryWeapon(NameWe, MasNum)
@@ -3438,7 +3441,7 @@ end
     local page11 = Library:Tab("Shop","rbxassetid://6031265976")
     local page12 = Library:Tab("Misc","rbxassetid://11447063791")
 
-page1:Seperator("Main")
+page1:Seperator("🏚️")
 Time = page1:Label("..")
 
 function UpdateTime()
@@ -5698,246 +5701,245 @@ else
                     end)
                 end
             end)
-                
-if _G.Mode == "English" then
-    page1:Toggle("Auto Rainbow Haki", _G.AutoRainbowHaki, function(value)
-        _G.AutoRainbowHaki = value
-        if value == false then
-            task.wait()
-            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-            task.wait()
-        end
-        
-    end)
-else
-    page1:Toggle("ออโต้ฮาคิสีรุ้ง", _G.AutoRainbowHaki,function(value)
-        _G.AutoRainbowHaki = value
-            if value == false then
-                task.wait()
-                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                task.wait()
-            end
-        end)
-    end
-            task.spawn(function()
-                while task.wait() do
-                    pcall(function()
-                        if _G.AutoRainbowHaki then
-                            if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
-                                toTarget(CFrame.new(-11892.0703125, 930.57672119141, -8760.1591796875))
-                                if (Vector3.new(-11892.0703125, 930.57672119141, -8760.1591796875) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
-                                    wait(1.5)
-                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("HornedMan",
-                                        "Bet")
-                                end
-                            elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true and string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Stone") then
-                                if game:GetService("Workspace").Enemies:FindFirstChild("Stone") then
-                                    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                        if v.Name == "Stone" then
-                                            repeat
-                                                task.wait()
-                                                StartMagnet = true
-                                                FastAttack = true
-                                                if _G.AutoHaki then
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                    end
-                                                end
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                    task.wait()
-                                                    EquipWeapon(_G.SelectWeapon)
-                                                end
-                                                PosMon = v.HumanoidRootPart.CFrame
-                                                if not _G.FastAttack then
-                                                    game:GetService 'VirtualUser':CaptureController()
-                                                    game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                end
-                                                v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                v.Humanoid.JumpPower = 0
-                                                v.Humanoid.WalkSpeed = 0
-                                                v.HumanoidRootPart.CanCollide = false
-                                                v.Humanoid:ChangeState(11)
-                                                v.Humanoid:ChangeState(14)
-                                                v.Humanoid:ChangeState(16)
-                                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                            until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                            StartMagnet = false
-                                            FastAttack = false
-                                        end
-                                    end
-                                else
-                                    toTarget(CFrame.new(-1086.11621, 38.8425903, 6768.71436, 0.0231462717,-0.592676699,0.805107772, 2.03251839e-05, 0.805323839, 0.592835128, -0.999732077,-0.0137055516, 0.0186523199))
-                                end
-                            elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true and string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Island Empress") then
-                                if game:GetService("Workspace").Enemies:FindFirstChild("Island Empress") then
-                                    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                        if v.Name == "Island Empress" then
-                                            repeat
-                                                task.wait()
-                                                StartMagnet = true
-                                                FastAttack = true
-                                                if _G.AutoHaki then
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                    end
-                                                end
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                    task.wait()
-                                                    EquipWeapon(_G.SelectWeapon)
-                                                end
-                                                PosMon = v.HumanoidRootPart.CFrame
-                                                if not _G.FastAttack then
-                                                    game:GetService 'VirtualUser':CaptureController()
-                                                    game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                end
-                                                v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                v.Humanoid.JumpPower = 0
-                                                v.Humanoid.WalkSpeed = 0
-                                                v.HumanoidRootPart.CanCollide = false
-                                                v.Humanoid:ChangeState(11)
-                                                v.Humanoid:ChangeState(14)
-                                                v.Humanoid:ChangeState(16)
-                                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                            until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                            StartMagnet = false
-                                            FastAttack = false
-                                        end
-                                    end
-                                else
-                                    toTarget(CFrame.new(5713.98877, 601.922974, 202.751251, -0.101080291, -0,-0.994878292, -0, 1, -0, 0.994878292, 0, -0.101080291))
-                                end
-                            elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Kilo Admiral") then
-                                if game:GetService("Workspace").Enemies:FindFirstChild("Kilo Admiral") then
-                                    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                        if v.Name == "Kilo Admiral" then
-                                            repeat
-                                                task.wait()
-                                                StartMagnet = true
-                                                FastAttack = true
-                                                if _G.AutoHaki then
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                    end
-                                                end
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                    task.wait()
-                                                    EquipWeapon(_G.SelectWeapon)
-                                                end
-                                                PosMon = v.HumanoidRootPart.CFrame
-                                                if not _G.FastAttack then
-                                                    game:GetService 'VirtualUser':CaptureController()
-                                                    game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                end
-                                                v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                v.Humanoid.JumpPower = 0
-                                                v.Humanoid.WalkSpeed = 0
-                                                v.HumanoidRootPart.CanCollide = false
-                                                v.Humanoid:ChangeState(11)
-                                                v.Humanoid:ChangeState(14)
-                                                v.Humanoid:ChangeState(16)
-                                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                            until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                            StartMagnet = false
-                                            FastAttack = false
-                                        end
-                                    end
-                                else
-                                    toTarget(CFrame.new(2877.61743, 423.558685, -7207.31006, -0.989591599, -0,-0.143904909, -0, 1.00000012, -0, 0.143904924, 0, -0.989591479))
-                                end
-                            elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Captain Elephant") then
-                                if game:GetService("Workspace").Enemies:FindFirstChild("Captain Elephant") then
-                                    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                        if v.Name == "Captain Elephant" then
-                                            repeat
-                                                task.wait()
-                                                StartMagnet = true
-                                                FastAttack = true
-                                                if _G.AutoHaki then
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                    end
-                                                end
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                    task.wait()
-                                                    EquipWeapon(_G.SelectWeapon)
-                                                end
-                                                PosMon = v.HumanoidRootPart.CFrame
-                                                if not _G.FastAttack then
-                                                    game:GetService 'VirtualUser':CaptureController()
-                                                    game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                end
-                                                v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                v.Humanoid.JumpPower = 0
-                                                v.Humanoid.WalkSpeed = 0
-                                                v.HumanoidRootPart.CanCollide = false
-                                                v.Humanoid:ChangeState(11)
-                                                v.Humanoid:ChangeState(14)
-                                                v.Humanoid:ChangeState(16)
-                                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                            until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                            StartMagnet = false
-                                                FastAttack = false
-                                        end
-                                    end
-                                else
-                                    toTarget(CFrame.new(-13485.0283, 331.709259, -8012.4873, 0.714521289,7.98849911e-08,0.69961375, -1.02065748e-07, 1, -9.94383065e-09, -0.69961375, -6.43015241e-08,0.714521289))
-                                end
-                            elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Beautiful Pirate") then
-                                if game:GetService("Workspace").Enemies:FindFirstChild("Beautiful Pirate") then
-                                    for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                        if v.Name == "Beautiful Pirate" then
-                                            repeat
-                                                task.wait()
-                                                StartMagnet = true
-                                                FastAttack = true
-                                                if _G.AutoHaki then
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                    end
-                                                end
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                    task.wait()
-                                                    EquipWeapon(_G.SelectWeapon)
-                                                end
-                                                PosMon = v.HumanoidRootPart.CFrame
-                                                if not _G.FastAttack then
-                                                    game:GetService 'VirtualUser':CaptureController()
-                                                    game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                end
-                                                v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                v.Humanoid.JumpPower = 0
-                                                v.Humanoid.WalkSpeed = 0
-                                                v.HumanoidRootPart.CanCollide = false
-                                                v.Humanoid:ChangeState(11)
-                                                v.Humanoid:ChangeState(14)
-                                                v.Humanoid:ChangeState(16)
-                                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                            until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
-                                            StartMagnet = false
-                                            FastAttack = false
-                                        end
-                                    end
-                                else
-                                    toTarget(CFrame.new(5312.3598632813, 20.141201019287, -10.158538818359))
-                                end
-                            else
-                                toTarget(CFrame.new(-11892.0703125, 930.57672119141, -8760.1591796875))
-                                if (Vector3.new(-11892.0703125, 930.57672119141, -8760.1591796875) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
-                                    wait(1.5)
-                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("HornedMan","Bet")
-                                end
-                            end
-                        end
-                    end)
-                end
-            end)                                                                                              
+                                                                                                     
     elseif World3 then
         if _G.Mode == "English" then
             page1:Label("Status : World 3")
         else
             page1:Label("สถานะ : โลก 3")
         end
-        
+        if _G.Mode == "English" then
+            page1:Toggle("Auto Rainbow Haki", _G.AutoRainbowHaki, function(value)
+                _G.AutoRainbowHaki = value
+                if value == false then
+                    task.wait()
+                    toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                    task.wait()
+                end
+                
+            end)
+        else
+            page1:Toggle("ออโต้ฮาคิสีรุ้ง", _G.AutoRainbowHaki,function(value)
+                _G.AutoRainbowHaki = value
+                    if value == false then
+                        task.wait()
+                        toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                        task.wait()
+                    end
+                end)
+            end
+                    task.spawn(function()
+                        while task.wait() do
+                            pcall(function()
+                                if _G.AutoRainbowHaki then
+                                    if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
+                                        toTarget(CFrame.new(-11892.0703125, 930.57672119141, -8760.1591796875))
+                                        if (Vector3.new(-11892.0703125, 930.57672119141, -8760.1591796875) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
+                                            wait(1.5)
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("HornedMan",
+                                                "Bet")
+                                        end
+                                    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true and string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Stone") then
+                                        if game:GetService("Workspace").Enemies:FindFirstChild("Stone") then
+                                            for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                if v.Name == "Stone" then
+                                                    repeat
+                                                        task.wait()
+                                                        StartMagnet = true
+                                                        FastAttack = true
+                                                        if _G.AutoHaki then
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                            end
+                                                        end
+                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                            task.wait()
+                                                            EquipWeapon(_G.SelectWeapon)
+                                                        end
+                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                        if not _G.FastAttack then
+                                                            game:GetService 'VirtualUser':CaptureController()
+                                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                        end
+                                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                        v.Humanoid.JumpPower = 0
+                                                        v.Humanoid.WalkSpeed = 0
+                                                        v.HumanoidRootPart.CanCollide = false
+                                                        v.Humanoid:ChangeState(11)
+                                                        v.Humanoid:ChangeState(14)
+                                                        v.Humanoid:ChangeState(16)
+                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                    until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                                    StartMagnet = false
+                                                    FastAttack = false
+                                                end
+                                            end
+                                        else
+                                            toTarget(CFrame.new(-1086.11621, 38.8425903, 6768.71436, 0.0231462717,-0.592676699,0.805107772, 2.03251839e-05, 0.805323839, 0.592835128, -0.999732077,-0.0137055516, 0.0186523199))
+                                        end
+                                    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true and string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Island Empress") then
+                                        if game:GetService("Workspace").Enemies:FindFirstChild("Island Empress") then
+                                            for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                if v.Name == "Island Empress" then
+                                                    repeat
+                                                        task.wait()
+                                                        StartMagnet = true
+                                                        FastAttack = true
+                                                        if _G.AutoHaki then
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                            end
+                                                        end
+                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                            task.wait()
+                                                            EquipWeapon(_G.SelectWeapon)
+                                                        end
+                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                        if not _G.FastAttack then
+                                                            game:GetService 'VirtualUser':CaptureController()
+                                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                        end
+                                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                        v.Humanoid.JumpPower = 0
+                                                        v.Humanoid.WalkSpeed = 0
+                                                        v.HumanoidRootPart.CanCollide = false
+                                                        v.Humanoid:ChangeState(11)
+                                                        v.Humanoid:ChangeState(14)
+                                                        v.Humanoid:ChangeState(16)
+                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                    until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                                    StartMagnet = false
+                                                    FastAttack = false
+                                                end
+                                            end
+                                        else
+                                            toTarget(CFrame.new(5713.98877, 601.922974, 202.751251, -0.101080291, -0,-0.994878292, -0, 1, -0, 0.994878292, 0, -0.101080291))
+                                        end
+                                    elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Kilo Admiral") then
+                                        if game:GetService("Workspace").Enemies:FindFirstChild("Kilo Admiral") then
+                                            for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                if v.Name == "Kilo Admiral" then
+                                                    repeat
+                                                        task.wait()
+                                                        StartMagnet = true
+                                                        FastAttack = true
+                                                        if _G.AutoHaki then
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                            end
+                                                        end
+                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                            task.wait()
+                                                            EquipWeapon(_G.SelectWeapon)
+                                                        end
+                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                        if not _G.FastAttack then
+                                                            game:GetService 'VirtualUser':CaptureController()
+                                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                        end
+                                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                        v.Humanoid.JumpPower = 0
+                                                        v.Humanoid.WalkSpeed = 0
+                                                        v.HumanoidRootPart.CanCollide = false
+                                                        v.Humanoid:ChangeState(11)
+                                                        v.Humanoid:ChangeState(14)
+                                                        v.Humanoid:ChangeState(16)
+                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                    until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                                    StartMagnet = false
+                                                    FastAttack = false
+                                                end
+                                            end
+                                        else
+                                            toTarget(CFrame.new(2877.61743, 423.558685, -7207.31006, -0.989591599, -0,-0.143904909, -0, 1.00000012, -0, 0.143904924, 0, -0.989591479))
+                                        end
+                                    elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Captain Elephant") then
+                                        if game:GetService("Workspace").Enemies:FindFirstChild("Captain Elephant") then
+                                            for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                if v.Name == "Captain Elephant" then
+                                                    repeat
+                                                        task.wait()
+                                                        StartMagnet = true
+                                                        FastAttack = true
+                                                        if _G.AutoHaki then
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                            end
+                                                        end
+                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                            task.wait()
+                                                            EquipWeapon(_G.SelectWeapon)
+                                                        end
+                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                        if not _G.FastAttack then
+                                                            game:GetService 'VirtualUser':CaptureController()
+                                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                        end
+                                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                        v.Humanoid.JumpPower = 0
+                                                        v.Humanoid.WalkSpeed = 0
+                                                        v.HumanoidRootPart.CanCollide = false
+                                                        v.Humanoid:ChangeState(11)
+                                                        v.Humanoid:ChangeState(14)
+                                                        v.Humanoid:ChangeState(16)
+                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                    until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                                    StartMagnet = false
+                                                        FastAttack = false
+                                                end
+                                            end
+                                        else
+                                            toTarget(CFrame.new(-13485.0283, 331.709259, -8012.4873, 0.714521289,7.98849911e-08,0.69961375, -1.02065748e-07, 1, -9.94383065e-09, -0.69961375, -6.43015241e-08,0.714521289))
+                                        end
+                                    elseif string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text, "Beautiful Pirate") then
+                                        if game:GetService("Workspace").Enemies:FindFirstChild("Beautiful Pirate") then
+                                            for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                if v.Name == "Beautiful Pirate" then
+                                                    repeat
+                                                        task.wait()
+                                                        StartMagnet = true
+                                                        FastAttack = true
+                                                        if _G.AutoHaki then
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                            end
+                                                        end
+                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                            task.wait()
+                                                            EquipWeapon(_G.SelectWeapon)
+                                                        end
+                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                        if not _G.FastAttack then
+                                                            game:GetService 'VirtualUser':CaptureController()
+                                                            game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                        end
+                                                        v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
+                                                        v.Humanoid.JumpPower = 0
+                                                        v.Humanoid.WalkSpeed = 0
+                                                        v.HumanoidRootPart.CanCollide = false
+                                                        v.Humanoid:ChangeState(11)
+                                                        v.Humanoid:ChangeState(14)
+                                                        v.Humanoid:ChangeState(16)
+                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                    until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
+                                                    StartMagnet = false
+                                                    FastAttack = false
+                                                end
+                                            end
+                                        else
+                                            toTarget(CFrame.new(5312.3598632813, 20.141201019287, -10.158538818359))
+                                        end
+                                    else
+                                        toTarget(CFrame.new(-11892.0703125, 930.57672119141, -8760.1591796875))
+                                        if (Vector3.new(-11892.0703125, 930.57672119141, -8760.1591796875) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 30 then
+                                            wait(1.5)
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("HornedMan","Bet")
+                                        end
+                                    end
+                                end
+                            end)
+                        end
+                    end)         
 if _G.Mode == "English" then
     page1:Toggle("Auto Ken-Haki V2", _G.AutoKenHakiV2, function(value)
         _G.AutoKenHakiV2 = value
@@ -6084,8 +6086,8 @@ else
                     end)
                 end
             end)
-
             if _G.Mode == "English" then
+                page1:Seperator("<<EVENT SEA>>")
                 page1:Toggle("Auto EventSea",  _G.AutoEvent , function(value)
                     _G.AutoEvent = value
                     if value == false then
@@ -6180,6 +6182,7 @@ else
                                 end)
                             end)
                         end
+                        if World2 or World3 then
                 page1:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
                     _G.increaseboatspeed = value
                         local vehicleSeats = {}
@@ -6255,7 +6258,9 @@ else
                         end
                     end
                 end)
+            end
                 else
+                    page1:Seperator("<<อีเว้นท์ทะเล>>")
                     page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
                         _G.AutoEvent = value
                         if value == false then
@@ -6349,6 +6354,7 @@ else
                                     end)
                                 end)
                             end
+                            if World2 or World3 then
                     page1:Toggle("เพิมความเร็วเรือ",_G.increaseboatspeed, function(value)
                         _G.increaseboatspeed = value
                         local vehicleSeats = {}
@@ -6426,10 +6432,12 @@ else
             end
         end)
     end
+    end
                 
 
     page1:Line()
 if _G.Mode == "English" then
+    page1:Seperator("<<Cursed Dual Katana>>")
     page1:Toggle("Auto Cursed Dual Katana", Auto_Cursed_Dual_Katana, function(value)
         Auto_Cursed_Dual_Katana = value
     end)
@@ -6441,6 +6449,7 @@ if _G.Mode == "English" then
         end
     end)
 else
+    page1:Seperator("<<ดาบโอเด้ง>>")
     page1:Toggle("ออโต้ดาบคู่คู่โอเด้ง", Auto_Cursed_Dual_Katana, function(value)
         Auto_Cursed_Dual_Katana = value
     end)
@@ -7220,6 +7229,7 @@ spawn(function()
     end
 if _G.Mode == "English" then
     page1:Line()
+    page1:Seperator("<<Soul Guitar>>")
     page1:Label("Fragement:5000")
     page1:Label("Bones:500")
     page1:Label("Fragement:5000")
@@ -7367,6 +7377,7 @@ if _G.Mode == "English" then
     end)
     else
         page1:Line()
+        page1:Seperator("<<กีต้าร์>>")
         page1:Label("Fragement:5000")
         page1:Label("Bones:500")
         page1:Label("Fragement:5000")
@@ -7566,57 +7577,6 @@ task.spawn(function()
     end
 end)
 
-if _G.Mode == "English" then
-    page1:Toggle("Auto CastleRaid", _G.AutoCastleRaid, function(value)
-        _G.AutoCastleRaid = value
-        if value == false then
-            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-        end
-    end)
-else
-    page1:Toggle("ออโต้ตีโจรเกาะกลาง", _G.AutoCastleRaid, function(value)
-        _G.AutoCastleRaid = value
-        if value == false then
-            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-        end
-    end)
-end 
-
-        spawn(function()
-            while wait() do
-                pcall(function()
-                    if _G.AutoCastleRaid then
-                        if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
-                            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
-                                    repeat wait()
-                                        PosMon = v.HumanoidRootPart.CFrame
-                                        EquipWeapon(_G.SelectWeapon)
-                                        v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
-                                        StartMagnet = true
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                        if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-                                            game:GetService("VirtualUser"):CaptureController()
-                                            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                        end
-                                    until not _G.AutoCastleRaid or not v.Parent or v.Humanoid.Health <= 0
-                                    StartMagnet = false
-                                end
-                            end
-                        else
-                            if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
-                                for i,v in pairs(game.ReplicatedStorage:GetChildren()) do
-                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    end
-                                end
-                            end
-                            toTarget(CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125))
-                        end
-                    end
-                end)  
-            end
-        end)
 function Elite()
         task.spawn(function()
             while task.wait() do
@@ -7761,6 +7721,7 @@ end
                 end)
             end
             if _G.Mode == "English" then
+                page1:Seperator("<<Elite Hunter>>")
                 page1:Toggle("Auto Elite Hunter Hop", _G.AutoEliteHunterHop, function(value)
                     _G.AutoEliteHunterHop = value
                     Elite()
@@ -7786,6 +7747,7 @@ end
                     end
                 end)
             else
+                page1:Seperator("<<อีลลิธ>>")
                 page1:Toggle("ออโต้นักล่าชั้นยอด", _G.AutoEliteHunter,function(value)
                     _G.AutoEliteHunter = value
                     Elite()
@@ -7794,8 +7756,61 @@ end
                         end
                     end)
                 end
+                if _G.Mode == "English" then
+                    page1:Toggle("Auto CastleRaid", _G.AutoCastleRaid, function(value)
+                        _G.AutoCastleRaid = value
+                        if value == false then
+                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                        end
+                    end)
+                else
+                    page1:Toggle("ออโต้ตีโจรเกาะกลาง", _G.AutoCastleRaid, function(value)
+                        _G.AutoCastleRaid = value
+                        if value == false then
+                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                        end
+                    end)
+                end 
+                
+                        spawn(function()
+                            while wait() do
+                                pcall(function()
+                                    if _G.AutoCastleRaid then
+                                        if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
+                                            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
+                                                    repeat wait()
+                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                        EquipWeapon(_G.SelectWeapon)
+                                                        v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
+                                                        StartMagnet = true
+                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                        if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+                                                            game:GetService("VirtualUser"):CaptureController()
+                                                            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                                                        end
+                                                    until not _G.AutoCastleRaid or not v.Parent or v.Humanoid.Health <= 0
+                                                    StartMagnet = false
+                                                end
+                                            end
+                                        else
+                                            if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
+                                                for i,v in pairs(game.ReplicatedStorage:GetChildren()) do
+                                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
+                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                    end
+                                                end
+                                            end
+                                            toTarget(CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125))
+                                        end
+                                    end
+                                end)  
+                            end
+                        end)
+
 local  GetQuestBone = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 if _G.Mode == "English" then
+    page1:Seperator("<<Bones>>")
     local count_number = 0
     local count_stack = page1:Label('Bone : ' .. count_number, true)
     spawn(function()
@@ -7873,6 +7888,7 @@ if _G.Mode == "English" then
     end)
 else
     _G.Mode = "Thai"
+    page1:Seperator("<<กระดูก>>")
     local count_number = 0
     local count_stack = page1:Label('กระดูก : ' .. count_number, true)
     spawn(function()
@@ -7958,115 +7974,8 @@ spawn(function()
         end
     end
 end)
-
-if _G.Mode == "English" then 
-    page1:Toggle("Auto Farm Boss Hallow", _G.AutoFarmBossHallow, function(value)
-        _G.AutoFarmBossHallow = value
-        if value == false then
-            task.wait()
-            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-            task.wait()
-            task.spawn(function()
-                while task.wait() do
-                    pcall(function()
-                        if _G.AutoFarmBossHallow then
-                            if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper") then
-                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                    if string.find(v.Name , "Soul Reaper") then
-                                        repeat task.wait()
-                                            StartMagnet = true
-                                            FastAttack = true
-                                            if _G.AutoHaki then
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                end
-                                            end
-                                            EquipWeapon(_G.SelectWeapon)
-                                            PosMon = v.HumanoidRootPart.CFrame
-                                            if not _G.FastAttack then
-                                                game:GetService'VirtualUser':CaptureController()
-                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                            end
-                                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
-                                            v.HumanoidRootPart.CanCollide = false
-                                            v.Humanoid:ChangeState(11)
-                                            v.Humanoid:ChangeState(14)
-                                            v.Humanoid:ChangeState(16)
-                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                        until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
-                                        StartMagnet = false
-                                        FastAttack = false
-                                    end
-                                end
-                            else
-                                toTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
-                            end
-                        end
-                    end)
-                end
-            end)
-        end
-    end)
-else
-    page1:Toggle("ออโต้ฟาร์มบอสHallow", _G.AutoFarmBossHallow,function(value)
-        _G.AutoFarmBossHallow = value
-            if value == false then
-                task.wait()
-                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                task.wait()
-                task.spawn(function()
-                    while task.wait() do
-                        pcall(function()
-                            if _G.AutoFarmBossHallow then
-                                if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper") then
-                                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                        if string.find(v.Name , "Soul Reaper") then
-                                            repeat task.wait()
-                                                StartMagnet = true
-                                                FastAttack = true
-                                                if _G.AutoHaki then
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                    end
-                                                end
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                    task.wait()
-                                                    EquipWeapon(_G.SelectWeapon)
-                                                end
-                                                PosMon = v.HumanoidRootPart.CFrame
-                                                if not _G.FastAttack then
-                                                    game:GetService'VirtualUser':CaptureController()
-                                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                end
-                                                v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                                v.Humanoid.JumpPower = 0
-                                                v.Humanoid.WalkSpeed = 0
-                                                v.HumanoidRootPart.CanCollide = false
-                                                v.Humanoid:ChangeState(11)
-                                                v.Humanoid:ChangeState(14)
-                                                v.Humanoid:ChangeState(16)
-                                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                            until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
-                                            StartMagnet = false
-                                            FastAttack = false
-                                        end
-                                    end
-                                else
-                                    toTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
-                                end
-                            end
-                        end)
-                    end
-                end)
-            end
-        end)
-    end
-            
-        
         if _G.Mode == "English" then
-            page1:Toggle("SpawnBossHallow", _G.SpawnBossHallow, function(value)
+            page1:Toggle("SpawnBoss Soul Reaper", _G.SpawnBossHallow, function(value)
                 _G.SpawnBossHallow = value
                 toTarget(CFrame.new(-8933.0537109375, 146.79251098632812, 6063.353515625))
                 if value == false then
@@ -8074,7 +7983,7 @@ else
                 end
             end)
         else
-            page1:Toggle("เสกบอสHallow", _G.SpawnBossHallow, function(value)
+            page1:Toggle("เสกบอส Soul Reaper", _G.SpawnBossHallow, function(value)
                 _G.SpawnBossHallow = value
                 toTarget(CFrame.new(-8933.0537109375, 146.79251098632812, 6063.353515625))
                 if value == false then
@@ -8084,6 +7993,7 @@ else
             end)
         end
         if _G.Mode == "English" then
+            page1:Seperator("<<DOUGH>>")  
             local MobKilledLabel = page1:Label("NeedkillMon : Loading...", true)
             spawn(function()
                 while true do
@@ -8227,6 +8137,7 @@ else
                 end)
         else
             _G.Mode = "Thai"
+            page1:Seperator("<<คาตาคุริ>>")  
             local MobKilledLabel = page1:Label("ต้องการฆ่าอีก : Loading...", true)
             spawn(function()
                 while true do
@@ -8371,9 +8282,9 @@ else
         end 
 
 if _G.Mode == "English" then
-    page1:Label("Farm Materail")
+    page1:Seperator("<<Farm Materail>>")  
 else
-    page1:Label("ฟาร์มวัสดุ")
+    page1:Seperator("<<ฟาร์มวัสดุ>>")  
 end
 if _G.Mode == "English" then
     page1:Dropdown("Select Material",AllMaterial, function(value)
@@ -8584,7 +8495,7 @@ if CustomFindFirstChild(MaterialMob) then
     end)
 end)   
 end                                                                             
-page2:Seperator("Settings")
+page2:Seperator("⚙️")
 if _G.Mode == "English"then
 local FastAttackType = {
 "Fast",
@@ -9097,7 +9008,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
     request(abcdef)
     end
-page3:Seperator("Stats")
+page3:Seperator("📊")
 local SelectStats = {
     "Melee",
     "Defense",
@@ -9200,12 +9111,10 @@ spawn(function()
     end
 end)
 if _G.Mode == "English" then
-page3:Label("Redeem Code")
 page3:Toggle("Redeem Code", _G.EnabledAutoRedeemCode, function(value)
     _G.EnabledAutoRedeemCode = value
 end)
 else
-page3:Label("ใส่โค้ด")
 page3:Toggle("ออโต้ใส่โค้ด", _G.EnabledAutoRedeemCode, function(value)
     _G.EnabledAutoRedeemCode = value
 end)
@@ -9245,10 +9154,7 @@ spawn(function()
     end
 end)
 if _G.Mode == "English" then
-    page3:Label(
-        "FightingStyle"
-    )
-
+    page3:Seperator("<<FightingStyle>>") 
     page3:Toggle("Auto God Human", _G.AutoGodHuman, function(value)
         _G.AutoGodHuman = value
         BuyGodhuman = tonumber(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true))
@@ -10083,9 +9989,8 @@ if _G.Mode == "English" then
     end)
 else
     _G.Mode = "Thai"
-    page3:Label("สไตล์การต่อสู้")
-    page3:Toggle("ออโต้หมัดก็อตฮิวแมน", _G.AutoGodHuman,
-        function(value)
+    page3:Seperator("<<สไตล์การต่อสู้>>") 
+    page3:Toggle("ออโต้หมัดก็อตฮิวแมน", _G.AutoGodHuman,function(value)
             _G.AutoGodHuman = value
             BuyGodhuman = tonumber(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true))
             if BuyGodhuman then
@@ -11856,7 +11761,7 @@ else
         end)
     end
 
-page4:Seperator("Teleport")
+page4:Seperator("🚀")
 
 if _G.Mode == "English" then
     page4:Button("Teleport to World 1", function(value)
@@ -12253,7 +12158,11 @@ toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 end)
 end
 
-
+if _G.Mode == "English" then
+    page1:Seperator("<<Observation Hki>>") 
+else
+    page1:Seperator("<<ฮาคิสังเกต>>") 
+end
 local ObservationRange = page1:Label("...")
 spawn(function()
         while wait() do
@@ -12412,6 +12321,7 @@ spawn(function()
             end)
         end)
 page1:Line()
+page1:Seperator("<<Boss>>") 
 local Boss = {}
 local BossName = page1:Dropdown("Select Boss",Boss, function(value)
 _G.SelectBoss = value
@@ -12550,8 +12460,56 @@ local SharkComplete = false
 local DeathComplete = false
 local GodComplete = false
 
-page5:Seperator("Items")
-
+page5:Seperator("💼")
+    page5:Toggle("Auto Hallow Scythe", _G.AutoFarmBossHallow, function(value)
+        _G.AutoFarmBossHallow = value
+        if value == false then
+            task.wait()
+            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+            task.wait()
+            task.spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        if _G.AutoFarmBossHallow then
+                            if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper") then
+                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                    if string.find(v.Name , "Soul Reaper") then
+                                        repeat task.wait()
+                                            StartMagnet = true
+                                            FastAttack = true
+                                            if _G.AutoHaki then
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                end
+                                            end
+                                            EquipWeapon(_G.SelectWeapon)
+                                            PosMon = v.HumanoidRootPart.CFrame
+                                            if not _G.FastAttack then
+                                                game:GetService'VirtualUser':CaptureController()
+                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                            end
+                                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                            v.Humanoid.JumpPower = 0
+                                            v.Humanoid.WalkSpeed = 0
+                                            v.HumanoidRootPart.CanCollide = false
+                                            v.Humanoid:ChangeState(11)
+                                            v.Humanoid:ChangeState(14)
+                                            v.Humanoid:ChangeState(16)
+                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                        until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
+                                        StartMagnet = false
+                                        FastAttack = false
+                                    end
+                                end
+                            else
+                                toTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+    end)
 page5:Toggle("Auto Buddy Swords", _G.AutoBuddySwords, function(value)
 _G.AutoBuddySwords = value
 if value == false then
@@ -13541,7 +13499,7 @@ end
 local function inmyself(name)
 	return game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(name) or game:GetService("Players").LocalPlayer.Character:FindFirstChild(name);
 end
-SwordListFarmComplete = {};
+page6:Seperator("✨")
 if _G.Mode == "English" then
 _G.MobHealth = 30
 page6:Toggle("Auto Fruit Mastery", _G.AutoFarmFruitMastery, function(value)
@@ -13644,7 +13602,7 @@ if _G.AutoFarmFruitMastery then
 end
 end
 end)
-page7:Seperator("DevilFruit")
+page7:Seperator("🍈")
 if _G.Mode == "English" then
 page7:Toggle("Auto Random Fruits", _G.AutoBuyRandomFruits, function(value)
 _G.AutoBuyRandomFruits = value
@@ -13890,7 +13848,7 @@ local SelectRaids = {
 "Bird: Phoenix",
 "Dough"
 }
-page8:Seperator("Raids")
+page8:Seperator("⚔️")
 if _G.Mode == "English" then
 page8:Dropdown("Select Raids",SelectRaids, function(value)
     _G.SelectRaids = value
@@ -14095,7 +14053,7 @@ local getplayers = {}
 local getitems = {}
 local getweb = {}
 if _G.Mode == "English" then
-page8:Label("PVP")
+    page8:Seperator("<<PVP>>")
 do
     for i, v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
         if v.Name ~= plr.Name then
@@ -14158,7 +14116,7 @@ page8:Toggle("Aimbot Skill", false, function(value)
     Skillaimbot = value
 end)
 else
-page8:Label("ต่อสู้")
+page8:Seperator("<<ต่อสู้>>")
 do
     for i, v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
         if v.Name ~= plr.Name then
@@ -14288,7 +14246,7 @@ game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun].RemoteFunc
 end
 end)
 if _G.Mode == "English" then
-page8:Label("ESP")
+page8:Seperator("<<ESP>>")
 page8:Toggle("ESPPlayer", _G.ESPPlayer, function(value)
 ESPPlayer = value
 while ESPPlayer do
@@ -14332,7 +14290,7 @@ while IslandESP do
 end
 end)
 else
-page8:Label("มองทะลุ")
+page8:Seperator("<<มองทะลุ>>")
 page8:Toggle("มองทะลุหาเพลย์เยอร์", _G.ESPPlayer, function(value)
 ESPPlayer = value
 while ESPPlayer do
@@ -14738,7 +14696,7 @@ pcall(function()
 end)
 end
 end
-page9:Seperator("MirageIsland")
+page9:Seperator("🏝️")
 local FM = page9:Label('...')
 local Mirragecheck = page9:Label('...')
 
@@ -15071,7 +15029,7 @@ page9:Toggle("ดูดวงจันทร์", _G.LockMoon , function(value)
     LockMoon()
 end)
 end
-page10:Seperator("RaceV4")
+page10:Seperator("🐰")
 if _G.Mode == "English" then
 page10:Toggle("Auto Active RaceV3",_G.AutoActiveRace,function(value)  
     _G.AutoActiveRace = value
@@ -15221,10 +15179,10 @@ page10:Button("เทเลพอร์ตไปประตูเผ่าส�
 end)
 end
 if _G.Mode == "English" then
-    page10:Label("Auto Trials")
+page10:Seperator("<<Auto Trials>>")
 else
 _G.Mode = "Thai"
-page10:Label("ออโต้ผ่านด่าน")
+page10:Seperator("<<ออโต้ผ่านด่าน>>")
 end
 if _G.Mode == "English" then
     page10:Button("Auto Complete Angel Trial", function(t)
@@ -15261,7 +15219,7 @@ page10:Button("เทเลพอร์ตออกจากสนามปร�
     toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
 end)
 end
-page11:Seperator("Shop")
+page11:Seperator("🛒")
 
 if _G.Mode == "English" then
     page11:Label("Auto Buy")
@@ -15384,10 +15342,10 @@ local args = {
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end
 if _G.Mode == "English" then
-page11:Label("Fragment")
+    page11:Seperator("<<Fragment>>")
 else
 _G.Mode = "Thai"
-page11:Label("เงินม่วง")
+page11:Seperator("<<เงินม่วง>>")
 end
 page11:Button("Refund Stat [2,500F]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Refund", "1")
@@ -15398,10 +15356,10 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardRewa
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "2")
 end)
 if _G.Mode == "English" then
-page11:Label("Buy Abilities")
+page11:Seperator("<<Abilities>>")
 else
 _G.Mode = "Thai"
-page11:Label("ความสามารถ")
+page11:Seperator("<<ทักษะ>>")
 end
 page11:Button("Haki [25,00$]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Buso")
@@ -15415,7 +15373,11 @@ end)
 page11:Button("KenHaki [750,000$]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk", "Buy")
 end)
-page11:Label("Auto Buy Fighting Style")
+if _G.Mode == "English" then
+page11:Seperator("<<Auto Buy Fighting Style>>")
+else
+    page11:Seperator("<<สไตล์การต่อสู้>>")
+end
 page11:Button("Black Leg [150,000$]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
 end)
@@ -15452,9 +15414,9 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
 end)
 if _G.Mode == "English" then
-page11:Label("Sword")
+page11:Seperator("<<Sword>>")
 else
-page11:Label("ดาบ")
+page11:Seperator("<<ดาบ>>")
 end
 page11:Button("Katana [1,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Katana")
@@ -15484,9 +15446,9 @@ page11:Button("Soul Cane [750,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Soul Cane")
 end)
 if _G.Mode == "English" then
-page11:Label("Gun")
+page11:Seperator("<<Gun>>")
 else
-page11:Label("ปืน")
+page11:Seperator("<<ปืน>>")
 end
 page11:Button("Slingshot [5,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Slingshot")
@@ -15508,9 +15470,9 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardRewa
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Slingshot", "2")
 end)
 if _G.Mode == "English" then
-page11:Label("Accessory")
+page11:Seperator("<<Accessory>>")
 else
-page11:Label("อุปกรณ์เสริม")
+page11:Seperator("<<อุปกรณ์เสริม>>")
 end
 page11:Button("Black Cape [50,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Black Cape")
@@ -15521,7 +15483,7 @@ end)
 page11:Button("Swordsman Hat [150,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Swordsman Hat")
 end)
-page12:Seperator("Misc")
+page12:Seperator("🧍")
 if _G.Mode == "English" then
 local TPS = game:GetService("TeleportService")
 local LP = game:GetService("Players").LocalPlayer
@@ -15798,6 +15760,7 @@ end)
 end
 
 if _G.Mode == "English" then
+page12:Seperator("<<Change Server>>")
 page12:Button("Hop Little Player Server", function()
     Teleport()
 end)
@@ -15810,6 +15773,7 @@ page12:Button("Rejoin", function()
     local p = game.Players.LocalPlayer
     ts:Teleport(game.PlaceId, p)
 end)
+page12:Line()
 page12:Button("Kaitun Cap", function()
 kaituncap()
 end)
@@ -15823,6 +15787,7 @@ page12:Button("Show Awakened Skill", function()
     end)
 else
 _G.Mode = "Thai"
+page12:Seperator("<<เปลี่ยนเซิฟเวอร์>>")
 page12:Button("เปลี่ยนเซิฟเวอร์คนน้อย", function()
     Teleport()
 end)
@@ -15834,6 +15799,7 @@ page12:Button("รีเซิฟเวอร์", function()
     local p = game.Players.LocalPlayer
     ts:Teleport(game.PlaceId, p)
 end)
+page12:Line()
 page12:Button("ถ่ายภาพไก่ตัน", function()
     kaituncap()
 end)
@@ -16639,8 +16605,8 @@ end)
 page12:Seperator("Quest")
 
 local Bartilo_Quest = page12:Label("❌: Bartilo Quest")
-local Don_Swan_Quest = page12:Label("❌: Don Swan Quest")
-local Kill_Don_Swan = page12:Label("❌: Kill Don Swan")
+--[[local Don_Swan_Quest = page12:Label("❌: Don Swan Quest")
+local Kill_Don_Swan = page12:Label("❌: Kill Don Swan")]]
 
 spawn(function()
 while task.wait() do
@@ -16648,15 +16614,15 @@ while task.wait() do
         Bartilo_Quest:Set("✅: Bartilo Quest")
     end
 
-    if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetUnlockables").FlamingoAccess == nil then
-        --Nothing
+   --[[ if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("GetUnlockables").FlamingoAccess == nil then
+       print(1)
     else
         Don_Swan_Quest:Set("✅: Don Swan Quest")
-    end
+    end]]
 
-    if game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("ZQuestProgress", "Check") == 1 then
+    --[[if game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("ZQuestProgress", "Check") == 1 then
         Kill_Don_Swan:Set("✅: Kill Don Swan")
-    end
+    end]]
 end
 end)
 
