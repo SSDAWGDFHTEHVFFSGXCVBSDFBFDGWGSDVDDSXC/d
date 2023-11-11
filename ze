@@ -3461,7 +3461,7 @@ local Library = Update:Window("Vector Hub","",Enum.KeyCode.F1);
     local page11 = Library:Tab("Shop","rbxassetid://")
     local page12 = Library:Tab("Misc","rbxassetid://")
 
-page1:Seperator("🏚️")
+
 Time = page1:Label("..")
 
 function UpdateTime()
@@ -8563,7 +8563,7 @@ if CustomFindFirstChild(MaterialMob) then
     end)
 end)   
 end                                                                             
-page2:Seperator("⚙️")
+
 if _G.Mode == "English"then
 local FastAttackType = {
 "Fast",
@@ -8889,7 +8889,7 @@ page2:Toggle("หยุดการสั่นของกล้อง",true,fu
     CameraShaker()
 end)
 end
-page3:Seperator("📊")
+
 local SelectStats = {
     "Melee",
     "Defense",
@@ -11648,7 +11648,7 @@ else
         end)
     end
 
-page4:Seperator("🚀")
+
 
 if _G.Mode == "English" then
     page4:Button("Teleport to World 1", function(value)
@@ -12342,7 +12342,7 @@ local SharkComplete = false
 local DeathComplete = false
 local GodComplete = false
 
-page5:Seperator("💼")
+
 
 page5:Toggle("Auto Buddy Swords", _G.AutoBuddySwords, function(value)
 _G.AutoBuddySwords = value
@@ -13437,7 +13437,7 @@ end
 end
 end)
 if _G.Mode == "English" then
-page7:Seperator("🍈")
+
 
 page7:Toggle("Auto Random Fruits", _G.AutoBuyRandomFruits, function(value)
 _G.AutoBuyRandomFruits = value
@@ -13455,7 +13455,7 @@ game.Players.localPlayer.PlayerGui.Main.FruitShop.Visible = true
 end)
 else
 _G.Mode = "Thai"
-page7:Seperator("🍈")
+
 
 page7:Toggle("ออโต้สุ่มผลปีศาจ", _G.AutoBuyRandomFruits,function(value)
     _G.AutoBuyRandomFruits = value
@@ -13686,7 +13686,7 @@ local SelectRaids = {
 "Dough"
 }
 if _G.Mode == "English" then
-page8:Seperator("⚔️")
+
 page8:Dropdown("Select Raids",SelectRaids, function(value)
     _G.SelectRaids = value
 end)
@@ -13712,7 +13712,7 @@ page8:Toggle("Auto Awakened", _G.AutoAwakened, function(value)
 end)
 else
 _G.Mode = "Thai"
-page8:Seperator("⚔️")
+
 page8:Dropdown("เลือกดันเจี้ยน",SelectRaids, function(value)
     _G.SelectRaids = value
 end)
@@ -14534,12 +14534,7 @@ pcall(function()
 end)
 end
 end
-if _G.Mode == "English" then
-page9:Seperator("🏝️")
-else
-_G.Mode = "Thai"
-page9:Seperator("🏝️")
-end
+
 local FM = page9:Label('...')
 local Mirragecheck = page9:Label('...')
 
@@ -15054,7 +15049,7 @@ local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
 request(abcdef)
 end
 
-page10:Seperator("🐰")
+
 if _G.Mode == "English" then
 page10:Toggle("Auto Active RaceV3",_G.AutoActiveRace,function(value)  
     _G.AutoActiveRace = value
@@ -15244,7 +15239,7 @@ page9:Button("เทเลพอร์ตออกจากสนามประ
     toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
 end)
 end
-page11:Seperator("🛒")
+
 
 if _G.Mode == "English" then
     page11:Label("Auto Buy")
@@ -15505,7 +15500,7 @@ page11:Button("Swordsman Hat [150,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Swordsman Hat")
 end)
 if _G.Mode == "English" then
-page12:Seperator("🧍")
+
 local TPS = game:GetService("TeleportService")
 local LP = game:GetService("Players").LocalPlayer
 
@@ -15532,7 +15527,7 @@ else
 _G.Mode = "Thai"
 local TPS = game:GetService("TeleportService")
 local LP = game:GetService("Players").LocalPlayer
-page12:Seperator("🧍")
+
  page12:Textbox("JobID","",function(x)
 JobId_Textbox = x
 end)
@@ -16560,7 +16555,7 @@ page12:Label("Level : "..game.Players.localPlayer.Data.Level.Value)
 
 page12:Label("Bounty : "..game:GetService("Players").LocalPlayer.leaderstats["Bounty/Honor"].Value)
 
-page12:Seperator("Sword")
+
 
 local Saber = page12:Label("❌: Saber")
 local Rengoku = page12:Label("❌: Rengoku")
@@ -16620,7 +16615,6 @@ while task.wait() do
 end
 end)
 
-page12:Seperator("Quest")
 
 local Bartilo_Quest = page12:Label("❌: Bartilo Quest")
 local Don_Swan_Quest = page12:Label("❌: Don Swan Quest")
@@ -16644,7 +16638,7 @@ while task.wait() do
 end
 end)
 
-page12:Seperator("Sword Legendary")
+
 
 local Shisui = page12:Label("❌: Shisui")
 local Saddi = page12:Label("❌: Saddi")
@@ -16672,7 +16666,7 @@ while task.wait() do
 end
 end)
 
-page12:Seperator("Melee")
+
 
 local Superhuman = page12:Label("❌: Superhuman")
 local Death_Step = page12:Label("❌: Death Step")
@@ -16701,7 +16695,7 @@ while task.wait() do
 end
 end)
 
-page12:Seperator("Gun")
+
 
 local Kabu_cha = page12:Label("❌: Kabucha")
 local Acidum_Rifle = page12:Label("❌: Acidum Rifle")
@@ -16725,7 +16719,7 @@ while task.wait() do
 end
 end)
 
-page12:Seperator("Accessory")
+
 
 local Dark_Coat = page12:Label("❌: Dark Coat")
 local Ghoul_Mask = page12:Label("❌: Ghoul Mask")
