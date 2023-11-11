@@ -1,4 +1,4 @@
-print(213)
+print(69)
 if not game:IsLoaded() then
     local GameLoadGui = Instance.new("Message", workspace);
     GameLoadGui.Text = 'Wait Game Loading';
@@ -229,15 +229,13 @@ function UnEquipWeapon(Weapon)
         _G.NotAutoEquip = false
     end
 end
-
-function EquipWeapon(ToolSe)
-    if not _G.NotAutoEquip then
-        if game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe) then
-            Tool = game.Players.LocalPlayer.Backpack:FindFirstChild(ToolSe)
-            wait(.1)
-            game.Players.LocalPlayer.Character.Humanoid:EquipTool(Tool)
-        end
-    end
+function EquipWeapon(Tool)
+	pcall(function()
+		if game.Players.LocalPlayer.Backpack:FindFirstChild(Tool) then 
+			local ToolHumanoid = game.Players.LocalPlayer.Backpack:FindFirstChild(Tool) 
+			game.Players.LocalPlayer.Character.Humanoid:EquipTool(ToolHumanoid) 
+		end
+	end)
 end
 
 function EquipWeaponSword()
@@ -8539,7 +8537,9 @@ end
 end
 end)()
 _G.FastType = "Fast"
-
+if SelectWeapon == nil then
+    SelectWeapon = "Melee"
+end
 Weapon = {
 "Melee",
 "Sword",
@@ -8577,14 +8577,6 @@ pcall(function()
     elseif SelectWeapon == "Fruit" then
         for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
             if v.ToolTip == "Blox Fruit" then
-                if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
-                    _G.SelectWeapon = v.Name
-                end
-            end
-        end
-    else
-        for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-            if v.ToolTip == "Melee" then
                 if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
                     _G.SelectWeapon = v.Name
                 end
