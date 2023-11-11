@@ -1,4 +1,4 @@
-print("ควย")
+print("ลอง")
 --Config
 _G.SelectWeapon = nil
 SelectWeapon = nil
@@ -3421,73 +3421,17 @@ elseif LevelFarm == 45 then
     VectorMon = CFrame.new(-16780.2383, 82.1389999, 1033.18713, -0.906431854, 1.29724e-08, 0.422352165, 1.32806277e-09, 1, -2.7864429e-08, -0.422352165, -2.46962948e-08, -0.906431854)
 
     CFrameQuest = CFrame.new(-16541.0215, 54.770813, 1051.46118, 0.0410757065, -0, -0.999156058, 0, 1, -0, 0.999156058, 0, 0.0410757065)
-    VectorQuest = Vector3.new(-16541.0215, 54.770813, 1051.46118, 0.0410757065, -0, -0.999156058, 0, 1, -0, 0.999156058, 0, 0.0410757065)
-
-    
-end
-end
-end
-if getgenv().Color == nil then
-    getgenv().Color = Color3.fromRGB(255,255,255)
-    if getgenv().ColorTog == nil then
-        getgenv().ColorTog = Color3.fromRGB(0,255,0)
-        end
+    VectorQuest = Vector3.new(-16541.0215, 54.770813, 1051.46118, 0.0410757065, -0, -0.999156058, 0, 1, -0, 0.999156058, 0, 0.0410757065)  
+         end
+    end
 end
 
-
-spawn(function()
-        while wait() do
-            pcall(function()
-                wait(0.1) 
-                game:GetService('TweenService'):Create(
-                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(255, 0, 0)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(255, 155, 0)} 
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(255, 255, 0)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(0, 255, 0)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(0, 255, 255)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(0, 155, 255)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(255, 0, 255)}
-                ):Play() 
-                wait(.5)            
-                game:GetService('TweenService'):Create(
-                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                    {TextColor3 = Color3.fromRGB(255, 0, 155)}
-                ):Play() 
-                wait(.5)
-            end)
-        end
-    end)
 --[[page/Tab]]
     local Update =  loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Tur")()
     local Library = Update:Window("Vector Hub","",Enum.KeyCode.F1);
     local page1 = Library:Tab("General","rbxassetid://11446900930")
     local page2 = Library:Tab("Setting","rbxassetid://11446835336")
-    local page3 = Library:Tab("Stats","rbxassetid://11447069304")
+    local page3 = Library:Tab("Stats","rbxassetid://7040410130")
     local page4 = Library:Tab("Teleport","rbxassetid://6035190846")
     local page5 = Library:Tab("Item","rbxassetid://12499842920")
     local page6 = Library:Tab("Mastery","rbxassetid://11717242503")
@@ -3498,7 +3442,7 @@ spawn(function()
     local page11 = Library:Tab("Shop","rbxassetid://6031265976")
     local page12 = Library:Tab("Misc","rbxassetid://11447063791")
 
-page1:Seperator("🏚️")
+page1:Seperator("Main")
 Time = page1:Label("..")
 
 function UpdateTime()
@@ -3566,17 +3510,6 @@ if _G.Mode == "English" then
             end)
             end)
         end
-if _G.Mode == "English" then
-    page1:Label("Join My Discord For More News!")
-        page1:Button("Copy Discord Link",function()
-         setclipboard("https://discord.gg/977JQXX82w")
-         end)
-        else
-            page1:Label("เข้าดิสคอร์ดเพื่อข่าวสารต่างๆ")
-            page1:Button("ก็อปปี้ลิ้งดิสคอร์ด",function()
-             setclipboard("https://discord.gg/977JQXX82w")
-             end)
-        end 
 if _G.Mode == "English" then
 page1:Toggle("Auto Farm Nearest", _G.NeareastFarm, function(value)
     _G.NeareastFarm = value
@@ -3667,7 +3600,17 @@ page1:Button("หยุดเทเลพอร์ต", function(value)
     toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 end)
 end
-
+if _G.Mode == "English" then
+    page1:Label("Join My Discord For More News!")
+        page1:Button("Copy Discord Link",function()
+         setclipboard("https://discord.gg/977JQXX82w")
+         end)
+        else
+            page1:Label("เข้าดิสคอร์ดเพื่อข่าวสารต่างๆ")
+            page1:Button("ก็อปปี้ลิ้งดิสคอร์ด",function()
+             setclipboard("https://discord.gg/977JQXX82w")
+             end)
+        end 
 posrandom = 0
 randomposenelfastfarm = 0
 function AutoFarmLevel()
@@ -8619,7 +8562,7 @@ if CustomFindFirstChild(MaterialMob) then
     end)
 end)   
 end                                                                             
-page2:Seperator("⚙️")
+page2:Seperator("Settings")
 if _G.Mode == "English"then
 local FastAttackType = {
 "Fast",
@@ -8943,7 +8886,188 @@ page2:Toggle("หยุดการสั่นของกล้อง",true,fu
     CameraShaker()
 end)
 end
-page3:Seperator("📊")
+if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+    if World3 then
+    local Moon = {
+        ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
+        ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
+        ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌗
+        ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
+        ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
+        ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
+        ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
+        ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
+    };
+    for i, v in pairs(Moon) do
+        if game:GetService("Lighting").Sky.MoonTextureId == v then
+            MoonPercent = i / 8 * 100
+        end
+    end
+    
+    for i, v in pairs(game.Players:GetPlayers()) do
+        PlayersMin = i
+    end
+    
+    if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
+        MoonIcon = '🌔'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
+        MoonIcon = '🌓'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
+        MoonIcon = '🌒'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
+        MoonIcon = '🌑'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
+        MoonIcon = '🌖'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
+        MoonIcon = '🌕'
+    end
+    
+    
+    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+        MirageMessage = '```Mirage is spawing : 🟢```'
+    else
+        MirageMessage = '```Mirage isn\'t spawn : ❌```'
+    end
+    
+    MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
+    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
+        '\'' .. tostring(game.JobId) .. '\'' .. ')'
+    
+    
+    local url = "https://discord.com/api/webhooks/1159506639095869600/1N9kghTBEkvkDlPyiVkE1SVW02HMAzgd80BKwcB9R-mqbdrdh_g4A0Lc2dovUGH-Olqu"                                                                                                                
+    local data = {
+        ["username"] = 'Vector Hub',                                                                                                                                                                                                           
+        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
+        ["embeds"] = {
+            {
+                ["description"] = "**__Mirage Webhook__**",
+                ["color"] = tonumber(0x0000FF), -- color id		#
+                ["type"] = "rich",
+                ["fields"] = {
+                    {
+                        ["name"] = "[👥] Players Active",
+                        ["value"] = '```' .. tostring(PlayersMin) .. '/12```'
+                    },
+                    {
+                        ["name"] = "[📃] JobID",
+                        ["value"] = '```' .. tostring(game.JobId) .. '```'
+                    },
+                    {
+                        ["name"] = "[📁] Join Server",
+                        ["value"] = '```' .. JoinServer .. '```',
+                    },
+                    {
+                        ["name"] = "[🌲] Mirage Check",
+                        ["value"] = MirageMessage,
+                        ["inline"] = true
+                    }
+                },
+                ["footer"] = {
+                    ["text"] = "Webhook Vector Hub", 
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = { ["content-type"] = "application/json" }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+    request(abcdef)
+    end
+    end
+    
+    if World3 then
+    local Moon = {
+        ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
+        ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
+        ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌘
+        ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
+        ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
+        ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
+        ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
+        ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
+    };
+    for i, v in pairs(Moon) do
+        if game:GetService("Lighting").Sky.MoonTextureId == v then
+            MoonPercent = i / 8 * 100
+        end
+    end
+    
+    for i, v in pairs(game.Players:GetPlayers()) do
+        PlayersMin = i
+    end
+    
+    if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
+        MoonIcon = '🌔'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
+        MoonIcon = '🌓'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
+        MoonIcon = '🌒'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
+        MoonIcon = '🌑'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
+        MoonIcon = '🌖'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
+        MoonIcon = '🌕'
+    end
+    MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
+    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
+        '\'' .. tostring(game.JobId) .. '\'' .. ')'
+    
+    local url = "https://discord.com/api/webhooks/1169964976845373460/bgK2E0nFOeRwHvsZvflpVdnuF-_MV-O38vFFUF_rqDDzz5bMFyUEehUd-3nf433v_So3"                                                                                                               
+    local data = {
+        ["username"] = 'Vector Hub',                                                                                                                                                                                                          
+        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
+        ["embeds"] = {
+            {
+                ["description"] = "**__Moon__**",
+                ["color"] = tonumber(0x0000FF), 
+                ["type"] = "rich",
+                ["fields"] = {
+                    {
+                        ["name"] = "[👥] Players Active",
+                        ["value"] = '```' .. tostring(PlayersMin) .. '/12```'
+                    },
+                    {
+                        ["name"] = "[📃] JobID",
+                        ["value"] = '```' .. tostring(game.JobId) .. '```'
+                    },
+                    {
+                        ["name"] = "[📁] Join Server",
+                        ["value"] = '```' .. JoinServer .. '```',
+                    },
+                    {
+                        ["name"] = "[🕑] Moon Check",
+                        ["value"] = MoonMessage,
+                        ["inline"] = true
+                    },
+                    
+                },
+                ["footer"] = {
+                    ["text"] = "Webhook Vector Hub", 
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = { ["content-type"] = "application/json" }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+    request(abcdef)
+    end
+page3:Seperator("Stats")
 local SelectStats = {
     "Melee",
     "Defense",
@@ -11702,7 +11826,7 @@ else
         end)
     end
 
-page4:Seperator("🚀")
+page4:Seperator("Teleport")
 
 if _G.Mode == "English" then
     page4:Button("Teleport to World 1", function(value)
@@ -12396,7 +12520,7 @@ local SharkComplete = false
 local DeathComplete = false
 local GodComplete = false
 
-page5:Seperator("💼")
+page5:Seperator("Items")
 
 page5:Toggle("Auto Buddy Swords", _G.AutoBuddySwords, function(value)
 _G.AutoBuddySwords = value
@@ -13490,7 +13614,7 @@ if _G.AutoFarmFruitMastery then
 end
 end
 end)
-page7:Seperator("🍈")
+page7:Seperator("DevilFruit")
 if _G.Mode == "English" then
 page7:Toggle("Auto Random Fruits", _G.AutoBuyRandomFruits, function(value)
 _G.AutoBuyRandomFruits = value
@@ -13736,7 +13860,7 @@ local SelectRaids = {
 "Bird: Phoenix",
 "Dough"
 }
-page8:Seperator("⚔️")
+page8:Seperator("Raids")
 if _G.Mode == "English" then
 page8:Dropdown("Select Raids",SelectRaids, function(value)
     _G.SelectRaids = value
@@ -14584,7 +14708,7 @@ pcall(function()
 end)
 end
 end
-page9:Seperator("🏝️")
+page9:Seperator("MirageIsland")
 local FM = page9:Label('...')
 local Mirragecheck = page9:Label('...')
 
@@ -14917,189 +15041,7 @@ page9:Toggle("ดูดวงจันทร์", _G.LockMoon , function(value)
     LockMoon()
 end)
 end
-if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-if World3 then
-local Moon = {
-    ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
-    ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
-    ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌗
-    ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
-    ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
-    ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
-    ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
-    ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
-};
-for i, v in pairs(Moon) do
-    if game:GetService("Lighting").Sky.MoonTextureId == v then
-        MoonPercent = i / 8 * 100
-    end
-end
-
-for i, v in pairs(game.Players:GetPlayers()) do
-    PlayersMin = i
-end
-
-if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
-    MoonIcon = '🌔'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
-    MoonIcon = '🌓'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
-    MoonIcon = '🌒'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
-    MoonIcon = '🌑'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
-    MoonIcon = '🌘'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
-    MoonIcon = '🌘'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
-    MoonIcon = '🌖'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
-    MoonIcon = '🌕'
-end
-
-
-if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    MirageMessage = '```Mirage is spawing : 🟢```'
-else
-    MirageMessage = '```Mirage isn\'t spawn : ❌```'
-end
-
-MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
-JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
-    '\'' .. tostring(game.JobId) .. '\'' .. ')'
-
-
-local url = "https://discord.com/api/webhooks/1159506639095869600/1N9kghTBEkvkDlPyiVkE1SVW02HMAzgd80BKwcB9R-mqbdrdh_g4A0Lc2dovUGH-Olqu"                                                                                                                
-local data = {
-    ["username"] = 'Vector Hub',                                                                                                                                                                                                           
-    ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
-    ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
-    ["embeds"] = {
-        {
-            ["description"] = "**__Mirage Webhook__**",
-            ["color"] = tonumber(0x0000FF), -- color id		#
-            ["type"] = "rich",
-            ["fields"] = {
-                {
-                    ["name"] = "[👥] Players Active",
-                    ["value"] = '```' .. tostring(PlayersMin) .. '/12```'
-                },
-                {
-                    ["name"] = "[📃] JobID",
-                    ["value"] = '```' .. tostring(game.JobId) .. '```'
-                },
-                {
-                    ["name"] = "[📁] Join Server",
-                    ["value"] = '```' .. JoinServer .. '```',
-                },
-                {
-                    ["name"] = "[🌲] Mirage Check",
-                    ["value"] = MirageMessage,
-                    ["inline"] = true
-                }
-            },
-            ["footer"] = {
-                ["text"] = "Webhook Vector Hub", 
-            },
-            ["timestamp"] = DateTime.now():ToIsoDate(),
-        }
-    },
-}
-local newdata = game:GetService("HttpService"):JSONEncode(data)
-local headers = { ["content-type"] = "application/json" }
-request = http_request or request or HttpPost or syn.request
-local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
-request(abcdef)
-end
-end
-
-if World3 then
-local Moon = {
-    ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
-    ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
-    ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌘
-    ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
-    ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
-    ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
-    ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
-    ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
-};
-for i, v in pairs(Moon) do
-    if game:GetService("Lighting").Sky.MoonTextureId == v then
-        MoonPercent = i / 8 * 100
-    end
-end
-
-for i, v in pairs(game.Players:GetPlayers()) do
-    PlayersMin = i
-end
-
-if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
-    MoonIcon = '🌔'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
-    MoonIcon = '🌓'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
-    MoonIcon = '🌒'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
-    MoonIcon = '🌑'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
-    MoonIcon = '🌘'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
-    MoonIcon = '🌘'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
-    MoonIcon = '🌖'
-elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
-    MoonIcon = '🌕'
-end
-MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
-JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
-    '\'' .. tostring(game.JobId) .. '\'' .. ')'
-
-local url = "https://discord.com/api/webhooks/1169964976845373460/bgK2E0nFOeRwHvsZvflpVdnuF-_MV-O38vFFUF_rqDDzz5bMFyUEehUd-3nf433v_So3"                                                                                                               
-local data = {
-    ["username"] = 'Vector Hub',                                                                                                                                                                                                          
-    ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
-    ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
-    ["embeds"] = {
-        {
-            ["description"] = "**__Moon__**",
-            ["color"] = tonumber(0x0000FF), 
-            ["type"] = "rich",
-            ["fields"] = {
-                {
-                    ["name"] = "[👥] Players Active",
-                    ["value"] = '```' .. tostring(PlayersMin) .. '/12```'
-                },
-                {
-                    ["name"] = "[📃] JobID",
-                    ["value"] = '```' .. tostring(game.JobId) .. '```'
-                },
-                {
-                    ["name"] = "[📁] Join Server",
-                    ["value"] = '```' .. JoinServer .. '```',
-                },
-                {
-                    ["name"] = "[🕑] Moon Check",
-                    ["value"] = MoonMessage,
-                    ["inline"] = true
-                },
-                
-            },
-            ["footer"] = {
-                ["text"] = "Webhook Vector Hub", 
-            },
-            ["timestamp"] = DateTime.now():ToIsoDate(),
-        }
-    },
-}
-local newdata = game:GetService("HttpService"):JSONEncode(data)
-local headers = { ["content-type"] = "application/json" }
-request = http_request or request or HttpPost or syn.request
-local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
-request(abcdef)
-end
-
-page10:Seperator("🐰")
+page10:Seperator("RaceV4")
 if _G.Mode == "English" then
 page10:Toggle("Auto Active RaceV3",_G.AutoActiveRace,function(value)  
     _G.AutoActiveRace = value
@@ -15289,7 +15231,7 @@ page10:Button("เทเลพอร์ตออกจากสนามปร�
     toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
 end)
 end
-page11:Seperator("🛒")
+page11:Seperator("Shop")
 
 if _G.Mode == "English" then
     page11:Label("Auto Buy")
@@ -15549,7 +15491,7 @@ end)
 page11:Button("Swordsman Hat [150,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Swordsman Hat")
 end)
-page12:Seperator("🧍")
+page12:Seperator("Misc")
 if _G.Mode == "English" then
 local TPS = game:GetService("TeleportService")
 local LP = game:GetService("Players").LocalPlayer
