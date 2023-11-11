@@ -3787,25 +3787,8 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                         if Modstween then Modstween:Stop() end wait(.5)
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-                    elseif (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 50 then 
-                        spawn(function()
-                            if posrandom <= 1 then
-                                toTarget(CFrameMon * CFrame.new(0,10,20))
-                                posrandom = posrandom + 0.1
-                            elseif posrandom >= 1 and posrandom <= 2 then
-                                toTarget(CFrameMon * CFrame.new(20,10,0))
-                                posrandom = posrandom + 0.1
-                            elseif posrandom >= 2 and posrandom <= 3 then
-                                toTarget(CFrameMon *CFrame.new(0,10,-20))
-                                posrandom = posrandom + 0.1
-                            elseif posrandom >= 3 and posrandom <= 4  then
-                                toTarget(CFrameMon * CFrame.new(-20,10,0))
-                                posrandom = posrandom + 0.1
-                        elseif posrandom >=4 and posrandom <= 5 then
-                            toTarget(CFrameMon * CFrame.new(0,20,0))
-                            posrandom = 0
-                        end
-                    end)
+                    elseif (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+                        if Modstween then Modstween:Stop() end
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     end 
                 end
@@ -3891,6 +3874,28 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             else
                 StartMagnet = false
                 FastAttack = false
+                if game:GetService("ReplicatedStorage"):FindFirstChild(Name) then
+                    toTarget(game:GetService("ReplicatedStorage"):FindFirstChild(Name).HumanoidRootPart.CFrame * MethodFarm)
+                elseif not game:GetService("ReplicatedStorage"):FindFirstChild(Name) then
+                spawn(function()
+                    if posrandom <= 1 then
+                        two(CFrameMon * CFrame.new(0,10,20))
+                        posrandom = posrandom + 0.1
+                    elseif posrandom >= 1 and posrandom <= 2 then
+                        two(CFrameMon * CFrame.new(20,10,0))
+                        posrandom = posrandom + 0.1
+                    elseif posrandom >= 2 and posrandom <= 3 then
+                        two(CFrameMon *CFrame.new(0,10,-20))
+                        posrandom = posrandom + 0.1
+                    elseif posrandom >= 3 and posrandom <= 4  then
+                        two(CFrameMon * CFrame.new(-20,10,0))
+                        posrandom = posrandom + 0.1
+                elseif posrandom >=4 and posrandom <= 5 then
+                    two(CFrameMon * CFrame.new(0,20,0))
+                    posrandom = 0
+                end
+            end)
+        end
                 if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
                 Modstween = toTarget(CFrameMon.Position,CFrameMon)
                 if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
@@ -3905,25 +3910,8 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                     if Modstween then Modstween:Stop() end wait(.5)
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-                elseif (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 50 then 
-                    spawn(function()
-                        if posrandom <= 1 then
-                            toTarget(CFrameMon * CFrame.new(0,10,20))
-                            posrandom = posrandom + 0.1
-                        elseif posrandom >= 1 and posrandom <= 2 then
-                            toTarget(CFrameMon * CFrame.new(20,10,0))
-                            posrandom = posrandom + 0.1
-                        elseif posrandom >= 2 and posrandom <= 3 then
-                            toTarget(CFrameMon *CFrame.new(0,10,-20))
-                            posrandom = posrandom + 0.1
-                        elseif posrandom >= 3 and posrandom <= 4  then
-                            toTarget(CFrameMon * CFrame.new(-20,10,0))
-                            posrandom = posrandom + 0.1
-                    elseif posrandom >=4 and posrandom <= 5 then
-                        toTarget(CFrameMon * CFrame.new(0,20,0))
-                        posrandom = 0
-                    end
-                end)
+                elseif (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+                    if Modstween then Modstween:Stop() end
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                 end 
             end
@@ -4010,6 +3998,28 @@ else
         else
             StartMagnet = false
             FastAttack = false
+            if game:GetService("ReplicatedStorage"):FindFirstChild(Name) then
+                toTarget(game:GetService("ReplicatedStorage"):FindFirstChild(Name).HumanoidRootPart.CFrame * MethodFarm)
+            elseif not game:GetService("ReplicatedStorage"):FindFirstChild(Name) then
+            spawn(function()
+                if posrandom <= 1 then
+                    two(CFrameMon * CFrame.new(0,10,20))
+                    posrandom = posrandom + 0.1
+                elseif posrandom >= 1 and posrandom <= 2 then
+                    two(CFrameMon * CFrame.new(20,10,0))
+                    posrandom = posrandom + 0.1
+                elseif posrandom >= 2 and posrandom <= 3 then
+                    two(CFrameMon *CFrame.new(0,10,-20))
+                    posrandom = posrandom + 0.1
+                elseif posrandom >= 3 and posrandom <= 4  then
+                    two(CFrameMon * CFrame.new(-20,10,0))
+                    posrandom = posrandom + 0.1
+            elseif posrandom >=4 and posrandom <= 5 then
+                two(CFrameMon * CFrame.new(0,20,0))
+                posrandom = 0
+            end
+        end)
+    end
             if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
             Modstween = toTarget(CFrameMon.Position,CFrameMon)
             if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
@@ -4024,25 +4034,8 @@ else
             elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-            elseif (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 50 then 
-                spawn(function()
-                    if posrandom <= 1 then
-                        toTarget(CFrameMon * CFrame.new(0,10,20))
-                        posrandom = posrandom + 0.1
-                    elseif posrandom >= 1 and posrandom <= 2 then
-                        toTarget(CFrameMon * CFrame.new(20,10,0))
-                        posrandom = posrandom + 0.1
-                    elseif posrandom >= 2 and posrandom <= 3 then
-                        toTarget(CFrameMon *CFrame.new(0,10,-20))
-                        posrandom = posrandom + 0.1
-                    elseif posrandom >= 3 and posrandom <= 4  then
-                        toTarget(CFrameMon * CFrame.new(-20,10,0))
-                        posrandom = posrandom + 0.1
-                elseif posrandom >=4 and posrandom <= 5 then
-                    toTarget(CFrameMon * CFrame.new(0,20,0))
-                    posrandom = 0
-                end
-            end)
+            elseif (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then 
+                if Modstween then Modstween:Stop() end
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
             end 
         end
