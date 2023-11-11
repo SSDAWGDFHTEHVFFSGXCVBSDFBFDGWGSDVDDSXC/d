@@ -13,9 +13,9 @@ repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 repeat task.wait() until game:GetService("ReplicatedStorage").Effect.Container
 local UserInputService = game:GetService("UserInputService")
 if _G.Mode == "English" then
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "If the ui doesn't load, press run again" ,Icon = "rbxassetid://14645512457",Duration = 10})
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":If the ui doesn't load, press run again:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 else
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "ถ้าหน้าต่างโปรไม่โหลดให้กดรันซ้ำ",Icon = "rbxassetid://14645512457",Duration = 10})
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":ถ้าหน้าต่างโปรไม่โหลดให้กดรันซ้ำ:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 end
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
@@ -5963,6 +5963,7 @@ else
                                         for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                             if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
                                                 if v.Humanoid.Health > 0 then
+                                                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
                                                 repeat task.wait()
                                                     if _G.AutoEvent then
                                                         _G.FastType = "Normal"
@@ -5991,6 +5992,8 @@ else
                                                 end
                                             end
                                         end
+                                    else
+                                        game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = true 
                                 end
                             end)
                         end
@@ -6122,6 +6125,7 @@ else
                                             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                                 if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
                                                     if v.Humanoid.Health > 0 then
+                                                        game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
                                                     repeat task.wait()
                                                         if _G.AutoEvent then
                                                             _G.FastType = "Normal"
@@ -6150,6 +6154,8 @@ else
                                                     end
                                                 end
                                             end
+                                        else
+                                            game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = true
                                     end
                                 end)
                             end
@@ -12009,6 +12015,7 @@ page6:Toggle("Auto Farm Sword Mastery", _G.FarmMasterySwordList, function(x)
 		end
 	end)
 end)
+_G.MobHealth = 30
 page6:Toggle("Auto Fruit Mastery", _G.AutoFarmFruitMastery, function(value)
 _G.AutoFarmFruitMastery = value
 if value == false then
@@ -12021,70 +12028,10 @@ if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
 end)
+page6:Slider("Mob Health (%)",1,100,30,function(value)
+    _G.MobHealth = value
+    end)
 else
-    SwordListFarmComplete = {};
-page6:Toggle("ฟาร์มมาสดาบ", _G.FarmMasterySwordList, function(x)
-	_G.FarmMasterySwordList = x
-	if x == false then
-		toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-	end
-    task.spawn(function()
-		while task.wait() do
-			if _G.FarmMasterySwordList and #_G.SelectMultiSword ~= 0 then
-				for i,v in pairs(_G.SelectMultiSword) do
-					if _G.FarmMasterySwordList == false and table.find(SwordListFarmComplete,v) then
-						break;
-					end
-					if not game.Players.LocalPlayer.Backpack:FindFirstChild(v) and not game.Players.LocalPlayer.Character:FindFirstChild(v) and game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):GetState() ~= Enum.HumanoidStateType.Dead and game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health ~= 0 then
-						while _G.FarmMasterySwordList do wait()
-							if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 then repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health > 0; wait(0.2) end
-							if game.Players.LocalPlayer.Backpack:FindFirstChild(v) or game.Players.LocalPlayer.Character:FindFirstChild(v) or _G.FarmMasterySwordList == false or table.find(SwordListFarmComplete,v) then 
-								break;
-							end
-							wait(1)
-							Com("F_","StoreItem",tostring(GetFightingStyle("Sword")),inmyself(GetFightingStyle("Sword")))
-							wait(1)
-							Com("F_","LoadItem",tostring(v))
-							wait(0.5)
-							if game.Players.LocalPlayer.Backpack:FindFirstChild(v) or game.Players.LocalPlayer.Character:FindFirstChild(v) then
-								SelectWeaponInSwordList = v
-								break;
-							end
-							if CheckMasteryWeapon(v,600) == "true" or CheckMasteryWeapon(v,600) == "true UpTo" then
-								print("DONE "..v)     
-								table.insert(SwordListFarmComplete,v)
-								break;
-							end
-						end
-					end
-					wait(0.2)
-					if game.Players.LocalPlayer.Backpack:FindFirstChild(v) or game.Players.LocalPlayer.Character:FindFirstChild(v) then
-						while _G.FarmMasterySwordList do wait()
-							if table.find(SwordListFarmComplete,v) and #_G.SelectMultiSword ~= 0 and #SwordListFarmComplete ~= 0 then
-								break
-							end
-							if _G.FarmMasterySwordList == false then
-								break;
-							end
-							if game.Players.LocalPlayer.Backpack:FindFirstChild(v) or game.Players.LocalPlayer.Character:FindFirstChild(v) then
-								SelectWeaponInSwordList = v
-							end
-							CheckQuestMasteryFarm()
-							AutoFarmMasterySwordList()
-							if CheckMasteryWeapon(v,600) == "true" or CheckMasteryWeapon(v,600) == "true UpTo" then
-								print("DONE "..v)
-								table.insert(SwordListFarmComplete,v)
-								break;
-							end
-						end
-					end
-				end
-			else 
-				break;
-			end
-		end
-	end)
-end)
 page6:Toggle("ฟาร์มมาสเตอรี่ผลปีศาจ",_G.AutoFarmFruitMastery, function(value)
 _G.AutoFarmFruitMastery = value
     if value == false then
@@ -12097,11 +12044,10 @@ page6:Toggle("ฟาร์มมาสเตอรี่ปืน", _G.AutoFarmG
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
 end)
+page6:Slider("เปอร์เซ็นเลือดมอนที่จะฟาร์ม",1,100,30,function(value)
+    _G.MobHealth = value
+    end)
 end
-_G.MobHealth = 20
-page6:Slider("Mob Health (%)",1,100,20,function(value)
-_G.MobHealth = value
-end)
 
 if _G.Mode == "English" then
 page6:Label("Skill List")
@@ -14555,20 +14501,6 @@ end)
 page12:Button("ถ่ายภาพไก่ตัน", function()
     kaituncap()
 end)
-page12:Toggle("Auto Click",false,function(value)
-    _G.click = value
-        end)
-            
-        spawn(function()
-        game:GetService("RunService").RenderStepped:Connect(function()
-            if _G.click then
-                 pcall(function()
-                    game:GetService'VirtualUser':CaptureController()
-                    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
-                end)
-            end
-        end)
-    end)
 page12:Button("แสดงสกิลตื่น", function()
     local args = {
         [1] = "getAwakenedAbilities"
@@ -15087,10 +15019,45 @@ if _G.Mode == "English" then
 page12:Button("FPS Booster", function()
     FPSBOOSTER()
 end)
+page12:Toggle("Auto Click",false,function(value)
+    _G.click = value
+        end)  
+        spawn(function()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if _G.click then
+                 pcall(function()
+                    game:GetService'VirtualUser':CaptureController()
+                    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+                end)
+            end
+        end)
+    end)
 else
 page12:Button("ปรับภาพกากเพิ่ม FPS", function()
     FPSBOOSTER()
 end)
+page12:Toggle("ออโต้คลิก",false,function(value)
+    _G.click = value
+        end)  
+        spawn(function()
+        game:GetService("RunService").RenderStepped:Connect(function()
+            if _G.click then
+                 pcall(function()
+                    game:GetService'VirtualUser':CaptureController()
+                    game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+                end)
+            end
+        end)
+    end)
+end
+if _G.Mode == "English" then
+    page12:Button("FullBright", function()
+        FullBright()
+    end)
+else
+    page12:Button("แมพสว่าง", function()
+        FullBright()
+    end)
 end
 if _G.Mode == "English" then
 page12:Toggle("InfAbility", false, function(value)
@@ -15251,15 +15218,7 @@ function FullBright()
         end)
     end
     
-if _G.Mode == "English" then
-    page12:Button("FullBright", function()
-        FullBright()
-    end)
-else
-    page12:Button("แมพสว่าง", function()
-        FullBright()
-    end)
-end
+
 page12:Label("Name : "..game.Players.LocalPlayer.Name)
 
 
