@@ -1,4 +1,4 @@
-print(222222222222)
+print(123)
 --Config
 _G.SelectWeapon = nil
 SelectWeapon = nil
@@ -3485,12 +3485,12 @@ spawn(function()
 --[[page/Tab]]
     local Update =  loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Tur")()
     local Library = Update:Window("Vector Hub","",Enum.KeyCode.F1);
-    local page1 = Library:Tab("General","rbxassetid://11446825283")
+    local page1 = Library:Tab("General","rbxassetid://11446900930")
     local page2 = Library:Tab("Setting","rbxassetid://11446835336")
     local page3 = Library:Tab("Stats","rbxassetid://11447069304")
     local page4 = Library:Tab("Teleport","rbxassetid://6035190846")
     local page5 = Library:Tab("Item","rbxassetid://12499842920")
-    local page6 = Library:Tab("Mastery","rbxassetid://14002589106")
+    local page6 = Library:Tab("Mastery","rbxassetid://11717242503")
     local page7 = Library:Tab("DevilFruit","rbxassetid://130882646")
     local page8 = Library:Tab("Raid","rbxassetid://11446859498")
     local page9 = Library:Tab("Mirage","rbxassetid://12598594243")
@@ -3566,6 +3566,17 @@ if _G.Mode == "English" then
             end)
             end)
         end
+if _G.Mode == "English" then
+        Main:Label("Join My Discord For More News!")
+        Main:Button("Copy Discord Link",function()
+         setclipboard("https://discord.gg/977JQXX82w")
+         end)
+        else
+            Main:Label("เข้าดิสคอร์ดเพื่อข่าวสารต่างๆ")
+            Main:Button("ก็อปปี้ลิ้งดิสคอร์ด",function()
+             setclipboard("https://discord.gg/977JQXX82w")
+             end)
+        end 
 if _G.Mode == "English" then
 page1:Toggle("Auto Farm Nearest", _G.NeareastFarm, function(value)
     _G.NeareastFarm = value
@@ -13479,9 +13490,8 @@ if _G.AutoFarmFruitMastery then
 end
 end
 end)
-if _G.Mode == "English" then
 page7:Seperator("🍈")
-
+if _G.Mode == "English" then
 page7:Toggle("Auto Random Fruits", _G.AutoBuyRandomFruits, function(value)
 _G.AutoBuyRandomFruits = value
 end)
@@ -13498,8 +13508,6 @@ game.Players.localPlayer.PlayerGui.Main.FruitShop.Visible = true
 end)
 else
 _G.Mode = "Thai"
-page7:Seperator("🍈")
-
 page7:Toggle("ออโต้สุ่มผลปีศาจ", _G.AutoBuyRandomFruits,function(value)
     _G.AutoBuyRandomFruits = value
 end)
@@ -13728,8 +13736,8 @@ local SelectRaids = {
 "Bird: Phoenix",
 "Dough"
 }
-if _G.Mode == "English" then
 page8:Seperator("⚔️")
+if _G.Mode == "English" then
 page8:Dropdown("Select Raids",SelectRaids, function(value)
     _G.SelectRaids = value
 end)
@@ -13755,7 +13763,6 @@ page8:Toggle("Auto Awakened", _G.AutoAwakened, function(value)
 end)
 else
 _G.Mode = "Thai"
-page8:Seperator("⚔️")
 page8:Dropdown("เลือกดันเจี้ยน",SelectRaids, function(value)
     _G.SelectRaids = value
 end)
@@ -15242,43 +15249,43 @@ page10:Button("เทเลพอร์ตไปประตูเผ่าส�
 end)
 end
 if _G.Mode == "English" then
-page9:Label("Auto Trials")
+    page10:Label("Auto Trials")
 else
 _G.Mode = "Thai"
-page9:Label("ออโต้ผ่านด่าน")
+page10:Label("ออโต้ผ่านด่าน")
 end
 if _G.Mode == "English" then
-page9:Button("Auto Complete Angel Trial", function(t)
+    page10:Button("Auto Complete Angel Trial", function(t)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame
 end)
-page9:Button("Auto Complete Rabbit Trial", function(t)
+page10:Button("Auto Complete Rabbit Trial", function(t)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.MinkTrial.Ceiling.CFrame * CFrame.new(0, -5, 0)
 end)
-page9:Button("Auto Complete Cyborg Trial", function(t)
+page10:Button("Auto Complete Cyborg Trial", function(t)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 300, 0)
 end)
-page9:Button("Teleport PVP Zone", function()
+page10:Button("Teleport PVP Zone", function()
     toTarget(CFrame.new(28766.681640625, 14967.1455078125, -164.13290405273438))
 end)
-page9:Button("Teleport To Safe Zone When PVP", function()
+page10:Button("Teleport To Safe Zone When PVP", function()
     toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
 end)
 else
 _G.Mode = "Thai"
-page9:Button("ออโต้ผ่านด่านเผ่าสกาย", function(t)
+page10:Button("ออโต้ผ่านด่านเผ่าสกาย", function(t)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.Map.SkyTrial.Model.FinishPart.CFrame
 end)
-page9:Button("ออโต้ผ่านด่านเผ่ามิ้ง", function(t)
+page10:Button("ออโต้ผ่านด่านเผ่ามิ้ง", function(t)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map.MinkTrial.Ceiling
         .CFrame * CFrame.new(0, -5, 0)
 end)
-page9:Button("ออโต้ผ่านด่านเผ่าไซบอร์ก", function(t)
+page10:Button("ออโต้ผ่านด่านเผ่าไซบอร์ก", function(t)
     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 300, 0)
 end)
-page9:Button("เทเลพอร์ตไปที่สนามประลอง", function()
+page10:Button("เทเลพอร์ตไปที่สนามประลอง", function()
     toTarget(CFrame.new(28766.681640625, 14967.1455078125, -164.13290405273438))
 end)
-page9:Button("เทเลพอร์ตออกจากสนามประลอง", function()
+page10:Button("เทเลพอร์ตออกจากสนามประลอง", function()
     toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
 end)
 end
@@ -15542,8 +15549,8 @@ end)
 page11:Button("Swordsman Hat [150,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Swordsman Hat")
 end)
-if _G.Mode == "English" then
 page12:Seperator("🧍")
+if _G.Mode == "English" then
 local TPS = game:GetService("TeleportService")
 local LP = game:GetService("Players").LocalPlayer
 
@@ -15570,7 +15577,6 @@ else
 _G.Mode = "Thai"
 local TPS = game:GetService("TeleportService")
 local LP = game:GetService("Players").LocalPlayer
-page12:Seperator("🧍")
  page12:Textbox("JobID","",function(x)
 JobId_Textbox = x
 end)
