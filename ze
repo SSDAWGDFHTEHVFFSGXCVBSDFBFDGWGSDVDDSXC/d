@@ -16607,4 +16607,4 @@ while task.wait() do
     end
 end
 end)
- game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":ควย:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 3})
+print(1)
