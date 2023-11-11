@@ -1,3 +1,4 @@
+print(222222222222)
 --Config
 _G.SelectWeapon = nil
 SelectWeapon = nil
@@ -3482,7 +3483,7 @@ spawn(function()
         end
     end)
 --[[page/Tab]]
-    local Update =   loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Tur"))()
+    local Update =  loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Tur")()
     local Library = Update:Window("Vector Hub","",Enum.KeyCode.F1);
     local page1 = Library:Tab("General","rbxassetid://11446825283")
     local page2 = Library:Tab("Setting","rbxassetid://11446835336")
