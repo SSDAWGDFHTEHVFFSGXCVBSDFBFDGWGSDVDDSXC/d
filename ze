@@ -6312,8 +6312,8 @@ else
     page1:Line()
 if _G.Mode == "English" then
     page1:Toggle("Auto Cursed Dual Katana", Auto_Cursed_Dual_Katana, function(value)
-		Auto_Cursed_Dual_Katana = value
-	end)
+        Auto_Cursed_Dual_Katana = value
+    end)
     page1:Toggle("Auto Holy Torch",  _G.AutoHolyTorch, function(value)
         _G.AutoHolyTorch = value
         _G.BypassTP = false
@@ -6322,9 +6322,9 @@ if _G.Mode == "English" then
         end
     end)
 else
-    page1:Toggle("ออโต้ทำเควสดาบคู่โอเด้ง", Auto_Cursed_Dual_Katana, function(value)
-		Auto_Cursed_Dual_Katana = value
-	end)
+    page1:Toggle("ออโต้ดาบคู่คู่โอเด้ง", Auto_Cursed_Dual_Katana, function(value)
+        Auto_Cursed_Dual_Katana = value
+    end)
     page1:Toggle("ออโต้จุดโคมไฟ", _G.AutoHolyTorch, function(value)
         _G.AutoHolyTorch = value
         _G.BypassTP = false
@@ -6333,34 +6333,33 @@ else
         end
     end)
 end
-
 task.spawn(function()
     while task.wait() do
         if _G.AutoHolyTorch then
             repeat
                 toTarget(CFrame.new(-10752, 417, -9366))
                 task.wait()
-            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-10752, 417, -9366)).Magnitude <= 2
+            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-10752, 417, -9366)).Magnitude <= 10
             wait(1)
             repeat
                 toTarget(CFrame.new(-11672, 334, -9474))
                 task.wait()
-            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-11672, 334, -9474)).Magnitude <= 2
+            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-11672, 334, -9474)).Magnitude <= 10
             wait(1)
             repeat
                 toTarget(CFrame.new(-12132, 521, -10655))
                 task.wait()
-            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-12132, 521, -10655)).Magnitude <= 2
+            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-12132, 521, -10655)).Magnitude <= 10
             wait(1)
             repeat
                 toTarget(CFrame.new(-13336, 486, -6985))
                 task.wait()
-            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-13336, 486, -6985)).Magnitude <= 2
+            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-13336, 486, -6985)).Magnitude <= 10
             wait(1)
             repeat
                 toTarget(CFrame.new(-13489, 332, -7925))
                 task.wait()
-            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-13489, 332, -7925)).Magnitude <= 2
+            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-13489, 332, -7925)).Magnitude <= 10
         else
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             break
@@ -6928,10 +6927,11 @@ page1:Toggle("Tushita Quest : 2", Tushita_Quest2, function(value)
         end)
     end)
 
---[[Page_Main.Label({
-    Title = "Use Auto Buddy Sword / Self-ignite torch / Mob Aura"
-})]]
-page1:Label("")
+if _G.Mode == "English" then
+page1:Label("Use Auto Buddy Sword / Self-ignite torch / Mob Aura")
+else
+    page1:Label("ใช้ Auto Byddy Sowrd /ใช้ จุดโคมไฟ /ใช้ ออร่าม็อบ")
+end
 page1:Line()
 page1:Label("Yama Quest")
 page1:Toggle("Yama Quest : 1", YamaQuest1, function(value)
@@ -7002,7 +7002,7 @@ page1:Toggle("Yama Quest : 2", YamaQuest2, function(value)
             end
         end)
     end)
-
+if _G.Mode == "English" then
 page1:Toggle("MobAura", MobAura, function(value)
         MobAura = value
         if value == false then
@@ -7056,7 +7056,61 @@ page1:Toggle("MobAura", MobAura, function(value)
             end
         end)
     end)
-
+else
+    page1:Toggle("ออร่าม็อบ", MobAura, function(value)
+        MobAura = value
+        if value == false then
+            wait()
+            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+            wait()
+        end
+        task.spawn(function()
+            while wait() do
+                pcall(function()
+                    if MobAura then
+                        for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                            if MobAura and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
+                                repeat wait()
+                                    StartMagnet = true
+                                    FastAttack = true
+                                    if _G.AutoHaki then
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                        end
+                                    end
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                        wait()
+                                        EquipWeapon(_G.SelectWeapon)
+                                    end
+                                    PosMon = v.HumanoidRootPart.CFrame
+                                    if not _G.FastAttack then
+                                        game:GetService'VirtualUser':CaptureController()
+                                        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                    end
+                                    v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                    v.Humanoid.JumpPower = 0
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.HumanoidRootPart.CanCollide = false
+                                    v.Humanoid:ChangeState(11)
+                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                    MagnetMobAura = true
+                                    if delay then
+                                        delay(1,function()
+                                            MagnetMobAura = true
+                                        end)
+                                    end 
+                                until not MobAura or not v.Parent or v.Humanoid.Health <= 0
+                                MagnetMobAura = false
+                                FastAttack = false
+                                StartMagnet = false
+                            end
+                        end
+                    end
+                end)
+            end
+        end)
+    end)
+end
 task.spawn(function()
     while wait() do
         pcall(function()
@@ -7078,7 +7132,6 @@ task.spawn(function()
         end)
     end
 end)
-end
 end
 if _G.Mode == "English" then
     page1:Toggle("Auto CastleRaid", _G.AutoCastleRaid, function(value)
