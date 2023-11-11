@@ -1,5 +1,28 @@
 repeat wait() until game.Players.LocalPlayer
-wait(2)
+
+local placeId = game.PlaceId
+if placeId == 2753915549 then
+OldWorld = true
+elseif placeId == 4442272183 then
+NewWorld = true
+elseif placeId == 7449423635 then
+ThreeWorld = true
+else
+game.Players.LocalPlayer:Kick("..")
+end
+
+-- [Place Id Check]
+local id = game.PlaceId
+if id == 2753915549 then
+World1 = true; 
+elseif id == 4442272183 then
+World2 = true;
+elseif id == 7449423635 then
+World3 = true;
+else
+game:Shutdown()
+end;
+
 _G.AutoFarm = false
 _G.DoubleQuest = false
 _G.NeareastFarm = false
@@ -227,7 +250,7 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
-
+--[[
 repeat wait()
 if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == true then
     if _G.SelectTeam == "Pirate" then
@@ -250,19 +273,7 @@ if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPla
         mouse1click()
     end
 end
-until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-
--- [Place Id Check]
-local id = game.PlaceId
-if id == 2753915549 then
-World1 = true; 
-elseif id == 4442272183 then
-World2 = true;
-elseif id == 7449423635 then
-World3 = true;
-else
-game:Shutdown()
-end;
+until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()]]
 
 -- [Anti AFK]
 
@@ -1090,17 +1101,6 @@ return ReturnText
 else
 return "Not Have"
 end
-end
-
-local placeId = game.PlaceId
-if placeId == 2753915549 then
-OldWorld = true
-elseif placeId == 4442272183 then
-NewWorld = true
-elseif placeId == 7449423635 then
-ThreeWorld = true
-else
-game.Players.LocalPlayer:Kick("..")
 end
 
 function CheckMasteryWeapon(NameWe, MasNum)
@@ -9004,7 +9004,15 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     request(abcdef)
     end
 page3:Seperator("📊")
-page3:Dropdown("Select Stats",{"Melee","Defense","Sword","Gun","Devil Fruits"}, function(value)
+local SelectStats = {
+    "Melee",
+    "Defense",
+    "Sword",
+    "Gun",
+    "Devil Fruits"
+}
+
+page3:Dropdown("Select Stats",SelectStats, function(value)
     _G.SelectStats = value
     task.spawn(function()
         pcall(function()
