@@ -3543,14 +3543,24 @@ page1:Button("หยุดเทเลพอร์ต", function(value)
 end)
 end
 
-Random_CFrameMon = 1
+AttackRandomType_MonCFrame = 1
 spawn(function()
     while wait() do 
-        Random_CFrameMon = math.random(1,5)
-    wait(0.3)
-end
+        AttackRandomType_MonCFrame = math.random(1,5)
+        wait(0.3)
+    end
 end)
-
+if AttackRandomType_MonCFrame == 1 then
+    CFrameRandom = CFrame.new(20, 0, 0)
+elseif  AttackRandomType_MonCFrame == 2 then
+    CFrameRandom = CFrame.new(0, 0, 20)
+elseif  AttackRandomType_MonCFrame == 3 then
+    CFrameRandom = CFrame.new(-20, 0, 0)
+elseif  AttackRandomType_MonCFrame == 4 then
+    CFrameRandom = CFrame.new(0, 0, -20)
+elseif  AttackRandomType_MonCFrame == 5 then
+    CFrameRandom = CFrame.new(0, 0, 0)
+end
 function AutoFarmLevel()
 GetQuestTitle = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title
 GetQuest = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
@@ -3780,7 +3790,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     StartMagnet = false
                     FastAttack = false
                     if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
-                    Modstween = toTarget(CFrameMon.Position,CFrameMon)
+                    Modstween = toTarget(CFrameMon.Position,CFrameRandom)
                     if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
                         if Modstween then Modstween:Stop() end wait(.5)
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
@@ -3881,7 +3891,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 StartMagnet = false
                 FastAttack = false
                 if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
-                Modstween = toTarget(CFrameMon.Position,CFrameMon)
+                Modstween = toTarget(CFrameMon.Position,CFrameRandom)
                 if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
                     if Modstween then Modstween:Stop() end wait(.5)
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
@@ -3983,7 +3993,7 @@ else
             StartMagnet = false
             FastAttack = false
             if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
-            Modstween = toTarget(CFrameMon.Position,CFrameMon)
+            Modstween = toTarget(CFrameMon.Position,CFrameRandom)
             if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
