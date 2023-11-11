@@ -1,4 +1,12 @@
-repeat wait(1) until game:IsLoaded()
+repeat wait() until game.Players.LocalPlayer
+
+if not game:IsLoaded() then
+	local GameLoadGui = Instance.new("Message",workspace);
+	GameLoadGui.Text = 'Wait Game Loading';
+	game.Loaded:Wait();
+	GameLoadGui:Destroy();
+	task.wait(10);
+end;
 if game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("VVV") then game:GetService("CoreGui").RobloxGui.Modules:FindFirstChild("VVV"):Destroy() end
 local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
