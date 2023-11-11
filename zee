@@ -3426,69 +3426,76 @@ elseif LevelFarm == 45 then
 end
 end
 end
-spawn(function()
-    while wait() do
-        pcall(function()
-            wait(0.1) 
-            game:GetService('TweenService'):Create(
-                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                {TextColor3 = Color3.fromRGB(255, 0, 0)}
-            ):Play() 
-            wait(.5)            
-            game:GetService('TweenService'):Create(
-                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                {TextColor3 = Color3.fromRGB(255, 155, 0)} 
-            ):Play() 
-            wait(.5)            
-            game:GetService('TweenService'):Create(
-                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                {TextColor3 = Color3.fromRGB(255, 255, 0)}
-            ):Play() 
-            wait(.5)            
-            game:GetService('TweenService'):Create(
-                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                {TextColor3 = Color3.fromRGB(0, 255, 0)}
-            ):Play() 
-            wait(.5)            
-            game:GetService('TweenService'):Create(
-                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                {TextColor3 = Color3.fromRGB(0, 255, 255)}
-            ):Play() 
-            wait(.5)            
-            game:GetService('TweenService'):Create(
-                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                {TextColor3 = Color3.fromRGB(0, 155, 255)}
-            ):Play() 
-            wait(.5)            
-            game:GetService('TweenService'):Create(
-                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                {TextColor3 = Color3.fromRGB(255, 0, 255)}
-            ):Play() 
-            wait(.5)            
-            game:GetService('TweenService'):Create(
-                MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
-                {TextColor3 = Color3.fromRGB(255, 0, 155)}
-            ):Play() 
-            wait(.5)
-        end)
-    end
-end)
---[[page/Tab]]
-local Update =   loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Tur"))()
-local Library = Update:Window("Vector Hub","",Enum.KeyCode.F1);
+if getgenv().Color == nil then
+    getgenv().Color = Color3.fromRGB(255,255,255)
+    if getgenv().ColorTog == nil then
+        getgenv().ColorTog = Color3.fromRGB(0,255,0)
+        end
+end
 
-    local page1 = Library:Tab("General","rbxassetid://")
-    local page2 = Library:Tab("Setting","rbxassetid://")
-    local page3 = Library:Tab("Stats","rbxassetid://")
-    local page4 = Library:Tab("Teleport","rbxassetid://")
-    local page5 = Library:Tab("Item","rbxassetid://")
-    local page6 = Library:Tab("Mastery","rbxassetid://")
-    local page7 = Library:Tab("DevilFruit","rbxassetid://")
-    local page8 = Library:Tab("Raid","rbxassetid://")
-    local page9 = Library:Tab("Mirage","rbxassetid://")
-    local page10 = Library:Tab("RaceV4","rbxassetid://")
-    local page11 = Library:Tab("Shop","rbxassetid://")
-    local page12 = Library:Tab("Misc","rbxassetid://")
+
+spawn(function()
+        while wait() do
+            pcall(function()
+                wait(0.1) 
+                game:GetService('TweenService'):Create(
+                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                    {TextColor3 = Color3.fromRGB(255, 0, 0)}
+                ):Play() 
+                wait(.5)            
+                game:GetService('TweenService'):Create(
+                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                    {TextColor3 = Color3.fromRGB(255, 155, 0)} 
+                ):Play() 
+                wait(.5)            
+                game:GetService('TweenService'):Create(
+                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                    {TextColor3 = Color3.fromRGB(255, 255, 0)}
+                ):Play() 
+                wait(.5)            
+                game:GetService('TweenService'):Create(
+                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                    {TextColor3 = Color3.fromRGB(0, 255, 0)}
+                ):Play() 
+                wait(.5)            
+                game:GetService('TweenService'):Create(
+                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                    {TextColor3 = Color3.fromRGB(0, 255, 255)}
+                ):Play() 
+                wait(.5)            
+                game:GetService('TweenService'):Create(
+                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                    {TextColor3 = Color3.fromRGB(0, 155, 255)}
+                ):Play() 
+                wait(.5)            
+                game:GetService('TweenService'):Create(
+                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                    {TextColor3 = Color3.fromRGB(255, 0, 255)}
+                ):Play() 
+                wait(.5)            
+                game:GetService('TweenService'):Create(
+                    MODILEGUIPADOXHUB,TweenInfo.new(1,Enum.EasingStyle.Linear,Enum.EasingDirection.InOut),
+                    {TextColor3 = Color3.fromRGB(255, 0, 155)}
+                ):Play() 
+                wait(.5)
+            end)
+        end
+    end)
+--[[page/Tab]]
+    local Update =   loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/Tur"))()
+    local Library = Update:Window("Vector Hub","",Enum.KeyCode.F1);
+    local page1 = Library:Tab("General","rbxassetid://11446825283")
+    local page2 = Library:Tab("Setting","rbxassetid://11446835336")
+    local page3 = Library:Tab("Stats","rbxassetid://11447069304")
+    local page4 = Library:Tab("Teleport","rbxassetid://6035190846")
+    local page5 = Library:Tab("Item","rbxassetid://12499842920")
+    local page6 = Library:Tab("Mastery","rbxassetid://14002589106")
+    local page7 = Library:Tab("DevilFruit","rbxassetid://130882646")
+    local page8 = Library:Tab("Raid","rbxassetid://11446859498")
+    local page9 = Library:Tab("Mirage","rbxassetid://12598594243")
+    local page10 = Library:Tab("RaceV4","rbxassetid://7558782590")
+    local page11 = Library:Tab("Shop","rbxassetid://6031265976")
+    local page12 = Library:Tab("Misc","rbxassetid://11447063791")
 
 page1:Seperator("🏚️")
 Time = page1:Label("..")
@@ -6493,7 +6500,11 @@ else
     end)
 end
 if _G.Mode == "English" then
-    page1:Label("Fragement:5000|Bones:500|Ectoplasm:250|DarkFragment:1")
+    page1:Line()
+    page1:Label("Fragement:5000")
+    page1:Label("Bones:500")
+    page1:Label("Fragement:5000")
+    page1:Label("DarkFragment:1")
     page1:Toggle("Auto Soul Guitar", false, function(value)
             AutoSoulGuitar = value
             spawn(function()
@@ -6636,7 +6647,11 @@ if _G.Mode == "English" then
         Pray = value
     end)
     else
-        page1:Label("Fragement:5000|Bones:500|Ectoplasm:250|DarkFragment:1")
+        page1:Line()
+        page1:Label("Fragement:5000")
+        page1:Label("Bones:500")
+        page1:Label("Fragement:5000")
+        page1:Label("DarkFragment:1")
         page1:Toggle("ออโต้กีต้าร์บรู๊ค", false, function(value)
                 AutoSoulGuitar = value
                 spawn(function()
