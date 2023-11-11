@@ -1,3 +1,4 @@
+print(22)
 if not game:IsLoaded() then
     local GameLoadGui = Instance.new("Message", workspace);
     GameLoadGui.Text = 'Wait Game Loading';
@@ -3794,7 +3795,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                         if Modstween then Modstween:Stop() end wait(.5)
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
                     elseif (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude >= 1 then
-                       
+                        if Modstween then 
                         spawn(function()
                             if posrandom <= 1 then
                                 toTarget(CFrameMon * CFrame.new(0,0,35))
@@ -3813,7 +3814,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                             posrandom = 0
                         end
                     end)
-                
+                end
                        -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     end 
                 end
@@ -3914,7 +3915,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
             elseif (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude >= 1 then
-               
+                if Modstween then 
                     spawn(function()
                         if posrandom <= 1 then
                             toTarget(CFrameMon * CFrame.new(0,0,35))
@@ -3933,7 +3934,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                         posrandom = 0
                     end
                 end)
-            
+            end
                -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                 end 
             end
@@ -4035,7 +4036,7 @@ else
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
             elseif (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude >= 1 then
-               
+                if Modstween then 
                     spawn(function()
                         if posrandom <= 1 then
                             toTarget(CFrameMon * CFrame.new(0,0,35))
@@ -4054,7 +4055,7 @@ else
                         posrandom = 0
                     end
                 end)
-            
+            end
                -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
             end 
         end
@@ -4132,7 +4133,7 @@ pcall(function()
 end)
 end
 end)
-_G.DoubleQuest = true
+
 page1:Line()
 if _G.Mode == "English" then
 page1:Toggle("Auto Farm Chest", _G.AutoFarmChest, function(value)
@@ -16619,4 +16620,3 @@ while task.wait() do
     end
 end
 end)
-print(1)
