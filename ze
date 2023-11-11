@@ -288,6 +288,12 @@ pcall(function()
     --[Raids]
     _G.AutoRaids or _G.AutoNextPlace
     then
+        if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+            local Highlight = Instance.new("Highlight")
+            Highlight.FillColor = Color3.new(0, 1, 0)
+            Highlight.OutlineColor = Color3.new(0, 1, 0)
+            Highlight.Parent = game.Players.LocalPlayer.Character;
+            end
         if syn then
             setfflag("HumanoidParallelRemoveNoPhysics", "False")
             setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
@@ -3788,26 +3794,26 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                         if Modstween then Modstween:Stop() end wait(.5)
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
                     elseif (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude >= 1 then
-                        if Modstween then 
+                       
                         spawn(function()
                             if posrandom <= 1 then
-                                toTarget(CFrameMon * CFrame.new(0,10,20))
+                                toTarget(CFrameMon * CFrame.new(0,0,35))
                                 posrandom = posrandom + 0.1
                             elseif posrandom >= 1 and posrandom <= 2 then
-                                toTarget(CFrameMon * CFrame.new(20,10,0))
+                                toTarget(CFrameMon * CFrame.new(35,0,0))
                                 posrandom = posrandom + 0.1
                             elseif posrandom >= 2 and posrandom <= 3 then
-                                toTarget(CFrameMon *CFrame.new(0,10,-20))
+                                toTarget(CFrameMon *CFrame.new(0,0,-35))
                                 posrandom = posrandom + 0.1
                             elseif posrandom >= 3 and posrandom <= 4  then
-                                toTarget(CFrameMon * CFrame.new(-20,10,0))
+                                toTarget(CFrameMon * CFrame.new(-35,0,0))
                                 posrandom = posrandom + 0.1
                         elseif posrandom >=4 and posrandom <= 5 then
-                            toTarget(CFrameMon * CFrame.new(0,20,0))
+                            toTarget(CFrameMon * CFrame.new(35,0,0))
                             posrandom = 0
                         end
                     end)
-                end
+                
                        -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     end 
                 end
@@ -3908,26 +3914,26 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
             elseif (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude >= 1 then
-                if Modstween then 
-                spawn(function()
-                    if posrandom <= 1 then
-                        toTarget(CFrameMon * CFrame.new(0,10,20))
-                        posrandom = posrandom + 0.1
-                    elseif posrandom >= 1 and posrandom <= 2 then
-                        toTarget(CFrameMon * CFrame.new(20,10,0))
-                        posrandom = posrandom + 0.1
-                    elseif posrandom >= 2 and posrandom <= 3 then
-                        toTarget(CFrameMon *CFrame.new(0,10,-20))
-                        posrandom = posrandom + 0.1
-                    elseif posrandom >= 3 and posrandom <= 4  then
-                        toTarget(CFrameMon * CFrame.new(-20,10,0))
-                        posrandom = posrandom + 0.1
-                elseif posrandom >=4 and posrandom <= 5 then
-                    toTarget(CFrameMon * CFrame.new(0,20,0))
-                    posrandom = 0
-                end
-            end)
-        end
+               
+                    spawn(function()
+                        if posrandom <= 1 then
+                            toTarget(CFrameMon * CFrame.new(0,0,35))
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 1 and posrandom <= 2 then
+                            toTarget(CFrameMon * CFrame.new(35,0,0))
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 2 and posrandom <= 3 then
+                            toTarget(CFrameMon *CFrame.new(0,0,-35))
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 3 and posrandom <= 4  then
+                            toTarget(CFrameMon * CFrame.new(-35,0,0))
+                            posrandom = posrandom + 0.1
+                    elseif posrandom >=4 and posrandom <= 5 then
+                        toTarget(CFrameMon * CFrame.new(35,0,0))
+                        posrandom = 0
+                    end
+                end)
+            
                -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                 end 
             end
@@ -4029,26 +4035,26 @@ else
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
             elseif (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude >= 1 then
-                if Modstween then 
-                spawn(function()
-                    if posrandom <= 1 then
-                        toTarget(CFrameMon * CFrame.new(0,10,20))
-                        posrandom = posrandom + 0.1
-                    elseif posrandom >= 1 and posrandom <= 2 then
-                        toTarget(CFrameMon * CFrame.new(20,10,0))
-                        posrandom = posrandom + 0.1
-                    elseif posrandom >= 2 and posrandom <= 3 then
-                        toTarget(CFrameMon *CFrame.new(0,10,-20))
-                        posrandom = posrandom + 0.1
-                    elseif posrandom >= 3 and posrandom <= 4  then
-                        toTarget(CFrameMon * CFrame.new(-20,10,0))
-                        posrandom = posrandom + 0.1
-                elseif posrandom >=4 and posrandom <= 5 then
-                    toTarget(CFrameMon * CFrame.new(0,20,0))
-                    posrandom = 0
-                end
-            end)
-        end
+               
+                    spawn(function()
+                        if posrandom <= 1 then
+                            toTarget(CFrameMon * CFrame.new(0,0,35))
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 1 and posrandom <= 2 then
+                            toTarget(CFrameMon * CFrame.new(35,0,0))
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 2 and posrandom <= 3 then
+                            toTarget(CFrameMon *CFrame.new(0,0,-35))
+                            posrandom = posrandom + 0.1
+                        elseif posrandom >= 3 and posrandom <= 4  then
+                            toTarget(CFrameMon * CFrame.new(-35,0,0))
+                            posrandom = posrandom + 0.1
+                    elseif posrandom >=4 and posrandom <= 5 then
+                        toTarget(CFrameMon * CFrame.new(35,0,0))
+                        posrandom = 0
+                    end
+                end)
+            
                -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
             end 
         end
@@ -16613,3 +16619,4 @@ while task.wait() do
     end
 end
 end)
+print(1)
