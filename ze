@@ -1,4 +1,5 @@
-repeat wait() until game.Players.LocalPlayer
+print(2)
+repeat wait(1) until game.Players.LocalPlayer
 
 local placeId = game.PlaceId
 if placeId == 2753915549 then
