@@ -70,9 +70,9 @@ _G.AutoRaids = false
 _G.AutoNextPlace = false
 
 if _G.Mode == "English" then
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":If the ui doesn't load, press run again:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":Don't press and run the pro several times, it will cause a bug and cause lag:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 else
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":ถ้าหน้าต่างโปรไม่โหลดให้กดรันซ้ำ:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":อย่ากดรันโปรซ้ำหลายรอบจะเกิดบัคและทำให้แลค:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 end
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
@@ -6084,8 +6084,8 @@ else
                     end)
                 end
             end)
-
             if _G.Mode == "English" then
+                page1:Seperator("<<EVENT SEA>>")
                 page1:Toggle("Auto EventSea",  _G.AutoEvent , function(value)
                     _G.AutoEvent = value
                     if value == false then
@@ -6256,6 +6256,7 @@ else
                     end
                 end)
                 else
+                    page1:Seperator("<<อีเว้นท์ทะเล>>")
                     page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
                         _G.AutoEvent = value
                         if value == false then
@@ -6430,6 +6431,7 @@ else
 
     page1:Line()
 if _G.Mode == "English" then
+    page1:Seperator("<<Cursed Dual Katana>>")
     page1:Toggle("Auto Cursed Dual Katana", Auto_Cursed_Dual_Katana, function(value)
         Auto_Cursed_Dual_Katana = value
     end)
@@ -6441,6 +6443,7 @@ if _G.Mode == "English" then
         end
     end)
 else
+    page1:Seperator("<<ดาบโอเด้ง>>")
     page1:Toggle("ออโต้ดาบคู่คู่โอเด้ง", Auto_Cursed_Dual_Katana, function(value)
         Auto_Cursed_Dual_Katana = value
     end)
@@ -7220,6 +7223,7 @@ spawn(function()
     end
 if _G.Mode == "English" then
     page1:Line()
+    page1:Seperator("<<Soul Guitar>>")
     page1:Label("Fragement:5000")
     page1:Label("Bones:500")
     page1:Label("Fragement:5000")
@@ -7367,6 +7371,7 @@ if _G.Mode == "English" then
     end)
     else
         page1:Line()
+        page1:Seperator("<<กีต้าร์>>")
         page1:Label("Fragement:5000")
         page1:Label("Bones:500")
         page1:Label("Fragement:5000")
@@ -7566,57 +7571,6 @@ task.spawn(function()
     end
 end)
 
-if _G.Mode == "English" then
-    page1:Toggle("Auto CastleRaid", _G.AutoCastleRaid, function(value)
-        _G.AutoCastleRaid = value
-        if value == false then
-            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-        end
-    end)
-else
-    page1:Toggle("ออโต้ตีโจรเกาะกลาง", _G.AutoCastleRaid, function(value)
-        _G.AutoCastleRaid = value
-        if value == false then
-            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-        end
-    end)
-end 
-
-        spawn(function()
-            while wait() do
-                pcall(function()
-                    if _G.AutoCastleRaid then
-                        if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
-                            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
-                                    repeat wait()
-                                        PosMon = v.HumanoidRootPart.CFrame
-                                        EquipWeapon(_G.SelectWeapon)
-                                        v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
-                                        StartMagnet = true
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                        if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-                                            game:GetService("VirtualUser"):CaptureController()
-                                            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
-                                        end
-                                    until not _G.AutoCastleRaid or not v.Parent or v.Humanoid.Health <= 0
-                                    StartMagnet = false
-                                end
-                            end
-                        else
-                            if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
-                                for i,v in pairs(game.ReplicatedStorage:GetChildren()) do
-                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    end
-                                end
-                            end
-                            toTarget(CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125))
-                        end
-                    end
-                end)  
-            end
-        end)
 function Elite()
         task.spawn(function()
             while task.wait() do
@@ -7761,6 +7715,7 @@ end
                 end)
             end
             if _G.Mode == "English" then
+                page1:Seperator("<<Elite Hunter>>")
                 page1:Toggle("Auto Elite Hunter Hop", _G.AutoEliteHunterHop, function(value)
                     _G.AutoEliteHunterHop = value
                     Elite()
@@ -7786,6 +7741,7 @@ end
                     end
                 end)
             else
+                page1:Seperator("<<อีลลิธ>>")
                 page1:Toggle("ออโต้นักล่าชั้นยอด", _G.AutoEliteHunter,function(value)
                     _G.AutoEliteHunter = value
                     Elite()
@@ -7794,8 +7750,61 @@ end
                         end
                     end)
                 end
+                if _G.Mode == "English" then
+                    page1:Toggle("Auto CastleRaid", _G.AutoCastleRaid, function(value)
+                        _G.AutoCastleRaid = value
+                        if value == false then
+                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                        end
+                    end)
+                else
+                    page1:Toggle("ออโต้ตีโจรเกาะกลาง", _G.AutoCastleRaid, function(value)
+                        _G.AutoCastleRaid = value
+                        if value == false then
+                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                        end
+                    end)
+                end 
+                
+                        spawn(function()
+                            while wait() do
+                                pcall(function()
+                                    if _G.AutoCastleRaid then
+                                        if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
+                                            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                                                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
+                                                    repeat wait()
+                                                        PosMon = v.HumanoidRootPart.CFrame
+                                                        EquipWeapon(_G.SelectWeapon)
+                                                        v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
+                                                        StartMagnet = true
+                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                        if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
+                                                            game:GetService("VirtualUser"):CaptureController()
+                                                            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+                                                        end
+                                                    until not _G.AutoCastleRaid or not v.Parent or v.Humanoid.Health <= 0
+                                                    StartMagnet = false
+                                                end
+                                            end
+                                        else
+                                            if (CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125).Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 2000 then
+                                                for i,v in pairs(game.ReplicatedStorage:GetChildren()) do
+                                                    if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
+                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                    end
+                                                end
+                                            end
+                                            toTarget(CFrame.new(-5118.48682, 314.54129, -2958.64404, -0.387232125, 1.81507858e-08, 0.921982229, -7.54388907e-08, 1, -5.13709999e-08, -0.921982229, -8.94458196e-08, -0.387232125))
+                                        end
+                                    end
+                                end)  
+                            end
+                        end)
+
 local  GetQuestBone = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
 if _G.Mode == "English" then
+    page1:Seperator("<<Bones>>")
     local count_number = 0
     local count_stack = page1:Label('Bone : ' .. count_number, true)
     spawn(function()
@@ -7805,7 +7814,7 @@ if _G.Mode == "English" then
             wait(1)
         end
     end)
-    page1:Toggle("Auto Farm Bone", _G.AutoFarmBone , function(value)
+    page1:Toggle("Auto Farm Bone", _G.AutoFarmBone,function(value)
         _G.AutoFarmBone  = value
         if value == false then
             task.wait()
@@ -7815,7 +7824,7 @@ if _G.Mode == "English" then
         task.spawn(function()
             while task.wait() do
                 pcall(function()
-                    if _G.AutoFarmBone  then
+                    if _G.AutoFarmBone then
                         if GetQuestBone.Visible == false and _G.AccetpQuestBone then
                             CFrameQuestBone = CFrame.new(-9513, 172, 6079)
                             if (CFrameQuestBone.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
@@ -7823,7 +7832,6 @@ if _G.Mode == "English" then
                         else
                             toTarget(CFrameQuestBone)
                         end
-                    end
                 elseif GetQuestBone.Visible == true or not _G.AccetpQuestBone then
                         if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
                             for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -7859,6 +7867,7 @@ if _G.Mode == "English" then
                             end
                         else
                             two(CFrame.new(-9504.8564453125, 172.14292907714844, 6057.259765625))
+                            end
                         end
                     end
                 end)
@@ -7873,6 +7882,7 @@ if _G.Mode == "English" then
     end)
 else
     _G.Mode = "Thai"
+    page1:Seperator("<<กระดูก>>")
     local count_number = 0
     local count_stack = page1:Label('กระดูก : ' .. count_number, true)
     spawn(function()
@@ -7893,7 +7903,7 @@ else
         task.spawn(function()
             while task.wait() do
                 pcall(function()
-                    if _G.AutoFarmBone  then
+                    if _G.AutoFarmBone then
                         if GetQuestBone.Visible == false and _G.AccetpQuestBone then
                             CFrameQuestBone = CFrame.new(-9513, 172, 6079)
                             if (CFrameQuestBone.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
@@ -7901,7 +7911,6 @@ else
                         else
                             toTarget(CFrameQuestBone)
                         end
-                    end
                 elseif GetQuestBone.Visible == true or not _G.AccetpQuestBone then
                         if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
                             for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
@@ -7937,6 +7946,7 @@ else
                             end
                         else
                             two(CFrame.new(-9504.8564453125, 172.14292907714844, 6057.259765625))
+                            end
                         end
                     end
                 end)
@@ -7958,115 +7968,8 @@ spawn(function()
         end
     end
 end)
-
-if _G.Mode == "English" then 
-    page1:Toggle("Auto Farm Boss Hallow", _G.AutoFarmBossHallow, function(value)
-        _G.AutoFarmBossHallow = value
-        if value == false then
-            task.wait()
-            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-            task.wait()
-            task.spawn(function()
-                while task.wait() do
-                    pcall(function()
-                        if _G.AutoFarmBossHallow then
-                            if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper") then
-                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                    if string.find(v.Name , "Soul Reaper") then
-                                        repeat task.wait()
-                                            StartMagnet = true
-                                            FastAttack = true
-                                            if _G.AutoHaki then
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                end
-                                            end
-                                            EquipWeapon(_G.SelectWeapon)
-                                            PosMon = v.HumanoidRootPart.CFrame
-                                            if not _G.FastAttack then
-                                                game:GetService'VirtualUser':CaptureController()
-                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                            end
-                                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
-                                            v.HumanoidRootPart.CanCollide = false
-                                            v.Humanoid:ChangeState(11)
-                                            v.Humanoid:ChangeState(14)
-                                            v.Humanoid:ChangeState(16)
-                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                        until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
-                                        StartMagnet = false
-                                        FastAttack = false
-                                    end
-                                end
-                            else
-                                toTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
-                            end
-                        end
-                    end)
-                end
-            end)
-        end
-    end)
-else
-    page1:Toggle("ออโต้ฟาร์มบอสHallow", _G.AutoFarmBossHallow,function(value)
-        _G.AutoFarmBossHallow = value
-            if value == false then
-                task.wait()
-                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                task.wait()
-                task.spawn(function()
-                    while task.wait() do
-                        pcall(function()
-                            if _G.AutoFarmBossHallow then
-                                if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper") then
-                                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                        if string.find(v.Name , "Soul Reaper") then
-                                            repeat task.wait()
-                                                StartMagnet = true
-                                                FastAttack = true
-                                                if _G.AutoHaki then
-                                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                    end
-                                                end
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                    task.wait()
-                                                    EquipWeapon(_G.SelectWeapon)
-                                                end
-                                                PosMon = v.HumanoidRootPart.CFrame
-                                                if not _G.FastAttack then
-                                                    game:GetService'VirtualUser':CaptureController()
-                                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                end
-                                                v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                                v.Humanoid.JumpPower = 0
-                                                v.Humanoid.WalkSpeed = 0
-                                                v.HumanoidRootPart.CanCollide = false
-                                                v.Humanoid:ChangeState(11)
-                                                v.Humanoid:ChangeState(14)
-                                                v.Humanoid:ChangeState(16)
-                                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                            until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
-                                            StartMagnet = false
-                                            FastAttack = false
-                                        end
-                                    end
-                                else
-                                    toTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
-                                end
-                            end
-                        end)
-                    end
-                end)
-            end
-        end)
-    end
-            
-        
         if _G.Mode == "English" then
-            page1:Toggle("SpawnBossHallow", _G.SpawnBossHallow, function(value)
+            page1:Toggle("SpawnBoss Soul Reaper", _G.SpawnBossHallow, function(value)
                 _G.SpawnBossHallow = value
                 toTarget(CFrame.new(-8933.0537109375, 146.79251098632812, 6063.353515625))
                 if value == false then
@@ -8074,7 +7977,7 @@ else
                 end
             end)
         else
-            page1:Toggle("เสกบอสHallow", _G.SpawnBossHallow, function(value)
+            page1:Toggle("เสกบอส Soul Reaper", _G.SpawnBossHallow, function(value)
                 _G.SpawnBossHallow = value
                 toTarget(CFrame.new(-8933.0537109375, 146.79251098632812, 6063.353515625))
                 if value == false then
@@ -8084,6 +7987,7 @@ else
             end)
         end
         if _G.Mode == "English" then
+            page1:Seperator("<<DOUGH>>")  
             local MobKilledLabel = page1:Label("NeedkillMon : Loading...", true)
             spawn(function()
                 while true do
@@ -8227,6 +8131,7 @@ else
                 end)
         else
             _G.Mode = "Thai"
+            page1:Seperator("<<คาตาคุริ>>")  
             local MobKilledLabel = page1:Label("ต้องการฆ่าอีก : Loading...", true)
             spawn(function()
                 while true do
@@ -8371,9 +8276,9 @@ else
         end 
 
 if _G.Mode == "English" then
-    page1:Label("Farm Materail")
+    page1:Seperator("<<Farm Materail>>")  
 else
-    page1:Label("ฟาร์มวัสดุ")
+    page1:Seperator("<<ฟาร์มวัสดุ>>")  
 end
 if _G.Mode == "English" then
     page1:Dropdown("Select Material",AllMaterial, function(value)
@@ -9200,12 +9105,10 @@ spawn(function()
     end
 end)
 if _G.Mode == "English" then
-page3:Label("Redeem Code")
 page3:Toggle("Redeem Code", _G.EnabledAutoRedeemCode, function(value)
     _G.EnabledAutoRedeemCode = value
 end)
 else
-page3:Label("ใส่โค้ด")
 page3:Toggle("ออโต้ใส่โค้ด", _G.EnabledAutoRedeemCode, function(value)
     _G.EnabledAutoRedeemCode = value
 end)
@@ -9245,10 +9148,7 @@ spawn(function()
     end
 end)
 if _G.Mode == "English" then
-    page3:Label(
-        "FightingStyle"
-    )
-
+    page3:Seperator("<<FightingStyle>>") 
     page3:Toggle("Auto God Human", _G.AutoGodHuman, function(value)
         _G.AutoGodHuman = value
         BuyGodhuman = tonumber(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true))
@@ -10083,9 +9983,8 @@ if _G.Mode == "English" then
     end)
 else
     _G.Mode = "Thai"
-    page3:Label("สไตล์การต่อสู้")
-    page3:Toggle("ออโต้หมัดก็อตฮิวแมน", _G.AutoGodHuman,
-        function(value)
+    page3:Seperator("<<สไตล์การต่อสู้>>") 
+    page3:Toggle("ออโต้หมัดก็อตฮิวแมน", _G.AutoGodHuman,function(value)
             _G.AutoGodHuman = value
             BuyGodhuman = tonumber(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true))
             if BuyGodhuman then
@@ -12253,7 +12152,11 @@ toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 end)
 end
 
-
+if _G.Mode == "English" then
+    page1:Seperator("<<Observation Hki>>") 
+else
+    page1:Seperator("<<ฮาคิสังเกต>>") 
+end
 local ObservationRange = page1:Label("...")
 spawn(function()
         while wait() do
@@ -12412,6 +12315,7 @@ spawn(function()
             end)
         end)
 page1:Line()
+page1:Seperator("<<Boss>>") 
 local Boss = {}
 local BossName = page1:Dropdown("Select Boss",Boss, function(value)
 _G.SelectBoss = value
@@ -12551,7 +12455,55 @@ local DeathComplete = false
 local GodComplete = false
 
 page5:Seperator("Items")
-
+    page5:Toggle("Auto Hallow Scythe", _G.AutoFarmBossHallow, function(value)
+        _G.AutoFarmBossHallow = value
+        if value == false then
+            task.wait()
+            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+            task.wait()
+            task.spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        if _G.AutoFarmBossHallow then
+                            if game:GetService("Workspace").Enemies:FindFirstChild("Soul Reaper") then
+                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                    if string.find(v.Name , "Soul Reaper") then
+                                        repeat task.wait()
+                                            StartMagnet = true
+                                            FastAttack = true
+                                            if _G.AutoHaki then
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                end
+                                            end
+                                            EquipWeapon(_G.SelectWeapon)
+                                            PosMon = v.HumanoidRootPart.CFrame
+                                            if not _G.FastAttack then
+                                                game:GetService'VirtualUser':CaptureController()
+                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                            end
+                                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                                            v.Humanoid.JumpPower = 0
+                                            v.Humanoid.WalkSpeed = 0
+                                            v.HumanoidRootPart.CanCollide = false
+                                            v.Humanoid:ChangeState(11)
+                                            v.Humanoid:ChangeState(14)
+                                            v.Humanoid:ChangeState(16)
+                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                        until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
+                                        StartMagnet = false
+                                        FastAttack = false
+                                    end
+                                end
+                            else
+                                toTarget(CFrame.new(-9524.7890625, 315.80429077148, 6655.7192382813))
+                            end
+                        end
+                    end)
+                end
+            end)
+        end
+    end)
 page5:Toggle("Auto Buddy Swords", _G.AutoBuddySwords, function(value)
 _G.AutoBuddySwords = value
 if value == false then
@@ -13541,7 +13493,7 @@ end
 local function inmyself(name)
 	return game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(name) or game:GetService("Players").LocalPlayer.Character:FindFirstChild(name);
 end
-SwordListFarmComplete = {};
+page6:Seperator("Mastery")
 if _G.Mode == "English" then
 _G.MobHealth = 30
 page6:Toggle("Auto Fruit Mastery", _G.AutoFarmFruitMastery, function(value)
@@ -14095,7 +14047,7 @@ local getplayers = {}
 local getitems = {}
 local getweb = {}
 if _G.Mode == "English" then
-page8:Label("PVP")
+    page8:Seperator("<<PVP>>")
 do
     for i, v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
         if v.Name ~= plr.Name then
@@ -14158,7 +14110,7 @@ page8:Toggle("Aimbot Skill", false, function(value)
     Skillaimbot = value
 end)
 else
-page8:Label("ต่อสู้")
+page8:Seperator("<<ต่อสู้>>")
 do
     for i, v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
         if v.Name ~= plr.Name then
@@ -14288,7 +14240,7 @@ game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun].RemoteFunc
 end
 end)
 if _G.Mode == "English" then
-page8:Label("ESP")
+page8:Seperator("<<ESP>>")
 page8:Toggle("ESPPlayer", _G.ESPPlayer, function(value)
 ESPPlayer = value
 while ESPPlayer do
@@ -14332,7 +14284,7 @@ while IslandESP do
 end
 end)
 else
-page8:Label("มองทะลุ")
+page8:Seperator("<<มองทะลุ>>")
 page8:Toggle("มองทะลุหาเพลย์เยอร์", _G.ESPPlayer, function(value)
 ESPPlayer = value
 while ESPPlayer do
@@ -15221,10 +15173,10 @@ page10:Button("เทเลพอร์ตไปประตูเผ่าส�
 end)
 end
 if _G.Mode == "English" then
-    page10:Label("Auto Trials")
+page10:Seperator("<<Auto Trials>>")
 else
 _G.Mode = "Thai"
-page10:Label("ออโต้ผ่านด่าน")
+page10:Seperator("<<ออโต้ผ่านด่าน>>")
 end
 if _G.Mode == "English" then
     page10:Button("Auto Complete Angel Trial", function(t)
@@ -15384,10 +15336,10 @@ local args = {
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
 end
 if _G.Mode == "English" then
-page11:Label("Fragment")
+    page11:Seperator("<<Fragment>>")
 else
 _G.Mode = "Thai"
-page11:Label("เงินม่วง")
+page11:Seperator("<<เงินม่วง>>")
 end
 page11:Button("Refund Stat [2,500F]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Refund", "1")
@@ -15398,10 +15350,10 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardRewa
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Reroll", "2")
 end)
 if _G.Mode == "English" then
-page11:Label("Buy Abilities")
+page11:Seperator("<<Abilities>>")
 else
 _G.Mode = "Thai"
-page11:Label("ความสามารถ")
+page11:Seperator("<<ทักษะ>>")
 end
 page11:Button("Haki [25,00$]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyHaki", "Buso")
@@ -15415,7 +15367,11 @@ end)
 page11:Button("KenHaki [750,000$]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("KenTalk", "Buy")
 end)
-page11:Label("Auto Buy Fighting Style")
+if _G.Mode == "English" then
+page11:Seperator("<<Auto Buy Fighting Style>>")
+else
+    page11:Seperator("<<สไตล์การต่อสู้>>")
+end
 page11:Button("Black Leg [150,000$]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBlackLeg")
 end)
@@ -15452,9 +15408,9 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", 
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
 end)
 if _G.Mode == "English" then
-page11:Label("Sword")
+page11:Seperator("<<Sword>>")
 else
-page11:Label("ดาบ")
+page11:Seperator("<<ดาบ>>")
 end
 page11:Button("Katana [1,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Katana")
@@ -15484,9 +15440,9 @@ page11:Button("Soul Cane [750,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Soul Cane")
 end)
 if _G.Mode == "English" then
-page11:Label("Gun")
+page11:Seperator("<<Gun>>")
 else
-page11:Label("ปืน")
+page11:Seperator("<<ปืน>>")
 end
 page11:Button("Slingshot [5,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Slingshot")
@@ -15508,9 +15464,9 @@ game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardRewa
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BlackbeardReward", "Slingshot", "2")
 end)
 if _G.Mode == "English" then
-page11:Label("Accessory")
+page11:Seperator("<<Accessory>>")
 else
-page11:Label("อุปกรณ์เสริม")
+page11:Seperator("<<อุปกรณ์เสริม>>")
 end
 page11:Button("Black Cape [50,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Black Cape")
@@ -15798,6 +15754,7 @@ end)
 end
 
 if _G.Mode == "English" then
+page12:Seperator("<<Change Server>>")
 page12:Button("Hop Little Player Server", function()
     Teleport()
 end)
@@ -15810,6 +15767,7 @@ page12:Button("Rejoin", function()
     local p = game.Players.LocalPlayer
     ts:Teleport(game.PlaceId, p)
 end)
+page12:Line()
 page12:Button("Kaitun Cap", function()
 kaituncap()
 end)
@@ -15823,6 +15781,7 @@ page12:Button("Show Awakened Skill", function()
     end)
 else
 _G.Mode = "Thai"
+page12:Seperator("<<เปลี่ยนเซิฟเวอร์>>")
 page12:Button("เปลี่ยนเซิฟเวอร์คนน้อย", function()
     Teleport()
 end)
@@ -15834,6 +15793,7 @@ page12:Button("รีเซิฟเวอร์", function()
     local p = game.Players.LocalPlayer
     ts:Teleport(game.PlaceId, p)
 end)
+page12:Line()
 page12:Button("ถ่ายภาพไก่ตัน", function()
     kaituncap()
 end)
