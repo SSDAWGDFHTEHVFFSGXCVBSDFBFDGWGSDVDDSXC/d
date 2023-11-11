@@ -1,4 +1,4 @@
-print(111)
+print(213)
 if not game:IsLoaded() then
     local GameLoadGui = Instance.new("Message", workspace);
     GameLoadGui.Text = 'Wait Game Loading';
@@ -3794,8 +3794,9 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                         if Modstween then Modstween:Stop() end wait(.5)
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-                    elseif (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
+                    elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                         if Modstween then 
+                            Modstween:Stop()
                             spawn(function()
                                 if posrandom <= 1 then
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
@@ -3914,8 +3915,9 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-            elseif (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
+            elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
+                    Modstween:Stop()
                     spawn(function()
                         if posrandom <= 1 then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
@@ -4035,8 +4037,9 @@ else
             elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-            elseif (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
+            elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
+                    Modstween:Stop()
                     spawn(function()
                         if posrandom <= 1 then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
@@ -8352,8 +8355,28 @@ if _G.Mode == "English" then
                                         "requestEntrance",
                                         Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656));
                                 elseif ((CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150) then
-                                    if Modstween then Modstween:Stop(); end
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
+                                    if Modstween then 
+                                        Modstween:Stop()
+                                        spawn(function()
+                                            if posrandom <= 1 then
+                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                posrandom = posrandom + 0.1
+                                            elseif posrandom >= 1 and posrandom <= 2 then
+                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                posrandom = posrandom + 0.1
+                                            elseif posrandom >= 2 and posrandom <= 3 then
+                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                posrandom = posrandom + 0.1
+                                            elseif posrandom >= 3 and posrandom <= 4  then
+                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                posrandom = posrandom + 0.1
+                                        elseif posrandom >=4 and posrandom <= 5 then
+                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                            posrandom = 0
+                                        end
+                                    end)
+                                end
+                                   -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
                                 end
                             end
                         end
@@ -8435,8 +8458,28 @@ if CustomFindFirstChild(MaterialMob) then
                     if Modstween then Modstween:Stop(); end
                     wait(0.5); game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656));
                 elseif ((CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150) then
-                    if Modstween then Modstween:Stop(); end
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
+                    if Modstween then 
+                        Modstween:Stop()
+                        spawn(function()
+                            if posrandom <= 1 then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                posrandom = posrandom + 0.1
+                            elseif posrandom >= 1 and posrandom <= 2 then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                posrandom = posrandom + 0.1
+                            elseif posrandom >= 2 and posrandom <= 3 then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                posrandom = posrandom + 0.1
+                            elseif posrandom >= 3 and posrandom <= 4  then
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                posrandom = posrandom + 0.1
+                        elseif posrandom >=4 and posrandom <= 5 then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                            posrandom = 0
+                        end
+                    end)
+                end
+                  --  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
                 end
                             end
                         end
@@ -9415,8 +9458,28 @@ if _G.Mode == "English" then
                                                 if Modstween then Modstween:Stop(); end
                                                 wait(0.5); game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656));
                                             elseif ((CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150) then
-                                                if Modstween then Modstween:Stop(); end
-                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
+                                                if Modstween then 
+                                                    Modstween:Stop()
+                                                    spawn(function()
+                                                        if posrandom <= 1 then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                            posrandom = posrandom + 0.1
+                                                        elseif posrandom >= 1 and posrandom <= 2 then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                            posrandom = posrandom + 0.1
+                                                        elseif posrandom >= 2 and posrandom <= 3 then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                            posrandom = posrandom + 0.1
+                                                        elseif posrandom >= 3 and posrandom <= 4  then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                            posrandom = posrandom + 0.1
+                                                    elseif posrandom >=4 and posrandom <= 5 then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                        posrandom = 0
+                                                    end
+                                                end)
+                                            end
+                                              --  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
                                                 end
                                             end
                                         end
@@ -9478,8 +9541,28 @@ if _G.Mode == "English" then
                                                 if Modstween then Modstween:Stop(); end
                                                 wait(0.5); game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656));
                                             elseif ((CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150) then
-                                                if Modstween then Modstween:Stop(); end
-                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
+                                                if Modstween then 
+                                                    Modstween:Stop()
+                                                    spawn(function()
+                                                        if posrandom <= 1 then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                            posrandom = posrandom + 0.1
+                                                        elseif posrandom >= 1 and posrandom <= 2 then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                            posrandom = posrandom + 0.1
+                                                        elseif posrandom >= 2 and posrandom <= 3 then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                            posrandom = posrandom + 0.1
+                                                        elseif posrandom >= 3 and posrandom <= 4  then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                            posrandom = posrandom + 0.1
+                                                    elseif posrandom >=4 and posrandom <= 5 then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                        posrandom = 0
+                                                    end
+                                                end)
+                                            end
+                                              --  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
                                             end
                                         end
                                     end
@@ -9545,8 +9628,28 @@ if _G.Mode == "English" then
                                                 "requestEntrance",
                                                 Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656));
                                         elseif ((CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150) then
-                                            if Modstween then Modstween:Stop(); end
-                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
+                                            if Modstween then 
+                                                Modstween:Stop()
+                                                spawn(function()
+                                                    if posrandom <= 1 then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                        posrandom = posrandom + 0.1
+                                                    elseif posrandom >= 1 and posrandom <= 2 then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                        posrandom = posrandom + 0.1
+                                                    elseif posrandom >= 2 and posrandom <= 3 then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                        posrandom = posrandom + 0.1
+                                                    elseif posrandom >= 3 and posrandom <= 4  then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                        posrandom = posrandom + 0.1
+                                                elseif posrandom >=4 and posrandom <= 5 then
+                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                    posrandom = 0
+                                                end
+                                            end)
+                                        end
+                                           -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
                                         end
                                     end
                                 end
@@ -9611,8 +9714,28 @@ if _G.Mode == "English" then
                                             "requestEntrance",
                                             Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656));
                                     elseif ((CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150) then
-                                        if Modstween then Modstween:Stop(); end
-                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
+                                        if Modstween then 
+                                            Modstween:Stop()
+                                            spawn(function()
+                                                if posrandom <= 1 then
+                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                    posrandom = posrandom + 0.1
+                                                elseif posrandom >= 1 and posrandom <= 2 then
+                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                    posrandom = posrandom + 0.1
+                                                elseif posrandom >= 2 and posrandom <= 3 then
+                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                    posrandom = posrandom + 0.1
+                                                elseif posrandom >= 3 and posrandom <= 4  then
+                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                    posrandom = posrandom + 0.1
+                                            elseif posrandom >=4 and posrandom <= 5 then
+                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                posrandom = 0
+                                            end
+                                        end)
+                                    end
+                                        --game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon;
                                     end
                                 end
                             end
@@ -10184,8 +10307,28 @@ else
                                                         wait(.5)
                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.8227539063, 872.54248046875,-1667.5568847656))
                                                     elseif (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
-                                                        if Modstween then Modstween:Stop() end
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                                                        if Modstween then 
+                                                            Modstween:Stop()
+                                                            spawn(function()
+                                                                if posrandom <= 1 then
+                                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                                    posrandom = posrandom + 0.1
+                                                                elseif posrandom >= 1 and posrandom <= 2 then
+                                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                                    posrandom = posrandom + 0.1
+                                                                elseif posrandom >= 2 and posrandom <= 3 then
+                                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                                    posrandom = posrandom + 0.1
+                                                                elseif posrandom >= 3 and posrandom <= 4  then
+                                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                                    posrandom = posrandom + 0.1
+                                                            elseif posrandom >=4 and posrandom <= 5 then
+                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                                posrandom = 0
+                                                            end
+                                                        end)
+                                                    end
+                                                      --  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                                                     end
                                                 end
                                             end
@@ -10247,8 +10390,28 @@ else
                                                     wait(.5)
                                                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656))
                                                 elseif (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
-                                                    if Modstween then Modstween:Stop() end
-                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                                                    if Modstween then 
+                                                        Modstween:Stop()
+                                                        spawn(function()
+                                                            if posrandom <= 1 then
+                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                                posrandom = posrandom + 0.1
+                                                            elseif posrandom >= 1 and posrandom <= 2 then
+                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                                posrandom = posrandom + 0.1
+                                                            elseif posrandom >= 2 and posrandom <= 3 then
+                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                                posrandom = posrandom + 0.1
+                                                            elseif posrandom >= 3 and posrandom <= 4  then
+                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                                posrandom = posrandom + 0.1
+                                                        elseif posrandom >=4 and posrandom <= 5 then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                            posrandom = 0
+                                                        end
+                                                    end)
+                                                end
+                                                   --game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                                                 end
                                             end
                                         end
@@ -10309,8 +10472,28 @@ else
                                                 wait(.5)
                                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656))
                                             elseif (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
-                                                if Modstween then Modstween:Stop() end
-                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                                                if Modstween then 
+                                                    Modstween:Stop()
+                                                    spawn(function()
+                                                        if posrandom <= 1 then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                            posrandom = posrandom + 0.1
+                                                        elseif posrandom >= 1 and posrandom <= 2 then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                            posrandom = posrandom + 0.1
+                                                        elseif posrandom >= 2 and posrandom <= 3 then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                            posrandom = posrandom + 0.1
+                                                        elseif posrandom >= 3 and posrandom <= 4  then
+                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                            posrandom = posrandom + 0.1
+                                                    elseif posrandom >=4 and posrandom <= 5 then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                        posrandom = 0
+                                                    end
+                                                end)
+                                            end
+                                            --   game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                                             end
                                         end
                                     end
@@ -10371,8 +10554,28 @@ else
                                             wait(.5)
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656))
                                         elseif (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
-                                            if Modstween then Modstween:Stop() end
-                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+                                            if Modstween then 
+                                                Modstween:Stop()
+                                                spawn(function()
+                                                    if posrandom <= 1 then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                        posrandom = posrandom + 0.1
+                                                    elseif posrandom >= 1 and posrandom <= 2 then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                        posrandom = posrandom + 0.1
+                                                    elseif posrandom >= 2 and posrandom <= 3 then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                        posrandom = posrandom + 0.1
+                                                    elseif posrandom >= 3 and posrandom <= 4  then
+                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                        posrandom = posrandom + 0.1
+                                                elseif posrandom >=4 and posrandom <= 5 then
+                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                    posrandom = 0
+                                                end
+                                            end)
+                                        end
+                                          --  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                                         end
                                     end
                                 end
@@ -12739,9 +12942,28 @@ function AutoFarmMasteryGun()
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
                 Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
         elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
-            if Modstween then Modstween:Stop() end
-            wait(.5)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+            if Modstween then 
+                Modstween:Stop()
+                spawn(function()
+                    if posrandom <= 1 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                        posrandom = posrandom + 0.1
+                    elseif posrandom >= 1 and posrandom <= 2 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                        posrandom = posrandom + 0.1
+                    elseif posrandom >= 2 and posrandom <= 3 then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                        posrandom = posrandom + 0.1
+                    elseif posrandom >= 3 and posrandom <= 4  then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                        posrandom = posrandom + 0.1
+                elseif posrandom >=4 and posrandom <= 5 then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                    posrandom = 0
+                end
+            end)
+        end
+           -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
         end
     end
 end
@@ -12970,9 +13192,28 @@ elseif NewWorld and not string.find(Name, "Ship") and (CFrameQuest.Position - ga
     if Modstween then Modstween:Stop() end
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
 elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
-    if Modstween then Modstween:Stop() end
-    wait(.5)
-    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+    if Modstween then 
+        Modstween:Stop()
+        spawn(function()
+            if posrandom <= 1 then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                posrandom = posrandom + 0.1
+            elseif posrandom >= 1 and posrandom <= 2 then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                posrandom = posrandom + 0.1
+            elseif posrandom >= 2 and posrandom <= 3 then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                posrandom = posrandom + 0.1
+            elseif posrandom >= 3 and posrandom <= 4  then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                posrandom = posrandom + 0.1
+        elseif posrandom >=4 and posrandom <= 5 then
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+            posrandom = 0
+        end
+    end)
+end
+  --  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
 end
 end
 end
@@ -13027,165 +13268,11 @@ function CheckMasteryWeapon(NameWe,MasNum)
 	return "else"
 end
 
-local AllSwordInInventroy = {};
-for i, v in pairs(game:GetService("ReplicatedStorage").Remotes['CommF_']:InvokeServer("getInventoryWeapons")) do
-	if (type(v) ~= "table") then
-	elseif (v.Type == "Sword") then
-		table.insert(AllSwordInInventroy, v.Name);
-	end
-end
-page6:Seperator("✨")
-table.insert(AllSwordInInventroy, GetFightingStyle("Sword"));
-local SwordMulti = page6:Dropdown("Select Sword",AllSwordInInventroy, function(value)
-	_G.SelectMultiSword = value
-	if value == false then
-		toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.Position,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-	end
-end)
-
-page6:Button("Refresh", function()
-	SwordMulti:Clear();
-	local AllSwordInInventroy = {};
-	for i, v in pairs(game:GetService("ReplicatedStorage").Remotes['CommF_']:InvokeServer("getInventoryWeapons")) do
-		if (type(v) == "table") then
-			if (v.Type == "Sword") then
-				SwordMulti:Add(v.Name);
-			end
-		end
-	end
-	SwordMulti.Add(GetFightingStyle("Sword"));
-end)	
-
-
-function AutoFarmMasterySwordList()
-	if game:GetService("Workspace").Enemies:FindFirstChild(Monster) or (ThreeWorld and (game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy"))) then
-		for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-			if _G.FarmMasterySwordList and ((ThreeWorld and (v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy")) or v.Name == Name) and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
-				repeat task.wait()
-					FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,30,1))
-					if v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
-						if FarmtoTarget then FarmtoTarget:Stop() end
-						FastAttack = true
-						EquipWeaponSword()
-						StartMagnet = true
-						PosMon = v.HumanoidRootPart.CFrame
-						if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
-							game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
-							game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
-						end
-						game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 1)
-					end
-				until not game:GetService("Workspace").Enemies:FindFirstChild(Monster) and ((ThreeWorld and not (v.Name == "Reborn Skeleton" or v.Name == "Living Zombie" or v.Name == "Demonic Soul" or v.Name == "Posessed Mummy")) or v.Name == Monster) or not _G.FarmMasterySwordList or v.Humanoid.Health <= 0 or not v.Parent
-				StartMagnet = false
-				FastAttack = false
-			end
-		end
-	else
-		StartMagnet = false
-		Modstween = toTarget(CFrameMon)
-        if OldWorld and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
-            if Modstween then Modstween:Stop() end
-            wait(.5)
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
-                Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
-        elseif OldWorld and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
-            if Modstween then Modstween:Stop() end
-            wait(.5)
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
-                Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
-        elseif OldWorld and (Name == "God's Guard" or Name == "Sky Bandit" or Name == "Dark Master") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 3000 then
-            if Modstween then Modstween:Stop() end
-            wait(.5)
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
-                Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656))
-        elseif OldWorld and (Name == "Shanda" or Name == "Royal Squad" or Name == "Royal Soldier") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 5000 then
-            if Modstween then Modstween:Stop() end
-            wait(.5)
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
-                Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
-        elseif NewWorld and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
-            if Modstween then Modstween:Stop() end
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
-                Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
-        elseif NewWorld and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
-            if Modstween then Modstween:Stop() end
-            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
-                Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
-            if Modstween then Modstween:Stop() end
-            wait(.5)
-            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-		end
-	end
-end
-
 local function inmyself(name)
 	return game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(name) or game:GetService("Players").LocalPlayer.Character:FindFirstChild(name);
 end
 SwordListFarmComplete = {};
 if _G.Mode == "English" then
-page6:Toggle("Auto Farm Sword Mastery", _G.FarmMasterySwordList, function(x)
-	_G.FarmMasterySwordList = x
-	if x == false then
-		toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-	end
-    task.spawn(function()
-		while task.wait() do
-			if _G.FarmMasterySwordList and #_G.SelectMultiSword ~= 0 then
-				for i,v in pairs(_G.SelectMultiSword) do
-					if _G.FarmMasterySwordList == false and table.find(SwordListFarmComplete,v) then
-						break;
-					end
-					if not game.Players.LocalPlayer.Backpack:FindFirstChild(v) and not game.Players.LocalPlayer.Character:FindFirstChild(v) and game.Players.LocalPlayer.Character:WaitForChild("Humanoid"):GetState() ~= Enum.HumanoidStateType.Dead and game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health ~= 0 then
-						while _G.FarmMasterySwordList do wait()
-							if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health == 0 then repeat wait() until game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Health > 0; wait(0.2) end
-							if game.Players.LocalPlayer.Backpack:FindFirstChild(v) or game.Players.LocalPlayer.Character:FindFirstChild(v) or _G.FarmMasterySwordList == false or table.find(SwordListFarmComplete,v) then 
-								break;
-							end
-							wait(1)
-							Com("F_","StoreItem",tostring(GetFightingStyle("Sword")),inmyself(GetFightingStyle("Sword")))
-							wait(1)
-							Com("F_","LoadItem",tostring(v))
-							wait(0.5)
-							if game.Players.LocalPlayer.Backpack:FindFirstChild(v) or game.Players.LocalPlayer.Character:FindFirstChild(v) then
-								SelectWeaponInSwordList = v
-								break;
-							end
-							if CheckMasteryWeapon(v,600) == "true" or CheckMasteryWeapon(v,600) == "true UpTo" then
-								print("DONE "..v)     
-								table.insert(SwordListFarmComplete,v)
-								break;
-							end
-						end
-					end
-					wait(0.2)
-					if game.Players.LocalPlayer.Backpack:FindFirstChild(v) or game.Players.LocalPlayer.Character:FindFirstChild(v) then
-						while _G.FarmMasterySwordList do wait()
-							if table.find(SwordListFarmComplete,v) and #_G.SelectMultiSword ~= 0 and #SwordListFarmComplete ~= 0 then
-								break
-							end
-							if _G.FarmMasterySwordList == false then
-								break;
-							end
-							if game.Players.LocalPlayer.Backpack:FindFirstChild(v) or game.Players.LocalPlayer.Character:FindFirstChild(v) then
-								SelectWeaponInSwordList = v
-							end
-							CheckQuestMasteryFarm()
-							AutoFarmMasterySwordList()
-							if CheckMasteryWeapon(v,600) == "true" or CheckMasteryWeapon(v,600) == "true UpTo" then
-								print("DONE "..v)
-								table.insert(SwordListFarmComplete,v)
-								break;
-							end
-						end
-					end
-				end
-			else 
-				break;
-			end
-		end
-	end)
-end)
 _G.MobHealth = 30
 page6:Toggle("Auto Fruit Mastery", _G.AutoFarmFruitMastery, function(value)
 _G.AutoFarmFruitMastery = value
