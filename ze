@@ -1,4 +1,5 @@
---config
+print(11)
+--Config
 _G.SelectWeapon = nil
 SelectWeapon = nil
 _G.AutoFarm = false
@@ -72,7 +73,6 @@ _G.FarmMasterySwordList = false
 _G.AutoRaids = false
 _G.AutoNextPlace = false
 
-local UserInputService = game:GetService("UserInputService")
 if _G.Mode == "English" then
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":If the ui doesn't load, press run again:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 else
@@ -222,82 +222,6 @@ else
     return warn("Status : Undetected Executor")
 end
 end
-
---LoadSettings()
-_G.SelectWeapon = nil
-SelectWeapon = nil
-_G.AutoFarm = false
-_G.DoubleQuest = false
-_G.NeareastFarm = false
-_G.Mirage = false
-_G.Auto_Gear = false
-_G.TeleportGear = false
-_G.AutoNewWorld = false
-_G.TweenToFruitSpawn = false
-_G.AutoSaber = false
-_G.AutoPole = false
-_G.TeleportIsland = false
-
---[World 2]
-_G.AutoThirdSea = false
-_G.AutoBartiloQuest = false
-_G.Auto_Evo_Race_V2 = false
-_G.AutoDarkCoat = false
-_G.AutoSwanGlasses = false
-_G.AutoTrueTriplKatana = false
-_G.AutoRengoku = false
-_G.AutoEctoplasm = false
-_G.AutoFactory = false
-
---[World 3]
-_G.AutoRainbowHaki = false
-_G.AutoEliteHunter = false
-_G.AutoMusketeerHat = false
-_G.AutoBuddySword = false
-_G.AutoFarmBone = false
-_G.SpawnBossHallow = false
-_G.AutoKenHakiV2 = false
-_G.AutoObservation = false
-_G.AutoGodHuman = false
-_G.AutoCavander = false
-_G.AutoCursedDualKatana = false
-_G.AutoYamaSword = false
-_G.AutoTushitaSword = false
-_G.AutoSerpentBow = false
-_G.AutoDarkDagger = false
-_G.AutoCakePrince = false
-_G.AutoDoughV2 = false
-_G.AutoHolyTorch = false
-_G.AutoBuddySwords = false
-_G.AutoFarmBossHallow = false
-_G.MobAura = false
-_G.YamaQuest2 = false
-_G.YamaQuest1 = false
-_G.Auto_Cursed_Dual_Katana = false
-_G.Tushita_Quest2 = false
-_G.Tushita_Quest1 = false
-_G.TeleporttoSeaBeast = false
-_G.AutoEvent = false
-_G.TPTOBOAT = false
-_G.AutoFarmMaterial = false
-_G.Teleporttop = false
-_G.AutoFarmChest = false
-
---[Boss]
-_G.AutoAllBoss = false
-_G.AutoBossSelect = false
-_G.AutoFarmBoss = false
-
---[Mastery]
-_G.AutoFarmFruitMastery = false
-_G.AutoFarmGunMastery = false
-_G.FarmMasterySwordList = false
-
---[Raids]
-_G.AutoRaids = false
-_G.AutoNextPlace = false
-
-local UserInputService = game:GetService("UserInputService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local TweenService = game:GetService("TweenService")
 local tween = game:service"TweenService"
@@ -8820,8 +8744,6 @@ end)
 end
 end)
 
-
-local UserInputService = game:GetService("UserInputService")
 local RunService = game:GetService("RunService")
 if _G.Mode == "English" then
 page2:Toggle("White Screen", false, function(value)
