@@ -3438,7 +3438,7 @@ end
     local page11 = Library:Tab("Shop","rbxassetid://6031265976")
     local page12 = Library:Tab("Misc","rbxassetid://11447063791")
 
-page1:Seperator("Main")
+page1:Seperator("🏚️")
 Time = page1:Label("..")
 
 function UpdateTime()
@@ -8489,7 +8489,7 @@ if CustomFindFirstChild(MaterialMob) then
     end)
 end)   
 end                                                                             
-page2:Seperator("Settings")
+page2:Seperator("⚙️")
 if _G.Mode == "English"then
 local FastAttackType = {
 "Fast",
@@ -9002,7 +9002,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
     request(abcdef)
     end
-page3:Seperator("Stats")
+page3:Seperator("📊")
 local SelectStats = {
     "Melee",
     "Defense",
@@ -11755,7 +11755,7 @@ else
         end)
     end
 
-page4:Seperator("Teleport")
+page4:Seperator("🚀")
 
 if _G.Mode == "English" then
     page4:Button("Teleport to World 1", function(value)
@@ -12454,7 +12454,7 @@ local SharkComplete = false
 local DeathComplete = false
 local GodComplete = false
 
-page5:Seperator("Items")
+page5:Seperator("💼")
     page5:Toggle("Auto Hallow Scythe", _G.AutoFarmBossHallow, function(value)
         _G.AutoFarmBossHallow = value
         if value == false then
@@ -13493,7 +13493,7 @@ end
 local function inmyself(name)
 	return game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(name) or game:GetService("Players").LocalPlayer.Character:FindFirstChild(name);
 end
-page6:Seperator("Mastery")
+page6:Seperator("✨")
 if _G.Mode == "English" then
 _G.MobHealth = 30
 page6:Toggle("Auto Fruit Mastery", _G.AutoFarmFruitMastery, function(value)
@@ -13596,7 +13596,7 @@ if _G.AutoFarmFruitMastery then
 end
 end
 end)
-page7:Seperator("DevilFruit")
+page7:Seperator("🍈")
 if _G.Mode == "English" then
 page7:Toggle("Auto Random Fruits", _G.AutoBuyRandomFruits, function(value)
 _G.AutoBuyRandomFruits = value
@@ -13842,7 +13842,7 @@ local SelectRaids = {
 "Bird: Phoenix",
 "Dough"
 }
-page8:Seperator("Raids")
+page8:Seperator("⚔️")
 if _G.Mode == "English" then
 page8:Dropdown("Select Raids",SelectRaids, function(value)
     _G.SelectRaids = value
@@ -14690,7 +14690,7 @@ pcall(function()
 end)
 end
 end
-page9:Seperator("MirageIsland")
+page9:Seperator("🏝️")
 local FM = page9:Label('...')
 local Mirragecheck = page9:Label('...')
 
@@ -15023,7 +15023,7 @@ page9:Toggle("ดูดวงจันทร์", _G.LockMoon , function(value)
     LockMoon()
 end)
 end
-page10:Seperator("RaceV4")
+page10:Seperator("🐰")
 if _G.Mode == "English" then
 page10:Toggle("Auto Active RaceV3",_G.AutoActiveRace,function(value)  
     _G.AutoActiveRace = value
@@ -15213,7 +15213,7 @@ page10:Button("เทเลพอร์ตออกจากสนามปร�
     toTarget(CFrame.new(28273.0859375, 14896.5078125, 157.42063903808594))
 end)
 end
-page11:Seperator("Shop")
+page11:Seperator("🛒")
 
 if _G.Mode == "English" then
     page11:Label("Auto Buy")
@@ -15477,7 +15477,7 @@ end)
 page11:Button("Swordsman Hat [150,000]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyItem", "Swordsman Hat")
 end)
-page12:Seperator("Misc")
+page12:Seperator("🧍")
 if _G.Mode == "English" then
 local TPS = game:GetService("TeleportService")
 local LP = game:GetService("Players").LocalPlayer
