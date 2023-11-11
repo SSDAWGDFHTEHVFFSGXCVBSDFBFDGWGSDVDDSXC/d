@@ -1,4 +1,4 @@
-print(111)
+print("Why")
 if not game:IsLoaded() then
     local GameLoadGui = Instance.new("Message", workspace);
     GameLoadGui.Text = 'Wait Game Loading';
@@ -164,7 +164,8 @@ end
 end
 
 --LoadSettings()
-
+_G.SelectWeapon = nil
+SelectWeapon = nil
 _G.AutoFarm = false
 _G.DoubleQuest = false
 _G.NeareastFarm = false
@@ -235,7 +236,6 @@ _G.FarmMasterySwordList = false
 --[Raids]
 _G.AutoRaids = false
 _G.AutoNextPlace = false
-
 
 local UserInputService = game:GetService("UserInputService")
 local VirtualInputManager = game:GetService("VirtualInputManager")
@@ -3654,7 +3654,10 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                             end
                                         end
-                                        EquipWeapon(_G.SelectWeapon)
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                            wait()
+                                            EquipWeapon(_G.SelectWeapon)
+                                        end
                                         if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
                                             game:service('VirtualInputManager'):SendKeyEvent(true, "V", false, game)
                                             game:service('VirtualInputManager'):SendKeyEvent(false, "V", false, game)
@@ -3929,7 +3932,9 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                         end
                                     end
-                                    EquipWeapon(_G.SelectWeapon)
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                        EquipWeapon(_G.SelectWeapon)
+                                    end
                                     StartMagnet = true
                                     FastAttack = true
                                     if game.Players.LocalPlayer.Data.Level.Value >= 20 and game.Players.LocalPlayer.Data.Level.Value <= 90 then
@@ -4048,7 +4053,10 @@ else
                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                     end
                                 end
-                                EquipWeapon(_G.SelectWeapon)
+                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                    wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                end
                                 StartMagnet = true
                                 FastAttack = true
                                 if game.Players.LocalPlayer.Data.Level.Value >= 20 and game.Players.LocalPlayer.Data.Level.Value <= 90 then
@@ -4416,7 +4424,10 @@ end
                                                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                             end
                                                         end
-                                                        EquipWeapon(_G.SelectWeapon)
+                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                            task.wait()
+                                                            EquipWeapon(_G.SelectWeapon)
+                                                        end
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                         PosMon = v.HumanoidRootPart.CFrame
                                                         if not _G.FastAttack then
@@ -4458,7 +4469,10 @@ end
                                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                             end
                                         end
-                                        EquipWeapon(_G.SelectWeapon)
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                            task.wait()
+                                            EquipWeapon(_G.SelectWeapon)
+                                        end
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         PosMon = v.HumanoidRootPart.CFrame
                                         if not _G.FastAttack then
@@ -4732,7 +4746,10 @@ end
                                                                                             .CommF_:InvokeServer("Buso")
                                                                                     end
                                                                                 end
-                                                                                EquipWeapon(_G.SelectWeapon)
+                                                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                                    task.wait()
+                                                                                    EquipWeapon(_G.SelectWeapon)
+                                                                                end
                                                                                 PosMon = v.HumanoidRootPart.CFrame
                                                                                 if not _G.FastAttack then
                                                                                     game:GetService 'VirtualUser':CaptureController()
@@ -4781,7 +4798,10 @@ end
                                                                                             .CommF_:InvokeServer("Buso")
                                                                                     end
                                                                                 end
-                                                                                EquipWeapon(_G.SelectWeapon)
+                                                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                                    task.wait()
+                                                                                    EquipWeapon(_G.SelectWeapon)
+                                                                                end
                                                                                 PosMon = v.HumanoidRootPart.CFrame
                                                                                 if not _G.FastAttack then
                                                                                     game:GetService 'VirtualUser':CaptureController()
@@ -4869,7 +4889,10 @@ end
                                                                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                                                         end
                                                                                     end
-                                                                                    EquipWeapon(_G.SelectWeapon)
+                                                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                                        task.wait()
+                                                                                        EquipWeapon(_G.FastType)
+                                                                                    end
                                                                                     PosMon = v.HumanoidRootPart.CFrame
                                                                                     if not _G.FastAttack then
                                                                                         game:GetService 'VirtualUser':CaptureController()
@@ -4925,7 +4948,10 @@ end
                                                                                         :InvokeServer("Buso")
                                                                                 end
                                                                             end
-                                                                            EquipWeapon(_G.SelectWeapon)
+                                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                                task.wait()
+                                                                                EquipWeapon(_G.SelectWeapon)
+                                                                            end
                                                                             PosMon = v.HumanoidRootPart.CFrame
                                                                             if not _G.FastAttack then
                                                                                 game:GetService 'VirtualUser':CaptureController()
@@ -5159,7 +5185,10 @@ end
                                                                                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                                                             end
                                                                                         end
-                                                                                        EquipWeapon(_G.SelectWeapon)
+                                                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                                            task.wait()
+                                                                                            EquipWeapon(_G.SelectWeapon)
+                                                                                        end
                                                                                         PosMon = v.HumanoidRootPart.CFrame
                                                                                         if not _G.FastAttack then
                                                                                             game:GetService "VirtualUser":CaptureController()
@@ -5357,7 +5386,10 @@ task.spawn(
                                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                             end
                                         end
-                                        EquipWeapon(_G.SelectWeapon)
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                            task.wait()
+                                            EquipWeapon(_G.SelectWeapon)
+                                        end
                                         PosMon = v.HumanoidRootPart.CFrame
                                         if not _G.FastAttack then
                                             game:GetService "VirtualUser":CaptureController()
@@ -5432,7 +5464,10 @@ if game:GetService("Workspace").Enemies:FindFirstChild("Ship Deckhand") or game:
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                         end
                     end
-                    EquipWeapon(_G.SelectWeapon)
+                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                        task.wait()
+                        EquipWeapon(_G.SelectWeapon)
+                    end
                     PosMon = v.HumanoidRootPart.CFrame
                     if not _G.FastAttack then
                         game:GetService 'VirtualUser':CaptureController()
@@ -5581,7 +5616,10 @@ end
                                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                             end
                                         end
-                                        EquipWeapon(_G.SelectWeapon)
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                            task.wait()
+                                            EquipWeapon(_G.SelectWeapon)
+                                        end
                                         PosMon = v.HumanoidRootPart.CFrame
                                         if not _G.FastAttack then
                                             game:GetService 'VirtualUser':CaptureController()
@@ -5716,7 +5754,10 @@ else
                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                     end
                                                 end
-                                                EquipWeapon(_G.SelectWeapon)
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                    task.wait()
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                end
                                                 PosMon = v.HumanoidRootPart.CFrame
                                                 if not _G.FastAttack then
                                                     game:GetService 'VirtualUser':CaptureController()
@@ -5751,7 +5792,10 @@ else
                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                     end
                                                 end
-                                                EquipWeapon(_G.SelectWeapon)
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                    task.wait()
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                end
                                                 PosMon = v.HumanoidRootPart.CFrame
                                                 if not _G.FastAttack then
                                                     game:GetService 'VirtualUser':CaptureController()
@@ -5786,7 +5830,10 @@ else
                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                     end
                                                 end
-                                                EquipWeapon(_G.SelectWeapon)
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                    task.wait()
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                end
                                                 PosMon = v.HumanoidRootPart.CFrame
                                                 if not _G.FastAttack then
                                                     game:GetService 'VirtualUser':CaptureController()
@@ -5821,7 +5868,10 @@ else
                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                     end
                                                 end
-                                                EquipWeapon(_G.SelectWeapon)
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                    task.wait()
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                end
                                                 PosMon = v.HumanoidRootPart.CFrame
                                                 if not _G.FastAttack then
                                                     game:GetService 'VirtualUser':CaptureController()
@@ -5856,7 +5906,10 @@ else
                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                     end
                                                 end
-                                                EquipWeapon(_G.SelectWeapon)
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                    task.wait()
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                end
                                                 PosMon = v.HumanoidRootPart.CFrame
                                                 if not _G.FastAttack then
                                                     game:GetService 'VirtualUser':CaptureController()
@@ -5958,7 +6011,10 @@ else
                                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                         end
                                                     end
-                                                    EquipWeapon(_G.SelectWeapon)
+                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                        task.wait()
+                                                        EquipWeapon(_G.SelectWeapon)
+                                                    end
                                                     PosMon = v.HumanoidRootPart.CFrame
                                                     if not _G.FastAttack then
                                                         game:GetService 'VirtualUser':CaptureController()
@@ -5996,7 +6052,10 @@ else
                                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                         end
                                                     end
-                                                    EquipWeapon(_G.SelectWeapon)
+                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                        task.wait()
+                                                        EquipWeapon(_G.SelectWeapon)
+                                                    end
                                                     PosMon = v.HumanoidRootPart.CFrame
                                                     if not _G.FastAttack then
                                                         game:GetService 'VirtualUser':CaptureController()
@@ -6064,7 +6123,10 @@ else
                                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                         end
                                                     end
-                                                    EquipWeapon(_G.SelectWeapon)
+                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                        task.wait()
+                                                        EquipWeapon(_G.SelectWeapon)
+                                                    end
                                                     PosMon = v.HumanoidRootPart.CFrame
                                                     if not _G.FastAttack then
                                                         game:GetService'VirtualUser':CaptureController()
@@ -6231,7 +6293,10 @@ else
                                                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                             end
                                                         end
-                                                        EquipWeapon(_G.SelectWeapon)
+                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                            task.wait()
+                                                            EquipWeapon(_G.SelectWeapon)
+                                                        end
                                                         PosMon = v.HumanoidRootPart.CFrame
                                                         if not _G.FastAttack then
                                                             game:GetService'VirtualUser':CaptureController()
@@ -7396,7 +7461,10 @@ page1:Toggle("MobAura", MobAura, function(value)
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                         end
                                     end
-                                    EquipWeapon(_G.SelectWeapon)
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                        wait()
+                                        EquipWeapon(_G.SelectWeapon)
+                                    end
                                     PosMon = v.HumanoidRootPart.CFrame
                                     if not _G.FastAttack then
                                         game:GetService'VirtualUser':CaptureController()
@@ -7447,7 +7515,10 @@ else
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                         end
                                     end
-                                    EquipWeapon(_G.SelectWeapon)
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                        wait()
+                                        EquipWeapon(_G.SelectWeapon)
+                                    end
                                     PosMon = v.HumanoidRootPart.CFrame
                                     if not _G.FastAttack then
                                         game:GetService'VirtualUser':CaptureController()
@@ -7939,7 +8010,10 @@ else
                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                     end
                                                 end
-                                                EquipWeapon(_G.SelectWeapon)
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                    task.wait()
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                end
                                                 PosMon = v.HumanoidRootPart.CFrame
                                                 if not _G.FastAttack then
                                                     game:GetService'VirtualUser':CaptureController()
@@ -8573,14 +8647,6 @@ pcall(function()
     elseif SelectWeapon == "Fruit" then
         for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
             if v.ToolTip == "Blox Fruit" then
-                if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
-                    _G.SelectWeapon = v.Name
-                end
-            end
-        end
-    else
-        for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-            if v.ToolTip == "Melee" then
                 if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
                     _G.SelectWeapon = v.Name
                 end
@@ -9766,7 +9832,10 @@ if _G.Mode == "English" then
                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                     end
                                                 end
-                                                EquipWeapon(_G.SelectWeapon)
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                    task.wait()
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                end
                                                 if not _G.FastAttack then
                                                     game:GetService 'VirtualUser':CaptureController()
                                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -10603,7 +10672,10 @@ else
                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                     end
                                                 end
-                                                EquipWeapon(_G.SelectWeapon)
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                    task.wait()
+                                                    EquipWeapon(_G.SelectWeapon)
+                                                end
                                                 if not _G.FastAttack then
                                                     game:GetService 'VirtualUser':CaptureController()
                                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -11093,7 +11165,10 @@ if _G.Mode == "English" then
                                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                                     end
                                                                 end
-                                                                EquipWeapon(_G.SelectWeapon)
+                                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                    task.wait()
+                                                                    EquipWeapon(_G.SelectWeapon)
+                                                                end
                                                                 if not _G.FastAttack then
                                                                     game:GetService 'VirtualUser':CaptureController()
                                                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -11191,7 +11266,10 @@ else
                                                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                                     end
                                                                 end
-                                                                EquipWeapon(_G.SelectWeapon)
+                                                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                    task.wait()
+                                                                    EquipWeapon(_G.SelectWeapon)
+                                                                end
                                                                 if not _G.FastAttack then
                                                                     game:GetService 'VirtualUser':CaptureController()
                                                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -11286,7 +11364,10 @@ if _G.Mode == "English" then
                                                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                                         end
                                                                     end
-                                                                    EquipWeapon(_G.SelectWeapon)
+                                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                        task.wait()
+                                                                        EquipWeapon(_G.SelectWeapon)
+                                                                    end
                                                                     if not _G.FastAttack then
                                                                         game:GetService 'VirtualUser':CaptureController()
                                                                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -11384,7 +11465,10 @@ else
                                                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                                                         end
                                                                     end
-                                                                    EquipWeapon(_G.SelectWeapon)
+                                                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                        task.wait()
+                                                                        EquipWeapon(_G.SelectWeapon)
+                                                                    end
                                                                     if not _G.FastAttack then
                                                                         game:GetService 'VirtualUser':CaptureController()
                                                                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
@@ -12281,7 +12365,10 @@ while task.wait() do
                                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                 end
                             end
-                            EquipWeapon(_G.SelectWeapon)
+                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                task.wait()
+                                EquipWeapon(_G.SelectWeapon)
+                            end
                             PosMon = v.HumanoidRootPart.CFrame
                             if not _G.FastAttack then
                                 game:GetService 'VirtualUser':CaptureController()
@@ -12332,7 +12419,10 @@ while task.wait() do
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                         end
                                     end
-                                    EquipWeapon(_G.SelectWeapon)
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                        task.wait()
+                                        EquipWeapon(_G.SelectWeapon)
+                                    end
                                     PosMon = v.HumanoidRootPart.CFrame
                                     if not _G.FastAttack then
                                         game:GetService 'VirtualUser':CaptureController()
@@ -12376,7 +12466,10 @@ while task.wait() do
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                         end
                                     end
-                                    EquipWeapon(_G.SelectWeapon)
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                        task.wait()
+                                        EquipWeapon(_G.SelectWeapon)
+                                    end
                                     PosMon = v.HumanoidRootPart.CFrame
                                     if not _G.FastAttack then
                                         game:GetService 'VirtualUser':CaptureController()
@@ -12439,7 +12532,10 @@ while task.wait() do
                                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                 end
                             end
-                            EquipWeapon(_G.SelectWeapon)
+                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                task.wait()
+                                EquipWeapon(_G.SelectWeapon)
+                            end
                             PosMon = v.HumanoidRootPart.CFrame
                             if not _G.FastAttack then
                                 game:GetService 'VirtualUser':CaptureController()
@@ -12506,7 +12602,10 @@ while task.wait() do
                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                             end
                         end
-                        EquipWeapon(_G.SelectWeapon)
+                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                            task.wait()
+                            EquipWeapon(_G.SelectWeapon)
+                        end
                         PosMon = v.HumanoidRootPart.CFrame
                         if not _G.FastAttack then
                             game:GetService 'VirtualUser':CaptureController()
@@ -12555,7 +12654,10 @@ while task.wait() do
                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                             end
                         end
-                        EquipWeapon(_G.SelectWeapon)
+                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                            task.wait()
+                            EquipWeapon(_G.SelectWeapon)
+                        end
                         PosMon = v.HumanoidRootPart.CFrame
                         if not _G.FastAttack then
                             game:GetService 'VirtualUser':CaptureController()
@@ -12604,7 +12706,10 @@ while task.wait() do
                                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                 end
                             end
-                            EquipWeapon(_G.SelectWeapon)
+                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                task.wait()
+                                EquipWeapon(_G.SelectWeapon)
+                            end
                             PosMon = v.HumanoidRootPart.CFrame
                             if not _G.FastAttack then
                                 game:GetService 'VirtualUser':CaptureController()
