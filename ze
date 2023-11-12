@@ -1,76 +1,18 @@
-TweeSpeed = 255
-	getgenv().ToTarget = function(Point)
-		TweenPlay = (Point.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
-		if LocalPlayer.Character.Humanoid.Sit == true then 
-			LocalPlayer.Character.Humanoid.Sit = false 
-		end
-		pcall(function() 
-			tot = game:GetService("TweenService"):Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TweenPlay/TweeSpeed, Enum.EasingStyle.Linear),{CFrame = Point})
-		end)
-	
-		if _G.StopTween == true then
-			tot:Cancel()
-			_G.Clip = false
-		end
-
-		if TweenPlay > 2000 and _G.Bypass_TP then
-			pcall(function()
-				pcall(function()
-					tot:Cancel()
-					fkwarp = false
-	
-					if game:GetService("Players")["LocalPlayer"].Data:FindFirstChild("SpawnPoint").Value == tostring(GetIsLand(Point)) then 
-						wait(.1)
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TeleportToSpawn")
-					elseif game:GetService("Players")["LocalPlayer"].Data:FindFirstChild("LastSpawnPoint").Value == tostring(GetIsLand(Point)) then
-						game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
-						wait(0.1)
-						repeat wait() until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
-					else
-						if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
-							if fkwarp == false then
-								game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Point
-							end
-							fkwarp = true
-						end
-						wait(.08)
-						game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
-						repeat wait() until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
-						wait(.1)
-						game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
-					end
-					wait(0.2)
-					return
-				end)
-			end)
-		end
-	
-		tot:Play()
-		if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
-			local Highlight = Instance.new("Highlight")
-			Highlight.FillColor = Color3.new(0, 255, 0)
-			Highlight.OutlineColor = Color3.new(0,255,0)
-			Highlight.Parent = game.Players.LocalPlayer.Character
-		end
-		if TweenPlay < 250 then
-			TweeSpeed = 352
-		elseif TweenPlay < 500 then
-			TweeSpeed = 395
-		elseif TweenPlay >= 1000 then
-			TweeSpeed = 255
-		end
-	
-		if _G.StopTween then
-			tot:Cancel()
-			BringMobFarm = false
-			UseSkillGun = false
-			_G.UseSkill = false
-		elseif game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
-			tot:Play()
-		end
-	end
-
-
+function two(gotoCFrame) --- Tween
+    pcall(function ()
+        game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
+    end)
+    local tween_s = game:service "TweenService"
+    local info = TweenInfo.new((game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude / 325, Enum.EasingStyle.Linear)
+        tween, err = pcall(function()
+        tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
+        tweenz:Play()
+    end)
+    if not tween then return err end
+    end
+    function _TweenCanCle()
+    tweenz:Cancel()
+end
 local function tweenModel(model, CF)
 	TweenPlay = (CF.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
 	local info = TweenInfo.new(0, Enum.EasingStyle.Linear)
@@ -88,51 +30,11 @@ local function tweenModel(model, CF)
 		CFrameValue:Destroy()
 	end)
 end
-
-function BuyBoat()
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat","PirateSloop")
-	end
-	Auto_Mirage_Island = true
-	spawn(function()
-		while task.wait() do
-			pcall(function()
-				if Auto_Mirage_Island then
-							repeat task.wait()
-								local HHH = CFrame.new(2316.06592, 3.0538919, 2158.52979, -0.581450701, -9.7121891e-08, 0.813581645, -7.36259906e-08, 1, 6.67566766e-08, -0.813581645, -2.10850377e-08, -0.581450701)
-								local HydarBoat = CFrame.new(3230.96802, 9.4578352, 1555.08154, 0.980988681, 1.76605663e-08, 0.1940649, -4.35044489e-09, 1, -6.90121098e-08, -0.1940649, 6.68558329e-08, 0.980988681)
-								function Chackboat()
-									Boat = game:GetService("Workspace").Boats.PirateSloop
-									return {
-										[1] = Boat
-									} 
-								end
-								if Auto_Mirage_Island == true and Boat == true then
-									repeat task.wait()
-										getgenv().ToTarget(HHH)
-										if (HHH.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
-											tweenModel(Chackboat()[1],game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-										end
-										wait(1)
-										Point = false
-									until game.Players.LocalPlayer.Character.Humanoid.Sit == true and Point == false
-								elseif Point == true then
-									getgenv().ToTarget(HydarBoat)
-									if (HydarBoat.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
-										BuyBoat()
-										wait(0.1)
-										Boat = true
-									end
-								end
-							until Auto_Mirage_Island == false 
-							game:GetService("VirtualInputManager"):SendKeyEvent(false,"W",false,game)
-						end
-					end)
-				end
-			end)
-	spawn(function()
-		while wait() do 
-			if Auto_Mirage_Island == true and game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-				game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
-			end
-		end
-	end)
+function Chackboat()
+    Boat = game:GetService("Workspace").Boats.PirateSloop
+    return {
+        [1] = Boat
+    } 
+end
+two(CFrame.new(-16753.5977, 189.528107, 451.797333, -0.777145505, 0, -0.629321039, 0, 1, 0, 0.629321039, 0, -0.777145505))
+tweenModel(Chackboat()[1],game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
