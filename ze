@@ -1,4 +1,5 @@
-print(1)
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
+local notif1 = Notification.new("success", "kong", "tare")
 local tweenService = game:GetService("TweenService")
 local function tweenModel(model, CF)
 	TweenPlay = (CF.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
@@ -17,7 +18,23 @@ local function tweenModel(model, CF)
 		CFrameValue:Destroy()
 	end)
 end
-
+function two(gotoCFrame) --- Tween
+	pcall(function()
+	game.Players.LocalPlayer.Character.Humanoid.Sit = true
+	end)
+	local tween_s = game:service "TweenService"
+	local info = TweenInfo.new(
+		(game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude / 325, Enum.EasingStyle.Linear)
+		tween, err = pcall(function()
+		tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
+		tweenz:Play()
+	end)
+	if not tween then return err end
+	end
+	function _TweenCanCle()
+	tweenz:Cancel()
+end
 while wait() do
+two(CFrame.new(-16753.5977, 189.528107, 451.797333, -0.777145505, 0, -0.629321039, 0, 1, 0, 0.629321039, 0, -0.777145505))
 tweenModel(game:GetService("Workspace").Boats.PirateSloop,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
