@@ -66,8 +66,8 @@ wait(1)
 		line.Attachment0 = attach1
 		line.Attachment1 = attach2
 		line.FaceCamera = true
-		line.Width0 = 3.5
-		line.Width1 = 3.5
+		line.Width0 = 2
+		line.Width1 = 2
 		local mouse = game.Players.LocalPlayer:GetMouse()
 		mouse.KeyDown:connect(function(key)
 			if key == "r" then
