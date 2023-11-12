@@ -1,393 +1,84 @@
-if not game:IsLoaded() then
-	local GameLoadGui = Instance.new("Message", workspace);
-	GameLoadGui.Text = 'Wait Game Loading';
-	game.Loaded:Wait();
-	GameLoadGui:Destroy();
-	task.wait(10);
-end;
-
-repeat wait() until game:IsLoaded()
-repeat wait() until game:GetService("Players")
-repeat wait() until game:GetService("Players").LocalPlayer
-repeat wait() until game:GetService("Players").LocalPlayer.PlayerGui
-repeat wait() until game:GetService("ReplicatedStorage").Effect.Container
-do
-	local ui = game:GetService("CoreGui").RobloxGui.Modules.Profile:FindFirstChild("VectorHubFarm")
-	if ui then ui:Destroy() end
-end
-
-local id = game.PlaceId
-if id == 2753915549 then
-	World1 = true;
-elseif id == 4442272183 then
-	World2 = true;
-elseif id == 7449423635 then
-	World3 = true;
-else
-	game:Shutdown()
-end;
-
-
-local ScreenGui = Instance.new("ScreenGui")
-local Frameeback = Instance.new("Frame")
-local Frame = Instance.new("Frame")
-local Name = Instance.new("TextLabel")
-local title = Instance.new("TextLabel")
-local UIGradient = Instance.new("UIGradient")
-local Beli = Instance.new("TextLabel")
-local Profile = Instance.new("ImageLabel")
-local UICorner = Instance.new("UICorner")
-local Rejoin = Instance.new("TextButton")
-local UICorner_2 = Instance.new("UICorner")
-local UIGradient_2 = Instance.new("UIGradient")
-local UICorner_3 = Instance.new("UICorner")
-local Stop = Instance.new("TextButton")
-local UICorner_4 = Instance.new("UICorner")
-local UIGradient_3 = Instance.new("UIGradient")
-
-ScreenGui.Parent = game:GetService("CoreGui").RobloxGui.Modules.Profile
-ScreenGui.Name = "VectorHubFarm"
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-
-Frameeback.Name = "Frameeback"
-Frameeback.Parent = ScreenGui
-Frameeback.AnchorPoint = Vector2.new(0.5, 0.5)
-Frameeback.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Frameeback.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frameeback.BorderSizePixel = 3
-Frameeback.Position = UDim2.new(0.5, 0, 0.5, 0)
-Frameeback.Size = UDim2.new(0, 268, 0, 290)
-
-Frame.Parent = ScreenGui
-Frame.AnchorPoint = Vector2.new(0.5, 0.5)
-Frame.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Frame.BorderSizePixel = 0
-Frame.Position = UDim2.new(0.5, 0, 0.5, 0)
-Frame.Size = UDim2.new(0, 265, 0, 288)
-
-Name.Name = "Name"
-Name.Parent = Frame
-Name.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Name.BackgroundTransparency = 1.000
-Name.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Name.BorderSizePixel = 0
-Name.Position = UDim2.new(0.120754719, 0, 0.510416687, 0)
-Name.Size = UDim2.new(0, 200, 0, 50)
-Name.Font = Enum.Font.SourceSansBold
-Name.Text = "N/A"
-Name.TextColor3 = Color3.fromRGB(255, 255, 255)
-Name.TextSize = 20.000
-Name.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-Name.TextTransparency = 0.500
-
-title.Name = "title"
-title.Parent = Frame
-title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-title.BackgroundTransparency = 1.000
-title.BorderColor3 = Color3.fromRGB(0, 0, 0)
-title.BorderSizePixel = 0
-title.Position = UDim2.new(0.120754719, 0, -0.03125, 0)
-title.Size = UDim2.new(0, 200, 0, 50)
-title.Font = Enum.Font.SourceSansBold
-title.Text = "Vector Hub"
-title.TextColor3 = Color3.fromRGB(255, 255, 255)
-title.TextSize = 25.000
-title.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-
-UIGradient.Color = ColorSequence.new { ColorSequenceKeypoint.new(0.00, Color3.fromRGB(14, 26, 255)),
-	ColorSequenceKeypoint.new(0.46, Color3.fromRGB(0, 254, 233)), ColorSequenceKeypoint.new(1.00,
-	Color3.fromRGB(14, 26, 255)) }
-UIGradient.Parent = title
-
-Beli.Name = "Beli"
-Beli.Parent = Frame
-Beli.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Beli.BackgroundTransparency = 1.000
-Beli.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Beli.BorderSizePixel = 0
-Beli.Position = UDim2.new(0.120754719, 0, 0.645833313, 0)
-Beli.Size = UDim2.new(0, 200, 0, 50)
-Beli.Font = Enum.Font.SourceSansBold
-Beli.Text = "N/A"
-Beli.TextColor3 = Color3.fromRGB(85, 255, 127)
-Beli.TextSize = 30.000
-Beli.TextStrokeColor3 = Color3.fromRGB(255, 255, 255)
-
-Profile.Name = "Profile"
-Profile.Parent = Frame
-Profile.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-Profile.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Profile.BorderSizePixel = 0
-Profile.Position = UDim2.new(0.269811332, 0, 0.142361104, 0)
-Profile.Size = UDim2.new(0, 122, 0, 106)
-Profile.Image = "rbxasset://textures/ui/GuiImagePlaceholder.png"
-
-UICorner.CornerRadius = UDim.new(0.100000001, 8)
-UICorner.Parent = Profile
-
-Rejoin.Name = "Rejoin"
-Rejoin.Parent = Frame
-Rejoin.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Rejoin.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Rejoin.BorderSizePixel = 0
-Rejoin.Position = UDim2.new(0, 0, 0.819444418, 0)
-Rejoin.Size = UDim2.new(0, 102, 0, 42)
-Rejoin.Font = Enum.Font.SourceSansBold
-Rejoin.Text = "Rejoin"
-Rejoin.TextColor3 = Color3.fromRGB(255, 255, 255)
-Rejoin.TextSize = 25.000
-
-UICorner_2.Parent = Rejoin
-
-UIGradient_2.Color = ColorSequence.new { ColorSequenceKeypoint.new(0.00, Color3.fromRGB(14, 26, 255)),
-	ColorSequenceKeypoint.new(0.46, Color3.fromRGB(0, 254, 233)), ColorSequenceKeypoint.new(1.00,
-	Color3.fromRGB(14, 26, 255)) }
-UIGradient_2.Parent = Rejoin
-
-Rejoin.MouseButton1Down:connect(function()
-	game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
-end)
-
-UICorner_3.Parent = Frame
-
-Stop.Name = "Stop"
-Stop.Parent = Frame
-Stop.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-Stop.BorderColor3 = Color3.fromRGB(0, 0, 0)
-Stop.BorderSizePixel = 0
-Stop.Position = UDim2.new(0.615094364, 0, 0.819444418, 0)
-Stop.Size = UDim2.new(0, 102, 0, 42)
-Stop.Font = Enum.Font.SourceSansBold
-Stop.Text = "Stop"
-Stop.TextColor3 = Color3.fromRGB(255, 255, 255)
-Stop.TextSize = 25.000
-
-UICorner_4.Parent = Stop
-
-UIGradient_3.Color = ColorSequence.new { ColorSequenceKeypoint.new(0.00, Color3.fromRGB(14, 26, 255)),
-	ColorSequenceKeypoint.new(0.46, Color3.fromRGB(0, 254, 233)), ColorSequenceKeypoint.new(1.00,
-	Color3.fromRGB(14, 26, 255)) }
-UIGradient_3.Parent = Stop
-
-Stop.MouseButton1Down:connect(function()
-	_G.Chest8 = false
-	_G.rejoinn = false
-	if not _G.Chest8 and not _G.rejoinn then
-		local ui = game:GetService("CoreGui").RobloxGui.Modules.Profile:FindFirstChild("VectorHubFarm")
-		ui:Destroy()
+wait(1)
+	local color = Color3.new(255,0,4)
+	local size = UDim2.new(0,0,0,0)
+	--creates the 3d esp box and the lines
+	for i,v in pairs(game.Players:GetChildren()) do
+	   local Gui1 = Instance.new("SurfaceGui",v.Character.HumanoidRootPart)
+	    Gui1.Name = "G1"
+	    Gui1.AlwaysOnTop = true
+	    Gui1.Face = "Front"
+	   local frame1 = Instance.new("Frame")
+	     frame1.Size =  size
+	     frame1.Parent = v.Character.HumanoidRootPart.G1
+		 frame1.BackgroundTransparency = 0.5
+		 frame1.BackgroundColor3 = color
+		local Gui2 = Instance.new("SurfaceGui",v.Character.HumanoidRootPart)
+	    Gui2.Name = "G2"
+	    Gui2.AlwaysOnTop = true
+		Gui2.Face = "Back"
+	   local frame2 = Instance.new("Frame")
+	     frame2.Size =  size
+	     frame2.Parent = v.Character.HumanoidRootPart.G2
+		 frame2.BackgroundTransparency = 0.5
+		 frame2.BackgroundColor3 = color
+		local Gui3 = Instance.new("SurfaceGui",v.Character.HumanoidRootPart)
+	    Gui3.Name = "G3"
+	    Gui3.AlwaysOnTop = true
+		Gui3.Face = "Bottom"
+	   local frame3 = Instance.new("Frame")
+	     frame3.Size =  size
+	     frame3.Parent = v.Character.HumanoidRootPart.G3
+		 frame3.BackgroundTransparency = 0.5
+		 frame3.BackgroundColor3 = color
+		local Gui4 = Instance.new("SurfaceGui",v.Character.HumanoidRootPart)
+	    Gui4.Name = "G4"
+	    Gui4.AlwaysOnTop = true
+		Gui4.Face = "Left"
+	   local frame4 = Instance.new("Frame")
+	     frame4.Size =  size
+	     frame4.Parent = v.Character.HumanoidRootPart.G4
+		 frame4.BackgroundTransparency = 0.5
+		 frame4.BackgroundColor3 = color
+		local Gui5 = Instance.new("SurfaceGui",v.Character.HumanoidRootPart)
+	    Gui5.Name = "G5"
+	    Gui5.AlwaysOnTop = true
+		Gui5.Face = "Right"
+	   local frame5 = Instance.new("Frame")
+	     frame5.Size =  size
+	     frame5.Parent = v.Character.HumanoidRootPart.G5
+		 frame5.BackgroundTransparency = 0.5
+		 frame5.BackgroundColor3 = color
+		local Gui6 = Instance.new("SurfaceGui",v.Character.HumanoidRootPart)
+	    Gui6.Name = "G6"
+	    Gui6.AlwaysOnTop = true
+		Gui6.Face = "Top"
+	   local frame6 = Instance.new("Frame")
+	     frame6.Size =  size
+	     frame6.Parent = v.Character.HumanoidRootPart.G6
+		 frame6.BackgroundTransparency = 0.6
+		 frame6.BackgroundColor3 = color
+		local attach1 = Instance.new("Attachment")
+		attach1.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+		local attach2 = Instance.new("Attachment")
+		attach2.Parent = v.Character.HumanoidRootPart
+		local line = Instance.new("Beam")
+		line.Parent = Gui1
+		line.Attachment0 = attach1
+		line.Attachment1 = attach2
+		line.FaceCamera = true
+		line.Width0 = 10
+		line.Width1 = 10
+		local mouse = game.Players.LocalPlayer:GetMouse()
+		mouse.KeyDown:connect(function(key)
+			if key == "r" then
+	     Gui1:Destroy()
+	     Gui2:Destroy()
+	     Gui3:Destroy()
+	     Gui4:Destroy()
+	     Gui5:Destroy()
+	     Gui6:Destroy()
+	     attach1:Destroy()
+	     attach2:Destroy()
 	end
-end)
-
--- Scripts:
-
-local function OEHLEDE_fake_script() -- Name.LocalScript
-	local script = Instance.new('LocalScript', Name)
-
-	local Players = game:GetService("Players")
-	local player = Players.LocalPlayer
-	local name = player.Name
-	local text = script.Parent
-	text.Text = name
-end
-coroutine.wrap(OEHLEDE_fake_script)()
-local function DLZCE_fake_script() -- Beli.LocalScript
-	local script = Instance.new('LocalScript', Beli)
-
-	spawn(function()
-		while task.wait() do
-			pcall(function()
-				local beliValue = game:GetService("Players").LocalPlayer.Data.Beli.Value
-				local formattedBeli = tostring(beliValue):reverse():gsub("%d%d%d", "%1,"):reverse()
-				Beli.Text = "Beli: " .. formattedBeli
-			end)
-		end
-	end)
-end
-coroutine.wrap(DLZCE_fake_script)()
-local function FNBVJR_fake_script() -- Profile.LocalScript
-	local script = Instance.new('LocalScript', Profile)
-
-	local Players = game:GetService("Players")
-	local player = Players.LocalPlayer
-
-
-	local UserID = player.UserId
-	local thumbSize = Enum.ThumbnailSize.Size420x420
-	local thumbType = Enum.ThumbnailType.HeadShot
-	local imageLabel = script.Parent
-	local content, isReady = Players:GetUserThumbnailAsync(UserID, thumbType, thumbSize)
-
-	imageLabel.Image = content
-end
-coroutine.wrap(FNBVJR_fake_script)()
-
-local id = game.PlaceId
-if id == 2753915549 then
-	World1 = true;
-elseif id == 4442272183 then
-	World2 = true;
-elseif id == 7449423635 then
-	World3 = true;
-else
-	game:Shutdown()
-end;
-
-if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
-	repeat
-		wait()
-		if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-			if _G.Team == "Pirate" then
-				for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do
-					v.Function()
-				end
-			elseif _G.Team == "Marine" then
-				for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Activated)) do
-					v.Function()
-				end
-			else
-				for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do
-					v.Function()
-				end
-			end
-		end
-	until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-end
-
-_G.rejoinn = true
-spawn(function()
-	while task.wait() do
-		pcall(function()
-			if _G.rejoinn then
-				if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
-					local Noclip = Instance.new("BodyVelocity")
-					Noclip.Name = "BodyClip"
-					Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
-					Noclip.MaxForce = Vector3.new(100000, 100000, 100000)
-					Noclip.Velocity = Vector3.new(0, 0, 0)
-				end
-			else
-				game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
-			end
-		end)
+	    end)
 	end
-end)
-spawn(function()
-	while wait() do
-		if _G.rejoinn then
-			_G.rejoinn = game:GetService("CoreGui").RobloxPromptGui.promptOverlay.ChildAdded
-				:Connect(function(child)
-					if child.Name == 'ErrorPrompt' and child:FindFirstChild('MessageArea') and child.MessageArea:FindFirstChild("ErrorFrame") then
-						print("Rejoin!")
-						game:GetService("TeleportService"):Teleport(game.PlaceId)
-					end
-				end)
-		end
-	end
-end)
-if game:GetService("Players").LocalPlayer and _G.rejoinn == false then
-	while wait(10) do
-		game.Players.LocalPlayer.Character.Humanoid.Health = die
-		game.Players.LocalPlayer.Character.Humanoid.Health = 0
-	end
-end
-if _G.rejoinn then
-	wait(1)
-
-
-	_G.Chest8 = true
-	while _G.Chest8 do task.wait()
-		local chestExists = false
-		for _, child in ipairs(workspace:GetChildren()) do
-			if string.find(child.Name, "Chest") then
-				chestExists = true
-				break
-			end
-		end
-
-		if chestExists then
-			if _G.Chest8 then
-				_G.Chest8 = true
-			end
-		end
-		if chestExists == false then
-			local NotificationLibrary = loadstring(game:HttpGet(
-				"https://raw.githubusercontent.com/lobox920/Notification-Library/Main/Library.lua"))()
-			NotificationLibrary:SendNotification("Success", "Change Server", 3)
-
-			local PlaceID = game.PlaceId
-			local AllIDs = {}
-			local foundAnything = ""
-			local actualHour = os.date("!*t").hour
-			local Deleted = false
-			function TPReturner()
-				local Site;
-				if foundAnything == "" then
-					Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' ..
-						PlaceID .. '/servers/Public?sortOrder=Asc&limit=100'))
-				else
-					Site = game.HttpService:JSONDecode(game:HttpGet('https://games.roblox.com/v1/games/' ..
-						PlaceID .. '/servers/Public?sortOrder=Asc&limit=100&cursor=' .. foundAnything))
-				end
-				local ID = ""
-				if Site.nextPageCursor and Site.nextPageCursor ~= "null" and Site.nextPageCursor ~= nil then
-					foundAnything = Site.nextPageCursor
-				end
-				local num = 0;
-				for i, v in pairs(Site.data) do
-					local Possible = true
-					ID = tostring(v.id)
-					if tonumber(v.maxPlayers) > tonumber(v.playing) then
-						for _, Existing in pairs(AllIDs) do
-							if num ~= 0 then
-								if ID == tostring(Existing) then
-									Possible = false
-								end
-							else
-								if tonumber(actualHour) ~= tonumber(Existing) then
-									local delFile = pcall(function()
-										-- delfile("NotSameServers.json")
-										AllIDs = {}
-										table.insert(AllIDs, actualHour)
-									end)
-								end
-							end
-							num = num + 1
-						end
-						if Possible == true then
-							table.insert(AllIDs, ID)
-							wait()
-							pcall(function()
-								-- writefile("NotSameServers.json", game:GetService('HttpService'):JSONEncode(AllIDs))
-								wait()
-								game:GetService("TeleportService"):TeleportToPlaceInstance(PlaceID, ID,
-									game.Players.LocalPlayer)
-							end)
-							wait(4)
-						end
-					end
-				end
-			end
-
-			function Teleport()
-				while wait() do
-					pcall(function()
-						TPReturner()
-						if foundAnything ~= "" then
-							TPReturner()
-						end
-					end)
-				end
-			end
-
-			Teleport()
-		end
-
-
-		for _, child in ipairs(Workspace:GetChildren()) do
-			if string.find(child.Name, "Chest") then
-				game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = child.CFrame * CFrame.new(0,0,0)
-			end
-		end
-	end
-end
