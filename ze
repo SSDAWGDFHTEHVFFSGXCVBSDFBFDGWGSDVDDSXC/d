@@ -1,6 +1,6 @@
 
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
-local notif1 = Notification.new("success", "Ez", "DDDDD")
+local notif1 = Notification.new("success", "Kuy", "EE")
 local function tweenModel(model, CF)
 	TweenPlay = (CF.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
 	local info = TweenInfo.new(0, Enum.EasingStyle.Linear)
@@ -18,12 +18,7 @@ local function tweenModel(model, CF)
 		CFrameValue:Destroy()
 	end)
 end
-function Chackboat()
-    Boat = game:GetService("Workspace").Boats.PirateSloop
-    return {
-        [1] = Boat
-    } 
-end
+
 while wait() do
-tweenModel(Chackboat()[1],game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+tweenModel(game:GetService("Workspace").Boats.PirateSloop,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
