@@ -1,6 +1,4 @@
-
-local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
-local notif1 = Notification.new("success", "Kuy", "EE")
+local tweenService = game:GetService("TweenService")
 local function tweenModel(model, CF)
 	TweenPlay = (CF.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
 	local info = TweenInfo.new(0, Enum.EasingStyle.Linear)
