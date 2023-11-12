@@ -1,5 +1,5 @@
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
-local notif1 = Notification.new("success", "kong", "tare")
+local notif1 = Notification.new("success", "ma", "di")
 local tweenService = game:GetService("TweenService")
 local function tweenModel(model, CF)
 	TweenPlay = (CF.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
@@ -34,7 +34,303 @@ function two(gotoCFrame) --- Tween
 	function _TweenCanCle()
 	tweenz:Cancel()
 end
-while wait() do
-two(CFrame.new(-16753.5977, 189.528107, 451.797333, -0.777145505, 0, -0.629321039, 0, 1, 0, 0.629321039, 0, -0.777145505))
-tweenModel(game:GetService("Workspace").Boats.PirateSloop,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+function Noclip()
+	game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0, 0, 0) -- ทำให้ตัวละครลอยตัว
+	for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+	if v:IsA("BasePart") and v.CanCollide == true then
+		v.CanCollide = false -- ทำให้วัตถุทั้งหมดในตัวละครทะลุผ่านกำแพง
+	end
+	end
+	end
+	Noclip()
+	-- [Body Gyro]
+	task.spawn(function()
+	game:GetService("RunService").Stepped:Connect(function()
+	pcall(function()
+		--[World 1]
+		if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+		_G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
+		--[World 2]
+		_G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
+		_G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
+		_G.AutoFactory or
+		--[World 3]
+		_G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
+		_G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
+		_G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
+		_G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
+		_G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
+		Tushita_Quest2 or Tushita_Quest1 or
+		_G.TeleporttoSeaBeast  or _G.AutoEvent or _G.TPTOBOAT or 
+		Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
+		--[Boss]
+		_G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
+		--[Mastery]
+		_G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
+		--[Raids]
+		_G.AutoRaids or _G.AutoNextPlace
+		then
+			if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+				local Highlight = Instance.new("Highlight")
+				Highlight.FillColor = Color3.new(0, 1, 0)
+				Highlight.OutlineColor = Color3.new(0, 1, 0)
+				Highlight.Parent = game.Players.LocalPlayer.Character;
+				end
+			if syn then
+				setfflag("HumanoidParallelRemoveNoPhysics", "False")
+				setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
+				if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+					game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
+				end
+			else
+				if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
+					if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1") then
+						if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+							game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
+						end
+						local BodyVelocity = Instance.new("BodyVelocity")
+						BodyVelocity.Name = "BodyVelocity1"
+						BodyVelocity.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+						BodyVelocity.MaxForce = Vector3.new(10000, 10000, 10000)
+						BodyVelocity.Velocity = Vector3.new(0, 0, 0)
+					end
+				end
+				for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+					if v:IsA("BasePart") then
+						v.CanCollide = false
+					end
+				end
+			end
+		else
+			game.Players.LocalPlayer.Character:FindFirstChild("Highlight"):Destroy();
+			if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1") then
+				game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1"):Destroy();
+			end
+		end
+	end)
+	end)
+	end)
+	
+	spawn(function()
+	while wait(.1) do
+	pcall(function()
+		if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+		_G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
+		--[World 2]
+		_G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
+		_G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
+		_G.AutoFactory or
+		--[World 3]
+		_G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
+		_G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
+		_G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
+		_G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
+		_G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
+		Tushita_Quest2 or Tushita_Quest1 or
+		_G.TeleporttoSeaBeast  or _G.AutoEvent or
+		_G.TPTOBOAT or 
+		Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
+		--[Boss]
+		_G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
+		--[Mastery]
+		_G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
+		--[Raids]
+		_G.AutoRaids or _G.AutoNextPlace
+	then
+			if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+				game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
+				wait(5)
+			end
+			PIO = false
+			if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
+				local L_1 = Instance.new("BodyVelocity")
+				L_1.Name = "BodyGyrozz"
+				L_1.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+				L_1.MaxForce = Vector3.new(1000000000, 1000000000, 1000000000)
+				L_1.Velocity = Vector3.new(0, 0, 0)
+			end
+		elseif PIO == false then
+			for i, v in pairs(game.Players.LocalPlayer.Character.HumanoidRootPart:GetChildren()) do
+				if v.Name == "BodyGyrozz" then
+					v:Destroy()
+					PIO = true
+				end
+			end
+		end
+	end)
+	end
+	end)
+	
+	spawn(function()
+	game:GetService("RunService").Stepped:Connect(function()
+	if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+	_G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
+	--[World 2]
+	_G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
+	_G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
+	_G.AutoFactory or
+	--[World 3]
+	_G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
+	_G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
+	_G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
+	_G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
+	_G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
+	Tushita_Quest2 or Tushita_Quest1 or
+	_G.TeleporttoSeaBeast  or _G.AutoEvent or
+	_G.TPTOBOAT or 
+	Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
+	--[Boss]
+	_G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
+	--[Mastery]
+	_G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
+	--[Raids]
+	_G.AutoRaids or _G.AutoNextPlace
+	then
+		for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+			if v:IsA("BasePart") then
+				v.CanCollide = false
+			end
+		end
+	end
+	end)
+	end)
+	
+	function changestate()
+	game.Workspace["Part"].CFrame = CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.X,
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Y - 3.92,
+	game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame.Z)
+	end
+	
+	spawn(function()
+	while task.wait() do
+	pcall(function()
+		if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+			_G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
+			--[World 2]
+			_G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
+			_G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
+			_G.AutoFactory or
+			--[World 3]
+			_G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
+			_G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
+			_G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
+			_G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
+			_G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
+			Tushita_Quest2 or Tushita_Quest1 or
+			_G.TeleporttoSeaBeast  or _G.AutoEvent or
+			_G.TPTOBOAT or 
+			Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
+			--[Boss]
+			_G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
+			--[Mastery]
+			_G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
+			--[Raids]
+			_G.AutoRaids or _G.AutoNextPlace
+	then
+			if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip") then
+				local Noclip = Instance.new("BodyVelocity")
+				Noclip.Name = "BodyClip"
+				Noclip.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
+				Noclip.MaxForce = Vector3.new(100000, 100000, 100000)
+				Noclip.Velocity = Vector3.new(0, 0, 0)
+			end
+		else
+			game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyClip"):Destroy()
+		end
+	end)
+	end
+	end)
+	
+	spawn(function() ------body velocity
+	game:GetService("RunService").Stepped:Connect(function()
+	if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+			_G.AutoSaber or _G.AutoPole or _G.TeleportIsland or
+			--[World 2]
+			_G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
+			_G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
+			_G.AutoFactory or
+			--[World 3]
+			_G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
+			_G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation or _G.AutoGodHuman or _G.AutoCavander or
+			_G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
+			_G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
+			_G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
+			Tushita_Quest2 or Tushita_Quest1 or
+			_G.TeleporttoSeaBeast  or _G.AutoEvent or
+			_G.TPTOBOAT or 
+			Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
+			--[Boss] 
+			_G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
+			--[Mastery]
+			_G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
+			--[Raids]
+			_G.AutoRaids or _G.AutoNextPlace
+		then
+		if not game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv') then
+			local bv = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
+			bv.Name = 'bv'
+			bv.MaxForce = Vector3.new(100000, 100000, 100000)
+			bv.Velocity = Vector3.new(0, 0, 0)
+		end
+	else
+		if game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv') then
+			game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv'):Destroy()
+		end
+	end
+	end)
+	end)
+	_G.AutoEvent = true
+	BoatList = {
+		"Dinghy",
+		"PirateSloop"
+	}
+	--[[page1:Dropdown("Select Boat",BoatList, function(value)
+		SelectBoat = value
+		end)]]
+		SelectBoat = "Dinghy"
+	function BuyBoat()
+	if SelectBoat == "Dinghy" then
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat","Dinghy")
+	elseif SelectBoat == "PirateSloop" then
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat","PirateSloop")
+	end
 end
+spawn(function()	
+while wait() do
+	pcall(function() 
+		if _G.AutoEvent then
+			repeat task.wait()
+			local target = CFrame.new(-16753.5977, 189.528107, 451.797333, -0.777145505, 0, -0.629321039, 0, 1, 0, 0.629321039, 0, -0.777145505)
+			local Posibuyboat = CFrame.new(3230.96802, 9.4578352, 1555.08154, 0.980988681, 1.76605663e-08, 0.1940649, -4.35044489e-09, 1, -6.90121098e-08, -0.1940649, 6.68558329e-08, 0.980988681)
+			function Chackboat()
+				Boat = game:GetService("Workspace").Boats[BoatList]
+				return {
+					[1] = Boat
+				} 
+			end
+			if _G.AutoEvent == true and Boat == true then
+			two(target)
+			tweenModel(game:GetService("Workspace").Boats[BoatList],game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+			elseif Boat == false then
+				two(Posibuyboat)
+				if (Posibuyboat.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+					BuyBoat()
+					wait(0.1)
+					Boat = true
+				end
+			end
+			until _G.AutoEvent == false
+			game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+			end
+		end)
+	end
+end)
+
+spawn(function()
+	while wait() do 
+		if _G.AutoEvent == true and game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+			game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+		end
+	end
+end)
