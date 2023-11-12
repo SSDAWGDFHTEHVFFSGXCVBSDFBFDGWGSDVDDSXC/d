@@ -3615,7 +3615,8 @@ end
 
 page1:Seperator("🏚️")
 Time = page1:Label("..")
-
+page1:Seperator("Vector Hub")
+page1:Label("Username"..game.Players.LocalPlayer.DisplayName)
 function UpdateTime()
 local GameTime = math.floor(workspace.DistributedGameTime+0.5)
 local Hour = math.floor(GameTime/(60^2))%24
@@ -3625,14 +3626,40 @@ Time:Set("[GameTime] : Hours : "..Hour.." Minutes : "..Minute.." Seconds : "..Se
 end
 
 spawn(function()
- while task.wait() do
- pcall(function()
-  UpdateTime()
-  end)
- end
+while task.wait() do
+pcall(function()
+UpdateTime()
+end)
+end
+end)
+
+Client = page1:Label1("Client")
+
+function UpdateClient()
+local Fps = workspace:GetRealPhysicsFPS()
+Client:Refresh("[Fps] : "..Fps)
+end
+
+spawn(function()
+while true do wait(.1)
+UpdateClient()
+end
+end)
+
+Client1 = page1:Label1("Client")
+
+function UpdateClient1()
+local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+Client1:Refresh("[Ping] : "..Ping)
+end
+
+spawn(function()
+while true do wait(.1)
+UpdateClient1()
+end
 end)
 if _G.Mode == "English" then
-page1:Toggle("Auto Farm Level", false, function(value)
+page1:Toggle("Auto Farm Level", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
     _G.Settings.AutoFarm = value
     SaveSettings()
@@ -3643,7 +3670,7 @@ page1:Toggle("Auto Farm Level", false, function(value)
     end
 end)  
 else
-page1:Toggle("ออโต้ฟาร์มเลเวล", false, function(value)
+page1:Toggle("ออโต้ฟาร์มเลเวล", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
     _G.Settings.AutoFarm = value
     SaveSettings()
@@ -16104,6 +16131,17 @@ page12:Button("Show Awakened Skill", function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
     game.Players.LocalPlayer.PlayerGui.Main.AwakeningToggler.Visible = true
     end)
+    page12:Button("Show Title Name", function()
+        local args = {
+            [1] = "getTitles"
+        }
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+        game.Players.localPlayer.PlayerGui.Main.Titles.Visible = true
+        end)
+
+        page12:Button("Show Color Haki", function()
+            game.Players.localPlayer.PlayerGui.Main.Colors.Visible = true
+            end)
 else
 _G.Mode = "Thai"
 page12:Seperator("<<เปลี่ยนเซิฟเวอร์>>")
@@ -16122,7 +16160,7 @@ page12:Line()
 page12:Button("ถ่ายภาพไก่ตัน", function()
     kaituncap()
 end)
-page12:Button("แสดงสกิลตื่น", function()
+page12:Button("แสดงเมนูสกิลตื่น", function()
     local args = {
         [1] = "getAwakenedAbilities"
     }
@@ -16130,6 +16168,17 @@ page12:Button("แสดงสกิลตื่น", function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
     game.Players.LocalPlayer.PlayerGui.Main.AwakeningToggler.Visible = true
     end)
+    page12:Button("แสดงเมนูเลือกฉายา", function()
+        local args = {
+            [1] = "getTitles"
+        }
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+        game.Players.localPlayer.PlayerGui.Main.Titles.Visible = true
+        end)
+
+        page12:Button("แสดงเมนูเลือกสีฮาคิ", function()
+            game.Players.localPlayer.PlayerGui.Main.Colors.Visible = true
+            end)
 end
 function InfAbility()
 if _G.InfAbility then
@@ -16677,12 +16726,212 @@ page12:Toggle("ออโต้คลิก",false,function(value)
         end)
     end)
 end
+if _G.Mode == "Engllish" then
+page12:Toggle("Graphic",false,function(v)
+    if v then
+        getgenv().mode = "Autumn" -- Choose from Summer and Autumn
+        local a = game.Lighting
+        a.Ambient = Color3.fromRGB(33, 33, 33)
+        a.Brightness = 0.3
+        a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+        a.ColorShift_Top = Color3.fromRGB(255, 247, 237)
+        a.EnvironmentDiffuseScale = 0.105
+        a.EnvironmentSpecularScale = 0.522
+        a.GlobalShadows = true
+        a.OutdoorAmbient = Color3.fromRGB(51, 54, 67)
+        a.ShadowSoftness = 0.04
+        a.GeographicLatitude = -15.525
+        a.ExposureCompensation = 0.75
+        local b = Instance.new("BloomEffect", a)
+        b.Name = "BloomEffect_Graphic"
+        b.Enabled = true
+        b.Intensity = 0.04
+        b.Size = 1900
+        b.Threshold = 0.915
+        local c = Instance.new("ColorCorrectionEffect", a)
+        c.Name = 'ColorCorrectionEffect1_Graphic'
+        c.Brightness = 0.176
+        c.Contrast = 0.39
+        c.Enabled = true
+        c.Saturation = 0.2
+        c.TintColor = Color3.fromRGB(217, 145, 57)
+        if getgenv().mode == "Summer" then
+            c.TintColor = Color3.fromRGB(255, 220, 148)
+        elseif getgenv().mode == "Autumn" then
+            c.TintColor = Color3.fromRGB(242, 193, 79)
+        end
+        local d = Instance.new("DepthOfFieldEffect", Graphic)
+        d.Name =  'DepthOfFieldEffect_Graphic'
+        d.Enabled = true
+        d.FarIntensity = 0.077
+        d.FocusDistance = 21.54
+        d.InFocusRadius = 20.77
+        d.NearIntensity = 0.277
+        local e = Instance.new("ColorCorrectionEffect", a)
+        e.Name = 'ColorCorrectionEffect2_Graphic'
+        e.Brightness = 0
+        e.Contrast = -0.07
+        e.Saturation = 0
+        e.Enabled = true
+        e.TintColor = Color3.fromRGB(255, 247, 239)
+        local e2 = Instance.new("ColorCorrectionEffect", a)
+        e2.Name = 'ColorCorrectionEffect3_Graphic'
+        e2.Brightness = 0.2
+        e2.Contrast = 0.45
+        e2.Saturation = -0.1
+        e2.Enabled = true
+        e2.TintColor = Color3.fromRGB(255, 255, 255)
+        local s = Instance.new("SunRaysEffect", a)
+        s.Name = 'SunRaysEffect_Graphic'
+        s.Enabled = false
+        s.Intensity = 0.01
+        s.Spread = 0.146
+    else
+        local a = game.Lighting
+        a.Ambient = Color3.fromRGB(170, 170, 170)
+        a.Brightness = 2
+        a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+        a.ColorShift_Top = Color3.fromRGB(0, 0, 0)
+        a.EnvironmentDiffuseScale = 0.105
+        a.EnvironmentSpecularScale = 0.522
+        a.GlobalShadows = false
+        a.OutdoorAmbient = Color3.fromRGB(127, 127, 127)
+        a.ShadowSoftness = 0
+        a.GeographicLatitude = 66
+        a.ExposureCompensation = 0.2
+        game:GetService("Lighting")["BloomEffect_Graphic"]:Destroy()
+        game:GetService("Lighting")["ColorCorrectionEffect1_Graphic"]:Destroy()
+        game:GetService("Lighting")["ColorCorrectionEffect2_Graphic"]:Destroy()
+        game:GetService("Lighting")["ColorCorrectionEffect3_Graphic"]:Destroy()
+        game:GetService("Lighting")["SunRaysEffect_Graphic"]:Destroy()
+    end
+end)
+else
+    page12:Toggle("ภาพสวย",false,function(v)
+        if v then
+            getgenv().mode = "Autumn" -- Choose from Summer and Autumn
+            local a = game.Lighting
+            a.Ambient = Color3.fromRGB(33, 33, 33)
+            a.Brightness = 0.3
+            a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+            a.ColorShift_Top = Color3.fromRGB(255, 247, 237)
+            a.EnvironmentDiffuseScale = 0.105
+            a.EnvironmentSpecularScale = 0.522
+            a.GlobalShadows = true
+            a.OutdoorAmbient = Color3.fromRGB(51, 54, 67)
+            a.ShadowSoftness = 0.04
+            a.GeographicLatitude = -15.525
+            a.ExposureCompensation = 0.75
+            local b = Instance.new("BloomEffect", a)
+            b.Name = "BloomEffect_Graphic"
+            b.Enabled = true
+            b.Intensity = 0.04
+            b.Size = 1900
+            b.Threshold = 0.915
+            local c = Instance.new("ColorCorrectionEffect", a)
+            c.Name = 'ColorCorrectionEffect1_Graphic'
+            c.Brightness = 0.176
+            c.Contrast = 0.39
+            c.Enabled = true
+            c.Saturation = 0.2
+            c.TintColor = Color3.fromRGB(217, 145, 57)
+            if getgenv().mode == "Summer" then
+                c.TintColor = Color3.fromRGB(255, 220, 148)
+            elseif getgenv().mode == "Autumn" then
+                c.TintColor = Color3.fromRGB(242, 193, 79)
+            end
+            local d = Instance.new("DepthOfFieldEffect", Graphic)
+            d.Name =  'DepthOfFieldEffect_Graphic'
+            d.Enabled = true
+            d.FarIntensity = 0.077
+            d.FocusDistance = 21.54
+            d.InFocusRadius = 20.77
+            d.NearIntensity = 0.277
+            local e = Instance.new("ColorCorrectionEffect", a)
+            e.Name = 'ColorCorrectionEffect2_Graphic'
+            e.Brightness = 0
+            e.Contrast = -0.07
+            e.Saturation = 0
+            e.Enabled = true
+            e.TintColor = Color3.fromRGB(255, 247, 239)
+            local e2 = Instance.new("ColorCorrectionEffect", a)
+            e2.Name = 'ColorCorrectionEffect3_Graphic'
+            e2.Brightness = 0.2
+            e2.Contrast = 0.45
+            e2.Saturation = -0.1
+            e2.Enabled = true
+            e2.TintColor = Color3.fromRGB(255, 255, 255)
+            local s = Instance.new("SunRaysEffect", a)
+            s.Name = 'SunRaysEffect_Graphic'
+            s.Enabled = false
+            s.Intensity = 0.01
+            s.Spread = 0.146
+        else
+            local a = game.Lighting
+            a.Ambient = Color3.fromRGB(170, 170, 170)
+            a.Brightness = 2
+            a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+            a.ColorShift_Top = Color3.fromRGB(0, 0, 0)
+            a.EnvironmentDiffuseScale = 0.105
+            a.EnvironmentSpecularScale = 0.522
+            a.GlobalShadows = false
+            a.OutdoorAmbient = Color3.fromRGB(127, 127, 127)
+            a.ShadowSoftness = 0
+            a.GeographicLatitude = 66
+            a.ExposureCompensation = 0.2
+            game:GetService("Lighting")["BloomEffect_Graphic"]:Destroy()
+            game:GetService("Lighting")["ColorCorrectionEffect1_Graphic"]:Destroy()
+            game:GetService("Lighting")["ColorCorrectionEffect2_Graphic"]:Destroy()
+            game:GetService("Lighting")["ColorCorrectionEffect3_Graphic"]:Destroy()
+            game:GetService("Lighting")["SunRaysEffect_Graphic"]:Destroy()
+        end
+    end)
+end
+if game.workspace:FindFirstChild("WaterWalk") then
+    game.workspace:FindFirstChild("WaterWalk"):Destroy()
+end
+platform = Instance.new("Part")
+platform.Name = "WaterWalk"
+platform.Size = Vector3.new(math.huge, 1, math.huge)
+platform.Transparency = 1
+platform.Anchored = true
+platform.Parent = game.workspace
 if _G.Mode == "English" then
+    page12:Toggle("Walk on Water",true,function(value)
+        _G.WalkWater = value
+    end)
+    
+    spawn(function()
+            while task.wait() do
+                pcall(function()
+                    if _G.WalkWater then
+                        game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,112,1000)
+                    else
+                        game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,80,1000)
+                    end
+                end)
+            end
+        end)
 page12:Toggle("InfAbility", false, function(value)
     _G.InfAbility = value
     InfAbility()
 end)
 else
+    page12:Toggle("เดินบนน้ำ",true,function(value)
+        _G.WalkWater = value
+    end)
+    
+    spawn(function()
+            while task.wait() do
+                pcall(function()
+                    if _G.WalkWater then
+                        game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,112,1000)
+                    else
+                        game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,80,1000)
+                    end
+                end)
+            end
+        end)
 _G.Mode = "Thai"
 page12:Toggle("ความสามารถไม่จำกัด", false, function(value)
     _G.InfAbility = value
