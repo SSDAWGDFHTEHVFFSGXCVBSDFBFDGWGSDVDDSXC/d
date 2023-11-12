@@ -13318,8 +13318,7 @@ spawn(function()
                 Com("F_", "StartQuest", QuestName, LevelQuest)
             end
         end
-        end
-        if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
     if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
         for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
             if _G.AutoFarmGunMastery and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
@@ -13463,8 +13462,8 @@ while wait() do
                 Com("F_", "StartQuest", QuestName, LevelQuest)
             end
         end
-    end
-        if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+    
+    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
         if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
         for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
             if _G.AutoFarmFruitMastery and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
@@ -13583,7 +13582,7 @@ while wait() do
         else
         StartMagnet = false
         Modstween = toTarget(CFrameMon.Position, CFrameMon)
-        if (CFrameMon.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
+        if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
             if Modstween then 
                 Modstween:Stop()
                 spawn(function()
@@ -13606,6 +13605,7 @@ while wait() do
             end)
         end
         --  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+        
         end
         end
         end
