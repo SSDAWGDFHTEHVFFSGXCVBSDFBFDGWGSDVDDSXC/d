@@ -1,5 +1,5 @@
 local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/Jxereas/UI-Libraries/main/notification_gui_library.lua", true))()
-local notif1 = Notification.new("success", "ma", "di")
+local notif1 = Notification.new("success", "kuy", "wa")
 local tweenService = game:GetService("TweenService")
 local function tweenModel(model, CF)
 	TweenPlay = (CF.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
@@ -280,22 +280,10 @@ function Noclip()
 	end
 	end)
 	end)
-	_G.AutoEvent = true
-	BoatList = {
-		"Dinghy",
-		"PirateSloop"
-	}
-	--[[page1:Dropdown("Select Boat",BoatList, function(value)
-		SelectBoat = value
-		end)]]
-		SelectBoat = "Dinghy"
 	function BuyBoat()
-	if SelectBoat == "Dinghy" then
-		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat","Dinghy")
-	elseif SelectBoat == "PirateSloop" then
 		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyBoat","PirateSloop")
 	end
-end
+	_G.AutoEvent = true
 spawn(function()	
 while wait() do
 	pcall(function() 
@@ -304,14 +292,14 @@ while wait() do
 			local target = CFrame.new(-16753.5977, 189.528107, 451.797333, -0.777145505, 0, -0.629321039, 0, 1, 0, 0.629321039, 0, -0.777145505)
 			local Posibuyboat = CFrame.new(3230.96802, 9.4578352, 1555.08154, 0.980988681, 1.76605663e-08, 0.1940649, -4.35044489e-09, 1, -6.90121098e-08, -0.1940649, 6.68558329e-08, 0.980988681)
 			function Chackboat()
-				Boat = game:GetService("Workspace").Boats[BoatList]
+				Boat = game:GetService("Workspace").Boats.PirateSloop
 				return {
 					[1] = Boat
 				} 
 			end
 			if _G.AutoEvent == true and Boat == true then
 			two(target)
-			tweenModel(game:GetService("Workspace").Boats[BoatList],game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+			tweenModel(game:GetService("Workspace").Boats.PirateSloop,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
 			elseif Boat == false then
 				two(Posibuyboat)
 				if (Posibuyboat.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
