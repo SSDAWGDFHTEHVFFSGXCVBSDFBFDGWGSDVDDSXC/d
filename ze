@@ -3607,7 +3607,8 @@ end
     local page5 = Library:Tab("Item","rbxassetid://12499842920")
     local page6 = Library:Tab("Mastery","rbxassetid://11717242503")
     local page7 = Library:Tab("DevilFruit","rbxassetid://130882646")
-    local page8 = Library:Tab("Raid","rbxassetid://11446859498")
+    local page8 = Library:Tab("Raid","rbxassetid://13180179055")
+    local page13 = Library:Tab("Combat","rbxassetid://11446859498")
     local page9 = Library:Tab("Mirage","rbxassetid://12598594243")
     local page10 = Library:Tab("RaceV4","rbxassetid://7558782590")
     local page11 = Library:Tab("Shop","rbxassetid://6031265976")
@@ -14327,7 +14328,7 @@ local getplayers = {}
 local getitems = {}
 local getweb = {}
 if _G.Mode == "English" then
-    page8:Seperator("<<PVP>>")
+    page13:Seperator("<<PVP>>")
 do
     for i, v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
         if v.Name ~= plr.Name then
@@ -14340,10 +14341,10 @@ do
         end
     end
 end
-local PlayerDrop = page8:Dropdown("Select Player",getplayers, function(value)
+local PlayerDrop = page13:Dropdown("Select Player",getplayers, function(value)
     SelectPlayer = value
 end)
-page8:Button("Refresh", function()
+page13:Button("Refresh", function()
     PlayerDrop:Clear()
     for i, v in next, game:GetService("Workspace").Characters:GetChildren() do
         if v.Name ~= plr.Name then
@@ -14353,7 +14354,7 @@ page8:Button("Refresh", function()
         end
     end
 end)
-page8:Toggle("Teleport to Player", teleporttop, function(value)
+page13:Toggle("Teleport to Player", teleporttop, function(value)
     teleporttop = value
     if value == false then
         task.wait()
@@ -14361,7 +14362,7 @@ page8:Toggle("Teleport to Player", teleporttop, function(value)
         task.wait()
     end
 end)
-page8:Toggle("Spectate Player", SpectatePlys, function(value)
+page13:Toggle("Spectate Player", SpectatePlys, function(value)
     SpectatePlys = value
     local plr1 = game:GetService("Players").LocalPlayer.Character.Humanoid
     local plr2 = game:GetService("Players"):FindFirstChild(SelectPlayer)
@@ -14383,14 +14384,14 @@ spawn(function()
         end
     end
 end)
-page8:Toggle("Aimbot Gun", false, function(value)
+page13:Toggle("Aimbot Gun", false, function(value)
     Aimbot = value
 end)
-page8:Toggle("Aimbot Skill", false, function(value)
+page13:Toggle("Aimbot Skill", false, function(value)
     Skillaimbot = value
 end)
 else
-page8:Seperator("<<ต่อสู้>>")
+    page13:Seperator("<<ต่อสู้>>")
 do
     for i, v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
         if v.Name ~= plr.Name then
@@ -14403,10 +14404,10 @@ do
         end
     end
 end
-local PlayerDrop = page8:Dropdown("เลือกเพลย์เยอร์",getplayers, function(value)
+local PlayerDrop = page13:Dropdown("เลือกเพลย์เยอร์",getplayers, function(value)
     SelectPlayer = value
 end)
-page8:Button("รีัเฟรช", function()
+page13:Button("รีัเฟรช", function()
     PlayerDrop:Clear()
     for i, v in next, game:GetService("Workspace").Characters:GetChildren() do
         if v.Name ~= plr.Name then
@@ -14416,7 +14417,7 @@ page8:Button("รีัเฟรช", function()
         end
     end
 end)
-page8:Toggle("เทเลพอร์ตไปหาเพลย์เยอร์", teleporttop, function(value)
+page13:Toggle("เทเลพอร์ตไปหาเพลย์เยอร์", teleporttop, function(value)
     teleporttop = value
     if value == false then
         task.wait()
@@ -14424,7 +14425,7 @@ page8:Toggle("เทเลพอร์ตไปหาเพลย์เยอร
         task.wait()
     end
 end)
-page8:Toggle("ดูเพลย์เยอร์", SpectatePlys, function(value)
+page13:Toggle("ดูเพลย์เยอร์", SpectatePlys, function(value)
     SpectatePlys = value
     local plr1 = game:GetService("Players").LocalPlayer.Character.Humanoid
     local plr2 = game:GetService("Players"):FindFirstChild(SelectPlayer)
@@ -14446,10 +14447,10 @@ spawn(function()
         end
     end
 end)
-page8:Toggle("อิมบอทปืน", false, function(value)
+page13:Toggle("อิมบอทปืน", false, function(value)
     Aimbot = value
 end)
-page8:Toggle("อิมบอทสกิล", false, function(value)
+page13:Toggle("อิมบอทสกิล", false, function(value)
     Skillaimbot = value
 end)
 end
@@ -14520,8 +14521,8 @@ game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun].RemoteFunc
 end
 end)
 if _G.Mode == "English" then
-page8:Seperator("<<ESP>>")
-page8:Toggle("ESPPlayer", _G.ESPPlayer, function(value)
+    page13:Seperator("<<ESP>>")
+    page13:Toggle("ESPPlayer", _G.ESPPlayer, function(value)
 ESPPlayer = value
 while ESPPlayer do
     task.wait()
@@ -14535,28 +14536,28 @@ while task.wait() do
     end
 end
 end)
-page8:Toggle("ESPChest", _G.ChestEsp, function(value)
+page13:Toggle("ESPChest", _G.ChestEsp, function(value)
 ChestESP = value
 while ChestESP do
     task.wait()
     UpdateChestEsp()
 end
 end)
-page8:Toggle("ESPDevilFruit", _G.DevilFruitESP, function(value)
+page13:Toggle("ESPDevilFruit", _G.DevilFruitESP, function(value)
 DevilFruitESP = value
 while DevilFruitESP do
     task.wait()
     UpdateBfEsp()
 end
 end)
-page8:Toggle("ESPFlower", _G.DevilFruitESP, function(value)
+page13:Toggle("ESPFlower", _G.DevilFruitESP, function(value)
 FlowerESP = value
 while FlowerESP do
     task.wait()
     UpdateFlowerEsp()
 end
 end)
-page8:Toggle("ESPIsland", _G.DevilFruitESP, function(value)
+page13:Toggle("ESPIsland", _G.DevilFruitESP, function(value)
 IslandESP = value
 while IslandESP do
     task.wait()
@@ -14564,8 +14565,8 @@ while IslandESP do
 end
 end)
 else
-page8:Seperator("<<มองทะลุ>>")
-page8:Toggle("มองทะลุหาเพลย์เยอร์", _G.ESPPlayer, function(value)
+    page13:Seperator("<<มองทะลุ>>")
+    page13:Toggle("มองทะลุหาเพลย์เยอร์", _G.ESPPlayer, function(value)
 ESPPlayer = value
 while ESPPlayer do
     task.wait()
@@ -14579,7 +14580,7 @@ while task.wait() do
     end
 end
 end)
-page8:Toggle("มองทะลุหากล่องสมบัติ", _G.ChestEsp, function(value)
+page13:Toggle("มองทะลุหากล่องสมบัติ", _G.ChestEsp, function(value)
 ChestESP = value
 while ChestESP do
     task.wait()
@@ -14587,14 +14588,14 @@ while ChestESP do
 end
 end)
 
-page8:Toggle("มองทะลุหาผลปีศาจ", _G.DevilFruitESP, function(value)
+page13:Toggle("มองทะลุหาผลปีศาจ", _G.DevilFruitESP, function(value)
 DevilFruitESP = value
 while DevilFruitESP do
     task.wait()
     UpdateBfEsp()
 end
 end)
-page8:Toggle("มองทะลุหาดอกไม้", _G.DevilFruitESP, function(value)
+page13:Toggle("มองทะลุหาดอกไม้", _G.DevilFruitESP, function(value)
 FlowerESP = value
 while FlowerESP do
     task.wait()
@@ -14602,7 +14603,7 @@ while FlowerESP do
 end
 end)
 
-page8:Toggle("มองทะลุหาเกาะ", _G.DevilFruitESP, function(value)
+page13:Toggle("มองทะลุหาเกาะ", _G.DevilFruitESP, function(value)
 IslandESP = value
 while IslandESP do
     task.wait()
