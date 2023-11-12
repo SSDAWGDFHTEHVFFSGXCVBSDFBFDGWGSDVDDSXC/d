@@ -908,6 +908,174 @@ end
 return tweenfunc
 end
 
+local function Bypass(Position)
+    local CFramePos = Position
+    _G.StopTween =  true
+    if W3 then
+        if (CFramePos.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >= 4000 then
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-5076.60107, 314.54129, -3152.13086, 0.351963997, -4.56893581e-08, -0.93601352, 6.84364423e-08, 1, -2.30789325e-08, 0.93601352, -5.59344855e-08, 0.351963997))
+        end
+    end
+    
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(111111,111111,111111)
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position
+    wait()
+    game.Players.LocalPlayer.Character.Head:Destroy()
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position
+    wait()
+    local args = {
+        [1] = "SetSpawnPoint"
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position
+    
+    wait()
+    local args = {
+        [1] = "SetSpawnPoint"
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    wait(0.1)
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position
+    wait()
+    local args = {
+        [1] = "SetSpawnPoint"
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(111111,111111,111111)
+    wait()
+    game.Players.LocalPlayer.Character.Head:Destroy()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(99999999,99999999,99999999)
+    wait()
+    local args = {
+        [1] = "SetLastSpawnPoint",
+        [2] = tostring(game:GetService("Players").LocalPlayer.Data.SpawnPoint.Value)
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position
+    wait()
+    local args = {
+        [1] = "SetSpawnPoint"
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(99999999,99999999,99999999)
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(99999999,99999999,99999999)
+    wait()
+    local args = {
+        [1] = "SetLastSpawnPoint",
+        [2] = tostring(game:GetService("Players").LocalPlayer.Data.SpawnPoint.Value)
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    wait()
+    local args = {
+        [1] = "SetLastSpawnPoint",
+        [2] = tostring(game:GetService("Players").LocalPlayer.Data.SpawnPoint.Value)
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    wait(0.5)
+    local args = {
+        [1] = "SetLastSpawnPoint",
+        [2] = tostring(game:GetService("Players").LocalPlayer.Data.SpawnPoint.Value)
+    }
+    
+    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+    wait()
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position
+    wait()
+    game.Players.LocalPlayer.Character.Head:Destroy()
+    wait()
+    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Position
+    wait()
+    _G.StopTween = false
+    return
+end
+
+TweeSpeed = 255
+getgenv().ToTarget = function(Point)
+    TweenPlay = (Point.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+    if LocalPlayer.Character.Humanoid.Sit == true then 
+        LocalPlayer.Character.Humanoid.Sit = false 
+    end
+    pcall(function() 
+        tot = game:GetService("TweenService"):Create(LocalPlayer.Character.HumanoidRootPart,TweenInfo.new(TweenPlay/TweeSpeed, Enum.EasingStyle.Linear),{CFrame = Point})
+    end)
+
+    if _G.StopTween == true then
+        tot:Cancel()
+        _G.Clip = false
+    end
+
+    if TweenPlay > 2000 and _G.Bypass_TP then
+        pcall(function()
+            pcall(function()
+                tot:Cancel()
+                fkwarp = false
+
+                if game:GetService("Players")["LocalPlayer"].Data:FindFirstChild("SpawnPoint").Value == tostring(GetIsLand(Point)) then 
+                    wait(.1)
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TeleportToSpawn")
+                elseif game:GetService("Players")["LocalPlayer"].Data:FindFirstChild("LastSpawnPoint").Value == tostring(GetIsLand(Point)) then
+                    game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
+                    wait(0.1)
+                    repeat wait() until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
+                else
+                    if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+                        if fkwarp == false then
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Point
+                        end
+                        fkwarp = true
+                    end
+                    wait(.08)
+                    game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid"):ChangeState(15)
+                    repeat wait() until game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0
+                    wait(.1)
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
+                end
+                wait(0.2)
+                return
+            end)
+        end)
+    end
+
+    tot:Play()
+    if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+        local Highlight = Instance.new("Highlight")
+        Highlight.FillColor = Color3.new(0, 255, 0)
+        Highlight.OutlineColor = Color3.new(0,255,0)
+        Highlight.Parent = game.Players.LocalPlayer.Character
+    end
+    if TweenPlay < 250 then
+        TweeSpeed = 352
+    elseif TweenPlay < 500 then
+        TweeSpeed = 395
+    elseif TweenPlay >= 1000 then
+        TweeSpeed = 255
+    end
+
+    if _G.StopTween then
+        tot:Cancel()
+        BringMobFarm = false
+        UseSkillGun = false
+        _G.UseSkill = false
+    elseif game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
+        tot:Play()
+    end
+end
+
 function two(gotoCFrame) --- Tween
 pcall(function()
 game.Players.LocalPlayer.Character.Humanoid.Sit = false
@@ -15353,6 +15521,28 @@ if _G.Mode == "English" then
             end
         end)
     end)
+    page11:Toggle("Auto Buy Color Haki Hop", _G.AutoBuyEnchanmentHakiHop, function(value)
+        _G.AutoBuyEnchanmentHakiHop = value
+        task.spawn(function()
+            while task.wait() do
+                pcall(function()
+                    if _G.AutoBuyEnchanmentHakiHop then
+                        local args = {
+                            [1] = "ColorsDealer",
+                            [2] = "2"
+                        }
+                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
+                        while _G.AutoBuyEnchanmentHakiHop do task.wait()
+                        wait(5)
+                        Teleport()
+                        Hop()
+                        end
+                    end
+                end)
+            end
+        end)
+    end)
 else
     page11:Toggle("ออโต้ซื้อสีฮาคิ", _G.AutoBuyEnchanmentHaki,function(value)
         _G.AutoBuyEnchanmentHaki = value
@@ -15365,6 +15555,28 @@ else
                                 [2] = "2"
                             }
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        end
+                    end)
+                end
+            end)
+        end)
+        page11:Toggle("ออโต้ซื้อสีฮาคิ&ย้ายเซิฟเวอร์", _G.AutoBuyEnchanmentHakiHop, function(value)
+            _G.AutoBuyEnchanmentHakiHop = value
+            task.spawn(function()
+                while task.wait() do
+                    pcall(function()
+                        if _G.AutoBuyEnchanmentHakiHop then
+                            local args = {
+                                [1] = "ColorsDealer",
+                                [2] = "2"
+                            }
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
+                            while _G.AutoBuyEnchanmentHakiHop do task.wait()
+                            wait(5)
+                            Teleport()
+                            Hop()
+                            end
                         end
                     end)
                 end
