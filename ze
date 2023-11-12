@@ -1,4 +1,3 @@
-print(321)
 repeat wait() until game.Players.LocalPlayer
 
 local placeId = game.PlaceId
@@ -360,8 +359,8 @@ pcall(function()
     then
         if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
             local Highlight = Instance.new("Highlight")
-            Highlight.FillColor = Color3.new(0, 1, 0)
-            Highlight.OutlineColor = Color3.new(0, 1, 0)
+            Highlight.FillColor = Color3.new(0, 0, 1)
+            Highlight.OutlineColor = Color3.new(0, 0, 1)
             Highlight.Parent = game.Players.LocalPlayer.Character;
             end
         if syn then
@@ -898,8 +897,8 @@ local info = TweenInfo.new(
 local tweenw, err = pcall(function()
     if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
 		local Highlight = Instance.new("Highlight")
-		Highlight.FillColor = Color3.new(0, 1, 0)
-		Highlight.OutlineColor = Color3.new(0, 1, 0)
+		Highlight.FillColor = Color3.new(0, 0, 1)
+		Highlight.OutlineColor = Color3.new(0, 0, 1)
 		Highlight.Parent = game.Players.LocalPlayer.Character;
 		end
 tween = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = RealTarget })
@@ -1063,8 +1062,8 @@ getgenv().ToTarget = function(Point)
     tot:Play()
     if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
         local Highlight = Instance.new("Highlight")
-        Highlight.FillColor = Color3.new(0, 255, 0)
-        Highlight.OutlineColor = Color3.new(0,255,0)
+        Highlight.FillColor = Color3.new(0, 0, 255)
+        Highlight.OutlineColor = Color3.new(0, 0, 255)
         Highlight.Parent = game.Players.LocalPlayer.Character
     end
     if TweenPlay < 250 then
@@ -1102,8 +1101,8 @@ local info = TweenInfo.new(
     tween, err = pcall(function()
         if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
             local Highlight = Instance.new("Highlight")
-            Highlight.FillColor = Color3.new(0, 1, 0)
-            Highlight.OutlineColor = Color3.new(0, 1, 0)
+            Highlight.FillColor = Color3.new(0, 0, 1)
+            Highlight.OutlineColor = Color3.new(0, 0, 1)
             Highlight.Parent = game.Players.LocalPlayer.Character;
             end
     tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
@@ -1133,8 +1132,8 @@ local info = TweenInfo.new(
 tween, err = pcall(function()
     if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
         local Highlight = Instance.new("Highlight")
-        Highlight.FillColor = Color3.new(0, 1, 0)
-        Highlight.OutlineColor = Color3.new(0, 1, 0)
+        Highlight.FillColor = Color3.new(0, 0, 1)
+        Highlight.OutlineColor = Color3.new(0, 0, 1)
         Highlight.Parent = game.Players.LocalPlayer.Character;
         end
     tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
