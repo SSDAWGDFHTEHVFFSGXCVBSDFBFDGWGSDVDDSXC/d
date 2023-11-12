@@ -6671,6 +6671,24 @@ if _G.Mode == "English" then
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
+        spawn(function()
+			while wait() do
+				if _G.AutoHolyTorch then
+					pcall(function()
+						wait(1)
+						repeat getgenv().ToTarget(CFrame.new(-10752, 417, -9366)) wait() until not _G.Auto_Holy_Torch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-10752, 417, -9366)).Magnitude <= 10
+						wait(1)
+						repeat getgenv().ToTarget(CFrame.new(-11672, 334, -9474)) wait() until not _G.Auto_Holy_Torch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-11672, 334, -9474)).Magnitude <= 10
+						wait(1)
+						repeat getgenv().ToTarget(CFrame.new(-12132, 521, -10655)) wait() until not _G.Auto_Holy_Torch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-12132, 521, -10655)).Magnitude <= 10
+						wait(1)
+						repeat getgenv().ToTarget(CFrame.new(-13336, 486, -6985)) wait() until not _G.Auto_Holy_Torch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-13336, 486, -6985)).Magnitude <= 10
+						wait(1)
+						repeat getgenv().ToTarget(CFrame.new(-13489, 332, -7925)) wait() until not _G.Auto_Holy_Torch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-13489, 332, -7925)).Magnitude <= 10
+					end)
+				end
+			end
+		end)
     end)
 else
     page1:Seperator("<<ดาบโอเด้ง>>")
@@ -6683,6 +6701,24 @@ else
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
+        spawn(function()
+			while wait() do
+				if _G.AutoHolyTorch then
+					pcall(function()
+						wait(1)
+						repeat getgenv().ToTarget(CFrame.new(-10752, 417, -9366)) wait() until not _G.Auto_Holy_Torch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-10752, 417, -9366)).Magnitude <= 10
+						wait(1)
+						repeat getgenv().ToTarget(CFrame.new(-11672, 334, -9474)) wait() until not _G.Auto_Holy_Torch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-11672, 334, -9474)).Magnitude <= 10
+						wait(1)
+						repeat getgenv().ToTarget(CFrame.new(-12132, 521, -10655)) wait() until not _G.Auto_Holy_Torch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-12132, 521, -10655)).Magnitude <= 10
+						wait(1)
+						repeat getgenv().ToTarget(CFrame.new(-13336, 486, -6985)) wait() until not _G.Auto_Holy_Torch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-13336, 486, -6985)).Magnitude <= 10
+						wait(1)
+						repeat getgenv().ToTarget(CFrame.new(-13489, 332, -7925)) wait() until not _G.Auto_Holy_Torch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position-Vector3.new(-13489, 332, -7925)).Magnitude <= 10
+					end)
+				end
+			end
+		end)
     end)
 end
 spawn(function()
@@ -7767,39 +7803,7 @@ if _G.Mode == "English" then
                 end
             end
         end)
-task.spawn(function()
-    while task.wait() do
-        if _G.AutoHolyTorch then
-            repeat
-                toTarget(CFrame.new(-10752, 417, -9366))
-                task.wait()
-            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-10752, 417, -9366)).Magnitude <= 10
-            wait(1)
-            repeat
-                toTarget(CFrame.new(-11672, 334, -9474))
-                task.wait()
-            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-11672, 334, -9474)).Magnitude <= 10
-            wait(1)
-            repeat
-                toTarget(CFrame.new(-12132, 521, -10655))
-                task.wait()
-            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-12132, 521, -10655)).Magnitude <= 10
-            wait(1)
-            repeat
-                toTarget(CFrame.new(-13336, 486, -6985))
-                task.wait()
-            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-13336, 486, -6985)).Magnitude <= 10
-            wait(1)
-            repeat
-                toTarget(CFrame.new(-13489, 332, -7925))
-                task.wait()
-            until not _G.AutoHolyTorch or (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - Vector3.new(-13489, 332, -7925)).Magnitude <= 10
-        else
-            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-            break
-        end
-    end
-end)
+
 
 function Elite()
         task.spawn(function()
