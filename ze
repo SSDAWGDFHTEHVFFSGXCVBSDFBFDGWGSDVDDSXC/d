@@ -13313,12 +13313,34 @@ spawn(function()
         StartMagnet = false
          -- FastAttack = false
         Questtween = toTarget(CFrameQuest.Position, CFrameQuest)
+        if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+            if Questtween then Questtween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+        elseif World1 and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+            if Questtween then Questtween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
+        elseif World2 and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+            if Questtween then Questtween:Stop() end
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+        elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+            if Questtween then Questtween:Stop() end
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
+        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+            if Questtween then Questtween:Stop() end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
+            wait(1)
             if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
                 Com("F_", "StartQuest", QuestName, LevelQuest)
             end
         end
-    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+        end
+        if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
     if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
         for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do 
             if _G.AutoFarmGunMastery and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
@@ -13365,7 +13387,35 @@ spawn(function()
     else
         StartMagnet = false
         Modstween = toTarget(CFrameMon)
-        if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
+        if OldWorld and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+            if Modstween then Modstween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+        elseif OldWorld and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+            if Modstween then Modstween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
+        elseif OldWorld and (Name == "God's Guard" or Name == "Sky Bandit" or Name == "Dark Master") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 3000 then
+            if Modstween then Modstween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656))
+        elseif OldWorld and (Name == "Shanda" or Name == "Royal Squad" or Name == "Royal Soldier") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 5000 then
+            if Modstween then Modstween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
+        elseif NewWorld and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+            if Modstween then Modstween:Stop() end
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+        elseif NewWorld and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+            if Modstween then Modstween:Stop() end
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
+                Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
+        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
             if Modstween then 
                 Modstween:Stop()
                 spawn(function()
@@ -13388,6 +13438,7 @@ spawn(function()
             end)
         end
            -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+        end
     end
 end
 end
@@ -13446,14 +13497,28 @@ local Cam = workspace.CurrentCamera
         end
     end)
 
-spawn(function()
-while wait() do
-    pcall(function()
-        if _G.Settings.AutoFarmFruitMastery then
+    spawn(function()
+        while wait() do
+            pcall(function()
+                if _G.Settings.AutoFarmFruitMastery then
         if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
         StartMagnet = false
         FastAttack = false
         Questtween = toTarget(CFrameQuest.Position, CFrameQuest)
+        if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+            if Questtween then Questtween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+        elseif World1 and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+            if Questtween then Questtween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
+        elseif World2 and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+            if Questtween then Questtween:Stop() end
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+        elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+            if Questtween then Questtween:Stop() end
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
         elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
             if Questtween then Questtween:Stop() end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
@@ -13462,8 +13527,8 @@ while wait() do
                 Com("F_", "StartQuest", QuestName, LevelQuest)
             end
         end
-    
-    elseif game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
+        end
+        if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == true then
         if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
         for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
             if _G.AutoFarmFruitMastery and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
@@ -13537,8 +13602,9 @@ while wait() do
                                         game:service('VirtualInputManager'):SendKeyEvent(false, "C", false, game)
                                     end
                                 elseif game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value) then
-                                    game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value).MousePos.Value = v.HumanoidRootPart.Position
-
+                                    game:GetService("Players").LocalPlayer.Character:FindFirstChild(game.Players.LocalPlayer.Data.DevilFruit.Value).MousePos.Value =
+                                        v.HumanoidRootPart.Position
+        
                                     if _G.SkillZ and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and DevilFruitMastery >= MasteryDevilFruit.Lvl.Z then
                                         game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
                                         wait(.1)
@@ -13582,7 +13648,29 @@ while wait() do
         else
         StartMagnet = false
         Modstween = toTarget(CFrameMon.Position, CFrameMon)
-        if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
+        if OldWorld and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+            if Modstween then Modstween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
+        elseif OldWorld and not (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
+            if Modstween then Modstween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(3864.8515625, 6.6796875, -1926.7841796875))
+        elseif OldWorld and (Name == "God's Guard" or Name == "Sky Bandit" or Name == "Dark Master") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 3000 then
+            if Modstween then Modstween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-4607.8227539063, 872.54248046875, -1667.5568847656))
+        elseif OldWorld and (Name == "Shanda" or Name == "Royal Squad" or Name == "Royal Soldier") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 5000 then
+            if Modstween then Modstween:Stop() end
+            wait(.5)
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-7894.6176757813, 5547.1416015625, -380.29119873047))
+        elseif NewWorld and string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+            if Modstween then Modstween:Stop() end
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(923.21252441406, 126.9760055542, 32852.83203125))
+        elseif NewWorld and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
+            if Modstween then Modstween:Stop() end
+            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
+        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
             if Modstween then 
                 Modstween:Stop()
                 spawn(function()
@@ -13604,8 +13692,8 @@ while wait() do
                 end
             end)
         end
-        --  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
-        
+          --  game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
+        end
         end
         end
         end
