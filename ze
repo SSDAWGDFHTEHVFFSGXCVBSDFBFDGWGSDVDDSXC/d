@@ -13513,8 +13513,8 @@ local function inmyself(name)
 	return game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(name) or game:GetService("Players").LocalPlayer.Character:FindFirstChild(name);
 end
 page6:Seperator("✨")
-if _G.Mode == "English" then
 _G.MobHealth = 30
+if _G.Mode == "English" then
 page6:Toggle("Auto Fruit Mastery", _G.AutoFarmFruitMastery, function(value)
 _G.AutoFarmFruitMastery = value
 if value == false then
