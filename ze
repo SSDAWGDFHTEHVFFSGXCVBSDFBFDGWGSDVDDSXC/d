@@ -291,8 +291,7 @@ if _G.rejoinn then
 
 
 	_G.Chest8 = true
-	while _G.Chest8 do
-		task.wait()
+	while _G.Chest8 do task.wait()
 		local chestExists = false
 		for _, child in ipairs(workspace:GetChildren()) do
 			if string.find(child.Name, "Chest") then
@@ -387,8 +386,7 @@ if _G.rejoinn then
 		end
 	end
 end
-while task.wait(5) do 
-	if _G.rejoinn then
-		game.Players.LocalPlayer.Character.Humanoid.Health = 0
-	end
+
+while _G.Chest8 do task.wait(5)
+	game.Players.LocalPlayer.Character.Humanoid.Health = die
 end
