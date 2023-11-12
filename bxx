@@ -250,31 +250,28 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
---[[
-repeat wait()
-if game.Players.LocalPlayer.Team == nil and game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Visible == true then
-    if _G.SelectTeam == "Pirate" then
-        game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Size = UDim2.new(0, 10000, 0, 10000)
-        game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Position = UDim2.new(-4, 0, -5, 0)
-        game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.BackgroundTransparency = 1
-        wait(.5)
-        mouse1click()
-    elseif _G.SelectTeam == "Marine" then
-        game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Size = UDim2.new(0, 10000, 0, 10000)
-        game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Position = UDim2.new(-4, 0, -5, 0)
-        game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.BackgroundTransparency = 1
-        wait(.5)
-        mouse1click()
-    else
-        game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Size = UDim2.new(0, 10000, 0, 10000)
-        game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Position = UDim2.new(-4, 0, -5, 0)
-        game:GetService("Players")["LocalPlayer"].PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.BackgroundTransparency = 1
-        wait(.5)
-        mouse1click()
-    end
-end
-until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()]]
-
+repeat wait(0) until game:IsLoaded()
+	
+	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
+		repeat wait()
+			if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
+				if _G.Team == "Pirate" then
+					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do                                                                                                
+						v.Function()
+					end
+				elseif _G.Team == "Marine" then
+					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Activated)) do                                                                                                
+						v.Function()
+					end
+				else
+					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do                                                                                                
+						v.Function()
+					end
+				end
+			end
+		until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
+	end
+    
 -- [Anti AFK]
 
 game:GetService("Players").LocalPlayer.Idled:connect(function()
@@ -337,7 +334,7 @@ pcall(function()
     _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
     _G.AutoFactory or
     --[World 3]
-    _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoMusketeerHat or _G.AutoBuddySword or
+    _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
     _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
     _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
     _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
@@ -404,7 +401,7 @@ pcall(function()
     _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
     _G.AutoFactory or
     --[World 3]
-    _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoMusketeerHat or _G.AutoBuddySword or
+    _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
     _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
     _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
     _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
@@ -453,7 +450,7 @@ _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat
 _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
 _G.AutoFactory or
 --[World 3]
-_G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoMusketeerHat or _G.AutoBuddySword or
+_G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
 _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
 _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
 _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
@@ -494,7 +491,7 @@ pcall(function()
         _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
         _G.AutoFactory or
         --[World 3]
-        _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoMusketeerHat or _G.AutoBuddySword or
+        _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
         _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation  or _G.AutoGodHuman or _G.AutoCavander or
         _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
         _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
@@ -533,7 +530,7 @@ if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.Auto_Gear o
         _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
         _G.AutoFactory or
         --[World 3]
-        _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoMusketeerHat or _G.AutoBuddySword or
+        _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
         _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation or _G.AutoGodHuman or _G.AutoCavander or
         _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
         _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
@@ -8276,14 +8273,15 @@ end)
                         end
                     end)
                 end)
+                page1:Toggle("ออโต้เสกบอสคาตาคุริ", _G.AutoCakePrince ,function(value)
+                    _G.Spawnka = value
+                    while _G.Spawnka do wait()
+                    game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")
+                    end
+                end)                                                                                 
+            end 
             end   
-            page1:Toggle("ออโต้เสกบอสคาตาคุริ", _G.AutoCakePrince ,function(value)
-                _G.Spawnka = value
-                while _G.Spawnka do wait()
-                game.ReplicatedStorage.Remotes.CommF_:InvokeServer("CakePrinceSpawner")
-                end
-            end)                                                                                 
-        end 
+           
 
 if _G.Mode == "English" then
     page1:Seperator("<<Farm Materail>>")  
@@ -13066,7 +13064,10 @@ spawn(function()
         end
     end
 end)
-function AutoFarmMasteryGun()
+spawn(function()
+    while wait() do
+    pcall(function()
+    if _G.AutoFarmGunMastery then
   if  game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
         StartMagnet = false
          -- FastAttack = false
@@ -13200,6 +13201,9 @@ function AutoFarmMasteryGun()
     end
 end
 end
+end)
+end
+end)
 
 
 local Cam = workspace.CurrentCamera
@@ -13252,8 +13256,10 @@ local Cam = workspace.CurrentCamera
         end
     end)
 
-
-function AutoFarmMasteryDevilFruit()
+spawn(function()
+while wait() do
+    pcall(function()
+        if _G.AutoFarmFruitMastery then
 if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 StartMagnet = false
 FastAttack = false
@@ -13450,6 +13456,9 @@ end
 end
 end
 end
+end)
+end
+end)
 function CheckMasteryWeapon(NameWe, MasNum)
 if game.Players.LocalPlayer.Backpack:FindFirstChild(NameWe) then
 if tonumber(game.Players.LocalPlayer.Backpack:FindFirstChild(NameWe).Level.Value) < tonumber(MasNum) then
@@ -13504,8 +13513,8 @@ local function inmyself(name)
 	return game:GetService("Players").LocalPlayer.Backpack:FindFirstChild(name) or game:GetService("Players").LocalPlayer.Character:FindFirstChild(name);
 end
 page6:Seperator("✨")
-if _G.Mode == "English" then
 _G.MobHealth = 30
+if _G.Mode == "English" then
 page6:Toggle("Auto Fruit Mastery", _G.AutoFarmFruitMastery, function(value)
 _G.AutoFarmFruitMastery = value
 if value == false then
@@ -13589,7 +13598,6 @@ task.spawn(function()
 while task.wait() do
 if _G.AutoFarmGunMastery  then
     CheckQuest()
-    AutoFarmMasteryGun()
 end
 end
 end)
@@ -13602,12 +13610,14 @@ task.spawn(function()
 while task.wait() do
 if _G.AutoFarmFruitMastery then
     CheckQuest()
-    AutoFarmMasteryDevilFruit()
 end
 end
 end)
 page7:Seperator("🍈")
 if _G.Mode == "English" then
+page7:Toggle("BringFruit",_G.Auto_Bring_Fruit , function(value)
+     _G.Auto_Bring_Fruit  = value
+end)
 page7:Toggle("Auto Random Fruits", _G.AutoBuyRandomFruits, function(value)
 _G.AutoBuyRandomFruits = value
 end)
@@ -13624,6 +13634,9 @@ game.Players.localPlayer.PlayerGui.Main.FruitShop.Visible = true
 end)
 else
 _G.Mode = "Thai"
+page7:Toggle("ออดึงผลปีศาจ",_G.Auto_Bring_Fruit , function(value)
+    _G.Auto_Bring_Fruit  = value
+end)
 page7:Toggle("ออโต้สุ่มผลปีศาจ", _G.AutoBuyRandomFruits,function(value)
     _G.AutoBuyRandomFruits = value
 end)
@@ -13662,6 +13675,27 @@ page7:Toggle("ออโต้เก็บผลปีศาจเข้ากร
     _G.AutoStore_Drop = value
 end)
 end
+
+
+spawn(function()
+    while wait() do
+        if _G.Auto_Bring_Fruit then
+            pcall(function()
+                for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+                    if v:IsA("Tool") and string.find(v.Name,"Fruit") then 
+                        if (v.Handle.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >= 1500 then
+                            Bypass(v.Handle.CFrame * CFrame.new(0,50,0))
+                            repeat wait() Bypass(v.Handle.CFrame * CFrame.new(0,50,0)) until (v.Handle.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.Auto_Bring_Fruit
+                            repeat wait() getgenv().ToTarget(v.Handle.CFrame) until (v.Handle.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.Auto_Bring_Fruit
+                        else
+                            repeat wait() getgenv().ToTarget(v.Handle.CFrame) until (v.Handle.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.Auto_Bring_Fruit
+                        end
+                    end
+                end
+            end)
+        end
+    end
+end)
 function DropFruit()
     pcall(function()
         game.Players.LocalPlayer.PlayerGui.Main.FruitInventory.Position = UDim2.new(10.100, 0, 0.100, 0) -- HideUi
