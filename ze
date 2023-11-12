@@ -1,3 +1,4 @@
+print(1)
 if not game:IsLoaded() then
 	local GameLoadGui = Instance.new("Message", workspace);
 	GameLoadGui.Text = 'Wait Game Loading';
@@ -285,7 +286,12 @@ spawn(function()
 		end
 	end
 end)
-
+while wait() do
+if chestExists then
+	wait()
+	game.Players.LocalPlayer.Character.Humanoid.Health = die
+	end
+end
 if _G.rejoinn then
 	wait(1)
 
@@ -385,8 +391,4 @@ if _G.rejoinn then
 			end
 		end
 	end
-end
-
-while _G.Chest8 do task.wait(5)
-	game.Players.LocalPlayer.Character.Humanoid.Health = die
 end
