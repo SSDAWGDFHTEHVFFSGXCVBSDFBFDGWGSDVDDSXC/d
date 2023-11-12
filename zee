@@ -68,7 +68,6 @@ wait(1)
 		line.FaceCamera = true
 		line.Width0 = 3.5
 		line.Width1 = 3.5
-		line.color = Color3.new(255,0,4)
 		local mouse = game.Players.LocalPlayer:GetMouse()
 		mouse.KeyDown:connect(function(key)
 			if key == "r" then
