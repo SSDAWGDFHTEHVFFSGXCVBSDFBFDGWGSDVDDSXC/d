@@ -22,78 +22,82 @@ World3 = true;
 else
 game:Shutdown()
 end;
-
-_G.AutoFarm = false
-_G.DoubleQuest = false
-_G.NeareastFarm = false
-_G.Mirage = false
-_G.Auto_Gear = false
-_G.TeleportGear = false
-_G.AutoNewWorld = false
-_G.TweenToFruitSpawn = false
-_G.AutoSaber = false
-_G.AutoPole = false
-_G.TeleportIsland = false
+_G.Settings = {
+    AutoFarm = false,
+    DoubleQuest = false,
+    NeareastFarm = false,
+    Mirage = false ,
+    MirageHop = false,
+    Auto_Gear = false,
+    TeleportGear = false,
+    AutoNewWorld = false,
+    TweenToFruitSpawn = false,
+    AutoSaber = false,
+    AutoPole = false,
+    TeleportIsland = false,
 
 --[World 2]
-_G.AutoThirdSea = false
-_G.AutoBartiloQuest = false
-_G.Auto_Evo_Race_V2 = false
-_G.AutoDarkCoat = false
-_G.AutoSwanGlasses = false
-_G.AutoTrueTriplKatana = false
-_G.AutoRengoku = false
-_G.AutoEctoplasm = false
-_G.AutoFactory = false
+    AutoThirdSea = false,
+    AutoBartiloQuest = false,
+    Auto_Evo_Race_V2 = false,
+    AutoDarkCoat = false,
+    AutoSwanGlasses = false,
+    AutoTrueTriplKatana = false,
+    AutoRengoku = false,
+    AutoEctoplasm = false,
+    AutoFactory = false,
 
---[World 3]
-_G.AutoRainbowHaki = false
-_G.AutoEliteHunter = false
-_G.AutoMusketeerHat = false
-_G.AutoBuddySword = false
-_G.AutoFarmBone = false
-_G.SpawnBossHallow = false
-_G.AutoKenHakiV2 = false
-_G.AutoObservation = false
-_G.AutoGodHuman = false
-_G.AutoCavander = false
-_G.AutoCursedDualKatana = false
-_G.AutoYamaSword = false
-_G.AutoTushitaSword = false
-_G.AutoSerpentBow = false
-_G.AutoDarkDagger = false
-_G.AutoCakePrince = false
-_G.AutoDoughV2 = false
-_G.AutoHolyTorch = false
-_G.AutoBuddySwords = false
-_G.AutoFarmBossHallow = false
-_G.MobAura = false
-_G.YamaQuest2 = false
-_G.YamaQuest1 = false
-_G.Auto_Cursed_Dual_Katana = false
-_G.Tushita_Quest2 = false
-_G.Tushita_Quest1 = false
-_G.TeleporttoSeaBeast = false
-_G.AutoEvent = false
-_G.TPTOBOAT = false
-_G.AutoFarmMaterial = false
-_G.Teleporttop = false
-_G.AutoFarmChest = false
+    --[World 3]
+    AutoRainbowHaki = false,
+    AutoBuyEnchanmentHakiHop = false,
+    AutoBuyLegendarySwordHop = false,
+    AutoEliteHunter = false,
+    AutoMusketeerHat = false,
+    AutoBuddySword = false,
+    AutoFarmBone = false,
+    SpawnBossHallow = false,
+    AutoKenHakiV2 = false,
+    AutoObservation = false,
+    AutoObservation_Hop = false,
+    AutoGodHuman = false,
+    AutoCavander = false,
+    AutoCursedDualKatana = false,
+    AutoYamaSword = false,
+    AutoTushitaSword = false,
+    AutoSerpentBow = false,
+    AutoDarkDagger = false,
+    AutoCakePrince = false,
+    AutoDoughV2 = false,
+    AutoHolyTorch = false,
+    AutoBuddySwords = false,
+    AutoFarmBossHallow = false,
+    MobAura = false,
+    YamaQuest2 = false,
+    YamaQuest1 = false,
+    Auto_Cursed_Dual_Katana = false,
+    Tushita_Quest2 = false,
+    Tushita_Quest1 = false,
+    TeleporttoSeaBeast = false,
+    AutoEvent = false,
+    TPTOBOAT = false,
+    AutoFarmMaterial = false,
+    Teleporttop = false,
+    AutoFarmChest = false,
 
---[Boss]
-_G.AutoAllBoss = false
-_G.AutoBossSelect = false
-_G.AutoFarmBoss = false
+    --[Boss]
+    AutoAllBoss = false,
+    AutoBossSelect = false,
+    AutoFarmBoss = false,
 
---[Mastery]
-_G.AutoFarmFruitMastery = false
-_G.AutoFarmGunMastery = false
-_G.FarmMasterySwordList = false
+    --[Mastery]
+    AutoFarmFruitMastery = false,
+    AutoFarmGunMastery = false,
+    FarmMasterySwordList = false,
 
---[Raids]
-_G.AutoRaids = false
-_G.AutoNextPlace = false
-
+    --[Raids]
+    AutoRaids = false,
+    AutoNextPlace = false
+}
 if _G.Mode == "English" then
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":Don't press and run the pro several times, it will cause a bug and cause lag:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 else
@@ -201,48 +205,52 @@ end
     end)
 --[[UIPERPID]]
 
+
 -- [Save Settings]
+
 function LoadSettings()
-if readfile and writefile and isfile and isfolder then
-    if not isfolder("VectorHub") then
-        makefolder("VectorHub")
-    end
-    if not isfolder("VectorHub/Blox Fruits/") then
-        makefolder("VectorHub/Blox Fruits/")
-    end
-    if not isfile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-        writefile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json",
-            game:GetService("HttpService"):JSONEncode(_G.Settings))
-    else
-        local Decode = game:GetService("HttpService"):JSONDecode(readfile("VectorHub/Blox Fruits/" ..
-            game.Players.LocalPlayer.Name .. ".json"))
-        for i, v in pairs(Decode) do
-            _G.Settings[i] = v
+    if readfile and writefile and isfile and isfolder then
+        if not isfolder("VectorHub") then
+            makefolder("VectorHub")
         end
+        if not isfolder("VectorHub/Blox Fruits/") then
+            makefolder("VectorHub/Blox Fruits/")
+        end
+        if not isfile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
+            writefile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json",
+                game:GetService("HttpService"):JSONEncode(_G.Settings))
+        else
+            local Decode = game:GetService("HttpService"):JSONDecode(readfile("VectorHub/Blox Fruits/" ..
+                game.Players.LocalPlayer.Name .. ".json"))
+            for i, v in pairs(Decode) do
+                _G.Settings[i] = v
+            end
+        end
+    else
+        return warn("Status : Undetected Executor")
     end
-else
-    return warn("Status : Undetected Executor")
-end
 end
 
 function SaveSettings()
-if readfile and writefile and isfile and isfolder then
-    if not isfile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-        LoadSettings()
-    else
-        local Decode = game:GetService("HttpService"):JSONDecode(readfile("VectorHub/Blox Fruits/" ..
-            game.Players.LocalPlayer.Name .. ".json"))
-        local Array = {}
-        for i, v in pairs(_G.Settings) do
-            Array[i] = v
+    if readfile and writefile and isfile and isfolder then
+        if not isfile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
+            LoadSettings()
+        else
+            local Decode = game:GetService("HttpService"):JSONDecode(readfile("VectorHub/Blox Fruits/" ..
+                game.Players.LocalPlayer.Name .. ".json"))
+            local Array = {}
+            for i, v in pairs(_G.Settings) do
+                Array[i] = v
+            end
+            writefile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json",
+                game:GetService("HttpService"):JSONEncode(Array))
         end
-        writefile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json",
-            game:GetService("HttpService"):JSONEncode(Array))
+    else
+        return warn("Status : Undetected Executor")
     end
-else
-    return warn("Status : Undetected Executor")
 end
-end
+
+LoadSettings()
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local TweenService = game:GetService("TweenService")
 local tween = game:service"TweenService"
@@ -351,8 +359,8 @@ pcall(function()
     then
         if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
             local Highlight = Instance.new("Highlight")
-            Highlight.FillColor = Color3.new(0, 1, 0)
-            Highlight.OutlineColor = Color3.new(0, 1, 0)
+            Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
+            Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
             Highlight.Parent = game.Players.LocalPlayer.Character;
             end
         if syn then
@@ -889,8 +897,8 @@ local info = TweenInfo.new(
 local tweenw, err = pcall(function()
     if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
 		local Highlight = Instance.new("Highlight")
-		Highlight.FillColor = Color3.new(0, 1, 0)
-		Highlight.OutlineColor = Color3.new(0, 1, 0)
+        Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
+        Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
 		Highlight.Parent = game.Players.LocalPlayer.Character;
 		end
 tween = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = RealTarget })
@@ -1054,8 +1062,8 @@ getgenv().ToTarget = function(Point)
     tot:Play()
     if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
         local Highlight = Instance.new("Highlight")
-        Highlight.FillColor = Color3.new(0, 255, 0)
-        Highlight.OutlineColor = Color3.new(0,255,0)
+        Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
+        Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
         Highlight.Parent = game.Players.LocalPlayer.Character
     end
     if TweenPlay < 250 then
@@ -1093,8 +1101,8 @@ local info = TweenInfo.new(
     tween, err = pcall(function()
         if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
             local Highlight = Instance.new("Highlight")
-            Highlight.FillColor = Color3.new(0, 1, 0)
-            Highlight.OutlineColor = Color3.new(0, 1, 0)
+            Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
+            Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
             Highlight.Parent = game.Players.LocalPlayer.Character;
             end
     tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
@@ -1124,8 +1132,8 @@ local info = TweenInfo.new(
 tween, err = pcall(function()
     if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
         local Highlight = Instance.new("Highlight")
-        Highlight.FillColor = Color3.new(0, 1, 0)
-        Highlight.OutlineColor = Color3.new(0, 1, 0)
+        Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
+        Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
         Highlight.Parent = game.Players.LocalPlayer.Character;
         end
     tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
@@ -3604,10 +3612,10 @@ end
     local page10 = Library:Tab("RaceV4","rbxassetid://7558782590")
     local page11 = Library:Tab("Shop","rbxassetid://6031265976")
     local page12 = Library:Tab("Misc","rbxassetid://11447063791")
-
+page1:Seperator("Vector Hub")
 page1:Seperator("🏚️")
 Time = page1:Label("..")
-
+page1:Label("Username"..game.Players.LocalPlayer.DisplayName)
 function UpdateTime()
 local GameTime = math.floor(workspace.DistributedGameTime+0.5)
 local Hour = math.floor(GameTime/(60^2))%24
@@ -3617,15 +3625,43 @@ Time:Set("[GameTime] : Hours : "..Hour.." Minutes : "..Minute.." Seconds : "..Se
 end
 
 spawn(function()
- while task.wait() do
- pcall(function()
-  UpdateTime()
-  end)
- end
+while task.wait() do
+pcall(function()
+UpdateTime()
+end)
+end
+end)
+
+Client = page1:Label1("Client")
+
+function UpdateClient()
+local Fps = workspace:GetRealPhysicsFPS()
+Client:Refresh("[Fps] : "..Fps)
+end
+
+spawn(function()
+while true do wait(.1)
+UpdateClient()
+end
+end)
+
+Client1 = page1:Label1("Client")
+
+function UpdateClient1()
+local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+Client1:Refresh("[Ping] : "..Ping)
+end
+
+spawn(function()
+while true do wait(.1)
+UpdateClient1()
+end
 end)
 if _G.Mode == "English" then
-page1:Toggle("Auto Farm Level", false, function(value)
+page1:Toggle("Auto Farm Level", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
+    _G.Settings.AutoFarm = value
+    SaveSettings()
     _G.DoubleQuest = value
     getgenv().noclip = value
     if value == false then
@@ -3633,8 +3669,10 @@ page1:Toggle("Auto Farm Level", false, function(value)
     end
 end)  
 else
-page1:Toggle("ออโต้ฟาร์มเลเวล", false, function(value)
+page1:Toggle("ออโต้ฟาร์มเลเวล", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
+    _G.Settings.AutoFarm = value
+    SaveSettings()
     _G.DoubleQuest = value
     getgenv().noclip = value
     if value == false then
@@ -3643,10 +3681,12 @@ page1:Toggle("ออโต้ฟาร์มเลเวล", false, function(va
 end)
 end
 if _G.Mode == "English" then
-    page1:Toggle("SafeMode", SafeMode, function(value)
+    page1:Toggle("SafeMode", _G.Settings.SafeMode, function(value)
         _G.SafeMode = value
+        _G.Settings.SafeMode = value
+        SaveSettings()
         task.spawn(function()
-            while _G.SafeMode do task.wait()
+            while _G.Settings.SafeMode do task.wait()
                 if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
                     local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
                     if HealthPercent < 20 then
@@ -3658,10 +3698,12 @@ if _G.Mode == "English" then
         end)
         end)
     else
-        page1:Toggle("เซฟโหมด", SafeMode, function(value)
+        page1:Toggle("เซฟโหมด", _G.Settings.SafeMode, function(value)
             _G.SafeMode = value
+            _G.Settings.SafeMode = value
+            SaveSettings() 
             task.spawn(function()
-                while _G.SafeMode do task.wait()
+                while _G.Settings.SafeMode do task.wait()
                     if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
                         local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
                         if HealthPercent < 20 then
@@ -3674,15 +3716,19 @@ if _G.Mode == "English" then
             end)
         end
 if _G.Mode == "English" then
-page1:Toggle("Auto Farm Nearest", _G.NeareastFarm, function(value)
+page1:Toggle("Auto Farm Nearest", _G.Settings.NeareastFarm, function(value)
     _G.NeareastFarm = value
+    _G.Settings.NeareastFarm = value
+    SaveSettings() 
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
 end)
 else
-page1:Toggle("ฟาร์มมอนรอบๆ", _G.NeareastFarm, function(value)
+page1:Toggle("ฟาร์มมอนรอบๆ", _G.Settings.NeareastFarm, function(value)
     _G.NeareastFarm = value
+    _G.Settings.NeareastFarm = value
+    SaveSettings() 
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
@@ -3690,7 +3736,7 @@ end)
 end
 spawn(function()
 while wait(.1) do
-    if _G.NeareastFarm then
+    if _G.Settings.NeareastFarm then
         pcall(function()
             for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                 if v.Name and v:FindFirstChild("Humanoid") then
@@ -3827,7 +3873,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             _G.FastType = "Fast"
                                         end
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
-                                until v.Humanoid.Health <= 0 or not _G.AutoFarm or not _G.FastAutoFarm
+                                until v.Humanoid.Health <= 0 or not _G.Settings.AutoFarm or not _G.FastAutoFarm
                                 StartMagnet = false
                                 FastAttack = false
                             end
@@ -3870,7 +3916,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             _G.FastType = "Fast"
                                         end
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
-                                until v.Humanoid.Health <= 0 or not _G.AutoFarm or not _G.FastAutoFarm
+                                until v.Humanoid.Health <= 0 or not _G.Settings.AutoFarm or not _G.FastAutoFarm
                                 StartMagnet = false
                                 FastAttack = false
                             end
@@ -3928,7 +3974,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             if table.find(AllPlayersTableSkipFarm,GetQuestTitle.Text:split(" ")[2]) then
                 for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
                     if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) then
-                        if _G.AutoFarm and _G.FastAutoFarm and v.Name == GetQuestTitle.Text:split(" ")[2] and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                        if _G.Settings.AutoFarm and _G.FastAutoFarm and v.Name == GetQuestTitle.Text:split(" ")[2] and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                             repeat wait()
                                 if World1 and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875) - v.HumanoidRootPart.Position).magnitude < 5000 then
                                     if FarmtoTarget then FarmtoTarget:Stop() end
@@ -3960,14 +4006,14 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                     game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
                                     game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
                                 end
-                            until not _G.AutoFarm or not _G.FastAutoFarm  or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                            until not _G.Settings.AutoFarm or not _G.FastAutoFarm  or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                         end
                     end
                 end
             else
                 if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if _G.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                        if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                             if string.find(GetQuestTitle.Text, QuestName) then
                                 repeat wait()
                                     if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 150 then
@@ -3995,7 +4041,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                         FastAttack = true
                                         EquipWeapon(_G.SelectWeapon)
                                     end
-                                until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, QuestName) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                                until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, QuestName) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                                 FastAttack = false
                                 StartMagnet = false
                             else
@@ -4077,7 +4123,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
         elseif GetQuest.Visible == true then
             if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if _G.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                    if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                         if string.find(GetQuestTitle.Text, NameMon) then
                             repeat task.wait()
                                 FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
@@ -4116,7 +4162,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                     end
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
                                 end
-                            until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                            until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                             StartMagnet = false
                             FastAttack = false
                         else
@@ -4198,7 +4244,7 @@ else
     elseif GetQuest.Visible == true then
         if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                if _G.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                     if string.find(GetQuestTitle.Text, NameMon) then
                         repeat wait()
                             FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
@@ -4238,7 +4284,7 @@ else
                                 end
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
                             end
-                        until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                        until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                         StartMagnet = false
                         FastAttack = false
                     else
@@ -4317,7 +4363,7 @@ local oldcheckquest = NameMon
 task.spawn(function()
 while task.wait() do
 pcall(function()
-    if _G.AutoFarm then
+    if _G.Settings.AutoFarm then
         if _G.DoubleQuest then
             if SubQuest == true then
                 if LevelFarm then
@@ -4365,15 +4411,19 @@ end)
 
 page1:Line()
 if _G.Mode == "English" then
-page1:Toggle("Auto Farm Chest", _G.AutoFarmChest, function(value)
+page1:Toggle("Auto Farm Chest", _G.Settings.AutoFarmChest, function(value)
     _G.AutoFarmChest = value
+    _G.Settings.AutoFarmChest = value
+        SaveSettings()
 if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
 end)
 else
-page1:Toggle("ฟาร์มกล่อง", _G.AutoFarmChest, function(value)
+page1:Toggle("ฟาร์มกล่อง", _G.Settings.AutoFarmChest, function(value)
 _G.AutoFarmChest = value
+_G.Settings.AutoFarmChest = value
+SaveSettings()
 if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
@@ -4383,7 +4433,7 @@ end
 _G.AddPoint = 500
 spawn(function()
     while wait() do 
-        if _G.AutoFarmChest then
+        if _G.Settings.AutoFarmChest then
             for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do 
                 if v.Name:find("Chest") and v:IsA("Part") then
                     if (v.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 + _G.AddPoint then
@@ -5643,8 +5693,11 @@ end
             end)
          end
                     if _G.Mode == "English" then
-                        page1:Toggle("Auto Bartilo Quest", _G.AutoBartiloQuest,function(value)
+                        page1:Toggle("Auto Bartilo Quest", _G.Settings.AutoBartiloQuest,function(value)
                             _G.AutoBartiloQuest   = value
+                            _G.Settings.AutoBartiloQuest = value
+                            SaveSettings() 
+                     
                             if value == false then
                                 task.wait()
                                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -5652,8 +5705,10 @@ end
                             end
                         end)
                     else
-                        page1:Toggle("ออโต้บาโธโลมีโอเควส", _G.AutoBartiloQuest,function(value)
+                        page1:Toggle("ออโต้บาโธโลมีโอเควส", _G.Settings.AutoBartiloQuest,function(value)
                             _G.AutoBartiloQuest   = value
+                            _G.Settings.AutoBartiloQuest = value
+                            SaveSettings() 
                                 if value == false then
                                     task.wait()
                                     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -5665,7 +5720,7 @@ end
                             function()
                                 while task.wait() do
                                     pcall(function()
-                                            if _G.AutoBartiloQuest then
+                                            if _G.Settings.AutoBartiloQuest then
                                                 if game.Players.LocalPlayer.Data.Level.Value >= 850 then
                                                     if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 0 then
                                                         if string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Swan Pirates") and string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"50") and game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
@@ -7989,8 +8044,11 @@ if _G.Mode == "English" then
             wait(1)
         end
     end)
-    page1:Toggle("Auto Farm Bone", _G.AutoFarmBone,function(value)
+    page1:Toggle("Auto Farm Bone", _G.Settings.AutoFarmBone,function(value)
         _G.AutoFarmBone  = value
+        _G.Settings.AutoFarmBone = value
+        SaveSettings() 
+ 
         if value == false then
             task.wait()
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7999,7 +8057,7 @@ if _G.Mode == "English" then
         task.spawn(function()
             while task.wait() do
                 pcall(function()
-                    if _G.AutoFarmBone then
+                    if _G.Settings.AutoFarmBone then
                         if GetQuestBone.Visible == false and _G.AccetpQuestBone then
                             CFrameQuestBone = CFrame.new(-9513, 172, 6079)
                             if (CFrameQuestBone.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
@@ -8068,8 +8126,11 @@ else
         end
     end)
 
-    page1:Toggle("ออโต้ฟาร์มกระดูก", _G.AutoFarmBone , function(value)
+    page1:Toggle("ออโต้ฟาร์มกระดูก", _G.Settings.AutoFarmBone , function(value)
         _G.AutoFarmBone  = value
+        _G.Settings.AutoFarmBone = value
+        SaveSettings() 
+ 
         if value == false then
             task.wait()
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -8078,7 +8139,7 @@ else
         task.spawn(function()
             while task.wait() do
                 pcall(function()
-                    if _G.AutoFarmBone then
+                    if _G.Settings.AutoFarmBone then
                         if GetQuestBone.Visible == false and _G.AccetpQuestBone then
                             CFrameQuestBone = CFrame.new(-9513, 172, 6079)
                             if (CFrameQuestBone.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
@@ -12342,8 +12403,10 @@ spawn(function()
         end
     end)
 if _G.Mode == "English" then
-page1:Toggle("Auto Farm Observation",_G.AutoObservation,function(value)
+page1:Toggle("Auto Farm Observation",_G.Settings.AutoObservation,function(value)
     _G.AutoObservation = value
+    _G.Settings.AutoObservation = value
+    SaveSettings() 
     if value == false then
         task.wait()
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -12351,8 +12414,10 @@ page1:Toggle("Auto Farm Observation",_G.AutoObservation,function(value)
     end
 end)
 else
-page1:Toggle("ออโต้ฟาร์มฮาคิสังเกต",_G.AutoObservation,function(value)
+page1:Toggle("ออโต้ฟาร์มฮาคิสังเกต",_G.Settings.AutoObservation,function(value)
     _G.AutoObservation = value
+    _G.Settings.AutoObservation = value
+    SaveSettings() 
     if value == false then
         task.wait()
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -12363,7 +12428,7 @@ end
 spawn(function()
         while wait() do
             pcall(function()
-                    if _G.AutoObservation then
+                    if _G.Settings.AutoObservation then
                         repeat
                             task.wait()
                             if not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
@@ -12381,19 +12446,23 @@ spawn(function()
     end
 )
 if _G.Mode == "English" then
-page1:Toggle("Auto Farm Observation Hop",_G.AutoObservation_Hop,function(value)
+page1:Toggle("Auto Farm Observation Hop",_G.Settings.AutoObservation_Hop,function(value)
         _G.AutoObservation_Hop = value
+        _G.Settings.AutoObservation_Hop = value
+        SaveSettings() 
     end)
 else
-    page1:Toggle("ออโด้ฟาร์มฮาคิสังเกต&ย้ายเซิฟ",_G.AutoObservation_Hop,function(value)
+    page1:Toggle("ออโด้ฟาร์มฮาคิสังเกต&ย้ายเซิฟ",_G.Settings.AutoObservation_Hop,function(value)
         _G.AutoObservation_Hop = value
+        _G.Settings.AutoObservation_Hop = value
+        SaveSettings() 
     end)
 end
 spawn(function()
         pcall(function()
                 while wait() do
-                    if _G.AutoObservation then
-                        if game:GetService("Players").LocalPlayer.VisionRadius.Value >= 3000 then
+                    if _G.Settings.AutoObservation then
+                        if game:GetService("Players").LocalPlayer.VisionRadius.Value >= 6000 then
                             game:GetService("StarterGui"):SetCore("SendNotification",
                                 {
                                     Icon = "rbxassetid://14645512457",
@@ -13235,7 +13304,7 @@ end)
 spawn(function()
     while wait() do
     pcall(function()
-    if _G.AutoFarmGunMastery then
+    if _G.Settings.AutoFarmGunMastery then
   if  game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
         StartMagnet = false
          -- FastAttack = false
@@ -13427,7 +13496,7 @@ local Cam = workspace.CurrentCamera
 spawn(function()
 while wait() do
     pcall(function()
-        if _G.AutoFarmFruitMastery then
+        if _G.Settings.AutoFarmFruitMastery then
 if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
 StartMagnet = false
 FastAttack = false
@@ -13683,14 +13752,18 @@ end
 page6:Seperator("✨")
 _G.MobHealth = 30
 if _G.Mode == "English" then
-page6:Toggle("Auto Fruit Mastery", _G.AutoFarmFruitMastery, function(value)
+page6:Toggle("Auto Fruit Mastery", _G.Settings.AutoFarmFruitMastery, function(value)
 _G.AutoFarmFruitMastery = value
+_G.Settings.AutoFarmFruitMastery = value
+        SaveSettings()
 if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
 end)
-page6:Toggle("Auto Gun Mastery", _G.AutoFarmGunMastery, function(value)
-_G.AutoFarmGunMastery = value
+page6:Toggle("Auto Gun Mastery", _G.Settings.AutoFarmGunMastery, function(value)
+    _G.AutoFarmGunMastery = value
+    _G.Settings.AutoFarmGunMastery = value
+            SaveSettings()
 if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
@@ -13699,14 +13772,18 @@ page6:Slider("Mob Health (%)",1,100,30,function(value)
     _G.MobHealth = value
     end)
 else
-page6:Toggle("ฟาร์มมาสเตอรี่ผลปีศาจ",_G.AutoFarmFruitMastery, function(value)
-_G.AutoFarmFruitMastery = value
+page6:Toggle("ฟาร์มมาสเตอรี่ผลปีศาจ",_G.Settings.AutoFarmFruitMastery, function(value)
+    _G.AutoFarmFruitMastery = value
+    _G.Settings.AutoFarmFruitMastery = value
+    SaveSettings()
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
 end)
-page6:Toggle("ฟาร์มมาสเตอรี่ปืน", _G.AutoFarmGunMastery,function(value)
+page6:Toggle("ฟาร์มมาสเตอรี่ปืน", _G.Settings.AutoFarmGunMastery,function(value)
     _G.AutoFarmGunMastery = value
+    _G.Settings.AutoFarmGunMastery = value
+    SaveSettings()
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
     end
@@ -14953,8 +15030,10 @@ end)
 end
 
 if _G.Mode == "English" then
-page9:Toggle("Auto Mirage Island",  _G.AutoMirageIsland, function(value)
+page9:Toggle("Auto Mirage Island",  _G.Settings.AutoMirageIsland, function(value)
 _G.Mirage = value
+_G.Settings.Mirage = value
+SaveSettings() 
 _G.AutoMirageIsland = value 
 if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -14962,8 +15041,10 @@ end
 end)
 else
 _G.Mode = "Thai"
-page9:Toggle("ออโต้หาเกาะลับ",  _G.AutoMirageIsland, function(value)
+page9:Toggle("ออโต้หาเกาะลับ",  _G.Settings.AutoMirageIsland, function(value)
 _G.Mirage = value
+_G.Settings.Mirage = value
+SaveSettings() 
 _G.AutoMirageIsland = value 
 if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -14971,8 +15052,9 @@ end
 end)
 end
 if _G.Mode == "English" then
-page9:Toggle("Auto Mirage Island [HOP]", _G.AutoMirageIslandHop, function(value)
+page9:Toggle("Auto Mirage Island [HOP]", _G.Settings.MirageHop, function(value)
 _G.MirageHop = value
+_G.Settings.MirageHop = value
 _G.AutoMirageIslandHop = value
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
 if _G.MirageHop and not game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
@@ -15022,9 +15104,10 @@ end
 end)
 else
 _G.Mode = "Thai"
-page9:Toggle("ออโต้หาเกาะลับแบบย้ายเซิฟ", _G.AutoMirageIslandHop, function(value)
-_G.MirageHop = value
-_G.AutoMirageIslandHop = value
+page9:Toggle("ออโต้หาเกาะลับแบบย้ายเซิฟ", _G.Settings.MirageHop, function(value)
+    _G.MirageHop = value
+    _G.Settings.MirageHop = value
+    _G.AutoMirageIslandHop = value
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "กำลังย้ายเซิฟ...",Icon = "rbxassetid://14645512457",Duration = 5})
 if _G.MirageHop and not game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     while _G.MirageHop do wait(5)
@@ -15159,8 +15242,10 @@ end
 
 
 if _G.Mode == "English" then
-page9:Toggle("Auto Gear", _G.Auto_Gear, function(value)
+page9:Toggle("Teleport To Gear", _G.Settings.Auto_Gear, function(value)
     _G.Auto_Gear = value
+    _G.Settings.Auto_Gear = value
+        SaveSettings() 
     task.spawn(function()
         while task.wait(.01) do
             if _G.Auto_Gear then
@@ -15177,8 +15262,10 @@ page9:Toggle("Auto Gear", _G.Auto_Gear, function(value)
     end)
 end)
 else
-page9:Toggle("ออโต้หาเกียร์", _G.Auto_Gear, function(value)
+page9:Toggle("เทเลพอร์ตไปหาเกียร์", _G.Settings.Auto_Gear, function(value)
     _G.Auto_Gear = value
+    _G.Settings.Auto_Gear = value
+    SaveSettings()
     task.spawn(function()
         while task.wait(.01) do
             if _G.Auto_Gear then
@@ -15446,13 +15533,15 @@ if _G.Mode == "English" then
                 end)
             end
         end)
-    end)
-    page11:Toggle("Auto Buy Zoro Sword Hop", _G.AutoBuyLegendarySwordHop, function(value)
+    end) 
+    page11:Toggle("Auto Buy Zoro Sword Hop", _G.Settings.AutoBuyLegendarySwordHop, function(value)
         _G.AutoBuyLegendarySwordHop = value
+        _G.Settings.AutoBuyLegendarySwordHop = value
+SaveSettings()
                         spawn(function()
                         while task.wait() do
                             pcall(function()
-                                    if _G.AutoBuyLegendarySwordHop then
+                                    if _G.Settings.AutoBuyLegendarySwordHop then
                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
@@ -15482,12 +15571,14 @@ while task.wait() do
 end
 end)
 end)
-page11:Toggle("ออโต้ซื้อดาบโซโล&ย้ายเซิฟเวอร์", _G.AutoBuyLegendarySwordHop, function(value)
-_G.AutoBuyLegendarySwordHop = value
+page11:Toggle("ออโต้ซื้อดาบโซโล&ย้ายเซิฟเวอร์", _G.Settings.AutoBuyLegendarySwordHop, function(value)
+    _G.AutoBuyLegendarySwordHop = value
+    _G.Settings.AutoBuyLegendarySwordHop = value
+SaveSettings()
 spawn(function()
             while task.wait() do
                 pcall(function()
-                    if _G.AutoBuyLegendarySwordHop then
+                    if _G.Settings.AutoBuyLegendarySwordHop then
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
@@ -15521,12 +15612,14 @@ if _G.Mode == "English" then
             end
         end)
     end)
-    page11:Toggle("Auto Buy Color Haki Hop", _G.AutoBuyEnchanmentHakiHop, function(value)
+    page11:Toggle("Auto Buy Color Haki Hop", _G.Settings.AutoBuyEnchanmentHakiHop, function(value)
         _G.AutoBuyEnchanmentHakiHop = value
+        _G.Settings.AutoBuyEnchanmentHakiHop = value
+SaveSettings()
         task.spawn(function()
             while task.wait() do
                 pcall(function()
-                    if _G.AutoBuyEnchanmentHakiHop then
+                    if _G.Settings.AutoBuyEnchanmentHakiHop then
                         local args = {
                             [1] = "ColorsDealer",
                             [2] = "2"
@@ -15560,12 +15653,14 @@ else
                 end
             end)
         end)
-        page11:Toggle("ออโต้ซื้อสีฮาคิ&ย้ายเซิฟเวอร์", _G.AutoBuyEnchanmentHakiHop, function(value)
+        page11:Toggle("ออโต้ซื้อสีฮาคิ&ย้ายเซิฟเวอร์", _G.Settings.AutoBuyEnchanmentHakiHop, function(value)
             _G.AutoBuyEnchanmentHakiHop = value
+            _G.Settings.AutoBuyEnchanmentHakiHop = value
+    SaveSettings()
             task.spawn(function()
                 while task.wait() do
                     pcall(function()
-                        if _G.AutoBuyEnchanmentHakiHop then
+                        if _G.Settings.AutoBuyEnchanmentHakiHop then
                             local args = {
                                 [1] = "ColorsDealer",
                                 [2] = "2"
@@ -15662,6 +15757,10 @@ end)
 page11:Button("Godhuman [5,000,000/5,000F]", function()
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true)
 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
+end)
+page11:Button("SanguineArt [5,000,000/5,000F]", function()
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt", true)
+game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
 end)
 if _G.Mode == "English" then
 page11:Seperator("<<Sword>>")
@@ -16035,6 +16134,17 @@ page12:Button("Show Awakened Skill", function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
     game.Players.LocalPlayer.PlayerGui.Main.AwakeningToggler.Visible = true
     end)
+    page12:Button("Show Title Name", function()
+        local args = {
+            [1] = "getTitles"
+        }
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+        game.Players.localPlayer.PlayerGui.Main.Titles.Visible = true
+        end)
+
+        page12:Button("Show Color Haki", function()
+            game.Players.localPlayer.PlayerGui.Main.Colors.Visible = true
+            end)
 else
 _G.Mode = "Thai"
 page12:Seperator("<<เปลี่ยนเซิฟเวอร์>>")
@@ -16053,7 +16163,7 @@ page12:Line()
 page12:Button("ถ่ายภาพไก่ตัน", function()
     kaituncap()
 end)
-page12:Button("แสดงสกิลตื่น", function()
+page12:Button("แสดงเมนูสกิลตื่น", function()
     local args = {
         [1] = "getAwakenedAbilities"
     }
@@ -16061,6 +16171,17 @@ page12:Button("แสดงสกิลตื่น", function()
     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
     game.Players.LocalPlayer.PlayerGui.Main.AwakeningToggler.Visible = true
     end)
+    page12:Button("แสดงเมนูเลือกฉายา", function()
+        local args = {
+            [1] = "getTitles"
+        }
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+        game.Players.localPlayer.PlayerGui.Main.Titles.Visible = true
+        end)
+
+        page12:Button("แสดงเมนูเลือกสีฮาคิ", function()
+            game.Players.localPlayer.PlayerGui.Main.Colors.Visible = true
+            end)
 end
 function InfAbility()
 if _G.InfAbility then
@@ -16608,12 +16729,212 @@ page12:Toggle("ออโต้คลิก",false,function(value)
         end)
     end)
 end
+if _G.Mode == "Engllish" then
+page12:Toggle("Graphic",false,function(v)
+    if v then
+        getgenv().mode = "Autumn" -- Choose from Summer and Autumn
+        local a = game.Lighting
+        a.Ambient = Color3.fromRGB(33, 33, 33)
+        a.Brightness = 0.3
+        a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+        a.ColorShift_Top = Color3.fromRGB(255, 247, 237)
+        a.EnvironmentDiffuseScale = 0.105
+        a.EnvironmentSpecularScale = 0.522
+        a.GlobalShadows = true
+        a.OutdoorAmbient = Color3.fromRGB(51, 54, 67)
+        a.ShadowSoftness = 0.04
+        a.GeographicLatitude = -15.525
+        a.ExposureCompensation = 0.75
+        local b = Instance.new("BloomEffect", a)
+        b.Name = "BloomEffect_Graphic"
+        b.Enabled = true
+        b.Intensity = 0.04
+        b.Size = 1900
+        b.Threshold = 0.915
+        local c = Instance.new("ColorCorrectionEffect", a)
+        c.Name = 'ColorCorrectionEffect1_Graphic'
+        c.Brightness = 0.176
+        c.Contrast = 0.39
+        c.Enabled = true
+        c.Saturation = 0.2
+        c.TintColor = Color3.fromRGB(217, 145, 57)
+        if getgenv().mode == "Summer" then
+            c.TintColor = Color3.fromRGB(255, 220, 148)
+        elseif getgenv().mode == "Autumn" then
+            c.TintColor = Color3.fromRGB(242, 193, 79)
+        end
+        local d = Instance.new("DepthOfFieldEffect", Graphic)
+        d.Name =  'DepthOfFieldEffect_Graphic'
+        d.Enabled = true
+        d.FarIntensity = 0.077
+        d.FocusDistance = 21.54
+        d.InFocusRadius = 20.77
+        d.NearIntensity = 0.277
+        local e = Instance.new("ColorCorrectionEffect", a)
+        e.Name = 'ColorCorrectionEffect2_Graphic'
+        e.Brightness = 0
+        e.Contrast = -0.07
+        e.Saturation = 0
+        e.Enabled = true
+        e.TintColor = Color3.fromRGB(255, 247, 239)
+        local e2 = Instance.new("ColorCorrectionEffect", a)
+        e2.Name = 'ColorCorrectionEffect3_Graphic'
+        e2.Brightness = 0.2
+        e2.Contrast = 0.45
+        e2.Saturation = -0.1
+        e2.Enabled = true
+        e2.TintColor = Color3.fromRGB(255, 255, 255)
+        local s = Instance.new("SunRaysEffect", a)
+        s.Name = 'SunRaysEffect_Graphic'
+        s.Enabled = false
+        s.Intensity = 0.01
+        s.Spread = 0.146
+    else
+        local a = game.Lighting
+        a.Ambient = Color3.fromRGB(170, 170, 170)
+        a.Brightness = 2
+        a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+        a.ColorShift_Top = Color3.fromRGB(0, 0, 0)
+        a.EnvironmentDiffuseScale = 0.105
+        a.EnvironmentSpecularScale = 0.522
+        a.GlobalShadows = false
+        a.OutdoorAmbient = Color3.fromRGB(127, 127, 127)
+        a.ShadowSoftness = 0
+        a.GeographicLatitude = 66
+        a.ExposureCompensation = 0.2
+        game:GetService("Lighting")["BloomEffect_Graphic"]:Destroy()
+        game:GetService("Lighting")["ColorCorrectionEffect1_Graphic"]:Destroy()
+        game:GetService("Lighting")["ColorCorrectionEffect2_Graphic"]:Destroy()
+        game:GetService("Lighting")["ColorCorrectionEffect3_Graphic"]:Destroy()
+        game:GetService("Lighting")["SunRaysEffect_Graphic"]:Destroy()
+    end
+end)
+else
+    page12:Toggle("ภาพสวย",false,function(v)
+        if v then
+            getgenv().mode = "Autumn" -- Choose from Summer and Autumn
+            local a = game.Lighting
+            a.Ambient = Color3.fromRGB(33, 33, 33)
+            a.Brightness = 0.3
+            a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+            a.ColorShift_Top = Color3.fromRGB(255, 247, 237)
+            a.EnvironmentDiffuseScale = 0.105
+            a.EnvironmentSpecularScale = 0.522
+            a.GlobalShadows = true
+            a.OutdoorAmbient = Color3.fromRGB(51, 54, 67)
+            a.ShadowSoftness = 0.04
+            a.GeographicLatitude = -15.525
+            a.ExposureCompensation = 0.75
+            local b = Instance.new("BloomEffect", a)
+            b.Name = "BloomEffect_Graphic"
+            b.Enabled = true
+            b.Intensity = 0.04
+            b.Size = 1900
+            b.Threshold = 0.915
+            local c = Instance.new("ColorCorrectionEffect", a)
+            c.Name = 'ColorCorrectionEffect1_Graphic'
+            c.Brightness = 0.176
+            c.Contrast = 0.39
+            c.Enabled = true
+            c.Saturation = 0.2
+            c.TintColor = Color3.fromRGB(217, 145, 57)
+            if getgenv().mode == "Summer" then
+                c.TintColor = Color3.fromRGB(255, 220, 148)
+            elseif getgenv().mode == "Autumn" then
+                c.TintColor = Color3.fromRGB(242, 193, 79)
+            end
+            local d = Instance.new("DepthOfFieldEffect", Graphic)
+            d.Name =  'DepthOfFieldEffect_Graphic'
+            d.Enabled = true
+            d.FarIntensity = 0.077
+            d.FocusDistance = 21.54
+            d.InFocusRadius = 20.77
+            d.NearIntensity = 0.277
+            local e = Instance.new("ColorCorrectionEffect", a)
+            e.Name = 'ColorCorrectionEffect2_Graphic'
+            e.Brightness = 0
+            e.Contrast = -0.07
+            e.Saturation = 0
+            e.Enabled = true
+            e.TintColor = Color3.fromRGB(255, 247, 239)
+            local e2 = Instance.new("ColorCorrectionEffect", a)
+            e2.Name = 'ColorCorrectionEffect3_Graphic'
+            e2.Brightness = 0.2
+            e2.Contrast = 0.45
+            e2.Saturation = -0.1
+            e2.Enabled = true
+            e2.TintColor = Color3.fromRGB(255, 255, 255)
+            local s = Instance.new("SunRaysEffect", a)
+            s.Name = 'SunRaysEffect_Graphic'
+            s.Enabled = false
+            s.Intensity = 0.01
+            s.Spread = 0.146
+        else
+            local a = game.Lighting
+            a.Ambient = Color3.fromRGB(170, 170, 170)
+            a.Brightness = 2
+            a.ColorShift_Bottom = Color3.fromRGB(0, 0, 0)
+            a.ColorShift_Top = Color3.fromRGB(0, 0, 0)
+            a.EnvironmentDiffuseScale = 0.105
+            a.EnvironmentSpecularScale = 0.522
+            a.GlobalShadows = false
+            a.OutdoorAmbient = Color3.fromRGB(127, 127, 127)
+            a.ShadowSoftness = 0
+            a.GeographicLatitude = 66
+            a.ExposureCompensation = 0.2
+            game:GetService("Lighting")["BloomEffect_Graphic"]:Destroy()
+            game:GetService("Lighting")["ColorCorrectionEffect1_Graphic"]:Destroy()
+            game:GetService("Lighting")["ColorCorrectionEffect2_Graphic"]:Destroy()
+            game:GetService("Lighting")["ColorCorrectionEffect3_Graphic"]:Destroy()
+            game:GetService("Lighting")["SunRaysEffect_Graphic"]:Destroy()
+        end
+    end)
+end
+if game.workspace:FindFirstChild("WaterWalk") then
+    game.workspace:FindFirstChild("WaterWalk"):Destroy()
+end
+platform = Instance.new("Part")
+platform.Name = "WaterWalk"
+platform.Size = Vector3.new(math.huge, 1, math.huge)
+platform.Transparency = 1
+platform.Anchored = true
+platform.Parent = game.workspace
 if _G.Mode == "English" then
+    page12:Toggle("Walk on Water",true,function(value)
+        _G.WalkWater = value
+    end)
+    
+    spawn(function()
+            while task.wait() do
+                pcall(function()
+                    if _G.WalkWater then
+                        game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,112,1000)
+                    else
+                        game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,80,1000)
+                    end
+                end)
+            end
+        end)
 page12:Toggle("InfAbility", false, function(value)
     _G.InfAbility = value
     InfAbility()
 end)
 else
+    page12:Toggle("เดินบนน้ำ",true,function(value)
+        _G.WalkWater = value
+    end)
+    
+    spawn(function()
+            while task.wait() do
+                pcall(function()
+                    if _G.WalkWater then
+                        game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,112,1000)
+                    else
+                        game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,80,1000)
+                    end
+                end)
+            end
+        end)
 _G.Mode = "Thai"
 page12:Toggle("ความสามารถไม่จำกัด", false, function(value)
     _G.InfAbility = value
