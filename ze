@@ -709,11 +709,10 @@ end
 end
 return Hits
 end
-function AttackFunction()
+function yakmefan()
 local ac = CombatFrameworkR.activeController
 if ac and ac.equipped then
---for indexincrement = 1, 1 do
-    while task.wait() do
+ for Ryuen = 1, 1 do
     local bladehit = getAllBladeHits(100)
     if #bladehit > 0 then
         local AcAttack8 = debug.getupvalue(ac.attack, 5)
@@ -754,7 +753,7 @@ end
 function AttackPlayers()
     local ac = CombatFrameworkR.activeController
     if ac and ac.equipped then
-        for indexincrement = 1, 1 do
+        for i = 1, 1 do
             local bladehit = getAllBladeHitsPlayers(60)
             if #bladehit > 0 then
                 local AcAttack8 = debug.getupvalue(ac.attack, 5)
@@ -8877,7 +8876,7 @@ local ac = CombatFrameworkR.activeController
 if ac and ac.equipped then
     task.wait(0.05)
     if FastAttack or _G.FastAttack then
-        AttackFunction()
+        yakmefan()
         if _G.FastType == "Normal" then
             if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
         elseif _G.FastType == "Fast" then
@@ -8895,9 +8894,6 @@ _G.FastType = "Fast"
 local SeraphFrame = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework")))[2]
 local VirtualUser = game:GetService('VirtualUser')
 local RigControllerR = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.RigController))[2]
-local Client = game:GetService("Players").LocalPlayer
-local DMG = require(Client.PlayerScripts.CombatFramework.Particle.Damage)
-
 function arai() 
     local p13 = SeraphFrame.activeController
     local wea = p13.blades[1]
