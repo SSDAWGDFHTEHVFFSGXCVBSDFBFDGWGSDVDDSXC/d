@@ -1163,9 +1163,9 @@ tweenz:Cancel()
 end
 end
 
-spawn(function()------body velocity2
+spawn(function() --Event Sea
     game:GetService("RunService").Stepped:Connect(function()
-        if _G.AutoEvent then
+        if _G.AutoEvent then 
             if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
                 local Highlight = Instance.new("Highlight")
                 Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
@@ -1173,11 +1173,17 @@ spawn(function()------body velocity2
                 Highlight.Parent = game.Players.LocalPlayer.Character;
                 end
                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
+                    if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
                      if v.Humanoid.Health > 0 then 
                         if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
                             game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
                         end
+                        for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                            if v:IsA("BasePart") then
+                                v.CanCollide = false
+                            end
+                        end
+                        game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
                      if not game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv') then
                     local bv = Instance.new("BodyVelocity",game.Players.LocalPlayer.Character.HumanoidRootPart)
                     bv.Name = 'bv'
@@ -1188,15 +1194,20 @@ spawn(function()------body velocity2
                     game.Players.LocalPlayer.Character:FindFirstChild("Highlight"):Destroy();
                     for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                         if v:IsA("VehicleSeat") then
-                            if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
+                            if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
                                 repeat
                                     task.wait()
                                     local CFrame = v.CFrame
                                     twoboat(CFrame)
-                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.TPTOBOAT
+                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1 or not _G.TPTOBOAT
                             end
                         end
                     end 
+                    for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                        if v:IsA("BasePart") then
+                            v.CanCollide = true
+                        end
+                    end
                     if game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv') then
                         game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv'):Destroy()
                         end
@@ -4689,6 +4700,9 @@ end
             end
         end
     end)
+    page12:Button("FullBright", function()
+        FullBright()
+    end)
 end
     else
         if World3 then
@@ -4864,6 +4878,9 @@ while task.wait() do
         end
     end
 end
+end)
+page12:Button("แมพสว่าง", function()
+    FullBright()
 end)
 end
 end
@@ -16835,9 +16852,6 @@ if _G.Mode == "English" then
 page12:Button("FPS Booster", function()
     FPSBOOSTER()
 end)
-page12:Button("FullBright", function()
-    FullBright()
-end)
 page12:Toggle("Auto Click",false,function(value)
     _G.click = value
         end)  
@@ -16854,9 +16868,6 @@ page12:Toggle("Auto Click",false,function(value)
 else
 page12:Button("ปรับภาพกากเพิ่ม FPS", function()
     FPSBOOSTER()
-end)
-page12:Button("แมพสว่าง", function()
-    FullBright()
 end)
 page12:Toggle("ออโต้คลิก",false,function(value)
     _G.click = value
