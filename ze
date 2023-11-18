@@ -4516,7 +4516,7 @@ spawn(function()
     while wait() do 
         if _G.Settings.AutoFarmChest then
             for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do 
-                if v.Name:find("Chest") and v:IsA("Part") then
+                if v.Name:find("Chest") then
                         repeat wait()
                             toTarget(v.CFrame)
                             if (v.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
@@ -8902,24 +8902,6 @@ end
 end
 end)()
 _G.FastType = "Fast"
-local SeraphFrame = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework")))[2]
-local VirtualUser = game:GetService('VirtualUser')
-local RigControllerR = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.RigController))[2]
-function arai() 
-    local p13 = SeraphFrame.activeController
-    local wea = p13.blades[1]
-    if not wea then return end
-    while wea.Parent~=game.Players.LocalPlayer.Character do wea=wea.Parent end
-    return wea
-end
-function Boost()
-    spawn(function()
-        if SeraphFrame.activeController then
-            game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(arai()))
-        end
-    end)
-end 
-Boost()
 local Time = 0.09
 task.spawn(function()
     while _G.FastAttack do task.wait()
