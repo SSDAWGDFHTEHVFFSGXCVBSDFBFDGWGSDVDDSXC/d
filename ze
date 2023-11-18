@@ -4431,6 +4431,7 @@ while task.wait() do
 pcall(function()
     if _G.Settings.AutoFarm then
         if _G.DoubleQuest then
+            if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end 
             if SubQuest == true then
                 if LevelFarm then
                     if tonumber(LevelFarm - 1) ~= 0 then
@@ -4496,13 +4497,12 @@ end
 end)
 end
 
-_G.AddPoint = 500
+
 spawn(function()
     while wait() do 
         if _G.Settings.AutoFarmChest then
             for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do 
                 if v.Name:find("Chest") and v:IsA("Part") then
-                    if (v.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 + _G.AddPoint then
                         repeat wait()
                             toTarget(v.CFrame)
                             if (v.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
@@ -4510,17 +4510,7 @@ spawn(function()
                             else
                                 EquipWeapon(_G.SelectWeapon)
                             end
-                        until _G.AutoFarmChest == false or not v.Parent
-                        break
-                    else
-                        _G.AddPoint = _G.AddPoint + 500
-                    end
-                else
-                    if v.Name:find("Chest") and v:IsA("Part") then
-                        if (v.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >= 500 + _G.AddPoint then
-                            _G.AddPoint = _G.AddPoint + 500
-                        end
-                    end
+                    until _G.AutoFarmChest == false or not v.Parent
                 end
             end
         end
