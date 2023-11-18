@@ -288,12 +288,6 @@ wait(1)
 game:GetService("VirtualUser"):Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
 end)
 
-while wait(1080) do
-	local bb=game:service'VirtualUser'
-		game:service'Players'.LocalPlayer.Idled:connect(function()
-		bb:CaptureController()bb:ClickButton2(Vector2.new())
-	end)
-end
 -- [Functions Equip Weapon]
 
 function UnEquipWeapon(Weapon)
