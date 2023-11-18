@@ -1184,13 +1184,21 @@ spawn(function() --Event Sea
                             end
                         end
                         _G.SailSea = false
-                        game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-                     if not game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv') then
-                    local bv = Instance.new("BodyVelocity",game.Players.LocalPlayer.Character.HumanoidRootPart)
-                    bv.Name = 'bv'
-                    bv.MaxForce = Vector3.new(100000,100000,100000)
-                    bv.Velocity = Vector3.new(0,0,0)
-                end
+                        PIO = false
+                        if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
+                            local L_1 = Instance.new("BodyVelocity")
+                            L_1.Name = "BodyGyrozz"
+                            L_1.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
+                            L_1.MaxForce = Vector3.new(1000000000, 1000000000, 1000000000)
+                            L_1.Velocity = Vector3.new(0, 0, 0)
+                        end
+                    elseif PIO == false then
+                        for i, v in pairs(game.Players.LocalPlayer.Character.HumanoidRootPart:GetChildren()) do
+                            if v.Name == "BodyGyrozz" then
+                                v:Destroy()
+                                PIO = true
+                            end
+                        end
                 else
                     for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                         if v:IsA("VehicleSeat") then
@@ -1203,8 +1211,8 @@ spawn(function() --Event Sea
                             end
                         end
                     end
-                     if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
-                        _G.SailSea = true
+                     if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+                        _G.SailSea = true 
                     end 
                     for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
                         if v:IsA("BasePart") then
@@ -1218,11 +1226,12 @@ spawn(function() --Event Sea
                 end
             end
         end
+        while _G.SailSea do task.wait(0)
+            game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+        end
     end)
 end)
-while _G.SailSea do task.wait(0)
-	game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
-end
+
 --[[Function Hop]]
 local PlaceID = game.PlaceId
 local AllIDs = {}
@@ -4575,7 +4584,8 @@ if _G.Mode == "English" then
                                             game:GetService'VirtualUser':CaptureController()
                                             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                         end
-                                        v.HumanoidRootPart.Size = Vector3.new(100,100,100)
+                                        v.HumanoidRootPart.Size = Vector3.new(80,80,80)
+                                        v.HumanoidRootPart.Transparency = 1
                                         two(v.HumanoidRootPart.CFrame * MethodFarm)
                                     until v.Humanoid.Health <= 0 or not  _G.AutoEvent  
                                     FastAttack = false
@@ -17463,4 +17473,3 @@ while task.wait() do
     end
 end
 end)
-print(1)
