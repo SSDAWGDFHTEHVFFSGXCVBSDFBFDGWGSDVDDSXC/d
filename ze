@@ -587,13 +587,13 @@ task.spawn(function()
         pcall(function()
             if StartMagnet then
                 for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 1500 then
+                    if not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 2500 then
                         if InMyNetWork(v.HumanoidRootPart) then
                             v.HumanoidRootPart.CFrame = PosMon
                             v.Humanoid.JumpPower = 0
                             v.Humanoid.WalkSpeed = 0
-                            v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                            v.HumanoidRootPart.Transparency = 0
+                            v.HumanoidRootPart.Size = Vector3.new(100,100,100)
+                            v.HumanoidRootPart.Transparency = 1
                             v.HumanoidRootPart.CanCollide = false
                             v.Head.CanCollide = false
                             --[[if v.Humanoid:FindFirstChild("Animator") then
@@ -712,8 +712,8 @@ end
 function AttackFunction()
 local ac = CombatFrameworkR.activeController
 if ac and ac.equipped then
-for indexincrement = 1, 1 do
-    local bladehit = getAllBladeHits(60)
+for indexincrement = 1, 2 do
+    local bladehit = getAllBladeHits(100)
     if #bladehit > 0 then
         local AcAttack8 = debug.getupvalue(ac.attack, 5)
         local AcAttack9 = debug.getupvalue(ac.attack, 6)
@@ -742,8 +742,7 @@ for indexincrement = 1, 1 do
         end
         if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
             game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
-            game.ReplicatedStorage.Remotes.Validator:FireServer(
-                math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
+            game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
             game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "")
         end
     end
