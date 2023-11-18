@@ -4131,21 +4131,22 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                         if Modstween then 
                             Modstween:Stop()
+                            task.wait(2)
                             spawn(function()
                                 if posrandom <= 1 then
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                    toTarget(CFrameMon * CFrame.new(0,0,35))
                                     posrandom = posrandom + 0.1
                                 elseif posrandom >= 1 and posrandom <= 2 then
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                    toTarget(CFrameMon * CFrame.new(35,0,0))
                                     posrandom = posrandom + 0.1
                                 elseif posrandom >= 2 and posrandom <= 3 then
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                    toTarget(CFrameMon *CFrame.new(0,0,-35))
                                     posrandom = posrandom + 0.1
                                 elseif posrandom >= 3 and posrandom <= 4  then
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                    toTarget(CFrameMon * CFrame.new(-35,0,0))
                                     posrandom = posrandom + 0.1
                             elseif posrandom >=4 and posrandom <= 5 then
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                toTarget(CFrameMon * CFrame.new(35,0,0))
                                 posrandom = 0
                             end
                         end)
@@ -4252,21 +4253,22 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
                     Modstween:Stop()
+                    task.wait(2)
                     spawn(function()
                         if posrandom <= 1 then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                            toTarget(CFrameMon * CFrame.new(0,0,35))
                             posrandom = posrandom + 0.1
                         elseif posrandom >= 1 and posrandom <= 2 then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                            toTarget(CFrameMon * CFrame.new(35,0,0))
                             posrandom = posrandom + 0.1
                         elseif posrandom >= 2 and posrandom <= 3 then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                            toTarget(CFrameMon *CFrame.new(0,0,-35))
                             posrandom = posrandom + 0.1
                         elseif posrandom >= 3 and posrandom <= 4  then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                            toTarget(CFrameMon * CFrame.new(-35,0,0))
                             posrandom = posrandom + 0.1
                     elseif posrandom >=4 and posrandom <= 5 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                        toTarget(CFrameMon * CFrame.new(35,0,0))
                         posrandom = 0
                     end
                 end)
@@ -4374,21 +4376,22 @@ else
             elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
                     Modstween:Stop()
+                    task.wait(2)
                     spawn(function()
                         if posrandom <= 1 then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                            toTarget(CFrameMon * CFrame.new(0,0,35))
                             posrandom = posrandom + 0.1
                         elseif posrandom >= 1 and posrandom <= 2 then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                            toTarget(CFrameMon * CFrame.new(35,0,0))
                             posrandom = posrandom + 0.1
                         elseif posrandom >= 2 and posrandom <= 3 then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                            toTarget(CFrameMon *CFrame.new(0,0,-35))
                             posrandom = posrandom + 0.1
                         elseif posrandom >= 3 and posrandom <= 4  then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                            toTarget(CFrameMon * CFrame.new(-35,0,0))
                             posrandom = posrandom + 0.1
                     elseif posrandom >=4 and posrandom <= 5 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                        toTarget(CFrameMon * CFrame.new(35,0,0))
                         posrandom = 0
                     end
                 end)
@@ -8710,19 +8713,19 @@ if _G.Mode == "English" then
                                         Modstween:Stop()
                                         spawn(function()
                                             if posrandom <= 1 then
-                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                toTarget(CFrameMon * CFrame.new(0,0,35))
                                                 posrandom = posrandom + 0.1
                                             elseif posrandom >= 1 and posrandom <= 2 then
-                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                toTarget(CFrameMon * CFrame.new(35,0,0))
                                                 posrandom = posrandom + 0.1
                                             elseif posrandom >= 2 and posrandom <= 3 then
-                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                toTarget(CFrameMon *CFrame.new(0,0,-35))
                                                 posrandom = posrandom + 0.1
                                             elseif posrandom >= 3 and posrandom <= 4  then
-                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                toTarget(CFrameMon * CFrame.new(-35,0,0))
                                                 posrandom = posrandom + 0.1
                                         elseif posrandom >=4 and posrandom <= 5 then
-                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                            toTarget(CFrameMon * CFrame.new(35,0,0))
                                             posrandom = 0
                                         end
                                     end)
@@ -8813,19 +8816,19 @@ if CustomFindFirstChild(MaterialMob) then
                         Modstween:Stop()
                         spawn(function()
                             if posrandom <= 1 then
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                toTarget(CFrameMon * CFrame.new(0,0,35))
                                 posrandom = posrandom + 0.1
                             elseif posrandom >= 1 and posrandom <= 2 then
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                toTarget(CFrameMon * CFrame.new(35,0,0))
                                 posrandom = posrandom + 0.1
                             elseif posrandom >= 2 and posrandom <= 3 then
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                toTarget(CFrameMon *CFrame.new(0,0,-35))
                                 posrandom = posrandom + 0.1
                             elseif posrandom >= 3 and posrandom <= 4  then
-                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                toTarget(CFrameMon * CFrame.new(-35,0,0))
                                 posrandom = posrandom + 0.1
                         elseif posrandom >=4 and posrandom <= 5 then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                            toTarget(CFrameMon * CFrame.new(35,0,0))
                             posrandom = 0
                         end
                     end)
@@ -8884,6 +8887,7 @@ if ac and ac.equipped then
         elseif _G.FastType == "Slow" then
             if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
         end
+        setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
         sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
     end
 end
@@ -9987,19 +9991,19 @@ if _G.Mode == "English" then
                                                     Modstween:Stop()
                                                     spawn(function()
                                                         if posrandom <= 1 then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                            toTarget(CFrameMon * CFrame.new(0,0,35))
                                                             posrandom = posrandom + 0.1
                                                         elseif posrandom >= 1 and posrandom <= 2 then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                            toTarget(CFrameMon * CFrame.new(35,0,0))
                                                             posrandom = posrandom + 0.1
                                                         elseif posrandom >= 2 and posrandom <= 3 then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                            toTarget(CFrameMon *CFrame.new(0,0,-35))
                                                             posrandom = posrandom + 0.1
                                                         elseif posrandom >= 3 and posrandom <= 4  then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                            toTarget(CFrameMon * CFrame.new(-35,0,0))
                                                             posrandom = posrandom + 0.1
                                                     elseif posrandom >=4 and posrandom <= 5 then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                        toTarget(CFrameMon * CFrame.new(35,0,0))
                                                         posrandom = 0
                                                     end
                                                 end)
@@ -10070,19 +10074,19 @@ if _G.Mode == "English" then
                                                     Modstween:Stop()
                                                     spawn(function()
                                                         if posrandom <= 1 then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                            toTarget(CFrameMon * CFrame.new(0,0,35))
                                                             posrandom = posrandom + 0.1
                                                         elseif posrandom >= 1 and posrandom <= 2 then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                            toTarget(CFrameMon * CFrame.new(35,0,0))
                                                             posrandom = posrandom + 0.1
                                                         elseif posrandom >= 2 and posrandom <= 3 then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                            toTarget(CFrameMon *CFrame.new(0,0,-35))
                                                             posrandom = posrandom + 0.1
                                                         elseif posrandom >= 3 and posrandom <= 4  then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                            toTarget(CFrameMon * CFrame.new(-35,0,0))
                                                             posrandom = posrandom + 0.1
                                                     elseif posrandom >=4 and posrandom <= 5 then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                        toTarget(CFrameMon * CFrame.new(35,0,0))
                                                         posrandom = 0
                                                     end
                                                 end)
@@ -10157,19 +10161,19 @@ if _G.Mode == "English" then
                                                 Modstween:Stop()
                                                 spawn(function()
                                                     if posrandom <= 1 then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                        toTarget(CFrameMon * CFrame.new(0,0,35))
                                                         posrandom = posrandom + 0.1
                                                     elseif posrandom >= 1 and posrandom <= 2 then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                        toTarget(CFrameMon * CFrame.new(35,0,0))
                                                         posrandom = posrandom + 0.1
                                                     elseif posrandom >= 2 and posrandom <= 3 then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                        toTarget(CFrameMon *CFrame.new(0,0,-35))
                                                         posrandom = posrandom + 0.1
                                                     elseif posrandom >= 3 and posrandom <= 4  then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                        toTarget(CFrameMon * CFrame.new(-35,0,0))
                                                         posrandom = posrandom + 0.1
                                                 elseif posrandom >=4 and posrandom <= 5 then
-                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                    toTarget(CFrameMon * CFrame.new(35,0,0))
                                                     posrandom = 0
                                                 end
                                             end)
@@ -10243,19 +10247,19 @@ if _G.Mode == "English" then
                                             Modstween:Stop()
                                             spawn(function()
                                                 if posrandom <= 1 then
-                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                    toTarget(CFrameMon * CFrame.new(0,0,35))
                                                     posrandom = posrandom + 0.1
                                                 elseif posrandom >= 1 and posrandom <= 2 then
-                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                    toTarget(CFrameMon * CFrame.new(35,0,0))
                                                     posrandom = posrandom + 0.1
                                                 elseif posrandom >= 2 and posrandom <= 3 then
-                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                    toTarget(CFrameMon *CFrame.new(0,0,-35))
                                                     posrandom = posrandom + 0.1
                                                 elseif posrandom >= 3 and posrandom <= 4  then
-                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                    toTarget(CFrameMon * CFrame.new(-35,0,0))
                                                     posrandom = posrandom + 0.1
                                             elseif posrandom >=4 and posrandom <= 5 then
-                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                toTarget(CFrameMon * CFrame.new(35,0,0))
                                                 posrandom = 0
                                             end
                                         end)
@@ -10835,19 +10839,19 @@ else
                                                             Modstween:Stop()
                                                             spawn(function()
                                                                 if posrandom <= 1 then
-                                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                                    toTarget(CFrameMon * CFrame.new(0,0,35))
                                                                     posrandom = posrandom + 0.1
                                                                 elseif posrandom >= 1 and posrandom <= 2 then
-                                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                                    toTarget(CFrameMon * CFrame.new(35,0,0))
                                                                     posrandom = posrandom + 0.1
                                                                 elseif posrandom >= 2 and posrandom <= 3 then
-                                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                                    toTarget(CFrameMon *CFrame.new(0,0,-35))
                                                                     posrandom = posrandom + 0.1
                                                                 elseif posrandom >= 3 and posrandom <= 4  then
-                                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                                    toTarget(CFrameMon * CFrame.new(-35,0,0))
                                                                     posrandom = posrandom + 0.1
                                                             elseif posrandom >=4 and posrandom <= 5 then
-                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                                toTarget(CFrameMon * CFrame.new(35,0,0))
                                                                 posrandom = 0
                                                             end
                                                         end)
@@ -10918,19 +10922,19 @@ else
                                                         Modstween:Stop()
                                                         spawn(function()
                                                             if posrandom <= 1 then
-                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                                toTarget(CFrameMon * CFrame.new(0,0,35))
                                                                 posrandom = posrandom + 0.1
                                                             elseif posrandom >= 1 and posrandom <= 2 then
-                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                                toTarget(CFrameMon * CFrame.new(35,0,0))
                                                                 posrandom = posrandom + 0.1
                                                             elseif posrandom >= 2 and posrandom <= 3 then
-                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                                toTarget(CFrameMon *CFrame.new(0,0,-35))
                                                                 posrandom = posrandom + 0.1
                                                             elseif posrandom >= 3 and posrandom <= 4  then
-                                                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                                toTarget(CFrameMon * CFrame.new(-35,0,0))
                                                                 posrandom = posrandom + 0.1
                                                         elseif posrandom >=4 and posrandom <= 5 then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                            toTarget(CFrameMon * CFrame.new(35,0,0))
                                                             posrandom = 0
                                                         end
                                                     end)
@@ -11000,19 +11004,19 @@ else
                                                     Modstween:Stop()
                                                     spawn(function()
                                                         if posrandom <= 1 then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                            toTarget(CFrameMon * CFrame.new(0,0,35))
                                                             posrandom = posrandom + 0.1
                                                         elseif posrandom >= 1 and posrandom <= 2 then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                            toTarget(CFrameMon * CFrame.new(35,0,0))
                                                             posrandom = posrandom + 0.1
                                                         elseif posrandom >= 2 and posrandom <= 3 then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                            toTarget(CFrameMon *CFrame.new(0,0,-35))
                                                             posrandom = posrandom + 0.1
                                                         elseif posrandom >= 3 and posrandom <= 4  then
-                                                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                            toTarget(CFrameMon * CFrame.new(-35,0,0))
                                                             posrandom = posrandom + 0.1
                                                     elseif posrandom >=4 and posrandom <= 5 then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                        toTarget(CFrameMon * CFrame.new(35,0,0))
                                                         posrandom = 0
                                                     end
                                                 end)
@@ -11082,19 +11086,19 @@ else
                                                 Modstween:Stop()
                                                 spawn(function()
                                                     if posrandom <= 1 then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                                                        toTarget(CFrameMon * CFrame.new(0,0,35))
                                                         posrandom = posrandom + 0.1
                                                     elseif posrandom >= 1 and posrandom <= 2 then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                        toTarget(CFrameMon * CFrame.new(35,0,0))
                                                         posrandom = posrandom + 0.1
                                                     elseif posrandom >= 2 and posrandom <= 3 then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                                                        toTarget(CFrameMon *CFrame.new(0,0,-35))
                                                         posrandom = posrandom + 0.1
                                                     elseif posrandom >= 3 and posrandom <= 4  then
-                                                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                                                        toTarget(CFrameMon * CFrame.new(-35,0,0))
                                                         posrandom = posrandom + 0.1
                                                 elseif posrandom >=4 and posrandom <= 5 then
-                                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                                                    toTarget(CFrameMon * CFrame.new(35,0,0))
                                                     posrandom = 0
                                                 end
                                             end)
@@ -13534,19 +13538,19 @@ spawn(function()
                 Modstween:Stop()
                 spawn(function()
                     if posrandom <= 1 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                        toTarget(CFrameMon * CFrame.new(0,0,35))
                         posrandom = posrandom + 0.1
                     elseif posrandom >= 1 and posrandom <= 2 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                        toTarget(CFrameMon * CFrame.new(35,0,0))
                         posrandom = posrandom + 0.1
                     elseif posrandom >= 2 and posrandom <= 3 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                        toTarget(CFrameMon *CFrame.new(0,0,-35))
                         posrandom = posrandom + 0.1
                     elseif posrandom >= 3 and posrandom <= 4  then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                        toTarget(CFrameMon * CFrame.new(-35,0,0))
                         posrandom = posrandom + 0.1
                 elseif posrandom >=4 and posrandom <= 5 then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                    toTarget(CFrameMon * CFrame.new(35,0,0))
                     posrandom = 0
                 end
             end)
@@ -13789,19 +13793,19 @@ local Cam = workspace.CurrentCamera
                 Modstween:Stop()
                 spawn(function()
                     if posrandom <= 1 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
+                        toTarget(CFrameMon * CFrame.new(0,0,35))
                         posrandom = posrandom + 0.1
                     elseif posrandom >= 1 and posrandom <= 2 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                        toTarget(CFrameMon * CFrame.new(35,0,0))
                         posrandom = posrandom + 0.1
                     elseif posrandom >= 2 and posrandom <= 3 then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
+                        toTarget(CFrameMon *CFrame.new(0,0,-35))
                         posrandom = posrandom + 0.1
                     elseif posrandom >= 3 and posrandom <= 4  then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
+                        toTarget(CFrameMon * CFrame.new(-35,0,0))
                         posrandom = posrandom + 0.1
                 elseif posrandom >=4 and posrandom <= 5 then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
+                    toTarget(CFrameMon * CFrame.new(35,0,0))
                     posrandom = 0
                 end
             end)
