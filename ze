@@ -4431,7 +4431,6 @@ while task.wait() do
 pcall(function()
     if _G.Settings.AutoFarm then
         if _G.DoubleQuest then
-            if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end 
             if SubQuest == true then
                 if LevelFarm then
                     if tonumber(LevelFarm - 1) ~= 0 then
@@ -4496,7 +4495,6 @@ if value == false then
 end
 end)
 end
-
 
 spawn(function()
     while wait() do 
