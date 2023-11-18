@@ -3747,7 +3747,7 @@ if _G.Mode == "English" then
         _G.SafeMode = value
         _G.Settings.SafeMode = value
         SaveSettings()
-        task.spawn(function()
+       spawn(function()
             while _G.Settings.SafeMode do task.wait()
                 if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
                     local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
@@ -3764,7 +3764,7 @@ if _G.Mode == "English" then
             _G.SafeMode = value
             _G.Settings.SafeMode = value
             SaveSettings() 
-            task.spawn(function()
+            spawn(function()
                 while _G.Settings.SafeMode do task.wait()
                     if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
                         local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
@@ -4131,8 +4131,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                         if Modstween then 
                             Modstween:Stop()
-                            task.wait(1.5)
-                            task.spawn(function()
+                           spawn(function()
                                 if posrandom <= 1 then
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
                                     posrandom = posrandom + 0.1
@@ -4178,9 +4177,11 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 if Questtween then Questtween:Stop() end
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
                 wait(1)
-                if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+                if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
                     Com("F_","StartQuest", QuestName, LevelQuest)
                     Com("F_","SetSpawnPoint")
+                else
+                    toTarget(CFrameQuest)
                 end
             end
         elseif GetQuest.Visible == true then
@@ -4253,8 +4254,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
                     Modstween:Stop()
-                    task.wait(1.5)
-                    task.spawn(function()
+                   spawn(function()
                         if posrandom <= 1 then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
                             posrandom = posrandom + 0.1
@@ -4300,9 +4300,11 @@ else
             if Questtween then Questtween:Stop() end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
             wait(1)
-            if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+            if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
                 Com("F_","StartQuest", QuestName, LevelQuest)
                 Com("F_","SetSpawnPoint")
+            else
+                toTarget(CFrameQuest)
             end
         end
     elseif GetQuest.Visible == true then
@@ -4376,8 +4378,7 @@ else
             elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
                     Modstween:Stop()
-                    task.wait(1.5)
-                    task.spawn(function()
+                    spawn(function()
                         if posrandom <= 1 then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
                             posrandom = posrandom + 0.1
@@ -4390,7 +4391,7 @@ else
                         elseif posrandom >= 3 and posrandom <= 4  then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
                             posrandom = posrandom + 0.1
-                    elseif posrandom >=4 and posrandom <= 5 then
+                    elseif posrandom >= 4 and posrandom <= 5 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
                         posrandom = 0
                     end
