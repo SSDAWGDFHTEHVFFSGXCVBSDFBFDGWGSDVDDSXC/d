@@ -4512,25 +4512,31 @@ end
 end)
 end
 
-spawn(function()
-    while wait() do 
-        if _G.Settings.AutoFarmChest then
-            for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do 
-                if v.Name:find("Chest") then
-                        repeat wait()
-                            toTarget(v.CFrame)
-                            if (v.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
-                                UnEquipWeapon(_G.SelectWeapon)
-                            else
-                                EquipWeapon(_G.SelectWeapon)
-                            end
-                    until _G.AutoFarmChest == false or not v.Parent
+spawn(function() 
+while wait() do 
+    if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
+        for _, child in ipairs(Workspace:GetChildren()) do
+            if string.find(child.Name, "Chest") then
+                toTarget(child.CFrame * CFrame.new(0,0,0))
+                if (child.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
+                    UnEquipWeapon(_G.SelectWeapon)
+                else
+                    EquipWeapon(_G.SelectWeapon)
+                end
                 end
             end
         end
     end
 end)
-
+if _G.Mode == "English" then
+    page12:Button("FullBring", function()
+        FullBright()
+    end)
+else
+    page12:Button("แมพสว่าง", function()
+        FullBright()
+    end)
+end
 if _G.Mode == "English" then
     if World3 then
     page1:Seperator("<<EVENT SEA>>")
@@ -4704,9 +4710,6 @@ end
                 end
             end
         end
-    end)
-    page12:Button("FullBright", function()
-        FullBright()
     end)
 end
     else
@@ -4883,9 +4886,6 @@ while task.wait() do
         end
     end
 end
-end)
-page12:Button("แมพสว่าง", function()
-    FullBright()
 end)
 end
 end
@@ -17463,3 +17463,4 @@ while task.wait() do
     end
 end
 end)
+print(1)
