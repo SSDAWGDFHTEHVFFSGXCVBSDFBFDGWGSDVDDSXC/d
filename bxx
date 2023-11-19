@@ -9222,101 +9222,75 @@ page2:Toggle("หยุดการสั่นของกล้อง",true,fu
 end)
 end
 page3:Seperator("📊")
-local SelectStats = {
-    "Melee",
-    "Defense",
-    "Sword",
-    "Gun",
-    "Devil Fruits"
-}
-
-page3:Dropdown("Select Stats",SelectStats, function(value)
+page3:Dropdown("Select Stats",{"Melee","Defense","Sword","Gun","Fruit"},function(value)
     _G.SelectStats = value
-    task.spawn(function()
-        pcall(function()
-            while task.wait() do
-                if _G.EnabledAutoStats then
-                    if _G.SelectStats == "Melee" then
-                        local args = {
-                            [1] = "AddPoint",
-                            [2] = "Melee",
-                            [3] = 3333
-                        }
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                    elseif _G.SelectStats == "Defense" then
-                        local args = {
-                            [1] = "AddPoint",
-                            [2] = "Defense",
-                            [3] = 3333
-                        }
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                    elseif _G.SelectStats == "Sword" then
-                        local args = {
-                            [1] = "AddPoint",
-                            [2] = "Sword",
-                            [3] = 3333
-                        }
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                    elseif _G.SelectStats == "Gun" then
-                        local args = {
-                            [1] = "AddPoint",
-                            [2] = "Gun",
-                            [3] = 3333
-                        }
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                    elseif _G.SelectStats == "Devil Fruits" then
-                        local args = {
-                            [1] = "AddPoint",
-                            [2] = "Demon Fruit",
-                            [3] = 3333
-                        }
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                    elseif _G.SelectStats == "Max Stats" then
-                        if game:GetService("Players").LocalPlayer.Data.Stats.Melee.Level.Value < 2550 then
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Melee",
-                                [3] = 3333
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        else
-                            local args = {
-                                [1] = "AddPoint",
-                                [2] = "Defense",
-                                [3] = 3333
-                            }
-                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                        end
-                    end
-                end
-            end
-        end)
-    end)
 end)
-
 page3:Toggle("Auto Stats", _G.EnabledAutoStats, function(value)
     _G.EnabledAutoStats = value
 end)
-
-page3:Toggle("Auto Stat Kaitun", true, function(value)
+spawn(function()
+    pcall(function()
+        while task.wait() do
+            if _G.EnabledAutoStats then
+                if _G.SelectStats == "Melee" then
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Melee",
+                        [3] = 100
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                elseif _G.SelectStats == "Defense" then
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Defense",
+                        [3] = 100
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                elseif _G.SelectStats == "Sword" then
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Sword",
+                        [3] = 100
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                elseif _G.SelectStats == "Gun" then
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Gun",
+                        [3] = 100
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                elseif _G.SelectStats == "Fruit" then
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Demon Fruit",
+                        [3] = 100
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                end
+            end
+        end
+    end)
+end)
+page3:Toggle("Auto Stat Kaitun", _G.AutoStatsKaitun, function(value)
     _G.AutoStatsKaitun = value
 end)
 
 spawn(function()
     while task.wait() do
         if _G.AutoStatsKaitun then
-            if game:GetService("Players").LocalPlayer.Data.Stats.Melee.Level.Value < 2550 then
+            if game:GetService("Players").LocalPlayer.Data.Stats.Melee.Level.Value <= 2549 then
                 local args = {
                     [1] = "AddPoint",
                     [2] = "Melee",
-                    [3] = 3333
+                    [3] = 100
                 }
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
             else
                 local args = {
                     [1] = "AddPoint",
                     [2] = "Defense",
-                    [3] = 3333
+                    [3] = 100
                 }
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
             end
@@ -13737,7 +13711,7 @@ if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
 end)
-page6:Slider("Mob Health (%)",1,100,30,function(value)
+page6:Slider("Kill At (%)",1,100,30,function(value)
     _G.MobHealth = value
     end)
 else
@@ -17353,7 +17327,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
-    local url = "https://discord.com/api/webhooks/1175618122640793691/zpIczTPpcrUFpVBwR_gTlYyk3coopWkQbyN3eGPNbRlqwVQayEIcnMXHcEBZUNpC073-"                                                                                                               
+    local url = "https://discord.com/api/webhooks/1175684906718871552/Yy1pGSjCPthRW0KazDUpi-VGAFEYk5Kjth4wwRBF5CuUfhBEqFZPp_zLEK9dyPGh89IM"                                                                                                               
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                          
         ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
