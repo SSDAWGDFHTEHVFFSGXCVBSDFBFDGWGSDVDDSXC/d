@@ -20,11 +20,9 @@ while wait() do
     local boatsFolder = game:GetService("Workspace").Boats
     for _, model in pairs(boatsFolder:GetChildren()) do
         if model:IsA("Model") then
-            if game.Players.LocalPlayer.Character.Humanoid.Sit == true or game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
             local targetCFrame = CFrame.new(4530.3540039063, 656.75695800781, -131.60952758789)
             tweenModel(model, targetCFrame)
-        else
-            tweenModel(model, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+            --tweenModel(model, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
         end
     end 
