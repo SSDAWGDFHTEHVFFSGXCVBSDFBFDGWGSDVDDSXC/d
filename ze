@@ -1,21 +1,4 @@
 local tweenService = game:GetService("TweenService")
-function two(gotoCFrame) --- Tween
-    game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.CFrame = gotoCFrame
-    else
-    local tween_s = game:service "TweenService"
-    local info = TweenInfo.new(
-        (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude / 325, Enum.EasingStyle.Linear)
-        tween, err = pcall(function()
-        tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
-        tweenz:Play()
-    end)
-    if not tween then return err end
-    end
-    function _TweenCanCle()
-    tweenz:Cancel()
-    end
-    end
-    two(CFrame.new(4530.3540039063, 656.75695800781, -131.60952758789))
 local function tweenModel(model, CF)
     local TweenPlay = (CF.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
     local info = TweenInfo.new(TweenPlay, Enum.EasingStyle.Linear)
@@ -33,7 +16,7 @@ local function tweenModel(model, CF)
         CFrameValue:Destroy()
     end)
 end
-while task.wait() do
+while wait() do
     local boatsFolder = game:GetService("Workspace").Boats
     for _, model in pairs(boatsFolder:GetChildren()) do
         if model:IsA("Model") then
@@ -41,3 +24,32 @@ while task.wait() do
         end
     end 
 end
+
+function two(gotoCFrame) --- Tween
+    if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 200 then
+    pcall(function()
+        tweenz:Cancel()
+    end)
+    game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.CFrame = gotoCFrame
+    else
+    local tween_s = game:service "TweenService"
+    local info = TweenInfo.new(
+        (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude / 325, Enum.EasingStyle.Linear)
+        tween, err = pcall(function()
+            if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+                local Highlight = Instance.new("Highlight")
+                Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
+                Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
+                Highlight.Parent = game.Players.LocalPlayer.Character;
+                end
+        tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
+        tweenz:Play()
+    end)
+    if not tween then return err end
+    end
+    function _TweenCanCle()
+    tweenz:Cancel()
+    end
+    end
+    
+two(CFrame.new(4530.3540039063, 656.75695800781, -131.60952758789))
