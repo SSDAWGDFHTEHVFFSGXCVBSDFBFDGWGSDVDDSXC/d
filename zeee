@@ -9222,37 +9222,32 @@ page2:Toggle("หยุดการสั่นของกล้อง",true,fu
 end)
 end
 page3:Seperator("📊")
-local SelectStats = {
-    "Melee",
-    "Defense",
-    "Sword",
-    "Gun",
-    "Devil Fruits"
-}
 
-page3:Dropdown("Select Stats",SelectStats, function(value)
+page3:Dropdown("Select Stats",{"Melee","Defense","Sword","Gun","Demon Fruit"}, function(value)
     _G.SelectStats = value
+end)
+
+page3:Toggle("Auto Stats2", _G.EnabledAutoStats, function(value)
+    _G.EnabledAutoStats = value
     task.spawn(function()
         pcall(function()
             while task.wait() do
                 if _G.EnabledAutoStats then
+                    for _,g in next, _G.SelectStats do
                         local args = {
                             [1] = "AddPoint",
-                            [2] = SelectStats,
+                            [2] = tostring(g),
                             [3] = 100
                         }
                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                    end
                 end
             end
         end)
     end)
 end)
 
-page3:Toggle("Auto Stats", _G.EnabledAutoStats, function(value)
-    _G.EnabledAutoStats = value
-end)
-
-page3:Toggle("Auto Stat Kaitun", true, function(value)
+page3:Toggle("Auto Stat Kaitun", _G.AutoStatsKaitun, function(value)
     _G.AutoStatsKaitun = value
 end)
 
