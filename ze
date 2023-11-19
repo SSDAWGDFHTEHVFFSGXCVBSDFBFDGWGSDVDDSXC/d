@@ -260,7 +260,7 @@ local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
 repeat wait(0) until game:IsLoaded()
 	
-	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") or game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
+	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
 		repeat wait()
 			if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
 				if _G.Team == "Pirate" then
