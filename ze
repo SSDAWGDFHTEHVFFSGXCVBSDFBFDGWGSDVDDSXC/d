@@ -3678,7 +3678,24 @@ UpdateClient1()
 end
 end)
 
-page1:Toggle("Test",  _G.Test , function(value)
+local function tweenModel(model, CF)
+	TweenPlay = (CF.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+	local info = TweenInfo.new(0, Enum.EasingStyle.Linear)
+	local CFrameValue = Instance.new("CFrameValue")
+	CFrameValue.Value = model:GetPrimaryPartCFrame()
+
+	CFrameValue:GetPropertyChangedSignal("Value"):Connect(function()
+		model:SetPrimaryPartCFrame(CFrameValue.Value)
+	end)
+	
+	local tween = tweenService:Create(CFrameValue, info, {Value = CF})
+	tween:Play()
+	
+	tween.Completed:Connect(function()
+		CFrameValue:Destroy()
+	end)
+end
+page1:Toggle("Test1",  _G.Test , function(value)
     _G.Test = value
     if value == false then
         task.wait()
@@ -3689,6 +3706,7 @@ spawn(function() --Event Sea
    while task.wait() do
     pcall(function()
         if _G.Test then 
+            game:GetService("Workspace").Map["WaterBase-Plane"].Size = Vector3.new(1000,112,1000)
                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                     if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
                      if v.Humanoid.Health > 0 then 
@@ -3716,6 +3734,7 @@ spawn(function() --Event Sea
                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                         until v.Humanoid.Health <= 0 or not  _G.Test  
                     else
+                        tweenModel(game:GetService("Workspace").Boats.PirateSloop,game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
                     for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                         if v:IsA("VehicleSeat") then
                             if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
@@ -3723,10 +3742,10 @@ spawn(function() --Event Sea
                                     task.wait()
                                     local CFrame = v.CFrame
                                     twoboat(CFrame)
-                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1 or not _G.TPTOBOAT
-                            end
-                        end
-                    end
+                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 10 or not _G.Test
+                                        end
+                                    end
+                                end
                             end
                         end
                     end
@@ -3734,31 +3753,6 @@ spawn(function() --Event Sea
             end)
         end
     end)
-end)
-spawn(function()
-    while wait() do 
-        pcall(function() 
-            if _G.Test then 
-                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
-                        if v.Humanoid.Health > 0 then 
-                            _G.ao = false
-                            while _G.ao do task.wait(0)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
-                            end
-                        else
-                            if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
-                            _G.ao = true
-                            end
-                            while _G.ao do task.wait(0)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
-                            end
-                        end
-                    end
-                end
-            end
-        end)
-    end
 end)
                       
 if _G.Mode == "English" then
