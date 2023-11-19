@@ -45,13 +45,12 @@ local function tweenModel(model, CF)
         CFrameValue:Destroy()
     end)
 end
+two(CFrame.new(5541.2685546875, 668.30456542969, 195.48069763184))
 while wait() do
     local boatsFolder = game:GetService("Workspace").Boats
     for _, model in pairs(boatsFolder:GetChildren()) do
         if model:IsA("Model") then
-            two(CFrame.new(5541.2685546875, 668.30456542969, 195.48069763184))
             tweenModel(model, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-            end
         end
-    end 
+    end
 end
