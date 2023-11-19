@@ -1163,74 +1163,7 @@ tweenz:Cancel()
 end
 end
 
-spawn(function() --Event Sea
-    game:GetService("RunService").Stepped:Connect(function()
-        if _G.AutoEvent then 
-            if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
-                local Highlight = Instance.new("Highlight")
-                Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
-                Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
-                Highlight.Parent = game.Players.LocalPlayer.Character;
-                end
-                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
-                     if v.Humanoid.Health > 0 then 
-                        if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
-                            game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
-                        end
-                        for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                            if v:IsA("BasePart") then
-                                v.CanCollide = false
-                            end
-                        end
-                        _G.SailSea = false
-                        PIO = false
-                        if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
-                            local L_1 = Instance.new("BodyVelocity")
-                            L_1.Name = "BodyGyrozz"
-                            L_1.Parent = game.Players.LocalPlayer.Character.HumanoidRootPart
-                            L_1.MaxForce = Vector3.new(1000000000, 1000000000, 1000000000)
-                            L_1.Velocity = Vector3.new(0, 0, 0)
-                        end
-                    elseif PIO == false then
-                        for i, v in pairs(game.Players.LocalPlayer.Character.HumanoidRootPart:GetChildren()) do
-                            if v.Name == "BodyGyrozz" then
-                                v:Destroy()
-                                PIO = true
-                            end
-                        end
-                else
-                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                        if v:IsA("VehicleSeat") then
-                            if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
-                                repeat
-                                    task.wait()
-                                    local CFrame = v.CFrame
-                                    twoboat(CFrame)
-                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1 or not _G.TPTOBOAT
-                            end
-                        end
-                    end
-                     if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-                        _G.SailSea = true 
-                    end 
-                    for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                        if v:IsA("BasePart") then
-                            v.CanCollide = true
-                        end
-                    end
-                    if game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv') then
-                        game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv'):Destroy()
-                        end
-                    end
-                end
-            end
-        end
-        while _G.SailSea do task.wait(0)
-            game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
-        end
-    end)
-end)
+
 
 --[[Function Hop]]
 local PlaceID = game.PlaceId
@@ -4537,61 +4470,148 @@ while wait() do
         end
     end
 end)
-if _G.Mode == "English" then
-    page12:Button("FullBring", function()
-        FullBright()
-    end)
-else
-    page12:Button("แมพสว่าง", function()
-        FullBright()
-    end)
-end
+
+function FullBright()
+    pcall(function()
+            local lighting = game:GetService("Lighting")
+            lighting.Ambient = Color3.fromRGB(255, 255, 255)
+            lighting.Brightness = 1
+            lighting.FogEnd = 1e10
+            for i, v in pairs(lighting:GetDescendants()) do
+                if
+                    v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or
+                        v:IsA("SunRaysEffect")
+                 then
+                    v.Enabled = false
+                end
+            end
+            lighting.Changed:Connect(
+                function()
+                    lighting.Ambient = Color3.fromRGB(255, 255, 255)
+                    lighting.Brightness = 1
+                    lighting.FogEnd = 1e10
+                end)
+            spawn(function()
+                    local character = game:GetService("Players").LocalPlayer.Character
+                    while wait() do
+                        repeat
+                            wait()
+                        until character ~= nil
+                        if not character.HumanoidRootPart:FindFirstChildWhichIsA("PointLight") then
+                            local headlight = Instance.new("PointLight", character.HumanoidRootPart)
+                            headlight.Brightness = 1
+                            headlight.Range = 60
+                        end
+                    end
+                end)
+            end)
+    repeat
+        task.wait()
+    until game:IsLoaded()
+    wait(5)
+    for i, v in pairs(game.Lighting:GetChildren()) do
+        if v:IsA("") or v:IsA("Sky") or v:IsA("BlurEffect") or v:IsA("BloomEffect") or v:IsA("SunRaysEffect") then
+            v:Destroy()
+        end
+    end
+    game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+    game.Lighting.Brightness = 1
+    game.Lighting.ClockTime = 14
+    game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+    game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+    game.Lighting.ExposureCompensation = 0
+    game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+    game.Lighting.FogEnd = 999999999
+    game.Lighting.GeographicLatitude = 41.733
+    game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+    game.Lighting.GlobalShadows = true
+    game.Lighting.Changed:Connect(function()
+            game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+            game.Lighting.Brightness = 1
+            game.Lighting.ClockTime = 14
+            game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+            game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+            game.Lighting.ExposureCompensation = 0
+            game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+            game.Lighting.FogEnd = 999999999
+            game.Lighting.GeographicLatitude = 41.733
+            game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+            game.Lighting.GlobalShadows = true
+        end)
+    game.Lighting.DescendantAdded:Connect(
+        function(obj)
+            if obj:IsA("") or obj:IsA("Sky") or obj:IsA("BlurEffect") or obj:IsA("BloomEffect") or obj:IsA("SunRaysEffect") then
+                obj:Destroy()
+            end
+        end)
+    end
+
 if _G.Mode == "English" then
     if World3 then
     page1:Seperator("<<EVENT SEA>>")
-    page1:Toggle("Auto EventSea",  _G.AutoEvent , function(value)
+    page1:Toggle("Auto SeaEvent",  _G.AutoEvent , function(value)
         _G.AutoEvent = value
+        _G.Nocliprock = value
         if value == false then
             task.wait()
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             task.wait()
         end
-        task.spawn(function()
-            while task.wait() do
-                pcall(function()
-                    if _G.AutoEvent  then
-                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
-                                    if v.Humanoid.Health > 0 then
-                                    repeat task.wait()
-                                        if _G.AutoEvent then
-                                            _G.FastType = "Normal"
-                                        else
-                                            _G.FastType = "Fast"
-                                        end
-                                        FastAttack = true
-                                        if _G.AutoHaki then
-                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                            end
-                                        end
-                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                            task.wait()
-                                            EquipWeapon(_G.SelectWeapon)
-                                        end
-                                        PosMon = v.HumanoidRootPart.CFrame
-                                        if not _G.FastAttack then
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                        end
-                                        v.HumanoidRootPart.Size = Vector3.new(80,80,80)
-                                        v.HumanoidRootPart.Transparency = 1
-                                        two(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    until v.Humanoid.Health <= 0 or not  _G.AutoEvent  
-                                    FastAttack = false
+    spawn(function() --Event Sea
+       while task.wait() do
+        pcall(function()
+            if _G.AutoEvent then 
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
+                         if v.Humanoid.Health > 0 then 
+                            if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+                                game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
+                                _G.SailSea = false
+                                while _G.SailSea do task.wait(0)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+                                end 
+                            end
+                            repeat task.wait()
+                                _G.FastType = "Normal"
+                                FastAttack = true
+                                if _G.AutoHaki then
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                     end
                                 end
+                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                    task.wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                end
+                                if not _G.FastAttack then
+                                    game:GetService'VirtualUser':CaptureController()
+                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                end
+                                v.HumanoidRootPart.Size = Vector3.new(100,100,100)
+                                v.HumanoidRootPart.Transparency = 1
+                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                            until v.Humanoid.Health <= 0 or not  _G.AutoEvent  
+                        elseif v.Humanoid.Health <= 0 then 
+                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                            if v:IsA("VehicleSeat") then
+                                if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
+                                    repeat
+                                        task.wait()
+                                        local CFrame = v.CFrame
+                                        twoboat(CFrame)
+                                    until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1 or not _G.TPTOBOAT
+                                end
                             end
+                        end
+                         if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+                                _G.SailSea = true 
+                                    while _G.SailSea do task.wait(0)
+                                        game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+                                        end 
+                                    end 
+                                end
+                            end
+                        end
                     end
                 end)
             end
@@ -4721,52 +4741,76 @@ end
             end
         end
     end)
+    page1:Button("FullBright", function()
+        FullBright()
+    end)
 end
     else
         if World3 then
         page1:Seperator("<<อีเว้นท์ทะเล>>")
         page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
             _G.AutoEvent = value
+            _G.Nocliprock = value
             if value == false then
                 task.wait()
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
                 task.wait()
             end
-            task.spawn(function()
-                while task.wait() do
-                    pcall(function()
-                        if _G.AutoEvent  then
-                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                    if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
-                                        if v.Humanoid.Health > 0 then
-                                        repeat task.wait()
-                                            if _G.AutoEvent then
-                                                _G.FastType = "Normal"
-                                            else
-                                                _G.FastType = "Fast"
-                                            end
-                                            FastAttack = true
-                                            if _G.AutoHaki then
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                end
-                                            end
-                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                task.wait()
-                                                EquipWeapon(_G.SelectWeapon)
-                                            end
-                                            PosMon = v.HumanoidRootPart.CFrame
-                                            if not _G.FastAttack then
-                                                game:GetService'VirtualUser':CaptureController()
-                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                            end
-                                            v.HumanoidRootPart.Size = Vector3.new(100,100,100)
-                                            two(v.HumanoidRootPart.CFrame * MethodFarm)
-                                        until v.Humanoid.Health <= 0 or not  _G.AutoEvent  
-                                        FastAttack = false
+        spawn(function() --Event Sea
+           while task.wait() do
+            pcall(function()
+                if _G.AutoEvent then 
+                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                            if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
+                             if v.Humanoid.Health > 0 then 
+                                if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+                                    game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
+                                    _G.SailSea = false
+                                    while _G.SailSea do task.wait(0)
+                                        game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+                                    end 
+                                end
+                                repeat task.wait()
+                                    _G.FastType = "Normal"
+                                    FastAttack = true
+                                    if _G.AutoHaki then
+                                        if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                         end
                                     end
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                        task.wait()
+                                        EquipWeapon(_G.SelectWeapon)
+                                    end
+                                    if not _G.FastAttack then
+                                        game:GetService'VirtualUser':CaptureController()
+                                        game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                    end
+                                    v.HumanoidRootPart.Size = Vector3.new(100,100,100)
+                                    v.HumanoidRootPart.Transparency = 1
+                                    toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                until v.Humanoid.Health <= 0 or not  _G.AutoEvent  
+                            elseif v.Humanoid.Health <= 0 then 
+                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                if v:IsA("VehicleSeat") then
+                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
+                                        repeat
+                                            task.wait()
+                                            local CFrame = v.CFrame
+                                            twoboat(CFrame)
+                                        until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1 or not _G.TPTOBOAT
+                                    end
                                 end
+                            end
+                             if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+                                    _G.SailSea = true 
+                                        while _G.SailSea do task.wait(0)
+                                            game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+                                            end 
+                                        end 
+                                    end
+                                end
+                            end
                         end
                     end)
                 end
@@ -4896,6 +4940,9 @@ while task.wait() do
         end
     end
 end
+end)
+page1:Button("แมพสว่าง", function()
+    FullBright()
 end)
 end
 end
@@ -9277,7 +9324,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
     
-    local url = "https://discord.com/api/webhooks/1159506639095869600/1N9kghTBEkvkDlPyiVkE1SVW02HMAzgd80BKwcB9R-mqbdrdh_g4A0Lc2dovUGH-Olqu"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1175618033759297606/6net8JyPfjs1DFGmxrGcK7a13zbSHCjxOtcKdQom3s6nVcpNrU5_axCfynNW9zoHL6LO"                                                                                                                
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                           
         ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
@@ -9363,7 +9410,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
-    local url = "https://discord.com/api/webhooks/1175280681585229864/vpw7alwliqeVtzuKIJYxZZa0WhhDC2YDvFoCSKXNO-PYtseXHDGLsbjp2TmAELE8Wi2g"                                                                                                               
+    local url = "https://discord.com/api/webhooks/1175618122640793691/zpIczTPpcrUFpVBwR_gTlYyk3coopWkQbyN3eGPNbRlqwVQayEIcnMXHcEBZUNpC073-"                                                                                                               
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                          
         ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
@@ -17164,80 +17211,7 @@ page12:Toggle("พลังงานไม่จำกัด", _G.InfinitiesEner
     InfinitiesEnergy()
 end)
 end
-function FullBright()
-    pcall(function()
-            local lighting = game:GetService("Lighting")
-            lighting.Ambient = Color3.fromRGB(255, 255, 255)
-            lighting.Brightness = 1
-            lighting.FogEnd = 1e10
-            for i, v in pairs(lighting:GetDescendants()) do
-                if
-                    v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or
-                        v:IsA("SunRaysEffect")
-                 then
-                    v.Enabled = false
-                end
-            end
-            lighting.Changed:Connect(
-                function()
-                    lighting.Ambient = Color3.fromRGB(255, 255, 255)
-                    lighting.Brightness = 1
-                    lighting.FogEnd = 1e10
-                end)
-            spawn(function()
-                    local character = game:GetService("Players").LocalPlayer.Character
-                    while wait() do
-                        repeat
-                            wait()
-                        until character ~= nil
-                        if not character.HumanoidRootPart:FindFirstChildWhichIsA("PointLight") then
-                            local headlight = Instance.new("PointLight", character.HumanoidRootPart)
-                            headlight.Brightness = 1
-                            headlight.Range = 60
-                        end
-                    end
-                end)
-            end)
-    repeat
-        task.wait()
-    until game:IsLoaded()
-    wait(5)
-    for i, v in pairs(game.Lighting:GetChildren()) do
-        if v:IsA("") or v:IsA("Sky") or v:IsA("BlurEffect") or v:IsA("BloomEffect") or v:IsA("SunRaysEffect") then
-            v:Destroy()
-        end
-    end
-    game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
-    game.Lighting.Brightness = 1
-    game.Lighting.ClockTime = 14
-    game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
-    game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
-    game.Lighting.ExposureCompensation = 0
-    game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
-    game.Lighting.FogEnd = 999999999
-    game.Lighting.GeographicLatitude = 41.733
-    game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
-    game.Lighting.GlobalShadows = true
-    game.Lighting.Changed:Connect(function()
-            game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
-            game.Lighting.Brightness = 1
-            game.Lighting.ClockTime = 14
-            game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
-            game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
-            game.Lighting.ExposureCompensation = 0
-            game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
-            game.Lighting.FogEnd = 999999999
-            game.Lighting.GeographicLatitude = 41.733
-            game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
-            game.Lighting.GlobalShadows = true
-        end)
-    game.Lighting.DescendantAdded:Connect(
-        function(obj)
-            if obj:IsA("") or obj:IsA("Sky") or obj:IsA("BlurEffect") or obj:IsA("BloomEffect") or obj:IsA("SunRaysEffect") then
-                obj:Destroy()
-            end
-        end)
-    end
+
     
 
 page12:Label("Name : "..game.Players.LocalPlayer.Name)
