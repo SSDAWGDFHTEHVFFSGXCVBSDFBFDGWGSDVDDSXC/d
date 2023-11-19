@@ -260,7 +260,7 @@ local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
 repeat wait(0) until game:IsLoaded()
 	
-	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
+	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
 		repeat wait()
 			if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
 				if _G.Team == "Pirate" then
@@ -348,7 +348,7 @@ pcall(function()
     _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
     _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
     Tushita_Quest2 or Tushita_Quest1 or
-    _G.TeleporttoSeaBeast  or _G.AutoEvent or _G.TPTOBOAT or 
+    _G.TeleporttoSeaBeast  or _G.TPTOBOAT or 
     Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
     --[Boss]
     _G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
@@ -415,7 +415,7 @@ pcall(function()
     _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
     _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
     Tushita_Quest2 or Tushita_Quest1 or
-    _G.TeleporttoSeaBeast  or _G.AutoEvent or
+    _G.TeleporttoSeaBeast  or
     _G.TPTOBOAT or 
     Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
     --[Boss]
@@ -464,7 +464,7 @@ _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSer
 _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
 _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
 Tushita_Quest2 or Tushita_Quest1 or
-_G.TeleporttoSeaBeast  or _G.AutoEvent or
+_G.TeleporttoSeaBeast   or
 _G.TPTOBOAT or 
 Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
 --[Boss]
@@ -505,7 +505,7 @@ pcall(function()
         _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
         _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or Auto_Cursed_Dual_Katana or
         Tushita_Quest2 or Tushita_Quest1 or
-        _G.TeleporttoSeaBeast  or _G.AutoEvent or
+        _G.TeleporttoSeaBeast  or
         _G.TPTOBOAT or 
         Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
         --[Boss]
@@ -544,7 +544,7 @@ if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.Auto_Gear o
         _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
         _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or _G.Auto_Cursed_Dual_Katana or
         Tushita_Quest2 or Tushita_Quest1 or
-        _G.TeleporttoSeaBeast  or _G.AutoEvent or
+        _G.TeleporttoSeaBeast  or
         _G.TPTOBOAT or 
         Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
         --[Boss] 
@@ -571,37 +571,36 @@ end)
 
 
 -- [BringMon]
-local function SetSimulationRadius()
-setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
-end
-
 task.spawn(function()
-while true do
-task.wait(10)
-SetSimulationRadius()
-end
+	while true do task.wait()
+		if setscriptable then
+			setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
+		end
+		if sethiddenproperty then
+			sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
+		end
+	end
 end)
 
-spawn(function()
+task.spawn(function()
     while task.wait() do
         pcall(function()
             if StartMagnet then
                 for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 500 then
+                    if not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 2500 then
                         if InMyNetWork(v.HumanoidRootPart) then
                             v.HumanoidRootPart.CFrame = PosMon
                             v.Humanoid.JumpPower = 0
                             v.Humanoid.WalkSpeed = 0
-                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                            v.HumanoidRootPart.Size = Vector3.new(100,100,100)
                             v.HumanoidRootPart.Transparency = 1
                             v.HumanoidRootPart.CanCollide = false
                             v.Head.CanCollide = false
-                            if v.Humanoid:FindFirstChild("Animator") then
+                            --[[if v.Humanoid:FindFirstChild("Animator") then
                                 v.Humanoid.Animator:Destroy()
-                            end
+                            end]]
                             v.Humanoid:ChangeState(11)
                             v.Humanoid:ChangeState(14)
-                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius",  math.huge)
                         end
                     end
                 end
@@ -622,13 +621,13 @@ end
 
 -- [Nostun]
 if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
-game.Players.LocalPlayer.Character.Stun.Changed:connect(function()
-pcall(function()
-    if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
-        game.Players.LocalPlayer.Character.Stun.Value = 0
-    end
-end)
-end)
+	game.Players.LocalPlayer.Character.Stun.Changed:connect(function()
+		pcall(function()
+			if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
+				game.Players.LocalPlayer.Character.Stun.Value = 0
+			end
+		end)
+	end)
 end
 
 -- [Deleted Effect Auto]
@@ -710,11 +709,11 @@ end
 end
 return Hits
 end
-function AttackFunction()
+function yakmefan()
 local ac = CombatFrameworkR.activeController
 if ac and ac.equipped then
-for indexincrement = 1, 1 do
-    local bladehit = getAllBladeHits(60)
+ for Ryuen = 1, 1 do
+    local bladehit = getAllBladeHits(100)
     if #bladehit > 0 then
         local AcAttack8 = debug.getupvalue(ac.attack, 5)
         local AcAttack9 = debug.getupvalue(ac.attack, 6)
@@ -743,8 +742,7 @@ for indexincrement = 1, 1 do
         end
         if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
             game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
-            game.ReplicatedStorage.Remotes.Validator:FireServer(
-                math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
+            game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
             game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "")
         end
     end
@@ -755,7 +753,7 @@ end
 function AttackPlayers()
     local ac = CombatFrameworkR.activeController
     if ac and ac.equipped then
-        for indexincrement = 1, 1 do
+        for i = 1, 1 do
             local bladehit = getAllBladeHitsPlayers(60)
             if #bladehit > 0 then
                 local AcAttack8 = debug.getupvalue(ac.attack, 5)
@@ -1164,6 +1162,8 @@ function _TweenCanCle()
 tweenz:Cancel()
 end
 end
+
+
 
 --[[Function Hop]]
 local PlaceID = game.PlaceId
@@ -3677,6 +3677,7 @@ while true do wait(.1)
 UpdateClient1()
 end
 end)
+                      
 if _G.Mode == "English" then
 page1:Toggle("Auto Farm Level", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
@@ -3705,7 +3706,7 @@ if _G.Mode == "English" then
         _G.SafeMode = value
         _G.Settings.SafeMode = value
         SaveSettings()
-        task.spawn(function()
+       spawn(function()
             while _G.Settings.SafeMode do task.wait()
                 if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
                     local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
@@ -3722,7 +3723,7 @@ if _G.Mode == "English" then
             _G.SafeMode = value
             _G.Settings.SafeMode = value
             SaveSettings() 
-            task.spawn(function()
+            spawn(function()
                 while _G.Settings.SafeMode do task.wait()
                     if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
                         local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
@@ -4089,7 +4090,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                         if Modstween then 
                             Modstween:Stop()
-                            spawn(function()
+                           spawn(function()
                                 if posrandom <= 1 then
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
                                     posrandom = posrandom + 0.1
@@ -4135,9 +4136,11 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 if Questtween then Questtween:Stop() end
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
                 wait(1)
-                if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+                if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
                     Com("F_","StartQuest", QuestName, LevelQuest)
                     Com("F_","SetSpawnPoint")
+                else
+                    toTarget(CFrameQuest)
                 end
             end
         elseif GetQuest.Visible == true then
@@ -4210,7 +4213,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
                     Modstween:Stop()
-                    spawn(function()
+                   spawn(function()
                         if posrandom <= 1 then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
                             posrandom = posrandom + 0.1
@@ -4256,9 +4259,11 @@ else
             if Questtween then Questtween:Stop() end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
             wait(1)
-            if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
+            if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
                 Com("F_","StartQuest", QuestName, LevelQuest)
                 Com("F_","SetSpawnPoint")
+            else
+                toTarget(CFrameQuest)
             end
         end
     elseif GetQuest.Visible == true then
@@ -4345,7 +4350,7 @@ else
                         elseif posrandom >= 3 and posrandom <= 4  then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
                             posrandom = posrandom + 0.1
-                    elseif posrandom >=4 and posrandom <= 5 then
+                    elseif posrandom >= 4 and posrandom <= 5 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
                         posrandom = 0
                     end
@@ -4450,82 +4455,138 @@ end
 end)
 end
 
-_G.AddPoint = 500
-spawn(function()
-    while wait() do 
-        if _G.Settings.AutoFarmChest then
-            for i,v in pairs(game:GetService("Workspace"):GetDescendants()) do 
-                if v.Name:find("Chest") and v:IsA("Part") then
-                    if (v.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 500 + _G.AddPoint then
-                        repeat wait()
-                            toTarget(v.CFrame)
-                            if (v.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
-                                UnEquipWeapon(_G.SelectWeapon)
-                            else
-                                EquipWeapon(_G.SelectWeapon)
-                            end
-                        until _G.AutoFarmChest == false or not v.Parent
-                        break
-                    else
-                        _G.AddPoint = _G.AddPoint + 500
-                    end
+spawn(function() 
+while wait() do 
+    if _G.Settings.AutoFarmChest or _G.AutoFarmChest then
+        for _, child in ipairs(Workspace:GetChildren()) do
+            if string.find(child.Name, "Chest") then
+                toTarget(child.CFrame * CFrame.new(0,0,0))
+                if (child.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 then
+                    UnEquipWeapon(_G.SelectWeapon)
                 else
-                    if v.Name:find("Chest") and v:IsA("Part") then
-                        if (v.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude >= 500 + _G.AddPoint then
-                            _G.AddPoint = _G.AddPoint + 500
-                        end
-                    end
+                    EquipWeapon(_G.SelectWeapon)
+                end
                 end
             end
         end
     end
 end)
 
+function FullBright()
+    pcall(function()
+            local lighting = game:GetService("Lighting")
+            lighting.Ambient = Color3.fromRGB(255, 255, 255)
+            lighting.Brightness = 1
+            lighting.FogEnd = 1e10
+            for i, v in pairs(lighting:GetDescendants()) do
+                if
+                    v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or
+                        v:IsA("SunRaysEffect")
+                 then
+                    v.Enabled = false
+                end
+            end
+            lighting.Changed:Connect(
+                function()
+                    lighting.Ambient = Color3.fromRGB(255, 255, 255)
+                    lighting.Brightness = 1
+                    lighting.FogEnd = 1e10
+                end)
+            spawn(function()
+                    local character = game:GetService("Players").LocalPlayer.Character
+                    while wait() do
+                        repeat
+                            wait()
+                        until character ~= nil
+                        if not character.HumanoidRootPart:FindFirstChildWhichIsA("PointLight") then
+                            local headlight = Instance.new("PointLight", character.HumanoidRootPart)
+                            headlight.Brightness = 1
+                            headlight.Range = 60
+                        end
+                    end
+                end)
+            end)
+    repeat
+        task.wait()
+    until game:IsLoaded()
+    wait(5)
+    for i, v in pairs(game.Lighting:GetChildren()) do
+        if v:IsA("") or v:IsA("Sky") or v:IsA("BlurEffect") or v:IsA("BloomEffect") or v:IsA("SunRaysEffect") then
+            v:Destroy()
+        end
+    end
+    game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+    game.Lighting.Brightness = 1
+    game.Lighting.ClockTime = 14
+    game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+    game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+    game.Lighting.ExposureCompensation = 0
+    game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+    game.Lighting.FogEnd = 999999999
+    game.Lighting.GeographicLatitude = 41.733
+    game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+    game.Lighting.GlobalShadows = true
+    game.Lighting.Changed:Connect(function()
+            game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
+            game.Lighting.Brightness = 1
+            game.Lighting.ClockTime = 14
+            game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
+            game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
+            game.Lighting.ExposureCompensation = 0
+            game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
+            game.Lighting.FogEnd = 999999999
+            game.Lighting.GeographicLatitude = 41.733
+            game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
+            game.Lighting.GlobalShadows = true
+        end)
+    game.Lighting.DescendantAdded:Connect(
+        function(obj)
+            if obj:IsA("") or obj:IsA("Sky") or obj:IsA("BlurEffect") or obj:IsA("BloomEffect") or obj:IsA("SunRaysEffect") then
+                obj:Destroy()
+            end
+        end)
+    end
+
 if _G.Mode == "English" then
     if World3 then
     page1:Seperator("<<EVENT SEA>>")
-    page1:Toggle("Auto EventSea",  _G.AutoEvent , function(value)
+    page1:Toggle("Auto SeaEvent",  _G.AutoEvent , function(value)
         _G.AutoEvent = value
         if value == false then
             task.wait()
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             task.wait()
         end
-        task.spawn(function()
-            while task.wait() do
-                pcall(function()
-                    if _G.AutoEvent  then
-                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
-                                    if v.Humanoid.Health > 0 then
-                                    repeat task.wait()
-                                        if _G.AutoEvent then
-                                            _G.FastType = "Normal"
-                                        else
-                                            _G.FastType = "Fast"
-                                        end
-                                        FastAttack = true
-                                        if _G.AutoHaki then
-                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                            end
-                                        end
-                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                            task.wait()
-                                            EquipWeapon(_G.SelectWeapon)
-                                        end
-                                        PosMon = v.HumanoidRootPart.CFrame
-                                        if not _G.FastAttack then
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                        end
-                                        v.HumanoidRootPart.Size = Vector3.new(100,100,100)
-                                        two(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    until v.Humanoid.Health <= 0 or not  _G.AutoEvent  
-                                    FastAttack = false
+    spawn(function() --Event Sea
+       while task.wait() do
+        pcall(function()
+            if _G.AutoEvent then 
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
+                         if v.Humanoid.Health > 0 then 
+                            repeat task.wait()
+                                _G.FastType = "Normal"
+                                FastAttack = true
+                                if _G.AutoHaki then
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                     end
                                 end
+                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                    task.wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                end
+                                if not _G.FastAttack then
+                                    game:GetService'VirtualUser':CaptureController()
+                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                end
+                                v.HumanoidRootPart.Size = Vector3.new(100,100,100)
+                                v.HumanoidRootPart.Transparency = 1
+                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                 until v.Humanoid.Health <= 0 or not  _G.AutoEvent  
+                                end
                             end
+                        end
                     end
                 end)
             end
@@ -4637,7 +4698,7 @@ end
             end)
     end)
 
-        page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
+       --[[ page1:Toggle("Teleport To a Nearby Ship",_G.TPTOBOAT, function(value)
         _G.TPTOBOAT = value
         while task.wait() do
             if _G.TPTOBOAT then
@@ -4654,6 +4715,9 @@ end
                 end
             end
         end
+    end)]]
+    page1:Button("FullBright", function()
+        FullBright()
     end)
 end
     else
@@ -4661,51 +4725,46 @@ end
         page1:Seperator("<<อีเว้นท์ทะเล>>")
         page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
             _G.AutoEvent = value
-            if value == false then
-                task.wait()
-                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                task.wait()
-            end
-            task.spawn(function()
-                while task.wait() do
-                    pcall(function()
-                        if _G.AutoEvent  then
-                                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                    if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then 
-                                        if v.Humanoid.Health > 0 then
-                                        repeat task.wait()
-                                            if _G.AutoEvent then
-                                                _G.FastType = "Normal"
-                                            else
-                                                _G.FastType = "Fast"
-                                            end
-                                            FastAttack = true
-                                            if _G.AutoHaki then
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                                end
-                                            end
-                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                task.wait()
-                                                EquipWeapon(_G.SelectWeapon)
-                                            end
-                                            PosMon = v.HumanoidRootPart.CFrame
-                                            if not _G.FastAttack then
-                                                game:GetService'VirtualUser':CaptureController()
-                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                            end
-                                            v.HumanoidRootPart.Size = Vector3.new(100,100,100)
-                                            two(v.HumanoidRootPart.CFrame * MethodFarm)
-                                        until v.Humanoid.Health <= 0 or not  _G.AutoEvent  
-                                        FastAttack = false
-                                        end
+        if value == false then
+            task.wait()
+            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+            task.wait()
+        end
+    spawn(function() --Event Sea
+       while task.wait() do
+        pcall(function()
+            if _G.AutoEvent then 
+                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                        if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
+                         if v.Humanoid.Health > 0 then 
+                            repeat task.wait()
+                                _G.FastType = "Normal"
+                                FastAttack = true
+                                if _G.AutoHaki then
+                                    if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
                                     end
                                 end
+                                if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                    task.wait()
+                                    EquipWeapon(_G.SelectWeapon)
+                                end
+                                if not _G.FastAttack then
+                                    game:GetService'VirtualUser':CaptureController()
+                                    game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                end
+                                v.HumanoidRootPart.Size = Vector3.new(100,100,100)
+                                v.HumanoidRootPart.Transparency = 1
+                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                 until v.Humanoid.Health <= 0 or not  _G.AutoEvent  
+                                end
+                            end
                         end
-                    end)
-                end
-            end)
+                    end
+                end)
+            end
         end)
+    end)
     end
         if not World1 and not World2 then
             page1:Toggle("ออโต้เลวิธาน",_G.TeleporttoSeaBeast, function(value)
@@ -4813,7 +4872,7 @@ end
         end)
     
 
-page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
+--[[page1:Toggle("เทเลพอร์ตไปหาเรือที่ใกล้เคียง",_G.TPTOBOAT, function(value)
 _G.TPTOBOAT = value
 while task.wait() do
     if _G.TPTOBOAT then
@@ -4830,6 +4889,9 @@ while task.wait() do
         end
     end
 end
+end)]]
+page1:Button("แมพสว่าง", function()
+    FullBright()
 end)
 end
 end
@@ -8825,16 +8887,13 @@ _G.FastType = value
 end)
 end
 
-
-
-
 coroutine.wrap(function()
 while task.wait(0) do
 local ac = CombatFrameworkR.activeController
 if ac and ac.equipped then
     task.wait(0.05)
     if FastAttack or _G.FastAttack then
-        AttackFunction()
+        yakmefan()
         if _G.FastType == "Normal" then
             if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
         elseif _G.FastType == "Fast" then
@@ -8842,13 +8901,41 @@ if ac and ac.equipped then
         elseif _G.FastType == "Slow" then
             if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
         end
+        setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
         sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
     end
 end
 end
 end)()
 _G.FastType = "Fast"
-
+local Time = 0.09
+task.spawn(function()
+    while _G.FastAttack do task.wait()
+    require(game.ReplicatedStorage.Util.CameraShaker):Stop()
+    Bruh = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+    Ryu = debug.getupvalues(Bruh)[2]
+    task.spawn(function()
+        while true do task.wait()
+            if _G.FastAttack then
+                if typeof(Ryu) == "table" then
+                    pcall(function()
+                        Ryu.activeController.timeToNextAttack = -(math.huge^math.huge^math.huge)
+                        Ryu.activeController.timeToNextAttack = 0
+                        Ryu.activeController.hitboxMagnitude = 200
+                        Ryu.activeController.active = false
+                        Ryu.activeController.timeToNextBlock = 0
+                        Ryu.activeController.focusStart = 0
+                        Ryu.activeController.increment = 4
+                        Ryu.activeController.blocking = false
+                        Ryu.activeController.attacking = false
+                        Ryu.activeController.humanoid.AutoRotate = true
+                        end)
+                    end
+                end
+            end
+        end)
+    end
+end)
 Weapon = {
 "Melee",
 "Sword",
@@ -9134,187 +9221,6 @@ page2:Toggle("หยุดการสั่นของกล้อง",true,fu
     CameraShaker()
 end)
 end
-if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    if World3 then
-    local Moon = {
-        ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
-        ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
-        ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌗
-        ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
-        ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
-        ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
-        ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
-        ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
-    };
-    for i, v in pairs(Moon) do
-        if game:GetService("Lighting").Sky.MoonTextureId == v then
-            MoonPercent = i / 8 * 100
-        end
-    end
-    
-    for i, v in pairs(game.Players:GetPlayers()) do
-        PlayersMin = i
-    end
-    
-    if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
-        MoonIcon = '🌔'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
-        MoonIcon = '🌓'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
-        MoonIcon = '🌒'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
-        MoonIcon = '🌑'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
-        MoonIcon = '🌘'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
-        MoonIcon = '🌘'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
-        MoonIcon = '🌖'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
-        MoonIcon = '🌕'
-    end
-    
-    
-    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-        MirageMessage = '```Mirage is spawing : 🟢```'
-    else
-        MirageMessage = '```Mirage isn\'t spawn : ❌```'
-    end
-    
-    MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
-    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
-        '\'' .. tostring(game.JobId) .. '\'' .. ')'
-    
-    
-    local url = "https://discord.com/api/webhooks/1159506639095869600/1N9kghTBEkvkDlPyiVkE1SVW02HMAzgd80BKwcB9R-mqbdrdh_g4A0Lc2dovUGH-Olqu"                                                                                                                
-    local data = {
-        ["username"] = 'Vector Hub',                                                                                                                                                                                                           
-        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
-        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
-        ["embeds"] = {
-            {
-                ["description"] = "**__Mirage Webhook__**",
-                ["color"] = tonumber(0x0000FF), -- color id		#
-                ["type"] = "rich",
-                ["fields"] = {
-                    {
-                        ["name"] = "[👥] Players Active",
-                        ["value"] = '```' .. tostring(PlayersMin) .. '/12```'
-                    },
-                    {
-                        ["name"] = "[📃] JobID",
-                        ["value"] = '```' .. tostring(game.JobId) .. '```'
-                    },
-                    {
-                        ["name"] = "[📁] Join Server",
-                        ["value"] = '```' .. JoinServer .. '```',
-                    },
-                    {
-                        ["name"] = "[🌲] Mirage Check",
-                        ["value"] = MirageMessage,
-                        ["inline"] = true
-                    }
-                },
-                ["footer"] = {
-                    ["text"] = "Webhook Vector Hub", 
-                },
-                ["timestamp"] = DateTime.now():ToIsoDate(),
-            }
-        },
-    }
-    local newdata = game:GetService("HttpService"):JSONEncode(data)
-    local headers = { ["content-type"] = "application/json" }
-    request = http_request or request or HttpPost or syn.request
-    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
-    request(abcdef)
-    end
-    end
-    
-    if World3 then
-    local Moon = {
-        ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
-        ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
-        ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌘
-        ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
-        ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
-        ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
-        ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
-        ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
-    };
-    for i, v in pairs(Moon) do
-        if game:GetService("Lighting").Sky.MoonTextureId == v then
-            MoonPercent = i / 8 * 100
-        end
-    end
-    
-    for i, v in pairs(game.Players:GetPlayers()) do
-        PlayersMin = i
-    end
-    
-    if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
-        MoonIcon = '🌔'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
-        MoonIcon = '🌓'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
-        MoonIcon = '🌒'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
-        MoonIcon = '🌑'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
-        MoonIcon = '🌘'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
-        MoonIcon = '🌘'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
-        MoonIcon = '🌖'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
-        MoonIcon = '🌕'
-    end
-    MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
-    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
-        '\'' .. tostring(game.JobId) .. '\'' .. ')'
-    
-    local url = "https://discord.com/api/webhooks/1175280681585229864/vpw7alwliqeVtzuKIJYxZZa0WhhDC2YDvFoCSKXNO-PYtseXHDGLsbjp2TmAELE8Wi2g"                                                                                                               
-    local data = {
-        ["username"] = 'Vector Hub',                                                                                                                                                                                                          
-        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
-        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
-        ["embeds"] = {
-            {
-                ["description"] = "**__Moon__**",
-                ["color"] = tonumber(0x0000FF), 
-                ["type"] = "rich",
-                ["fields"] = {
-                    {
-                        ["name"] = "[👥] Players Active",
-                        ["value"] = '```' .. tostring(PlayersMin) .. '/12```'
-                    },
-                    {
-                        ["name"] = "[📃] JobID",
-                        ["value"] = '```' .. tostring(game.JobId) .. '```'
-                    },
-                    {
-                        ["name"] = "[📁] Join Server",
-                        ["value"] = '```' .. JoinServer .. '```',
-                    },
-                    {
-                        ["name"] = "[🕑] Moon Check",
-                        ["value"] = MoonMessage,
-                        ["inline"] = true
-                    },
-                    
-                },
-                ["footer"] = {
-                    ["text"] = "Webhook Vector Hub", 
-                },
-                ["timestamp"] = DateTime.now():ToIsoDate(),
-            }
-        },
-    }
-    local newdata = game:GetService("HttpService"):JSONEncode(data)
-    local headers = { ["content-type"] = "application/json" }
-    request = http_request or request or HttpPost or syn.request
-    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
-    request(abcdef)
-    end
 page3:Seperator("📊")
 local SelectStats = {
     "Melee",
@@ -14350,16 +14256,16 @@ end)
 
 
 spawn(function()
-    while wait() do
+    while task.wait(0) do
         if _G.KillAura then
-            for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
-                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                if v.Humanoid.Health > 0 then
                     pcall(function()
-                        repeat wait(.1)
+                        repeat task.wait(.1)
                             v.Humanoid.Health = 0
                             v.HumanoidRootPart.CanCollide = false
                             sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                        until not _G.KillAura  or not v.Parent or v.Humanoid.Health <= 0
+                        until not _G.KillAura 
                     end)
                 end
             end
@@ -16758,9 +16664,6 @@ if _G.Mode == "English" then
 page12:Button("FPS Booster", function()
     FPSBOOSTER()
 end)
-page12:Button("FullBright", function()
-    FullBright()
-end)
 page12:Toggle("Auto Click",false,function(value)
     _G.click = value
         end)  
@@ -16777,9 +16680,6 @@ page12:Toggle("Auto Click",false,function(value)
 else
 page12:Button("ปรับภาพกากเพิ่ม FPS", function()
     FPSBOOSTER()
-end)
-page12:Button("แมพสว่าง", function()
-    FullBright()
 end)
 page12:Toggle("ออโต้คลิก",false,function(value)
     _G.click = value
@@ -17079,80 +16979,7 @@ page12:Toggle("พลังงานไม่จำกัด", _G.InfinitiesEner
     InfinitiesEnergy()
 end)
 end
-function FullBright()
-    pcall(function()
-            local lighting = game:GetService("Lighting")
-            lighting.Ambient = Color3.fromRGB(255, 255, 255)
-            lighting.Brightness = 1
-            lighting.FogEnd = 1e10
-            for i, v in pairs(lighting:GetDescendants()) do
-                if
-                    v:IsA("BloomEffect") or v:IsA("BlurEffect") or v:IsA("ColorCorrectionEffect") or
-                        v:IsA("SunRaysEffect")
-                 then
-                    v.Enabled = false
-                end
-            end
-            lighting.Changed:Connect(
-                function()
-                    lighting.Ambient = Color3.fromRGB(255, 255, 255)
-                    lighting.Brightness = 1
-                    lighting.FogEnd = 1e10
-                end)
-            spawn(function()
-                    local character = game:GetService("Players").LocalPlayer.Character
-                    while wait() do
-                        repeat
-                            wait()
-                        until character ~= nil
-                        if not character.HumanoidRootPart:FindFirstChildWhichIsA("PointLight") then
-                            local headlight = Instance.new("PointLight", character.HumanoidRootPart)
-                            headlight.Brightness = 1
-                            headlight.Range = 60
-                        end
-                    end
-                end)
-            end)
-    repeat
-        task.wait()
-    until game:IsLoaded()
-    wait(5)
-    for i, v in pairs(game.Lighting:GetChildren()) do
-        if v:IsA("") or v:IsA("Sky") or v:IsA("BlurEffect") or v:IsA("BloomEffect") or v:IsA("SunRaysEffect") then
-            v:Destroy()
-        end
-    end
-    game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
-    game.Lighting.Brightness = 1
-    game.Lighting.ClockTime = 14
-    game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
-    game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
-    game.Lighting.ExposureCompensation = 0
-    game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
-    game.Lighting.FogEnd = 999999999
-    game.Lighting.GeographicLatitude = 41.733
-    game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
-    game.Lighting.GlobalShadows = true
-    game.Lighting.Changed:Connect(function()
-            game.Lighting.Ambient = Color3.fromRGB(255, 255, 255)
-            game.Lighting.Brightness = 1
-            game.Lighting.ClockTime = 14
-            game.Lighting.ColorShift_Bottom = Color3.fromRGB(255, 255, 255)
-            game.Lighting.ColorShift_Top = Color3.fromRGB(255, 255, 255)
-            game.Lighting.ExposureCompensation = 0
-            game.Lighting.FogColor = Color3.fromRGB(255, 255, 255)
-            game.Lighting.FogEnd = 999999999
-            game.Lighting.GeographicLatitude = 41.733
-            game.Lighting.OutdoorAmbient = Color3.fromRGB(255, 255, 255)
-            game.Lighting.GlobalShadows = true
-        end)
-    game.Lighting.DescendantAdded:Connect(
-        function(obj)
-            if obj:IsA("") or obj:IsA("Sky") or obj:IsA("BlurEffect") or obj:IsA("BloomEffect") or obj:IsA("SunRaysEffect") then
-                obj:Destroy()
-            end
-        end)
-    end
+
     
 
 page12:Label("Name : "..game.Players.LocalPlayer.Name)
@@ -17388,3 +17215,184 @@ while task.wait() do
     end
 end
 end)
+if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+    if World3 then
+    local Moon = {
+        ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
+        ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
+        ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌗
+        ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
+        ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
+        ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
+        ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
+        ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
+    };
+    for i, v in pairs(Moon) do
+        if game:GetService("Lighting").Sky.MoonTextureId == v then
+            MoonPercent = i / 8 * 100
+        end
+    end
+    
+    for i, v in pairs(game.Players:GetPlayers()) do
+        PlayersMin = i
+    end
+    
+    if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
+        MoonIcon = '🌔'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
+        MoonIcon = '🌓'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
+        MoonIcon = '🌒'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
+        MoonIcon = '🌑'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
+        MoonIcon = '🌖'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
+        MoonIcon = '🌕'
+    end
+    
+    
+    if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+        MirageMessage = '```Mirage is spawing : 🟢```'
+    else
+        MirageMessage = '```Mirage isn\'t spawn : ❌```'
+    end
+    
+    MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
+    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
+        '\'' .. tostring(game.JobId) .. '\'' .. ')'
+    
+    
+    local url = "https://discord.com/api/webhooks/1175618033759297606/6net8JyPfjs1DFGmxrGcK7a13zbSHCjxOtcKdQom3s6nVcpNrU5_axCfynNW9zoHL6LO"                                                                                                                
+    local data = {
+        ["username"] = 'Vector Hub',                                                                                                                                                                                                           
+        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
+        ["embeds"] = {
+            {
+                ["description"] = "**__Mirage Webhook__**",
+                ["color"] = tonumber(0x0000FF), -- color id		#
+                ["type"] = "rich",
+                ["fields"] = {
+                    {
+                        ["name"] = "[👥] Players Active",
+                        ["value"] = '```' .. tostring(PlayersMin) .. '/12```'
+                    },
+                    {
+                        ["name"] = "[📃] JobID",
+                        ["value"] = '```' .. tostring(game.JobId) .. '```'
+                    },
+                    {
+                        ["name"] = "[📁] Join Server",
+                        ["value"] = '```' .. JoinServer .. '```',
+                    },
+                    {
+                        ["name"] = "[🌲] Mirage Check",
+                        ["value"] = MirageMessage,
+                        ["inline"] = true
+                    }
+                },
+                ["footer"] = {
+                    ["text"] = "Webhook Vector Hub", 
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = { ["content-type"] = "application/json" }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+    request(abcdef)
+    end
+    end
+    
+    if World3 then
+    local Moon = {
+        ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
+        ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
+        ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌘
+        ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
+        ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
+        ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
+        ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
+        ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
+    };
+    for i, v in pairs(Moon) do
+        if game:GetService("Lighting").Sky.MoonTextureId == v then
+            MoonPercent = i / 8 * 100
+        end
+    end
+    
+    for i, v in pairs(game.Players:GetPlayers()) do
+        PlayersMin = i
+    end
+    
+    if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
+        MoonIcon = '🌔'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
+        MoonIcon = '🌓'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
+        MoonIcon = '🌒'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
+        MoonIcon = '🌑'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
+        MoonIcon = '🌘'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
+        MoonIcon = '🌖'
+    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
+        MoonIcon = '🌕'
+    end
+    MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
+    JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
+        '\'' .. tostring(game.JobId) .. '\'' .. ')'
+    
+    local url = "https://discord.com/api/webhooks/1175618122640793691/zpIczTPpcrUFpVBwR_gTlYyk3coopWkQbyN3eGPNbRlqwVQayEIcnMXHcEBZUNpC073-"                                                                                                               
+    local data = {
+        ["username"] = 'Vector Hub',                                                                                                                                                                                                          
+        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
+        ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
+        ["embeds"] = {
+            {
+                ["description"] = "**__Moon__**",
+                ["color"] = tonumber(0x0000FF), 
+                ["type"] = "rich",
+                ["fields"] = {
+                    {
+                        ["name"] = "[👥] Players Active",
+                        ["value"] = '```' .. tostring(PlayersMin) .. '/12```'
+                    },
+                    {
+                        ["name"] = "[📃] JobID",
+                        ["value"] = '```' .. tostring(game.JobId) .. '```'
+                    },
+                    {
+                        ["name"] = "[📁] Join Server",
+                        ["value"] = '```' .. JoinServer .. '```',
+                    },
+                    {
+                        ["name"] = "[🕑] Moon Check",
+                        ["value"] = MoonMessage,
+                        ["inline"] = true
+                    },
+                    
+                },
+                ["footer"] = {
+                    ["text"] = "Webhook Vector Hub", 
+                },
+                ["timestamp"] = DateTime.now():ToIsoDate(),
+            }
+        },
+    }
+    local newdata = game:GetService("HttpService"):JSONEncode(data)
+    local headers = { ["content-type"] = "application/json" }
+    request = http_request or request or HttpPost or syn.request
+    local abcdef = { Url = url, Body = newdata, Method = "POST", Headers = headers }
+    request(abcdef)
+    end
