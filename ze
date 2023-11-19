@@ -260,7 +260,7 @@ local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
 repeat wait(0) until game:IsLoaded()
 	
-	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
+	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") or game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
 		repeat wait()
 			if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
 				if _G.Team == "Pirate" then
@@ -3677,6 +3677,90 @@ while true do wait(.1)
 UpdateClient1()
 end
 end)
+
+page1:Toggle("Test",  _G.Test , function(value)
+    _G.Test = value
+    if value == false then
+        task.wait()
+        toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+        task.wait()
+    end
+spawn(function() --Event Sea
+   while task.wait() do
+    pcall(function()
+        if _G.Test then 
+                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
+                     if v.Humanoid.Health > 0 then 
+                        if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+                            game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
+                        end
+                        repeat task.wait()
+                            _G.FastType = "Normal"
+                            FastAttack = true
+                            if _G.AutoHaki then
+                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                end
+                            end
+                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                task.wait()
+                                EquipWeapon(_G.SelectWeapon)
+                            end
+                            if not _G.FastAttack then
+                                game:GetService'VirtualUser':CaptureController()
+                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                            end
+                            v.HumanoidRootPart.Size = Vector3.new(60,60,60)
+                            v.HumanoidRootPart.Transparency = 0.5
+                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                        until v.Humanoid.Health <= 0 or not  _G.Test  
+                    else
+                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                        if v:IsA("VehicleSeat") then
+                            if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
+                                repeat
+                                    task.wait()
+                                    local CFrame = v.CFrame
+                                    twoboat(CFrame)
+                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1 or not _G.TPTOBOAT
+                            end
+                        end
+                    end
+                            end
+                        end
+                    end
+                end
+            end)
+        end
+    end)
+end)
+spawn(function()
+    while wait() do 
+        pcall(function() 
+            if _G.Test then 
+                for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
+                        if v.Humanoid.Health > 0 then 
+                            _G.ao = false
+                            while _G.ao do task.wait(0)
+                                game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+                            end
+                        else
+                            if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+                            _G.ao = true
+                            end
+                            while _G.ao do task.wait(0)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+                      
 if _G.Mode == "English" then
 page1:Toggle("Auto Farm Level", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
@@ -14307,16 +14391,16 @@ end)
 
 
 spawn(function()
-    while wait() do
+    while task.wait(0) do
         if _G.KillAura then
-            for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
-                if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
+            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                if v.Humanoid.Health > 0 then
                     pcall(function()
-                        repeat wait(.1)
+                        repeat task.wait(.1)
                             v.Humanoid.Health = 0
                             v.HumanoidRootPart.CanCollide = false
                             sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                        until not _G.KillAura  or not v.Parent or v.Humanoid.Health <= 0
+                        until not _G.KillAura 
                     end)
                 end
             end
