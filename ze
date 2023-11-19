@@ -49,7 +49,7 @@ end
 while task.wait() do
     local boatsFolder = game:GetService("Workspace").Boats
     for _, model in pairs(boatsFolder:GetChildren()) do
-        if model:IsA("Model") and model.Owner and model.Owner:IsA("ObjectValue") and model.Owner.Value == game.Players.LocalPlayer then
+        if model:IsA("Model") and model.Owner and model.Owner:IsA("ObjectValue") and model.Owner.Value == game.Players.LocalPlayer.Name then
             tweenModel(model, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
     end 
