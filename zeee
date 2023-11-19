@@ -9222,25 +9222,34 @@ page2:Toggle("หยุดการสั่นของกล้อง",true,fu
 end)
 end
 page3:Seperator("📊")
+local SelectStats = {
+    "Melee",
+    "Defense",
+    "Sword",
+    "Gun",
+    "Devil Fruits"
+}
 
-page3:Dropdown("Select Stats", {"Melee", "Defense", "Sword", "Gun", "Demon Fruit"}, function(value)
+page3:Dropdown("Select Stats",SelectStats, function(value)
     _G.SelectStats = value
+    task.spawn(function()
+        pcall(function()
+            while task.wait() do
+                if _G.EnabledAutoStats then
+                        local args = {
+                            [1] = "AddPoint",
+                            [2] = SelectStats,
+                            [3] = 100
+                        }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                end
+            end
+        end)
+    end)
 end)
 
 page3:Toggle("Auto Stats", _G.EnabledAutoStats, function(value)
     _G.EnabledAutoStats = value
-end)
-
-spawn(function()
-    while wait() do
-        pcall(function()
-            if _G.EnabledAutoStats then
-                for _, g in next, _G.SelectStats do
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("AddPoint", tostring(g), _G.Point)
-                end
-            end
-        end)
-    end
 end)
 
 page3:Toggle("Auto Stat Kaitun", true, function(value)
@@ -9267,10 +9276,6 @@ spawn(function()
             end
         end
     end
-end)
-page3:Slider("SelectPoint", 1, 100,1, function(value)
-    _G.Point = value
-    return "Point : " .. tostring(value)
 end)
 if _G.Mode == "English" then
 page3:Toggle("Redeem Code", _G.EnabledAutoRedeemCode, function(value)
