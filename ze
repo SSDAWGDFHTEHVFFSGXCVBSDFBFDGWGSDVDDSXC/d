@@ -1,3 +1,32 @@
+function two(gotoCFrame) --- Tween
+    pcall(function()
+    game.Players.LocalPlayer.Character.Humanoid.Sit = false
+    end)
+    if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 10 then
+    pcall(function()
+        tweenz:Cancel()
+    end)
+    game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.CFrame = gotoCFrame
+    else
+    local tween_s = game:service "TweenService"
+    local info = TweenInfo.new(
+        (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude / 325, Enum.EasingStyle.Linear)
+        tween, err = pcall(function()
+            if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+                local Highlight = Instance.new("Highlight")
+                Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
+                Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
+                Highlight.Parent = game.Players.LocalPlayer.Character;
+                end
+        tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
+        tweenz:Play()
+    end)
+    if not tween then return err end
+    end
+    function _TweenCanCle()
+    tweenz:Cancel()
+    end
+end
 local tweenService = game:GetService("TweenService")
 local function tweenModel(model, CF)
     local TweenPlay = (CF.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
@@ -20,9 +49,8 @@ while wait() do
     local boatsFolder = game:GetService("Workspace").Boats
     for _, model in pairs(boatsFolder:GetChildren()) do
         if model:IsA("Model") then
-            local targetCFrame = CFrame.new(4530.3540039063, 656.75695800781, -131.60952758789)
-            tweenModel(model, targetCFrame)
-            --tweenModel(model, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+            two(CFrame.new(5541.2685546875, 668.30456542969, 195.48069763184))
+            tweenModel(model, game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
         end
     end 
