@@ -335,7 +335,7 @@ task.spawn(function()
 game:GetService("RunService").Stepped:Connect(function()
 pcall(function()
     --[World 1]
-    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
     _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
     --[World 2]
     _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -402,7 +402,7 @@ end)
 spawn(function()
 while wait(.1) do
 pcall(function()
-    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
     _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
     --[World 2]
     _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -451,7 +451,7 @@ end)
 
 spawn(function()
 game:GetService("RunService").Stepped:Connect(function()
-if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
 _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
 --[World 2]
 _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -492,7 +492,7 @@ end
 spawn(function()
 while task.wait() do
 pcall(function()
-    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
         _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
         --[World 2]
         _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -531,7 +531,7 @@ end)
 
 spawn(function() ------body velocity
 game:GetService("RunService").Stepped:Connect(function()
-if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
         _G.AutoSaber or _G.AutoPole or _G.TeleportIsland or
         --[World 2]
         _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -4561,6 +4561,7 @@ if _G.Mode == "English" then
        while task.wait() do
         pcall(function()
             if _G.AutoEvent then 
+                game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Opens when encountering a sea event monster.",Icon = "rbxassetid://14645512457",Duration = 3}) 
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                         if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
                          if v.Humanoid.Health > 0 then 
@@ -4734,6 +4735,7 @@ end
        while task.wait() do
         pcall(function()
             if _G.AutoEvent then 
+                game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "เปิดเมื่อเจอมอนเตอร์อีเว้นท์ทะเล",Icon = "rbxassetid://14645512457",Duration = 3}) 
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                         if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
                          if v.Humanoid.Health > 0 then 
@@ -8044,7 +8046,7 @@ function Elite()
         end)
     if _G.AutoEliteHunterHop then  
         if not (game.Workspace.Enemies:FindFirstChild("Deandre") or game.Workspace.Enemies:FindFirstChild("Urban") or game.Workspace.Enemies:FindFirstChild("Diablo") or game.ReplicatedStorage:FindFirstChild("Deandre") or game.ReplicatedStorage:FindFirstChild("Urban") or game.ReplicatedStorage:FindFirstChild("Diablo")) then
-            wait(5)
+            wait(10)
         Teleport()
         Hop()
     end
@@ -15004,7 +15006,7 @@ _G.Settings.MirageHop = value
 _G.AutoMirageIslandHop = value
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
 if _G.MirageHop and not game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    while _G.MirageHop do wait(5)
+    while _G.MirageHop do wait(10)
     repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer
     local HttpService, TPService = game:GetService "HttpService", game:GetService "TeleportService";
     local OtherServers = HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/" ..
@@ -15056,7 +15058,7 @@ page9:Toggle("ออโต้หาเกาะลับแบบย้ายเ
     _G.AutoMirageIslandHop = value
 game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "กำลังย้ายเซิฟ...",Icon = "rbxassetid://14645512457",Duration = 5})
 if _G.MirageHop and not game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
-    while _G.MirageHop do wait(5)
+    while _G.MirageHop do wait(10)
     repeat task.wait() until game:IsLoaded() and game.Players.LocalPlayer
     local HttpService, TPService = game:GetService "HttpService", game:GetService "TeleportService";
     local OtherServers = HttpService:JSONDecode(game:HttpGet("https://games.roblox.com/v1/games/" ..
@@ -15493,7 +15495,7 @@ SaveSettings()
                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
                                         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
                                         while _G.AutoBuyLegendarySwordHop do task.wait()
-                                        wait(5)
+                                        wait(10)
                                         Teleport()
                                         Hop()
                                         end
@@ -15530,7 +15532,7 @@ spawn(function()
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
                         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
                         while _G.AutoBuyLegendarySwordHop do task.wait()
-                        wait(5)
+                        wait(10)
                         Teleport()
                         Hop()
                         end
@@ -15573,7 +15575,7 @@ SaveSettings()
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
                         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
                         while _G.AutoBuyEnchanmentHakiHop do task.wait()
-                        wait(5)
+                        wait(10)
                         Teleport()
                         Hop()
                         end
@@ -15614,7 +15616,7 @@ else
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
                             game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
                             while _G.AutoBuyEnchanmentHakiHop do task.wait()
-                            wait(5)
+                            wait(10)
                             Teleport()
                             Hop()
                             end
