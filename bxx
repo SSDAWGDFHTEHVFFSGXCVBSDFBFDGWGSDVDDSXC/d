@@ -17243,7 +17243,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
     
-    local url = "https://discord.com/api/webhooks/1176125977148010578/w_cVA_QPioPEuBy9P6n_JqPVbynW3t4rYxFP1273YhDRw_HI9ZFHzwDwhbeU6YlWUk5Q"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1176125965496229908/2kXB9NQKOT5IqATztIa2RDxrCG6BevolXjGX3VFFkd9rovwK3SrqmJRtVoUN83y9oPNU"                                                                                                                
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                           
         ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                            
@@ -17329,7 +17329,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
-    local url = "https://discord.com/api/webhooks/1176126153019367454/OyyRWPYkRUfH_8SVJrWhW__ZuGS_Go_c7LV_XPs4uydmRwAiniLvoYwQTzMcIXjHEfAs"                                                                                                               
+    local url = "https://discord.com/api/webhooks/1176126149580042290/UQrqcSEffCa_orYrjrJGhnlnKIT1lUkq4mpz0KxJWwGDiKKtv2gQhAFH-EWlp1B4YdbQ"                                                                                                               
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                          
         ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                             
