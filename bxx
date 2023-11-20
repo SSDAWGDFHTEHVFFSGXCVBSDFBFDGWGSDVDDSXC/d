@@ -14233,7 +14233,7 @@ spawn(function()
     while task.wait(0) do
         if _G.KillAura then
             for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                if v.Humanoid.Health > 0 then
+               -- if v.Humanoid.Health > 0 then
                     pcall(function()
                         repeat task.wait(.1)
                             v.Humanoid.Health = 0
@@ -14241,7 +14241,7 @@ spawn(function()
                             sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
                         until not _G.KillAura 
                     end)
-                end
+               -- end
             end
         end
     end
@@ -17241,10 +17241,10 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
     
-    local url = "https://discord.com/api/webhooks/1175618033759297606/6net8JyPfjs1DFGmxrGcK7a13zbSHCjxOtcKdQom3s6nVcpNrU5_axCfynNW9zoHL6LO"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1176125977148010578/w_cVA_QPioPEuBy9P6n_JqPVbynW3t4rYxFP1273YhDRw_HI9ZFHzwDwhbeU6YlWUk5Q"                                                                                                                
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                           
-        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
+        ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                            
         ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
         ["embeds"] = {
             {
@@ -17327,10 +17327,10 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
-    local url = "https://discord.com/api/webhooks/1175684906718871552/Yy1pGSjCPthRW0KazDUpi-VGAFEYk5Kjth4wwRBF5CuUfhBEqFZPp_zLEK9dyPGh89IM"                                                                                                               
+    local url = "https://discord.com/api/webhooks/1176126153019367454/OyyRWPYkRUfH_8SVJrWhW__ZuGS_Go_c7LV_XPs4uydmRwAiniLvoYwQTzMcIXjHEfAs"                                                                                                               
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                          
-        ['content'] = '<@&1159482607738830928>',                                                                                                                                                                                             
+        ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                             
         ["avatar_url"] = "https://media.discordapp.net/attachments/1089811542226247781/1159366800941781042/b0fb523ce7d8590f.jpg?ex=6530c379&is=651e4e79&hm=d8a71d8ad3a6b21ad4cdc281facdde6c320b729f5df492db1894d3990211666e&=&width=566&height=566", 
         ["embeds"] = {
             {
