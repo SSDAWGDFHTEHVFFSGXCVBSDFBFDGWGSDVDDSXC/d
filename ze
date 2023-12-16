@@ -3767,17 +3767,15 @@ end)
 			end
 		end
 	end
-page1:Toggle("TestFunction-4Seabeast", _G.Event, function(value)
-	spawn(function() --Event Sea
+page1:Toggle("TestFunction-5", _G.Event, function(value)
+    spawn(function() --Event Sea
 		while task.wait() do
 		 pcall(function()
 			 if _G.Event then 
 					 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 						 if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
 						  if v.Humanoid.Health > 0 then 
-							StopBoat()
 							 repeat task.wait()
-								if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then
 								 _G.FastType = "Normal"
 								 FastAttack = true
 								 if _G.AutoHaki then
@@ -3800,22 +3798,6 @@ page1:Toggle("TestFunction-4Seabeast", _G.Event, function(value)
 								 v.Humanoid:ChangeState(11)
 								 v.HumanoidRootPart.CanCollide = false
 								 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-								end
-								if string.find(v.Name, "SeaBeast") then
-									toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 500, 0))
-									EquipBloxFruit()
-									game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
-									wait(.1)
-									game:service('VirtualInputManager'):SendKeyEvent(false, "z", false, game)
-
-									game:service('VirtualInputManager'):SendKeyEvent(true, "x", false, game)
-									wait(.1)
-									game:service('VirtualInputManager'):SendKeyEvent(false, "x", false, game)
-
-									game:service('VirtualInputManager'):SendKeyEvent(true, "c", false, game)
-									wait(.1)
-									game:service('VirtualInputManager'):SendKeyEvent(false, "c", false, game)
-								end
 								  until v.Humanoid.Health <= 0 or not  _G.Event   
 								 end
 							 end
@@ -3830,7 +3812,6 @@ page1:Toggle("TestFunction-4Seabeast", _G.Event, function(value)
 											twoboat(CFrame)
 									until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.Event
 							wait(2)
-							GOBoat()
 							local Boat = game.Workspace.Boats[AllBoat] 
 							local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
 							tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
@@ -3841,7 +3822,6 @@ page1:Toggle("TestFunction-4Seabeast", _G.Event, function(value)
 		end)
 	end
 end)
-
 end)
 if _G.Mode == "English" then
     page1:Toggle("SafeMode", _G.Settings.SafeMode, function(value)
