@@ -1161,7 +1161,7 @@ function twoboat(gotoCFrame) --- Tween
 				for _, part in pairs(model:GetDescendants()) do
 					if part:IsA("BasePart") then
 						local TweenService = game:GetService("TweenService")
-						local info = TweenInfo.new((part.Position - goToCFrame.Position).Magnitude / 200, Enum.EasingStyle.Linear)
+						local info = TweenInfo.new((part.Position - goToCFrame.Position).Magnitude / 220, Enum.EasingStyle.Linear)
 						local tween = TweenService:Create(part, info, { CFrame = goToCFrame })
 						
 						local function isEnemyNearby()
@@ -3729,25 +3729,55 @@ page1:Toggle("ออโต้ฟาร์มเลเวล", _G.Settings.AutoFa
     end
 end)
 end
+
 AllBoat = {
-    "Dinghy",
-    "PirateSloop",
-    "PirateBrigade",
-    "PirateGrandBrigade",
-    "MarineSloop",
-    "MarineBrigade",
-    "MarineGrandBrigade"
+	"Dinghy",
+	"PirateSloop",
+	"PirateBrigade",
+	"PirateGrandBrigade",
+	"MarineSloop",
+	"MarineBrigade",
+	"MarineGrandBrigade"
 }
-AllBoat = "MarineSloop" 
-page1:Toggle("TestFunction-3", _G.Event, function(value)
+
+local SelectBoat = "Dinghy"  -- กำหนดค่าเริ่มต้น
+
+page1:Dropdown("SelectBoat", AllBoat, function(value)
+	SelectBoat = value
+end)
+
+page1:Button("BuyBoat", function()
+	if SelectBoat then
+		local args = {
+			[1] = "BuyBoat",
+			[2] = SelectBoat
+		}
+		game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+	end
+end)
+page1:Button("TP To Seller Boat", function()
+twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
+end)
+	function EquipBloxFruit()
+		for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v.ToolTip == "Blox Fruit" then
+			   if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+					EquipWeapon(v.Name)
+				end
+			end
+		end
+	end
+page1:Toggle("TestFunction-4Seabeast", _G.Event, function(value)
 	spawn(function() --Event Sea
 		while task.wait() do
-		 --pcall(function()
+		 pcall(function()
 			 if _G.Event then 
 					 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 						 if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
 						  if v.Humanoid.Health > 0 then 
+							StopBoat()
 							 repeat task.wait()
+								if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") then
 								 _G.FastType = "Normal"
 								 FastAttack = true
 								 if _G.AutoHaki then
@@ -3770,6 +3800,22 @@ page1:Toggle("TestFunction-3", _G.Event, function(value)
 								 v.Humanoid:ChangeState(11)
 								 v.HumanoidRootPart.CanCollide = false
 								 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+								end
+								if string.find(v.Name, "SeaBeast") then
+									toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 500, 0))
+									EquipBloxFruit()
+									game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
+									wait(.1)
+									game:service('VirtualInputManager'):SendKeyEvent(false, "z", false, game)
+
+									game:service('VirtualInputManager'):SendKeyEvent(true, "x", false, game)
+									wait(.1)
+									game:service('VirtualInputManager'):SendKeyEvent(false, "x", false, game)
+
+									game:service('VirtualInputManager'):SendKeyEvent(true, "c", false, game)
+									wait(.1)
+									game:service('VirtualInputManager'):SendKeyEvent(false, "c", false, game)
+								end
 								  until v.Humanoid.Health <= 0 or not  _G.Event   
 								 end
 							 end
@@ -3784,6 +3830,7 @@ page1:Toggle("TestFunction-3", _G.Event, function(value)
 											twoboat(CFrame)
 									until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.Event
 							wait(2)
+							GOBoat()
 							local Boat = game.Workspace.Boats[AllBoat] 
 							local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
 							tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
@@ -3791,9 +3838,10 @@ page1:Toggle("TestFunction-3", _G.Event, function(value)
 					end
 				end
 			 end
-		--end)
+		end)
 	end
 end)
+
 end)
 if _G.Mode == "English" then
     page1:Toggle("SafeMode", _G.Settings.SafeMode, function(value)
