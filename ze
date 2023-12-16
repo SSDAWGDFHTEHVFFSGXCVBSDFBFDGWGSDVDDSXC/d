@@ -132,7 +132,7 @@ local RobloxButton = Enum.ButtonStyle.RobloxButton
 
 ScreenGui.Parent = game.CoreGui
 ScreenGui.Name = "Perpid"
-ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
 
 -- กำหนดตำแหน่งและขนาดของ ImageButton
 ImageButton.Parent = ScreenGui
@@ -3738,7 +3738,7 @@ AllBoat = {
     "MarineGrandBrigade"
 }
 AllBoat = "MarineSloop" 
-page1:Toggle("TestFunction-1", _G.Event, function(value)
+page1:Toggle("TestFunction-2", _G.Event, function(value)
     spawn(function() --Event Sea
         while task.wait() do
          --pcall(function()
@@ -3769,8 +3769,7 @@ page1:Toggle("TestFunction-1", _G.Event, function(value)
                                  v.Humanoid:ChangeState(11)
                                  v.HumanoidRootPart.CanCollide = false
                                  toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                  until v.Humanoid.Health <= 0 or not  _G.Event   
-                                else 
+                                  until v.Humanoid.Health <= 0 or not  _G.Event
                                     for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                                         if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[AllBoat].Owner.Value.Name then
                                                 if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
