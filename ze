@@ -3739,7 +3739,7 @@ AllBoat = {
     "MarineGrandBrigade"
 }
 AllBoat = "MarineSloop" 
-page1:Toggle("TestFunction-2", _G.Event, function(value)
+page1:Toggle("TestFunction-3", _G.Event, function(value)
 	spawn(function() --Event Sea
 		while task.wait() do
 		 --pcall(function()
