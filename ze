@@ -3738,7 +3738,7 @@ AllBoat = {
     "MarineGrandBrigade"
 }
 AllBoat = "MarineSloop" 
-page1:Toggle("TestFunction", _G.Event, function(value)
+page1:Toggle("TestFunction-1", _G.Event, function(value)
     spawn(function() --Event Sea
         while task.wait() do
          --pcall(function()
@@ -3770,7 +3770,6 @@ page1:Toggle("TestFunction", _G.Event, function(value)
                                  v.HumanoidRootPart.CanCollide = false
                                  toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                   until v.Humanoid.Health <= 0 or not  _G.Event   
-                                 end
                                 else 
                                     for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
                                         if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[AllBoat].Owner.Value.Name then
@@ -3788,8 +3787,10 @@ page1:Toggle("TestFunction", _G.Event, function(value)
                                     end
                                 end
                             end--
+                        end
                      end
                 end
+            
             end
     --end)
 end
