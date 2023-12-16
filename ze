@@ -1133,37 +1133,64 @@ function GetDistance(target)
 end
 
 function twoboat(gotoCFrame) --- Tween
-pcall(function()
-game.Players.LocalPlayer.Character.Humanoid.Sit = false
-game.Players.LocalPlayer.Character.HumanoidRootPart.Anchored = false
-end)
-if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 10 then
-pcall(function()
+    if (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude <= 10 then
+    pcall(function()
+        tweenz:Cancel()
+    end)
+    
+    else
+    local tween_s = game:service "TweenService"
+    local info = TweenInfo.new(
+        (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude / 325, Enum.EasingStyle.Linear)
+    tween, err = pcall(function()
+        tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
+        tweenz:Play()
+    end)
+    if not tween then return err end
+    end
+    function _TweenCanCle()
     tweenz:Cancel()
-end)
+    end
+    end
 
-else
-local tween_s = game:service "TweenService"
-local info = TweenInfo.new(
-    (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude / 325, Enum.EasingStyle.Linear)
-tween, err = pcall(function()
-    if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
-        local Highlight = Instance.new("Highlight")
-        Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
-        Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
-        Highlight.Parent = game.Players.LocalPlayer.Character;
+    local function tweenModel(model, goToCFrame)
+        local owner = model:FindFirstChild("Owner")
+        if owner and owner:IsA("ObjectValue") and owner.Value then
+            local ownerName = owner.Value.Name
+            if ownerName == game.Players.LocalPlayer.Name then
+                for _, part in pairs(model:GetDescendants()) do
+                    if part:IsA("BasePart") then
+                        local TweenService = game:GetService("TweenService")
+                        local info = TweenInfo.new((part.Position - goToCFrame.Position).Magnitude / 200, Enum.EasingStyle.Linear)
+                        local tween = TweenService:Create(part, info, { CFrame = goToCFrame })
+                        
+                        local function isEnemyNearby()
+                            for _, enemy in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                if string.find(enemy.Name, "Fish Crew Member") or string.find(enemy.Name, "Piranha") or string.find(enemy.Name, "Shark") or string.find(enemy.Name, "Terror") and (enemy.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
+                                    if enemy.Humanoid.Health > 0 then
+                                        return true
+                                    end
+                                end
+                            end
+                            return false
+                        end
+                        
+                        spawn(function()
+                            while wait() do
+                                if isEnemyNearby() then
+                                    tween:Cancel()
+                                end
+                            end
+                        end)
+                    end
+                end
+            else
+                print("You are not the owner of the Boat.")
+            end
+        else
+            print("Owner information not found.")
         end
-    tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
-    tweenz:Play()
-end)
-if not tween then return err end
-end
-function _TweenCanCle()
-tweenz:Cancel()
-end
-end
-
-
+    end
 
 --[[Function Hop]]
 local PlaceID = game.PlaceId
@@ -3701,6 +3728,73 @@ page1:Toggle("ออโต้ฟาร์มเลเวล", _G.Settings.AutoFa
     end
 end)
 end
+AllBoat = {
+    "Dinghy",
+    "PirateSloop",
+    "PirateBrigade",
+    "PirateGrandBrigade",
+    "MarineSloop",
+    "MarineBrigade",
+    "MarineGrandBrigade"
+}
+AllBoat = "MarineSloop" 
+page1:Toggle("TestFunction", _G.Event, function(value)
+spawn(function() --Event Sea
+    while task.wait() do
+     --pcall(function()
+         if _G.Event then 
+                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                     if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
+                      if v.Humanoid.Health > 0 then 
+                         repeat task.wait()
+                             _G.FastType = "Normal"
+                             FastAttack = true
+                             if _G.AutoHaki then
+                                 if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                     game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                 end
+                             end
+                             if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                 task.wait()
+                                 EquipWeapon(_G.SelectWeapon)
+                             end
+                             if not _G.FastAttack then
+                                 game:GetService'VirtualUser':CaptureController()
+                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                             end
+                             v.HumanoidRootPart.Size = Vector3.new(100,100,100)
+                             v.HumanoidRootPart.Transparency = 1
+                             v.Humanoid.JumpPower = 0
+                             v.Humanoid.WalkSpeed = 0
+                             v.Humanoid:ChangeState(11)
+                             v.HumanoidRootPart.CanCollide = false
+                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                              until v.Humanoid.Health <= 0 or not  _G.Event   
+                             end
+                         end
+                     end
+                    else
+                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                        if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[AllBoat].Owner.Value.Name then
+                                if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
+                                        repeat
+                                        task.wait()
+                                        local CFrame = v.CFrame
+                                        twoboat(CFrame)
+                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 or not _G.TPTOBOAT
+                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 20 and 	game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+                        local Boat = game.Workspace.Boats[AllBoat] 
+                        local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
+                        tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))  
+                        end
+                    end
+                end
+            end
+         end
+    --end)
+end
+end)
+end)
 if _G.Mode == "English" then
     page1:Toggle("SafeMode", _G.Settings.SafeMode, function(value)
         _G.SafeMode = value
@@ -4552,6 +4646,7 @@ if _G.Mode == "English" then
     page1:Seperator("<<EVENT SEA>>")
     page1:Toggle("Auto SeaEvent",  _G.AutoEvent , function(value)
         _G.AutoEvent = value
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Opens when encountering a sea event monster.",Icon = "rbxassetid://14645512457",Duration = 3}) 
         if value == false then
             task.wait()
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -4561,7 +4656,6 @@ if _G.Mode == "English" then
        while task.wait() do
         pcall(function()
             if _G.AutoEvent then 
-                game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Opens when encountering a sea event monster.",Icon = "rbxassetid://14645512457",Duration = 3}) 
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                         if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
                          if v.Humanoid.Health > 0 then 
@@ -4726,6 +4820,7 @@ end
         page1:Seperator("<<อีเว้นท์ทะเล>>")
         page1:Toggle("ออโต้อีเว้นท์ทะเล",  _G.AutoEvent , function(value)
             _G.AutoEvent = value
+            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "เปิดเมื่อเจอมอนเตอร์อีเว้นท์ทะเล",Icon = "rbxassetid://14645512457",Duration = 3}) 
         if value == false then
             task.wait()
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -4735,7 +4830,6 @@ end
        while task.wait() do
         pcall(function()
             if _G.AutoEvent then 
-                game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "เปิดเมื่อเจอมอนเตอร์อีเว้นท์ทะเล",Icon = "rbxassetid://14645512457",Duration = 3}) 
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                         if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
                          if v.Humanoid.Health > 0 then 
@@ -4856,6 +4950,11 @@ end
                                         v.CanCollide = false
                                     end
                                 end
+                                for _, v in pairs(game.Workspace.Enemies.FishBoat:GetDescendants()) do
+                                    if v:IsA("BasePart") and v.CanCollide == true then
+                                        v.CanCollide = false
+                                    end
+                                end
                             elseif game.Players.LocalPlayer.Character.Humanoid.Sit == false then
                                 for _, v in pairs(game.Workspace.Boats:GetDescendants()) do
                                     if v:IsA("BasePart") and v.CanCollide == false then
@@ -4863,6 +4962,11 @@ end
                                     end
                                 end
                                 for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                                    if v:IsA("BasePart") and v.CanCollide == false then
+                                        v.CanCollide = true
+                                    end
+                                end
+                                for _, v in pairs(game.Workspace.Enemies.FishBoat:GetDescendants()) do
                                     if v:IsA("BasePart") and v.CanCollide == false then
                                         v.CanCollide = true
                                     end
