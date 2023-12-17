@@ -15615,16 +15615,12 @@ end
                 end
             end)
         end)]]
-        page15:Toggle("Collect Azure Ember[[ถ้าบัคแจ้งในดิส[2]", _G.Test2, function(value)
-            _G.Test2 = value
+        page15:Toggle("Collect Azure Ember[[ถ้าบัคแจ้งในดิส[3]", _G.Ez, function(value)
+            _G.Ez = value
             spawn(function()
-            while _G.Test2 do task.wait()
-                pcall(function()
-                for _, v in pairs(game.workspace.EmberTemplate:GetChildren()) do
-                    if v.Name == "Part" then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-                            end
-                        end
+                while _G.Ez do wait()
+                    pcall(function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
                     end)
                 end
             end)
@@ -15659,16 +15655,12 @@ end
             end)
         end)
         
-        page15:Toggle("เก็บวิญญาณไฟ[ถ้าบัคแจ้งในดิส[2]", _G.Test2, function(value)
-            _G.Test2 = value
+        page15:Toggle("เก็บวิญญาณไฟ[ถ้าบัคแจ้งในดิส[3]", _G.Ez, function(value)
+            _G.Ez = value
             spawn(function()
-            while _G.Test2 do task.wait()
-                pcall(function()
-                for _, v in pairs(game.workspace.EmberTemplate:GetChildren()) do
-                    if v.Name == "Part" then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-                            end
-                        end
+                while _G.Ez do wait()
+                    pcall(function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
                     end)
                 end
             end)
