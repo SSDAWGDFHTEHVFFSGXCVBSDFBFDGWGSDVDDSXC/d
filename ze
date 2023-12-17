@@ -337,7 +337,7 @@ task.spawn(function()
 game:GetService("RunService").Stepped:Connect(function()
 pcall(function()
     --[World 1]
-    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
     _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
     --[World 2]
     _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -404,7 +404,7 @@ end)
 spawn(function()
 while wait(.1) do
 pcall(function()
-    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
     _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
     --[World 2]
     _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -453,7 +453,7 @@ end)
 
 spawn(function()
 game:GetService("RunService").Stepped:Connect(function()
-if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
 _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
 --[World 2]
 _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -494,7 +494,7 @@ end
 spawn(function()
 while task.wait() do
 pcall(function()
-    if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
         _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
         --[World 2]
         _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -533,7 +533,7 @@ end)
 
 spawn(function() ------body velocity
 game:GetService("RunService").Stepped:Connect(function()
-if _G.AutoFarm or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+ if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
         _G.AutoSaber or _G.AutoPole or _G.TeleportIsland or
         --[World 2]
         _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -15583,16 +15583,49 @@ end
         
         page15:Toggle("Teleport To Kitsune Island", _G.TptoKisuneIsland, function(value)
             _G.TptoKisuneIsland = value
+            spawn(function()
+                while task.wait() do
+                    if _G.TptoKisuneIsland then
+                        toTarget(game.Workspace.Map.KitsuneIsland.ShrineActive.NeonShrinePart.CFrame * CFrame.new(0,100,0))
+                    end
+                end
+            end)
         end)
      
         
         page15:Toggle("Teleport To Kitsune Shrine", _G.TptoKisuneshrine, function(value)
             _G.TptoKisuneshrine = value
+            spawn(function()
+                while task.wait() do
+                    if _G.TptoKisuneshrine then
+                        toTarget(game.Workspace.Map.KitsuneIsland.ShrineActive.NeonShrinePart.CFrame * CFrame.new(0,0,10))
+                    end
+                end
+            end)
         end)
         
+        --[[page15:Toggle("Collect Azure Ember", _G.ColletEmber, function(value)
+            _G.ColletEmber = value
+            spawn(function()
+                while task.wait() do
+                    if _G.ColletEmber then
+                        toTarget(game.Workspace.EmberTemplate.Part.CFrame)
+                    end
+                end
+            end)
+        end)]]
         page15:Toggle("Collect Azure Ember", _G.ColletEmber, function(value)
             _G.ColletEmber = value
+            spawn(function()
+                while _G.ColletEmber do
+                    wait() -- เลื่อน wait() มาที่ต้น loop
+                    pcall(function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
+                    end)
+                end
+            end)
         end)
+        
     else
         page15:Toggle("มองทะลุเกาะจิ้งจอก", _G.EspKitsuneIsland, function(value)
             _G.EspKitsuneIsland = value
@@ -15601,40 +15634,41 @@ end
         
         page15:Toggle("เทเลพอร์ตไปหาเกาะจิ้งจอก", _G.TptoKisuneIsland, function(value)
             _G.TptoKisuneIsland = value
+            spawn(function()
+                while task.wait() do
+                    if _G.TptoKisuneIsland then
+                        toTarget(game.Workspace.Map.KitsuneIsland.ShrineActive.NeonShrinePart.CFrame * CFrame.new(0,100,0))
+                    end
+                end
+            end)
         end)
      
         
         page15:Toggle("เทเลพอร์ตไปหาหินศาลเจ้าจิ้งจอก", _G.TptoKisuneshrine, function(value)
             _G.TptoKisuneshrine = value
+            spawn(function()
+                while task.wait() do
+                    if _G.TptoKisuneshrine then
+                        toTarget(game.Workspace.Map.KitsuneIsland.ShrineActive.NeonShrinePart.CFrame * CFrame.new(0,0,10))
+                    end
+                end
+            end)
         end)
         
         page15:Toggle("เก็บวิญญาณไฟ", _G.ColletEmber, function(value)
             _G.ColletEmber = value
-        end)
-    end
-        spawn(function()
-            while task.wait() do
-                if _G.TptoKisuneIsland then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Map.KitsuneIsland.ShrineActive.NeonShrinePart.CFrame * CFrame.new(0,100,0)
+            spawn(function()
+                while _G.ColletEmber do
+                    wait()
+                    pcall(function()
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
+                    end)
                 end
-            end
+            end)
         end)
-
-        spawn(function()
-            while task.wait() do
-                if _G.TptoKisuneshrine then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.Map.KitsuneIsland.ShrineActive.NeonShrinePart.CFrame * CFrame.new(0,0,10)
-                end
-            end
-        end)
+    end 
         
-        spawn(function()
-            while task.wait() do
-                if _G.ColletEmber then
-                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.workspace.EmberTemplate.Part.CFrame
-                end
-            end
-        end)
+
         
         
 
