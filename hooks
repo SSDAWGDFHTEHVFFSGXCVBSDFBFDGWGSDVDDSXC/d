@@ -10,57 +10,21 @@ game:Shutdown()
 end;
 if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     if World3 then
-    local Moon = {
-        ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
-        ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
-        ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌗
-        ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
-        ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
-        ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
-        ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
-        ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
-    };
-    for i, v in pairs(Moon) do
-        if game:GetService("Lighting").Sky.MoonTextureId == v then
-            MoonPercent = i / 8 * 100
-        end
-    end
     
     for i, v in pairs(game.Players:GetPlayers()) do
         PlayersMin = i
     end
-    
-    if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
-        MoonIcon = '🌔'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
-        MoonIcon = '🌓'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
-        MoonIcon = '🌒'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
-        MoonIcon = '🌑'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
-        MoonIcon = '🌘'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
-        MoonIcon = '🌘'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
-        MoonIcon = '🌖'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
-        MoonIcon = '🌕'
-    end
-    
-    
+
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         MirageMessage = '```Mirage is spawing : 🟢```'
     else
         MirageMessage = '```Mirage isn\'t spawn : ❌```'
     end
-    
-    MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
     
-    local url = "https://discord.com/api/webhooks/1176125965496229908/2kXB9NQKOT5IqATztIa2RDxrCG6BevolXjGX3VFFkd9rovwK3SrqmJRtVoUN83y9oPNU"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1183662666296852552/LcBu1fcs8R8cwWDtSqrnM6MjzKD5oTYdVAxw0O5DuwaNb04HLdv05RMSYlVNJA-sOUnh"                                                                                                                
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                           
         ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                            
@@ -146,7 +110,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
-    local url = "https://discord.com/api/webhooks/1176126149580042290/UQrqcSEffCa_orYrjrJGhnlnKIT1lUkq4mpz0KxJWwGDiKKtv2gQhAFH-EWlp1B4YdbQ"                                                                                                               
+    local url = "https://discord.com/api/webhooks/1185623685311238245/bN2Ann0P6IYpU4DNRVlRO2RcIDgOFARYUbwtnlAfy3J7VQ2VjwM7pVOLF2vInTtc3geP"                                                                                                               
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                          
         ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                             
@@ -192,58 +156,21 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
 
 
 if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
-    if World3 then
-    local Moon = {
-        ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
-        ['7'] = "http://www.roblox.com/asset/?id=9709149052", -- 🌖
-        ['6'] = "http://www.roblox.com/asset/?id=9709143733", -- 🌗
-        ['5'] = "http://www.roblox.com/asset/?id=9709150401", -- 🌘
-        ['4'] = "http://www.roblox.com/asset/?id=9709135895", -- 🌑
-        ['3'] = "http://www.roblox.com/asset/?id=9709139597", -- 🌒
-        ['2'] = "http://www.roblox.com/asset/?id=9709150086", -- 🌓
-        ['1'] = "http://www.roblox.com/asset/?id=9709149680", -- 🌔
-    };
-    for i, v in pairs(Moon) do
-        if game:GetService("Lighting").Sky.MoonTextureId == v then
-            MoonPercent = i / 8 * 100
-        end
-    end
-    
+    if World3 then  
     for i, v in pairs(game.Players:GetPlayers()) do
-        PlayersMin = i
+        PlayersMin = i 
     end
-    
-    if game:GetService("Lighting").Sky.MoonTextureId == Moon['1'] then
-        MoonIcon = '🌔'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['2'] then
-        MoonIcon = '🌓'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['3'] then
-        MoonIcon = '🌒'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['4'] then
-        MoonIcon = '🌑'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['5'] then
-        MoonIcon = '🌘'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['6'] then
-        MoonIcon = '🌘'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['7'] then
-        MoonIcon = '🌖'
-    elseif game:GetService("Lighting").Sky.MoonTextureId == Moon['8'] then
-        MoonIcon = '🌕'
-    end
-    
-    
     if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
-        MirageMessage = '```Kitsune Island is spawing : 🟢```'
+        KitsuneMassasge = '```Kitsune Island is spawing : 🟢```'
     else
-        MirageMessage = '```Kitsune Island isn\'t spawn : ❌```'
+        KitsuneMassasge = '```Kitsune Island isn\'t spawn : ❌```'
     end
     
-    MoonMessage = '```' .. tostring(MoonPercent .. '%' .. ' : ' .. MoonIcon) .. '```'
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
     
-    local url = "https://discord.com/api/webhooks/1185808549650124830/BKJ1zW3PaL5XN7_KATm1TfUFCnw_ie_YBX4Xf3BLmtJCO9GdD12YZN0rw-fVyqseLNXP"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1185808553001357385/Cxnkg78ZJtlkifZ--GLwHuxu1i702XoYXpbo3x2RwmFEDP9t7jOAiFRJtp62nxXGHSKy"                                                                                                                
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                           
         ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                            
@@ -268,7 +195,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
                     },
                     {
                         ["name"] = "[🦊] Kitsune Check",
-                        ["value"] = MirageMessage,
+                        ["value"] = KitsuneMassasge,
                         ["inline"] = true
                     }
                 },
