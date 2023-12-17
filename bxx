@@ -15603,24 +15603,28 @@ end
                 end
             end)
         end)
-        
-        --[[page15:Toggle("Collect Azure Ember", _G.ColletEmber, function(value)
-            _G.ColletEmber = value
-            spawn(function()
-                while task.wait() do
-                    if _G.ColletEmber then
-                        toTarget(game.Workspace.EmberTemplate.Part.CFrame)
-                    end
-                end
-            end)
-        end)]]
-        page15:Toggle("Collect Azure Ember[Beta if bug tell me]", _G.ColletEmber, function(value)
+
+        --[[page15:Toggle("Collect Azure Ember[Beta if bug tell me]", _G.ColletEmber, function(value)
             _G.ColletEmber = value
             spawn(function()
                 while _G.ColletEmber do
                     wait() -- เลื่อน wait() มาที่ต้น loop
                     pcall(function()
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
+                    end)
+                end
+            end)
+        end)]]
+        page15:Toggle("Collect Azure Ember[[ถ้าบัคแจ้งในดิส[2]", _G.Test2, function(value)
+            _G.Test2 = value
+            spawn(function()
+            while _G.Test2 do task.wait()
+                pcall(function()
+                for _, v in pairs(game.workspace.EmberTemplate:GetChildren()) do
+                    if v.Name == "Part" then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                            end
+                        end
                     end)
                 end
             end)
@@ -15655,18 +15659,21 @@ end
             end)
         end)
         
-        page15:Toggle("เก็บวิญญาณไฟ[ทดลอง ถ้าบัคแจ้งในดิส]", _G.ColletEmber, function(value)
-            _G.ColletEmber = value
+        page15:Toggle("เก็บวิญญาณไฟ[ถ้าบัคแจ้งในดิส[2]", _G.Test2, function(value)
+            _G.Test2 = value
             spawn(function()
-                while _G.ColletEmber do
-                    wait()
-                    pcall(function()
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
+            while _G.Test2 do task.wait()
+                pcall(function()
+                for _, v in pairs(game.workspace.EmberTemplate:GetChildren()) do
+                    if v.Name == "Part" then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                            end
+                        end
                     end)
                 end
             end)
         end)
-    end 
+    end
         
 
         
