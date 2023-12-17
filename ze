@@ -99,9 +99,11 @@ _G.Settings = {
     AutoNextPlace = false
 }
 if _G.Mode == "English" then
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":Don't press and run the pro several times, it will cause a bug and cause lag:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":If the gui doesn't load, use fluxus:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":that I distributed in the executor room.:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 else
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":อย่ากดรันโปรซ้ำหลายรอบจะเกิดบัคและทำให้แลค:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":ถ้าหน้าต่างโปรไม่โหลดให้ใช้ Fluxus:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
+    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":ที่ผมแจกในห้อง Executor:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 end
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
@@ -3659,7 +3661,7 @@ end
     local page9 = Library:Tab("Mirage","rbxassetid://12598594243")
     local page10 = Library:Tab("RaceV4","rbxassetid://7558782590")
     local page14 = Library:Tab("SeaEvent","rbxassetid://7052520309")
-    local page15 = Library:Tab("Kitsune","rbxassetid://13869838114")
+    local page15 = Library:Tab("Kitsune","rbxassetid://8028233454")
     local page11 = Library:Tab("Shop","rbxassetid://6031265976")
     local page12 = Library:Tab("Misc","rbxassetid://11447063791")
 page1:Seperator("Vector Hub")
