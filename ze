@@ -4006,8 +4006,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
                     if Questtween then Questtween:Stop() end
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-                    wait(0.9)
-                    if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+                    if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
                         if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", QuestName, LevelQuest)
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
@@ -4119,9 +4118,9 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                         if Modstween then Modstween:Stop() end wait(.5)
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
                     elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
-                        wait(2)
                         if Modstween then 
                             Modstween:Stop()
+                            
                            spawn(function()
                                 if posrandom <= 1 then
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
@@ -4167,8 +4166,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
                 if Questtween then Questtween:Stop() end
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-                wait(1)
-                if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+                if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
                     Com("F_","StartQuest", QuestName, LevelQuest)
                     Com("F_","SetSpawnPoint")
                 else
@@ -4243,7 +4241,6 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
             elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
-                wait(2)
                 if Modstween then 
                     Modstween:Stop()
                    spawn(function()
@@ -4291,8 +4288,8 @@ else
         elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
             if Questtween then Questtween:Stop() end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-            wait(1)
-            if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+
+            if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
                 Com("F_","StartQuest", QuestName, LevelQuest)
                 Com("F_","SetSpawnPoint")
             else
@@ -4368,7 +4365,6 @@ else
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
             elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
-                wait(2)
                 if Modstween then 
                     Modstween:Stop()
                     spawn(function()
