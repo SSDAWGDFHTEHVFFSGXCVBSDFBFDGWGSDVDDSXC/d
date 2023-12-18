@@ -3721,7 +3721,7 @@ page1:Toggle("Auto Farm Level", _G.Settings.AutoFarm, function(value)
     end
 end)  
 else
-page1:Toggle("ออโต้ฟาร์มเลเวล", _G.Settings.AutoFarm, function(value)
+page1:Toggle("ออโต้ฟาร์มเลเวล1", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
     _G.Settings.AutoFarm = value
     SaveSettings()
@@ -4167,6 +4167,8 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 if Questtween then Questtween:Stop() end
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
                 if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                    toTarget(CFrameQuest)
+                    wait()
                     Com("F_","StartQuest", QuestName, LevelQuest)
                     Com("F_","SetSpawnPoint")
                 else
@@ -4288,8 +4290,9 @@ else
         elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
             if Questtween then Questtween:Stop() end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-
             if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                toTarget(CFrameQuest)
+                wait()
                 Com("F_","StartQuest", QuestName, LevelQuest)
                 Com("F_","SetSpawnPoint")
             else
@@ -13695,7 +13698,7 @@ page8:Toggle("Auto Raids", _G.AutoRaids, function(value)
         task.wait()
     end
 end)
-page8:Toggle("Kill Aura.", _G.KillAura, function(value)
+page8:Toggle("Kill Aura", _G.KillAura, function(value)
     _G.KillAura = value
 end)
 page8:Toggle("Auto Next Place", _G.AutoNextPlace, function(value)
@@ -13720,7 +13723,7 @@ page8:Toggle("ออโต้ดันเจี้ยน", _G.AutoRaids, functio
         task.wait()
     end
 end)
-page8:Toggle("ออร่าฆ่า", _G.KillAura, function(value)
+page8:Toggle("ออร่าฆ่า11", _G.KillAura, function(value)
     _G.KillAura = value
 end)
 page8:Toggle("ออโต้เกาะต่อไป", _G.AutoNextPlace, function(value)
@@ -13840,8 +13843,8 @@ end)
 spawn(function()
     while task.wait(0) do
         if _G.KillAura then
-            for i,v in pairs(game.Workspace.Enemies:GetDescendants()) do
-                if v.Humanoid.Health > 0 then
+            for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
+                if  v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 400 then
                     pcall(function()
                         repeat task.wait(.1)
                             sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
@@ -13849,13 +13852,14 @@ spawn(function()
                             v.HumanoidRootPart.CanCollide = false
                             v.HumanoidRootPart.Size = Vector3.new(50,50,50)
 							v.HumanoidRootPart.Transparency = 0.5
-                        until not _G.KillAura 
+                        until not _G.KillAura or v.Humanoid.Health <= 0 or not v.Parent
                     end)
                 end
             end
         end
     end
 end)
+
 
 spawn(function()
 pcall(function()
