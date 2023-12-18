@@ -4006,8 +4006,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 150 then
                     if Questtween then Questtween:Stop() end
                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-                    wait(0.9)
-                    if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+                    if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
                         if game:GetService("Players").LocalPlayer.Character:WaitForChild("Humanoid").Health > 0 then
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("StartQuest", QuestName, LevelQuest)
                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
@@ -4121,6 +4120,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                         if Modstween then 
                             Modstween:Stop()
+                            
                            spawn(function()
                                 if posrandom <= 1 then
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
@@ -4163,11 +4163,12 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                 if Questtween then Questtween:Stop() end
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-            elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+            elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 10 then --(CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250
                 if Questtween then Questtween:Stop() end
                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-                wait(1)
-                if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+                if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
+                    wait(1)
                     Com("F_","StartQuest", QuestName, LevelQuest)
                     Com("F_","SetSpawnPoint")
                 else
@@ -4286,11 +4287,12 @@ else
         elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
             if Questtween then Questtween:Stop() end
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 10 then --(CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250
             if Questtween then Questtween:Stop() end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
-            wait(1)
-            if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
+            if (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 10 then
+                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
+                wait(1)
                 Com("F_","StartQuest", QuestName, LevelQuest)
                 Com("F_","SetSpawnPoint")
             else
@@ -4417,7 +4419,7 @@ local oldcheckquest = NameMon
 
 
 task.spawn(function()
-while task.wait() do
+while wait() do
 pcall(function()
     if _G.Settings.AutoFarm then
         if _G.DoubleQuest then
@@ -4436,7 +4438,7 @@ pcall(function()
                         if NoLoopDuplicate == false then
                             if CheckNotifyComplete() and _G.AutoFarm then
                                 NoLoopDuplicate = true
-                                while task.wait() do
+                                while wait() do
                                     SubQuest = true
                                     if CheckNotifyComplete() or _G.AutoFarm == false then
                                         break;
@@ -12892,7 +12894,7 @@ spawn(function()
             if Questtween then Questtween:Stop() end
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",
                 Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 10 then --(CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250
             if Questtween then Questtween:Stop() end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
             wait(1)
@@ -13080,7 +13082,7 @@ local Cam = workspace.CurrentCamera
         elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
             if Questtween then Questtween:Stop() end
             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
+        elseif (CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 10 then --(CFrameQuest.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250
             if Questtween then Questtween:Stop() end
             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameQuest
             wait(1)
@@ -13842,19 +13844,22 @@ spawn(function()
     while task.wait(0) do
         if _G.KillAura then
             for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-               -- if v.Humanoid.Health > 0 then
+                if  v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 400 then
                     pcall(function()
                         repeat task.wait(.1)
+                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
                             v.Humanoid.Health = 0
                             v.HumanoidRootPart.CanCollide = false
-                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
-                        until not _G.KillAura 
+                            v.HumanoidRootPart.Size = Vector3.new(50,50,50)
+							v.HumanoidRootPart.Transparency = 0.5
+                        until not _G.KillAura or v.Humanoid.Health <= 0 or not v.Parent
                     end)
-               -- end
+                end
             end
         end
     end
 end)
+
 
 spawn(function()
 pcall(function()
@@ -15615,12 +15620,14 @@ end
                 end
             end)
         end)]]
-        page15:Toggle("Collect Azure Ember[[ถ้าบัคแจ้งในดิส[3]", _G.Ez, function(value)
+        page15:Toggle("Collect Azure Ember[[if bug tell me ind iscord[4]", _G.Ez, function(value)
             _G.Ez = value
             spawn(function()
                 while _G.Ez do wait()
                     pcall(function()
+                        if game.Workspace.EmberTemplate then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
+                        end
                     end)
                 end
             end)
@@ -15655,12 +15662,14 @@ end
             end)
         end)
         
-        page15:Toggle("เก็บวิญญาณไฟ[ถ้าบัคแจ้งในดิส[3]", _G.Ez, function(value)
+        page15:Toggle("เก็บวิญญาณไฟ[ถ้าบัคแจ้งในดิส[4]", _G.Ez, function(value)
             _G.Ez = value
             spawn(function()
                 while _G.Ez do wait()
                     pcall(function()
+                        if game.Workspace.EmberTemplate then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
+                        end
                     end)
                 end
             end)
