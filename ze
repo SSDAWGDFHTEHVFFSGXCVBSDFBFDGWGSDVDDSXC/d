@@ -4121,6 +4121,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                         if Modstween then 
                             Modstween:Stop()
+                            wait(2)
                            spawn(function()
                                 if posrandom <= 1 then
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
@@ -4244,6 +4245,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
                     Modstween:Stop()
+                    wait(2)
                    spawn(function()
                         if posrandom <= 1 then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
@@ -4368,6 +4370,7 @@ else
             elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
                     Modstween:Stop()
+                    wait(2)
                     spawn(function()
                         if posrandom <= 1 then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
@@ -15615,15 +15618,15 @@ end
                 end
             end)
         end)]]
-        page15:Toggle("Collect Azure Ember[[ถ้าบัคแจ้งในดิส[2]", _G.Test2, function(value)
-            _G.Test2 = value
+        page15:Toggle("Collect Azure Ember[[if bug tell me ind iscord[4]", _G.Ez, function(value)
+            _G.Ez = value
             spawn(function()
-            while _G.Test2 do task.wait()
-                for _, v in pairs(game.workspace.EmberTemplate:GetChildren()) do
-                    if v.Name == "Part" then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                while _G.Ez do wait()
+                    pcall(function()
+                        if game.Workspace.EmberTemplate then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
                         end
-                    end
+                    end)
                 end
             end)
         end)
@@ -15657,19 +15660,19 @@ end
             end)
         end)
         
-        page15:Toggle("เก็บวิญญาณไฟ[ถ้าบัคแจ้งในดิส[2]", _G.Test2, function(value)
-            _G.Test2 = value
+        page15:Toggle("เก็บวิญญาณไฟ[ถ้าบัคแจ้งในดิส[4]", _G.Ez, function(value)
+            _G.Ez = value
             spawn(function()
-            while _G.Test2 do task.wait()
-                for _, v in pairs(game.workspace.EmberTemplate:GetChildren()) do
-                    if v.Name == "Part" then
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                while _G.Ez do wait()
+                    pcall(function()
+                        if game.Workspace.EmberTemplate then
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
                         end
-                    end
+                    end)
                 end
             end)
         end)
-    end 
+    end
         
 
         
