@@ -15608,19 +15608,8 @@ end
                 end
             end)
         end)
-
-        --[[page15:Toggle("Collect Azure Ember[Beta if bug tell me]", _G.ColletEmber, function(value)
-            _G.ColletEmber = value
-            spawn(function()
-                while _G.ColletEmber do
-                    wait() -- เลื่อน wait() มาที่ต้น loop
-                    pcall(function()
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
-                    end)
-                end
-            end)
-        end)]]
-        page15:Toggle("Collect Azure Ember[[if bug tell me ind iscord[4]", _G.Ez, function(value)
+        
+        page15:Toggle("Collect Azure Ember", _G.Ez, function(value)
             _G.Ez = value
             spawn(function()
                 while _G.Ez do wait()
@@ -15662,7 +15651,7 @@ end
             end)
         end)
         
-        page15:Toggle("เก็บวิญญาณไฟ[ถ้าบัคแจ้งในดิส[4]", _G.Ez, function(value)
+        page15:Toggle("เก็บวิญญาณไฟ", _G.Ez, function(value)
             _G.Ez = value
             spawn(function()
                 while _G.Ez do wait()
