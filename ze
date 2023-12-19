@@ -3721,7 +3721,7 @@ page1:Toggle("Auto Farm Level", _G.Settings.AutoFarm, function(value)
     end
 end)  
 else
-page1:Toggle("ออโต้ฟาร์มเลเวล", _G.Settings.AutoFarm, function(value)
+page1:Toggle("ออโต้ฟาร์มเลเวล1232", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
     _G.Settings.AutoFarm = value
     SaveSettings()
