@@ -110,7 +110,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
-    local url = "https://discord.com/api/webhooks/1186291074537361438/nkmI_ZO3_EKW6Gf-jbi2LMp7uxknzpMf28UkySYlDGVMKNMSlgHiQWHS5oes4tfp7mQL"                                                                                                               
+    local url = "https://discord.com/api/webhooks/1186666513873256528/Iee2oBxE1U_c4Hv_OT_qYE2Uc7U9b6l2kR4HJnSeqNRHGgtTZlaedqK6JPGBC2HbT8KG"                                                                                                               
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                          
         ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                             
