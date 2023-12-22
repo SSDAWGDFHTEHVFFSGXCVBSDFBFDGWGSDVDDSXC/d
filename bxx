@@ -3708,7 +3708,20 @@ while true do wait(.1)
 UpdateClient1()
 end
 end)
-                      
+ 
+if _G.Mode == "English" then
+    page1:Label("Join My Discord For More News!")
+        page1:Button("Copy Discord Link",function()
+         setclipboard("https://discord.gg/977JQXX82w")
+         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Successfully copied",Icon = "rbxassetid://14645512457",Duration = 3})
+         end)
+        else
+            page1:Label("เข้าดิสคอร์ดเพื่อข่าวสารต่างๆ")
+            page1:Button("ก็อปปี้ลิ้งดิสคอร์ด",function()
+             setclipboard("https://discord.gg/977JQXX82w")
+             game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "คัดลอกเรียบร้อยแล้ว",Icon = "rbxassetid://14645512457",Duration = 3})
+             end)
+        end                      
 if _G.Mode == "English" then
 page1:Toggle("Auto Farm Level", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
@@ -3743,6 +3756,7 @@ if _G.Mode == "English" then
                     local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
                     if HealthPercent < 20 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
+                        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Safe Mode Running..",Icon = "rbxassetid://14645512457",Duration = 1})
                     end
                 end
                 task.wait()
@@ -3760,6 +3774,7 @@ if _G.Mode == "English" then
                         local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
                         if HealthPercent < 20 then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 100, 0)
+                            game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "เซฟโหมดทำงาน..",Icon = "rbxassetid://14645512457",Duration = 1}) 
                         end
                     end
                     task.wait()
@@ -3827,7 +3842,6 @@ while wait(.1) do
     end
 end
 end)
-
 if _G.Mode == "English" then
 if World1 then
     page1:Toggle("Auto Fast Level 1-300", _G.FastAutoFarm, function(value)
@@ -3840,40 +3854,7 @@ if World1 then
         _G.FastAutoFarm = value
     end)
 end
-end
-if _G.Mode == "English" then
-page1:Toggle("FAST TP", _G.BypassTP, function(value)
-    _G.BypassTP = value
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "If Bug Turn Off",Icon = "rbxassetid://14645512457",Duration = 3})
-end)
-else
-page1:Toggle("วาร์ปเร็ว", _G.BypassTP, function(value)
-    _G.BypassTP = value
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "ถ้าตายรัวๆให้ปิด",Icon = "rbxassetid://14645512457",Duration = 3})
-end)
-end
-if _G.Mode == "English" then
-page1:Button("Stop Teleport", function(value)
-    toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-end)
-else
-page1:Button("หยุดเทเลพอร์ต", function(value)
-    toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-end)
-end
-if _G.Mode == "English" then
-    page1:Label("Join My Discord For More News!")
-        page1:Button("Copy Discord Link",function()
-         setclipboard("https://discord.gg/977JQXX82w")
-         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Successfully copied",Icon = "rbxassetid://14645512457",Duration = 3})
-         end)
-        else
-            page1:Label("เข้าดิสคอร์ดเพื่อข่าวสารต่างๆ")
-            page1:Button("ก็อปปี้ลิ้งดิสคอร์ด",function()
-             setclipboard("https://discord.gg/977JQXX82w")
-             game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "คัดลอกเรียบร้อยแล้ว",Icon = "rbxassetid://14645512457",Duration = 3})
-             end)
-        end 
+end 
 posrandom = 0
 randomposenelfastfarm = 0
 function AutoFarmLevel()
@@ -11951,11 +11932,27 @@ if _G.TeleportIsland then
         end
     end
 end)
-page4:Button("หยุดเทเลพอร์ต", function(value)
-toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-end)
 end
-
+if _G.Mode == "English" then
+    page4:Toggle("BypassTP[For All Teleport]", _G.BypassTP, function(value)
+        _G.BypassTP = value
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "If Bug Turn Off",Icon = "rbxassetid://14645512457",Duration = 3})
+    end)
+    else
+    page4:Toggle("วาร์ปเร็ว[สำหรับการเทเลพอร์ตทั้งหมด]", _G.BypassTP, function(value)
+        _G.BypassTP = value
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "ถ้าตายรัวๆให้ปิด",Icon = "rbxassetid://14645512457",Duration = 3})
+    end)
+    end
+    if _G.Mode == "English" then
+        page4:Button("Stop Teleport", function(value)
+        toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+    end)
+    else
+        page4:Button("หยุดเทเลพอร์ต", function(value)
+        toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+    end)
+    end
 if _G.Mode == "English" then
     page1:Seperator("<<Observation Hki>>") 
 else
@@ -15664,12 +15661,7 @@ end
             end)
         end)
     end
-        
-
-        
-        
-
-        
+    
 page11:Seperator("🛒")
 
 if _G.Mode == "English" then
