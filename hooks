@@ -24,7 +24,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
     
-    local url = "https://discord.com/api/webhooks/1183662666296852552/LcBu1fcs8R8cwWDtSqrnM6MjzKD5oTYdVAxw0O5DuwaNb04HLdv05RMSYlVNJA-sOUnh"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1187677900317655100/6UuhkmFuYCrUvWF-rLXb1eDA9fJl_D3xknn1SU77lERhfdT9-iMpbOeXLXb-TEofSGCZ"                                                                                                                
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                           
         ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                            
@@ -110,7 +110,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
-    local url = "https://discord.com/api/webhooks/1186666513873256528/Iee2oBxE1U_c4Hv_OT_qYE2Uc7U9b6l2kR4HJnSeqNRHGgtTZlaedqK6JPGBC2HbT8KG"                                                                                                               
+    local url = "https://discord.com/api/webhooks/1187677629558571148/e4LkrShmRyUZGdpGgRy6EeMYcIdrutgXMOJpUuREdEEtccv578IWQ21BQuWNWOACAt8Z"                                                                                                               
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                          
         ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                             
@@ -170,7 +170,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
         '\'' .. tostring(game.JobId) .. '\'' .. ')'
     
     
-    local url = "https://discord.com/api/webhooks/1186453750995497023/-cxRpPlMQV5EhhtiauNIiyM9m-kQUo5KBudt7XaYka3710AevDZx5Gok8oUSGWhl6-lf"                                                                                                                
+    local url = "https://discord.com/api/webhooks/1187678009281491015/lMQ7Qo1j4jNG5qDSDVAeoHmQYzwpi4QRl-8n4xuFP2H_GBxcjP18VJJtslXwA36qQFRI"                                                                                                                
     local data = {
         ["username"] = 'Vector Hub',                                                                                                                                                                                                           
         ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                            
