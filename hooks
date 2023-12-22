@@ -74,7 +74,7 @@ if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
     };
 
 for i, v in pairs(MoonCheck) do
-    if  game:GetService("Lighting").Sky.MoonTextureId == tonumber(i) then
+    if  game:GetService("Lighting").Sky.MoonTextureId == tonumber(i) or game:GetService("Lighting").Sky.MoonTextureId == v then
         if World3 then
         local Moon = {
             ['8'] = "http://www.roblox.com/asset/?id=9709149431", -- 🌕
