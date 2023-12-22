@@ -3708,7 +3708,20 @@ while true do wait(.1)
 UpdateClient1()
 end
 end)
-                      
+ 
+if _G.Mode == "English" then
+    page1:Label("Join My Discord For More News!")
+        page1:Button("Copy Discord Link",function()
+         setclipboard("https://discord.gg/977JQXX82w")
+         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Successfully copied",Icon = "rbxassetid://14645512457",Duration = 3})
+         end)
+        else
+            page1:Label("เข้าดิสคอร์ดเพื่อข่าวสารต่างๆ")
+            page1:Button("ก็อปปี้ลิ้งดิสคอร์ด",function()
+             setclipboard("https://discord.gg/977JQXX82w")
+             game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "คัดลอกเรียบร้อยแล้ว",Icon = "rbxassetid://14645512457",Duration = 3})
+             end)
+        end                      
 if _G.Mode == "English" then
 page1:Toggle("Auto Farm Level", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
@@ -3721,7 +3734,7 @@ page1:Toggle("Auto Farm Level", _G.Settings.AutoFarm, function(value)
     end
 end)  
 else
-page1:Toggle("ออโต้ฟาร์มเลเวล321", _G.Settings.AutoFarm, function(value)
+page1:Toggle("ออโต้ฟาร์มเลเวล", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
     _G.Settings.AutoFarm = value
     SaveSettings()
@@ -3827,7 +3840,6 @@ while wait(.1) do
     end
 end
 end)
-
 if _G.Mode == "English" then
 if World1 then
     page1:Toggle("Auto Fast Level 1-300", _G.FastAutoFarm, function(value)
@@ -3840,40 +3852,7 @@ if World1 then
         _G.FastAutoFarm = value
     end)
 end
-end
-if _G.Mode == "English" then
-page1:Toggle("FAST TP", _G.BypassTP, function(value)
-    _G.BypassTP = value
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "If Bug Turn Off",Icon = "rbxassetid://14645512457",Duration = 3})
-end)
-else
-page1:Toggle("วาร์ปเร็ว", _G.BypassTP, function(value)
-    _G.BypassTP = value
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "ถ้าตายรัวๆให้ปิด",Icon = "rbxassetid://14645512457",Duration = 3})
-end)
-end
-if _G.Mode == "English" then
-page1:Button("Stop Teleport", function(value)
-    toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-end)
-else
-page1:Button("หยุดเทเลพอร์ต", function(value)
-    toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-end)
-end
-if _G.Mode == "English" then
-    page1:Label("Join My Discord For More News!")
-        page1:Button("Copy Discord Link",function()
-         setclipboard("https://discord.gg/977JQXX82w")
-         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Successfully copied",Icon = "rbxassetid://14645512457",Duration = 3})
-         end)
-        else
-            page1:Label("เข้าดิสคอร์ดเพื่อข่าวสารต่างๆ")
-            page1:Button("ก็อปปี้ลิ้งดิสคอร์ด",function()
-             setclipboard("https://discord.gg/977JQXX82w")
-             game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "คัดลอกเรียบร้อยแล้ว",Icon = "rbxassetid://14645512457",Duration = 3})
-             end)
-        end 
+end 
 posrandom = 0
 randomposenelfastfarm = 0
 function AutoFarmLevel()
@@ -4104,7 +4083,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     StartMagnet = false
                     FastAttack = false
                     if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
-                    Modstween = toTarget(CFrameQuest.Position,CFrameQuest)
+                    Modstween = toTarget(CFrameMon.Position,CFrameMon)
                     if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
                         if Modstween then Modstween:Stop() end wait(.5)
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
@@ -4117,10 +4096,11 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                     elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                         if Modstween then Modstween:Stop() end wait(.5)
                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-                    elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 35 then
+                    elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                         if Modstween then 
                             Modstween:Stop()
-                            spawn(function()
+                            
+                           spawn(function()
                                 if posrandom <= 1 then
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
                                     posrandom = posrandom + 0.1
@@ -4128,19 +4108,17 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
                                     posrandom = posrandom + 0.1
                                 elseif posrandom >= 2 and posrandom <= 3 then
-                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,-35)
+                                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
                                     posrandom = posrandom + 0.1
                                 elseif posrandom >= 3 and posrandom <= 4  then
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
                                     posrandom = posrandom + 0.1
-                            elseif posrandom >= 4 and posrandom <= 5 then
+                            elseif posrandom >=4 and posrandom <= 5 then
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
                                 posrandom = 0
                             end
                         end)
                     end
-                elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 35 then
-                    toTarget(CFrameMon)
                        -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                     end 
                 end
@@ -4230,7 +4208,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                 StartMagnet = false
                 FastAttack = false
                 if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
-                Modstween = toTarget(CFrameQuest.Position,CFrameQuest)
+                Modstween = toTarget(CFrameMon.Position,CFrameMon)
             if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
@@ -4243,10 +4221,10 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-            elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 35 then
+            elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
                     Modstween:Stop()
-                    spawn(function()
+                   spawn(function()
                         if posrandom <= 1 then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,35)
                             posrandom = posrandom + 0.1
@@ -4254,19 +4232,17 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
                             posrandom = posrandom + 0.1
                         elseif posrandom >= 2 and posrandom <= 3 then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,-35)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
                             posrandom = posrandom + 0.1
                         elseif posrandom >= 3 and posrandom <= 4  then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
                             posrandom = posrandom + 0.1
-                    elseif posrandom >= 4 and posrandom <= 5 then
+                    elseif posrandom >=4 and posrandom <= 5 then
                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
                         posrandom = 0
                     end
                 end)
             end
-        elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 35 then
-            toTarget(CFrameMon)
                -- game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
                 end 
             end
@@ -4357,7 +4333,7 @@ else
             StartMagnet = false
             FastAttack = false
             if not string.find(GetQuestTitle.Text, NameMon) then Com("F_","AbandonQuest"); end
-            Modstween = toTarget(CFrameQuest.Position,CFrameQuest)
+            Modstween = toTarget(CFrameMon.Position,CFrameMon)
             if World1 and (Name == "Fishman Commando" or Name == "Fishman Warrior") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 50000 then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(61163.8515625, 11.6796875, 1819.7841796875))
@@ -4370,7 +4346,7 @@ else
             elseif World2 and not string.find(Name, "Ship") and (CFrameQuest.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 30000 then
                 if Modstween then Modstween:Stop() end wait(.5)
                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("requestEntrance",Vector3.new(-6508.5581054688, 89.034996032715, -132.83953857422))
-            elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 35 then
+            elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude <= 250 then
                 if Modstween then 
                     Modstween:Stop()
                     spawn(function()
@@ -4381,7 +4357,7 @@ else
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
                             posrandom = posrandom + 0.1
                         elseif posrandom >= 2 and posrandom <= 3 then
-                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(0,0,-35)
+                            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon *CFrame.new(0,0,-35)
                             posrandom = posrandom + 0.1
                         elseif posrandom >= 3 and posrandom <= 4  then
                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
@@ -4392,8 +4368,6 @@ else
                     end
                 end)
             end
-        elseif (CFrameMon.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position).magnitude > 35 then
-            toTarget(CFrameMon)
               --game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon
             end 
         end
@@ -11956,11 +11930,27 @@ if _G.TeleportIsland then
         end
     end
 end)
-page4:Button("หยุดเทเลพอร์ต", function(value)
-toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-end)
 end
-
+if _G.Mode == "English" then
+    page4:Toggle("BypassTP[For All Teleport]", _G.BypassTP, function(value)
+        _G.BypassTP = value
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "If Bug Turn Off",Icon = "rbxassetid://14645512457",Duration = 3})
+    end)
+    else
+    page4:Toggle("วาร์ปเร็ว[สำหรับการเทเลพอร์ตทั้งหมด]", _G.BypassTP, function(value)
+        _G.BypassTP = value
+        game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "ถ้าตายรัวๆให้ปิด",Icon = "rbxassetid://14645512457",Duration = 3})
+    end)
+    end
+    if _G.Mode == "English" then
+        page4:Button("Stop Teleport", function(value)
+        toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+    end)
+    else
+        page4:Button("หยุดเทเลพอร์ต", function(value)
+        toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+    end)
+    end
 if _G.Mode == "English" then
     page1:Seperator("<<Observation Hki>>") 
 else
@@ -15613,19 +15603,8 @@ end
                 end
             end)
         end)
-
-        --[[page15:Toggle("Collect Azure Ember[Beta if bug tell me]", _G.ColletEmber, function(value)
-            _G.ColletEmber = value
-            spawn(function()
-                while _G.ColletEmber do
-                    wait() -- เลื่อน wait() มาที่ต้น loop
-                    pcall(function()
-                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Workspace.EmberTemplate.Part.CFrame
-                    end)
-                end
-            end)
-        end)]]
-        page15:Toggle("Collect Azure Ember[[if bug tell me ind iscord[4]", _G.Ez, function(value)
+        
+        page15:Toggle("Collect Azure Ember", _G.Ez, function(value)
             _G.Ez = value
             spawn(function()
                 while _G.Ez do wait()
@@ -15667,7 +15646,7 @@ end
             end)
         end)
         
-        page15:Toggle("เก็บวิญญาณไฟ[ถ้าบัคแจ้งในดิส[4]", _G.Ez, function(value)
+        page15:Toggle("เก็บวิญญาณไฟ", _G.Ez, function(value)
             _G.Ez = value
             spawn(function()
                 while _G.Ez do wait()
