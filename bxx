@@ -11761,9 +11761,6 @@ elseif World3 then
     end
 end
 end)
-page4:Button("StopTeleport", function(value)
-toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
-end)
 else
 page4:Toggle("เทเลพอร์ตไปยังเกาะที่เลือก", _G.TeleportIsland,function(value)
 _G.TeleportIsland = value
