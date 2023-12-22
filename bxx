@@ -14555,7 +14555,7 @@ _G.Mode = "Thai"
 spawn(function()
 pcall(function()
     while task.wait() do
-        if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
+        if game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') or game.Workspace._WorldOrigin.Locations:FindFirstChild('MirageIsland') then
             Mirragecheck:Set('🏝️ : เกาะลับเกิด 🟢')
         else
             Mirragecheck:Set('🏝️ : เกาะลับไม่เกิด ❌')
@@ -15556,7 +15556,34 @@ else
 end
 
  
-        page15:Seperator("🦊")
+page15:Seperator("🦊")
+local Kitsunecheck = page15:Label('...')
+if _G.Mode == "English" then
+spawn(function()
+    pcall(function()
+        while task.wait() do
+            if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
+                Kitsunecheck:Set('🦊 : Kitsune Island is Spawning 🟢')
+            else
+                Kitsunecheck:Set('🦊 : Kitsune Island Not Found ❌')
+            end
+        end
+    end)
+end)
+    else
+    _G.Mode = "Thai"
+    spawn(function()
+        pcall(function()
+            while task.wait() do
+                if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
+                    Kitsunecheck:Set('🦊 : เกาะจิ้งจอกเกิด 🟢')
+                else
+                    Kitsunecheck:Set('🦊 : เกาะจิ้งจอกไม่เกิด ❌')
+                end
+            end
+        end)
+    end)
+end
         local FM = page15:Label('...')
         task.spawn(function()
         while task.wait() do
