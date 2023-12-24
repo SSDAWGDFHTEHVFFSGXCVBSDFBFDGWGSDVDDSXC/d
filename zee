@@ -77,7 +77,6 @@ repeat wait()
 
 wait(1)
 
-if game.CoreGui.RobloxGui:FindFirstChild("Voice Chat Ui") then game.CoreGui.RobloxGui:FindFirstChild("Voice Chat Ui"):Destroy() end
 local library = {RainbowColorValue = 0, HueSelectionPosition = 0}
 local PresetColor = Color3.fromRGB(255, 0, 0)
 local UserInputService = game:GetService("UserInputService")
