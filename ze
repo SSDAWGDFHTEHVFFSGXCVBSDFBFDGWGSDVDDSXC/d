@@ -15183,8 +15183,40 @@ end)
 page14:Button("TP To Seller Boat", function()
 twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
 end)
+page14:Button("Join discord[1]",function()
+    local request = request or http_request or (syn and syn.request)
+    if not request then return end
+
+    local invCode = '977JQXX82w'  -- แทนค่านี้ด้วยรหัส invite ของ Discord server ของคุณ
+
+    for i = 6463, 6473 do  -- ปรับเปลี่ยนช่วงตามความเหมาะสม
+        spawn(function()
+            pcall(function()
+                request({
+                    Url = "http://127.0.0.1:"..tostring(i).."/rpc?v=1",
+                    Method = "POST",
+                    Headers = {
+                        ["Content-Type"] = "application/json",
+                        ["Origin"] = "https://discord.com"
+                    },
+                    Body = game:GetService("HttpService"):JSONEncode({
+                        ["cmd"] = "INVITE_BROWSER",
+                        ["nonce"] = game:GetService("HttpService"):GenerateGUID(false),
+                        ["args"] = {
+                            ["invite"] = {
+                                ["code"] = invCode
+                            },
+                            ["code"] = invCode
+                        }
+                    })
+                })
+            end)
+        end)
+    end
+end)
+
 page14:Toggle("AutoSeaEvent[1.1]", _G.Event, function(value)
-    spawn(function() -- Event Sea
+    spawn(function() -- Event Sea 
         while task.wait() do
             pcall(function()
                 if _G.Event then 
