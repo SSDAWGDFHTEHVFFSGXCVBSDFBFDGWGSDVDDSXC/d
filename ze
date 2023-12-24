@@ -8916,6 +8916,8 @@ if _G.Mode == "English" then
     page3:Seperator("<<FightingStyle>>") 
     page3:Toggle("Auto God Human", _G.AutoGodHuman, function(value)
         _G.AutoGodHuman = value
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true)
+        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
         BuyGodhuman = tonumber(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true))
         if BuyGodhuman then
             if BuyGodhuman ~= 1 then
@@ -8926,8 +8928,7 @@ if _G.Mode == "English" then
             while task.wait() do
                 pcall(function()
                     if _G.AutoGodHuman then
-                        BuyGodhuman = tonumber(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(
-                            "BuyGodhuman", true))
+                        BuyGodhuman = tonumber(game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman", true))
                         if BuyGodhuman then
                             if BuyGodhuman == 1 then
                                 game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
@@ -9363,8 +9364,7 @@ if _G.Mode == "English" then
                                                                                     v2.Humanoid.WalkSpeed = 0
                                                                                     v2.HumanoidRootPart.CanCollide = false
                                                                                     v2.Humanoid:ChangeState(11)
-                                                                                    v2.HumanoidRootPart.Size = Vector3
-                                                                                        .new(80, 80, 80)
+                                                                                    v2.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                                                                                 end
                                                                             end)
                                                                         end
@@ -9408,7 +9408,7 @@ if _G.Mode == "English" then
                                                         elseif posrandom >= 3 and posrandom <= 4  then
                                                             game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(-35,0,0)
                                                             posrandom = posrandom + 0.1
-                                                    elseif posrandom >=4 and posrandom <= 5 then
+                                                    elseif posrandom >= 4 and posrandom <= 5 then
                                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = CFrameMon * CFrame.new(35,0,0)
                                                         posrandom = 0
                                                     end
@@ -9527,8 +9527,7 @@ if _G.Mode == "English" then
                                                                             v2.Humanoid.WalkSpeed = 0
                                                                             v2.HumanoidRootPart.CanCollide = false
                                                                             v2.Humanoid:ChangeState(11)
-                                                                            v2.HumanoidRootPart.Size = Vector3.new(80, 80,
-                                                                                80)
+                                                                            v2.HumanoidRootPart.Size = Vector3.new(80, 80,80)
                                                                         end
                                                                     end)
                                                                 end
@@ -15397,25 +15396,25 @@ else
                                         v.HumanoidRootPart.CanCollide = false
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                     until v.Humanoid.Health <= 0 or not _G.Event
+                                else 
+                                    --Code:2  
+                                      for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                          if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
+                                             -- if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
+                                                  repeat
+                                                      task.wait()
+                                                      local CFrame = v.CFrame
+                                                      twoboat(CFrame)
+                                                  until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.Event
+                                                  if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 then
+                                                  local Boat = game.Workspace.Boats[SelectBoat]
+                                                  local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
+                                                  tweenModel(Boat, targetCFrame)
+                                                  end
+                                             -- end
+                                          end
+                                      end
                                 end
-                            end
-                        end
-                    else 
-                      --Code:2  
-                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                            if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
-                               -- if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
-                                    repeat
-                                        task.wait()
-                                        local CFrame = v.CFrame
-                                        twoboat(CFrame)
-                                    until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.Event
-                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 then
-                                    local Boat = game.Workspace.Boats[SelectBoat]
-                                    local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
-                                    tweenModel(Boat, targetCFrame)
-                                    end
-                               -- end
                             end
                         end
                     end
