@@ -15362,7 +15362,7 @@ else
     page14:Button("เทเลพอร์ตไปหาคนขายเรือ", function()
     twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
     end)
-    page14:Toggle("ออโต้อีเว้นท์ทะเลV1", _G.Event, function(value)
+    page14:Toggle("ออโต้อีเว้นท์ทะเลV2", _G.Event, function(value)
         _G.Event = value
         --Code:1
         spawn(function() -- Event Sea
@@ -15389,10 +15389,7 @@ else
                                             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                         end
                                         v.HumanoidRootPart.Size = Vector3.new(100,100,100)
-                                        v.HumanoidRootPart.Transparency = 1
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
-                                        v.Humanoid:ChangeState(11)
+                                        v.HumanoidRootPart.Transparency = 0.5
                                         v.HumanoidRootPart.CanCollide = false
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                     until v.Humanoid.Health <= 0 or not _G.Event
