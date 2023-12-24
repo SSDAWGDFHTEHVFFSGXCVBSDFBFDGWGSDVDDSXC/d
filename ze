@@ -1155,17 +1155,39 @@ function twoboat(gotoCFrame) --- Tween
 	end
 	end
 
-    local function tweenModel(model, goToCFrame)
+    function tweenModel(model, goToCFrame)
         local owner = model:FindFirstChild("Owner")
         if owner and owner:IsA("ObjectValue") and owner.Value then
             local ownerName = owner.Value.Name
             if ownerName == game.Players.LocalPlayer.Name then
-                local TweenService = game:GetService("TweenService")
                 for _, part in pairs(model:GetDescendants()) do
                     if part:IsA("BasePart") then
+                        local TweenService = game:GetService("TweenService")
                         local info = TweenInfo.new((part.Position - goToCFrame.Position).Magnitude / 200, Enum.EasingStyle.Linear)
                         local tween = TweenService:Create(part, info, { CFrame = goToCFrame })
-                        tween:Play()
+    
+                        local function isEnemyNearby()
+                            for i, enemy in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                if string.find(enemy.Name, "Fish Crew Member") or string.find(enemy.Name, "Piranha") or string.find(enemy.Name, "Shark") or string.find(enemy.Name, "Terror") then
+                                    if enemy.Humanoid.Health > 0 then
+                                        return true
+                                    end
+                                end
+                            end
+                            return false
+                        end
+    
+                        local function startTweens()
+                            while wait() do
+                                if isEnemyNearby() then
+                                    tween:Cancel()
+                                else
+                                    tween:Play()
+                                end
+                            end
+                        end
+    
+                        spawn(startTweens)
                     end
                 end
             else
@@ -1175,6 +1197,7 @@ function twoboat(gotoCFrame) --- Tween
             print("Owner information not found.")
         end
     end
+    
 --[[Function Hop]]
 local PlaceID = game.PlaceId
 local AllIDs = {}
@@ -15183,40 +15206,8 @@ end)
 page14:Button("TP To Seller Boat", function()
 twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
 end)
-page14:Button("Join discord[1]",function()
-    local request = request or http_request or (syn and syn.request)
-    if not request then return end
-
-    local invCode = '977JQXX82w'  -- แทนค่านี้ด้วยรหัส invite ของ Discord server ของคุณ
-
-    for i = 6463, 6473 do  -- ปรับเปลี่ยนช่วงตามความเหมาะสม
-        spawn(function()
-            pcall(function()
-                request({
-                    Url = "http://127.0.0.1:"..tostring(i).."/rpc?v=1",
-                    Method = "POST",
-                    Headers = {
-                        ["Content-Type"] = "application/json",
-                        ["Origin"] = "https://discord.com"
-                    },
-                    Body = game:GetService("HttpService"):JSONEncode({
-                        ["cmd"] = "INVITE_BROWSER",
-                        ["nonce"] = game:GetService("HttpService"):GenerateGUID(false),
-                        ["args"] = {
-                            ["invite"] = {
-                                ["code"] = invCode
-                            },
-                            ["code"] = invCode
-                        }
-                    })
-                })
-            end)
-        end)
-    end
-end)
-
-page14:Toggle("AutoSeaEvent[1.1]", _G.Event, function(value)
-    spawn(function() -- Event Sea 
+page14:Toggle("AutoSeaEvent", _G.Event, function(value)
+    spawn(function() -- Event Sea
         while task.wait() do
             pcall(function()
                 if _G.Event then 
@@ -15241,28 +15232,31 @@ page14:Toggle("AutoSeaEvent[1.1]", _G.Event, function(value)
                                     end
                                     v.HumanoidRootPart.Size = Vector3.new(100,100,100)
                                     v.HumanoidRootPart.Transparency = 1
+                                    v.Humanoid.JumpPower = 0
+                                    v.Humanoid.WalkSpeed = 0
+                                    v.Humanoid:ChangeState(11)
                                     v.HumanoidRootPart.CanCollide = false
                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                 until v.Humanoid.Health <= 0 or not _G.Event
-                        end
-                    elseif v.Humanoid.Health <= 0 and _G.Event then
-                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                            if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
-                               -- if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
-                                    repeat
-                                        task.wait()
-                                        local CFrame = v.CFrame
-                                        twoboat(CFrame)
-                                    until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.Event
-                                    wait(1) 
-                                    if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 then
-                                    local Boat = game.Workspace.Boats[SelectBoat]
-                                    local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
-                                    tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
-                               end
+                            elseif v.Humanoid.Health <= 0 and _G.Event then
+                                for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                    if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
+                                       -- if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
+                                            repeat
+                                                task.wait()
+                                                local CFrame = v.CFrame
+                                                twoboat(CFrame)
+                                            until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.Event
+                                            wait(1) 
+                                            if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 then
+                                            local Boat = game.Workspace.Boats[SelectBoat]
+                                            local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
+                                            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+                                       end
+                                    end
+                                end
                             end
                         end
-                    end
                     end
                 end
             end)
@@ -15393,7 +15387,7 @@ else
     page14:Button("เทเลพอร์ตไปหาคนขายเรือ", function()
     twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
     end)
-    page14:Toggle("ออโต้อีเว้นท์ทะเล[2]", _G.Event, function(value)
+    page14:Toggle("ออโต้อีเว้นท์ทะเลV1", _G.Event, function(value)
         spawn(function() -- Event Sea
             while task.wait() do
                 pcall(function()
@@ -15425,31 +15419,30 @@ else
                                         v.HumanoidRootPart.CanCollide = false
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                     until v.Humanoid.Health <= 0 or not _G.Event
-                            end
-                        elseif v.Humanoid.Health <= 0 and _G.Event then
-                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
-                                   -- if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
-                                        repeat
-                                            task.wait()
-                                            local CFrame = v.CFrame
-                                            twoboat(CFrame)
-                                        until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.Event
-                                        wait(1) 
-                                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 then
-                                        local Boat = game.Workspace.Boats[SelectBoat]
-                                        local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
-                                        tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
-                                   end
+                                    else
+                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                            if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
+                                                if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
+                                                    repeat
+                                                        task.wait()
+                                                        local CFrame = v.CFrame
+                                                        twoboat(CFrame)
+                                                    until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.Event
+                                                    wait(2)
+                                                    local Boat = game.Workspace.Boats[SelectBoat]
+                                                    local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
+                                                    tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+                                                end
+                                            end
+                                        end
+                                    end
                                 end
                             end
                         end
-                        end
-                    end
-                end)
-            end
+                    end)
+                end
+            end)
         end)
-    end)
     
     page14:Toggle("ออโต้เจ้าทะเล", _G.AutoSeabeast, function(value)
                 _G.AutoSeabeast = value
