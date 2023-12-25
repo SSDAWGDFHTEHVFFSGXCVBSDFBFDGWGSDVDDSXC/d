@@ -3642,6 +3642,7 @@ end
     local page10 = Library:Tab("RaceV4","rbxassetid://7558782590")
     local page14 = Library:Tab("SeaEvent","rbxassetid://7052520309")
     local page15 = Library:Tab("Kitsune","rbxassetid://8028233454")
+    local page16 = Library:Tab("Christmas","rbxassetid://8234458975") 
     local page11 = Library:Tab("Shop","rbxassetid://6031265976")
     local page12 = Library:Tab("Misc","rbxassetid://11447063791")
 page1:Seperator("Vector Hub")
@@ -15182,7 +15183,7 @@ end)
 page14:Button("TP To Seller Boat", function()
 twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
 end)
-page14:Toggle("AutoSeaEvent", _G.Event, function(value)
+--[[page14:Toggle("AutoSeaEvent", _G.Event, function(value)
     spawn(function() -- Event Sea
         while task.wait() do
             pcall(function()
@@ -15237,7 +15238,7 @@ page14:Toggle("AutoSeaEvent", _G.Event, function(value)
             end)
         end
     end)
-end)
+end)]]
 
 page14:Toggle("Auto Seabeast", _G.AutoSeabeast, function(value)
             _G.AutoSeabeast = value
@@ -15362,7 +15363,7 @@ else
     page14:Button("เทเลพอร์ตไปหาคนขายเรือ", function()
     twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
     end)
-    page14:Toggle("ออโต้อีเว้นท์ทะเลV3", _G.Event, function(value)
+    --[[page14:Toggle("ออโต้อีเว้นท์ทะเลV3", _G.Event, function(value)
         _G.Event = value
         --Code:1
         spawn(function() -- Event Sea
@@ -15398,7 +15399,7 @@ else
                         end
                     else
                         for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                            if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
+                            if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then --ไปเรือคนอื่นมั่ว
                                 repeat
                                     task.wait()
                                     local CFrame = v.CFrame
@@ -15413,7 +15414,7 @@ else
                 end)
             end
         end)
-    end)
+    end)]]
     
     
     page14:Toggle("ออโต้เจ้าทะเล", _G.AutoSeabeast, function(value)
@@ -15661,7 +15662,83 @@ end
             end)
         end)
     end
-    
+
+    page16:Seperator("❄️")
+    page16:Label("If you want to farm candy, just turn on Auto Farm Level.")
+    page16:Toggle("Auto Collect Christmas Boxes", _G.ChristmasBox, function(value)
+        _G.ChristmasBox = value -- ลูป
+        spawn(function()
+            while wait() do
+                if _G.ChristmasBox then
+                    local player = game.Players.LocalPlayer
+                    local rootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+                    if rootPart then
+                        for _, proximityPrompt in pairs(game.workspace:GetDescendants()) do
+                            if proximityPrompt:IsA("ProximityPrompt") and (proximityPrompt.Parent.Position - rootPart.Position).magnitude < 500 then
+                                player.Character.HumanoidRootPart.CFrame = proximityPrompt.Parent.CFrame
+                                wait(0.1)
+                                fireproximityprompt(proximityPrompt, 20)
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end) 
+  
+page16:Button("Elf-Hat [250Candies]", function()
+local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 3,
+    [4] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end)
+
+page16:Button("Santa-Hat [500Candies]", function()
+local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 3,
+    [4] = 2
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end)
+page16:Button("Sleigh-Boat [1KCandies]", function()
+local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 3,
+    [4] = 3
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end)
+
+page16:Button("200Fragments [50Candies]", function()
+local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 2,
+    [4] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end)
+page16:Button("500Fragments [100Candies]", function()
+local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 2,
+    [4] = 2
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end)
+
 page11:Seperator("🛒")
 
 if _G.Mode == "English" then
