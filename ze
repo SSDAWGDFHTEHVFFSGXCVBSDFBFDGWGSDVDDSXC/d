@@ -15694,11 +15694,15 @@ end
     end) 
         page16:Toggle("Teleport to event island", _G.TptoEventIsland, function(value)
         _G.TptoEventIsland = value
-        while _G.TptoEventIsland do wait()
-        toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272))
-        else
-            toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame) 
-        end
+        spawn(function()
+            while wait() do
+                if _G.TptoEventIsland then
+                toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272))
+                else
+                    toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame) 
+                end
+            end
+        end)
     end)
     page16:Line()
     page16:Label("Trade")
