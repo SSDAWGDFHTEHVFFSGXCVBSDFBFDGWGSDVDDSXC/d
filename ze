@@ -337,7 +337,7 @@ task.spawn(function()
 game:GetService("RunService").Stepped:Connect(function()
 pcall(function()
     --[World 1]
-    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoEventIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
     _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
     --[World 2]
     _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -404,7 +404,7 @@ end)
 spawn(function()
 while wait(.1) do
 pcall(function()
-    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoEventIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
     _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
     --[World 2]
     _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -453,7 +453,7 @@ end)
 
 spawn(function()
 game:GetService("RunService").Stepped:Connect(function()
-    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoEventIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
 _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
 --[World 2]
 _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -494,7 +494,7 @@ end
 spawn(function()
 while task.wait() do
 pcall(function()
-    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+    if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoEventIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
         _G.AutoSaber or _G.AutoPole or  _G.TeleportIsland or
         --[World 2]
         _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2 or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -533,7 +533,7 @@ end)
 
 spawn(function() ------body velocity
 game:GetService("RunService").Stepped:Connect(function()
- if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
+ if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoEventIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
         _G.AutoSaber or _G.AutoPole or _G.TeleportIsland or
         --[World 2]
         _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
@@ -11561,7 +11561,7 @@ TeleportTable = { "Dock", "Mansion", "Kingdom Of Rose", "Cafe", "Sunflower Field
 "Ice Castle", "Usopp's Island", "inscription Island", "Forgotten Island", "Ghost Ship" }
 elseif World3 then
 TeleportTable = { "Port Town", "Hydra Island", "Gaint Tree", "Mansion", "Castle on the Sea", "Haunted Castle",
-"Icecream Island", "Peanut Island", "Lab", "Cake Loaf", "TikiOutpost" }
+"Icecream Island", "Peanut Island", "Cake Loaf", "Candy Isand", "TikiOutpost" }
 end
 page4:Line()
 if _G.Mode == "English" then
@@ -11735,6 +11735,9 @@ elseif World3 then
     if _G.SelectLocalTeleport == "Cake Loaf" then
         toTarget(CFrame.new(-1977.36767578125, 251.509521484375, -12380.4189453125))
     end
+    if _G.SelectLocalTeleport == "Candy Isand" then
+        toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272) * CFrame.new(0,100,0))
+    end
     if _G.SelectLocalTeleport == "TikiOutpost" then
         toTarget(CFrame.new(-16753.5977, 189.528107, 451.797333, -0.777145505, 0, -0.629321039, 0, 1, 0, 0.629321039, 0, -0.777145505))
     end
@@ -11902,6 +11905,9 @@ if _G.TeleportIsland then
         end
         if _G.SelectLocalTeleport == "Cake Loaf" then
             toTarget(CFrame.new(-1977.36767578125, 251.509521484375, -12380.4189453125))
+        end
+        if _G.SelectLocalTeleport == "Candy Isand" then
+            toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272) * CFrame.new(0,100,0))
         end
         if _G.SelectLocalTeleport == "TikiOutpost" then
             toTarget(CFrame.new(-16753.5977, 189.528107, 451.797333, -0.777145505, 0, -0.629321039, 0, 1, 0, 0.629321039, 0, -0.777145505))
@@ -15664,7 +15670,8 @@ end
     end
 
     page16:Seperator("❄️")
-    page16:Label("If you want to farm candy, just turn on Auto Farm Level.")
+    page16:Label("If you want to farm candy,")
+    page16:Label("just turn on Auto Farm Level.")
     page16:Toggle("Auto Collect Christmas Boxes", _G.ChristmasBox, function(value)
         _G.ChristmasBox = value -- ลูป
         spawn(function()
@@ -15685,7 +15692,16 @@ end
             end
         end)
     end) 
-  
+        page16:Toggle("Teleport to event island", _G.TptoEventIsland, function(value)
+        _G.TptoEventIsland = value
+        while _G.TptoEventIsland do wait()
+        toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272))
+        else
+            toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame) 
+        end
+    end)
+    page16:Line()
+    page16:Label("Trade")
 page16:Button("Elf-Hat [250Candies]", function()
 local args = {
     [1] = "Candies",
