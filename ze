@@ -15670,6 +15670,7 @@ end
     end
 
     page16:Seperator("❄️")
+    if _G.Mode == "English" then
     page16:Label("If you want to farm candy,")
     page16:Label("just turn on Auto Farm Level.")
     page16:Toggle("Auto Collect Christmas Boxes", _G.ChristmasBox, function(value)
@@ -15695,15 +15696,13 @@ end
         page16:Toggle("Teleport to event island", _G.TptoEventIsland, function(value)
         _G.TptoEventIsland = value
         spawn(function()
-            while wait() do
                 if _G.TptoEventIsland then
                 toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272))
                 else
                     toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame) 
                 end
-            end
+            end)
         end)
-    end)
     page16:Line()
     page16:Label("Trade")
 page16:Button("Elf-Hat [250Candies]", function()
@@ -15758,7 +15757,94 @@ local args = {
 
 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
 end)
+else
+    page16:Label("ถ้าต้องการฟาร์มแคนดี้")
+    page16:Label("แค่เปิดออโต้ฟาร์มเวล")
+    page16:Toggle("ออโต้เก็บกล่องคริสต์มาส", _G.ChristmasBox, function(value)
+        _G.ChristmasBox = value -- ลูป
+        spawn(function()
+            while wait() do
+                if _G.ChristmasBox then
+                    local player = game.Players.LocalPlayer
+                    local rootPart = player.Character and player.Character:FindFirstChild("HumanoidRootPart")
+                    if rootPart then
+                        for _, proximityPrompt in pairs(game.workspace:GetDescendants()) do
+                            if proximityPrompt:IsA("ProximityPrompt") and (proximityPrompt.Parent.Position - rootPart.Position).magnitude < 500 then
+                                player.Character.HumanoidRootPart.CFrame = proximityPrompt.Parent.CFrame
+                                wait(0.1)
+                                fireproximityprompt(proximityPrompt, 20)
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end) 
+        page16:Toggle("เทเลพอร์ตไปที่เกาะอีเว้นท์", _G.TptoEventIsland, function(value)
+        _G.TptoEventIsland = value
+        spawn(function()
+                if _G.TptoEventIsland then
+                toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272))
+                else
+                    toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame) 
+                end
+            end)
+        end)
+    page16:Line()
+    page16:Label("เทรด")
+page16:Button("Elf-Hat [250แคนดี้]", function()
+local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 3,
+    [4] = 1
+}
 
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end)
+
+page16:Button("Santa-Hat [500แคนดี้]", function()
+local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 3,
+    [4] = 2
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end)
+page16:Button("Sleigh-Boat [1Kแคนดี้]", function()
+local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 3,
+    [4] = 3
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end)
+
+page16:Button("200เงินม่วง [50Candies]", function()
+local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 2,
+    [4] = 1
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end)
+page16:Button("500เงินม่วง [100แคนดี้]", function()
+local args = {
+    [1] = "Candies",
+    [2] = "Buy",
+    [3] = 2,
+    [4] = 2
+}
+
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+end)
+end
 page11:Seperator("🛒")
 
 if _G.Mode == "English" then
