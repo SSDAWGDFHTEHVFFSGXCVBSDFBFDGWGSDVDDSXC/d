@@ -15139,51 +15139,51 @@ local Player = game.Players.LocalPlayer
 local Humanoid = Player.Character.Humanoid
 local HumanoidName = Humanoid.Name
 local PlayerName = Player.Name
-page14:Toggle("ออโต้อีเว้นท์ทะเลV4.5", _G.AutoEvent, function(value)
+page14:Toggle("ออโต้อีเว้นท์ทะเลV5", _G.AutoEvent, function(value)
     _G.AutoEvent = value
     --Code:1
     spawn(function() -- Event Sea
         while task.wait() do
             pcall(function()
                 if _G.AutoEvent then 
-                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                        if v:IsA("VehicleSeat") and  PlayerName == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
-                            repeat
-                                task.wait()
-                                local CFrame = v.CFrame
-                                twoboat(CFrame)
-                            until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.AutoEvent
                             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                 if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
                                     if v.Humanoid.Health <= 0 then 
-                                        local Boat = game.Workspace.Boats[SelectBoat]
-                                        local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
-                                        tweenModel(Boat, targetCFrame)
-                                    elseif v.Humanoid.Health > 0 then 
-                                        local StopBoat = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
-                                        StopBoatF()
-                                        tweenModel(Boat, StopBoat)
-                                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                            if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
-                                                if v.Humanoid.Health > 0 then 
-                                                    repeat task.wait()
-                                                        _G.FastType = "Fast"
-                                                        FastAttack = true
-                                                        if _G.AutoHaki then
-                                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                            if v:IsA("VehicleSeat") and  PlayerName == game.Workspace.Boats[SelectBoat].Owner.Value.Name and (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
+                                                repeat
+                                                    task.wait()
+                                                    local CFrame = v.CFrame
+                                                    twoboat(CFrame)
+                                                until v.Humanoid.Health > 0 or not _G.AutoEvent
+                                            local Boat = game.Workspace.Boats[SelectBoat]  
+                                            local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
+                                            tweenModel(Boat, targetCFrame)
+                                        elseif v.Humanoid.Health > 0 then 
+                                            local StopBoat = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+                                            StopBoatF()
+                                            tweenModel(Boat, StopBoat)
+                                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                                if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
+                                                    if v.Humanoid.Health > 0 then 
+                                                        repeat task.wait()
+                                                            _G.FastType = "Fast"
+                                                            FastAttack = true
+                                                            if _G.AutoHaki then
+                                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                                end
                                                             end
-                                                        end
-                                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                                            task.wait()
-                                                            EquipWeapon(_G.SelectWeapon)
-                                                        end
-                                                        if not _G.FastAttack then
-                                                            game:GetService'VirtualUser':CaptureController()
-                                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                        end
-                                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                                    until v.Humanoid.Health <= 0 or not _G.AutoEvent
+                                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                                task.wait()
+                                                                EquipWeapon(_G.SelectWeapon)
+                                                            end
+                                                            if not _G.FastAttack then
+                                                                game:GetService'VirtualUser':CaptureController()
+                                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                                            end
+                                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                                        until v.Humanoid.Health <= 0 or not _G.AutoEvent
                                                 end
                                             end
                                         end
@@ -15283,6 +15283,19 @@ page14:Toggle("Auto Seabeast", _G.AutoSeabeast, function(value)
                         if workspace.SeaBeasts:FindFirstChild("SeaBeast1") then
                             toTarget(workspace.SeaBeasts:FindFirstChild("SeaBeast1").HumanoidRootPart.CFrame * CFrame.new(0,460,0))
                             for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                                if v.ToolTip == "Melee" then
+                                    if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                                        EquipWeapon(v.Name)
+                                    end
+                                end
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
+                            wait(0.2)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
+                            wait(0.2)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
                                 if v.ToolTip == "Sword" then
                                     if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
                                         EquipWeapon(v.Name)
