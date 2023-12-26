@@ -369,15 +369,15 @@ pcall(function()
             setfflag("HumanoidParallelRemoveNoPhysics", "False")
             setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
             game.Players.LocalPlayer.Character.Humanoid:ChangeState(11)
-            if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+           --[[ if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
                 game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
-            end
+            end]]
         else
             if game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart") then
                 if not game:GetService("Players").LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1") then
-                    if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
+                   --[[ if game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit == true then
                         game.Players.LocalPlayer.Character:WaitForChild("Humanoid").Sit = false
-                    end
+                    end]]
                     local BodyVelocity = Instance.new("BodyVelocity")
                     BodyVelocity.Name = "BodyVelocity1"
                     BodyVelocity.Parent = game:GetService("Players").LocalPlayer.Character.HumanoidRootPart
@@ -427,10 +427,10 @@ pcall(function()
     --[Raids]
     _G.AutoRaids or _G.AutoNextPlace
 then
-        if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+        --[[if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
             game.Players.LocalPlayer.Character.Humanoid:ChangeState(15)
             wait(5)
-        end
+        end]]
         PIO = false
         if not game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity") then
             local L_1 = Instance.new("BodyVelocity")
@@ -531,47 +531,6 @@ end)
 end
 end)
 
-spawn(function() ------body velocity
-game:GetService("RunService").Stepped:Connect(function()
- if _G.AutoFarm or _G.TptoKisuneIsland or _G.TptoEventIsland or _G.TptoKisuneshrine or _G.ColletEmber or _G.NeareastFarm or _G.Mirage or _G.AutoEvent or _G.Auto_Gear or _G.Auto_Gear or _G.TeleportGear or _G.AutoNewWorld or _G.TweenToFruitSpawn or
-        _G.AutoSaber or _G.AutoPole or _G.TeleportIsland or
-        --[World 2]
-        _G.AutoThirdSea or _G.AutoBartiloQuest or _G.Auto_Evo_Race_V2  or _G.AutoDarkCoat or _G.AutoSwanGlasses or
-        _G.AutoTrueTriplKatana or _G.AutoRengoku or _G.AutoEctoplasm or
-        _G.AutoFactory or
-        --[World 3]
-        _G.AutoRainbowHaki or _G.AutoEliteHunter or _G.AutoCastleRaid or _G.AutoMusketeerHat or _G.AutoBuddySword or
-        _G.AutoFarmBone or _G.SpawnBossHallow or _G.AutoKenHakiV2 or _G.AutoObservation or _G.AutoGodHuman or _G.AutoCavander or
-        _G.AutoCursedDualKatana or _G.AutoYamaSword or _G.AutoTushitaSword or _G.AutoSerpentBowor or
-        _G.AutoDarkDagger or _G.AutoCakePrince or _G.AutoDoughV2 or _G.AutoHolyTorch or
-        _G.AutoBuddySwords or _G.AutoFarmBossHallow or MobAura or YamaQuest2 or YamaQuest1 or _G.Auto_Cursed_Dual_Katana or
-        Tushita_Quest2 or Tushita_Quest1 or
-        _G.TeleporttoSeaBeast  or
-        _G.TPTOBOAT or 
-        Tushita_Quest2 or Tushita_Quest1 or AutoFarmMaterial or teleporttop or _G.AutoFarmChest or
-        --[Boss] 
-        _G.AutoAllBoss or _G.AutoBossSelect or _G.AutoFarmBoss  or
-        --[Mastery]
-        _G.AutoFarmFruitMastery or _G.AutoFarmGunMastery or _G.FarmMasterySwordList or
-        --[Raids]
-        _G.AutoRaids or _G.AutoNextPlace
-    then
-    if not game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv') then
-        local bv = Instance.new("BodyVelocity", game.Players.LocalPlayer.Character.HumanoidRootPart)
-        bv.Name = 'bv'
-        bv.MaxForce = Vector3.new(100000, 100000, 100000)
-        bv.Velocity = Vector3.new(0, 0, 0)
-    end
-else
-    if game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv') then
-        game.Players.localPlayer.Character.HumanoidRootPart:FindFirstChild('bv'):Destroy()
-    end
-end
-end)
-end)
-
-
-
 -- [BringMon]
 task.spawn(function()
 	while true do task.wait()
@@ -589,7 +548,7 @@ task.spawn(function()
         pcall(function()
             if StartMagnet then
                 for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 2500 then
+                    if not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 500 then
                         if InMyNetWork(v.HumanoidRootPart) then
                             v.HumanoidRootPart.CFrame = PosMon
                             v.Humanoid.JumpPower = 0
@@ -1166,13 +1125,12 @@ function twoboat(gotoCFrame) --- Tween
 						local info = TweenInfo.new((part.Position - goToCFrame.Position).Magnitude / 200, Enum.EasingStyle.Linear)
 						local tween = TweenService:Create(part, info, { CFrame = goToCFrame })
 						tween:Play()
+                        function StopBoatF()
+                            tween:Cancel()
+                            end
 					end
 				end
-			else
-				print("You are not the owner of the Boat.")
 			end
-		else
-			print("Owner information not found.")
 		end
 	end
 --[[Function Hop]]
@@ -3702,7 +3660,70 @@ if _G.Mode == "English" then
              setclipboard("https://discord.gg/977JQXX82w")
              game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "คัดลอกเรียบร้อยแล้ว",Icon = "rbxassetid://14645512457",Duration = 3})
              end)
-        end                      
+        end    
+        local Boat = game.Workspace.Boats[SelectBoat]
+        local StopBoat = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+        local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
+        local Player = game.Players.LocalPlayer
+        local Humanoid = Player.Character.Humanoid
+        local HumanoidName = Humanoid.Name
+        local PlayerName = Player.Name
+        page1:Toggle("ออโต้อีเว้นท์ทะเลV4", _G.AutoEvent, function(value)
+            _G.AutoEvent = value
+            --Code:1
+            spawn(function() -- Event Sea
+                while task.wait() do
+                    pcall(function()
+                        if _G.AutoEvent then 
+                            for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
+                                    if v.Humanoid.Health > 0 then 
+                                        repeat task.wait()
+                                            _G.FastType = "Fast"
+                                            FastAttack = true
+                                            if _G.AutoHaki then
+                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
+                                                end
+                                            end
+                                            if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
+                                                task.wait()
+                                                EquipWeapon(_G.SelectWeapon)
+                                            end
+                                            if not _G.FastAttack then
+                                                game:GetService'VirtualUser':CaptureController()
+                                                game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
+                                            end
+                                            toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                        until v.Humanoid.Health <= 0 or not _G.AutoEvent
+                                    end
+                                end
+                            end
+                        else
+                            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                if v:IsA("VehicleSeat") and  PlayerName == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
+                                    repeat
+                                        task.wait()
+                                        local CFrame = v.CFrame
+                                        twoboat(CFrame)
+                                    until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.AutoEvent
+                                    for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                                        if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
+                                            if v.Humanoid.Health <= 0 then 
+                                                tweenModel(Boat, targetCFrame)
+                                            else
+                                                StopBoatF()
+                                                tweenModel(Boat, StopBoat)
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end)
+                end
+            end)
+        end)                  
 if _G.Mode == "English" then
 page1:Toggle("Auto Farm Level", _G.Settings.AutoFarm, function(value)
     _G.AutoFarm = value
@@ -15369,7 +15390,8 @@ else
     page14:Button("เทเลพอร์ตไปหาคนขายเรือ", function()
     twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
     end)
-    --[[page14:Toggle("ออโต้อีเว้นท์ทะเลV3", _G.Event, function(value)
+
+    --[[page14:Toggle("ออโต้อีเว้นท์ทะเลV3", _G.Event, function(value) เห้ 
         _G.Event = value
         --Code:1
         spawn(function() -- Event Sea
@@ -15380,7 +15402,7 @@ else
                             if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
                                 if v.Humanoid.Health > 0 then 
                                     repeat task.wait()
-                                        _G.FastType = "Normal"
+                                        _G.FastType = "Fast"
                                         FastAttack = true
                                         if _G.AutoHaki then
                                             if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
@@ -15697,7 +15719,13 @@ end
         _G.TptoEventIsland = value
         spawn(function()
                 if _G.TptoEventIsland then
-                toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272))
+                    if World1 then
+                        toTarget(CFrame.new(1001.45471, 14.642293, -3803.67065, -0.977526665, 2.62664948e-08, 0.210811839, 1.22850086e-08, 1, -6.76317384e-08, -0.210811839, -6.35220019e-08, -0.977526665))
+                    elseif World2 then
+                        toTarget(CFrame.new(-5248.88086, 14.642293, 1531.04224, 0.481561244, 1.31851436e-08, 0.876412451, 4.15871781e-08, 1, -3.78953047e-08, -0.876412451, 5.46964323e-08, 0.481561244))
+                    elseif World3 then
+                        toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272))
+                    end
                 else
                     toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame) 
                 end
@@ -15781,15 +15809,21 @@ else
         end)
     end) 
         page16:Toggle("เทเลพอร์ตไปที่เกาะอีเว้นท์", _G.TptoEventIsland, function(value)
-        _G.TptoEventIsland = value
-        spawn(function()
-                if _G.TptoEventIsland then
-                toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272))
-                else
-                    toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame) 
-                end
+            _G.TptoEventIsland = value
+            spawn(function()
+                    if _G.TptoEventIsland then
+                        if World1 then
+                            toTarget(CFrame.new(1001.45471, 14.642293, -3803.67065, -0.977526665, 2.62664948e-08, 0.210811839, 1.22850086e-08, 1, -6.76317384e-08, -0.210811839, -6.35220019e-08, -0.977526665))
+                        elseif World2 then
+                            toTarget(CFrame.new(-5248.88086, 14.642293, 1531.04224, 0.481561244, 1.31851436e-08, 0.876412451, 4.15871781e-08, 1, -3.78953047e-08, -0.876412451, 5.46964323e-08, 0.481561244))
+                        elseif World3 then
+                            toTarget(CFrame.new(-1067.02246, 14.6404228, -14448.1455, 0.907635272, -7.29340499e-08, 0.419759721, 6.73669618e-08, 1, 2.8086113e-08, -0.419759721, 2.78598944e-09, 0.907635272))
+                        end
+                    else
+                        toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame) 
+                    end
+                end)
             end)
-        end)
     page16:Line()
     page16:Label("เทรด")
 page16:Button("Elf-Hat [250แคนดี้]", function()
