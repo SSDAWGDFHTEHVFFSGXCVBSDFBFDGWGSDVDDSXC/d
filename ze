@@ -3660,7 +3660,22 @@ if _G.Mode == "English" then
              setclipboard("https://discord.gg/977JQXX82w")
              game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "คัดลอกเรียบร้อยแล้ว",Icon = "rbxassetid://14645512457",Duration = 3})
              end)
-        end    
+        end
+        AllBoat = {
+            "Dinghy",
+            "PirateSloop",
+            "PirateBrigade",
+            "PirateGrandBrigade",
+            "MarineSloop",
+            "MarineBrigade",
+            "MarineGrandBrigade"
+        }
+        
+        local SelectBoat = nil
+        
+        page1:Dropdown("SelectBoat", AllBoat, function(value)
+            SelectBoat = value
+        end)    
         local Boat = game.Workspace.Boats[SelectBoat]
         local StopBoat = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
         local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
