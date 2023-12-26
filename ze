@@ -15139,7 +15139,7 @@ local Player = game.Players.LocalPlayer
 local Humanoid = Player.Character.Humanoid
 local HumanoidName = Humanoid.Name
 local PlayerName = Player.Name
-page14:Toggle("ออโต้อีเว้นท์ทะเลV5", _G.AutoEvent, function(value)
+page14:Toggle("ออโต้อีเว้นท์ทะเลV6", _G.AutoEvent, function(value)
     _G.AutoEvent = value
     --Code:1
     spawn(function() -- Event Sea
@@ -15150,12 +15150,14 @@ page14:Toggle("ออโต้อีเว้นท์ทะเลV5", _G.AutoEv
                                 if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
                                     if v.Humanoid.Health <= 0 then 
                                         for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                            if v:IsA("VehicleSeat") and  PlayerName == game.Workspace.Boats[SelectBoat].Owner.Value.Name and (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
+                                            if v:IsA("VehicleSeat") and  PlayerName == game.Workspace.Boats[SelectBoat].Owner.Value.Name  then
+                                                if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then
                                                 repeat
                                                     task.wait()
                                                     local CFrame = v.CFrame
                                                     twoboat(CFrame)
                                                 until v.Humanoid.Health > 0 or not _G.AutoEvent
+                                            end
                                             local Boat = game.Workspace.Boats[SelectBoat]  
                                             local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
                                             tweenModel(Boat, targetCFrame)
