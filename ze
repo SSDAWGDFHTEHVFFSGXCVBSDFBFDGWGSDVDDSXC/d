@@ -98,7 +98,7 @@ _G.Settings = {
     AutoRaids = false,
     AutoNextPlace = false
 }
-if _G.Mode == "English" then
+if _G.Mode == "English" then 
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":If the gui doesn't load, use fluxus:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
     game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":that I distributed in the executor room.:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
 else
@@ -15152,8 +15152,9 @@ function CheckNotifyBuy()
     return false
 end
 
+   
 if _G.Mode == "English" then
- page14:Toggle("BuyBoat-1.8", _G.Bboat, function(value)
+ page14:Toggle("BuyBoat", _G.Bboat, function(value)
         _G.Bboat = value
         while _G.Bboat do wait()
             toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
@@ -15182,7 +15183,7 @@ if _G.Mode == "English" then
                 end
             end)
 
-        page14:Toggle("TptoNearyShip-1",_G.TPTOBOAT, function(value)
+        page14:Toggle("TptoNearyShip",_G.TPTOBOAT, function(value)
             _G.TPTOBOAT = value
             while task.wait() do
                 if _G.TPTOBOAT then
@@ -15200,29 +15201,27 @@ if _G.Mode == "English" then
                 end
             end
         end)
-    page14:Toggle("StopBoat-1", _G.stpboat, function(value)
+    page14:Toggle("StopBoat", _G.stpboat, function(value)
     _G.stpboat = value
      while _G.stpboat do wait()
         StopBoatF()
      end
     end)
-    page14:Button("TPBoat-Sea1", function()
-        local Boat = game.Workspace.Boats[SelectBoat]
-        local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
-        tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
-    end)
-   --[[ page14:Toggle("TPBoat-Sea1", _G.TestBoat, function(value)
-    _G.TestBoat = value
+
+    page14:Toggle("TPBoat-Sea1", _G.TBS1, function(value)
+    _G.TBS1 = value
     spawn(function()
         while wait() do
-            if _G.TestBoat then
+            if _G.TBS1 then
             local Boat = game.Workspace.Boats[SelectBoat]
             local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
             tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
             end
         end
     end)
-end)]]
+end)
 
 page14:Line()
 page14:Label("Kill")
