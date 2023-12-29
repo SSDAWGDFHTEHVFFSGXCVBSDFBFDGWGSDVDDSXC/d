@@ -15152,21 +15152,9 @@ page14:Toggle("BuyBoat-1", _G.Bboat, function(value)
                     }
                     game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
                 end
-                wait(1)
-                    for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
-                        if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
-                            if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
-                                repeat
-                                    task.wait()
-                                    local CFrame = v.CFrame
-                                    twoboat(CFrame)
-                                    until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 2 or not _G.Bboat
-                            end
-                        end
-                    end
-                end
             end
-        end)
+        end
+    end)
 
 page14:Toggle("StopBoat-1", _G.stpboat, function(value)
     _G.stpboat = value
@@ -15174,8 +15162,8 @@ page14:Toggle("StopBoat-1", _G.stpboat, function(value)
         StopBoatF()
      end
     end)
+
     page14:Toggle("TPBoat-Sea1", _G.TestBoat, function(value)
-    local localPlayerr = game.Players.LocalPlayer
     _G.TestBoat = value
     spawn(function()
         while wait() do
@@ -15187,12 +15175,32 @@ page14:Toggle("StopBoat-1", _G.stpboat, function(value)
         end
     end)
 end)
-
-page14:Toggle("AutoKillMonEvent", _G.Event, function(value)
-_G.Event = value
+page14:Toggle("TptoNearyShip", _G.NearyShip, function(value)
+    NearyShip = value
+    local localPlayerr = game.Players.LocalPlayer
+    spawn(function()
+        while wait() do
+            if _G.NearyShip then
+                for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
+                    if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
+                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
+                            repeat
+                                task.wait()
+                                local CFrame = v.CFrame
+                                twoboat(CFrame)
+                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 2 or not _G.NearyShip
+                            end
+                        end
+                    end
+                end
+            end
+        end)
+    end)
+page14:Toggle("AutoKillMonEvent", _G.AutoEvent, function(value)
+    _G.AutoEvent = value
     spawn(function()
         while wait() do 
-            if _G.Event then 
+            if _G.AutoEvent then 
                 for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                     if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then 
                         if v.Humanoid.Health > 0 then 
@@ -15214,79 +15222,73 @@ _G.Event = value
                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                 end
                                 PosMon = v.HumanoidRootPart.CFrame
-                            until not _G.Event or not v.Parent or v.Humanoid.Health == 0 or not game.Workspace.Enemies:FindFirstChild(v.Name) 
+                            until not _G.AutoEvent or not v.Parent or v.Humanoid.Health == 0 or not game.Workspace.Enemies:FindFirstChild(v.Name) 
                         end
                     end
                 end
+            elseif game.Workspace.SeaBeasts:FindFirstChild("SeaBeast1") or game.Workspace.SeaBeasts:FindFirstChild("SeaBeast1") then
+                spawn(function()
+                    while wait() do
+                        if _G.AutoEvent then
+                            for i,v in pairs(game.Workspace.SeaBeasts:GetChildren()) do
+                                if v:FindFirstChild("HumanoidRootPart") or  game.workspace.SeaBeasts:FindFirstChild("SeaBeast1") or string.find(v.Name, "SeaBeast") then
+                                    repeat wait()
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(1,500,1))
+                                    for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                                        if v.ToolTip == "Melee" then
+                                            if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                                                EquipWeapon(v.Name)
+                                            end
+                                        end
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
+                                        if v.ToolTip == "Sword" then
+                                            if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                                                EquipWeapon(v.Name)
+                                            end
+                                        end
+                                    end
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
+                                    for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                                        if v.ToolTip == "Blox Fruit" then
+                                            if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                                                EquipWeapon(v.Name)
+                                            end
+                                        end
+                                    end
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"V",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"V",false,game)
+                                    wait(0.2)
+                                    until not v:FindFirstChild("HumanoidRootPart") or not _G.AutoEvent or not game.workspace.SeaBeasts:FindFirstChild("SeaBeast1") or not game.Workspace.Enemies:FindFirstChild(v.Name) 
+                                end
+                            end
+                        end
+                    end
+                end)
             end
         end
     end)
 end)
 
-page14:Toggle("Auto Seabeast", _G.AutoSeabeast, function(value)
-            _G.AutoSeabeast = value
-            if value == false then
-                task.wait()
-                toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                task.wait()
-            end
-        end)
-        
-        spawn(function()
-            while wait() do
-                pcall(function()
-                    if _G.AutoSeabeast then
-                        if workspace.SeaBeasts:FindFirstChild("SeaBeast1") then
-                            toTarget(workspace.SeaBeasts:FindFirstChild("SeaBeast1").HumanoidRootPart.CFrame * CFrame.new(0,460,0))
-                            for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                                if v.ToolTip == "Melee" then
-                                    if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
-                                        EquipWeapon(v.Name)
-                                    end
-                                end
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-                            wait(0.2)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-                            wait(0.2)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-                                if v.ToolTip == "Sword" then
-                                    if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
-                                        EquipWeapon(v.Name)
-                                    end
-                                end
-                            end
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-                            wait(0.2)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-                            for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                                if v.ToolTip == "Blox Fruit" then
-                                    if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
-                                        EquipWeapon(v.Name)
-                                    end
-                                end
-                            end
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-                            wait(0.2)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-                            wait(0.2)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-                            wait(0.2)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"V",false,game)
-                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"V",false,game)
-                            wait(0.2)
-                        end
-                    end
-                end)
-            end
-        end)
         page14:Toggle("Increase Boat Speed",_G.increaseboatspeed, function(value)
         _G.increaseboatspeed = value
             local vehicleSeats = {}
