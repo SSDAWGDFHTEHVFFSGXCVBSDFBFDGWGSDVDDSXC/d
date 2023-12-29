@@ -1,5 +1,5 @@
 repeat wait() until game.Players.LocalPlayer
-
+pcall(function()
 local placeId = game.PlaceId
 if placeId == 2753915549 then
 OldWorld = true
@@ -98,9 +98,6 @@ _G.Settings = {
     AutoRaids = false,
     AutoNextPlace = false
 }
-
-print("ห๊าาาาาาาา")
-
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
     Ui:Destroy()
@@ -17406,3 +17403,7 @@ while task.wait() do
 end
 end)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/hooks"))()
+end)
+pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec"))()
+end)
