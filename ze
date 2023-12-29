@@ -15144,7 +15144,7 @@ end)
 function CheckNotifyBuy()
     for i, v in pairs(game:GetService("Players")["LocalPlayer"].PlayerGui:FindFirstChild("Notifications"):GetChildren()) do
         if v.Name == "NotificationTemplate" then
-            if string.lower(v.Text):find("Bought") then
+            if string.lower(v.Text):find("bought") then
                 pcall(function()
                     v:Destroy()
                 end)
@@ -15154,8 +15154,11 @@ function CheckNotifyBuy()
     end
     return false
 end
+if CheckNotifyBuy() == true then
+    print(11111)
+end
 if _G.Mode == "English" then
- --[[  page14:Toggle("BuyBoat-1.1", _G.Bboat, function(value)
+ page14:Toggle("BuyBoat-1.5", _G.Bboat, function(value)
         _G.Bboat = value
         while _G.Bboat do wait()
             toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
@@ -15167,25 +15170,23 @@ if _G.Mode == "English" then
                             [2] = SelectBoat
                         }
                         game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-                    until CheckNotifyBuy() == true
                     end
+                    until CheckNotifyBuy() == true
                 end
             end
-        end)]]
-            page14:Button("BuyBoat-1.2", function()
-                toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
-                    if (Vector3.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5 then
-                       repeat wait()
-                        if SelectBoat then 
-                            local args = {
-                                [1] = "BuyBoat",
-                                [2] = SelectBoat
-                            }
-                            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+            for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
+                    if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then 
+                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
+                            repeat
+                                task.wait()
+                                local CFrame = v.CFrame
+                                twoboat(CFrame)
+                            until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.TPTOBOAT
                         end
-                    until CheckNotifyBuy() == true
+                    end
                 end
             end)
+
         page14:Toggle("TptoNearyShip-1",_G.TPTOBOAT, function(value)
             _G.TPTOBOAT = value
             while task.wait() do
