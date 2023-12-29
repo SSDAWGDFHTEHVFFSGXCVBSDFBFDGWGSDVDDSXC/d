@@ -15150,9 +15150,7 @@ page14:Button("TP To Seller Boat", function()
 twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
 end)
 local localPlayerr = game.Players.LocalPlayer
-
-page14:Toggle("AutoSeaEvent-Test-3", _G.Event, function(value)
-    _G.Nocliprock = value
+page14:Toggle("AutoSeaEvent-Test-3.1", _G.Event, function(value)
     _G.Event = value
     spawn(function() -- Event Sea
         while _G.Event do
@@ -15205,7 +15203,7 @@ page14:Toggle("AutoSeaEvent-Test-3", _G.Event, function(value)
 end)
 
 
-page14:Toggle("StopBoat-Test-3", _G.stpboat, function(value)
+page14:Toggle("StopBoat-Test-3.1", _G.stpboat, function(value)
 _G.stpboat = value
 while _G.stpboat do wait()
         StopBoatF()
