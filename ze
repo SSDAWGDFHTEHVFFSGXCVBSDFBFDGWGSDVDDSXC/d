@@ -99,7 +99,7 @@ _G.Settings = {
     AutoNextPlace = false
 }
 loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec")()
-loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
+
 if _G.Mode == "English" then 
     Vec("<Color=Red>English Version\n:If the gui doesn't load, use Fluxus:\n:that I distributed in the executor room.:<Color=/>")
 else
@@ -15125,6 +15125,7 @@ function FullBright()
 
 page14:Seperator("🌊")
 page14:Label("Function Boat")
+loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
 localPlayerr = game.Players.LocalPlayer
 AllBoat = {
 	"Dinghy",
