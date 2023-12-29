@@ -15148,6 +15148,8 @@ end)
 page14:Button("TP To Seller Boat", function()
 twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
 end)
+local localPlayerr = game.Players.LocalPlayer
+
 page14:Toggle("AutoSeaEvent-Test", _G.Event, function(value)
     spawn(function() -- Event Sea
         while task.wait() do
@@ -15180,7 +15182,7 @@ page14:Toggle("AutoSeaEvent-Test", _G.Event, function(value)
                     end
                 else 
                     for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                        if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
+                        if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
                             if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
                                 repeat
                                     task.wait()
@@ -15199,7 +15201,33 @@ page14:Toggle("AutoSeaEvent-Test", _G.Event, function(value)
         end
     end)
 end)
-
+page14:Toggle("TestBoat", _G.TestBoat, function(value)
+local localPlayerr = game.Players.LocalPlayer
+_G.TestBoat = value
+spawn(function()
+    while wait() do
+        if _G.TestBoat then
+        for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
+            if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
+                if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
+                    repeat
+                        task.wait()
+                        local CFrame = v.CFrame
+                        twoboat(CFrame)
+                        until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 2 or not _G.Event
+                        wait(2)
+                        local Boat = game.Workspace.Boats[SelectBoat]
+                        local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
+                        tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+                        end
+                    end
+                end
+            end
+        end
+    end)
+end)
+--TP boat ป็น game.workspace.boat[SelectBoat].VehicleSeat(Getchildren)
+--Seaevent ถ้าทำไม่ได้จริงๆก็ให้ทำแยก แล้วทำ tp ไปที่cframe แต่ละระดับทะเล
 page14:Toggle("Auto Seabeast", _G.AutoSeabeast, function(value)
             _G.AutoSeabeast = value
             if value == false then
