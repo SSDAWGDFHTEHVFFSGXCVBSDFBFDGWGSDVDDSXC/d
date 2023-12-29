@@ -98,12 +98,12 @@ _G.Settings = {
     AutoRaids = false,
     AutoNextPlace = false
 }
+loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec")()
+loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
 if _G.Mode == "English" then 
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":If the gui doesn't load, use fluxus:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":that I distributed in the executor room.:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
+    Vec("<Color=Red>English Version\n:If the gui doesn't load, use Fluxus:\n:that I distributed in the executor room.:<Color=/>")
 else
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":ถ้าหน้าต่างโปรไม่โหลดให้ใช้ Fluxus:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
-    game:GetService("StarterGui"):SetCore("SendNotification",{Title = ":ที่ผมแจกในห้อง Executor:",	Text = ".",	Icon = "rbxassetid://14645512457",Duration = 10000000000000000139372116959414099130712064,Button1 = "!!!!!!!!!!!!!!!!!"})
+    Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าหน้าต่างโปรไม่โหลดให้ใช้, Fluxus:\n:ที่ผมแจกในห้อง Executor:<Color=/>")
 end
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
@@ -15124,7 +15124,7 @@ function FullBright()
     end
 
 page14:Seperator("🌊")
-page14:Label("Boat")
+page14:Label("Function Boat")
 localPlayerr = game.Players.LocalPlayer
 AllBoat = {
 	"Dinghy",
@@ -15208,23 +15208,110 @@ if _G.Mode == "English" then
      end
     end)
 
-    page14:Toggle("TPBoat-Sea1", _G.TBS1, function(value)
+    page14:Toggle("TPBoat-Sea1[Low]", _G.TBS1, function(value)
     _G.TBS1 = value
+    _G.Nocliprock = value
     spawn(function()
         while wait() do
             if _G.TBS1 then
             local Boat = game.Workspace.Boats[SelectBoat]
-            local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
+            local targetCFrame = CFrame.new(-22526.0098, -0.3221744, 1716.89185, -0.210707203, 1.100981e-07, 0.977549195, 2.74631451e-09, 1, -1.12034698e-07, -0.977549195, -2.09218598e-08, -0.210707203)
             tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
             else
             _G.stpboat = true
+            StopBoatF()
             end
         end
     end)
 end)
 
+page14:Toggle("TPBoat-Sea2[Medium]", _G.TBS2, function(value)
+    _G.TBS2 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-25645.3535, -0.3221744, 2554.41016, -0.334876329, -5.05522451e-08, 0.942262113, -3.13346469e-08, 1, 4.25136619e-08, -0.942262113, -1.52886308e-08, -0.334876329)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
+
+page14:Toggle("TPBoat-Sea3[High]", _G.TBS3, function(value)
+    _G.TBS3 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-29842.2227, -0.3221744, 4070.85767, -0.270609587, 3.60968606e-08, 0.962689161, -4.47193429e-08, 1, -5.00663617e-08, -0.962689161, -5.65992657e-08, -0.270609587)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
+
+page14:Toggle("TPBoat-Sea4[Extreme]", _G.TBS4, function(value)
+    _G.TBS4 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-32654.7188, -0.3221744, 4788.14697, -0.183276221, 2.0033232e-08, 0.983061433, 3.66669433e-08, 1, -1.35424418e-08, -0.983061433, 3.35638504e-08, -0.183276221)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
+
+page14:Toggle("TPBoat-Sea5[Crazy]", _G.TBS5, function(value)
+    _G.TBS5 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-37813.6953, -0.3221744, 6105.16895, -0.252362996, 4.13621581e-09, 0.967632651, 2.87320709e-08, 1, 3.21888249e-09, -0.967632651, 2.86144175e-08, -0.252362996)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
+
+
+page14:Toggle("TPBoat-Sea6[???]", _G.TBS6, function(value)
+    _G.TBS6 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-42250.2227, -0.3221744, 9247.07715, -0.45916447, 6.39043236e-08, 0.888351262, -3.36711423e-08, 1, -8.93395651e-08, -0.888351262, -7.09333605e-08, -0.45916447)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
 page14:Line()
-page14:Label("Kill")
+page14:Label("Function Kill")
 page14:Toggle("AutoKillMonEvent", _G.AutoEvent, function(value)
     _G.AutoEvent = value
     spawn(function()
@@ -15377,184 +15464,323 @@ end)
          page14:Button("FullBright", function()
         FullBright()
     end)
+    page14:Button("Fly", function()
+        Fly()
+    end)
 else
-    page14:Button("ซื้อเรือ", function()
-        if SelectBoat then
-            local args = {
-                [1] = "BuyBoat",
-                [2] = SelectBoat
-            }
-            game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-        end
-    end)
-    page14:Button("เทเลพอร์ตไปหาคนขายเรือ", function()
-    twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
-    end)
-
-    --[[page14:Toggle("ออโต้อีเว้นท์ทะเลV3", _G.Event, function(value) เห้ 
-        _G.Event = value
-        --Code:1
-        spawn(function() -- Event Sea
-            while task.wait() do
-                pcall(function()
-                    if _G.Event then 
-                        for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                            if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
-                                if v.Humanoid.Health > 0 then 
-                                    repeat task.wait()
-                                        _G.FastType = "Fast"
-                                        FastAttack = true
-                                        if _G.AutoHaki then
-                                            if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Buso")
-                                            end
-                                        end
-                                        if not game.Players.LocalPlayer.Character:FindFirstChild(_G.SelectWeapon) then
-                                            task.wait()
-                                            EquipWeapon(_G.SelectWeapon)
-                                        end
-                                        if not _G.FastAttack then
-                                            game:GetService'VirtualUser':CaptureController()
-                                            game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                        end
-                                        v.HumanoidRootPart.Size = Vector3.new(100,100,100)
-                                        v.HumanoidRootPart.Transparency = 0.5
-                                        v.HumanoidRootPart.CanCollide = false
-                                        toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
-                                    until v.Humanoid.Health <= 0 or not _G.Event
-                                end
-                            end
+    page14:Toggle("ออโต้ซื้อเรือ", _G.Bboat, function(value)
+        _G.Bboat = value
+        while _G.Bboat do wait()
+            toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
+                if (Vector3.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5 and CheckNotifyBuy() == false then
+                    repeat wait()
+                    if SelectBoat then 
+                        local args = {
+                            [1] = "BuyBoat",
+                            [2] = SelectBoat
+                        }
+                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
+                    end
+                    until CheckNotifyBuy() == true
+                end
+            end
+            for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
+                    if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then 
+                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
+                            repeat
+                                task.wait()
+                                local CFrame = v.CFrame
+                                twoboat(CFrame)
+                            until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.TPTOBOAT
                         end
-                    else
-                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                            if v:IsA("VehicleSeat") and  game:GetService("Players").LocalPlayer.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then --ไปเรือคนอื่นมั่ว
+                    end
+                end
+            end)
+
+        page14:Toggle("เทเลพอร์ตไปหาเรือใกล้เคียง",_G.TPTOBOAT, function(value)
+            _G.TPTOBOAT = value
+            while task.wait() do
+                if _G.TPTOBOAT then
+                    for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
+                        if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then 
+                            if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
                                 repeat
                                     task.wait()
                                     local CFrame = v.CFrame
                                     twoboat(CFrame)
-                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.Event
-                                local Boat = game.Workspace.Boats[SelectBoat]
-                                local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
-                                tweenModel(Boat, targetCFrame)
+                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.TPTOBOAT
                             end
                         end
                     end
-                end)
+                end
             end
         end)
-    end)]]
-    
-    
-    page14:Toggle("ออโต้เจ้าทะเล", _G.AutoSeabeast, function(value)
-                _G.AutoSeabeast = value
-                if value == false then
-                    task.wait()
-                    toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
-                    task.wait()
-                end
-            end)
-            
-            spawn(function()
-                while wait() do
-                    pcall(function()
-                        if _G.AutoSeabeast then
-                            if workspace.SeaBeasts:FindFirstChild("SeaBeast1") then
-                                toTarget(workspace.SeaBeasts:FindFirstChild("SeaBeast1").HumanoidRootPart.CFrame * CFrame.new(0,460,0))
-                                for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                                    if v.ToolTip == "Sword" then
-                                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
-                                            EquipWeapon(v.Name)
-                                        end
-                                    end
+    page14:Toggle("หยุดหรือบิน", _G.stpboat, function(value)
+    _G.stpboat = value
+     while _G.stpboat do wait()
+        StopBoatF()
+     end
+    end)
+
+    page14:Toggle("เทเลพอร์ตเรือไป-Sea1[Low]", _G.TBS1, function(value)
+    _G.TBS1 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-22526.0098, -0.3221744, 1716.89185, -0.210707203, 1.100981e-07, 0.977549195, 2.74631451e-09, 1, -1.12034698e-07, -0.977549195, -2.09218598e-08, -0.210707203)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
+
+page14:Toggle("เทเลพอร์ตเรือไป-Sea2[Medium]", _G.TBS2, function(value)
+    _G.TBS2 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-25645.3535, -0.3221744, 2554.41016, -0.334876329, -5.05522451e-08, 0.942262113, -3.13346469e-08, 1, 4.25136619e-08, -0.942262113, -1.52886308e-08, -0.334876329)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
+
+page14:Toggle("เทเลพอร์ตเรือไป-Sea3[High]", _G.TBS3, function(value)
+    _G.TBS3 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-29842.2227, -0.3221744, 4070.85767, -0.270609587, 3.60968606e-08, 0.962689161, -4.47193429e-08, 1, -5.00663617e-08, -0.962689161, -5.65992657e-08, -0.270609587)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
+
+page14:Toggle("เทเลพอร์ตเรือไป-Sea4[Extreme]", _G.TBS4, function(value)
+    _G.TBS4 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-32654.7188, -0.3221744, 4788.14697, -0.183276221, 2.0033232e-08, 0.983061433, 3.66669433e-08, 1, -1.35424418e-08, -0.983061433, 3.35638504e-08, -0.183276221)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
+
+page14:Toggle("เทเลพอร์ตเรือไป-Sea5[Crazy]", _G.TBS5, function(value)
+    _G.TBS5 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-37813.6953, -0.3221744, 6105.16895, -0.252362996, 4.13621581e-09, 0.967632651, 2.87320709e-08, 1, 3.21888249e-09, -0.967632651, 2.86144175e-08, -0.252362996)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
+
+
+page14:Toggle("เทเลพอร์ตเรือไป-Sea6[???]", _G.TBS6, function(value)
+    _G.TBS6 = value
+    _G.Nocliprock = value
+    spawn(function()
+        while wait() do
+            if _G.TBS1 then
+            local Boat = game.Workspace.Boats[SelectBoat]
+            local targetCFrame = CFrame.new(-42250.2227, -0.3221744, 9247.07715, -0.45916447, 6.39043236e-08, 0.888351262, -3.36711423e-08, 1, -8.93395651e-08, -0.888351262, -7.09333605e-08, -0.45916447)
+            tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+            else
+            _G.stpboat = true
+            StopBoatF()
+            end
+        end
+    end)
+end)
+page14:Line()
+page14:Label("ฟังก์ชั่นล่า")
+page14:Toggle("ออโต้ฆ่ามอนอีเว้นท์ทั้งหมด", _G.AutoEvent, function(value)
+    _G.AutoEvent = value
+    spawn(function()
+        while wait() do 
+            if _G.AutoEvent then 
+                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
+                    if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then 
+                        if v.Humanoid.Health > 0 then 
+                            repeat
+                                game:GetService("RunService").Heartbeat:wait()
+                                EquipWeapon(_G.SelectWeapon)
+                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
+                                    local args = {
+                                        [1] = "Buso"
+                                    }
+                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
                                 end
-                                game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-                                wait(0.2)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-                                for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                                    if v.ToolTip == "Blox Fruit" then
-                                        if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
-                                            EquipWeapon(v.Name)
-                                        end
-                                    end
+                                PosMon = v.HumanoidRootPart.CFrame
+                                v.Head.CanCollide = false
+                                FastAttack = true
+                                toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
+                                if not FastAttack then
+                                    game:GetService 'VirtualUser':CaptureController()
+                                    game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                 end
-                                game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-                                wait(0.2)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-                                wait(0.2)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-                                wait(0.2)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(true,"V",false,game)
-                                game:GetService("VirtualInputManager"):SendKeyEvent(false,"V",false,game)
-                                wait(0.2)
-                            end
+                                PosMon = v.HumanoidRootPart.CFrame
+                            until not _G.AutoEvent or not v.Parent or v.Humanoid.Health == 0 or not game.Workspace.Enemies:FindFirstChild(v.Name) 
                         end
-                    end)
-                end
-            end)
-            page14:Toggle("เพิ่มความเร็วเรือ",_G.increaseboatspeed, function(value)
-            _G.increaseboatspeed = value
-                local vehicleSeats = {}
-                for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                    if v:IsA("VehicleSeat") then
-                        table.insert(vehicleSeats, v)
                     end
                 end
-                if _G.increaseboatspeed then
-                    for _, v in pairs(vehicleSeats) do
-                        v.MaxSpeed = 350
-                    end
-                else
-                    for _, v in pairs(vehicleSeats) do
-                        v.MaxSpeed = 100
-                    end
-                end
-        end)
-        page14:Toggle("ออโต้ขับเรือ",_G.AutoSail, function(value)
-            _G.AutoSail = value
-            while _G.AutoSail do task.wait(0)
-            game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
-            end
-        end)
-        page14:Toggle("เรือทะลุหิน",_G.Nocliprock, function(value)
-            _G.Nocliprock = value
-            spawn(function()
+            elseif game.Workspace.SeaBeasts:FindFirstChild("SeaBeast1") or game.Workspace.SeaBeasts:FindFirstChild("SeaBeast1") then
+                spawn(function()
                     while wait() do
-                        if _G.Nocliprock then
-                            if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-                                for _, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                    if v:IsA("BasePart") and v.CanCollide == true then
-                                        v.CanCollide = false
+                        if _G.AutoEvent then
+                            for i,v in pairs(game.Workspace.SeaBeasts:GetChildren()) do
+                                if v:FindFirstChild("HumanoidRootPart") or  game.workspace.SeaBeasts:FindFirstChild("SeaBeast1") or string.find(v.Name, "SeaBeast") then
+                                    repeat wait()
+                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(1,500,1))
+                                    for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                                        if v.ToolTip == "Melee" then
+                                            if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                                                EquipWeapon(v.Name)
+                                            end
+                                        end
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
+                                        if v.ToolTip == "Sword" then
+                                            if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                                                EquipWeapon(v.Name)
+                                            end
+                                        end
                                     end
-                                end
-                                for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                                    if v:IsA("BasePart") and v.CanCollide == true then
-                                        v.CanCollide = false
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
+                                    for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+                                        if v.ToolTip == "Blox Fruit" then
+                                            if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
+                                                EquipWeapon(v.Name)
+                                            end
+                                        end
                                     end
-                                end
-                            elseif game.Players.LocalPlayer.Character.Humanoid.Sit == false then
-                                for _, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                    if v:IsA("BasePart") and v.CanCollide == false then
-                                        v.CanCollide = true
-                                    end
-                                end
-                                for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                                    if v:IsA("BasePart") and v.CanCollide == false then
-                                        v.CanCollide = true
-                                    end
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
+                                    wait(0.2)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"V",false,game)
+                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"V",false,game)
+                                    wait(0.2)
+                                    until not v:FindFirstChild("HumanoidRootPart") or not _G.AutoEvent or not game.workspace.SeaBeasts:FindFirstChild("SeaBeast1") or not game.Workspace.Enemies:FindFirstChild(v.Name) 
                                 end
                             end
                         end
                     end
                 end)
-             end)
-             page14:Button("แมพสว่าง", function()
-            FullBright()
-        end)
+            end
+        end
+    end)
+end)
+
+        page14:Toggle("เพิ่มความเร็วเรือ",_G.increaseboatspeed, function(value)
+        _G.increaseboatspeed = value
+            local vehicleSeats = {}
+            for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                if v:IsA("VehicleSeat") then
+                    table.insert(vehicleSeats, v)
+                end
+            end
+            if _G.increaseboatspeed then
+                for _, v in pairs(vehicleSeats) do
+                    v.MaxSpeed = 350
+                end
+            else
+                for _, v in pairs(vehicleSeats) do
+                    v.MaxSpeed = 100
+                end
+            end
+    end)
+    page14:Toggle("ออโต้ขับเรือ",_G.AutoSail, function(value)
+        _G.AutoSail = value
+        while _G.AutoSail do task.wait(0)
+        game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
+        end
+    end)
+    page14:Toggle("ทะลุหิน",_G.Nocliprock, function(value)
+        _G.Nocliprock = value
+        spawn(function()
+                while wait() do
+                    if _G.Nocliprock then
+                        if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
+                            for _, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                if v:IsA("BasePart") and v.CanCollide == true then
+                                    v.CanCollide = false
+                                end
+                            end
+                            for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                                if v:IsA("BasePart") and v.CanCollide == true then
+                                    v.CanCollide = false
+                                end
+                            end
+                        elseif game.Players.LocalPlayer.Character.Humanoid.Sit == false then
+                            for _, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                                if v:IsA("BasePart") and v.CanCollide == false then
+                                    v.CanCollide = true
+                                end
+                            end
+                            for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
+                                if v:IsA("BasePart") and v.CanCollide == false then
+                                    v.CanCollide = true
+                                end
+                            end
+                        end
+                    end
+                end
+            end)
+         end)
+         page14:Button("แมพสว่ง", function()
+        FullBright()
+    end)
+    page14:Button("บิน", function()
+        Fly()
+    end) 
 end
 
  
@@ -16585,435 +16811,6 @@ else
         game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("Agility"):Destroy()
     end
 end
-end
-function Fly()
-    local main = Instance.new("ScreenGui")
-    local Frame = Instance.new("Frame")
-    local goup = Instance.new("TextButton")
-    local godown = Instance.new("TextButton")
-    local onof = Instance.new("TextButton")
-    local plus = Instance.new("TextButton")
-    local speed = Instance.new("TextLabel")
-    local mine = Instance.new("TextButton")
-    local Close = Instance.new("TextButton")
-    local UICorner = Instance.new("UICorner")
-    local minimize = Instance.new("TextButton")
-    local UICorner_2 = Instance.new("UICorner")
-    local minimize2 = Instance.new("TextButton")
-    local UICorner_3 = Instance.new("UICorner")
-    main.Name = "main"
-    main.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
-    main.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-    Frame.Parent = main
-    Frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Frame.BorderSizePixel = 2
-    Frame.Position = UDim2.new(0.100320168, 0, 0.379746825, 0)
-    Frame.Size = UDim2.new(0, 190, 0, 57)
-    goup.Name = "go up"
-    goup.Parent = Frame
-    goup.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    goup.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    goup.Position = UDim2.new(0.589473605, 0, 0, 0)
-    goup.Size = UDim2.new(0, 78, 0, 29)
-    goup.Font = Enum.Font.SourceSans
-    goup.Text = "UP"
-    goup.TextColor3 = Color3.fromRGB(0, 0, 0)
-    goup.TextScaled = true
-    goup.TextSize = 14.000
-    goup.TextWrapped = true
-    godown.Name = "go down"
-    godown.Parent = Frame
-    godown.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    godown.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    godown.Position = UDim2.new(0.589473605, 0, 0.508771956, 0)
-    godown.Size = UDim2.new(0, 78, 0, 28)
-    godown.Font = Enum.Font.SourceSans
-    godown.Text = "DOWN"
-    godown.TextColor3 = Color3.fromRGB(0, 0, 0)
-    godown.TextScaled = true
-    godown.TextSize = 14.000
-    godown.TextWrapped = true
-    onof.Name = "onof"
-    onof.Parent = Frame
-    onof.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    onof.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    onof.BorderSizePixel = 0
-    onof.Position = UDim2.new(-0.00243988028, 0, 0.491228074, 0)
-    onof.Size = UDim2.new(0, 60, 0, 28)
-    onof.Font = Enum.Font.SourceSans
-    onof.Text = "Fly"
-    onof.TextColor3 = Color3.fromRGB(0, 0, 0)
-    onof.TextScaled = true
-    onof.TextSize = 14.000
-    onof.TextWrapped = true
-    plus.Name = "plus"
-    plus.Parent = Frame
-    plus.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    plus.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    plus.Position = UDim2.new(0.315789551, 0, 0, 0)
-    plus.Size = UDim2.new(0, 56, 0, 28)
-    plus.Font = Enum.Font.SourceSans
-    plus.Text = "+"
-    plus.TextColor3 = Color3.fromRGB(0, 0, 0)
-    plus.TextScaled = true
-    plus.TextSize = 14.000
-    plus.TextWrapped = true
-    speed.Name = "speed"
-    speed.Parent = Frame
-    speed.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    speed.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    speed.Position = UDim2.new(8.03094196e-08, 0, 0, 0)
-    speed.Size = UDim2.new(0, 59, 0, 28)
-    speed.Font = Enum.Font.SourceSans
-    speed.Text = "1"
-    speed.TextColor3 = Color3.fromRGB(0, 0, 0)
-    speed.TextScaled = true
-    speed.TextSize = 14.000
-    speed.TextWrapped = true
-    mine.Name = "mine"
-    mine.Parent = Frame
-    mine.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    mine.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    mine.Position = UDim2.new(0.316052645, 0, 0.508771956, 0)
-    mine.Size = UDim2.new(0, 56, 0, 28)
-    mine.Font = Enum.Font.SourceSans
-    mine.Text = "-"
-    mine.TextColor3 = Color3.fromRGB(0, 0, 0)
-    mine.TextScaled = true
-    mine.TextSize = 14.000
-    mine.TextWrapped = true
-    Close.Name = "Close"
-    Close.Parent = Frame
-    Close.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    Close.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    Close.BorderSizePixel = 0
-    Close.Position = UDim2.new(-0.00526315812, 0, 0.61403507, 27)
-    Close.Size = UDim2.new(0, 36, 0, 19)
-    Close.Font = Enum.Font.SourceSans
-    Close.Text = "X"
-    Close.TextColor3 = Color3.fromRGB(0, 0, 0)
-    Close.TextSize = 20.000
-    Close.TextWrapped = true
-    UICorner.Parent = Close
-    minimize.Name = "minimize"
-    minimize.Parent = Frame
-    minimize.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    minimize.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    minimize.BorderSizePixel = 0
-    minimize.Position = UDim2.new(0.0894736871, 44, 0.61403507, 27)
-    minimize.Size = UDim2.new(0, 36, 0, 19)
-    minimize.Font = Enum.Font.SourceSans
-    minimize.Text = "Hide"
-    minimize.TextColor3 = Color3.fromRGB(0, 0, 0)
-    minimize.TextSize = 20.000
-    minimize.TextWrapped = true   
-    UICorner_2.Parent = minimize
-    minimize2.Name = "minimize2"
-    minimize2.Parent = Frame
-    minimize2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-    minimize2.BorderColor3 = Color3.fromRGB(0, 0, 0)
-    minimize2.BorderSizePixel = 0
-    minimize2.Position = UDim2.new(0.0894736871, 44, -0.491228074, 57)
-    minimize2.Size = UDim2.new(0, 36, 0, 19)
-    minimize2.Visible = false
-    minimize2.Font = Enum.Font.SourceSans
-    minimize2.Text = "open"
-    minimize2.TextColor3 = Color3.fromRGB(0, 0, 0)
-    minimize2.TextSize = 20.000
-    minimize2.TextWrapped = true
-    UICorner_3.Parent = minimize2
-    speeds = 10
-    local speaker = game:GetService("Players").LocalPlayer
-    local chr = game.Players.LocalPlayer.Character
-    local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
-    nowe = false
-    Frame.Active = true -- main = gui
-    Frame.Draggable = true
-    onof.MouseButton1Down:connect(function()
-        if nowe == true then
-            nowe = false
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,true)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,true)
-            speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.RunningNoPhysics)
-        else 
-            nowe = true
-            for i = 1, speeds do
-                spawn(function()
-                    local hb = game:GetService("RunService").Heartbeat	
-                    tpwalking = true
-                    local chr = game.Players.LocalPlayer.Character
-                    local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
-                    while tpwalking and hb:Wait() and chr and hum and hum.Parent do
-                        if hum.MoveDirection.Magnitude > 0 then
-                            chr:TranslateBy(hum.MoveDirection)
-                        end
-                    end
-    
-                end)
-            end
-            game.Players.LocalPlayer.Character.Animate.Disabled = true
-            local Char = game.Players.LocalPlayer.Character
-            local Hum = Char:FindFirstChildOfClass("Humanoid") or Char:FindFirstChildOfClass("AnimationController")
-    
-            for i,v in next, Hum:GetPlayingAnimationTracks() do
-                v:AdjustSpeed(0)
-            end
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Climbing,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.FallingDown,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Flying,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Freefall,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.GettingUp,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Jumping,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Landed,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Physics,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.PlatformStanding,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Ragdoll,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Running,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.RunningNoPhysics,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Seated,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.StrafingNoPhysics,false)
-            speaker.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,false)
-            speaker.Character.Humanoid:ChangeState(Enum.HumanoidStateType.Swimming)
-        end
-        if game:GetService("Players").LocalPlayer.Character:FindFirstChildOfClass("Humanoid").RigType == Enum.HumanoidRigType.R6 then
-            local plr = game.Players.LocalPlayer
-            local torso = plr.Character.Torso
-            local flying = true
-            local deb = true
-            local ctrl = {f = 0, b = 0, l = 0, r = 0}
-            local lastctrl = {f = 0, b = 0, l = 0, r = 0}
-            local maxspeed = 50
-            local speed = 0
-            local bg = Instance.new("BodyGyro", torso)
-            bg.P = 9e4
-            bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
-            bg.cframe = torso.CFrame
-            local bv = Instance.new("BodyVelocity", torso)
-            bv.velocity = Vector3.new(0,0.1,0)
-            bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
-            if nowe == true then
-                plr.Character.Humanoid.PlatformStand = true
-            end
-            while nowe == true or game:GetService("Players").LocalPlayer.Character.Humanoid.Health == 0 do
-                game:GetService("RunService").RenderStepped:Wait()
-                if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
-                    speed = speed+.5+(speed/maxspeed)
-                    if speed > maxspeed then
-                        speed = maxspeed
-                    end
-                elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
-                    speed = speed-1
-                    if speed < 0 then
-                        speed = 0
-                    end
-                end
-                if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
-                    bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
-                    lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
-                elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
-                    bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
-                else
-                    bv.velocity = Vector3.new(0,0,0)
-                end
-                --	game.Players.LocalPlayer.Character.Animate.Disabled = true
-                bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
-            end
-            ctrl = {f = 0, b = 0, l = 0, r = 0}
-            lastctrl = {f = 0, b = 0, l = 0, r = 0}
-            speed = 0
-            bg:Destroy()
-            bv:Destroy()
-            plr.Character.Humanoid.PlatformStand = false
-            game.Players.LocalPlayer.Character.Animate.Disabled = false
-            tpwalking = false
-        else
-            local plr = game.Players.LocalPlayer
-            local UpperTorso = plr.Character.UpperTorso
-            local flying = true
-            local deb = true
-            local ctrl = {f = 0, b = 0, l = 0, r = 0}
-            local lastctrl = {f = 0, b = 0, l = 0, r = 0}
-            local maxspeed = 50
-            local speed = 0
-            local bg = Instance.new("BodyGyro", UpperTorso)
-            bg.P = 9e4
-            bg.maxTorque = Vector3.new(9e9, 9e9, 9e9)
-            bg.cframe = UpperTorso.CFrame
-            local bv = Instance.new("BodyVelocity", UpperTorso)
-            bv.velocity = Vector3.new(0,0.1,0)
-            bv.maxForce = Vector3.new(9e9, 9e9, 9e9)
-            if nowe == true then
-                plr.Character.Humanoid.PlatformStand = true
-            end
-            while nowe == true or game:GetService("Players").LocalPlayer.Character.Humanoid.Health == 0 do
-                wait()
-    
-                if ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0 then
-                    speed = speed+.50+(speed/maxspeed)
-                    if speed > maxspeed then
-                        speed = maxspeed
-                    end
-                elseif not (ctrl.l + ctrl.r ~= 0 or ctrl.f + ctrl.b ~= 0) and speed ~= 0 then
-                    speed = speed-1
-                    if speed < 0 then
-                        speed = 0
-                    end
-                end
-                if (ctrl.l + ctrl.r) ~= 0 or (ctrl.f + ctrl.b) ~= 0 then
-                    bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (ctrl.f+ctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(ctrl.l+ctrl.r,(ctrl.f+ctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
-                    lastctrl = {f = ctrl.f, b = ctrl.b, l = ctrl.l, r = ctrl.r}
-                elseif (ctrl.l + ctrl.r) == 0 and (ctrl.f + ctrl.b) == 0 and speed ~= 0 then
-                    bv.velocity = ((game.Workspace.CurrentCamera.CoordinateFrame.lookVector * (lastctrl.f+lastctrl.b)) + ((game.Workspace.CurrentCamera.CoordinateFrame * CFrame.new(lastctrl.l+lastctrl.r,(lastctrl.f+lastctrl.b)*.2,0).p) - game.Workspace.CurrentCamera.CoordinateFrame.p))*speed
-                else
-                    bv.velocity = Vector3.new(0,0,0)
-                end
-    
-                bg.cframe = game.Workspace.CurrentCamera.CoordinateFrame * CFrame.Angles(-math.rad((ctrl.f+ctrl.b)*50*speed/maxspeed),0,0)
-            end
-            ctrl = {f = 0, b = 0, l = 0, r = 0}
-            lastctrl = {f = 0, b = 0, l = 0, r = 0}
-            speed = 0
-            bg:Destroy()
-            bv:Destroy()
-            plr.Character.Humanoid.PlatformStand = false
-            game.Players.LocalPlayer.Character.Animate.Disabled = false
-            tpwalking = false
-        end
-    end) 
-    local tis
-    goup.MouseButton1Down:connect(function()
-        tis = goup.MouseEnter:connect(function()
-            while tis do
-                wait()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,1,0)
-            end
-        end)
-    end)
-    goup.MouseLeave:connect(function()
-        if tis then
-            tis:Disconnect()
-            tis = nil
-        end
-    end)
-    local dis
-    godown.MouseButton1Down:connect(function()
-        dis = godown.MouseEnter:connect(function()
-            while dis do
-                wait()
-                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0,-1,0)
-            end
-        end)
-    end)
-    godown.MouseLeave:connect(function()
-        if dis then
-            dis:Disconnect()
-            dis = nil
-        end
-    end) 
-    game:GetService("Players").LocalPlayer.CharacterAdded:Connect(function(char)
-        wait(0.7)
-        game.Players.LocalPlayer.Character.Humanoid.PlatformStand = false
-        game.Players.LocalPlayer.Character.Animate.Disabled = false
-    
-    end)
-    plus.MouseButton1Down:connect(function()
-        speeds = speeds + 1
-        speed.Text = speeds
-        if nowe == true then
-            tpwalking = false
-            for i = 1, speeds do
-                spawn(function()
-                    local hb = game:GetService("RunService").Heartbeat	
-                    tpwalking = true
-                    local chr = game.Players.LocalPlayer.Character
-                    local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
-                    while tpwalking and hb:Wait() and chr and hum and hum.Parent do
-                        if hum.MoveDirection.Magnitude > 0 then
-                            chr:TranslateBy(hum.MoveDirection)
-                        end
-                    end
-                end)
-            end
-        end
-    end)
-    mine.MouseButton1Down:connect(function()
-        if speeds == 1 then
-            speed.Text = 'cannot be less than 1'
-            wait(1)
-            speed.Text = speeds
-        else
-            speeds = speeds - 1
-            speed.Text = speeds
-            if nowe == true then
-                tpwalking = false
-                for i = 1, speeds do
-                    spawn(function()
-                        local hb = game:GetService("RunService").Heartbeat	
-                        tpwalking = true
-                        local chr = game.Players.LocalPlayer.Character
-                        local hum = chr and chr:FindFirstChildWhichIsA("Humanoid")
-                        while tpwalking and hb:Wait() and chr and hum and hum.Parent do
-                            if hum.MoveDirection.Magnitude > 0 then
-                                chr:TranslateBy(hum.MoveDirection)
-                            end
-                        end
-    
-                    end)
-                end
-            end
-        end
-    end)
-    Close.MouseButton1Click:Connect(function()
-        main:Destroy()
-    end)
-    minimize.MouseButton1Click:Connect(function()
-        goup.Visible = false
-        godown.Visible = false
-        onof.Visible = false
-        plus.Visible = false
-        speed.Visible = false
-        mine.Visible = false
-        minimize.Visible = false
-        minimize2.Visible = true
-        main.Frame.BackgroundTransparency = 1
-        Close.Position =  UDim2.new(0, 0, -1, 57)
-    end)
-    
-    minimize2.MouseButton1Click:Connect(function()
-        goup.Visible = true
-        godown.Visible = true
-        onof.Visible = true
-        plus.Visible = true
-        speed.Visible = true
-        mine.Visible = true
-        minimize.Visible = true
-        minimize2.Visible = false
-        main.Frame.BackgroundTransparency = 0 
-        Close.Position =  UDim2.new(0, 0, -1, 27)
-    end)
-end
-if _G.Mode == "English" then
-page12:Button("Fly", function()
-    Fly()
-end)
-else
-page12:Button("บิน", function()
-    Fly()
-end)
 end
 function FPSBOOSTER()
 setfpscap(9999)
