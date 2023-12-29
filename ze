@@ -99,14 +99,8 @@ _G.Settings = {
     AutoNextPlace = false
 }
 
-print(2131321)
-if _G.Mode == "English" then 
-    loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec")()
-    Vec("<Color=Red>English Version\n:If the gui doesn't load, use Fluxus:\n:that I distributed in the executor room.:<Color=/>")
-else
-    loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec")()
-    Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าหน้าต่างโปรไม่โหลดให้ใช้, Fluxus:\n:ที่ผมแจกในห้อง Executor:<Color=/>")
-end
+print("ห๊าาาาาาาา")
+
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
     Ui:Destroy()
@@ -15127,7 +15121,6 @@ function FullBright()
 
 page14:Seperator("🌊")
 page14:Label("Function Boat")
-loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
 localPlayerr = game.Players.LocalPlayer
 AllBoat = {
 	"Dinghy",
@@ -15467,6 +15460,7 @@ end)
          page14:Button("FullBright", function()
         FullBright()
     end)
+    loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
     page14:Button("Fly", function()
         Fly()
     end)
@@ -15781,6 +15775,7 @@ end)
          page14:Button("แมพสว่ง", function()
         FullBright()
     end)
+    loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
     page14:Button("บิน", function()
         Fly()
     end) 
