@@ -15151,8 +15151,7 @@ if _G.Mode == "English" then
                     [2] = SelectBoat
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-                while task.wait() do
-                    if _G.TPTOBOAT then
+                while _G.TPTOBOAT do wait()
                         for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
                             if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then 
                                 if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
@@ -15164,14 +15163,16 @@ if _G.Mode == "English" then
                                 end
                             end
                         end
-                    end
                 end
             end
         end
     end)
 
-page14:Button("StopBoat-2", function(value)
-    _G.stpboat = value
+page14:Button("StopBoat-2", function()
+    _G.stpboat = true
+    local Boat = game.Workspace.Boats[SelectBoat]
+    local targetCFramee = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+    tweenModel(Boat, targetCFramee)
     while _G.stpboat do wait()
         StopBoatF()
      end
