@@ -98,11 +98,13 @@ _G.Settings = {
     AutoRaids = false,
     AutoNextPlace = false
 }
-loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec")()
 
+print(2131321)
 if _G.Mode == "English" then 
+    loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec")()
     Vec("<Color=Red>English Version\n:If the gui doesn't load, use Fluxus:\n:that I distributed in the executor room.:<Color=/>")
 else
+    loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec")()
     Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าหน้าต่างโปรไม่โหลดให้ใช้, Fluxus:\n:ที่ผมแจกในห้อง Executor:<Color=/>")
 end
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
