@@ -15140,8 +15140,9 @@ page14:Dropdown("SelectBoat", AllBoat, function(value)
 	SelectBoat = value
 end)
 if _G.Mode == "English" then
-        page14:Toggle("BuyBoat-1", SelectBoat, function(value)
-         _G.TPTOBOAT = value
+    localPlayerr = game.Players.LocalPlayer
+        page14:Toggle("BuyBoat-2", TPTOBOATT, function(value)
+         _G.TPTOBOATT = value
          SelectBoat = value
         toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
         if (Vector3.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5 then
@@ -15151,7 +15152,7 @@ if _G.Mode == "English" then
                     [2] = SelectBoat
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-                while _G.TPTOBOAT do wait()
+                while _G.TPTOBOATT do wait()
                         for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
                             if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then 
                                 if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
@@ -15159,7 +15160,7 @@ if _G.Mode == "English" then
                                         task.wait()
                                         local CFrame = v.CFrame
                                         twoboat(CFrame)
-                                    until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.TPTOBOAT
+                                    until not _G.TPTOBOATT
                                 end
                             end
                         end
@@ -15196,8 +15197,8 @@ end)
         end
     end)
 end)
-    local localPlayerr = game.Players.LocalPlayer
-   --[[ page14:Toggle("TptoNearyShip-1",_G.TPTOBOAT, function(value)
+
+   page14:Toggle("TptoNearyShip-1",_G.TPTOBOAT, function(value)
         _G.TPTOBOAT = value
         while task.wait() do
             if _G.TPTOBOAT then
@@ -15214,7 +15215,7 @@ end)
                 end
             end
         end
-end)]]
+end)
 page14:Toggle("AutoKillMonEvent", _G.AutoEvent, function(value)
     _G.AutoEvent = value
     spawn(function()
