@@ -15145,20 +15145,15 @@ function CheckNotifyBuy()
     for i, v in pairs(game:GetService("Players")["LocalPlayer"].PlayerGui:FindFirstChild("Notifications"):GetChildren()) do
         if v.Name == "NotificationTemplate" then
             if string.lower(v.Text):find("bought") then
-                pcall(function()
-                    v:Destroy()
-                end)
                 return true
             end
         end
     end
     return false
 end
-if CheckNotifyBuy() == true then
-    print(11111)
-end
+
 if _G.Mode == "English" then
- page14:Toggle("BuyBoat-1.5", _G.Bboat, function(value)
+ page14:Toggle("BuyBoat-1.6", _G.Bboat, function(value)
         _G.Bboat = value
         while _G.Bboat do wait()
             toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
