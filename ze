@@ -1127,12 +1127,13 @@ function twoboat(gotoCFrame) --- Tween
 						tween:Play()
                         function StopBoatF()
                             tween:Cancel()
-                            end
+                        end
 					end
 				end
 			end
 		end
 	end
+
 --[[Function Hop]]
 local PlaceID = game.PlaceId
 local AllIDs = {}
@@ -15150,7 +15151,9 @@ twoboat(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e
 end)
 local localPlayerr = game.Players.LocalPlayer
 
-page14:Toggle("AutoSeaEvent-Test", _G.Event, function(value)
+page14:Toggle("AutoSeaEvent-Test-2", _G.Event, function(value)
+    _G.Nocliprock = value
+    _G.Event = value
     spawn(function() -- Event Sea
         while task.wait() do
             pcall(function()
@@ -15158,6 +15161,7 @@ page14:Toggle("AutoSeaEvent-Test", _G.Event, function(value)
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                         if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500  then 
                             if v.Humanoid.Health > 0 then 
+                                StopBoatF()
                                 repeat wait()
                                     _G.FastType = "Fast"
                                     FastAttack = true
@@ -15181,18 +15185,20 @@ page14:Toggle("AutoSeaEvent-Test", _G.Event, function(value)
                         end
                     end
                 else 
-                    for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
+                    for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
                         if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then
                             if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1500 then
                                 repeat
                                     task.wait()
                                     local CFrame = v.CFrame
                                     twoboat(CFrame)
-                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 2 or not _G.Event
-                                wait(2)
-                                local Boat = game.Workspace.Boats[SelectBoat]
-                                local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
-                                tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+                                    until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1 or not _G.Event
+                                    wait(2)
+                                    local Boat = game.Workspace.Boats[SelectBoat]
+                                    local targetCFrame = CFrame.new(-52463.998046875, -0.32217442989349365, 2001.779541015625)
+                                    tweenModel(Boat, targetCFrame * CFrame.new(0, 100, 0))
+                                    end
+                                end
                             end
                         end
                     end
@@ -15201,7 +15207,12 @@ page14:Toggle("AutoSeaEvent-Test", _G.Event, function(value)
         end
     end)
 end)
-page14:Toggle("TestBoat", _G.TestBoat, function(value)
+page14:Toggle("StopBoat-Test-2", _G.spboat, function(value)
+while _G.spboat do wait()
+        StopBoatF()
+    end
+end)
+--[[page14:Toggle("TestBoat", _G.TestBoat, function(value)
 local localPlayerr = game.Players.LocalPlayer
 _G.TestBoat = value
 spawn(function()
@@ -15225,7 +15236,7 @@ spawn(function()
             end
         end
     end)
-end)
+end)]]
 --TP boat ป็น game.workspace.boat[SelectBoat].VehicleSeat(Getchildren)
 --Seaevent ถ้าทำไม่ได้จริงๆก็ให้ทำแยก แล้วทำ tp ไปที่cframe แต่ละระดับทะเล
 page14:Toggle("Auto Seabeast", _G.AutoSeabeast, function(value)
