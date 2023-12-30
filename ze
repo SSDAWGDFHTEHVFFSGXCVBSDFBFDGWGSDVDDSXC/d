@@ -1,7 +1,5 @@
-pcall(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec"))()
-end) 
--- [Place Id Check]
+print(32213)
+repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
 World1 = true; 
@@ -88,6 +86,7 @@ _G.Settings = {
     AutoRaids = false,
     AutoNextPlace = false
 }
+
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
     Ui:Destroy()
@@ -178,6 +177,9 @@ end
     game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F1,false,game)
     end)
 --[[UIPERPID]]
+pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec"))()
+end) 
 -- [Save Settings]
 function LoadSettings()
     if readfile and writefile and isfile and isfolder then
@@ -359,7 +361,7 @@ end)
 end)
 end)
 -- [BringMon]
---เห้1
+
 function InMyNetWork(object)
     if isnetworkowner then
         return isnetworkowner(object)
@@ -410,6 +412,20 @@ end
 
 --[[ดาเมจแดงๆขึ้นตามตัวมอน]]
 game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = false
+game:GetService("ReplicatedStorage").Effect.Container.Death.Visible = false
+game:GetService("ReplicatedStorage").Effect.Container.Respawn.Visible = false
+        
+for i, v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
+    pcall(function()
+        if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" or v.Name == ("SlashTail") then --  then --or v.Name == ("Sounds")
+            v:Destroy()
+            v:Destroy()
+            v:Destroy()
+            v:Destroy()
+        end
+    end)
+end
+    
 --[[]]
 -- [require module]
 local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
