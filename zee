@@ -1,3 +1,4 @@
+print("ความเร็วตี")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -8239,7 +8240,6 @@ spawn(function()
         if _G.FastAttack then
             if typeof(y) == "table" then
                 pcall(function()
-                    yakmefan()
                     CameraShaker:Stop()
                     y.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
                     y.activeController.timeToNextAttack = 0
@@ -8256,7 +8256,7 @@ spawn(function()
         end
     end)
 end)
-_G.Fast_Delay = 0.0175 --ฟาส
+_G.Fast_Delay = 0.04 --ฟาส
 local CurveFrame = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework")))[2]
 local VirtualUser = game:GetService("VirtualUser")
 local RigControllerR = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.RigController))[2]
