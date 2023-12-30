@@ -1,4 +1,4 @@
-print("เทสตีเร็ว")
+print("เทสตีเร็ว-1")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -3381,7 +3381,8 @@ while task.wait() do
                             game:GetService 'VirtualUser':CaptureController()
                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                             end
-                            
+                            game:GetService("VirtualUser"):CaptureController()
+                            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
                             PosMon = v.HumanoidRootPart.CFrame
                         until not _G.NeareastFarm or not v.Parent or v.Humanoid.Health <= 0 
                     end
@@ -3845,6 +3846,8 @@ else
                                     game:GetService'VirtualUser':CaptureController()
                                     game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                 end
+                                game:GetService("VirtualUser"):CaptureController()
+                                game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
                                 v.HumanoidRootPart.Size = Vector3.new(60,60,60)
                                 v.Humanoid.JumpPower = 0
                                 v.Humanoid.WalkSpeed = 0
@@ -8125,7 +8128,7 @@ CombatFrameworkR = require(game:GetService("Players").LocalPlayer.PlayerScripts.
 y = debug.getupvalues(CombatFrameworkR)[2]
 spawn(function()
     game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.FastAttackk then
+        if _G.FastAttack then
             if typeof(y) == "table" then
                 pcall(function()
                     CameraShaker:Stop()
@@ -8228,7 +8231,7 @@ end
 bs = tick()
 task.spawn(function()
     while task.wait(_G.Fast_Delay) do
-        if _G.FastAttackk then
+        if _G.FastAttack then
             _G.Fast = true
             if bs - tick() > 0.75 then
                 task.wait()
@@ -8318,7 +8321,7 @@ getgenv().A = require(game:GetService("ReplicatedStorage").CombatFramework.RigLi
 getgenv().B = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle).play
 spawn(function()
     while wait() do
-      if _G.FastAttackk then
+      if _G.FastAttack then
             pcall(function()
                 require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).wrapAttackAnimationAsync =function(a1,a2,a3,a4,a5)
                     local GetBladeHits = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).getBladeHits(a2,a3,a4)
@@ -17152,7 +17155,7 @@ getgenv().A = require(game:GetService("ReplicatedStorage").CombatFramework.RigLi
 getgenv().B = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle).play
 spawn(function()
     while wait() do
-      if _G.FastAttackk then
+      if _G.FastAttack then
             pcall(function()
                 require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).wrapAttackAnimationAsync =function(a1,a2,a3,a4,a5)
                     local GetBladeHits = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).getBladeHits(a2,a3,a4)
