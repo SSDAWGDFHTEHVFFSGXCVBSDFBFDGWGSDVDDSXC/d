@@ -1,4 +1,4 @@
-print(32213)
+print(111111111)
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -412,9 +412,14 @@ end
 
 --[[ดาเมจแดงๆขึ้นตามตัวมอน]]
 game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = false
-game:GetService("ReplicatedStorage").Effect.Container.Death.Visible = false
-game:GetService("ReplicatedStorage").Effect.Container.Respawn.Visible = false
-        
+if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
+    game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
+    game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
+    end
+    if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
+    game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
+    game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
+    end    
 for i, v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
     pcall(function()
         if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" or v.Name == ("SlashTail") then --  then --or v.Name == ("Sounds")
@@ -8044,7 +8049,7 @@ end)
 end
 
 coroutine.wrap(function()
-    while RunService.RenderStepped:Wait(0.15) do
+    while RunService.RenderStepped:Wait(0.175) do
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
