@@ -4442,17 +4442,6 @@ task.spawn(function()
         end)
     end
 end)
-
-    
-Main:AddToggle("White Screen",_G.WhiteScreen,function(value)
-    _G.WhiteScreen = value
-if _G.WhiteScreen == true then
-    game:GetService("RunService"):Set3dRenderingEnabled(false)
-elseif _G.WhiteScreen == false then
-    game:GetService("RunService"):Set3dRenderingEnabled(true)
-end
-end)
-
     
 getgenv().A = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).wrapAttackAnimationAsync
 getgenv().B = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle).play
