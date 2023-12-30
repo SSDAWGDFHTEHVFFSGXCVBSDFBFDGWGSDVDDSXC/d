@@ -2334,17 +2334,17 @@ if game.PlaceId == 2753915549 then
                 CFrameQuest = CFrame.new(150.5066375732422, 30.693693161010742, -12774.5029296875)
                 CFrameMon = CFrame.new(134.86563110351562, 77.2476806640625, -12876.5478515625)
             elseif MyLevel == 2400 or MyLevel <= 2449 then
-                Mon = "Candy Pirate [Lv. 2400]"
+                Mon = "Candy Pirate"
                 LevelQuest = 1
                 NameQuest = "CandyQuest1"
-                NameMon = "Candy Pirate"
+                NameMon = "Candy Pirates"
                 CFrameQuest = CFrame.new(-1150.0400390625, 20.378934860229492, -14446.3349609375)
                 CFrameMon = CFrame.new(-1310.5003662109375, 26.016523361206055, -14562.404296875)
             elseif MyLevel <= 2450 then
-                Mon = "Snow Demon [Lv. 2425]"
+                Mon = "Snow Demon"
                 LevelQuest = 2
                 NameQuest = "CandyQuest1"
-                NameMon = "Snow Demon"
+                NameMon = "Snow Demons"
                 CFrameQuest = CFrame.new(-1150.0400390625, 20.378934860229492, -14446.3349609375)
                 CFrameMon = CFrame.new(-899.0391235351562, 26.511367797851562, -14430.8681640625)
             end
