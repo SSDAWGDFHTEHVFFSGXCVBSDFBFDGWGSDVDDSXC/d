@@ -1,4 +1,4 @@
-print("รอบนี้แหละ")
+print(212121212121212121212121)
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -319,12 +319,12 @@ pcall(function()
     --[Raids]
     _G.AutoRaids or _G.AutoNextPlace
     then
-        if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+        --[[if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
             local Highlight = Instance.new("Highlight")
             Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
             Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
             Highlight.Parent = game.Players.LocalPlayer.Character;
-            end
+            end]]
         if syn then
             setfflag("HumanoidParallelRemoveNoPhysics", "False")
             setfflag("HumanoidParallelRemoveNoPhysicsNoSimulate2", "False")
@@ -352,7 +352,7 @@ pcall(function()
             end
         end
     else
-        game.Players.LocalPlayer.Character:FindFirstChild("Highlight"):Destroy();
+       --[[game.Players.LocalPlayer.Character:FindFirstChild("Highlight"):Destroy();]]
         if game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1") then
             game.Players.LocalPlayer.Character.HumanoidRootPart:FindFirstChild("BodyVelocity1"):Destroy();
         end
@@ -387,11 +387,8 @@ task.spawn(function()
                             v.HumanoidRootPart.Transparency = 1
                             v.HumanoidRootPart.CanCollide = false
                             v.Head.CanCollide = false
-                            --[[if v.Humanoid:FindFirstChild("Animator") then
-                                v.Humanoid.Animator:Destroy()
-                            end]]
                             v.Humanoid:ChangeState(11)
-                            v.Humanoid:ChangeState(14)
+                            sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge) 
                         end
                     end
                 end
@@ -412,6 +409,7 @@ end
 
 --[[ดาเมจแดงๆขึ้นตามตัวมอน]]
 game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = false
+
 while RunService.RenderStepped:Wait() do
     if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
     game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
@@ -420,10 +418,7 @@ while RunService.RenderStepped:Wait() do
     game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
     end
 end
-while wait() do
-    setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
-    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)  
-end
+
 for i, v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
     pcall(function()
         if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" then --v.Name == ("SlashTail")  then --or v.Name == ("Sounds")
@@ -434,8 +429,7 @@ for i, v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
         end
     end)
 end
-    
---[[]]
+
 -- [require module]
 local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
 local CombatFrameworkR = getupvalues(CombatFramework)[2]
@@ -656,12 +650,12 @@ local info = TweenInfo.new(
 (RealTarget.Position - game:GetService("Players").LocalPlayer.Character:WaitForChild("HumanoidRootPart").Position)
 .Magnitude / Speed, Enum.EasingStyle.Linear)
 local tweenw, err = pcall(function()
-    if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+  --[[  if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
 		local Highlight = Instance.new("Highlight")
         Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
         Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
 		Highlight.Parent = game.Players.LocalPlayer.Character;
-		end
+		end]]
 tween = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = RealTarget })
 tween:Play()
 end)
@@ -725,12 +719,12 @@ getgenv().ToTarget = function(Point)
     end
 
     tot:Play()
-    if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+    --[[if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
         local Highlight = Instance.new("Highlight")
         Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
         Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
         Highlight.Parent = game.Players.LocalPlayer.Character
-    end
+    end]]
     if TweenPlay < 250 then
         TweeSpeed = 352
     elseif TweenPlay < 500 then
@@ -764,12 +758,12 @@ local tween_s = game:service "TweenService"
 local info = TweenInfo.new(
     (game:GetService("Players")["LocalPlayer"].Character.HumanoidRootPart.Position - gotoCFrame.Position).Magnitude / 325, Enum.EasingStyle.Linear)
     tween, err = pcall(function()
-        if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+        --[[if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
             local Highlight = Instance.new("Highlight")
             Highlight.FillColor = Color3.new(0.266667, 0.854902, 0.921569)
             Highlight.OutlineColor = Color3.new(0.266667, 0.854902, 0.921569)
             Highlight.Parent = game.Players.LocalPlayer.Character;
-            end
+            end]]
     tweenz = tween_s:Create(game.Players.LocalPlayer.Character["HumanoidRootPart"], info, { CFrame = gotoCFrame })
     tweenz:Play()
 end)
@@ -7855,8 +7849,6 @@ if _G.Mode == "English" then
                                                                     v5.Humanoid.JumpPower = 0;
                                                                     v5.Humanoid.WalkSpeed = 0;
                                                                     v5.HumanoidRootPart.CanCollide = false;
-                                                                    v5.Humanoid:ChangeState(14);
-                                                                    v5.Humanoid:ChangeState(16);
                                                                     v5.Humanoid:ChangeState(11);
                                                                     v5.HumanoidRootPart.Size = Vector3.new(55, 55, 55);
                                                                 end
@@ -7960,8 +7952,6 @@ if CustomFindFirstChild(MaterialMob) then
                                         v5.Humanoid.JumpPower = 0;
                                         v5.Humanoid.WalkSpeed = 0;
                                         v5.HumanoidRootPart.CanCollide = false;
-                                        v5.Humanoid:ChangeState(14);
-                                        v5.Humanoid:ChangeState(16);
                                         v5.Humanoid:ChangeState(11);
                                         v5.HumanoidRootPart.Size = Vector3.new(55, 55, 55);
                                     end
@@ -8064,7 +8054,7 @@ coroutine.wrap(function()
                     if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end
                     elseif _G.FastType == "Slow" then
                     if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
-
+                    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)  
                 end
             end
         end
