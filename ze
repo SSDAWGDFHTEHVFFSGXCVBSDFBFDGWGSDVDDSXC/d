@@ -1,4 +1,4 @@
-print("ลองตี")
+print("หลุดไหม")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -495,7 +495,7 @@ if ac and ac.equipped then
         debug.setupvalue(ac.attack, 4, AcAttack7)
         debug.setupvalue(ac.attack, 7, AcAttack10)
        for k, v in pairs(ac.animator.anims.basic) do
-            v:Play(0.001, 0.001, 0.001)
+            v:Play() --(0.001, 0.001, 0.001)
         end
         if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
             game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
@@ -8041,7 +8041,7 @@ end)
 end
 
 coroutine.wrap(function()
-    while RunService.RenderStepped:Wait(0.04) do
+    while RunService.RenderStepped:Wait(0.1) do
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
