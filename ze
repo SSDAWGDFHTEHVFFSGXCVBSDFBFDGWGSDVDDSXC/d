@@ -1,4 +1,4 @@
-print(111111111)
+print(123123)
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -16694,7 +16694,7 @@ platform.Transparency = 1
 platform.Anchored = true
 platform.Parent = game.workspace
 if _G.Mode == "English" then
-    page12:Toggle("Walk on Water",true,function(value)
+    page12:Toggle("Walk on Water",false,function(value)
         _G.WalkWater = value
     end)
     
@@ -16714,7 +16714,7 @@ page12:Toggle("InfAbility", false, function(value)
     InfAbility()
 end)
 else
-    page12:Toggle("เดินบนน้ำ",true,function(value)
+    page12:Toggle("เดินบนน้ำ",false,function(value)
         _G.WalkWater = value
     end)
     
