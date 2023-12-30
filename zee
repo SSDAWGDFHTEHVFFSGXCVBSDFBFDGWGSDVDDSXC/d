@@ -1,4 +1,4 @@
-print("ความเร็วตี")
+print("เทสความเร็ว")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -3490,8 +3490,6 @@ while task.wait() do
                             game:GetService 'VirtualUser':CaptureController()
                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                             end 
-                            game:GetService("VirtualUser"):CaptureController()
-                            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
                             PosMon = v.HumanoidRootPart.CFrame
                         until not _G.NeareastFarm or not v.Parent or v.Humanoid.Health <= 0 
                     end
@@ -3955,8 +3953,6 @@ else
                                     game:GetService'VirtualUser':CaptureController()
                                     game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                 end
-                                game:GetService("VirtualUser"):CaptureController()
-                                game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
                                 v.HumanoidRootPart.Size = Vector3.new(60,60,60)
                                 v.Humanoid.JumpPower = 0
                                 v.Humanoid.WalkSpeed = 0
@@ -8232,221 +8228,48 @@ pcall(function()
 end)
 end
 end)
-local CameraShaker = require(game.ReplicatedStorage.Util.CameraShaker)
-CombatFrameworkR = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
-y = debug.getupvalues(CombatFrameworkR)[2]
-spawn(function()
-    game:GetService("RunService").RenderStepped:Connect(function()
-        if _G.FastAttack then
-            if typeof(y) == "table" then
-                pcall(function()
-                    CameraShaker:Stop()
-                    y.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
-                    y.activeController.timeToNextAttack = 0
-                    y.activeController.hitboxMagnitude = 60
-                    y.activeController.active = false
-                    y.activeController.timeToNextBlock = 0
-                    y.activeController.focusStart = 1655503339.0980349
-                    y.activeController.increment = 1
-                    y.activeController.blocking = false
-                    y.activeController.attacking = false
-                    y.activeController.humanoid.AutoRotate = true
-                end)
-            end
-        end
-    end)
-end)
-_G.Fast_Delay = 0.04 --ฟาส
-local CurveFrame = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework")))[2]
-local VirtualUser = game:GetService("VirtualUser")
-local RigControllerR = debug.getupvalues(require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework.RigController))[2]
-local Client = game:GetService("Players").LocalPlayer
-local DMG = require(Client.PlayerScripts.CombatFramework.Particle.Damage)
-local CameraShaker = require(game.ReplicatedStorage.Util.CameraShaker)
-CameraShaker:Stop()
-function CurveFuckWeapon()
-    local p13 = CurveFrame.activeController
-    local wea = p13.blades[1]
-    if not wea then
-        return
-    end
-    while wea.Parent ~= game.Players.LocalPlayer.Character do
-        wea = wea.Parent
-    end
-    return wea
-end
 
-function getHits(Size)
-    local Hits = {}
-    local Enemies = workspace.Enemies:GetChildren()
-    local Characters = workspace.Characters:GetChildren()
-    for i = 1, #Enemies do
-        local v = Enemies[i]
-        local Human = v:FindFirstChildOfClass("Humanoid")
-        if
-            Human and Human.RootPart and Human.Health > 0 and
-                game.Players.LocalPlayer:DistanceFromCharacter(Human.RootPart.Position) < Size + 5
-         then
-            table.insert(Hits, Human.RootPart)
-        end
-    end
-    for i = 1, #Characters do
-        local v = Characters[i]
-        if v ~= game.Players.LocalPlayer.Character then
-            local Human = v:FindFirstChildOfClass("Humanoid")
-            if
-                Human and Human.RootPart and Human.Health > 0 and
-                    game.Players.LocalPlayer:DistanceFromCharacter(Human.RootPart.Position) < Size + 5
-             then
-                table.insert(Hits, Human.RootPart)
+coroutine.wrap(function()
+    while RunService.RenderStepped:Wait(0.05) do
+        local ac = CombatFrameworkR.activeController
+            if ac and ac.equipped then
+                if FastAttack or _G.FastAttack then
+                    yakmefan()
+                    if _G.FastType == "Normal" then
+                    if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
+                    elseif _G.FastType == "Fast" then
+                    if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end
+                    elseif _G.FastType == "Slow" then
+                    if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
+                    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)  
+                end
             end
         end
     end
-    return Hits
-end
+end)()
 
-function Boost()
-    task.spawn(function()
-        game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurveFuckWeapon()))
-    end)
-end
-
-function Unboost()
-    tsak.spawn(function()
-        game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("unequipWeapon",tostring(CurveFuckWeapon()))
-    end)
-end
-
-local cdnormal = 0
-local Animation = Instance.new("Animation")
-local CooldownFastAttack = 0
-
-FastAttack = function()
-    local ac = CurveFrame.activeController
-    if ac and ac.equipped then
-        task.spawn(function()
-            if tick() - cdnormal > 0.5 then
-                ac:attack()
-                cdnormal = tick()
-            else
-                Animation.AnimationId = ac.anims.basic[2]
-                ac.humanoid:LoadAnimation(Animation):Play(1, 1)
-                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", getHits(120), 2, "")
-            end
-        end)
-    end
-end
---[[
-bs = tick()
+_G.FastType = "Fast"
 task.spawn(function()
-    while task.wait(_G.Fast_Delay) do
-        if _G.FastAttack then
-            _G.Fast = true
-            if bs - tick() > 0.75 then
-                task.wait()
-                bs = tick()
-            end
-            pcall(function()
-                for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if v.Humanoid.Health > 0 then
-                        if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
-                            FastAttack()
-                            task.wait()
-                            Boost()
-                        end
+    while _G.FastAttack do RunService.RenderStepped:Wait(0.05)
+        require(game.ReplicatedStorage.Util.CameraShaker):Stop()
+            Bruh = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
+                Ryu = debug.getupvalues(Bruh)[2]
+                if typeof(Ryu) == "table" then
+                    pcall(function()
+                        Ryu.activeController.timeToNextAttack = 0
+                        Ryu.activeController.active = false
+                        Ryu.activeController.timeToNextBlock = 0
+                        Ryu.activeController.focusStart = 1655503339.0980349
+                        Ryu.activeController.blocking = false
+                        Ryu.activeController.attacking = false
+                        Ryu.activeController.hitboxMagnitude = 200
+                        Ryu.activeController.humanoid.AutoRotate = true
+                        Ryu.activeController.increment = 1 + 1 / 1
+                        end)
                     end
                 end
             end)
-        end
-    end
-end)]]
-
-k = tick()
-task.spawn(function()
-    if _G.FastAttack then
-    while task.wait(0.2) do
-            if k - tick() > 0.75 then
-                task.wait()
-                k = tick()
-            end
-            end
-            pcall(function()
-                for i, v in pairs(game.Workspace.Enemies:GetChildren()) do
-                    if v.Humanoid.Health > 0 then
-                        if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 100 then
-                            task.wait(0.000025)
-                            Unboost()
-                        end
-                    end
-                end
-            end)
-    end
-end)
-
-task.spawn(function()
-    while task.wait() do
-        if _G.Fast then
-       pcall(function()
-        CurveFrame.activeController.timeToNextAttack = 0
-        CurveFrame.activeController.focusStart = 0
-        CurveFrame.activeController.hitboxMagnitude = 200
-        CurveFrame.activeController.humanoid.AutoRotate = true
-        CurveFrame.activeController.increment = 1 + 1 / 1
-       end)
-    end
-    end
-end)
-
-abc = true
-task.spawn(function()
-    local a = game.Players.LocalPlayer
-    local b = require(a.PlayerScripts.CombatFramework.Particle)
-    local c = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib)
-    if not shared.orl then
-        shared.orl = c.wrapAttackAnimationAsync
-    end
-    if not shared.cpc then
-        shared.cpc = b.play
-    end
-    if abc then
-        pcall(function()
-            c.wrapAttackAnimationAsync = function(d, e, f, g, h)
-            local i = c.getBladeHits(e, f, g)
-            if i then
-                b.play = function()
-                end
-                d:Play(0.25, 0.25, 0.25)
-                h(i)
-                b.play = shared.cpc
-                wait(.5)
-                d:Stop()
-            end
-            end
-        end)
-    end
-end)
-    
-getgenv().A = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).wrapAttackAnimationAsync
-getgenv().B = require(game.Players.LocalPlayer.PlayerScripts.CombatFramework.Particle).play
-spawn(function()
-    while wait() do
-      if _G.FastAttack then
-            pcall(function()
-                require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).wrapAttackAnimationAsync =function(a1,a2,a3,a4,a5)
-                    local GetBladeHits = require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).getBladeHits(a2,a3,a4)
-                    if GetBladeHits then
-                         require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).play = function() end
-                        a1:Play(0.2, 0.2, 0.2)
-                        a5(GetBladeHits)
-                         require(game:GetService("ReplicatedStorage").CombatFramework.RigLib).play = getgenv().B 
-                        wait(.5)
-                        a1:Stop()
-                    end
-                end
-            end)
-         end
-    end
-    end)
+  
 local RunService = game:GetService("RunService")
 if _G.Mode == "English" then
 page2:Toggle("White Screen", false, function(value)
