@@ -1,4 +1,4 @@
-print("หะ")
+-- Fast New
 repeat
     wait()
 until game:IsLoaded() and game.Players.LocalPlayer and game.Players.LocalPlayer.Character;
@@ -4443,9 +4443,6 @@ task.spawn(function()
     end
 end)
 
-Main:AddToggle("Auto Click",false,function(value)
-_G.AutoClick = value
-end)
     
 Main:AddToggle("White Screen",_G.WhiteScreen,function(value)
     _G.WhiteScreen = value
