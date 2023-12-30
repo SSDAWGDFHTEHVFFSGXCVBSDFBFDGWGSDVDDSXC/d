@@ -1,4 +1,4 @@
-print(212121212121212121212121)
+print("เอ๊า")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -407,28 +407,30 @@ if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
 	end)
 end
 
---[[ดาเมจแดงๆขึ้นตามตัวมอน]]
-game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = false
+-- [Deleted Effect Auto]
 
-while RunService.RenderStepped:Wait() do
-    if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
-    game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
-    end
-    if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
-    game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
-    end
-end
-
+spawn(function()
+while task.wait() do
 for i, v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
     pcall(function()
-        if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" then --v.Name == ("SlashTail")  then --or v.Name == ("Sounds")
-            v:Destroy()
-            v:Destroy()
-            v:Destroy()
+        if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" then -- v.Name == ("SlashTail") then --or v.Name == ("Sounds")
             v:Destroy()
         end
     end)
 end
+end
+end)
+
+_G.DisDieffect = true
+if _G.DisDieffect then
+if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
+game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
+end
+if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
+game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
+end
+end
+
 
 -- [require module]
 local CombatFramework = require(game:GetService("Players").LocalPlayer.PlayerScripts:WaitForChild("CombatFramework"))
@@ -496,9 +498,9 @@ if ac and ac.equipped then
             Highlight.OutlineColor = Color3.new(255, 0, 0)
             Highlight.Parent = v
         end]]
-        for k, v in pairs(ac.animator.anims.basic) do
+       --[[ for k, v in pairs(ac.animator.anims.basic) do
             v:Play(0.01, 0.01, 0.01)
-        end
+        end]]
         if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
             game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
             game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
