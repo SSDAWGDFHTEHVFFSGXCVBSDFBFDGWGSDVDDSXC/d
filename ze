@@ -1,4 +1,4 @@
-print(123123)
+print("หะ")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -414,7 +414,7 @@ end
 game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = false
 if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
     game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
-    game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
+    game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
     end
     if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
     game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
@@ -422,7 +422,7 @@ if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death")
     end    
 for i, v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
     pcall(function()
-        if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" or v.Name == ("SlashTail") then --  then --or v.Name == ("Sounds")
+        if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" then --v.Name == ("SlashTail")  then --or v.Name == ("Sounds")
             v:Destroy()
             v:Destroy()
             v:Destroy()
@@ -8049,7 +8049,7 @@ end)
 end
 
 coroutine.wrap(function()
-    while RunService.RenderStepped:Wait(0.175) do
+    while RunService.RenderStepped:Wait(0.04) do
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
