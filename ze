@@ -1,4 +1,4 @@
-print("หะ")
+print("รอบนี้แหละ")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -412,14 +412,18 @@ end
 
 --[[ดาเมจแดงๆขึ้นตามตัวมอน]]
 game:GetService("ReplicatedStorage").Assets.GUI.DamageCounter.Enabled = false
-if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
-    game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
+while RunService.RenderStepped:Wait() do
+    if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
     game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
     end
     if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
     game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
-    game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
-    end    
+    end
+end
+while wait() do
+    setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
+    sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)  
+end
 for i, v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
     pcall(function()
         if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" then --v.Name == ("SlashTail")  then --or v.Name == ("Sounds")
@@ -8060,14 +8064,13 @@ coroutine.wrap(function()
                     if tick() - cooldownfastattack > 1.5 then wait(.01) cooldownfastattack = tick() end
                     elseif _G.FastType == "Slow" then
                     if tick() - cooldownfastattack > .3 then wait(.7) cooldownfastattack = tick() end
+
                 end
             end
         end
     end
 end)()
 _G.FastType = "Fast"
-        --[[setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
-        sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)]]
 task.spawn(function()
     while _G.FastAttack do RunService.RenderStepped:Wait(0)
         require(game.ReplicatedStorage.Util.CameraShaker):Stop()
