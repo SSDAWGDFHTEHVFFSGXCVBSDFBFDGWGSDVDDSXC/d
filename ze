@@ -4082,7 +4082,7 @@ end)
 
 page1:Line()
 if _G.Mode == "English" then
-page1:Toggle("Auto Farm Chest(Tween)", _G.Settings.AutoFarmChest, function(value)
+page1:Toggle("Auto Farm Chest(Tween)", false, function(value)
     _G.AutoFarmChest = value
     _G.Settings.AutoFarmChest = value
         SaveSettings()
@@ -4090,11 +4090,11 @@ if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
 end)
-page1:Toggle("Auto Farm Chest(Fast)", _G.ChestBypass,function(value)
+page1:Toggle("Auto Farm Chest(Fast)",false,function(value)
     _G.ChestBypass = value
 end)
 else
-page1:Toggle("ฟาร์มกล่อง(บินเก็บ)", _G.Settings.AutoFarmChest, function(value)
+page1:Toggle("ฟาร์มกล่อง(บินเก็บ)", false, function(value)
 _G.AutoFarmChest = value
 _G.Settings.AutoFarmChest = value
 SaveSettings()
@@ -4102,7 +4102,7 @@ if value == false then
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
 end
 end)
-page1:Toggle("ฟาร์มกล่อง(วาร์ปเก็บ)", _G.ChestBypass,function(value)
+page1:Toggle("ฟาร์มกล่อง(วาร์ปเก็บ)", false,function(value)
     _G.ChestBypass = value
 end)
 end
@@ -4111,25 +4111,25 @@ end
 spawn(function()
     while wait() do
     if _G.ChestBypass then
-    pcall(function()
-    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
-          if string.find(v.Name, "Chest") then
-              print(v.Name)
-              game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
-              wait(.15)
-          end
-      end
-      game.Players.LocalPlayer.Character.Head:Destroy()
-      for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
-       if string.find(v.Name, "Chest") and v:IsA("TouchTransmitter") then
-       firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
-       wait()
-       firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
-       end
-       end
-      end)
+             pcall(function()
+                    for i,v in pairs(game:GetService("Workspace"):GetChildren()) do
+                            if string.find(v.Name, "Chest") then
+                                print(v.Name)
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.CFrame
+                                wait(.15)
+                            end
+                        end
+                        --game.Players.LocalPlayer.Character.Head:Destroy()
+                        for _,v in pairs(game:GetService("Workspace"):GetDescendants()) do
+                        if string.find(v.Name, "Chest") and v:IsA("TouchTransmitter") then
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 0) --0 is touch
+                        wait()
+                        firetouchinterest(game.Players.LocalPlayer.Character.HumanoidRootPart, v.Parent, 1) -- 1 is untouch
+                        end
+                    end
+                end)
+            end
         end
-      end
     end)
     
     spawn(function()
@@ -4151,11 +4151,11 @@ spawn(function()
                             repeat wait()
                                 if game:GetService("Workspace"):FindFirstChild(v.Name) then
                                     EquipWeapon(_G.SelectWeapon)
-                                    toTarget(v.CFrame)
+                                    topos(v.CFrame)
                                     UnEquipWeapon(_G.SelectWeapon)
                                 end
                             until AutoFarmChest == false or not v.Parent
-                            toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
+                            topos(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
                             _G.MagnitudeAdd = _G.MagnitudeAdd+1500
                             break
                         end
@@ -8225,7 +8225,7 @@ end
 end)
 
 coroutine.wrap(function()
-    while RunService.RenderStepped:Wait(0.35) do
+    while RunService.RenderStepped:Wait(0.4) do --0.04 หบุด
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
@@ -8245,13 +8245,13 @@ end)()
 
 _G.FastType = "Fast"
 task.spawn(function()
-    while _G.FastAttack do RunService.RenderStepped:Wait(0.35)
+    while _G.FastAttack do RunService.RenderStepped:Wait(0.4)
         require(game.ReplicatedStorage.Util.CameraShaker):Stop()
             Bruh = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
                 Ryu = debug.getupvalues(Bruh)[2]
                 if typeof(Ryu) == "table" then
                     pcall(function()
-                        Ryu.activeController.timeToNextAttack = 0
+                        --Ryu.activeController.timeToNextAttack = 0
                         Ryu.activeController.active = false
                         Ryu.activeController.timeToNextBlock = 0
                         Ryu.activeController.focusStart = 1655503339.0980349
@@ -14954,6 +14954,34 @@ page14:Toggle("TPBoat-Sea6[???]", _G.TBS6, function(value)
         end
     end)
 end)
+Seatable = {"Sea1[Low]","Sea2[Medium]","Sea3[High]","Sea4[Extreme]","Sea5[Crazy]","Sea6[???]"}
+page14:Dropdown("เลือกระดับทะเล",Seatable, function(value)
+_G.SelectLocalTeleportSea = value
+end)
+page14:Toggle("เทเลพอร์ตไปยังทะเลที่เลือกไว้", _G.TeleportSea,function(value)
+_G.TeleportSea = value
+local Boat = game.Workspace.Boats[SelectBoat]
+if _G.TeleportSea then
+        if _G.SelectLocalTeleportSea == "Sea1[Low]" then
+            tweenModel(Boat, CFrame.new(-22526.0098, -0.3221744, 1716.89185, -0.210707203, 1.100981e-07, 0.977549195, 2.74631451e-09, 1, -1.12034698e-07, -0.977549195, -2.09218598e-08, -0.210707203))
+        end
+        if _G.SelectLocalTeleportSea == "Sea2[Medium]" then
+            tweenModel(Boat, CFrame.new(-25645.3535, -0.3221744, 2554.41016, -0.334876329, -5.05522451e-08, 0.942262113, -3.13346469e-08, 1, 4.25136619e-08, -0.942262113, -1.52886308e-08, -0.334876329))
+        end
+        if _G.SelectLocalTeleportSea == "Sea3[High]" then
+            tweenModel(Boat, CFrame.new(-29842.2227, -0.3221744, 4070.85767, -0.270609587, 3.60968606e-08, 0.962689161, -4.47193429e-08, 1, -5.00663617e-08, -0.962689161, -5.65992657e-08, -0.270609587))
+        end
+        if _G.SelectLocalTeleportSea == "Sea4[Extreme]" then
+            tweenModel(Boat, CFrame.new(-32654.7188, -0.3221744, 4788.14697, -0.183276221, 2.0033232e-08, 0.983061433, 3.66669433e-08, 1, -1.35424418e-08, -0.983061433, 3.35638504e-08, -0.183276221))
+        end
+        if _G.SelectLocalTeleportSea == "Sea5[Crazy]" then
+            tweenModel(Boat, CFrame.new(-37813.6953, -0.3221744, 6105.16895, -0.252362996, 4.13621581e-09, 0.967632651, 2.87320709e-08, 1, 3.21888249e-09, -0.967632651, 2.86144175e-08, -0.252362996))
+        end
+        if _G.SelectLocalTeleportSea == "Sea6[???]" then
+            tweenModel(Boat, CFrame.new(-42250.2227, -0.3221744, 9247.07715, -0.45916447, 6.39043236e-08, 0.888351262, -3.36711423e-08, 1, -8.93395651e-08, -0.888351262, -7.09333605e-08, -0.45916447))
+        end
+    end
+end)
 page14:Label("Function Event")
 page14:Toggle("AutoKillMonEvent", _G.AutoEvent, function(value)
     _G.AutoEvent = value
@@ -15050,14 +15078,14 @@ page14:Toggle("AutoKillMonEvent", _G.AutoEvent, function(value)
 end)
 page14:Toggle("Accept Quest Kill 20 Sharks", _G.QRepairBoat, function(value)
     _G.QRepairBoat = value
+    if _G.Mode == "English" then 
+        Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to accept the quest to kill 20 sharks.:<Color=/>")
+    else
+        Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาไปรับเควสฆ่าฉลาม 20 ตัว,<Color=/>")
+    end
     spawn(function()
         while wait() do
             if _G.QRepairBoat then
-                if _G.Mode == "English" then 
-                    Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to accept the quest to kill 20 sharks.:<Color=/>")
-                else
-                    Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาไปรับเควสฆ่าฉลาม 20 ตัว,<Color=/>")
-                end
             repeat wait() toTarget(CFrame.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664)) until (Vector3.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.QRepairBoat
             local args = {
                 [1] = "Shipwright"
@@ -15082,22 +15110,23 @@ page14:Toggle("Accept Quest Kill 20 Sharks", _G.QRepairBoat, function(value)
                 Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ฆ่าฉลาม 20 ตัว,<Color=/>")
             end
             wait(1)
-            toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
+            repeat wait()  toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667)) until  (Vector3.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.QRepaiBoat
+          
             end
         end
     end)
 end) 
 
-page14:Toggle("Click After Kill 20 Shark", _G.QRepairBoat2, function(value)
+page14:Toggle("Click After Kill 20 Shark", _G.QRepairBoat2, function(value) 
     _G.QRepairBoat2 = value
+    if _G.Mode == "English" then 
+        Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to the repair job (after you complete the quest to kill 20 sharks).:<Color=/>")
+    else
+        Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาคุณไปรับอาชีพ repair (หลังจากที่คุณทำเควสฆ่าฉลาม 20 ตัวแล้ว),<Color=/>")
+    end
     spawn(function()
         while wait() do
             if _G.QRepairBoat2 then
-                if _G.Mode == "English" then 
-                    Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to the repair job (after you complete the quest to kill 20 sharks).:<Color=/>")
-                else
-                    Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาคุณไปรับอาชีพ repair (หลังจากที่คุณทำเควสฆ่าฉลาม 20 ตัวแล้ว),<Color=/>")
-                end
                 repeat wait() toTarget(CFrame.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664)) until (Vector3.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.QRepairBoat2
             local args = {
                 [1] = "Shipwright"
@@ -15506,16 +15535,16 @@ page14:Toggle("ออโต้ฆ่ามอนอีเว้นท์ทั�
         end
     end)
 end)
-page14:Toggle("Accept Quest Kill 20 Sharks", _G.QRepairBoat, function(value)
+page14:Toggle("รับเควสฆ่าฉลาม 20 ตัว", _G.QRepairBoat, function(value)
     _G.QRepairBoat = value
+    if _G.Mode == "English" then 
+        Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to accept the quest to kill 20 sharks.:<Color=/>")
+    else
+        Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาไปรับเควสฆ่าฉลาม 20 ตัว,<Color=/>")
+    end
     spawn(function()
         while wait() do
             if _G.QRepairBoat then
-                if _G.Mode == "English" then 
-                    Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to accept the quest to kill 20 sharks.:<Color=/>")
-                else
-                    Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาไปรับเควสฆ่าฉลาม 20 ตัว,<Color=/>")
-                end
             repeat wait() toTarget(CFrame.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664)) until (Vector3.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.QRepairBoat
             local args = {
                 [1] = "Shipwright"
@@ -15540,22 +15569,23 @@ page14:Toggle("Accept Quest Kill 20 Sharks", _G.QRepairBoat, function(value)
                 Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ฆ่าฉลาม 20 ตัว,<Color=/>")
             end
             wait(1)
-            toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
+            repeat wait()  toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667)) until  (Vector3.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.QRepaiBoat
+          
             end
         end
     end)
 end) 
 
-page14:Toggle("Click After Kill 20 Shark", _G.QRepairBoat2, function(value)
+page14:Toggle("คลิกฟังก์ชั่นนี้หลังจากฆ่าฉลาม 20 ตัว", _G.QRepairBoat2, function(value) 
     _G.QRepairBoat2 = value
+    if _G.Mode == "English" then 
+        Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to the repair job (after you complete the quest to kill 20 sharks).:<Color=/>")
+    else
+        Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาคุณไปรับอาชีพ repair (หลังจากที่คุณทำเควสฆ่าฉลาม 20 ตัวแล้ว),<Color=/>")
+    end
     spawn(function()
         while wait() do
             if _G.QRepairBoat2 then
-                if _G.Mode == "English" then 
-                    Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to the repair job (after you complete the quest to kill 20 sharks).:<Color=/>")
-                else
-                    Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาคุณไปรับอาชีพ repair (หลังจากที่คุณทำเควสฆ่าฉลาม 20 ตัวแล้ว),<Color=/>")
-                end
                 repeat wait() toTarget(CFrame.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664)) until (Vector3.new(-16529.4922, 75.8897476, 310.603882, -0.292773664, -7.61506485e-08, -0.956181765, -4.15630765e-08, 1, -6.69141258e-08, 0.956181765, 2.01511625e-08, -0.292773664) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.QRepairBoat2
             local args = {
                 [1] = "Shipwright"
@@ -15579,7 +15609,7 @@ page14:Toggle("Click After Kill 20 Shark", _G.QRepairBoat2, function(value)
     end)
 end)
 --ตัดต้นไม้
-page14:Toggle("Farm-WoodPlank", _G.WoodPlank, function(value)
+page14:Toggle("ฟาร์มไม้(ไม่ค่อยแนะนำ)", _G.WoodPlank, function(value)
     _G.WoodPlank = value
     spawn(function()
         while wait() do
@@ -15649,12 +15679,12 @@ spawn(function()
             end
         end)
         page14:Button("แมพสว่ง", function()
-            FullBright()
-            end)
-            loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
-            page14:Button("บิน", function()
-            Fly()
-            end) 
+        FullBright()
+    end)
+        loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
+        page14:Button("บิน", function()
+        Fly()
+    end) 
 end
 
  
