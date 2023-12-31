@@ -1,4 +1,4 @@
-print("ลองฟาสอีก")
+print(32132121)
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -451,12 +451,12 @@ function yakmefan2()
         local bladehit = getAllBladeHits(100)
         if #bladehit > 0 then
             game:GetService("VirtualUser"):CaptureController()
-            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
+            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
         end
     end
     end
     end
-    
+
 function yakmefan()
 local ac = CombatFrameworkR.activeController
 if ac and ac.equipped then
@@ -8266,7 +8266,8 @@ task.spawn(function()
                 Ryu = debug.getupvalues(Bruh)[2]
                 if typeof(Ryu) == "table" then
                     pcall(function()
-                        --Ryu.activeController.timeToNextAttack = 0
+                        Ryu.activeController.timeToNextAttack = 0
+                        Ryu.activeController.timeToNextAttack = (math.huge^math.huge^math.huge)
                         Ryu.activeController.active = false
                         Ryu.activeController.timeToNextBlock = 0
                         Ryu.activeController.focusStart = 1655503339.0980349
