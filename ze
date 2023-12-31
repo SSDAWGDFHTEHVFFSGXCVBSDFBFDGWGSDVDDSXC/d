@@ -1,4 +1,4 @@
-print("ลองฟาส")
+print("ลองฟาสอีก")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -448,7 +448,7 @@ function yakmefan2()
     local ac = CombatFrameworkR.activeController
     if ac and ac.equipped then
      for Ryuen = 1, 1 do
-        local bladehit = getAllBladeHits(60)
+        local bladehit = getAllBladeHits(100)
         if #bladehit > 0 then
             game:GetService("VirtualUser"):CaptureController()
             game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
@@ -8240,7 +8240,7 @@ end
 end)
 
 coroutine.wrap(function()
-    while RunService.Heartbeat:Wait(0.5) do --0.04 หบุด
+    while RunService.Heartbeat:Wait(0.04) do --0.04 หบุด
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
@@ -8260,7 +8260,7 @@ end)()
 
 _G.FastType = "Fast"
 task.spawn(function()
-    while _G.FastAttack do RunService.Heartbeat:Wait(0.5)
+    while _G.FastAttack do RunService.Heartbeat:Wait(0.04)
         require(game.ReplicatedStorage.Util.CameraShaker):Stop()
             Bruh = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
                 Ryu = debug.getupvalues(Bruh)[2]
@@ -8274,7 +8274,7 @@ task.spawn(function()
                         Ryu.activeController.attacking = false
                         Ryu.activeController.hitboxMagnitude = 200
                         Ryu.activeController.humanoid.AutoRotate = true
-                        Ryu.activeController.increment = 1 + 1 / 1
+                        Ryu.activeController.increment = 1 + 1 / 0.5
                         end)
                     end
                 end
