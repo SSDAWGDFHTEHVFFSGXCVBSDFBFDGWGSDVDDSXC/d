@@ -1,3 +1,4 @@
+print("ลองฟาส")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -412,7 +413,7 @@ local RigControllerR = getupvalues(RigController)[2]
 local realbhit = require(game.ReplicatedStorage.CombatFramework.RigLib)
 local cooldownfastattack = tick()
 
-function CameraShaker()
+function CameraShaker() 
 local Camera = require(game.ReplicatedStorage.Util.CameraShaker)
 Camera:Stop()
 end
@@ -442,6 +443,20 @@ end
 end
 return Hits
 end
+
+function yakmefan2()
+    local ac = CombatFrameworkR.activeController
+    if ac and ac.equipped then
+     for Ryuen = 1, 1 do
+        local bladehit = getAllBladeHits(60)
+        if #bladehit > 0 then
+            game:GetService("VirtualUser"):CaptureController()
+            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
+        end
+    end
+    end
+    end
+    
 function yakmefan()
 local ac = CombatFrameworkR.activeController
 if ac and ac.equipped then
@@ -8225,11 +8240,11 @@ end
 end)
 
 coroutine.wrap(function()
-    while RunService.RenderStepped:Wait(0.4) do --0.04 หบุด
+    while RunService.Heartbeat:Wait(0.5) do --0.04 หบุด
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
-                    yakmefan()
+                    yakmefan2()
                     if _G.FastType == "Normal" then
                     if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
                     elseif _G.FastType == "Fast" then
@@ -8245,7 +8260,7 @@ end)()
 
 _G.FastType = "Fast"
 task.spawn(function()
-    while _G.FastAttack do RunService.RenderStepped:Wait(0.4)
+    while _G.FastAttack do RunService.Heartbeat:Wait(0.5)
         require(game.ReplicatedStorage.Util.CameraShaker):Stop()
             Bruh = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
                 Ryu = debug.getupvalues(Bruh)[2]
