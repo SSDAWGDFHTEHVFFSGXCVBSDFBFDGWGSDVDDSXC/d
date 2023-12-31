@@ -1,4 +1,4 @@
-print("doublefast")
+print(0.05)
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -8129,7 +8129,7 @@ end)
 
 
 coroutine.wrap(function()
-    while RunService.Heartbeat:Wait(0.08) do --0.08 ไม่หบุด
+    while RunService.Heartbeat:Wait(0.05) do --0.08 ไม่หบุด
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
@@ -8147,7 +8147,7 @@ coroutine.wrap(function()
     end
 end)()
 _G.FastType = "Fast"
-
+--[[
 task.spawn(function()
     while _G.FastAttack do RunService.Heartbeat:Wait(0.08)
         require(game.ReplicatedStorage.Util.CameraShaker):Stop()
@@ -8168,7 +8168,7 @@ task.spawn(function()
                         end)
                     end
                 end
-            end)
+            end)]]
   
 local RunService = game:GetService("RunService")
 if _G.Mode == "English" then
