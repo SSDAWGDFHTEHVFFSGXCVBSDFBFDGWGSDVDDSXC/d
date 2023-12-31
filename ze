@@ -1,4 +1,4 @@
-print("ฟาสปกติ")
+print("ลบwalkspeed = 0")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -348,15 +348,10 @@ task.spawn(function()
                     if not string.find(v.Name,"Boss") and (v.HumanoidRootPart.Position - PosMon.Position).magnitude <= 250 then
                         if InMyNetWork(v.HumanoidRootPart) then
                             v.HumanoidRootPart.CFrame = PosMon
-                            v.Humanoid.JumpPower = 0
-                            v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.Size = Vector3.new(60,60,60)
                             v.HumanoidRootPart.Transparency = 1
                             v.HumanoidRootPart.CanCollide = false
                             v.Head.CanCollide = false
-                            if v.Humanoid:FindFirstChild("Animator") then
-                                v.Humanoid.Animator:Destroy()
-                            end
                             v.Humanoid:ChangeState(11)
                             v.Humanoid:ChangeState(14)
                         end
@@ -3477,7 +3472,6 @@ while task.wait() do
                             end
                             PosMon = v.HumanoidRootPart.CFrame
                             v.HumanoidRootPart.CanCollide = false 
-                            v.Humanoid.WalkSpeed = 0
                             v.Head.CanCollide = false
                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                             StartMagnet = true
@@ -8225,25 +8219,10 @@ pcall(function()
 end)
 end
 end)
--- แก้ไข
-coroutine.wrap(function()
-    local cooldownfastattack = tick()
-    while true do
-        local ac = CombatFrameworkR.activeController
-        if ac and ac.equipped then
-            if FastAttack or _G.FastAttack then
-                if tick() - cooldownfastattack > 0.1 then
-                    yakmefan()
-                    cooldownfastattack = tick()
-                end
-            end
-        end
-        wait(0.04)
-    end
-end)()
 
---[[coroutine.wrap(function()
-    while RunService.Heartbeat:Wait(0.04) do --0.04 หบุด
+
+coroutine.wrap(function()
+    while RunService.Heartbeat:Wait(0.08) do --0.04 หบุด
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
@@ -8261,7 +8240,7 @@ end)()
     end
 end)()
 
-_G.FastType = "Fast"]]
+_G.FastType = "Fast"
 --[[task.spawn(function()
     while _G.FastAttack do RunService.Heartbeat:Wait(0.04)
         require(game.ReplicatedStorage.Util.CameraShaker):Stop()
