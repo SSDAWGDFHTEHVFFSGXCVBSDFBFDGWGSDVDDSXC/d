@@ -1,4 +1,4 @@
-print(32132121)
+print("รอบ")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -451,11 +451,11 @@ function yakmefan2()
         local bladehit = getAllBladeHits(100)
         if #bladehit > 0 then
             game:GetService("VirtualUser"):CaptureController()
-            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672), game.Workspace.CurrentCamera.CFrame)
+            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
         end
     end
     end
-    end
+    end 
 
 function yakmefan()
 local ac = CombatFrameworkR.activeController
