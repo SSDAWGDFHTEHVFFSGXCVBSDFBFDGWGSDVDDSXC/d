@@ -1,4 +1,4 @@
-print("คลิกปกติ")
+print("ฟาสปกติ")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -448,7 +448,7 @@ function yakmefan()
 local ac = CombatFrameworkR.activeController
 if ac and ac.equipped then
  for Ryuen = 1, 1 do
-    local bladehit = getAllBladeHits(60)
+    local bladehit = getAllBladeHits(100)
     if #bladehit > 0 then
         local AcAttack8 = debug.getupvalue(ac.attack, 5)
         local AcAttack9 = debug.getupvalue(ac.attack, 6)
@@ -8225,13 +8225,29 @@ pcall(function()
 end)
 end
 end)
-
+-- แก้ไข
 coroutine.wrap(function()
+    local cooldownfastattack = tick()
+    while true do
+        local ac = CombatFrameworkR.activeController
+        if ac and ac.equipped then
+            if FastAttack or _G.FastAttack then
+                if tick() - cooldownfastattack > 0.1 then
+                    yakmefan()
+                    cooldownfastattack = tick()
+                end
+            end
+        end
+        wait(0.04)
+    end
+end)()
+
+--[[coroutine.wrap(function()
     while RunService.Heartbeat:Wait(0.04) do --0.04 หบุด
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
-                    Click()
+                   yakmefan()
                     if _G.FastType == "Normal" then
                     if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
                     elseif _G.FastType == "Fast" then
@@ -8245,8 +8261,8 @@ coroutine.wrap(function()
     end
 end)()
 
-_G.FastType = "Fast"
-task.spawn(function()
+_G.FastType = "Fast"]]
+--[[task.spawn(function()
     while _G.FastAttack do RunService.Heartbeat:Wait(0.04)
         require(game.ReplicatedStorage.Util.CameraShaker):Stop()
             Bruh = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
@@ -8266,7 +8282,7 @@ task.spawn(function()
                         end)
                     end
                 end
-            end)
+            end)]]
   
 local RunService = game:GetService("RunService")
 if _G.Mode == "English" then
