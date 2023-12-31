@@ -1,4 +1,4 @@
-print("รอบ")
+print("ปกติ")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -444,19 +444,6 @@ end
 return Hits
 end
 
-function yakmefan2()
-    local ac = CombatFrameworkR.activeController
-    if ac and ac.equipped then
-     for Ryuen = 1, 1 do
-        local bladehit = getAllBladeHits(100)
-        if #bladehit > 0 then
-            game:GetService("VirtualUser"):CaptureController()
-            game:GetService("VirtualUser"):Button1Down(Vector2.new(1280, 672))
-        end
-    end
-    end
-    end 
-
 function yakmefan()
 local ac = CombatFrameworkR.activeController
 if ac and ac.equipped then
@@ -484,7 +471,7 @@ if ac and ac.equipped then
         end
         if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
             game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
-            game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
+            game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10) 
             game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "")
         end
     end
@@ -8244,7 +8231,7 @@ coroutine.wrap(function()
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
-                    yakmefan2()
+                    yakmefan()
                     if _G.FastType == "Normal" then
                     if tick() - cooldownfastattack > .9 then wait(.1) cooldownfastattack = tick() end
                     elseif _G.FastType == "Fast" then
