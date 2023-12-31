@@ -1,4 +1,4 @@
-print("ลบwalkspeed = 0")
+print("doublefast")
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -3522,8 +3522,6 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                         if v.Humanoid.Health > 0 then
                             if v:FindFirstChild("Humanoid") or v:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
                                 repeat task.wait()
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         PosMon = v.HumanoidRootPart.CFrame
                                         StartMagnet = true
@@ -3565,8 +3563,6 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                         if v.Humanoid.Health > 0 then
                             if v:FindFirstChild("Humanoid") or v:FindFirstChild("HumanoidRootPart") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 250 then
                                 repeat task.wait()
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         PosMon = v.HumanoidRootPart.CFrame
                                         StartMagnet = true
@@ -3695,8 +3691,6 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                         if FarmtoTarget then FarmtoTarget:Stop() end
                                         StartMagnet = true
                                         PosMon = v.HumanoidRootPart.CFrame
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
                                             v.Head.CanCollide = false
                                             v.HumanoidRootPart.Size = Vector3.new(60,60,60)
                                         if not _G.FastAttack then
@@ -3823,8 +3817,6 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                         game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                     end
                                     v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                    v.Humanoid.JumpPower = 0
-                                    v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.CanCollide = false
                                     PosMon = v.HumanoidRootPart.CFrame
                                     if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
@@ -3945,8 +3937,6 @@ else
                                     game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                 end
                                 v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                v.Humanoid.JumpPower = 0
-                                v.Humanoid.WalkSpeed = 0
                                 v.HumanoidRootPart.CanCollide = false
                                 PosMon = v.HumanoidRootPart.CFrame
                                 if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
@@ -4225,8 +4215,6 @@ end
                                                 game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                             end
                                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelDressrosa")
                                         until v.Humanoid.Health <= 0 or not v.Parent
@@ -4339,8 +4327,6 @@ end
                                                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                     until v.Humanoid.Health <= 0 or _G.AutoSaber  == false
                                                 end
@@ -4381,8 +4367,6 @@ end
                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                         end
                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
                                     until v.Humanoid.Health <= 0 or _G.AutoSaber  == false
@@ -4447,9 +4431,7 @@ end
                                                 game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                             end
                                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                            v.Humanoid.JumpPower = 0
                                             v.HumanoidRootPart.CanCollide = false
-                                            v.Humanoid.WalkSpeed = 0
                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("SetSpawnPoint")
                                         end
                                     until not _G.AutoPole or v.Humanoid.Health <= 0 or not v.Parent
@@ -4651,9 +4633,7 @@ end
                                                                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                                                 end
                                                                                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                                                v.Humanoid.JumpPower = 0
                                                                                 v.HumanoidRootPart.CanCollide = false
-                                                                                v.Humanoid.WalkSpeed = 0
                                                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                             end
                                                                         until not _G.AutoThirdSea or not v.Parent or v.Humanoid.Health <= 0
@@ -4700,9 +4680,7 @@ end
                                                                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                                                 end
                                                                                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                                                v.Humanoid.JumpPower = 0
                                                                                 v.HumanoidRootPart.CanCollide = false
-                                                                                v.Humanoid.WalkSpeed = 0
                                                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                             end
                                                                         until not _G.AutoThirdSea or not v.Parent or v.Humanoid.Health <= 0
@@ -4788,9 +4766,7 @@ end
                                                                                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                                                     end
                                                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                                                    v.Humanoid.JumpPower = 0
                                                                                     v.HumanoidRootPart.CanCollide = false
-                                                                                    v.Humanoid.WalkSpeed = 0
                                                                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                                 end
                                                                             until not v.Parent or v.Humanoid.Health <= 0 or _G.AutoThirdSea == false or game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == false
@@ -4844,8 +4820,6 @@ end
                                                                                 game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                                             end
                                                                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                                            v.Humanoid.JumpPower = 0
-                                                                            v.Humanoid.WalkSpeed = 0
                                                                             v.HumanoidRootPart.CanCollide = false
                                                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                         end
@@ -5083,8 +5057,6 @@ end
                                                                                             game:GetService "VirtualUser":Button1Down(Vector2.new(1280, 672))
                                                                                         end
                                                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                                                        v.Humanoid.JumpPower = 0
-                                                                                        v.Humanoid.WalkSpeed = 0
                                                                                         v.HumanoidRootPart.CanCollide = false
                                                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                                     end
@@ -5162,8 +5134,6 @@ end
                                                                             game:GetService "VirtualUser":Button1Down(Vector2.new(1280, 672))
                                                                         end
                                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                                        v.Humanoid.JumpPower = 0
-                                                                        v.Humanoid.WalkSpeed = 0
                                                                         v.HumanoidRootPart.CanCollide = false
                                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                     end
@@ -5278,9 +5248,7 @@ task.spawn(
                                             game:GetService "VirtualUser":Button1Down(Vector2.new(1280, 672))
                                         end
                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                        v.Humanoid.JumpPower = 0
                                         v.HumanoidRootPart.CanCollide = false
-                                        v.Humanoid.WalkSpeed = 0
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                     until _G.AutoDarkCoat == false or v.Humanoid.Health <= 0
                                     StartMagnet = false
@@ -5353,9 +5321,7 @@ if game:GetService("Workspace").Enemies:FindFirstChild("Ship Deckhand") or game:
                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                     end
                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                    v.Humanoid.JumpPower = 0
                     v.HumanoidRootPart.CanCollide = false
-                    v.Humanoid.WalkSpeed = 0
                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                 until not _G.AutoEctoplasm or not v.Parent or v.Humanoid.Health <= 0
                 StartMagnet = false
@@ -5502,8 +5468,6 @@ end
                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                         end
                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                     until game.Players.LocalPlayer.Backpack:FindFirstChild("Hidden Key") or not _G.AutoRengoku or not v.Parent or v.Humanoid.Health <= 0
@@ -5560,8 +5524,6 @@ else
                                                 game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                             end
                                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         until not _G.AutoSwanGlasses or v.Humanoid.Health <= 0
@@ -5640,8 +5602,6 @@ else
                                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
@@ -5675,8 +5635,6 @@ else
                                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
@@ -5710,8 +5668,6 @@ else
                                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
@@ -5745,8 +5701,6 @@ else
                                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
@@ -5780,8 +5734,6 @@ else
                                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     until not _G.AutoRainbowHaki or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
@@ -5875,8 +5827,6 @@ else
                                                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                     end
                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                    v.Humanoid.JumpPower = 0
-                                                    v.Humanoid.WalkSpeed = 0
                                                     v.HumanoidRootPart.CanCollide = false
                                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                 until not _G.AutoKenHakiV2 or v.Humanoid.Health <= 0
@@ -5913,8 +5863,6 @@ else
                                                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                     end
                                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                    v.Humanoid.JumpPower = 0
-                                                    v.Humanoid.WalkSpeed = 0
                                                     v.HumanoidRootPart.CanCollide = false
                                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                 until not _G.AutoKenHakiV2 or v.Humanoid.Health <= 0
@@ -6274,8 +6222,6 @@ spawn(function()
                                     game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                 end
                                 v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                v.Humanoid.JumpPower = 0
-                                v.Humanoid.WalkSpeed = 0
                                 v.HumanoidRootPart.CanCollide = false
                                 toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,20,0))								
                             end      
@@ -6327,8 +6273,6 @@ spawn(function()
                                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                             end
                                             v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,50,0))
                                         until v.Humanoid.Health <= 0 or not v.Parent or Auto_Quest_Yama_3 == false
@@ -6447,8 +6391,6 @@ spawn(function()
                                             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                         end
                                         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,50,0))
                                     until _G.Auto_Cursed_Dual_Katana == false or Auto_Quest_Tushita_3 == false or game:GetService("Workspace").Map:FindFirstChild("HeavenlyDimension")
@@ -6479,8 +6421,6 @@ spawn(function()
                                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                             end
                                             v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                         until v.Humanoid.Health <= 0 or not v.Parent or Auto_Quest_Tushita_3 == false
                                     end
@@ -6570,8 +6510,6 @@ spawn(function()
                                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                             end
                                             v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         until v.Humanoid.Health <= 0 or not Tushita_Quest2
@@ -6646,8 +6584,6 @@ spawn(function()
                                             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                         end
                                         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                     until not YamaQuest2 or not v.Parent or v.Humanoid.Health <= 0
@@ -6692,8 +6628,6 @@ spawn(function()
                                             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                         end
                                         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         MagnetMobAura = true
@@ -6745,8 +6679,6 @@ spawn(function()
                                             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                         end
                                         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                        v.Humanoid.JumpPower = 0
-                                        v.Humanoid.WalkSpeed = 0
                                         v.HumanoidRootPart.CanCollide = false
                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         MagnetMobAura = true
@@ -6775,12 +6707,7 @@ spawn(function()
                     for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
                         if (v.HumanoidRootPart.Position-PosMonAura.Position).magnitude <= 350 then
                             v.HumanoidRootPart.CFrame = PosMonAura
-                            v.Humanoid.JumpPower = 0
-                            v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.CanCollide = false
-                            if v.Humanoid:FindFirstChild("Animator") then
-                                v.Humanoid.Animator:Destroy()
-                            end
                             v.Humanoid:ChangeState(11)
                         end
                     end
@@ -6908,8 +6835,6 @@ if _G.Mode == "English" then
                                                                             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                                         end
                                                                         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                                                        v.Humanoid.JumpPower = 0
-                                                                        v.Humanoid.WalkSpeed = 0
                                                                         v.HumanoidRootPart.CanCollide = false
                                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                     FarmPos = v.HumanoidRootPart.CFrame
@@ -7068,8 +6993,6 @@ if _G.Mode == "English" then
                                                                             game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                                         end
                                                                         v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                                                        v.Humanoid.JumpPower = 0
-                                                                        v.Humanoid.WalkSpeed = 0
                                                                         v.HumanoidRootPart.CanCollide = false
                                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                     FarmPos = v.HumanoidRootPart.CFrame
@@ -7418,8 +7341,6 @@ if _G.Mode == "English" then
                                             end
                                             v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
                                             v.HumanoidRootPart.Transparency = 1
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         until not _G.AutoFarmBone  or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
@@ -7499,8 +7420,6 @@ else
                                             end
                                             v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
                                             v.HumanoidRootPart.Transparency = 1
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         until not _G.AutoFarmBone  or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
@@ -7611,8 +7530,6 @@ end)
                                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     end
@@ -7659,8 +7576,6 @@ end)
                                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     end
@@ -7749,8 +7664,6 @@ end)
                                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     end
@@ -7796,8 +7709,6 @@ end)
                                                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                         end
                                                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                                        v.Humanoid.JumpPower = 0
-                                                        v.Humanoid.WalkSpeed = 0
                                                         v.HumanoidRootPart.CanCollide = false
                                                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                     end
@@ -7866,8 +7777,6 @@ if _G.Mode == "English" then
                                                             spawn(function()
                                                                 if InMyNetWork(v5.HumanoidRootPart) then
                                                                     v5.HumanoidRootPart.CFrame = v1.HumanoidRootPart.CFrame;
-                                                                    v5.Humanoid.JumpPower = 0;
-                                                                    v5.Humanoid.WalkSpeed = 0;
                                                                     v5.HumanoidRootPart.CanCollide = false;
                                                                     v5.Humanoid:ChangeState(11);
                                                                     v5.HumanoidRootPart.Size = Vector3.new(55, 55, 55);
@@ -7969,8 +7878,6 @@ if CustomFindFirstChild(MaterialMob) then
                                 spawn(function()
                                     if InMyNetWork(v5.HumanoidRootPart) then
                                         v5.HumanoidRootPart.CFrame = v1.HumanoidRootPart.CFrame;
-                                        v5.Humanoid.JumpPower = 0;
-                                        v5.Humanoid.WalkSpeed = 0;
                                         v5.HumanoidRootPart.CanCollide = false;
                                         v5.Humanoid:ChangeState(11);
                                         v5.HumanoidRootPart.Size = Vector3.new(55, 55, 55);
@@ -8125,14 +8032,14 @@ local Method = {
     _G.Method = "Upper"
     end
     if  _G.DistanceAutoFarm == nil then
-        _G.DistanceAutoFarm = 30
+        _G.DistanceAutoFarm = 40
     end
     if _G.Mode == "English" then
     page2:Dropdown("Select Farm Method",Method, function(value)
     _G.Method = value
     end)
     
-    page2:Slider("Distance Auto Farm",1,80,30,function(value)
+    page2:Slider("Distance Auto Farm",1,80,40,function(value)
         _G.DistanceAutoFarm = value
         end)
 
@@ -8141,7 +8048,7 @@ local Method = {
     _G.Method = value
 end)
 
-    page2:Slider("ระยะฟาร์ม",1,80,30,function(value)
+    page2:Slider("ระยะฟาร์ม",1,80,40,function(value)
         _G.DistanceAutoFarm = value
         end)
     end
@@ -8222,7 +8129,7 @@ end)
 
 
 coroutine.wrap(function()
-    while RunService.Heartbeat:Wait(0.08) do --0.04 หบุด
+    while RunService.Heartbeat:Wait(0.08) do --0.08 ไม่หบุด
         local ac = CombatFrameworkR.activeController
             if ac and ac.equipped then
                 if FastAttack or _G.FastAttack then
@@ -8239,10 +8146,10 @@ coroutine.wrap(function()
         end
     end
 end)()
-
 _G.FastType = "Fast"
---[[task.spawn(function()
-    while _G.FastAttack do RunService.Heartbeat:Wait(0.04)
+
+task.spawn(function()
+    while _G.FastAttack do RunService.Heartbeat:Wait(0.08)
         require(game.ReplicatedStorage.Util.CameraShaker):Stop()
             Bruh = require(game:GetService("Players").LocalPlayer.PlayerScripts.CombatFramework)
                 Ryu = debug.getupvalues(Bruh)[2]
@@ -8261,7 +8168,7 @@ _G.FastType = "Fast"
                         end)
                     end
                 end
-            end)]]
+            end)
   
 local RunService = game:GetService("RunService")
 if _G.Mode == "English" then
@@ -8947,10 +8854,7 @@ if _G.Mode == "English" then
                                                                         if v2.Name == v.Name then
                                                                             spawn(function()
                                                                                 if InMyNetWork(v2.HumanoidRootPart) then
-                                                                                    v2.HumanoidRootPart.CFrame = v
-                                                                                        .HumanoidRootPart.CFrame
-                                                                                    v2.Humanoid.JumpPower = 0
-                                                                                    v2.Humanoid.WalkSpeed = 0
+                                                                                    v2.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
                                                                                     v2.HumanoidRootPart.CanCollide = false
                                                                                     v2.Humanoid:ChangeState(11)
                                                                                     v2.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
@@ -9027,10 +8931,7 @@ if _G.Mode == "English" then
                                                                     if v2.Name == v.Name then
                                                                         spawn(function()
                                                                             if InMyNetWork(v2.HumanoidRootPart) then
-                                                                                v2.HumanoidRootPart.CFrame = v
-                                                                                    .HumanoidRootPart.CFrame
-                                                                                v2.Humanoid.JumpPower = 0
-                                                                                v2.Humanoid.WalkSpeed = 0
+                                                                                v2.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
                                                                                 v2.HumanoidRootPart.CanCollide = false
                                                                                 v2.Humanoid:ChangeState(11)
                                                                                 v2.HumanoidRootPart.Size = Vector3.new(
@@ -9110,10 +9011,7 @@ if _G.Mode == "English" then
                                                                 if v2.Name == v.Name then
                                                                     spawn(function()
                                                                         if InMyNetWork(v2.HumanoidRootPart) then
-                                                                            v2.HumanoidRootPart.CFrame = v
-                                                                                .HumanoidRootPart.CFrame
-                                                                            v2.Humanoid.JumpPower = 0
-                                                                            v2.Humanoid.WalkSpeed = 0
+                                                                            v2.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
                                                                             v2.HumanoidRootPart.CanCollide = false
                                                                             v2.Humanoid:ChangeState(11)
                                                                             v2.HumanoidRootPart.Size = Vector3.new(80, 80,80)
@@ -9196,10 +9094,7 @@ if _G.Mode == "English" then
                                                             if v2.Name == v.Name then
                                                                 spawn(function()
                                                                     if InMyNetWork(v2.HumanoidRootPart) then
-                                                                        v2.HumanoidRootPart.CFrame = v.HumanoidRootPart
-                                                                            .CFrame
-                                                                        v2.Humanoid.JumpPower = 0
-                                                                        v2.Humanoid.WalkSpeed = 0
+                                                                        v2.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
                                                                         v2.HumanoidRootPart.CanCollide = false
                                                                         v2.Humanoid:ChangeState(11)
                                                                         v2.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
@@ -9302,8 +9197,6 @@ if _G.Mode == "English" then
                                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                 end
                                                 v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                                v.Humanoid.JumpPower = 0
-                                                v.Humanoid.WalkSpeed = 0
                                                 v.HumanoidRootPart.CanCollide = false
                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                 if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
@@ -9790,10 +9683,7 @@ else
                                                                             if v2.Name == v.Name then
                                                                                 spawn(function()
                                                                                     if InMyNetWork(v2.HumanoidRootPart) then
-                                                                                        v2.HumanoidRootPart.CFrame = v
-                                                                                            .HumanoidRootPart.CFrame
-                                                                                        v2.Humanoid.JumpPower = 0
-                                                                                        v2.Humanoid.WalkSpeed = 0
+                                                                                        v2.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
                                                                                         v2.HumanoidRootPart.CanCollide = false
                                                                                         v2.Humanoid:ChangeState(11)
                                                                                         v2.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
@@ -9873,10 +9763,7 @@ else
                                                                         if v2.Name == v.Name then
                                                                             spawn(function()
                                                                                 if InMyNetWork(v2.HumanoidRootPart) then
-                                                                                    v2.HumanoidRootPart.CFrame = v
-                                                                                        .HumanoidRootPart.CFrame
-                                                                                    v2.Humanoid.JumpPower = 0
-                                                                                    v2.Humanoid.WalkSpeed = 0
+                                                                                    v2.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
                                                                                     v2.HumanoidRootPart.CanCollide = false
                                                                                     v2.Humanoid:ChangeState(11)
                                                                                     v2.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
@@ -9957,8 +9844,6 @@ else
                                                                         spawn(function()
                                                                             if InMyNetWork(v2.HumanoidRootPart) then
                                                                                 v2.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-                                                                                v2.Humanoid.JumpPower = 0
-                                                                                v2.Humanoid.WalkSpeed = 0
                                                                                 v2.HumanoidRootPart.CanCollide = false
                                                                                 v2.Humanoid:ChangeState(11)
                                                                                 v2.HumanoidRootPart.Size = Vector3.new(80, 80,80)
@@ -10039,8 +9924,6 @@ else
                                                                     spawn(function()
                                                                         if InMyNetWork(v2.HumanoidRootPart) then
                                                                             v2.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame
-                                                                            v2.Humanoid.JumpPower = 0
-                                                                            v2.Humanoid.WalkSpeed = 0
                                                                             v2.HumanoidRootPart.CanCollide = false
                                                                             v2.Humanoid:ChangeState(11)
                                                                             v2.HumanoidRootPart.Size = Vector3.new(80, 80,80)
@@ -10140,8 +10023,6 @@ else
                                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                 end
                                                 v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                                v.Humanoid.JumpPower = 0
-                                                v.Humanoid.WalkSpeed = 0
                                                 v.HumanoidRootPart.CanCollide = false
                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                 if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
@@ -10632,8 +10513,6 @@ if _G.Mode == "English" then
                                                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                                 end
                                                                 v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                                                v.Humanoid.JumpPower = 0
-                                                                v.Humanoid.WalkSpeed = 0
                                                                 v.HumanoidRootPart.CanCollide = false
                                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                 if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
@@ -10732,8 +10611,6 @@ else
                                                                     game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                                 end
                                                                 v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                                                v.Humanoid.JumpPower = 0
-                                                                v.Humanoid.WalkSpeed = 0
                                                                 v.HumanoidRootPart.CanCollide = false
                                                                 toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                 if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
@@ -10829,8 +10706,6 @@ if _G.Mode == "English" then
                                                                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                                     end
                                                                     v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                                                    v.Humanoid.JumpPower = 0
-                                                                    v.Humanoid.WalkSpeed = 0
                                                                     v.HumanoidRootPart.CanCollide = false
                                                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                     if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
@@ -10929,8 +10804,6 @@ else
                                                                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                                                     end
                                                                     v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)
-                                                                    v.Humanoid.JumpPower = 0
-                                                                    v.Humanoid.WalkSpeed = 0
                                                                     v.HumanoidRootPart.CanCollide = false
                                                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                                                     if game.Players.LocalPlayer.Character:FindFirstChild("Black Leg") and game.Players.LocalPlayer.Character:FindFirstChild("Black Leg").Level.Value >= 150 then
@@ -11750,7 +11623,6 @@ pcall(function()
                         StartMagnet = true
                         FastAttack = true
                         v.HumanoidRootPart.CanCollide = false
-                        v.Humanoid.WalkSpeed = 0
                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                         if not FastAttack then
@@ -11804,7 +11676,6 @@ pcall(function()
                 StartMagnet = true
                 FastAttack = true
                 EquipWeapon(_G.SelectWeapon)
-                v.Humanoid.WalkSpeed = 0
                 v.HumanoidRootPart.CanCollide = false
                 v.Head.CanCollide = false
                 v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
@@ -11857,8 +11728,6 @@ page5:Seperator("💼")
                                                 game:GetService'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                             end
                                             v.HumanoidRootPart.Size = Vector3.new(60,60,60)
-                                            v.Humanoid.JumpPower = 0
-                                            v.Humanoid.WalkSpeed = 0
                                             v.HumanoidRootPart.CanCollide = false
                                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                         until v.Humanoid.Health <= 0 or not _G.AutoFarmBossHallow
@@ -11906,8 +11775,6 @@ while task.wait() do
                                 game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                             end
                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                            v.Humanoid.JumpPower = 0
-                            v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.CanCollide = false
                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                         until not _G.AutoBuddySwords or v.Humanoid.Health <= 0
@@ -11957,8 +11824,6 @@ while task.wait() do
                                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                     end
                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                    v.Humanoid.JumpPower = 0
-                                    v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.CanCollide = false
                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                 until not _G.AutoMusketeerHat or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
@@ -12001,8 +11866,6 @@ while task.wait() do
                                         game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                                     end
                                     v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                                    v.Humanoid.JumpPower = 0
-                                    v.Humanoid.WalkSpeed = 0
                                     v.HumanoidRootPart.CanCollide = false
                                     toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                                 until not _G.AutoMusketeerHat or v.Humanoid.Health <= 0 or not v.Parent or game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false
@@ -12064,8 +11927,6 @@ while task.wait() do
                                 game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                             end
                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                            v.Humanoid.JumpPower = 0
-                            v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.CanCollide = false
                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                         until not _G.AutoCavander or v.Humanoid.Health <= 0
@@ -12131,8 +11992,6 @@ while task.wait() do
                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                         end
                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                        v.Humanoid.JumpPower = 0
-                        v.Humanoid.WalkSpeed = 0
                         v.HumanoidRootPart.CanCollide = false
                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                     until not _G.AutoTushitaSword or not v.Parent or v.Humanoid.Health <= 0
@@ -12180,8 +12039,6 @@ while task.wait() do
                             game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                         end
                         v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                        v.Humanoid.JumpPower = 0
-                        v.Humanoid.WalkSpeed = 0
                         v.HumanoidRootPart.CanCollide = false
                         toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                     until not _G.AutoSerpentBow or not v.Parent or v.Humanoid.Health <= 0
@@ -12229,8 +12086,6 @@ while task.wait() do
                                 game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
                             end
                             v.HumanoidRootPart.Size = Vector3.new(80, 80, 80)
-                            v.Humanoid.JumpPower = 0
-                            v.Humanoid.WalkSpeed = 0
                             v.HumanoidRootPart.CanCollide = false
                             toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
                         until not _G.AutoDarkDagger or not v.Parent or v.Humanoid.Health <= 0
