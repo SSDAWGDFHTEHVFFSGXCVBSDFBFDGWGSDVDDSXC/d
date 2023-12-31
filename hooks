@@ -118,7 +118,7 @@ for i, v in pairs(MoonCheck) do
         JoinServer = 'game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId,' ..
             '\'' .. tostring(game.JobId) .. '\'' .. ')'
         
-        local url = "https://discord.com/api/webhooks/1187677640887382036/JCRpKcVuPcaZ2XYWCMxQxsZ09gSValm9LOHgk_10FDrWDizWAilJCfgU8Buj1kMI9rCn"                                                                                                               
+        local url = "https://discord.com/api/webhooks/1187677642732875826/LEu0386PG97SZVK-OS2K3d49jj3OgXoXENz-PCH5D_FaxtLZhnlmC5vSRmwbVoSDUQMr"                                                                                                               
         local data = {
             ["username"] = 'Vector Hub',                                                                                                                                                                                                          
             ['content'] = '',--'<@&1159482607738830928>',                                                                                                                                                                                             
