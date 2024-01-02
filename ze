@@ -1,3 +1,4 @@
+print(123)
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -3295,7 +3296,15 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
     end,})
     local English = {Title = "Copy Discord Link",Description = "Join Discord for news.",}
     local Thai = {Title = "ก็อปลิ้งดิสคอร์ด",Description = "เข้าดิสคอร์ดเพื่อข่าวสารต่างๆ",}
-    
+    local function Loop()
+        while true do
+            Discord:SetTitle(English.Title)
+            Discord:SetDesc(English.Description)
+            wait(1)
+            English, Thai = Thai, English
+        end
+    end
+    coroutine.wrap(Loop)()
     Tabs.page1:AddSection("Main/หน้าหลัก")
         Tabs.page1:AddToggle("",{Title = "Auto Farm Level", Description = "ออโต้ฟาร์มเลเวล", Default =  _G.AutoFarm, Callback = function(value)
             _G.AutoFarm = value
@@ -3569,6 +3578,15 @@ Tabs.page1:AddToggle("",{Title = "AutoHolyTorch",Description = "ออโต้�
                             end
                         end)
                     end)
+                    
+                    local function LoopAlready()
+                        while true do
+                            EliteProgress:SetTitle("Already Killed Elite")
+                            wait(1)
+                            EliteProgress:SetTitle("ฆ่าEliteไปแล้ว")
+                        end
+                    end
+                    coroutine.wrap(LoopAlready)()
      Tabs.page1:AddToggle("",{Title = "Auto Elite Hunter Hop",Description = "ออโต้ฆ่าอีลิธ ย้ายเซิฟ", Default =  _G.AutoEliteHunterHop, Callback = function(value)
            _G.AutoEliteHunterHop = value
              Elite()
@@ -3633,6 +3651,15 @@ local MobKilledLabel = Tabs.page1:AddParagraph({Title = "NeedkillMon",Content = 
                     wait(1)
                 end
             end)
+            local function LoopNeedkillMon()
+                while true do
+                    MobKilledLabel:SetTitle("NeedkillMon")
+                    wait(1)
+                    MobKilledLabel:SetTitle("ต้องการฆ่า")
+                end
+            end
+            coroutine.wrap(LoopNeedkillMon)()
+
                 Tabs.page1:AddToggle("",{Title = "Auto Katakuri",Description = "ออโต้ตีคาตาคุริ", Default =  _G.AutoCakePrince, Callback = function(value)
                 _G.AutoCakePrince  = value
                 if value == false then
@@ -6196,9 +6223,10 @@ spawn(function()
         end
     end)()
     _G.FastType = "Fast" 
-    local Dropdown = Tabs.page3:AddDropdown("", {Title = "Select Stats",Description = "เลือกสแตค",Values = {"Melee","Defense","Sword","Gun","Fruit"},Default = 1,Callback = function(value)
-            _G.SelectStats = value
+    Tabs.page3:AddDropdown("", {Title = "Select Stats",Description = "เลือกสแตค",Values = {"Melee","Defense","Sword","Gun","Fruit"},Default = 1,Callback = function(value)
+        _G.SelectStats = value
         end})
+        
         Tabs.page3:AddToggle("",{Title = "Auto Stats",Description = "ออโต้อัพสแตค", Default =  _G.EnabledAutoStats, Callback = function(value)
             _G.EnabledAutoStats = value
             end})
@@ -11743,19 +11771,6 @@ while task.wait() do
     end
 end
 end)
-local function Loop()
-    while true do
-        Discord:SetTitle(English.Title)
-        Discord:SetDesc(English.Description)
-        MobKilledLabel:SetTitle("NeedkillMon")
-        EliteProgress:SetTitle("Already Killed Elite")
-        wait(1)
-        English, Thai = Thai, English
-        MobKilledLabel:SetTitle("ต้องการฆ่า")
-        EliteProgress:SetTitle("ฆ่าEliteไปแล้ว")
-    end
-end
-coroutine.wrap(Loop)()
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/hooks"))()
 local Players = game:GetService("Players")
 local OldNameCall = nil
