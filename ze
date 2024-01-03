@@ -6158,10 +6158,18 @@ spawn(function()
         "Gun",
         "Fruit"
         }
-    Tabs.page3:AddDropdown("Stats", {
+        Tabs.Main:AddDropdown("MultiDropdown", {
+            Title = "Dropdown",
+            Description = "You can select multiple values.",
+            Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+            Multi = true,
+            Default = {"seven", "twelve"},
+        })
+    Tabs.page3:AddDropdown("Stats", { 
         Title = "Select Stats",
         Description = "เลือกสแตค",
         Values = TableStats,
+        Multi = false,
         Default = 1,
         Callback = function(value)
             _G.SelectStats = value
@@ -11720,3 +11728,4 @@ SaveManager:SetFolder("VectortHub/BloxFruit")
 InterfaceManager:BuildInterfaceSection(Tabs.Config)
 SaveManager:BuildConfigSection(Tabs.Config)
 SaveManager:LoadAutoloadConfig()
+print(3123)
