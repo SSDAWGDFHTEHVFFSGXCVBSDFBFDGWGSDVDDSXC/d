@@ -6204,7 +6204,7 @@ spawn(function()
     end
     end)
     coroutine.wrap(function() --ความเร็วฟาส
-        while RunService.Heartbeat:Wait(0.10) do --ยังหลุดอยู่ดี
+        while RunService.Heartbeat:Wait(0.5) do --ยังหลุดอยู่ดี
             local ac = CombatFrameworkR.activeController
                 if ac and ac.equipped then
                     if FastAttack or _G.FastAttack then 
@@ -6222,11 +6222,9 @@ spawn(function()
         end
     end)()
     _G.FastType = "Fast" 
-    Tabs.page3:WithAccess(function()
      Tabs.page3:AddDropdown("", {Title = "Select Stats",Description = "เลือกสแตค",Values = {"Melee","Defense","Sword","Gun","Fruit"},Default = 1,Callback = function(value)
     _G.SelectStats = value
     end})
-    end)
     
         
         Tabs.page3:AddToggle("",{Title = "Auto Stats",Description = "ออโต้อัพสแตค", Default =  _G.EnabledAutoStats, Callback = function(value)
@@ -11784,4 +11782,3 @@ InterfaceManager:BuildInterfaceSection(Tabs.Config)
 SaveManager:BuildConfigSection(Tabs.Config)
 Window:SelectTab(1)
 SaveManager:LoadAutoloadConfig()
-print(32131)
