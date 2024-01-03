@@ -3281,7 +3281,7 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
             Tabs.page1:AddToggle("",{Title = "SafeMode",Description = "เซฟโหมด", Default =  _G.SafeMode, Callback = function(value)
                 _G.SafeMode = value
                 _G.Settings.SafeMode = value
-                 -- SaveSettings()
+                --SaveSettings()
                spawn(function()
                     while _G.Settings.SafeMode do task.wait()
                         if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
@@ -6102,7 +6102,6 @@ Tabs.page2:AddToggle("",{Title = "HideNotification",Description = "ซ่อน�
     game:GetService("Players").LocalPlayer.PlayerGui.Notifications.Enabled = not game:GetService("Players").LocalPlayer.PlayerGui.Notifications.Enabled
    end})
    Tabs.page2:AddToggle("",{Title = "Camera Shaker",Description = "หยุดการสั่นของกล้อง", Default =  true, Callback = function(value)
-    _G.CameraShaker = value
     CameraShaker()
    end})
 task.spawn(function()
@@ -6151,10 +6150,18 @@ spawn(function()
         end
     end)()
     _G.FastType = "Fast" 
-    Tabs.page3:AddDropdown("", {
+
+    local TableStats = {
+        "Melee",
+        "Defense",
+        "Sword",
+        "Gun",
+        "Fruit"
+        }
+    Tabs.page3:AddDropdown("Stats", {
         Title = "Select Stats",
         Description = "เลือกสแตค",
-        Values = {"Melee", "two", "Defense", "Sword", "Gun", "Fruit", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+        Values = TableStats,
         Default = 1,
         Callback = function(value)
             _G.SelectStats = value
