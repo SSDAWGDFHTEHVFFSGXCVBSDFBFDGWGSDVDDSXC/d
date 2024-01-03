@@ -6015,17 +6015,6 @@ local Method = {
  if  _G.DistanceAutoFarm == nil then
      _G.DistanceAutoFarm = 40
     end
-    local Method = {
-    "Upper",
-    "Behind",
-    "Below"
-    }
-    if _G.Method == nil then
-    _G.Method = "Upper"
-    end
-    if  _G.DistanceAutoFarm == nil then
-        _G.DistanceAutoFarm = 40
-    end
     Tabs.page2:AddDropdown("", {Title = "Select Farm Method",Description = "เลือกตำแหน่งฟาร์ม",Values = Method,Default = 1,Callback = function(value)
             _G.Method = value
         end})
@@ -6150,7 +6139,7 @@ spawn(function()
         end
     end)()
     _G.FastType = "Fast" 
-
+pcall(function()
         Tabs.page3:AddDropdown("MultiDropdown", {
             Title = "Select Stats",
             Description = "เลือกสแตค",
@@ -6160,6 +6149,7 @@ spawn(function()
             Callback = function(value)
                 _G.SelectStats = value
             end})
+        end)
         Tabs.page3:AddToggle("",{Title = "Auto Stats",Description = "ออโต้อัพสแตค", Default =  _G.EnabledAutoStats, Callback = function(value)
             _G.EnabledAutoStats = value
             end})
