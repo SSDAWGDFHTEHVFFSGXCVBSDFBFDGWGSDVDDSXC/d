@@ -6158,13 +6158,7 @@ spawn(function()
         "Gun",
         "Fruit"
         }
-        Tabs.Main:AddDropdown("MultiDropdown", {
-            Title = "Dropdown",
-            Description = "You can select multiple values.",
-            Values = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
-            Multi = true,
-            Default = {"seven", "twelve"},
-        })
+
     Tabs.page3:AddDropdown("Stats", { 
         Title = "Select Stats",
         Description = "เลือกสแตค",
