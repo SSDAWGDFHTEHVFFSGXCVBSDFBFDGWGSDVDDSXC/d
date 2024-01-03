@@ -176,51 +176,10 @@ end
     game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F1,false,game)
     end)
 --[[UIPERPID]]
-
+pcall(function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec"))()
+end) 
 -- [Save Settings]
-function LoadSettings()
-    if readfile and writefile and isfile and isfolder then
-        if not isfolder("VectorHub") then
-            makefolder("VectorHub")
-        end
-        if not isfolder("VectorHub/Blox Fruits/") then
-            makefolder("VectorHub/Blox Fruits/")
-        end
-        if not isfile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-            writefile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json",
-                game:GetService("HttpService"):JSONEncode(_G.Settings))
-        else
-            local Decode = game:GetService("HttpService"):JSONDecode(readfile("VectorHub/Blox Fruits/" ..
-                game.Players.LocalPlayer.Name .. ".json"))
-            for i, v in pairs(Decode) do
-                _G.Settings[i] = v
-            end
-        end
-    else
-        return warn("Status : Undetected Executor")
-    end
-end
-
-function SaveSettings()
-    if readfile and writefile and isfile and isfolder then
-        if not isfile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-            LoadSettings()
-        else
-            local Decode = game:GetService("HttpService"):JSONDecode(readfile("VectorHub/Blox Fruits/" ..
-                game.Players.LocalPlayer.Name .. ".json"))
-            local Array = {}
-            for i, v in pairs(_G.Settings) do
-                Array[i] = v
-            end
-            writefile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json",
-                game:GetService("HttpService"):JSONEncode(Array))
-        end
-    else
-        return warn("Status : Undetected Executor")
-    end
-end
-
-LoadSettings()
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local TweenService = game:GetService("TweenService")
 local tween = game:service"TweenService"
@@ -228,7 +187,7 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
-repeat wait(0) until game:IsLoaded()
+--repeat wait(0) until game:IsLoaded()
 	
 	--[[if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
 		repeat wait()
@@ -3295,7 +3254,7 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
         Tabs.page1:AddToggle("",{Title = "Auto Farm Level", Description = "ออโต้ฟาร์มเลเวล", Default =  _G.AutoFarm, Callback = function(value)
             _G.AutoFarm = value
             _G.Settings.AutoFarm = value
-            SaveSettings()
+           -- SaveSettings()
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
@@ -3322,7 +3281,7 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
             Tabs.page1:AddToggle("",{Title = "SafeMode",Description = "เซฟโหมด", Default =  _G.SafeMode, Callback = function(value)
                 _G.SafeMode = value
                 _G.Settings.SafeMode = value
-                SaveSettings()
+                 -- SaveSettings()
                spawn(function()
                     while _G.Settings.SafeMode do task.wait()
                         if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
@@ -3338,7 +3297,7 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
             Tabs.page1:AddToggle("",{Title = "Auto Farm Nearest",Description = "ออโต้ฟาร์มมอนรอบๆ", Default =  _G.NeareastFarm, Callback = function(value)
             _G.NeareastFarm = value
             _G.Settings.NeareastFarm = value
-            SaveSettings() 
+               -- SaveSettings()
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
             end
@@ -3351,7 +3310,7 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
         Tabs.page1:AddToggle("",{Title = "Auto Farm Chest(Tween)",Description = "ออโต้ฟาร์มกล่อง(บินเก็บ)", Default =  false, Callback = function(value)
             _G.AutoFarmChest = value
             _G.Settings.AutoFarmChest = value
-                SaveSettings()
+                 -- SaveSettings()
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
@@ -3462,7 +3421,7 @@ end})
 Tabs.page1:AddToggle("",{Title = "AutoBartiloQuest",Description = "ออโต้บาโธโลมีโอเควส", Default =  _G.AutoBartiloQuest, Callback = function(value)
 _G.AutoBartiloQuest   = value
 _G.Settings.AutoBartiloQuest = value
-SaveSettings() 
+   -- SaveSettings()
 if value == false then
     task.wait()
     toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -3590,7 +3549,7 @@ Tabs.page1:AddToggle("",{Title = "AutoHolyTorch",Description = "ออโต้�
         Tabs.page1:AddToggle("",{Title = "AutoFarmBone",Description = "ออโต้ฟาร์มกระดูก", Default =  _G.AutoFarmBone, Callback = function(value)
         _G.AutoFarmBone  = value
         _G.Settings.AutoFarmBone = value
-        SaveSettings() 
+        -- SaveSettings()
         if value == false then
             task.wait()
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -7861,7 +7820,7 @@ Tabs.page4:AddButton({Title = "Stop Teleport",Description = "หยุดเท�
     Tabs.page1:AddToggle("",{Title = "Auto Farm Observation",Description = "ออโต้ฟาร์มฮาคิสังเกต", Default =  _G.AutoObservation, Callback = function(value)
         _G.AutoObservation = value
         _G.Settings.AutoObservation = value
-        SaveSettings() 
+     -- SaveSettings()
         if value == false then
             task.wait()
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -9058,7 +9017,7 @@ function GetAllMeleeFarm()
     Tabs.page6:AddToggle("",{Title = "Auto Fruit Mastery",Description = "ออโต้ฟาร์มมาสเตอรี่ผลปีศาจ", Default =  _G.AutoFarmFruitMastery, Callback = function(value)
         _G.AutoFarmFruitMastery = value
         _G.Settings.AutoFarmFruitMastery = value
-                SaveSettings()
+              -- SaveSettings()
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
@@ -9066,7 +9025,7 @@ function GetAllMeleeFarm()
         Tabs.page6:AddToggle("",{Title = "Auto Gun Mastery",Description = "ออโต้ฟาร์มมาสเตอรี่ผลปีศาจ", Default =  _G.AutoFarmGunMastery, Callback = function(value)
             _G.AutoFarmGunMastery = value
             _G.Settings.AutoFarmGunMastery = value
-                    SaveSettings()
+                  -- SaveSettings()
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
         end
@@ -10237,7 +10196,7 @@ Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโ�
                 Tabs.page9:AddToggle("",{Title = "Teleport To Gear",Description = "เทเลพอร์ตไปหาฟันเฟืองเกียร์", Default =  _G.Auto_Gear, Callback = function(value)
                     _G.Auto_Gear = value
                     _G.Settings.Auto_Gear = value
-                        SaveSettings() 
+                      -- SaveSettings()
                     task.spawn(function()
                         while task.wait(.01) do
                             if _G.Auto_Gear then
@@ -10643,9 +10602,6 @@ Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโ�
                         end
                     end)
                 end})
-                pcall(function()
-                    loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec"))()
-                end) 
                 Tabs.page14:AddToggle("",{Title = "Accept Quest Kill 20 Sharks",Description = "รับเควสฆ่าฉลาม20ตัว", Default =  _G.QRepairBoat, Callback = function(value)
                     _G.QRepairBoat = value
                         Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to accept the quest to kill 20 sharks.:\nเวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาไปรับเควสฆ่าฉลาม 20 ตัว<Color=/>")
@@ -11756,5 +11712,4 @@ InterfaceManager:SetFolder("VectortHub")
 SaveManager:SetFolder("VectortHub/BloxFruit")
 InterfaceManager:BuildInterfaceSection(Tabs.Config)
 SaveManager:BuildConfigSection(Tabs.Config)
-Window:SelectTab(1)
 SaveManager:LoadAutoloadConfig()
