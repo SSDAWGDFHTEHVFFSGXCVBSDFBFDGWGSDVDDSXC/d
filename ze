@@ -6222,15 +6222,9 @@ spawn(function()
         end
     end)()
     _G.FastType = "Fast" 
-    local StatsTable = {"Melee","Defense","Sword","Gun","Fruit"}
-        Tabs.page3:AddDropdown("", {
-            Title = "Stats",
-            Description = "Testt",
-            Values = StatsTable,
-            Default = 1,
-            Callback = function(value)
-                print("You selected " .. value)
-            end})
+    Tabs.page3:AddDropdown("", {Title = "Select Stats",Description = "เลือกสแตค",Values = {"Melee","Defense","Sword","Gun","Fruit"},Default = 1,Callback = function(value)
+        _G.SelectStats = value
+        end})
         
         Tabs.page3:AddToggle("",{Title = "Auto Stats",Description = "ออโต้อัพสแตค", Default =  _G.EnabledAutoStats, Callback = function(value)
             _G.EnabledAutoStats = value
@@ -10147,13 +10141,7 @@ Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโ�
                 while task.wait() do
                     if _G.AutoMirageIsland or _G.Mirage then
                         if game:GetService("Workspace").Map:FindFirstChild("MysticIsland") then
-                                toTarget(workspace.Map.MysticIsland.PrimaryPart.CFrame * CFrame.new(0, 300, 0))
-                        else
-                            if _G.Mode == "English" then
-                                game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "Mirage not Found!",Icon = "rbxassetid://14645512457",Duration = 1})
-                            else
-                                game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "เกาะลับยังไม่เกิด",Icon = "rbxassetid://14645512457",Duration = 1})
-                            end
+                        toTarget(workspace.Map.MysticIsland.PrimaryPart.CFrame * CFrame.new(0, 300, 0))
                         end
                     end
                 end
@@ -10705,11 +10693,7 @@ Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโ�
                             }
                 
                             game:GetService("ReplicatedStorage"):WaitForChild("Modules"):WaitForChild("Net"):WaitForChild("RF/InteractSubclassQuest"):InvokeServer(unpack(args))
-                            if _G.Mode == "English" then 
-                                Vec("<Color=Red>English Version\n:Kill 20 sharks:<Color=/>")
-                            else
-                                Vec("<Color=Red>เวอร์ชั่นภาษาไทย\n:ฆ่าฉลาม 20 ตัว,<Color=/>")
-                            end
+                                Vec("<Color=Red>English Version\n:Kill 20 sharks:\nเวอร์ชั่นภาษาไทย\n:ฆ่าฉลาม 20 ตัว<Color=/>")
                             wait(1)
                             repeat wait()  toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667)) until  (Vector3.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 1 or not _G.QRepaiBoat
                           
