@@ -1,4 +1,3 @@
-print(123)
 repeat wait() until game.Players.LocalPlayer
 local id = game.PlaceId
 if id == 2753915549 then
@@ -6223,7 +6222,14 @@ spawn(function()
         end
     end)()
     _G.FastType = "Fast" 
-    Tabs.page3:AddDropdown("", {Title = "Select Stats",Description = "เลือกสแตค",Values = {"Melee","Defense","Sword","Gun","Fruit"},Default = 1,Callback = function(value)
+    local StatsTable = {
+        "Melee",
+        "Defense",
+        "Sword",
+        "Gun",
+        "Fruit"
+        }
+    Tabs.page3:AddDropdown("", {Title = "Select Stats",Description = "เลือกสแตค",Values = StatsTable,Default = 1,Callback = function(value)
         _G.SelectStats = value
         end})
         
