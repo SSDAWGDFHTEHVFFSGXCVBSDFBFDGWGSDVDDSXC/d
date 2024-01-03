@@ -176,9 +176,7 @@ end
     game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F1,false,game)
     end)
 --[[UIPERPID]]
-pcall(function()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec"))()
-end) 
+
 -- [Save Settings]
 function LoadSettings()
     if readfile and writefile and isfile and isfolder then
@@ -6194,11 +6192,14 @@ spawn(function()
         end
     end)()
     _G.FastType = "Fast" 
-     Tabs.page3:AddDropdown("", {Title = "Select Stats",Description = "เลือกสแตค",Values = {"Melee","Defense","Sword","Gun","Fruit"},Default = 1,Callback = function(value)
-    _G.SelectStats = value
-    end})
-    
-        
+    Tabs.page3:AddDropdown("", {
+        Title = "Select Stats",
+        Description = "เลือกสแตค",
+        Values = {"Melee", "two", "Defense", "Sword", "Gun", "Fruit", "seven", "eight", "nine", "ten", "eleven", "twelve", "thirteen", "fourteen"},
+        Default = 1,
+        Callback = function(value)
+            _G.SelectStats = value
+        end})
         Tabs.page3:AddToggle("",{Title = "Auto Stats",Description = "ออโต้อัพสแตค", Default =  _G.EnabledAutoStats, Callback = function(value)
             _G.EnabledAutoStats = value
             end})
@@ -10642,6 +10643,9 @@ Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโ�
                         end
                     end)
                 end})
+                pcall(function()
+                    loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec"))()
+                end) 
                 Tabs.page14:AddToggle("",{Title = "Accept Quest Kill 20 Sharks",Description = "รับเควสฆ่าฉลาม20ตัว", Default =  _G.QRepairBoat, Callback = function(value)
                     _G.QRepairBoat = value
                         Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to accept the quest to kill 20 sharks.:\nเวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาไปรับเควสฆ่าฉลาม 20 ตัว<Color=/>")
