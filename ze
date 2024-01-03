@@ -6222,16 +6222,15 @@ spawn(function()
         end
     end)()
     _G.FastType = "Fast" 
-    local StatsTable = {
-        "Melee",
-        "Defense",
-        "Sword",
-        "Gun",
-        "Fruit"
-        }
-    Tabs.page3:AddDropdown("", {Title = "Select Stats",Description = "เลือกสแตค",Values = StatsTable,Default = 1,Callback = function(value)
-        _G.SelectStats = value
-        end})
+    local StatsTable = {"Melee","Defense","Sword","Gun","Fruit"}
+        Tabs.page3:AddDropdown("", {
+            Title = "Stats",
+            Description = "Testt",
+            Values = StatsTable,
+            Default = 1,
+            Callback = function(value)
+                print("You selected " .. value)
+            end})
         
         Tabs.page3:AddToggle("",{Title = "Auto Stats",Description = "ออโต้อัพสแตค", Default =  _G.EnabledAutoStats, Callback = function(value)
             _G.EnabledAutoStats = value
