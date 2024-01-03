@@ -6153,6 +6153,48 @@ spawn(function()
 
         Tabs.page3:AddToggle("",{Title = "Auto Stats",Description = "ออโต้อัพสแตค", Default =  _G.EnabledAutoStats, Callback = function(value)
             _G.EnabledAutoStats = value
+            spawn(function()
+                while task.wait() do
+                    if _G.EnabledAutoStats then
+                        if _G.SelectStats == "Melee" then
+                            local args = {
+                                [1] = "AddPoint",
+                                [2] = "Melee",
+                                [3] = 100
+                            }
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        elseif _G.SelectStats == "Defense" then
+                            local args = {
+                                [1] = "AddPoint",
+                                [2] = "Defense",
+                                [3] = 100
+                            }
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        elseif _G.SelectStats == "Sword" then
+                            local args = {
+                                [1] = "AddPoint",
+                                [2] = "Sword",
+                                [3] = 100
+                            }
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        elseif _G.SelectStats == "Gun" then
+                            local args = {
+                                [1] = "AddPoint",
+                                [2] = "Gun",
+                                [3] = 100
+                            }
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        elseif _G.SelectStats == "Fruit" then
+                            local args = {
+                                [1] = "AddPoint",
+                                [2] = "Demon Fruit",
+                                [3] = 100
+                            }
+                            game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                        end
+                    end
+                end
+            end)
             end})
   
     Tabs.page3:AddToggle("",{Title = "Auto Stats Like Kaitun",Description = "ออโต้อัพสแตคแบบไก่ตัน", Default =  _G.AutoStatsKaitun, Callback = function(value)
@@ -6182,48 +6224,7 @@ spawn(function()
     Tabs.page3:AddToggle("",{Title = "Auto Redeem Code",Description = "ออโต้ใส่โค้ด", Default =  _G.EnabledAutoRedeemCode, Callback = function(value)
         _G.EnabledAutoRedeemCode = value
         end})
-        spawn(function()
-            while task.wait() do
-                if _G.EnabledAutoStats then
-                    if _G.SelectStats == "Melee" then
-                        local args = {
-                            [1] = "AddPoint",
-                            [2] = "Melee",
-                            [3] = 100
-                        }
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                    elseif _G.SelectStats == "Defense" then
-                        local args = {
-                            [1] = "AddPoint",
-                            [2] = "Defense",
-                            [3] = 100
-                        }
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                    elseif _G.SelectStats == "Sword" then
-                        local args = {
-                            [1] = "AddPoint",
-                            [2] = "Sword",
-                            [3] = 100
-                        }
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                    elseif _G.SelectStats == "Gun" then
-                        local args = {
-                            [1] = "AddPoint",
-                            [2] = "Gun",
-                            [3] = 100
-                        }
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                    elseif _G.SelectStats == "Fruit" then
-                        local args = {
-                            [1] = "AddPoint",
-                            [2] = "Demon Fruit",
-                            [3] = 100
-                        }
-                        game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                    end
-                end
-            end
-        end)
+       
     spawn(function()
         while task.wait() do
             if _G.EnabledAutoRedeemCode or _G.AutoFarm then
