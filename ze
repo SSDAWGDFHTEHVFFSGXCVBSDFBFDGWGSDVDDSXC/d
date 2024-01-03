@@ -6138,23 +6138,51 @@ spawn(function()
             end
         end
     end)()
+    if _G.FastType == nil  then 
     _G.FastType = "Fast" 
-pcall(function()
-        Tabs.page3:AddDropdown("MultiDropdown", {
-            Title = "Select Stats",
-            Description = "เลือกสแตค",
-            Values = {"Melee", "Defense", "Sword", "Gun", "Fruit"},
-            Multi = true,
-            Default = {"Melee", "Defense"},
-            Callback = function(value)
-                _G.SelectStats = value
-            end})
-        end)
+    end
+    Tabs.page3:AddDropdown("Stats", {
+        Title = "Select Stats",
+        Description = "เลือกสแตค",
+        Values = {"Melee", "Defense", "Sword", "Gun", "Fruit"},
+        Multi = false,
+        Default = 1,
+        Callback = function(value)
+            _G.SelectStats = value
+        end})
+
         Tabs.page3:AddToggle("",{Title = "Auto Stats",Description = "ออโต้อัพสแตค", Default =  _G.EnabledAutoStats, Callback = function(value)
             _G.EnabledAutoStats = value
             end})
+  
+    Tabs.page3:AddToggle("",{Title = "Auto Stats Like Kaitun",Description = "ออโต้อัพสแตคแบบไก่ตัน", Default =  _G.AutoStatsKaitun, Callback = function(value)
+        _G.AutoStatsKaitun = value
+        end})
     spawn(function()
-        pcall(function()
+        while task.wait() do
+            if _G.AutoStatsKaitun then
+                if game:GetService("Players").LocalPlayer.Data.Stats.Melee.Level.Value <= 2549 then
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Melee",
+                        [3] = 100
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                else
+                    local args = {
+                        [1] = "AddPoint",
+                        [2] = "Defense",
+                        [3] = 100
+                    }
+                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
+                end
+            end
+        end
+    end)
+    Tabs.page3:AddToggle("",{Title = "Auto Redeem Code",Description = "ออโต้ใส่โค้ด", Default =  _G.EnabledAutoRedeemCode, Callback = function(value)
+        _G.EnabledAutoRedeemCode = value
+        end})
+        spawn(function()
             while task.wait() do
                 if _G.EnabledAutoStats then
                     if _G.SelectStats == "Melee" then
@@ -6196,34 +6224,6 @@ pcall(function()
                 end
             end
         end)
-    end)
-    Tabs.page3:AddToggle("",{Title = "Auto Stats Like Kaitun",Description = "ออโต้อัพสแตคแบบไก่ตัน", Default =  _G.AutoStatsKaitun, Callback = function(value)
-        _G.AutoStatsKaitun = value
-        end})
-    spawn(function()
-        while task.wait() do
-            if _G.AutoStatsKaitun then
-                if game:GetService("Players").LocalPlayer.Data.Stats.Melee.Level.Value <= 2549 then
-                    local args = {
-                        [1] = "AddPoint",
-                        [2] = "Melee",
-                        [3] = 100
-                    }
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                else
-                    local args = {
-                        [1] = "AddPoint",
-                        [2] = "Defense",
-                        [3] = 100
-                    }
-                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                end
-            end
-        end
-    end)
-    Tabs.page3:AddToggle("",{Title = "Auto Redeem Code",Description = "ออโต้ใส่โค้ด", Default =  _G.EnabledAutoRedeemCode, Callback = function(value)
-        _G.EnabledAutoRedeemCode = value
-        end})
     spawn(function()
         while task.wait() do
             if _G.EnabledAutoRedeemCode or _G.AutoFarm then
