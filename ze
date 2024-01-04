@@ -3579,12 +3579,11 @@ Tabs.page1:AddToggle("",{Title = "AutoHolyTorch",Description = "ออโต้�
           end   
         end}) 
         local  GetQuestBone = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
-        local count_number = 0
-        local count_stack = Tabs.page1:AddParagraph({Title = "Bone",Content = 'Bone : ' .. count_number, true})
+        local AmoumutBone = Tabs.page1:AddParagraph({Title = "Bone",Content = "..."})
         spawn(function()
             while true do
                 local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
-                count_stack:SetDesc('Bone : ' .. boneStatus)
+                AmoumutBone:SetDesc(': ' .. boneStatus)
                 wait(1)
             end 
         end)
@@ -10497,99 +10496,7 @@ Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโ�
                             end
                         end})
                    
-                Tabs.page14:AddToggle("",{Title = "AutoKillMonEvent",Description = "เทเลพอร์ตไปยังทะเลที่เลือกไว้", Default =  _G.AutoEvent, Callback = function(value)
-                    _G.AutoEvent = value
-                    spawn(function()
-                        while wait() do 
-                            if _G.AutoEvent then 
-                                for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                                    if string.find(v.Name, "Fish Crew Member") or string.find(v.Name, "Piranha") or string.find(v.Name,"Shark") or string.find(v.Name , "Terror") and (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 500 then 
-                                        if v.Humanoid.Health > 0 then 
-                                            repeat
-                                                game:GetService("RunService").Heartbeat:wait()
-                                                EquipWeapon(_G.SelectWeapon)
-                                                if not game.Players.LocalPlayer.Character:FindFirstChild("HasBuso") then
-                                                    local args = {
-                                                        [1] = "Buso"
-                                                    }
-                                                    game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer(unpack(args))
-                                                end
-                                                PosMon = v.HumanoidRootPart.CFrame
-                                                v.Head.CanCollide = false
-                                                v.HumanoidRootPart.Size = Vector3.new(100,100,100)
-                                                FastAttack = true
-                                                toTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,50,0)) 
-                                                if not FastAttack then
-                                                    game:GetService 'VirtualUser':CaptureController()
-                                                    game:GetService 'VirtualUser':Button1Down(Vector2.new(1280, 672))
-                                                end
-                                                PosMon = v.HumanoidRootPart.CFrame
-                                            until not _G.AutoEvent or not v.Parent or v.Humanoid.Health == 0 or not game.Workspace.Enemies:FindFirstChild(v.Name) 
-                                        end
-                                    end
-                                end
-                            elseif game.Workspace.SeaBeasts:FindFirstChild("SeaBeast1") or game.Workspace.SeaBeasts:FindFirstChild("SeaBeast1") then
-                                spawn(function()
-                                    while wait() do
-                                        if _G.AutoEvent then
-                                            for i,v in pairs(game.Workspace.SeaBeasts:GetChildren()) do
-                                                if v.Humanoid.Health > 0 or game.workspace.SeaBeasts:FindFirstChild("SeaBeast1") or string.find(v.Name, "SeaBeast") then
-                                                    repeat wait()
-                                                    toTarget(v.HumanoidRootPart.CFrame * CFrame.new(1,500,1))
-                                                    for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                                                        if v.ToolTip == "Melee" then
-                                                            if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
-                                                                EquipWeapon(v.Name)
-                                                            end
-                                                        end
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-                                                    wait(0.2)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-                                                    wait(0.2)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-                                                        if v.ToolTip == "Sword" then
-                                                            if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
-                                                                EquipWeapon(v.Name)
-                                                            end
-                                                        end
-                                                    end
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-                                                    wait(0.2)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-                                                    for i ,v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
-                                                        if v.ToolTip == "Blox Fruit" then
-                                                            if game.Players.LocalPlayer.Backpack:FindFirstChild(tostring(v.Name)) then
-                                                                EquipWeapon(v.Name)
-                                                            end
-                                                        end
-                                                    end
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"Z",false,game)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"Z",false,game)
-                                                    wait(0.2)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"X",false,game)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"X",false,game)
-                                                    wait(0.2)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"C",false,game)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"C",false,game)
-                                                    wait(0.2)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,"V",false,game)
-                                                    game:GetService("VirtualInputManager"):SendKeyEvent(false,"V",false,game)
-                                                    wait(0.2)
-                                                    until not v.Humanoid.Health <= 0 or not _G.AutoEvent or not game.workspace.SeaBeasts:FindFirstChild("SeaBeast1") or not game.Workspace.Enemies:FindFirstChild(v.Name) 
-                                                end
-                                            end
-                                        end
-                                    end
-                                end)
-                            end
-                        end
-                    end)
-                end})
+                
                 Tabs.page14:AddToggle("",{Title = "Accept Quest Kill 20 Sharks",Description = "รับเควสฆ่าฉลาม20ตัว", Default =  _G.QRepairBoat, Callback = function(value)
                     _G.QRepairBoat = value
                         Vec("<Color=Red>English Version\n:If nothing goes wrong, this function will take you to accept the quest to kill 20 sharks.:\nเวอร์ชั่นภาษาไทย\n:ถ้าไม่มีอะไรผิดพลาดฟังก์ชั่นนี้จะพาไปรับเควสฆ่าฉลาม 20 ตัว<Color=/>")
