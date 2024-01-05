@@ -229,9 +229,9 @@ local RunService = game:GetService("RunService")
 local LocalPlayer = game:GetService("Players").LocalPlayer
 local Mouse = LocalPlayer:GetMouse()
 local GuiService = game:GetService("GuiService")
---repeat wait(0) until game:IsLoaded()
-	
-	--[[if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
+
+repeat wait(0) until game:IsLoaded()
+	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
 		repeat wait()
 			if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
 				if _G.Team == "Pirate" then
@@ -249,7 +249,7 @@ local GuiService = game:GetService("GuiService")
 				end
 			end
 		until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-	end]]
+	end
 -- [Functions Equip Weapon]
 function UnEquipWeapon(Weapon)
     if game.Players.LocalPlayer.Character:FindFirstChild(Weapon) then
@@ -3579,9 +3579,9 @@ Tabs.page1:AddToggle("",{Title = "AutoHolyTorch",Description = "ออโต้�
           end   
         end}) 
         local  GetQuestBone = game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest
-        local AmoumutBone = Tabs.page1:AddParagraph({Title = "Bone",Content = "..."})
+        local AmoumutBone = Tabs.page1:AddParagraph({Title = "Bone",Content = "Select Team",true})
         spawn(function()
-            while true do
+            while true do  
                 local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
                 AmoumutBone:SetDesc(": " ..boneStatus)
                 wait(1)
@@ -3603,7 +3603,7 @@ Tabs.page1:AddToggle("",{Title = "AutoHolyTorch",Description = "ออโต้�
     Tabs.page1:AddToggle("",{Title = "Auto Random Bone",Description = "ออโต้สุ่มกระดูก", Default =  _G.AutoRandomBone, Callback = function(value)
         _G.AutoRandomBone = value
     end})
-local MobKilledLabel = Tabs.page1:AddParagraph({Title = "NeedkillMon",Content = "Loading...",true}) 
+local MobKilledLabel = Tabs.page1:AddParagraph({Title = "NeedkillMon",Content = "Select Team",true}) 
             spawn(function()
                 while true do
                     pcall(function()
