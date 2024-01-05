@@ -2,11 +2,11 @@ repeat wait() until game.Players.LocalPlayer
 
 local placeId = game.PlaceId
 if placeId == 2753915549 then
-OldWorld = true
+World1 = true
 elseif placeId == 4442272183 then
-NewWorld = true
+World2 = true
 elseif placeId == 7449423635 then
-ThreeWorld = true
+World3 = true
 else
 game.Players.LocalPlayer:Kick("..")
 end
