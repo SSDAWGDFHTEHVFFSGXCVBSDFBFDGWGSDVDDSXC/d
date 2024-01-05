@@ -440,39 +440,39 @@ return Hits
 end
 
 function yakmefan()
-local ac = CombatFrameworkR.activeController
-if ac and ac.equipped then
- for Ryuen = 1, 1 do
-    local bladehit = getAllBladeHits(100)
-    if #bladehit > 0 then
-        local AcAttack8 = debug.getupvalue(ac.attack, 5)
-        local AcAttack9 = debug.getupvalue(ac.attack, 6)
-        local AcAttack7 = debug.getupvalue(ac.attack, 4)
-        local AcAttack10 = debug.getupvalue(ac.attack, 7)
-        local NumberAc12 = (AcAttack8 * 798405 + AcAttack7 * 727595) % AcAttack9
-        local NumberAc13 = AcAttack7 * 798405
-        (function() 
-            NumberAc12 = (NumberAc12 * AcAttack9 + NumberAc13) % 1099511627776
-            AcAttack8 = math.floor(NumberAc12 / AcAttack9)
-            AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
-        end)()
-        AcAttack10 = AcAttack10 + 1
-        debug.setupvalue(ac.attack, 5, AcAttack8)
-        debug.setupvalue(ac.attack, 6, AcAttack9)
-        debug.setupvalue(ac.attack, 4, AcAttack7)
-        debug.setupvalue(ac.attack, 7, AcAttack10)
-       for k, v in pairs(ac.animator.anims.basic) do
-            v:Play(0.01, 0.01, 0.01)
-        end
-        if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
-            game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
-            game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10) 
-            game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, Ryuen, "") --Ryuen = 1
+    local ac = CombatFrameworkR.activeController
+    if ac and ac.equipped then
+     for Ryuen = 1, 1 do
+        local bladehit = getAllBladeHits(100)
+        if #bladehit > 0 then
+            local AcAttack8 = debug.getupvalue(ac.attack, 5)
+            local AcAttack9 = debug.getupvalue(ac.attack, 6)
+            local AcAttack7 = debug.getupvalue(ac.attack, 4)
+            local AcAttack10 = debug.getupvalue(ac.attack, 7)
+            local NumberAc12 = (AcAttack8 * 798405 + AcAttack7 * 727595) % AcAttack9
+            local NumberAc13 = AcAttack7 * 798405
+            (function() 
+                NumberAc12 = (NumberAc12 * AcAttack9 + NumberAc13) % 1099511627776
+                AcAttack8 = math.floor(NumberAc12 / AcAttack9)
+                AcAttack7 = NumberAc12 - AcAttack8 * AcAttack9
+            end)()
+            AcAttack10 = AcAttack10 + 1
+            debug.setupvalue(ac.attack, 5, AcAttack8)
+            debug.setupvalue(ac.attack, 6, AcAttack9)
+            debug.setupvalue(ac.attack, 4, AcAttack7)
+            debug.setupvalue(ac.attack, 7, AcAttack10)
+            for k, v in pairs(ac.animator.anims.basic) do
+                v:Play(0.01, 0.01, 0.01)
+            end
+            if game.Players.LocalPlayer.Character:FindFirstChildOfClass("Tool") and ac.blades and ac.blades[1] then
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("weaponChange",tostring(CurrentWeapon()))
+                game.ReplicatedStorage.Remotes.Validator:FireServer(math.floor(NumberAc12 / 1099511627776 * 16777215), AcAttack10)
+                game:GetService("ReplicatedStorage").RigControllerEvent:FireServer("hit", bladehit, 2, "")
+            end
         end
     end
-end
-end
-end
+    end
+    end
 
 function AttackPlayers()
     local ac = CombatFrameworkR.activeController
@@ -10369,141 +10369,7 @@ Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโ�
                     end})
 
 
-                 local localPlayerr = game.Players.LocalPlayer
-                    AllBoat = {
-                        "Dinghy",
-                        "PirateSloop",
-                        "PirateBrigade",
-                        "PirateGrandBrigade",
-                        "MarineSloop",
-                        "MarineBrigade",
-                        "MarineGrandBrigade"
-                    }
-                    local SelectBoat = nil
-                    Tabs.page14:AddDropdown("", {Title = "SelectBoat",Description = "เลือกเรือ",Values = AllBoat,Default = 1,Callback = function(value)
-                            SelectBoat = value
-                        end})
-                    
-                    function CheckNotifyBuy()
-                        for i, v in pairs(game:GetService("Players")["LocalPlayer"].PlayerGui:FindFirstChild("Notifications"):GetChildren()) do
-                            if v.Name == "NotificationTemplate" then
-                                if string.lower(v.Text):find("bought") then
-                                    return true
-                                end
-                            end
-                        end
-                        return false
-                    end
-                    
-                    Tabs.page14:AddToggle("",{Title = "BuyBoat",Description = "ซื้อเรือ", Default =  _G.Bboat, Callback = function(value)
-                        _G.Bboat = value
-                        while _G.Bboat do wait()
-                            toTarget(CFrame.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667))
-                                if (Vector3.new(-16931.9766, 9.08636189, 444.637634, 0.247219667, 3.04388195e-08, 0.968959451, -2.25711698e-08, 1, -2.56551314e-08, -0.968959451, -1.55280944e-08, 0.247219667) - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 5 and CheckNotifyBuy() == false then
-                                    repeat wait()
-                                    if SelectBoat then 
-                                        local args = {
-                                            [1] = "BuyBoat",
-                                            [2] = SelectBoat
-                                        }
-                                        game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("CommF_"):InvokeServer(unpack(args))
-                                    end
-                                    until CheckNotifyBuy() == true
-                                end
-                            end
-                            for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
-                                    if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then 
-                                        if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
-                                            repeat
-                                                task.wait()
-                                                local CFrame = v.CFrame
-                                                twoboat(CFrame)
-                                            until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.TPTOBOAT
-                                        end
-                                    end
-                                end
-                            end})
-                            Tabs.page14:AddToggle("",{Title = "Increase Boat Speed",Description = "เพิ่มความเร็วเรือ", Default =  _G.increaseboatspeed, Callback = function(value)
-                                    _G.increaseboatspeed = value
-                                        local vehicleSeats = {}
-                                        for i, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                            if v:IsA("VehicleSeat") then
-                                                table.insert(vehicleSeats, v)
-                                            end
-                                        end
-                                        if _G.increaseboatspeed then
-                                            for _, v in pairs(vehicleSeats) do
-                                                v.MaxSpeed = 350
-                                            end
-                                        else
-                                            for _, v in pairs(vehicleSeats) do
-                                                v.MaxSpeed = 100
-                                            end
-                                        end
-                                end})
-                                Tabs.page14:AddToggle("",{Title = "AutoSail",Description = "ออโต้ขับเรือ", Default =  _G.AutoSail, Callback = function(value)
-                                    _G.AutoSail = value
-                                    while _G.AutoSail do task.wait(0)
-                                    game:GetService("VirtualInputManager"):SendKeyEvent(true,Enum.KeyCode.W,false,game)
-                                    end
-                                end})
-                                Tabs.page14:AddToggle("",{Title = "Noclip Rock",Description = "เรือทะลุหิน", Default =  _G.Nocliprock, Callback = function(value)
-                                    _G.Nocliprock = value
-                                    spawn(function()
-                                            while wait() do
-                                                if _G.Nocliprock then
-                                                    if game.Players.LocalPlayer.Character.Humanoid.Sit == true then
-                                                        for _, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                            if v:IsA("BasePart") and v.CanCollide == true then
-                                                                v.CanCollide = false
-                                                            end
-                                                        end
-                                                        for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                                                            if v:IsA("BasePart") and v.CanCollide == true then
-                                                                v.CanCollide = false
-                                                            end
-                                                        end
-                                                    elseif game.Players.LocalPlayer.Character.Humanoid.Sit == false then
-                                                        for _, v in pairs(game.Workspace.Boats:GetDescendants()) do
-                                                            if v:IsA("BasePart") and v.CanCollide == false then
-                                                                v.CanCollide = true
-                                                            end
-                                                        end
-                                                        for _, v in pairs(game.Players.LocalPlayer.Character:GetDescendants()) do
-                                                            if v:IsA("BasePart") and v.CanCollide == false then
-                                                                v.CanCollide = true
-                                                            end
-                                                        end
-                                                    end
-                                                end
-                                            end
-                                        end)
-                                     end})
-                            Tabs.page14:AddToggle("",{Title = "Teleport To NearyShip",Description = "เทเลอร์ตไปหาเรือใกล้เคียง", Default =  _G.TPTOBOAT, Callback = function(value)
-                            _G.TPTOBOAT = value
-                            while task.wait() do
-                                if _G.TPTOBOAT then
-                                    for i, v in pairs(game.Workspace.Boats[SelectBoat]:GetChildren()) do
-                                        if v:IsA("VehicleSeat") and  localPlayerr.Name == game.Workspace.Boats[SelectBoat].Owner.Value.Name then 
-                                            if (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
-                                                repeat
-                                                    task.wait()
-                                                    local CFrame = v.CFrame
-                                                    twoboat(CFrame)
-                                                until (v.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 5 or not _G.TPTOBOAT
-                                            end
-                                        end
-                                    end
-                                end
-                            end
-                        end})
-                   
                 
-               
-                        loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
-                        Tabs.page14:AddButton({Title = "Fly",Description = "บิน",Callback = function()
-                            Fly()
-                            end})
                             local Kitsunecheck = Tabs.page15:AddParagraph({Title = "Kitsune Island",Content = "...."})
                           
                             spawn(function()
