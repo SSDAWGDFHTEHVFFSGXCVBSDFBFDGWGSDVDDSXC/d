@@ -3583,7 +3583,7 @@ Tabs.page1:AddToggle("",{Title = "AutoHolyTorch",Description = "ออโต้�
         spawn(function()
             while true do
                 local boneStatus = game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("Bones", "Check")
-                AmoumutBone:SetDesc(': ' .. boneStatus)
+                AmoumutBone:SetDesc(": " ..boneStatus)
                 wait(1)
             end 
         end)
