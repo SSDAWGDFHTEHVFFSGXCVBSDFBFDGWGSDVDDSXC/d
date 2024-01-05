@@ -17,7 +17,7 @@ local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.
 local Window = Fluent:CreateWindow({Title = "Vector Hub ",SubTitle = "By Ryuenz#6264",TabWidth = 130,Size = UDim2.fromOffset(550, 350),Acrylic = true,Theme = "Darker",MinimizeKey = Enum.KeyCode.F1 })
 local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11446900930" }),page2 = Window:AddTab({ Title = "Settings", Icon = "rbxassetid://11446835336" }),page3 = Window:AddTab({ Title = "Stats", Icon = "rbxassetid://7040410130" }),page4 = Window:AddTab({ Title = "Teleport", Icon = "rbxassetid://6035190846"}),page5 = Window:AddTab({ Title = "Item", Icon = "rbxassetid://12499842920" }),page6 = Window:AddTab({ Title = "Mastery", Icon = "rbxassetid://11717242503" }),page7 = Window:AddTab({ Title = "DevilFruit", Icon = "rbxassetid://130882646" }),page8 = Window:AddTab({ Title = "Raid", Icon = "rbxassetid://13180179055" }),page13 = Window:AddTab({ Title = "Combat", Icon = "rbxassetid://7485051715" }),page9 = Window:AddTab({ Title = "Mirage", Icon = "rbxassetid://12598594243" }),page10 = Window:AddTab({ Title = "RaceV4", Icon = "rbxassetid://7558782590" }),page14 = Window:AddTab({ Title = "SeaEvent", Icon = "rbxassetid://7052520309" }),page15 = Window:AddTab({ Title = "Kitsune", Icon = "rbxassetid://8028233454" }),page16 = Window:AddTab({ Title = "Christmas", Icon = "rbxassetid://8234458975" }),page11 = Window:AddTab({ Title = "Shop", Icon = "rbxassetid://6031265976" }),page12 = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://11447063791" }),Config = Window:AddTab({ Title = "Config", Icon = "settings" })}   
 local Options = Fluent.Options
-do
+
     _G.Settings = {
         AutoFarm = false,
         DoubleQuest = false,
@@ -3275,6 +3275,7 @@ do
     elseif World3 then
         Worldz = "World : 3"
     end
+    
     local E = Tabs.page1:AddParagraph({Title = "INFO",Content = "....."})
     function UpdateInfo()
         local gameTime = math.floor(workspace.DistributedGameTime + 0.5)
@@ -11342,7 +11343,6 @@ while task.wait() do
 end
 end)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/hooks"))()
-end
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
 SaveManager:IgnoreThemeSettings()
