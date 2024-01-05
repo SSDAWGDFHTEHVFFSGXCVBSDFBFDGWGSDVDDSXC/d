@@ -9,7 +9,82 @@ World3 = true;
 else
 print(1)
 end;
+_G.Settings = {
+    AutoFarm = false,
+    DoubleQuest = false,
+    NeareastFarm = false,
+    Mirage = false ,
+    MirageHop = false,
+    Auto_Gear = false,
+    TeleportGear = false,
+    AutoNewWorld = false,
+    TweenToFruitSpawn = false,
+    AutoSaber = false,
+    AutoPole = false,
+    TeleportIsland = false,
 
+--[World 2]
+    AutoThirdSea = false,
+    AutoBartiloQuest = false,
+    Auto_Evo_Race_V2 = false,
+    AutoDarkCoat = false,
+    AutoSwanGlasses = false,
+    AutoTrueTriplKatana = false,
+    AutoRengoku = false,
+    AutoEctoplasm = false,
+    AutoFactory = false,
+
+    --[World 3]
+    AutoRainbowHaki = false,
+    AutoBuyEnchanmentHakiHop = false,
+    AutoBuyLegendarySwordHop = false,
+    AutoEliteHunter = false,
+    AutoMusketeerHat = false,
+    AutoBuddySword = false,
+    AutoFarmBone = false,
+    SpawnBossHallow = false,
+    AutoKenHakiV2 = false,
+    AutoObservation = false,
+    AutoObservation_Hop = false,
+    AutoGodHuman = false,
+    AutoCavander = false,
+    AutoCursedDualKatana = false,
+    AutoYamaSword = false,
+    AutoTushitaSword = false,
+    AutoSerpentBow = false,
+    AutoDarkDagger = false,
+    AutoCakePrince = false,
+    AutoDoughV2 = false,
+    AutoHolyTorch = false,
+    AutoBuddySwords = false,
+    AutoFarmBossHallow = false,
+    MobAura = false,
+    YamaQuest2 = false,
+    YamaQuest1 = false,
+    Auto_Cursed_Dual_Katana = false,
+    Tushita_Quest2 = false,
+    Tushita_Quest1 = false,
+    TeleporttoSeaBeast = false,
+    AutoEvent = false,
+    TPTOBOAT = false,
+    AutoFarmMaterial = false,
+    Teleporttop = false,
+    AutoFarmChest = false,
+
+    --[Boss]
+    AutoAllBoss = false,
+    AutoBossSelect = false,
+    AutoFarmBoss = false,
+
+    --[Mastery]
+    AutoFarmFruitMastery = false,
+    AutoFarmGunMastery = false,
+    FarmMasterySwordList = false,
+
+    --[Raids]
+    AutoRaids = false,
+    AutoNextPlace = false
+}
 local Ui = game:GetService("CoreGui"):FindFirstChild("Perpid")
 if Ui then
     Ui:Destroy()
@@ -106,7 +181,49 @@ end
     loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec"))()
 
 -- [Save Settings]
+function LoadSettings()
+    if readfile and writefile and isfile and isfolder then
+        if not isfolder("VectorHub") then
+            makefolder("VectorHub")
+        end
+        if not isfolder("VectorHub/Blox Fruits/") then
+            makefolder("VectorHub/Blox Fruits/")
+        end
+        if not isfile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
+            writefile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json",
+                game:GetService("HttpService"):JSONEncode(_G.Settings))
+        else
+            local Decode = game:GetService("HttpService"):JSONDecode(readfile("VectorHub/Blox Fruits/" ..
+                game.Players.LocalPlayer.Name .. ".json"))
+            for i, v in pairs(Decode) do
+                _G.Settings[i] = v
+            end
+        end
+    else
+        return warn("Status : Undetected Executor")
+    end
+end
 
+function SaveSettings()
+    if readfile and writefile and isfile and isfolder then
+        if not isfile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
+            LoadSettings()
+        else
+            local Decode = game:GetService("HttpService"):JSONDecode(readfile("VectorHub/Blox Fruits/" ..
+                game.Players.LocalPlayer.Name .. ".json"))
+            local Array = {}
+            for i, v in pairs(_G.Settings) do
+                Array[i] = v
+            end
+            writefile("VectorHub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json",
+                game:GetService("HttpService"):JSONEncode(Array))
+        end
+    else
+        return warn("Status : Undetected Executor")
+    end
+end
+
+LoadSettings()
 local VirtualInputManager = game:GetService("VirtualInputManager")
 local TweenService = game:GetService("TweenService")
 local tween = game:service"TweenService"
@@ -3180,6 +3297,7 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
     Tabs.page1:AddSection("Main/หน้าหลัก")
         Tabs.page1:AddToggle("",{Title = "Auto Farm Level", Description = "ออโต้ฟาร์มเลเวล", Default =  _G.AutoFarm, Callback = function(value)
             _G.AutoFarm = value
+            _G.Settings.AutoFarm = value
            -- SaveSettings()
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -3206,10 +3324,10 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
             end})
             Tabs.page1:AddToggle("",{Title = "SafeMode",Description = "เซฟโหมด", Default =  _G.SafeMode, Callback = function(value)
                 _G.SafeMode = value
-               
+                _G.Settings.SafeMode = value
                 --SaveSettings()
                spawn(function()
-                    while _G.SafeMode do task.wait()
+                    while _G.Settings.SafeMode do task.wait()
                         if game.Players.LocalPlayer.Character and game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") then
                             local HealthPercent = game.Players.LocalPlayer.Character.Humanoid.Health / game.Players.LocalPlayer.Character.Humanoid.MaxHealth * 100
                             if HealthPercent < 20 then
@@ -3222,7 +3340,7 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
             end})
             Tabs.page1:AddToggle("",{Title = "Auto Farm Nearest",Description = "ออโต้ฟาร์มมอนรอบๆ", Default =  _G.NeareastFarm, Callback = function(value)
             _G.NeareastFarm = value
-            
+            _G.Settings.NeareastFarm = value
                -- SaveSettings()
             if value == false then
                 toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -3235,7 +3353,7 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
         end
         Tabs.page1:AddToggle("",{Title = "Auto Farm Chest(Tween)",Description = "ออโต้ฟาร์มกล่อง(บินเก็บ)", Default =  false, Callback = function(value)
             _G.AutoFarmChest = value
-           
+            _G.Settings.AutoFarmChest = value
                  -- SaveSettings()
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -3346,6 +3464,7 @@ end)
 end})
 Tabs.page1:AddToggle("",{Title = "AutoBartiloQuest",Description = "ออโต้บาโธโลมีโอเควส", Default =  _G.AutoBartiloQuest, Callback = function(value)
 _G.AutoBartiloQuest   = value
+_G.Settings.AutoBartiloQuest = value
    -- SaveSettings()
 if value == false then
     task.wait()
@@ -3472,6 +3591,7 @@ Tabs.page1:AddToggle("",{Title = "AutoHolyTorch",Description = "ออโต้�
         end)
         Tabs.page1:AddToggle("",{Title = "AutoFarmBone",Description = "ออโต้ฟาร์มกระดูก", Default =  _G.AutoFarmBone, Callback = function(value)
         _G.AutoFarmBone  = value
+        _G.Settings.AutoFarmBone = value
         -- SaveSettings()
         if value == false then
             task.wait()
@@ -3529,7 +3649,7 @@ local MobKilledLabel = Tabs.page1:AddParagraph({Title = "NeedkillMon",Content = 
     end -- end เช็คโลก
             spawn(function()
                 while task.wait() do
-                    if _G.NeareastFarm then
+                    if _G.Settings.NeareastFarm then
                         pcall(function()
                             for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
                                     if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 2000 and v.Humanoid.Health > 0 then
@@ -3607,7 +3727,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             _G.FastType = "Fast"
                                         end
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
-                                until v.Humanoid.Health <= 0 or not _G.AutoFarm or not _G.FastAutoFarm
+                                until v.Humanoid.Health <= 0 or not _G.Settings.AutoFarm or not _G.FastAutoFarm
                                 StartMagnet = false
                                 FastAttack = false
                             end
@@ -3645,7 +3765,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                             _G.FastType = "Fast"
                                         end
                                         game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
-                                until v.Humanoid.Health <= 0 or not _G.AutoFarm or not _G.FastAutoFarm
+                                until v.Humanoid.Health <= 0 or not _G.Settings.AutoFarm or not _G.FastAutoFarm
                                 StartMagnet = false
                                 FastAttack = false
                             end
@@ -3702,7 +3822,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
             if table.find(AllPlayersTableSkipFarm,GetQuestTitle.Text:split(" ")[2]) then
                 for i,v in pairs(game:GetService("Workspace").Characters:GetChildren()) do
                     if string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) then
-                        if _G.AutoFarm and _G.FastAutoFarm and v.Name == GetQuestTitle.Text:split(" ")[2] and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                        if _G.Settings.AutoFarm and _G.FastAutoFarm and v.Name == GetQuestTitle.Text:split(" ")[2] and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                             repeat wait()
                                 if World1 and (Vector3.new(61163.8515625, 11.6796875, 1819.7841796875) - v.HumanoidRootPart.Position).magnitude < 5000 then
                                     if FarmtoTarget then FarmtoTarget:Stop() end
@@ -3734,14 +3854,14 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                     game:service('VirtualInputManager'):SendKeyEvent(true, "Z", false, game)
                                     game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
                                 end
-                            until not _G.AutoFarm or not _G.FastAutoFarm  or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                            until not _G.Settings.AutoFarm or not _G.FastAutoFarm  or not string.find(game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,v.Name) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                         end
                     end
                 end
             else
                 if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
                     for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                        if _G.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                        if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                             if string.find(GetQuestTitle.Text, QuestName) then
                                 repeat wait()
                                     if (v.HumanoidRootPart.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).magnitude > 150 then
@@ -3764,7 +3884,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                         FastAttack = true
                                         EquipWeapon(_G.SelectWeapon)
                                     end
-                                until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, QuestName) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                                until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, QuestName) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                                 FastAttack = false
                                 StartMagnet = false
                             else
@@ -3850,7 +3970,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
         elseif GetQuest.Visible == true then
             if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
                 for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                    if _G.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                    if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                         if string.find(GetQuestTitle.Text, NameMon) then
                             repeat task.wait()
                                 FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
@@ -3884,7 +4004,7 @@ if _G.FastAutoFarm and (MyLevel >= 15 and MyLevel <= 300) then
                                     end
                                     game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
                                 end
-                            until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                            until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                             StartMagnet = false
                             FastAttack = false
                         else
@@ -3969,7 +4089,7 @@ else
     elseif GetQuest.Visible == true then
         if game:GetService("Workspace").Enemies:FindFirstChild(Name) then
             for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-                if _G.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
+                if _G.Settings.AutoFarm and v.Name == Name and v:FindFirstChild("HumanoidRootPart") and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 then
                     if string.find(GetQuestTitle.Text, NameMon) then
                         repeat wait()
                             FarmtoTarget = toTarget(v.HumanoidRootPart.CFrame * MethodFarm)
@@ -4004,7 +4124,7 @@ else
                                 end
                                 game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.HumanoidRootPart.CFrame * MethodFarm
                             end
-                        until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
+                        until not game:GetService("Workspace").Enemies:FindFirstChild(Name) or not _G.Settings.AutoFarm or not string.find(GetQuestTitle.Text, NameMon) or v.Humanoid.Health <= 0 or not v.Parent or GetQuest.Visible == false
                         StartMagnet = false
                         FastAttack = false
                     else
@@ -4731,7 +4851,7 @@ end)
 task.spawn(function()
     while task.wait() do
         pcall(function()
-                if _G.AutoBartiloQuest then
+                if _G.Settings.AutoBartiloQuest then
                     if game.Players.LocalPlayer.Data.Level.Value >= 850 then
                         if game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BartiloQuestProgress","Bartilo") == 0 then
                             if string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"Swan Pirates") and string.find(game.Players.LocalPlayer.PlayerGui.Main.Quest.Container.QuestTitle.Title.Text,"50") and game.Players.LocalPlayer.PlayerGui.Main.Quest.Visible == true then
@@ -5622,7 +5742,7 @@ end)
 task.spawn(function()
     while task.wait() do
         pcall(function()
-            if _G.AutoFarmBone then
+            if _G.Settings.AutoFarmBone then
                 if GetQuestBone.Visible == false and _G.AccetpQuestBone then
                     CFrameQuestBone = CFrame.new(-9513, 172, 6079)
                     if (CFrameQuestBone.Position - game.Players.LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 20 then
@@ -7722,6 +7842,7 @@ Tabs.page4:AddButton({Title = "Stop Teleport",Description = "หยุดเท�
     end})
     Tabs.page1:AddToggle("",{Title = "Auto Farm Observation",Description = "ออโต้ฟาร์มฮาคิสังเกต", Default =  _G.AutoObservation, Callback = function(value)
         _G.AutoObservation = value
+        _G.Settings.AutoObservation = value
      -- SaveSettings()
         if value == false then
             task.wait()
@@ -7731,11 +7852,12 @@ Tabs.page4:AddButton({Title = "Stop Teleport",Description = "หยุดเท�
     end})
     Tabs.page1:AddToggle("",{Title = "Auto Farm Observation Hop",Description = "ออโต้ฟาร์มฮาคิสังเกต ย้ายเซิฟ", Default =  _G.AutoObservation, Callback = function(value)
         _G.AutoObservation_Hop = value
+        _G.Settings.AutoObservation_Hop = value
     end})
     spawn(function()
         while wait() do
             pcall(function()
-                    if _G.AutoObservation then
+                    if _G.Settings.AutoObservation then
                         repeat
                             task.wait()
                             if not game:GetService("Players").LocalPlayer.PlayerGui.ScreenGui:FindFirstChild("ImageLabel") then
@@ -7753,7 +7875,7 @@ Tabs.page4:AddButton({Title = "Stop Teleport",Description = "หยุดเท�
         spawn(function()
             pcall(function()
                     while wait() do
-                        if _G.AutoObservation then
+                        if _G.Settings.AutoObservation then
                             if game:GetService("Players").LocalPlayer.VisionRadius.Value >= 6000 then
                                 game:GetService("StarterGui"):SetCore("SendNotification",
                                     {
@@ -8484,7 +8606,7 @@ function GetAllMeleeFarm()
     spawn(function()
         while wait() do
         pcall(function()
-        if _G.AutoFarmGunMastery then
+        if _G.Settings.AutoFarmGunMastery then
       if  game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
             StartMagnet = false
              -- FastAttack = false
@@ -8675,7 +8797,7 @@ function GetAllMeleeFarm()
         spawn(function()
             while wait() do
                 pcall(function()
-                    if _G.AutoFarmFruitMastery then
+                    if _G.Settings.AutoFarmFruitMastery then
             if game:GetService("Players").LocalPlayer.PlayerGui.Main.Quest.Visible == false then
             StartMagnet = false
             FastAttack = false
@@ -8917,7 +9039,7 @@ function GetAllMeleeFarm()
     end
     Tabs.page6:AddToggle("",{Title = "Auto Fruit Mastery",Description = "ออโต้ฟาร์มมาสเตอรี่ผลปีศาจ", Default =  _G.AutoFarmFruitMastery, Callback = function(value)
         _G.AutoFarmFruitMastery = value
-     
+        _G.Settings.AutoFarmFruitMastery = value
               -- SaveSettings()
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -8925,7 +9047,7 @@ function GetAllMeleeFarm()
         end})
         Tabs.page6:AddToggle("",{Title = "Auto Gun Mastery",Description = "ออโต้ฟาร์มมาสเตอรี่ผลปีศาจ", Default =  _G.AutoFarmGunMastery, Callback = function(value)
             _G.AutoFarmGunMastery = value
-          
+            _G.Settings.AutoFarmGunMastery = value
                   -- SaveSettings()
         if value == false then
             toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -9914,6 +10036,7 @@ end)
 end)
 Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโต้หาเกาะลับ", Default =  _G.AutoMirageIsland, Callback = function(value)
     _G.Mirage = value
+    _G.Settings.Mirage = value
     _G.AutoMirageIsland = value 
     if value == false then
         toTarget(game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame)
@@ -9921,7 +10044,7 @@ Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโ�
     end})
     Tabs.page9:AddToggle("",{Title = "Auto Mirage Island Hop",Description = "ออโต้หาเกาะลับ ย้ายเซิฟ", Default =  _G.AutoMirageIslandHop, Callback = function(value)
         _G.MirageHop = value
-     
+        _G.Settings.MirageHop = value
         _G.AutoMirageIslandHop = value
         game:GetService("StarterGui"):SetCore("SendNotification",{Title = "VectorHub",Text = "HopServer...",Icon = "rbxassetid://14645512457",Duration = 5})
         if _G.MirageHop and not game.Workspace._WorldOrigin.Locations:FindFirstChild('Mirage Island') then
@@ -10095,7 +10218,7 @@ Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโ�
                 end})
                 Tabs.page9:AddToggle("",{Title = "Teleport To Gear",Description = "เทเลพอร์ตไปหาฟันเฟืองเกียร์", Default =  _G.Auto_Gear, Callback = function(value)
                     _G.Auto_Gear = value
-                   
+                    _G.Settings.Auto_Gear = value
                       -- SaveSettings()
                     task.spawn(function()
                         while task.wait(.01) do
@@ -10452,10 +10575,11 @@ Tabs.page9:AddToggle("",{Title = "Auto Mirage Island",Description = "ออโ�
                         end}) 
                         Tabs.page11:AddToggle("",{Title = "Auto Buy Zoro Sword Hop",Description = "ออโต้ซื้อดาบโซโล ย้ายเซิฟ", Default =  _G.AutoBuyLegendarySwordHop, Callback = function(value)
                             _G.AutoBuyLegendarySwordHop = value
+                            _G.Settings.AutoBuyLegendarySwordHop = value
                                 spawn(function()
                                             while task.wait() do
                                                 pcall(function()
-                                                        if _G.AutoBuyLegendarySwordHop then
+                                                        if _G.Settings.AutoBuyLegendarySwordHop then
                                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "1")
                                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "2")
                                                             game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("LegendarySwordDealer", "3")
@@ -10488,10 +10612,11 @@ Tabs.page11:AddToggle("",{Title = "Auto Buy Color Haki",Description = "ออโ
     end})
     Tabs.page11:AddToggle("",{Title = "Auto Buy Color Haki Hop",Description = "ออโต้ซื้อสีฮาคิ ย้ายเซิฟ", Default =  _G.AutoBuyEnchanmentHakiHop, Callback = function(value)
         _G.AutoBuyEnchanmentHakiHop = value
+        _G.Settings.AutoBuyEnchanmentHakiHop = value
         task.spawn(function()
             while task.wait() do
                 pcall(function()
-                    if _G.AutoBuyEnchanmentHakiHop then
+                    if _G.Settings.AutoBuyEnchanmentHakiHop then
                         local args = {
                             [1] = "ColorsDealer",
                             [2] = "2"
@@ -11175,21 +11300,6 @@ repeat wait() until game:IsLoaded()
       sethiddenproperty(game.Players.LocalPlayer, "SimulationRadius", math.huge)
     end
 end)
-spawn(function()
-    while wait() do
-        if sethiddenproperty then
-            sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",100)
-        end
-        if setscriptable then
-            setscriptable(game.Players.LocalPlayer, "SimulationRadius", true)
-            game.Players.LocalPlayer.SimulationRadius = math.huge * math.huge, math.huge * math.huge * 0 / 0 * 0 / 0 * 0 / 0 * 0 / 0 * 0 / 0
-        end
-    end
-end)
-for i,v in pairs(getconnections(game.Players.LocalPlayer.Idled)) do
-    v:Disable()
-end
-_G.antiscan = true
 _G.AutoRejoin = true
 spawn(function()
 while task.wait() do
@@ -11203,22 +11313,12 @@ while task.wait() do
 end
 end)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/hooks"))()
-local Players = game:GetService("Players")
-local OldNameCall = nil
-OldNameCall = hookmetamethod(game, "__namecall", function(Self, ...)
-    local NameCallMethod = getnamecallmethod()
-
-    if tostring(string.lower(NameCallMethod)) == "kicked" or "lag" or "ban" or "will" then
-        return nil
-    end
-    return OldNameCall(Self, ...)
-end)
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
 SaveManager:IgnoreThemeSettings()
 SaveManager:SetIgnoreIndexes({})
-InterfaceManager:SetFolder("VectortHub")
-SaveManager:SetFolder("VectortHub/BloxFruit")
+--InterfaceManager:SetFolder("VectortHub")
+--SaveManager:SetFolder("VectortHub/BloxFruit")
 InterfaceManager:BuildInterfaceSection(Tabs.Config)
 SaveManager:BuildConfigSection(Tabs.Config)
 SaveManager:LoadAutoloadConfig()
