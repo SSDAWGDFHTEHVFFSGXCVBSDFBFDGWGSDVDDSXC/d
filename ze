@@ -1,14 +1,15 @@
 repeat wait() until game.Players.LocalPlayer
-local id = game.PlaceId
-if id == 2753915549 then
-World1 = true; 
-elseif id == 4442272183 then
-World2 = true;
-elseif id == 7449423635 then
-World3 = true;
+
+local placeId = game.PlaceId
+if placeId == 2753915549 then
+OldWorld = true
+elseif placeId == 4442272183 then
+NewWorld = true
+elseif placeId == 7449423635 then
+ThreeWorld = true
 else
-print(1)
-end;
+game.Players.LocalPlayer:Kick("..")
+end
 _G.Settings = {
     AutoFarm = false,
     DoubleQuest = false,
@@ -177,8 +178,6 @@ end
     game:GetService("VirtualInputManager"):SendKeyEvent(false,Enum.KeyCode.F1,false,game)
     end)
 --[[UIPERPID]]
-
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/notificationVec"))()
 
 -- [Save Settings]
 function LoadSettings()
@@ -3267,7 +3266,8 @@ local SaveManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/d
 local InterfaceManager = loadstring(game:HttpGet("https://raw.githubusercontent.com/dawid-scripts/Fluent/master/Addons/InterfaceManager.lua"))()
 local Window = Fluent:CreateWindow({Title = "Vector Hub ",SubTitle = "By Ryuenz#6264",TabWidth = 130,Size = UDim2.fromOffset(550, 350),Acrylic = true,Theme = "Darker",MinimizeKey = Enum.KeyCode.F1 })
 local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11446900930" }),page2 = Window:AddTab({ Title = "Settings", Icon = "rbxassetid://11446835336" }),page3 = Window:AddTab({ Title = "Stats", Icon = "rbxassetid://7040410130" }),page4 = Window:AddTab({ Title = "Teleport", Icon = "rbxassetid://6035190846"}),page5 = Window:AddTab({ Title = "Item", Icon = "rbxassetid://12499842920" }),page6 = Window:AddTab({ Title = "Mastery", Icon = "rbxassetid://11717242503" }),page7 = Window:AddTab({ Title = "DevilFruit", Icon = "rbxassetid://130882646" }),page8 = Window:AddTab({ Title = "Raid", Icon = "rbxassetid://13180179055" }),page13 = Window:AddTab({ Title = "Combat", Icon = "rbxassetid://7485051715" }),page9 = Window:AddTab({ Title = "Mirage", Icon = "rbxassetid://12598594243" }),page10 = Window:AddTab({ Title = "RaceV4", Icon = "rbxassetid://7558782590" }),page14 = Window:AddTab({ Title = "SeaEvent", Icon = "rbxassetid://7052520309" }),page15 = Window:AddTab({ Title = "Kitsune", Icon = "rbxassetid://8028233454" }),page16 = Window:AddTab({ Title = "Christmas", Icon = "rbxassetid://8234458975" }),page11 = Window:AddTab({ Title = "Shop", Icon = "rbxassetid://6031265976" }),page12 = Window:AddTab({ Title = "Misc", Icon = "rbxassetid://11447063791" }),Config = Window:AddTab({ Title = "Config", Icon = "settings" })}   
-
+local Options = Fluent.Options
+do
     if World1 then 
         Worldz = "World : 1"
     elseif World2 then
@@ -3290,10 +3290,39 @@ local Tabs = {page1 = Window:AddTab({ Title = "General", Icon = "rbxassetid://11
             UpdateInfo()
         end
     end)
-    local Discord = Tabs.page1:AddButton({Title = "Copy Discord Link to the Discord and join to receive news updates.",Description = "ก็อปลิ้งดิสคอร์ดเพิ่มเข้าร่วมรับข่าวสารการอัพเดท",Callback = function()
+    local Discord = Tabs.page1:AddButton({
+        Title = "Copy Discord Link",
+        Description = "Join Discord for news.",
+        Callback = function()
             setclipboard("https://discord.gg/977JQXX82w")
-            game:GetService("StarterGui"):SetCore("SendNotification", {Title = "VectorHub",Text = "Successfully copied",Icon = "rbxassetid://14645512457",Duration = 3,})
-    end,})
+            game:GetService("StarterGui"):SetCore("SendNotification", {
+                Title = "VectorHub",
+                Text = "Successfully copied",
+                Icon = "rbxassetid://14645512457",
+                Duration = 3,
+            })
+        end,
+    })
+
+    local English = {
+        Title = "Copy Discord Link",
+        Description = "Join Discord for news.",
+    }
+    
+    local Thai = {
+        Title = "ก็อปลิ้งดิสคอร์ด",
+        Description = "เข้าดิสคอร์ดเพื่อข่าวสารต่างๆ",
+    }
+    
+    local function Loop()
+        while true do
+            Discord:SetTitle(English.Title)
+            Discord:SetDesc(English.Description)
+            wait(1)
+    
+            English, Thai = Thai, English
+        end
+    end
     Tabs.page1:AddSection("Main/หน้าหลัก")
         Tabs.page1:AddToggle("",{Title = "Auto Farm Level", Description = "ออโต้ฟาร์มเลเวล", Default =  _G.AutoFarm, Callback = function(value)
             _G.AutoFarm = value
@@ -11313,12 +11342,13 @@ while task.wait() do
 end
 end)
 loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/hooks"))()
+end
 SaveManager:SetLibrary(Fluent)
 InterfaceManager:SetLibrary(Fluent)
 SaveManager:IgnoreThemeSettings()
 SaveManager:SetIgnoreIndexes({})
---InterfaceManager:SetFolder("VectortHub")
---SaveManager:SetFolder("VectortHub/BloxFruit")
+InterfaceManager:SetFolder("Vectort-Hub")
+SaveManager:SetFolder("Vectort-Hub/BloxFruit")
 InterfaceManager:BuildInterfaceSection(Tabs.Config)
 SaveManager:BuildConfigSection(Tabs.Config)
 SaveManager:LoadAutoloadConfig()
