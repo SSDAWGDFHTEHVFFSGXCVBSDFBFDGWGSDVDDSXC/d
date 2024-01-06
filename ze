@@ -1,6 +1,7 @@
+
 if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
 
-	setfpscap(60)
+	setfpscap(999)
 	_G.Color = Color3.fromRGB(0 , 200, 200)
 	_G.Settings = {
 		Auto_Farm_Level = false,
@@ -119,20 +120,19 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	end
 	
 	repeat wait(0) until game:IsLoaded()
-	
-	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam") then
+	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
 		repeat wait()
 			if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
 				if _G.Team == "Pirate" then
-					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do                                                                                                
+					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do                                                                                                
 						v.Function()
 					end
 				elseif _G.Team == "Marine" then
-					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.ViewportFrame.TextButton.Activated)) do                                                                                                
+					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Activated)) do                                                                                                
 						v.Function()
 					end
 				else
-					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.ViewportFrame.TextButton.Activated)) do                                                                                                
+					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do                                                                                                
 						v.Function()
 					end
 				end
@@ -764,15 +764,14 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 			Highlight.OutlineColor = Color3.new(0,255,0)
 			Highlight.Parent = game.Players.LocalPlayer.Character
 		end
-	    if TweenPlay < 250 then
+		if TweenPlay < 250 then
 			TweeSpeed = 600
 		elseif TweenPlay < 500 then
-			TweeSpeed = 300
-		elseif TweenPlay < 750 then
-			TweeSpeed = 250
+			TweeSpeed = 395
 		elseif TweenPlay >= 1000 then
-			TweeSpeed = 200
+			TweeSpeed = 255
 		end
+
 		if _G.StopTween then
 			tot:Cancel()
 			BringMobFarm = false
