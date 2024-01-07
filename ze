@@ -1,5 +1,4 @@
 if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
-	setfpscap(999)
 	_G.Color = Color3.fromRGB(0, 86, 255)
 	_G.Settings = {
 		Auto_Farm_Level = false,
@@ -154,14 +153,14 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	end
 	for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 		if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
-			print(v.HumanoidRootPart.Parent)
+			
 			local EnemySpawnsX2 = v.HumanoidRootPart:Clone()
 			local result = string.gsub(v.Name, "Lv. ", "")
 			local result2 = string.gsub(result, "[%[%]]", "")
 			local result3 = string.gsub(result2, "%d+", "")
 			local result4 = string.gsub(result3, "%s+", "")
 
-			print(result4)
+			
 			EnemySpawnsX2.Name = result4
 			EnemySpawnsX2.Parent = workspace.EnemySpawns
 			EnemySpawnsX2.Anchored = true
@@ -175,7 +174,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 			local result3 = string.gsub(result2, "%d+", "")
 			local result4 = string.gsub(result3, "%s+", "")
 
-			print(result4)
+			
 			EnemySpawnsX2.Name = result4
 			EnemySpawnsX2.Parent = workspace.EnemySpawns
 			EnemySpawnsX2.Anchored = true
@@ -1420,8 +1419,8 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 					TextButton.TextSize = 14.000
 	
 					if default == true then
-						MainToggle_3.BackgroundColor3 = Color3.fromRGB(113, 255, 78)
-						MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0.2,true)
+						MainToggle_3.BackgroundColor3 = Color3.fromRGB(0, 86, 255) --เห้
+						MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0,true) --0.2
 						MainToggle_3.Image = "http://www.roblox.com/asset/?id=6023426926"
 						UICorner_3.CornerRadius = UDim.new(0, 100)
 						pcall(callback,true)
@@ -1431,11 +1430,11 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 						if Tgo == false then
 							MainToggle_3.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 							MainToggle_3.Image = "http://www.roblox.com/asset/?id=00"
-							MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0.2,true)
+							MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0,true)
 							UICorner_3.CornerRadius = UDim.new(0, 5)
 						else
-							MainToggle_3.BackgroundColor3 = Color3.fromRGB(113, 255, 78)
-							MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0.2,true)
+							MainToggle_3.BackgroundColor3 = Color3.fromRGB(0, 86, 255)
+							MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0,true)
 							MainToggle_3.Image = "http://www.roblox.com/asset/?id=6023426926"
 							UICorner_3.CornerRadius = UDim.new(0, 100)
 						end
@@ -3778,20 +3777,20 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 									end
 								end
 							else
-								UnEquipWeapon(_G.Select_Weapon)
+								
 								if _G.Auto_CFrame and not _G.AutoFarmFast then
 									getgenv().ToTarget(QuestCheck()[7][SetCFarme] * CFrame.new(0,30,5))
 									if (QuestCheck()[7][SetCFarme].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 										if SetCFarme == nil or SetCFarme == '' then
 											SetCFarme = 1
-											print(SetCFarme)
+										
 										elseif SetCFarme >= #QuestCheck()[7] then
 											SetCFarme = 1
-											print(SetCFarme)
+										
 										end
 										SetCFarme =  SetCFarme + 1
 
-										print(SetCFarme)
+									
 										wait(0.5)
 									end
 								else
@@ -4043,14 +4042,14 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 								if (QuestCheck()[7][SetCFarme].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 									if SetCFarme == nil or SetCFarme == '' then
 										SetCFarme = 1
-										print(SetCFarme)
+										
 									elseif SetCFarme >= #QuestCheck()[7] then
 										SetCFarme = 1
-										print(SetCFarme)
+										
 									end
 									SetCFarme =  SetCFarme + 1
 
-									print(SetCFarme)
+								
 									wait(0.5)
 								end
 							else
@@ -4187,14 +4186,13 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 								if (QuestCheck()[7][SetCFarme].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
 									if SetCFarme == nil or SetCFarme == '' then
 										SetCFarme = 1
-										print(SetCFarme)
+										
 									elseif SetCFarme >= #QuestCheck()[7] then
 										SetCFarme = 1
-										print(SetCFarme)
+									
 									end
 									SetCFarme =  SetCFarme + 1
 
-									print(SetCFarme)
 									wait(0.5)
 								end
 							else
@@ -5261,7 +5259,6 @@ spawn(function()
 								else
 									for _, _Mon in next, BoneTabel["Mon"] do
 										if game:GetService("Workspace").Enemies:FindFirstChild("Reborn Skeleton") or game:GetService("Workspace").Enemies:FindFirstChild("Living Zombie") or game:GetService("Workspace").Enemies:FindFirstChild("Demonic Soul") or game:GetService("Workspace").Enemies:FindFirstChild("Posessed Mummy") then
-											print(_Mon)
 											for i,v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 												if string.find(v.Name, _Mon) then
 													if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 then
@@ -5293,7 +5290,6 @@ spawn(function()
 													end
 													SetCFarmeBone =  SetCFarmeBone + 1
 				
-													print(SetCFarmeBone)
 													wait(0.5)
 												end
 											else
@@ -6352,7 +6348,6 @@ spawn(function()
 		Textbox = true,
 		Format = function(value)
 			_G.Settings.DistanceY = value
-			print("Distance Y: ".. tostring(_G.Settings.DistanceY))
 			SaveSettings()
 		end
 	})
@@ -6366,7 +6361,6 @@ spawn(function()
 		Textbox = true,
 		Format = function(value)
 			_G.Settings.Distance = value
-			print("Distance X: ".. tostring(_G.Settings.Distance))
 			SaveSettings()
 		end
 	})
@@ -7536,7 +7530,6 @@ spawn(function()
 													end
 												else
 													repeat wait()
-														print(v.Humanoid.Value)
 														game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game)
 														game:GetService("VirtualInputManager"):SendKeyEvent(true,"A",false,game)
 														if v.Humanoid.Value <= 0 then
@@ -8724,7 +8717,6 @@ spawn(function()
 											for _,_v1 in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
 												if _v1.Name == _l1 then
 													if _v1:FindFirstChild("Humanoid") and _v1:FindFirstChild("HumanoidRootPart") and _v1.Humanoid.Health > 0 then
-														print("Goooo")
 														repeat wait()
 															_v1.HumanoidRootPart.Size = Vector3.new(60,60,60)
 															_v1.HumanoidRootPart.CanCollide = false
