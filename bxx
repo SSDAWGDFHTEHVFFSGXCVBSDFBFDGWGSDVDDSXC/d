@@ -2743,16 +2743,16 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	
 	function LoadSettings()
 		if readfile and writefile and isfile and isfolder then
-			if not isfolder("Quarterly Hub Premium") then
-				makefolder("Quarterly Hub Premium")
+			if not isfolder("Vector Hub") then
+				makefolder("Vector Hub")
 			end
-			if not isfolder("Quarterly Hub Premium/Blox Fruits/") then
-				makefolder("Quarterly Hub Premium/Blox Fruits/")
+			if not isfolder("Vector Hub/Blox Fruits/") then
+				makefolder("Vector Hub/Blox Fruits/")
 			end
-			if not isfile("Quarterly Hub Premium/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
-				writefile("Quarterly Hub Premium/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(_G.Settings))
+			if not isfile("Vector Hub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
+				writefile("Vector Hub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(_G.Settings))
 			else
-				local Decode = game:GetService("HttpService"):JSONDecode(readfile("Quarterly Hub Premium/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
+				local Decode = game:GetService("HttpService"):JSONDecode(readfile("Vector Hub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
 				for i,v in pairs(Decode) do
 					_G.Settings[i] = v
 				end
@@ -2764,21 +2764,24 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	
 	function SaveSettings()
 		if readfile and writefile and isfile and isfolder then
-			if not isfile("Quarterly Hub Premium/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
+			if not isfile("Vector Hub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json") then
 				LoadSettings()
 			else
-				local Decode = game:GetService("HttpService"):JSONDecode(readfile("Quarterly Hub Premium/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
+				local Decode = game:GetService("HttpService"):JSONDecode(readfile("Vector Hub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json"))
 				local Array = {}
 				for i,v in pairs(_G.Settings) do
 					Array[i] = v
 				end
-				writefile("Quarterly Hub Premium/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(Array))
+				writefile("Vector Hub/Blox Fruits/" .. game.Players.LocalPlayer.Name .. ".json", game:GetService("HttpService"):JSONEncode(Array))
 			end
 		else
 			return warn("Status : Undetected Executor")
 		end
 	end
-	
+	pcall(function()
+	delfolder("Vector Hub")
+	delfolder("Quarterly Hub Premium")
+	end)
 	LoadSettings()
 	
 	if _G.Settings.Select_Boss == nil then
