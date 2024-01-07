@@ -1,6 +1,7 @@
 wait(2)
 if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
 	_G.Color = Color3.fromRGB(0, 86, 255)
+	setfpscap(200)
 	_G.Settings = {
 		Auto_Farm_Level = false,
 		Auto_Farm_Fast = true,
@@ -181,16 +182,39 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 			EnemySpawnsX2.Anchored = true
 		end
 	end
-
-	if game:IsLoaded() then
-		pcall(function()
-			repeat wait()
-				game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
-				game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
-			until not game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") or not game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn")
+	
+	if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
+		game.Players.LocalPlayer.Character.Stun.Changed:connect(function()
+			pcall(function()
+				if game.Players.LocalPlayer.Character:FindFirstChild("Stun") then
+					game.Players.LocalPlayer.Character.Stun.Value = 0
+					game.Players.LocalPlayer.Character.Busy.Value = false   
+				end
+			end)
 		end)
 	end
+_G.DisDieffect = true
+if _G.DisDieffect then
+if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Death") then
+game:GetService("ReplicatedStorage").Effect.Container.Death:Destroy()
+end
+if game:GetService("ReplicatedStorage").Effect.Container:FindFirstChild("Respawn") then
+game:GetService("ReplicatedStorage").Effect.Container.Respawn:Destroy()
+end
+end
 
+spawn(function()
+    while  _G.DisDieffect do wait()
+        for i, v in pairs(game:GetService("Workspace")["_WorldOrigin"]:GetChildren()) do
+                pcall(function()
+                    if v.Name == "CurvedRing" or v.Name == "SlashHit" or v.Name == "SwordSlash" then -- v.Name == ("SlashTail") then --or v.Name == ("Sounds")
+                        v:Destroy()
+                    end
+                end)
+            end
+        end
+    end)
+	
 	local UserInputService = game:GetService("UserInputService")
 	local VirtualInputManager = game:GetService("VirtualInputManager")
 	local TweenService = game:GetService("TweenService")
@@ -201,6 +225,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	local GuiService = game:GetService("GuiService")
 	
 	loadstring(game:HttpGet("https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/perpid"))()
+
 	local function tablefound(ta, object)
 		for i,v in pairs(ta) do
 			if v == object then
@@ -427,7 +452,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		)
 	end
 	
-	local UIConfig = {Bind = Enum.KeyCode.F1}
+	local UIConfig = {Bind = Enum.KeyCode.RightControl}
 	local chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
 	local length = 20
 	local randomString = ""
@@ -615,7 +640,8 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Logo_Background.Size = UDim2.new(0, 305, 0, 335)
 		Logo_Background.ImageTransparency = 0.7
 		Logo_Background.Image = "rbxassetid://14645512457"
-		
+
+	
 		Title.Name = "Title"
 		Title.Parent = Main
 		Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -643,11 +669,64 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Title2.TextWrapped = true
 		Title2.TextXAlignment = Enum.TextXAlignment.Left
 	
+		local search = Instance.new("ImageButton")
+		search.Name = "search"
+		search.Parent = Main
+		search.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+		search.BackgroundTransparency = 0
+		search.LayoutOrder = 1
+		search.Position = UDim2.new(0, 555, 0, 10)
+		search.Size = UDim2.new(0, 22, 0, 22)
+		search.ZIndex = 9
+		search.Image = "rbxassetid://3926305904"
+		search.ImageRectOffset = Vector2.new(964, 324)
+		search.ImageColor3 = Color3.fromRGB(0, 0, 0)
+		search.ImageRectSize = Vector2.new(36, 36)
+	
+		local UICorner_2222 = Instance.new("UICorner")
+		UICorner_2222.CornerRadius = UDim.new(0, 3)
+		UICorner_2222.Parent = search
+	
+		local SearchBox = Instance.new("TextBox")
+		SearchBox.Name = "SearchBox"
+		SearchBox.Parent = Main
+		SearchBox.BackgroundColor3 = Color3.fromRGB(23, 24, 25)
+		SearchBox.Size = UDim2.new(0, 0, 0, 15)
+		SearchBox.ZIndex = 10
+		SearchBox.BorderSizePixel = 0
+		SearchBox.Font = Enum.Font.SourceSans
+		SearchBox.PlaceholderColor3 = Color3.fromRGB(13, 14, 15)
+		SearchBox.PlaceholderText = "SearchBox..."
+		SearchBox.Text = ""
+		SearchBox.Position = UDim2.new(0, 10, 0, 5)
+		SearchBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+		SearchBox.TextSize = 14.000
+		SearchBox.Visible = true
+		local SearchBoxTog = false
+		local KJKJ = true
+	
+		search.MouseButton1Click:Connect(function()
+			SearchBoxTog = not SearchBoxTog
+			TweenService:Create(SearchBox,TweenInfo.new(.3, Enum.EasingStyle.Quad, Enum.EasingDirection.Out),{Size = SearchBoxTog and UDim2.new(0, 535, 0, 35) or UDim2.new(0, 0, 0, 0)}):Play()
+			if KJKJ then
+				KJKJ = false
+				wait(0.2)
+				SearchBox.PlaceholderColor3 = Color3.fromRGB(255, 255, 255)
+				SearchBox.TextColor3 = Color3.fromRGB(255, 255, 255)
+			else
+				KJKJ = true
+				SearchBox.PlaceholderColor3 = Color3.fromRGB(13, 14, 15)
+				SearchBox.TextColor3 = Color3.fromRGB(13, 14, 15)
+			end
+		end)
+	
+		local UICorner_25 = Instance.new("UICorner")
+		UICorner_25.Parent = SearchBox
 	
 		local UiToggle_UiStroke1 = Instance.new("UIStroke")
 	
 		UiToggle_UiStroke1.Color = Color3.fromRGB(0, 86, 255)
-		UiToggle_UiStroke1.Thickness = 1
+		UiToggle_UiStroke1.Thickness = 2
 		UiToggle_UiStroke1.Name = "UiToggle_UiStroke1"
 		UiToggle_UiStroke1.Parent = Main
 	
@@ -717,7 +796,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 			function(io, p)
 				if io.KeyCode == UIConfig.Bind then
 					if uitoggled == false then
-						Main:TweenSize(UDim2.new(0, 585, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.4, true) wait(0.2) UI.Enabled = false
+						Main:TweenSize(UDim2.new(0, 585, 0, 0), Enum.EasingDirection.Out, Enum.EasingStyle.Quart, 0.4, true) wait(0.4) UI.Enabled = false
 						uitoggled = true
 					else
 						UI.Enabled = true
@@ -1066,9 +1145,38 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 				end
 				)
 	
-	
+				SearchBox.Focused:Connect(function()
+				
+				end)
+				SearchBox.FocusLost:Connect(function()
+				
+				end)
 			
-		
+				function UpdateInputOfSearchText()
+					local InputText = string.upper(SearchBox.Text)
+					
+					for _, button in pairs(SectionContainer:GetChildren()) do
+						if button:IsA("Frame") then
+							if InputText == "" or string.find(string.upper(button.Name), InputText) ~= nil then
+								button.Visible = true
+							else
+								button.Visible = false
+							end
+						end
+					end
+					--[[for _, button in pairs(Bottom:GetDescendants()) do
+						if button:IsA("Frame") then
+							if InputText == "" or string.find(string.upper(button.Name), InputText) ~= nil then
+								button.Visible = true
+							else
+								button.Visible = false
+							end
+						end
+					end]]
+				end
+				
+			
+				SearchBox.Changed:Connect(UpdateInputOfSearchText)
 	
 				local functionitem = {}
 	
@@ -1119,7 +1227,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 					end
 					return textas
 				end
-	
+
 				function functionitem:AddLabel(options)
 					text = options.Name
 					Flag = options.Flag
@@ -1414,8 +1522,8 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 					TextButton.TextSize = 14.000
 	
 					if default == true then
-						MainToggle_3.BackgroundColor3 = Color3.fromRGB(0, 86, 255) --เห้
-						MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0,true) --0.2
+						MainToggle_3.BackgroundColor3 = _G.Color
+						MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0.2,true)
 						MainToggle_3.Image = "http://www.roblox.com/asset/?id=6023426926"
 						UICorner_3.CornerRadius = UDim.new(0, 100)
 						pcall(callback,true)
@@ -1425,11 +1533,11 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 						if Tgo == false then
 							MainToggle_3.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
 							MainToggle_3.Image = "http://www.roblox.com/asset/?id=00"
-							MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0,true)
+							MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0.2,true)
 							UICorner_3.CornerRadius = UDim.new(0, 5)
 						else
-							MainToggle_3.BackgroundColor3 = Color3.fromRGB(0, 86, 255)
-							MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0,true)
+							MainToggle_3.BackgroundColor3 = _G.Color
+							MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0.2,true)
 							MainToggle_3.Image = "http://www.roblox.com/asset/?id=6023426926"
 							UICorner_3.CornerRadius = UDim.new(0, 100)
 						end
@@ -1442,7 +1550,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 							MainToggle_3:TweenSize(UDim2.new(0, 25, 0, 25),"In","Quad",0.2,true)
 							UICorner_3.CornerRadius = UDim.new(0, 5)
 						else
-							MainToggle_3.BackgroundColor3 = Color3.fromRGB(113, 255, 78)
+							MainToggle_3.BackgroundColor3 = _G.Color
 							MainToggle_3:TweenSize(UDim2.new(0, 25, 0, 25),"In","Quad",0.2,true)
 							MainToggle_3.Image = "http://www.roblox.com/asset/?id=6023426926"
 							UICorner_3.CornerRadius = UDim.new(0, 100)
@@ -1459,7 +1567,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 						if Tgo == false then
 							Tgo = true
 							pcall(callback,true)
-							MainToggle_3.BackgroundColor3 = Color3.fromRGB(113, 255, 78)
+							MainToggle_3.BackgroundColor3 = _G.Color
 							MainToggle_3.Image = "http://www.roblox.com/asset/?id=6023426926"
 							UICorner_3.CornerRadius = UDim.new(0, 100)
 							MainToggle_3:TweenSize(UDim2.new(0, 29, 0, 29),"In","Quad",0.2,true)
@@ -1774,7 +1882,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 					Scroll_Items.Size = UDim2.new(1, 0, 0, 375)
 					Scroll_Items.CanvasSize = UDim2.new(0, 0, 0, 0)
 					Scroll_Items.ScrollBarThickness = 0
-	
+
 					UIListLayout_3.Parent = Scroll_Items
 					UIListLayout_3.SortOrder = Enum.SortOrder.LayoutOrder
 					UIListLayout_3.Padding = UDim.new(0, 5)
