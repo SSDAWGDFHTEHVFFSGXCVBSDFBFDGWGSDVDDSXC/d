@@ -3398,12 +3398,6 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		end
 	
 		tot:Play()
-		if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
-			local Highlight = Instance.new("Highlight")
-			Highlight.FillColor = Color3.new(0, 255, 0)
-			Highlight.OutlineColor = Color3.new(0,255,0)
-			Highlight.Parent = game.Players.LocalPlayer.Character
-		end
 
 		if TweenPlay < 250 then
 			TweeSpeed = 590
@@ -3465,9 +3459,6 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 			wait(0.2)
 			_G.StopTween = false
 			_G.Clip = false
-		end
-		if game.Players.LocalPlayer.Character:FindFirstChild('Highlight') then
-			game.Players.LocalPlayer.Character:FindFirstChild('Highlight'):Destroy()
 		end
 	end
 	
