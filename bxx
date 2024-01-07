@@ -5287,7 +5287,7 @@ spawn(function()
 										if _G.Auto_Elite_Hunter_Hop and game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("EliteHunter") == "I don't have anything for you right now. Come back later." and not ( game:GetService("Workspace").Enemies:FindFirstChild(_l1) or game:GetService("ReplicatedStorage"):FindFirstChild(_l1) ) then
 											print("Hop")
 											_G.Rejoin = false
-											wait(0.5)
+											wait(5)
 											Hop()
 										else
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
@@ -5958,7 +5958,7 @@ spawn(function()
 	end)
 
 	coroutine.wrap(function()
-		while RunService.Heartbeat:Wait(0.10) do 
+		while wait(0.07) do 
 			local ac = CombatFrameworkR.activeController
 				if ac and ac.equipped then
 					if FastAttack or _G.FastAttack then
@@ -7644,7 +7644,7 @@ end
 								end
 							else 
 								if _G.Auto_Saber_Hop then
-									wait(2.5)
+									wait(5)
 									Hop()
 								end
 							end
@@ -7707,7 +7707,7 @@ end
 						end
 					else
 						if _G.Auto_Pole_Hop then
-							wait(2.5)
+							wait(5)
 							Hop()
 						end
 					end
@@ -8104,6 +8104,7 @@ end
 							end
 						else
 							if _G.Auto_Rainbow_Haki_Hop then
+								wait(5)
 								Hop()
 							end
 						end
@@ -8131,6 +8132,7 @@ end
 							end
 						else
 							if _G.Auto_Rainbow_Haki_Hop then
+								wait(5)
 								Hop()
 							end
 						end
@@ -8158,6 +8160,7 @@ end
 							end
 						else
 							if _G.Auto_Rainbow_Haki_Hop then
+								wait(5)
 								Hop()
 							end
 						end
@@ -8185,6 +8188,7 @@ end
 							end
 						else 
 							if _G.Auto_Rainbow_Haki_Hop then
+								wait(5)
 								Hop()
 							end
 						end
@@ -8212,6 +8216,7 @@ end
 							end
 						else 
 							if _G.Auto_Rainbow_Haki_Hop then
+								wait(5)
 								Hop()
 							end
 						end
