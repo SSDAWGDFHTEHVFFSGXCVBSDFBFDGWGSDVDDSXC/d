@@ -812,13 +812,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Logo_Background.Size = UDim2.new(0, 305, 0, 335)
 		Logo_Background.ImageTransparency = 0.7
 		Logo_Background.Image = "rbxassetid://14645512457"
-		local RunService = game:GetService("RunService")
-		RunService.RenderStepped:Connect(function()
-			Logo_Background.Rotation = Logo_Background.Rotation + 1 -- หมุน 1 องศาต่อเฟรม
-			if Logo_Background.Rotation >= 360 then
-				Logo_Background.Rotation = 0 -- รีเซ็ตการหมุนกลับเป็น 0 เมื่อครบ 360 องศา
-			end
-		end)
+		
 		Title.Name = "Title"
 		Title.Parent = Main
 		Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
