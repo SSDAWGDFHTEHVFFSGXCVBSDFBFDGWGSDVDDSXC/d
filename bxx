@@ -11691,7 +11691,7 @@ NewEvent:AddToggle({
 		Name = "Team"
 	})
 	MiscSection1:AddButton({
-			Name = "Join Pirates Team",
+			Name = "Join Pirates Team\nเข้ามร่วมทีมโจรสลัด",
 			Callback = function()
 				local args = {
 					[1] = "SetTeam",
@@ -11706,7 +11706,7 @@ NewEvent:AddToggle({
 		})
 		
 		MiscSection1:AddButton({
-			Name = "Join Marines Team",
+			Name = "Join Marines Team\nเข้าร่วมทีมทหารเรือ",
 			Callback = function()
 				local args = {
 					[1] = "SetTeam",
@@ -11723,7 +11723,7 @@ NewEvent:AddToggle({
 			Name = "Server"
 		})
 		MiscSection1:AddButton({
-			Name = "Rejoin",
+			Name = "Rejoin\nรีเซิฟเวอร์",
 			Callback = function()
 				local ts = game:GetService("TeleportService")
 				local p = game:GetService("Players").LocalPlayer
@@ -11732,7 +11732,7 @@ NewEvent:AddToggle({
 		})
 		
 		MiscSection1:AddButton({
-			Name = "Sever Hop",
+			Name = "Sever Hop\nย้ายไปเซิฟคนเยอะ",
 			Callback = function()
 				Hop()
 			end
@@ -11742,7 +11742,7 @@ NewEvent:AddToggle({
 			Name = "GUI"
 		})
 		MiscSection1:AddButton({
-			Name = "Devil Fruit Shop",
+			Name = "Devil Fruit Shop\nเปิดหน้าต่างร้านค้าผลปีศาจ",
 			Callback = function()
 				local args = {
 					[1] = "GetFruits"
@@ -11753,7 +11753,7 @@ NewEvent:AddToggle({
 		})
 		
 		MiscSection1:AddButton({
-			Name = "Title Name",
+			Name = "Title Name\nเปิดหน้าต่างฉายา",
 			Callback = function()
 				local args = {
 					[1] = "getTitles"
@@ -11764,14 +11764,14 @@ NewEvent:AddToggle({
 		})
 		
 		MiscSection1:AddButton({
-			Name = "Color Haki",
+			Name = "Color Haki\nเปิดหน้าต่างสีฮาคิ",
 			Callback = function()
 				game.Players.localPlayer.PlayerGui.Main.Colors.Visible = true
 			end
 		})
 
 		MiscSection1:AddButton({
-			Name = "Awakened Skill",
+			Name = "Awakened Skill\nเปิดหน้าต่างสกิลตื่",
 			Callback = function()
 				local args = {
 					[1] = "getAwakenedAbilities"
@@ -11783,7 +11783,7 @@ NewEvent:AddToggle({
 		})
 
 MiscSection1:AddButton({
-	Name = "FPS Boost",
+	Name = "FPS Boost\nบูสต์Fps",
 	Callback = function()
 		setfpscap(120)
 		local decalsyeeted = true
@@ -11837,14 +11837,14 @@ MiscSection1:AddTextbox({
 })
 
 MiscSection1:AddButton({
-	Name = "TP Jop ID",
+	Name = "TP Jop ID\nเทเลพอร์ตไปที่ JobID",
 	Callback = function(v)
 		game.ReplicatedStorage['__ServerBrowser']:InvokeServer('teleport',_G.JobID)
 	end
 })
 
 MiscSection1:AddButton({
-	Name = "Copy Jop ID",
+	Name = "Copy Jop ID\nก็อปปี้ JobID",
 	Callback = function(v)
 		setclipboard(Job)
 	end
@@ -12077,7 +12077,7 @@ function kaituncap()
 	end)
 	end
 MiscSection1:AddButton({
-	Name = "Kaitun Cap",
+	Name = "Kaitun Cap\nถ่ายภาพไก่ตัน",
 	Callback = function(v)
 		kaituncap()
 	end
