@@ -1,6 +1,6 @@
 if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
 
-	setfpscap(60)
+	setfpscap(999)
 	_G.Color = Color3.fromRGB(0, 86, 255)
 	_G.Settings = {
 		Auto_Farm_Level = false,
@@ -117,72 +117,6 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	elseif game.PlaceId == 7449423635 then
 		W3 = true
 	end
-	
-	repeat wait(0) until game:IsLoaded()
-	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
-		repeat wait()
-			if game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("Main").ChooseTeam.Visible == true then
-				if _G.Team == "Pirate" then
-					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do                                                                                                
-						v.Function()
-					end
-				elseif _G.Team == "Marine" then
-					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Marines.Frame.TextButton.Activated)) do                                                                                                
-						v.Function()
-					end
-				else
-					for i, v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.Main.ChooseTeam.Container.Pirates.Frame.TextButton.Activated)) do                                                                                                
-						v.Function()
-					end
-				end
-			end
-		until game.Players.LocalPlayer.Team ~= nil and game:IsLoaded()
-	end
-
-	local EnemySpawns = Instance.new("Folder",workspace)
-	EnemySpawns.Name = "EnemySpawns"
-
-	for i, v in pairs(workspace._WorldOrigin.EnemySpawns:GetChildren()) do
-		if v:IsA("Part") then
-			local EnemySpawnsX2 = v:Clone()
-			local result = string.gsub(v.Name, "Lv. ", "")
-			local result2 = string.gsub(result, "[%[%]]", "")
-			local result3 = string.gsub(result2, "%d+", "")
-			local result4 = string.gsub(result3, "%s+", "")
-			EnemySpawnsX2.Name = result4
-			EnemySpawnsX2.Parent = workspace.EnemySpawns
-			EnemySpawnsX2.Anchored = true
-		end
-	end
-	for i, v in pairs(game:GetService("Workspace").Enemies:GetChildren()) do
-		if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
-			print(v.HumanoidRootPart.Parent)
-			local EnemySpawnsX2 = v.HumanoidRootPart:Clone()
-			local result = string.gsub(v.Name, "Lv. ", "")
-			local result2 = string.gsub(result, "[%[%]]", "")
-			local result3 = string.gsub(result2, "%d+", "")
-			local result4 = string.gsub(result3, "%s+", "")
-
-			print(result4)
-			EnemySpawnsX2.Name = result4
-			EnemySpawnsX2.Parent = workspace.EnemySpawns
-			EnemySpawnsX2.Anchored = true
-		end
-	end
-	for i, v in pairs(game.ReplicatedStorage:GetChildren()) do
-		if v:IsA("Model") and v:FindFirstChild("HumanoidRootPart") then
-			local EnemySpawnsX2 = v.HumanoidRootPart:Clone()
-			local result = string.gsub(v.Name, "Lv. ", "")
-			local result2 = string.gsub(result, "[%[%]]", "")
-			local result3 = string.gsub(result2, "%d+", "")
-			local result4 = string.gsub(result3, "%s+", "")
-
-			print(result4)
-			EnemySpawnsX2.Name = result4
-			EnemySpawnsX2.Parent = workspace.EnemySpawns
-			EnemySpawnsX2.Anchored = true
-		end
-	end
 
 	if game:IsLoaded() then
 		pcall(function()
@@ -193,126 +127,6 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		end)
 	end
 
-	repeat wait() until game.Players.LocalPlayer
-	if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7449423635 then 
-		setfpscap(60)
-		_G.Color = Color3.fromRGB(0, 86, 255)
-		_G.Settings = {
-			Auto_Farm_Level = false,
-			Auto_Farm_Fast = true,
-			Auto_New_World = false,
-			Auto_Third_World = false,
-			Auto_Farm_Chest = false,
-			Auto_Farm_Chest_Hop = false,
-			Auto_Elite_Hunter = false,
-			Auto_Elite_Hunter_Hop = false,
-			Auto_Spawn_Cake_Prince = false,
-			Auto_Cake_Prince = false,
-			Auto_Farm_Boss = false,
-			Select_Boss = "",
-			Auto_Quest_Boss = true,
-			Auto_Farm_All_Boss = false,
-			SelectWeapon = "Melee",
-			Auto_Set_Spawn = true,
-			Method = "Upper",
-			Brimob = true,
-			Select_Stats = {},
-			Bypass = false,
-			Rejoin = true,
-			FastAttack = true,
-			Auto_Saber = false,
-			Auto_Saber_Hop = false,
-			Auto_Pole_V1_Hop = false,
-			Auto_Factory_Farm = false,
-			Auto_Farm_Ectoplasm = false,
-			Auto_Swan_Glasses = false,
-			Auto_Swan_Glasses_Hop = false,
-			Auto_Farm_Bone = false,
-			Auto_Trade_Bone = false,
-			Auto_Rainbow_Haki = false,
-			Auto_Rainbow_Haki_Hop = false,
-			Auto_Canvander = false,
-			Auto_Twin_Hook_Hop = false,
-			Auto_Twin_Hook = false,
-			Auto_Serpent_Bow = false,
-			Auto_Serpent_Bow_Hop = false,
-			Auto_Evo_Race_V2 = false,
-			Auto_Rengoku = false,
-			Auto_Buy_Legendary_Sword = false,
-			Auto_Buy_Enchancement = false,
-			Auto_Yama = false,
-			Auto_Holy_Torch = false,
-			Auto_Musketeer_Hat = false,
-			Auto_Superhuman = false,
-			Auto_Fully_Superhuman = false,
-			Auto_Death_Step = false,
-			Auto_Fully_Death_Step = false,
-			Auto_SharkMan_Karate = false,
-			Auto_Fully_SharkMan_Karate = false,
-			Auto_Electric_Claw = false,
-			Auto_Dragon_Talon = false,
-			Auto_God_Human = false,
-			Select_Player = "",
-			Spectate_Player = false,
-			Teleport_to_Player = false,
-			Auto_Kill_Player = false,
-			EnabledPvP = false,
-			Auto_Stats = false,
-			Point = 1,
-			No_clip = false,
-			Infinit_Energy = false,
-			Dodge_No_CoolDown = false,
-			Infinit_Ability = false,
-			Infinit_SkyJump = false,
-			Infinit_Inf_Soru = false,
-			Infinit_Range_Observation_Haki = false,
-			Select_Island = "",
-			Start_Tween_Island = false,
-			Select_Dungeon = false,
-			Auto_Buy_Chips_Dungeon = false,
-			Auto_Start_Dungeon = false,
-			Auto_Next_Island = false,
-			Kill_Aura = false,
-			Auto_Awake = false,
-			Auto_Buy_Law_Chip = false,
-			Auto_Start_Law_Dungeon = false,
-			Auto_Kill_Law = false,
-			Select_Devil_Fruit = "",
-			Auto_Buy_Devil_Fruit = false,
-			Auto_Random_Fruit = false,
-			Auto_Bring_Fruit = false,
-			Auto_Store_Fruit = false,
-			LockMoon = false,
-			Auto_Mirage_Island = false,
-			SkillZ = true,
-			SkillX = true,
-			SkillC = true,
-			SkillV = true,
-			AutoMasterySkill = false,
-			HealthMs = 85,
-			Distance = 30,
-			DistanceY = 5,
-			ESP_Mirage_Island = false,
-			Auto_Awakening_One_Quest = false,
-			SuperFastAttack = false,
-			ESP_Chest = false,
-			Auto_Dack_Coat = false,
-			Auto_Sea_King = false,
-			Select_Mode = "Chest",
-			Remove_UI_DamageCounter = false,
-			Notifications_Remove = false,
-			Auto_CFrame = false,
-			Auto_Gear = false,
-		}
-		
-		if game.PlaceId == 2753915549 then
-			W1 = true
-		elseif game.PlaceId == 4442272183 then
-			W2 = true
-		elseif game.PlaceId == 7449423635 then
-			W3 = true
-		end
-	
 	repeat wait(0) until game:IsLoaded()
 	if game:GetService("Players").LocalPlayer.PlayerGui.Main:FindFirstChild("ChooseTeam")  then
 		repeat wait()
@@ -378,16 +192,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 			EnemySpawnsX2.Anchored = true
 		end
 	end
-	
-	repeat task.wait(0.1) until game.Players.LocalPlayer
-	if not game:IsLoaded() then
-		local GameLoadGui = Instance.new("Message",workspace);
-		GameLoadGui.Text = 'Wait Game Loading';
-		game.Loaded:Wait();
-		GameLoadGui:Destroy();
-		task.wait(10);
-	end;
-	
+
 	local UserInputService = game:GetService("UserInputService")
 	local VirtualInputManager = game:GetService("VirtualInputManager")
 	local TweenService = game:GetService("TweenService")
@@ -812,7 +617,12 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		Logo_Background.Size = UDim2.new(0, 305, 0, 335)
 		Logo_Background.ImageTransparency = 0.7
 		Logo_Background.Image = "rbxassetid://14645512457"
-		
+		RunService.RenderStepped:Connect(function()
+			Logo_Background.Rotation = Logo_Background.Rotation + 1
+			if Logo_Background.Rotation >= 360 then
+				Logo_Background.Rotation = 0 
+			end
+		end)
 		Title.Name = "Title"
 		Title.Parent = Main
 		Title.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
@@ -1611,7 +1421,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 					TextButton.TextSize = 14.000
 	
 					if default == true then
-						MainToggle_3.BackgroundColor3 = Color3.fromRGB(113, 255, 78)
+						MainToggle_3.BackgroundColor3 = _G.Color
 						MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0.2,true)
 						MainToggle_3.Image = "http://www.roblox.com/asset/?id=6023426926"
 						UICorner_3.CornerRadius = UDim.new(0, 100)
@@ -1625,7 +1435,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 							MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0.2,true)
 							UICorner_3.CornerRadius = UDim.new(0, 5)
 						else
-							MainToggle_3.BackgroundColor3 = Color3.fromRGB(113, 255, 78)
+							MainToggle_3.BackgroundColor3 = _G.Color
 							MainToggle_3:TweenSize(UDim2.new(0, 28, 0, 28),"In","Quad",0.2,true)
 							MainToggle_3.Image = "http://www.roblox.com/asset/?id=6023426926"
 							UICorner_3.CornerRadius = UDim.new(0, 100)
@@ -1639,7 +1449,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 							MainToggle_3:TweenSize(UDim2.new(0, 25, 0, 25),"In","Quad",0.2,true)
 							UICorner_3.CornerRadius = UDim.new(0, 5)
 						else
-							MainToggle_3.BackgroundColor3 = Color3.fromRGB(113, 255, 78)
+							MainToggle_3.BackgroundColor3 = _G.Color
 							MainToggle_3:TweenSize(UDim2.new(0, 25, 0, 25),"In","Quad",0.2,true)
 							MainToggle_3.Image = "http://www.roblox.com/asset/?id=6023426926"
 							UICorner_3.CornerRadius = UDim.new(0, 100)
@@ -1656,7 +1466,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 						if Tgo == false then
 							Tgo = true
 							pcall(callback,true)
-							MainToggle_3.BackgroundColor3 = Color3.fromRGB(113, 255, 78)
+							MainToggle_3.BackgroundColor3 = _G.Color
 							MainToggle_3.Image = "http://www.roblox.com/asset/?id=6023426926"
 							UICorner_3.CornerRadius = UDim.new(0, 100)
 							MainToggle_3:TweenSize(UDim2.new(0, 29, 0, 29),"In","Quad",0.2,true)
@@ -3398,7 +3208,12 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 		end
 	
 		tot:Play()
-
+		if not game.Players.LocalPlayer.Character:FindFirstChild("Highlight") then
+			local Highlight = Instance.new("Highlight")
+			Highlight.FillColor = Color3.new(0, 0, 255)
+			Highlight.OutlineColor = Color3.new(0,0,255)
+			Highlight.Parent = game.Players.LocalPlayer.Character
+		end
 		if TweenPlay < 250 then
 			TweeSpeed = 590
 		elseif TweenPlay < 500 then
@@ -3459,6 +3274,9 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 			wait(0.2)
 			_G.StopTween = false
 			_G.Clip = false
+		end
+		if game.Players.LocalPlayer.Character:FindFirstChild('Highlight') then
+			game.Players.LocalPlayer.Character:FindFirstChild('Highlight'):Destroy()
 		end
 	end
 	
@@ -3821,7 +3639,167 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 	--------------------------------------------
 	
 	local PepsisWorld = library:Evil()
+	local InfoTab = PepsisWorld:CreateTab({
+		Name = "Information" 
+	})
+	local InfoSection = InfoTab:CreateSection({
+		Name = "Profile",
+		Side = "Left"
+	})
 	
+	
+	local E  = InfoSection:AddLabel({Name = "..."})
+	function UpdateInfo()
+		local gameTime = math.floor(workspace.DistributedGameTime + 0.5)
+		local hour = math.floor(gameTime / (60^2)) % 24
+		local minute = math.floor(gameTime / (60^1)) % 60
+		local second = math.floor(gameTime / (60^0)) % 60
+		local fps = workspace:GetRealPhysicsFPS()
+		local Ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValueString()
+		E:Set("Username : " .. game.Players.LocalPlayer.Name .. "\nGameTime:" .. "Hours: ".. hour .. "\nMinutes: " .. minute .. "\nSeconds: " .. second .. "\nFPS: " .. fps .. "\nPing : "..Ping)
+	end
+	task.spawn(function()
+		while task.wait() do
+			UpdateInfo()
+		end
+	end)
+	
+	local CredtSection = InfoTab:CreateSection({
+		Name = "Credit",
+		Side = "Left"
+	})
+	CredtSection:AddLabel({
+		Name = "Script Made By Ryuenz#6264\nUi library Made By Ares"
+	})
+	local Discord =	CredtSection:AddLabel({
+		Name = "...."
+	})
+	local English = {
+		Name = "Copy Discord Link Cick Copy Link\nI recommend going to Discord \nso you don't miss any updates."
+	}
+	
+	local Thai = {
+		Name = "ก็อปลิ้งดิสคอร์ดกดCopy Link\nแนะนำให้เข้าดิสคอร์ดนะครับเพื่อไม่พลาดการอัพเดต"
+	}
+	
+	local function Loop()
+		while true do
+			Discord:Set(English.Name)
+			Discord:Set(English.Name)
+			wait(1)
+	
+			English, Thai = Thai, English
+		end
+	end
+	coroutine.wrap(Loop)()
+	CredtSection:AddButton({
+		Name = "Copy Link",
+		Callback = function()
+			setclipboard("https://discord.gg/977JQXX82w")
+			game:GetService("StarterGui"):SetCore("SendNotification", {
+				Title = "VectorHub",
+				Text = "Successfully copied",
+				Icon = "rbxassetid://14645512457",
+				Duration = 3,
+			})
+		end,
+	
+	})
+	
+	local InfoStatusSection = InfoTab:CreateSection({
+		Name = "Status",
+		Side = "Right"
+	})
+	if W3 then
+	
+		local Stats_Moon = InfoStatusSection:AddLabel({
+			Name = "Status Moon : 0% 🌑"
+		})
+		
+		task.spawn(function()
+			while task.wait() do
+				pcall(function()
+					if W1 or W2 then
+						if game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+							Stats_Moon:Set("Stats Moon : 100% 🌝")
+						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
+							Stats_Moon:Set("Stats Moon : 75% 🌖")
+						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+							Stats_Moon:Set("Stats Moon : 50% 🌗")
+						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150086" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150086" then
+							Stats_Moon:Set("Stats Moon : 50% 🌗")
+						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+							Stats_Moon:Set("Stats Moon : 25% 🌘")
+						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+							Stats_MoonFM:Set("Stats Moon : 15% 🌙")
+						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709139597" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709139597" then
+							Stats_MoonFM:Set("Stats Moon : 15% 🌙")
+						else
+							Stats_Moon:Set("Stats Moon : 0% 🌑")
+						end
+					else
+						if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
+							Stats_Moon:Set("Stats Moon : 100% 🌝")
+						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
+							Stats_Moon:Set("Stats Moon : 75% 🌖")
+						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
+							Stats_Moon:Set("Stats Moon : 50% 🌗")
+						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150086" then
+							Stats_Moon:Set("Stats Moon : 50% 🌗")
+						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
+							Stats_Moon:Set("Stats Moon : 25% 🌘")
+						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
+							Stats_MoonFM:Set("Stats Moon : 15% 🌙")
+						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709139597" then
+							Stats_MoonFM:Set("Stats Moon : 15% 🌙")
+						else
+							Stats_Moon:Set("Stats Moon : 0% 🌑")
+						end
+					end
+				end)
+			end
+		end)
+			
+		local Mirage_Island_Stats = InfoStatusSection:AddLabel({
+			Name = "Status Mirage Island : "
+		})
+		
+		spawn(function()
+			while wait() do
+				if game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Mirage Island") then
+					Mirage_Island_Stats:Set("Stats Mirage Island : 🟢 🏝️")
+				else
+					Mirage_Island_Stats:Set("Stats Mirage Island : 🔴 🏝️")
+				end
+			end
+		end)
+		
+		local Kitsunecheck = InfoStatusSection:AddLabel({
+			Name = "Status Kitsune Island : "
+		})
+		spawn(function()
+			pcall(function()
+				while task.wait() do
+					if game.Workspace._WorldOrigin.Locations:FindFirstChild('Kitsune Island') then
+						Kitsunecheck:Set('Stats Mirage Island : 🟢 🦊') 
+					else
+						Kitsunecheck:Set('Stats Mirage Island : 🔴 🦊')
+					end
+				end
+			end)
+		end)
+end
+	
+	local Dey_Stats = InfoStatusSection:AddLabel({
+		Name = "Day : "..os.date('%A, %B %d ')
+	})
+	
+	spawn(function()
+		while wait() do
+			Dey_Stats:Set("Day : "..os.date('%A, %B %d '))
+		end
+	end)
+
 	local MainTab = PepsisWorld:CreateTab({
 		Name = "General"
 	})
@@ -3951,8 +3929,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 													getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 	
 													if not _G.Auto_Farm_Level or not _G.Auto_Farm_LevelO or _G.Auto_Farm_Level or _G.Auto_Farm_LevelO then
-														game:GetService("VirtualUser"):CaptureController()
-														game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+														print("attack")
 													end
 												end
 											until not _G.Auto_Farm_Level or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
@@ -4045,8 +4022,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 								v.HumanoidRootPart.Transparency = 1
 								getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 								if not _G.Auto_Farm_Level or not _G.Auto_Farm_LevelO or _G.Auto_Farm_Level or _G.Auto_Farm_LevelO or _G.SuperFastAttack then
-									game:GetService("VirtualUser"):CaptureController()
-									game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+									print("attack")
 								end
 							until not v.Parent or not _G.Auto_Farm_Level or v.Humanoid.Health < 0
 						end
@@ -4085,8 +4061,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 								game:service('VirtualInputManager'):SendKeyEvent(false, "Z", false, game)
 	
 								if not _G.Auto_Farm_Level or not _G.Auto_Farm_LevelO or _G.Auto_Farm_Level or _G.Auto_Farm_LevelO or _G.SuperFastAttack then
-									game:GetService("VirtualUser"):CaptureController()
-									game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+									print("attack")
 								end
 
 								if game:GetService("Players")[getgenv().SelectPly].Character.Humanoid.Health <= 0 then
@@ -4209,8 +4184,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 													getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,_G.Settings.Distance,_G.Settings.DistanceY))
 													AutoHaki()
 													if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-														game:GetService("VirtualUser"):CaptureController()
-														game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+														print("attack")
 													end
 												end
 											end
@@ -4354,8 +4328,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 												getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,_G.Settings.Distance,_G.Settings.DistanceY))
 												AutoHaki()
 												if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-													game:GetService("VirtualUser"):CaptureController()
-													game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+													print("attack")
 												end
 											end
 										until not _G.Auto_Farm_Mastery_Gun or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
@@ -4562,8 +4535,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 													getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,30,5))
 													AutoHaki()
 													if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-														game:GetService("VirtualUser"):CaptureController()
-														game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+														print("attack")
 													end
 												until not _G.Auto_Third_World or not v.Parent or v.Humanoid.Health <= 0 
 												repeat wait() game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("TravelZou") until LOL == "LOLOL"
@@ -4588,8 +4560,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 														getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0,30,5))
 														AutoHaki()
 														if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-															game:GetService("VirtualUser"):CaptureController()
-															game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+															print("attack")
 														end
 													until not _G.Auto_Third_World or not v.Parent or v.Humanoid.Health <= 0 
 												else
@@ -4673,8 +4644,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 															getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 			
 															if not _G.FastAttack or not _G.FastAttackO or _G.FastAttack or _G.FastAttackO then
-																game:GetService("VirtualUser"):CaptureController()
-																game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+																print("attack")
 															end
 														end
 													until not _G.Auto_Third_World or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
@@ -4714,8 +4684,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 													getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 			
 													if not _G.FastAttack or not _G.FastAttackO or _G.FastAttack or _G.FastAttackO then
-														game:GetService("VirtualUser"):CaptureController()
-														game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+														print("attack")
 													end
 												until not _G.Auto_Third_World or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
 											end
@@ -4838,8 +4807,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 																BringMobFarm = true
 																getgenv().ToTarget(_v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 																if (_v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-																	game:GetService("VirtualUser"):CaptureController()
-																	game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+																	print("attack")
 																end
 																sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
 															until not _G.Auto_Farm_All_Sword or not _v.Parent or _v.Humanoid.Health <= 0 or tonumber(v.Mastery) > 599
@@ -4876,8 +4844,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 																	BringMobFarm = true
 																	getgenv().ToTarget(_v2.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 																	if (_v2.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-																		game:GetService("VirtualUser"):CaptureController()
-																		game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+																		print("attack")
 																	end							
 																until _G.Auto_Farm_All_Sword == false or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince") or not _v2.Parent or _v2.Humanoid.Health <= 0 or tonumber(v.Mastery) > 599
 															end
@@ -5043,8 +5010,7 @@ spawn(function()
 										BringMobFarm = true
 										getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 										if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-											game:GetService("VirtualUser"):CaptureController()
-											game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+											print("attack")
 										end
 									until not _G.Auto_Castle_Raid or not v.Parent or v.Humanoid.Health <= 0
 									BringMobFarm = false
@@ -5144,8 +5110,7 @@ spawn(function()
 														_1.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
 														getgenv().ToTarget(_1.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 														if (_1.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-															game:GetService("VirtualUser"):CaptureController()
-															game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+															print("attack")
 														end
 													until _1.Humanoid.Health <= 0 or not _1.Parent or not game:GetService("Workspace").Enemies:FindFirstChild(l) or not game:GetService("ReplicatedStorage"):FindFirstChild(l) or not _G.Auto_Elite_Hunter
 												end
@@ -5281,8 +5246,7 @@ spawn(function()
 											BringMobFarm = true
 											getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 											if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-												game:GetService("VirtualUser"):CaptureController()
-												game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+												print("attack")
 											end
 											sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
 										until not _G.Auto_Cake_Prince or not v.Parent or v.Humanoid.Health <= 0
@@ -5319,8 +5283,7 @@ spawn(function()
 												BringMobFarm = true
 												getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 												if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-													game:GetService("VirtualUser"):CaptureController()
-													game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+													print("attack")
 												end
 											until _G.Auto_Cake_Prince == false or game:GetService("ReplicatedStorage"):FindFirstChild("Cake Prince") or not v.Parent or v.Humanoid.Health <= 0
 										end
@@ -5428,8 +5391,7 @@ spawn(function()
 												BringMobFarm = true
 												getgenv().ToTarget(_v1.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 												if (_v1.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-													game:GetService("VirtualUser"):CaptureController()
-													game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+													print("attack")
 												end
 											until not _G.Auto_Farm_Bone or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
 											BringMobFarm = false
@@ -5454,8 +5416,7 @@ spawn(function()
 															BringMobFarm = true
 															getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 															if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-																game:GetService("VirtualUser"):CaptureController()
-																game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+																print("attack")
 															end
 														until not _G.Auto_Farm_Bone or v.Humanoid.Health <= 0 or not v.Parent or v.Humanoid.Health <= 0
 													else
@@ -5530,86 +5491,6 @@ spawn(function()
 			end
 		end)
 	end
-
-	local Stats_Moon_Teb = MainTab:CreateSection({
-		Name = "🌝 Stats 🏝️",
-		Side = "Right"
-	})
-
-	if W3 then
-	
-		local Stats_Moon = Stats_Moon_Teb:AddLabel({
-			Name = "Stats Moon : 0% 🌑"
-		})
-		
-		task.spawn(function()
-			while task.wait() do
-				pcall(function()
-					if W1 or W2 then
-						if game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
-							Stats_Moon:Set("Stats Moon : 100% 🌝")
-						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
-							Stats_Moon:Set("Stats Moon : 75% 🌖")
-						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
-							Stats_Moon:Set("Stats Moon : 50% 🌗")
-						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150086" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150086" then
-							Stats_Moon:Set("Stats Moon : 50% 🌗")
-						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-							Stats_Moon:Set("Stats Moon : 25% 🌘")
-						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
-							Stats_MoonFM:Set("Stats Moon : 15% 🌙")
-						elseif game:GetService("Lighting").FantasySky.MoonTextureId=="http://www.roblox.com/asset/?id=9709139597" or game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709139597" then
-							Stats_MoonFM:Set("Stats Moon : 15% 🌙")
-						else
-							Stats_Moon:Set("Stats Moon : 0% 🌑")
-						end
-					else
-						if game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149431" then
-							Stats_Moon:Set("Stats Moon : 100% 🌝")
-						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149052" then
-							Stats_Moon:Set("Stats Moon : 75% 🌖")
-						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709143733" then
-							Stats_Moon:Set("Stats Moon : 50% 🌗")
-						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150086" then
-							Stats_Moon:Set("Stats Moon : 50% 🌗")
-						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709150401" then
-							Stats_Moon:Set("Stats Moon : 25% 🌘")
-						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709149680" then
-							Stats_MoonFM:Set("Stats Moon : 15% 🌙")
-						elseif game:GetService("Lighting").Sky.MoonTextureId=="http://www.roblox.com/asset/?id=9709139597" then
-							Stats_MoonFM:Set("Stats Moon : 15% 🌙")
-						else
-							Stats_Moon:Set("Stats Moon : 0% 🌑")
-						end
-					end
-				end)
-			end
-		end)
-			
-		local Mirage_Island_Stats = Stats_Moon_Teb:AddLabel({
-			Name = "Stats Mirage Island : "
-		})
-		
-		spawn(function()
-			while wait() do
-				if game:GetService("Workspace")["_WorldOrigin"].Locations:FindFirstChild("Mirage Island") then
-					Mirage_Island_Stats:Set("Stats Mirage Island : 🟢 🏝️")
-				else
-					Mirage_Island_Stats:Set("Stats Mirage Island : 🔴 🏝️")
-				end
-			end
-		end)
-	end
-
-	local Dey_Stats = Stats_Moon_Teb:AddLabel({
-		Name = "Day : "..os.date('%A, %B %d ')
-	})
-	
-	spawn(function()
-		while wait() do
-			Dey_Stats:Set("Day : "..os.date('%A, %B %d '))
-		end
-	end)
 	
 	local StatsSection = MainTab:CreateSection({
 		Name = "Stats",
@@ -6782,8 +6663,7 @@ end
 												_v3.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
 												getgenv().ToTarget(_v3.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 												if (_v3.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-													game:GetService("VirtualUser"):CaptureController()
-													game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+													print("attack")
 												end
 											until not _G.Auto_Rip_Indar or _v3.Humanoid.Health <= 0 or not _v3.Parent or _v3.Humanoid.Health <= 0
 										end
@@ -6866,8 +6746,7 @@ end
 															_1.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
 															getgenv().ToTarget(_1.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 															if (_1.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-																game:GetService("VirtualUser"):CaptureController()
-																game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+																print("attack")
 															end
 														until _1.Humanoid.Health <= 0 or not _1.Parent or not game:GetService("Workspace").Enemies:FindFirstChild(l) or not game:GetService("ReplicatedStorage"):FindFirstChild(l) or not _G.Auto_Rip_Indar
 													end
@@ -7583,8 +7462,7 @@ end
 											v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
 											getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 											if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-												game:GetService("VirtualUser"):CaptureController()
-												game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+												print("attack")
 											end
 										until not _G.Auto_Dack_Coat or v.Humanoid.Health <= 0 or not v.Parent
 									end
@@ -7673,8 +7551,7 @@ end
 											v.HumanoidRootPart.Size = Vector3.new(60, 60, 60)  
 											getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 											if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-												game:GetService("VirtualUser"):CaptureController()
-												game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+												print("attack")
 											end
 										until not _G.Auto_Dack_Coat or v.Humanoid.Health <= 0 or not v.Parent
 									end
@@ -8331,8 +8208,7 @@ end
 														getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 		
 														if not _G.FastAttack or not _G.FastAttackO or _G.FastAttack or _G.FastAttackO then
-															game:GetService("VirtualUser"):CaptureController()
-															game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+															print("attack")
 														end
 													end
 												until not _G.Auto_Bartilo_Quest or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
@@ -8372,8 +8248,7 @@ end
 												getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 		
 												if not _G.FastAttack or not _G.FastAttackO or _G.FastAttack or _G.FastAttackO then
-													game:GetService("VirtualUser"):CaptureController()
-													game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+													print("attack")
 												end
 											until not _G.Auto_Bartilo_Quest or not v.Parent or v.Humanoid.Health <= 0 or QuestC.Visible == false or not v:FindFirstChild("HumanoidRootPart")
 										end
@@ -8713,8 +8588,7 @@ end
 															getgenv().ToTarget(_v1.HumanoidRootPart.CFrame * CFrame.new(0,30,5))
 															AutoHaki()
 															if (_v1.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-																game:GetService("VirtualUser"):CaptureController()
-																game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+																print("attack")
 															end
 														until not _G.Auto_Yama or _v1.Humanoid.Health <= 0 or not _v1.Parent
 													end
@@ -11341,8 +11215,7 @@ end
 										BringMobFarm = true
 										getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 										if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-											game:GetService("VirtualUser"):CaptureController()
-											game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+											print("attack")
 										end
 										sethiddenproperty(game.Players.LocalPlayer,"SimulationRadius",math.huge)
 									until not _G.Auto_Awakening_One_Quest or not v.Parent or v.Humanoid.Health <= 0
@@ -11382,8 +11255,7 @@ end
 												BringMobFarm = true
 												getgenv().ToTarget(v.HumanoidRootPart.CFrame * CFrame.new(0, 30, 5))
 												if (v.HumanoidRootPart.CFrame.Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
-													game:GetService("VirtualUser"):CaptureController()
-													game:GetService("VirtualUser"):Button1Down(Vector2.new(1280,672))
+													print("attack")
 												end
 												game:GetService("Players").LocalPlayer.Backpack.Awakening.RemoteFunction:InvokeServer(true)
 												game:GetService("Players").LocalPlayer.Backpack.Awakening.RemoteFunction:InvokeServer(true)
@@ -11415,5 +11287,4 @@ end
 
 else
 	game.Players.LocalPlayer:Kick("\n ❌ Check You Map ( Not Have ) Error:[493-2Q]❌")
-end
 end
