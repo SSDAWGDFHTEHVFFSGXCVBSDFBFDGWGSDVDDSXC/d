@@ -10296,6 +10296,14 @@ end
 			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
 		end
 	})
+
+	Shop:AddButton({
+		Name = "Buy SanguineArt",
+		Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt", true)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
+		end
+	})
 	local Shop2 = ShopTab:CreateSection({
 		Name = "Shop",
 		Side = "Left"
