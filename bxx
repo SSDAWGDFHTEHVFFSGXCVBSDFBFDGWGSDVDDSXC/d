@@ -10605,19 +10605,12 @@ spawn(function()
 					game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map["Temple of Time"].DoNotEnter.CFrame
 				else
 					if game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
-						if game:GetService("Workspace").Map:FindFirstChild("SkyTrial") then
 							getgenv().ToTarget(game:GetService("Workspace").Map.SkyTrial.Model.FinishPart.CFrame*CFrame.new(0,-20,0))
-						else
-							getgenv().ToTarget(game:GetService("Workspace").Map["Temple of Time"].SkypieaCorridor.Door.Entrance.CFrame)
-						end
 					elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
-						if game:GetService("Workspace").Map:FindFirstChild("MinkTrial") then
-							getgenv().ToTarget(game:GetService("Workspace").Map.MinkTrial.Ceiling.CFrame*CFrame.new(0,-20,0))
-						else
-							getgenv().ToTarget(game:GetService("Workspace").Map["Temple of Time"].MinkCorridor.Door.Entrance.CFrame)
-						end
+						getgenv().ToTarget(game:GetService("Workspace").Map.MinkTrial.Ceiling.CFrame * CFrame.new(0, -5, 0))
+					elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
+						getgenv().ToTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 300, 0))
 					elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
-						if game:GetService("Workspace").Map:FindFirstChild("HumanTrial") then
 							for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 								if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
 									repeat wait()
@@ -10636,11 +10629,7 @@ spawn(function()
 									BringMobFarm = false
 								end
 							end
-						else
-							getgenv().ToTarget(game:GetService("Workspace").Map["Temple of Time"].HumanCorridor.Door.Entrance.CFrame)
-						end
 					elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
-						if game:GetService("Workspace").Map:FindFirstChild("FishmanTrial") then
 							for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
 								if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
 									repeat wait()
@@ -10687,9 +10676,6 @@ spawn(function()
 									BringMobFarm = false
 								end
 							end
-						else
-							getgenv().ToTarget(game:GetService("Workspace").Map["Temple of Time"].FishmanCorridor.Door.Entrance.CFrame)
-						end
 					end
 				end
 			end)
@@ -11513,11 +11499,6 @@ NewEvent:AddToggle({
                                                 end
                                             end)
 
-
-                loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
-                NewEvent:AddButton({Name = "Function Fly\nฟังก์ชั่นบิน",Callback = function()
-					Fly()
-                    end})
 	local Misc = PepsisWorld:CreateTab({
 		Name = "Misc"
 	})
@@ -11526,6 +11507,11 @@ NewEvent:AddToggle({
 		Side = "Right"
 	})
 	
+	loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
+	MiscSection:AddButton({Name = "Function Fly\nฟังก์ชั่นบิน",Callback = function()
+		Fly()
+		end})
+
 		MiscSection:AddToggle{
 			Name = "Auto Click\nออโต้คลิก",
 			Flag = "AutoClick",
@@ -11832,21 +11818,22 @@ MiscSection1:AddButton({
 		end
 	end
 })
-
+local TPS = game:GetService("TeleportService")
+local LP = game:GetService("Players").LocalPlayer
 local Job = game.JobId
 
 MiscSection1:AddTextbox({
 	Name = "Jop ID",
 	Value = "",
 	Callback = function(v)
-		_G.JobID = v
+		JobId_Textbox = v
 	end
 })
 
 MiscSection1:AddButton({
 	Name = "TP Jop ID\nเทเลพอร์ตไปที่ JobID",
 	Callback = function(v)
-		game.ReplicatedStorage['__ServerBrowser']:InvokeServer('teleport',_G.JobID)
+		TPS:TeleportToPlaceInstance(game.PlaceId, JobId_Textbox, LP)
 	end
 })
 
@@ -11856,6 +11843,8 @@ MiscSection1:AddButton({
 		setclipboard(Job)
 	end
 })
+
+
 function kaituncap()
 	local UserInputService = game:GetService("UserInputService")
 	local TweenService = game:GetService("TweenService")
