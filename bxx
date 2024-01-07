@@ -5915,7 +5915,7 @@ spawn(function()
 	SettingSection:AddToggle({
 		Name = "Fast TP\nวาร์ปเร็ว",
 		Flag = "Bypass_Tp",
-		Value = _G.Settings.Bypass,
+		Value = false,
 		Callback = function(value)
 			_G.Bypass_TP = value
 			_G.HH =  value
