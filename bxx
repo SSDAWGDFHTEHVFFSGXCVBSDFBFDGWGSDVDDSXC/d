@@ -9666,6 +9666,15 @@ end
 			StopTween(_G.Start_Tween_Island)
 		end
 	})
+	TeleportWorldSection:AddButton({
+		Name = "Stop Teleport\nหยุดเทเลพอร์ต",
+		Callback = function()
+			getgenv().ToTarget(CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
+			toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+			StopTween(_G.Start_Tween_Island)
+			_G.StopTween = true
+		end
+	})
 	
 	local MainDungeonSection = TeleportTab:CreateSection({
 		Name = "Dungeon",
