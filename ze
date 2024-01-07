@@ -4092,7 +4092,7 @@ if game.PlaceId == 2753915549 or game.PlaceId == 4442272183 or game.PlaceId == 7
 									end
 								end
 							else
-								UnEquipWeapon(_G.Select_Weapon)
+								--UnEquipWeapon(_G.Select_Weapon)
 								if _G.Auto_CFrame and not _G.AutoFarmFast then
 									getgenv().ToTarget(QuestCheck()[7][SetCFarme] * CFrame.new(0,30,5))
 									if (QuestCheck()[7][SetCFarme].Position - game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).Magnitude <= 50 then
@@ -5287,7 +5287,7 @@ spawn(function()
 										if _G.Auto_Elite_Hunter_Hop and game:GetService("ReplicatedStorage").Remotes["CommF_"]:InvokeServer("EliteHunter") == "I don't have anything for you right now. Come back later." and not ( game:GetService("Workspace").Enemies:FindFirstChild(_l1) or game:GetService("ReplicatedStorage"):FindFirstChild(_l1) ) then
 											print("Hop")
 											_G.Rejoin = false
-											wait(0.5)
+											wait(5)
 											Hop()
 										else
 											game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("EliteHunter")
@@ -5915,7 +5915,7 @@ spawn(function()
 	SettingSection:AddToggle({
 		Name = "Fast TP\nวาร์ปเร็ว",
 		Flag = "Bypass_Tp",
-		Value = _G.Settings.Bypass,
+		Value = false,
 		Callback = function(value)
 			_G.Bypass_TP = value
 			_G.HH =  value
@@ -5958,7 +5958,7 @@ spawn(function()
 	end)
 
 	coroutine.wrap(function()
-		while RunService.Heartbeat:Wait(0.10) do 
+		while wait(0.07) do 
 			local ac = CombatFrameworkR.activeController
 				if ac and ac.equipped then
 					if FastAttack or _G.FastAttack then
@@ -6394,7 +6394,8 @@ end)
 		end
 	end)
 	
-	--[[RageBountySection:AddToggle{
+
+	RageBountySection:AddToggle{
 		Name = "Auto Kill Player\nออโต้ฆ่าเพลย์เยอร์",
 		Flag = "Auto_Kill_Player",
 		Value = _G.Settings.Auto_Kill_Player,
@@ -6455,8 +6456,92 @@ end)
 				MethodFarmPlayer = CFrame.new(0, 15, -40) -- เคลื่อนที่ไปทางด้านหน้า
 			end
 		end
-	end)]]
+	end)
 	
+		RageBountySection:AddToggle{
+			Name = "Aimbot Skill\nอิมบอทสกิล",
+			Flag = "Aimbot_Skill",
+			Value = Skillaimbot,
+			Callback  = function(value)
+			Skillaimbot = value
+			end
+		}
+		
+		RageBountySection:AddToggle{
+			Name = "Aimbot Gun\nอิมบอทปืน",
+			Flag = "Aimbot_Gun",
+			Value = Aimbot,
+			Callback  = function(value)
+			Aimbot = value
+			end
+		}
+		
+		local gg = getrawmetatable(game)
+		local old = gg.__namecall
+		setreadonly(gg, false)
+		gg.__namecall = newcclosure(function(...)
+		local method = getnamecallmethod()
+		local args = { ... }
+		if tostring(method) == "FireServer" then
+		if tostring(args[1]) == "RemoteEvent" then
+			if tostring(args[2]) ~= "true" and tostring(args[2]) ~= "false" then
+				if Skillaimbot then
+					args[2] = AimBotSkillPosition
+					return old(unpack(args))
+				end
+			end
+		end
+		end
+		return old(...)
+		end)
+		spawn(function()
+		while task.wait() do
+		for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v:IsA("Tool") then
+				if v:FindFirstChild("RemoteFunctionShoot") then
+					SelectToolWeaponGun = v.Name
+				end
+			end
+		end
+		for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v:IsA("Tool") then
+				if v:FindFirstChild("RemoteFunctionShoot") then
+					SelectToolWeaponGun = v.Name
+				end
+			end
+		end
+		end
+		end)
+		--[aimbot skill]
+		task.spawn(function()
+		while task.wait() do
+		if Skillaimbot then
+			if game.Players:FindFirstChild(SelectPlayer) and game.Players:FindFirstChild(SelectPlayer).Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(SelectPlayer).Character:FindFirstChild("Humanoid") and game.Players:FindFirstChild(SelectPlayer).Character.Humanoid.Health > 0 then
+				AimBotSkillPosition = game.Players:FindFirstChild(SelectPlayer).Character:FindFirstChild(
+					"HumanoidRootPart").Position
+			end
+		end
+		end
+		end)
+		task.spawn(function()
+		while task.wait() do
+		if Skillaimbot then
+			if game.Players:FindFirstChild(AllPlayersTableSkipFarm) and game.Players:FindFirstChild(AllPlayersTableSkipFarm).Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(AllPlayersTableSkipFarm).Character:FindFirstChild("Humanoid") and game.Players:FindFirstChild(AllPlayersTableSkipFarm).Character.Humanoid.Health > 0 then
+				AimBotSkillPosition = game.Players:FindFirstChild(AllPlayersTableSkipFarm).Character:FindFirstChild("HumanoidRootPart").Position
+			end
+		end
+		end
+		end)
+		--[aimbot gun]
+		local lp = game:GetService('Players').LocalPlayer
+		local mouse = lp:GetMouse()
+		mouse.Button1Down:Connect(function()
+		if Aimbot and game.Players.LocalPlayer.Character:FindFirstChild(SelectToolWeaponGun) and game:GetService("Players"):FindFirstChild(SelectPlayer) then
+		tool = game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun]
+		v17 = workspace:FindPartOnRayWithIgnoreList(Ray.new(tool.Handle.CFrame.p,(game:GetService("Players"):FindFirstChild(SelectPlayer).Character.HumanoidRootPart.Position - tool.Handle.CFrame.p).unit * 100), { game.Players.LocalPlayer.Character, workspace._WorldOrigin });
+		game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun].RemoteFunctionShoot:InvokeServer(game:GetService("Players"):FindFirstChild(SelectPlayer).Character.HumanoidRootPart.Position,(require(game.ReplicatedStorage.Util).Other.hrpFromPart(v17)));
+		end
+		end)
 	RageBountySection:AddToggle{
 		Name = "Enabled PvP\nเปิดโหมดต่อสู้",
 		Flag = "EnabledPvP",
@@ -7559,7 +7644,7 @@ end
 								end
 							else 
 								if _G.Auto_Saber_Hop then
-									wait(2.5)
+									wait(5)
 									Hop()
 								end
 							end
@@ -7622,7 +7707,7 @@ end
 						end
 					else
 						if _G.Auto_Pole_Hop then
-							wait(2.5)
+							wait(5)
 							Hop()
 						end
 					end
@@ -8019,6 +8104,7 @@ end
 							end
 						else
 							if _G.Auto_Rainbow_Haki_Hop then
+								wait(5)
 								Hop()
 							end
 						end
@@ -8046,6 +8132,7 @@ end
 							end
 						else
 							if _G.Auto_Rainbow_Haki_Hop then
+								wait(5)
 								Hop()
 							end
 						end
@@ -8073,6 +8160,7 @@ end
 							end
 						else
 							if _G.Auto_Rainbow_Haki_Hop then
+								wait(5)
 								Hop()
 							end
 						end
@@ -8100,6 +8188,7 @@ end
 							end
 						else 
 							if _G.Auto_Rainbow_Haki_Hop then
+								wait(5)
 								Hop()
 							end
 						end
@@ -8127,6 +8216,7 @@ end
 							end
 						else 
 							if _G.Auto_Rainbow_Haki_Hop then
+								wait(5)
 								Hop()
 							end
 						end
@@ -9581,6 +9671,15 @@ end
 			StopTween(_G.Start_Tween_Island)
 		end
 	})
+	TeleportWorldSection:AddButton({
+		Name = "Stop Teleport\nหยุดเทเลพอร์ต",
+		Callback = function()
+			getgenv().ToTarget(CFrame.new(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame))
+			toTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame)
+			StopTween(_G.Start_Tween_Island)
+			_G.StopTween = true
+		end
+	})
 	
 	local MainDungeonSection = TeleportTab:CreateSection({
 		Name = "Dungeon",
@@ -10202,6 +10301,14 @@ end
 			game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuyGodhuman")
 		end
 	})
+
+	Shop:AddButton({
+		Name = "Buy SanguineArt",
+		Callback = function()
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt", true)
+		game:GetService("ReplicatedStorage").Remotes.CommF_:InvokeServer("BuySanguineArt")
+		end
+	})
 	local Shop2 = ShopTab:CreateSection({
 		Name = "Shop",
 		Side = "Left"
@@ -10511,19 +10618,12 @@ spawn(function()
 					game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.CFrame = game:GetService("Workspace").Map["Temple of Time"].DoNotEnter.CFrame
 				else
 					if game:GetService("Players").LocalPlayer.Data.Race.Value == "Skypiea" then
-						if game:GetService("Workspace").Map:FindFirstChild("SkyTrial") then
 							getgenv().ToTarget(game:GetService("Workspace").Map.SkyTrial.Model.FinishPart.CFrame*CFrame.new(0,-20,0))
-						else
-							getgenv().ToTarget(game:GetService("Workspace").Map["Temple of Time"].SkypieaCorridor.Door.Entrance.CFrame)
-						end
 					elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Mink" then
-						if game:GetService("Workspace").Map:FindFirstChild("MinkTrial") then
-							getgenv().ToTarget(game:GetService("Workspace").Map.MinkTrial.Ceiling.CFrame*CFrame.new(0,-20,0))
-						else
-							getgenv().ToTarget(game:GetService("Workspace").Map["Temple of Time"].MinkCorridor.Door.Entrance.CFrame)
-						end
+						getgenv().ToTarget(game:GetService("Workspace").Map.MinkTrial.Ceiling.CFrame * CFrame.new(0, -5, 0))
+					elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Cyborg" then
+						getgenv().ToTarget(game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 300, 0))
 					elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Human" then
-						if game:GetService("Workspace").Map:FindFirstChild("HumanTrial") then
 							for i,v in pairs(game.Workspace.Enemies:GetChildren()) do
 								if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
 									repeat wait()
@@ -10542,11 +10642,7 @@ spawn(function()
 									BringMobFarm = false
 								end
 							end
-						else
-							getgenv().ToTarget(game:GetService("Workspace").Map["Temple of Time"].HumanCorridor.Door.Entrance.CFrame)
-						end
 					elseif game:GetService("Players").LocalPlayer.Data.Race.Value == "Fishman" then
-						if game:GetService("Workspace").Map:FindFirstChild("FishmanTrial") then
 							for i,v in pairs(game:GetService("Workspace").SeaBeasts:GetChildren()) do
 								if v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0 and (v.HumanoidRootPart.Position-game:GetService("Players").LocalPlayer.Character.HumanoidRootPart.Position).magnitude <= 1000 then
 									repeat wait()
@@ -10593,9 +10689,6 @@ spawn(function()
 									BringMobFarm = false
 								end
 							end
-						else
-							getgenv().ToTarget(game:GetService("Workspace").Map["Temple of Time"].FishmanCorridor.Door.Entrance.CFrame)
-						end
 					end
 				end
 			end)
@@ -11419,11 +11512,6 @@ NewEvent:AddToggle({
                                                 end
                                             end)
 
-
-                loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
-                NewEvent:AddButton({Name = "Function Fly\nฟังก์ชั่นบิน",Callback = function()
-					Fly()
-                    end})
 	local Misc = PepsisWorld:CreateTab({
 		Name = "Misc"
 	})
@@ -11432,9 +11520,30 @@ NewEvent:AddToggle({
 		Side = "Right"
 	})
 	
-	
+	loadstring(Game:HttpGet"https://raw.githubusercontent.com/SSDAWGDFHTEHVFFSGXCVBSDFBFDGWGSDVDDSXC/d/main/fly")()
+	MiscSection:AddButton({Name = "Function Fly\nฟังก์ชั่นบิน",Callback = function()
+		Fly()
+		end})
+
+		MiscSection:AddToggle{
+			Name = "Auto Click\nออโต้คลิก",
+			Flag = "AutoClick",
+			Value = _G.Settings.No_clip,
+			Callback  = function(value)
+				_G.click = value
+			end}
+			spawn(function()
+			game:GetService("RunService").RenderStepped:Connect(function()
+				if _G.click then
+					 pcall(function()
+						game:GetService'VirtualUser':CaptureController()
+						game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+					end)
+				end
+			end)
+		end)
 	MiscSection:AddToggle{
-		Name = "No Clip",
+		Name = "No Clip\nตัวทะลุ",
 		Flag = "No_clip",
 		Value = _G.Settings.No_clip,
 		Callback  = function(value)
@@ -11459,7 +11568,7 @@ NewEvent:AddToggle({
 	end)
 	
 	MiscSection:AddToggle{
-		Name = "Walk On Water",
+		Name = "Walk On Water\nเดินบนน้ำ",
 		Flag = "Walk_On_Water",
 		Value = _G.WalkWater,
 		Callback  = function(value)
@@ -11516,7 +11625,7 @@ NewEvent:AddToggle({
 		end
 
 		MiscSection:AddToggle{
-			Name = "Infinit Ability",
+			Name = "Infinit Ability\nความสามารถไม่จำกัด",
 			Flag = "Infinit_Ability",
 			Value = _G.InfAbility,
 			Callback  = function(value)
@@ -11526,7 +11635,7 @@ NewEvent:AddToggle({
 		}
 
 	MiscSection:AddToggle{
-		Name = "Infinit Energy",
+		Name = "Infinit Energy\nพลังงานไม่จำกัด",
 		Flag = "Infinit_Energy",
 		Value = _G.Settings.Infinit_Energy,
 		Callback  = function(value)
@@ -11538,7 +11647,7 @@ NewEvent:AddToggle({
 	}
 	
 	MiscSection:AddToggle{
-		Name = "Dodge No CoolDown",
+		Name = "Dodge No CoolDown\nเดินชมจันทร์ไม่จำกัด",
 		Flag = "Dodge_No_CoolDown",
 		Value = _G.Settings.Dodge_No_CoolDown,
 		Callback  = function(value)
@@ -11549,27 +11658,9 @@ NewEvent:AddToggle({
 		end
 	}
 	
-	MiscSection:AddToggle{
-		Name = "Infinit Ability",
-		Flag = "Infinit_Ability",
-		Value = _G.Settings.Infinit_Ability,
-		Callback  = function(value)
-			_G.Infinit_Ability = value
-			_G.Settings.Infinit_Ability = value
-			SaveSettings()
-		end
-	}
-	
-	spawn(function()
-		while wait() do
-			if _G.Infinit_Ability then
-				InfAbility()
-			end
-		end
-	end)
 	
 	MiscSection:AddToggle({
-		Name = "Infinit Inf Soru ",
+		Name = "Infinit Soru\nโซลไม่จำกัด",
 		Callback = function(Value)
 			_G.Infinit_Inf_Soru = Value
 			_G.Settings.Infinit_Inf_Soru = value
@@ -11606,7 +11697,7 @@ NewEvent:AddToggle({
 		Name = "Team"
 	})
 	MiscSection1:AddButton({
-			Name = "Join Pirates Team",
+			Name = "Join Pirates Team\nเข้ามร่วมทีมโจรสลัด",
 			Callback = function()
 				local args = {
 					[1] = "SetTeam",
@@ -11621,7 +11712,7 @@ NewEvent:AddToggle({
 		})
 		
 		MiscSection1:AddButton({
-			Name = "Join Marines Team",
+			Name = "Join Marines Team\nเข้าร่วมทีมทหารเรือ",
 			Callback = function()
 				local args = {
 					[1] = "SetTeam",
@@ -11638,7 +11729,7 @@ NewEvent:AddToggle({
 			Name = "Server"
 		})
 		MiscSection1:AddButton({
-			Name = "Rejoin",
+			Name = "Rejoin\nรีเซิฟเวอร์",
 			Callback = function()
 				local ts = game:GetService("TeleportService")
 				local p = game:GetService("Players").LocalPlayer
@@ -11647,7 +11738,7 @@ NewEvent:AddToggle({
 		})
 		
 		MiscSection1:AddButton({
-			Name = "Sever Hop",
+			Name = "Sever Hop\nย้ายไปเซิฟคนเยอะ",
 			Callback = function()
 				Hop()
 			end
@@ -11657,7 +11748,7 @@ NewEvent:AddToggle({
 			Name = "GUI"
 		})
 		MiscSection1:AddButton({
-			Name = "Devil Fruit Shop",
+			Name = "Devil Fruit Shop\nเปิดหน้าต่างร้านค้าผลปีศาจ",
 			Callback = function()
 				local args = {
 					[1] = "GetFruits"
@@ -11668,7 +11759,7 @@ NewEvent:AddToggle({
 		})
 		
 		MiscSection1:AddButton({
-			Name = "Title Name",
+			Name = "Title Name\nเปิดหน้าต่างฉายา",
 			Callback = function()
 				local args = {
 					[1] = "getTitles"
@@ -11679,14 +11770,14 @@ NewEvent:AddToggle({
 		})
 		
 		MiscSection1:AddButton({
-			Name = "Color Haki",
+			Name = "Color Haki\nเปิดหน้าต่างสีฮาคิ",
 			Callback = function()
 				game.Players.localPlayer.PlayerGui.Main.Colors.Visible = true
 			end
 		})
 
 		MiscSection1:AddButton({
-			Name = "Awakened Skill",
+			Name = "Awakened Skill\nเปิดหน้าต่างสกิลตื่",
 			Callback = function()
 				local args = {
 					[1] = "getAwakenedAbilities"
@@ -11698,7 +11789,7 @@ NewEvent:AddToggle({
 		})
 
 MiscSection1:AddButton({
-	Name = "FPS Boost",
+	Name = "FPS Boost\nบูสต์Fps",
 	Callback = function()
 		setfpscap(120)
 		local decalsyeeted = true
@@ -11740,30 +11831,33 @@ MiscSection1:AddButton({
 		end
 	end
 })
-
+local TPS = game:GetService("TeleportService")
+local LP = game:GetService("Players").LocalPlayer
 local Job = game.JobId
 
 MiscSection1:AddTextbox({
 	Name = "Jop ID",
 	Value = "",
 	Callback = function(v)
-		_G.JobID = v
+		JobId_Textbox = v
 	end
 })
 
 MiscSection1:AddButton({
-	Name = "TP Jop ID",
+	Name = "TP Jop ID\nเทเลพอร์ตไปที่ JobID",
 	Callback = function(v)
-		game.ReplicatedStorage['__ServerBrowser']:InvokeServer('teleport',_G.JobID)
+		TPS:TeleportToPlaceInstance(game.PlaceId, JobId_Textbox, LP)
 	end
 })
 
 MiscSection1:AddButton({
-	Name = "Copy Jop ID",
+	Name = "Copy Jop ID\nก็อปปี้ JobID",
 	Callback = function(v)
 		setclipboard(Job)
 	end
 })
+
+
 function kaituncap()
 	local UserInputService = game:GetService("UserInputService")
 	local TweenService = game:GetService("TweenService")
@@ -11992,7 +12086,7 @@ function kaituncap()
 	end)
 	end
 MiscSection1:AddButton({
-	Name = "Kaitun Cap",
+	Name = "Kaitun Cap\nถ่ายภาพไก่ตัน",
 	Callback = function(v)
 		kaituncap()
 	end
