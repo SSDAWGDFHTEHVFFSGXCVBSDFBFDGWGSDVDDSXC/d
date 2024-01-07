@@ -6394,7 +6394,8 @@ end)
 		end
 	end)
 	
-	--[[RageBountySection:AddToggle{
+
+	RageBountySection:AddToggle{
 		Name = "Auto Kill Player\nออโต้ฆ่าเพลย์เยอร์",
 		Flag = "Auto_Kill_Player",
 		Value = _G.Settings.Auto_Kill_Player,
@@ -6455,8 +6456,92 @@ end)
 				MethodFarmPlayer = CFrame.new(0, 15, -40) -- เคลื่อนที่ไปทางด้านหน้า
 			end
 		end
-	end)]]
+	end)
 	
+		RageBountySection:AddToggle{
+			Name = "Aimbot Skill\nอิมบอทสกิล",
+			Flag = "Aimbot_Skill",
+			Value = Skillaimbot,
+			Callback  = function(value)
+			Skillaimbot = value
+			end
+		}
+		
+		RageBountySection:AddToggle{
+			Name = "Aimbot Gun\nอิมบอทปืน",
+			Flag = "Aimbot_Gun",
+			Value = Aimbot,
+			Callback  = function(value)
+			Aimbot = value
+			end
+		}
+		
+		local gg = getrawmetatable(game)
+		local old = gg.__namecall
+		setreadonly(gg, false)
+		gg.__namecall = newcclosure(function(...)
+		local method = getnamecallmethod()
+		local args = { ... }
+		if tostring(method) == "FireServer" then
+		if tostring(args[1]) == "RemoteEvent" then
+			if tostring(args[2]) ~= "true" and tostring(args[2]) ~= "false" then
+				if Skillaimbot then
+					args[2] = AimBotSkillPosition
+					return old(unpack(args))
+				end
+			end
+		end
+		end
+		return old(...)
+		end)
+		spawn(function()
+		while task.wait() do
+		for i, v in pairs(game.Players.LocalPlayer.Backpack:GetChildren()) do
+			if v:IsA("Tool") then
+				if v:FindFirstChild("RemoteFunctionShoot") then
+					SelectToolWeaponGun = v.Name
+				end
+			end
+		end
+		for i, v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+			if v:IsA("Tool") then
+				if v:FindFirstChild("RemoteFunctionShoot") then
+					SelectToolWeaponGun = v.Name
+				end
+			end
+		end
+		end
+		end)
+		--[aimbot skill]
+		task.spawn(function()
+		while task.wait() do
+		if Skillaimbot then
+			if game.Players:FindFirstChild(SelectPlayer) and game.Players:FindFirstChild(SelectPlayer).Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(SelectPlayer).Character:FindFirstChild("Humanoid") and game.Players:FindFirstChild(SelectPlayer).Character.Humanoid.Health > 0 then
+				AimBotSkillPosition = game.Players:FindFirstChild(SelectPlayer).Character:FindFirstChild(
+					"HumanoidRootPart").Position
+			end
+		end
+		end
+		end)
+		task.spawn(function()
+		while task.wait() do
+		if Skillaimbot then
+			if game.Players:FindFirstChild(AllPlayersTableSkipFarm) and game.Players:FindFirstChild(AllPlayersTableSkipFarm).Character:FindFirstChild("HumanoidRootPart") and game.Players:FindFirstChild(AllPlayersTableSkipFarm).Character:FindFirstChild("Humanoid") and game.Players:FindFirstChild(AllPlayersTableSkipFarm).Character.Humanoid.Health > 0 then
+				AimBotSkillPosition = game.Players:FindFirstChild(AllPlayersTableSkipFarm).Character:FindFirstChild("HumanoidRootPart").Position
+			end
+		end
+		end
+		end)
+		--[aimbot gun]
+		local lp = game:GetService('Players').LocalPlayer
+		local mouse = lp:GetMouse()
+		mouse.Button1Down:Connect(function()
+		if Aimbot and game.Players.LocalPlayer.Character:FindFirstChild(SelectToolWeaponGun) and game:GetService("Players"):FindFirstChild(SelectPlayer) then
+		tool = game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun]
+		v17 = workspace:FindPartOnRayWithIgnoreList(Ray.new(tool.Handle.CFrame.p,(game:GetService("Players"):FindFirstChild(SelectPlayer).Character.HumanoidRootPart.Position - tool.Handle.CFrame.p).unit * 100), { game.Players.LocalPlayer.Character, workspace._WorldOrigin });
+		game:GetService("Players").LocalPlayer.Character[SelectToolWeaponGun].RemoteFunctionShoot:InvokeServer(game:GetService("Players"):FindFirstChild(SelectPlayer).Character.HumanoidRootPart.Position,(require(game.ReplicatedStorage.Util).Other.hrpFromPart(v17)));
+		end
+		end)
 	RageBountySection:AddToggle{
 		Name = "Enabled PvP\nเปิดโหมดต่อสู้",
 		Flag = "EnabledPvP",
