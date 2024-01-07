@@ -11526,9 +11526,25 @@ NewEvent:AddToggle({
 		Side = "Right"
 	})
 	
-	
+		MiscSection:AddToggle{
+			Name = "Auto Click\nออโต้คลิก",
+			Flag = "AutoClick",
+			Value = _G.Settings.No_clip,
+			Callback  = function(value)
+				_G.click = value
+			end}
+			spawn(function()
+			game:GetService("RunService").RenderStepped:Connect(function()
+				if _G.click then
+					 pcall(function()
+						game:GetService'VirtualUser':CaptureController()
+						game:GetService'VirtualUser':Button1Down(Vector2.new(0,1,0,1))
+					end)
+				end
+			end)
+		end)
 	MiscSection:AddToggle{
-		Name = "No Clip",
+		Name = "No Clip\nตัวทะลุ",
 		Flag = "No_clip",
 		Value = _G.Settings.No_clip,
 		Callback  = function(value)
@@ -11553,7 +11569,7 @@ NewEvent:AddToggle({
 	end)
 	
 	MiscSection:AddToggle{
-		Name = "Walk On Water",
+		Name = "Walk On Water\nเดินบนน้ำ",
 		Flag = "Walk_On_Water",
 		Value = _G.WalkWater,
 		Callback  = function(value)
@@ -11610,7 +11626,7 @@ NewEvent:AddToggle({
 		end
 
 		MiscSection:AddToggle{
-			Name = "Infinit Ability",
+			Name = "Infinit Ability\nความสามารถไม่จำกัด",
 			Flag = "Infinit_Ability",
 			Value = _G.InfAbility,
 			Callback  = function(value)
@@ -11620,7 +11636,7 @@ NewEvent:AddToggle({
 		}
 
 	MiscSection:AddToggle{
-		Name = "Infinit Energy",
+		Name = "Infinit Energy\nพลังงานไม่จำกัด",
 		Flag = "Infinit_Energy",
 		Value = _G.Settings.Infinit_Energy,
 		Callback  = function(value)
@@ -11632,7 +11648,7 @@ NewEvent:AddToggle({
 	}
 	
 	MiscSection:AddToggle{
-		Name = "Dodge No CoolDown",
+		Name = "Dodge No CoolDown\nเดินชมจันทร์ไม่จำกัด",
 		Flag = "Dodge_No_CoolDown",
 		Value = _G.Settings.Dodge_No_CoolDown,
 		Callback  = function(value)
@@ -11643,27 +11659,9 @@ NewEvent:AddToggle({
 		end
 	}
 	
-	MiscSection:AddToggle{
-		Name = "Infinit Ability",
-		Flag = "Infinit_Ability",
-		Value = _G.Settings.Infinit_Ability,
-		Callback  = function(value)
-			_G.Infinit_Ability = value
-			_G.Settings.Infinit_Ability = value
-			SaveSettings()
-		end
-	}
-	
-	spawn(function()
-		while wait() do
-			if _G.Infinit_Ability then
-				InfAbility()
-			end
-		end
-	end)
 	
 	MiscSection:AddToggle({
-		Name = "Infinit Inf Soru ",
+		Name = "Infinit Soru\nโซลไม่จำกัด",
 		Callback = function(Value)
 			_G.Infinit_Inf_Soru = Value
 			_G.Settings.Infinit_Inf_Soru = value
